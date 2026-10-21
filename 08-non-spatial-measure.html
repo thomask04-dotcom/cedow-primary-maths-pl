@@ -246,7 +246,6 @@
           <a class="cd-nav-link" href="#section-4"><span class="cd-nav-num">4</span><span>Diagnostic Clinic</span></a>
           <a class="cd-nav-link" href="#section-5"><span class="cd-nav-num">5</span><span>Task Makeover Studio</span></a>
           <a class="cd-nav-link" href="#section-6"><span class="cd-nav-num">6</span><span>Mastery Checkpoint</span></a>
-          <a class="cd-nav-link" href="#section-7"><span class="cd-nav-num">7</span><span>Canvas LMS Guide</span></a>
         </nav>
       </div>
     </aside>
@@ -912,67 +911,6 @@
         </div>
       </section>
 
-      <!-- ========================================== -->
-      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE     -->
-      <!-- ========================================== -->
-      <section id="section-7" class="cd-section">
-        <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
-          <div>
-            <h3 class="cd-section-title">Section 7: Canvas LMS Deployment Guide</h3>
-            <p class="text-sm text-[#4C4C4E]">Technical instructions for hosting on GitHub Pages and embedding into Canvas LMS courses or staff portals.</p>
-          </div>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-
-          <!-- Method 1: GitHub Pages & Iframe -->
-          <div class="p-5 bg-[#F4F6F9] rounded-xl border border-[#D1D2D4]">
-            <span class="text-xs font-bold uppercase tracking-wider text-[#188296] bg-teal-100 px-2 py-0.5 rounded">Recommended Method</span>
-            <h4 class="text-base font-bold text-[#0D2C6B] mt-2 mb-2">Host via GitHub Pages &amp; Embed via iframe</h4>
-            <ol class="text-xs text-[#4C4C4E] space-y-2 list-decimal pl-4">
-              <li>Save this file as <span class="font-mono bg-white px-1.5 py-0.5 rounded border border-gray-300">index.html</span> in your GitHub repository.</li>
-              <li>Go to <strong>Settings &rarr; Pages</strong> and enable GitHub Pages from the <span class="font-mono">main</span> branch.</li>
-              <li>In your Canvas LMS Course, create a new <strong>Page</strong>.</li>
-              <li>Switch to the <strong>HTML View (&lt;/&gt;)</strong> in the Canvas Rich Content Editor.</li>
-              <li>Paste the responsive iframe embed snippet below.</li>
-            </ol>
-          </div>
-
-          <!-- Method 2: Direct Canvas HTML File Upload -->
-          <div class="p-5 bg-[#F4F6F9] rounded-xl border border-[#D1D2D4]">
-            <span class="text-xs font-bold uppercase tracking-wider text-[#0D2C6B] bg-blue-100 px-2 py-0.5 rounded">Alternative Method</span>
-            <h4 class="text-base font-bold text-[#0D2C6B] mt-2 mb-2">Direct Canvas Files Upload</h4>
-            <ol class="text-xs text-[#4C4C4E] space-y-2 list-decimal pl-4">
-              <li>Navigate to your Canvas course and select <strong>Files</strong> in the course navigation.</li>
-              <li>Upload this single self-contained <span class="font-mono bg-white px-1.5 py-0.5 rounded border border-gray-300">non-spatial-measure.html</span> file.</li>
-              <li>Click the three vertical dots next to the uploaded file and select <strong>Publish</strong>.</li>
-              <li>Link the file directly in a Canvas Module or embed it inside an iframe pointing to the Canvas file preview URL.</li>
-            </ol>
-          </div>
-
-        </div>
-
-        <!-- Copyable Embed Code Snippet -->
-        <div class="mt-6">
-          <div class="flex items-center justify-between mb-2">
-            <span class="text-xs font-bold uppercase tracking-wide text-[#4C4C4E]">Responsive Canvas Embed Code:</span>
-            <button onclick="copyEmbedCode()" id="btnCopyCode" class="text-xs font-bold text-[#188296] hover:text-[#0D2C6B] flex items-center gap-1">
-              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Snippet
-            </button>
-          </div>
-          <div class="relative">
-            <pre class="bg-gray-900 text-gray-100 p-4 rounded-xl text-xs font-mono overflow-x-auto custom-scrollbar border border-gray-800" id="embedCodeSnippet">&lt;div style="position: relative; width: 100%; height: 0; padding-bottom: 85%; min-height: 750px; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);"&gt;
-  &lt;iframe 
-    src="https://your-diocese-username.github.io/non-spatial-measure/" 
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-    title="Non-Spatial Measure K-6 Professional Learning Module" 
-    allow="fullscreen" 
-    loading="lazy"&gt;
-  &lt;/iframe&gt;
-&lt;/div&gt;</pre>
-          </div>
-        </div>
-      </section>
 
     </main>
   </div>
@@ -2212,22 +2150,6 @@
       } else {
         statusText.innerHTML = `<span class="text-red-600 font-bold">Score: ${score}/5 (${percent}%). Review the rationales and retry to achieve the 80% pass threshold.</span>`;
       }
-    }
-
-    /* -----------------------------------------------------------
-       SECTION 7: COPY EMBED SNIPPET
-    ----------------------------------------------------------- */
-    function copyEmbedCode() {
-      const code = document.getElementById('embedCodeSnippet').innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        const btn = document.getElementById('btnCopyCode');
-        btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-green-600"></i> Copied!`;
-        lucide.createIcons();
-        setTimeout(() => {
-          btn.innerHTML = `<i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Snippet`;
-          lucide.createIcons();
-        }, 2000);
-      });
     }
 
     /* -----------------------------------------------------------

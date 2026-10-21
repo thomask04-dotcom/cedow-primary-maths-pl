@@ -241,7 +241,6 @@
           <a class="cd-nav-link" href="#section-4"><span class="cd-nav-num">4</span><span>Diagnostic Clinic</span></a>
           <a class="cd-nav-link" href="#section-5"><span class="cd-nav-num">5</span><span>Task Makeover Studio</span></a>
           <a class="cd-nav-link" href="#section-6"><span class="cd-nav-num">6</span><span>Mastery Checkpoint</span></a>
-          <a class="cd-nav-link" href="#section-7"><span class="cd-nav-num">7</span><span>Canvas LMS Guide</span></a>
         </nav>
       </div>
     </aside>
@@ -934,49 +933,6 @@
 
       </section>
 
-      <!-- =================================================================== -->
-      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE                              -->
-      <!-- =================================================================== -->
-      <section id="section-7" class="cd-section space-y-6">
-        <div class="border-b border-cedow-silver pb-4">
-          <h3 class="cd-section-title">Section 7: Canvas LMS Deployment Guide</h3>
-          <p class="text-sm text-cedow-charcoal mt-1">Seamlessly deploy this single-file module into your school or diocesan Canvas LMS environment.</p>
-        </div>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
-          
-          <!-- Method A: GitHub Pages / Cloud Hosting -->
-          <div class="bg-cedow-light p-5 rounded-xl border border-cedow-silver space-y-3">
-            <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold uppercase bg-cedow-blue text-white">Recommended</span>
-            <h4 class="font-bold text-cedow-blue text-base">Method 1: GitHub Pages &amp; Canvas iFrame</h4>
-            <ol class="list-decimal list-inside space-y-2 text-cedow-charcoal">
-              <li>Save this file as <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-cedow-silver">index.html</code> in a GitHub repository.</li>
-              <li>Enable <strong>GitHub Pages</strong> in repository settings (deploy from root branch).</li>
-              <li>Copy your live URL (e.g. <code class="font-mono bg-white px-1 py-0.5 rounded border border-cedow-silver">https://org.github.io/2ds-pl/</code>).</li>
-              <li>In Canvas, create a Page, switch to HTML View (<code class="font-mono">&lt;/&gt;</code>), and paste:</li>
-            </ol>
-            <div class="bg-cedow-black text-white p-3 rounded-lg font-mono text-xs overflow-x-auto">
-              &lt;iframe src="YOUR_GITHUB_PAGES_URL" width="100%" height="900" style="border:none; border-radius:12px;" allowfullscreen&gt;&lt;/iframe&gt;
-            </div>
-          </div>
-
-          <!-- Method B: Canvas Files Direct Upload -->
-          <div class="bg-cedow-light p-5 rounded-xl border border-cedow-silver space-y-3">
-            <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold uppercase bg-cedow-aqua text-white">Direct LMS Upload</span>
-            <h4 class="font-bold text-cedow-blue text-base">Method 2: Canvas Course Files Direct Link</h4>
-            <ol class="list-decimal list-inside space-y-2 text-cedow-charcoal">
-              <li>Navigate to your Canvas course and select <strong>Files</strong>.</li>
-              <li>Upload this <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-cedow-silver">.html</code> file directly into a module folder.</li>
-              <li>Add the uploaded file directly as an item in your Canvas Course Module.</li>
-              <li>Select &ldquo;Open in new tab&rdquo; or &ldquo;Embed in Canvas Page&rdquo; in item settings.</li>
-            </ol>
-            <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900 text-xs">
-              <strong>Technical Note:</strong> Because all CSS, vanilla JavaScript, and SVGs are self-contained in this single file, there are zero broken relative paths or cross-origin stylesheet errors.
-            </div>
-          </div>
-
-        </div>
-      </section>
 
     </main>
 

@@ -19,7 +19,7 @@ Self-paced professional learning modules for teachers in the Catholic Education 
 | 9. Data | `09-data.html` |
 | 10. Chance | `10-chance.html` |
 
-Every module follows the same seven sections:
+Every module follows the same six sections:
 
 1. The Vertical Trajectory & Big Ideas
 2. Key Conceptual Shifts & Pedagogical Traps
@@ -27,7 +27,6 @@ Every module follows the same seven sections:
 4. Student Diagnostic Clinic & Root Misconceptions
 5. Task Makeover Studio (Working Mathematically)
 6. Module Mastery Checkpoint
-7. Canvas LMS Deployment Guide
 
 ## Module finder (`index.html`)
 
