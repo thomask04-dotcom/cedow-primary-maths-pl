@@ -1,0 +1,1961 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Area 10: Chance (K–6) | CEDoW Mathematics Professional Learning</title>
+  <!-- Google Fonts: Lato & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cedow: {
+              navy: '#0D2C6B',
+              aqua: '#188296',
+              gold: '#FBAF3F',
+              charcoal: '#4C4C4E',
+              silver: '#D1D2D4',
+              black: '#231F20',
+              bg: '#F4F6F9',
+              card: '#FFFFFF'
+            }
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      color: #231F20;
+      background-color: #F4F6F9;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-mono-math {
+      font-family: 'Fira Code', monospace;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F4F6F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #188296;
+    }
+    .cube-token {
+      display: inline-block;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      box-shadow: inset 0 2px 0 rgba(255,255,255,0.4), 0 2px 4px rgba(0,0,0,0.25);
+      border: 1px solid rgba(0,0,0,0.15);
+      transition: transform 0.15s ease;
+    }
+    .cube-token:hover {
+      transform: scale(1.15);
+    }
+    /* Smooth transitions for interactive lab */
+    .tab-active {
+      border-bottom: 3px solid #188296;
+      color: #0D2C6B;
+      font-weight: 700;
+    }
+    .transition-all-fast {
+      transition: all 0.2s ease-in-out;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- TOP BRANDING BAR -->
+  <header class="bg-[#0D2C6B] text-white border-b-4 border-[#FBAF3F] sticky top-0 z-50 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="bg-white p-1.5 rounded shadow">
+          <svg class="w-7 h-7 text-[#0D2C6B]" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1-2.5-2.5Z"/>
+            <path d="M6 6h10"/>
+            <path d="M6 10h10"/>
+            <path d="M6 14h7"/>
+          </svg>
+        </div>
+        <div>
+          <span class="text-xs uppercase tracking-widest font-black text-[#FBAF3F] block">Catholic Education Diocese of Wollongong</span>
+          <h1 class="text-lg sm:text-xl font-black tracking-tight leading-tight">Focus Area 10: Chance (K–6)</h1>
+        </div>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-[#188296] text-white shadow-sm">
+          <i data-lucide="compass" class="w-3.5 h-3.5 mr-1.5"></i> NSW Mathematics K–10 (2022)
+        </span>
+        <button id="mobileMenuBtn" class="lg:hidden text-white p-2 focus:outline-none" aria-label="Toggle Navigation">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN WORKSPACE LAYOUT (SIDEBAR + CONTENT) -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow flex flex-col lg:flex-row gap-8">
+    
+    <!-- RESPONSIVE SIDEBAR NAVIGATION -->
+    <aside id="sidebarNav" class="hidden lg:block lg:w-72 flex-shrink-0">
+      <div class="sticky top-20 bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-4">
+        <div class="pb-3 mb-3 border-b border-[#D1D2D4]">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#4C4C4E]">Self-Paced Module Index</span>
+          <div class="flex items-center justify-between mt-1 text-sm text-[#0D2C6B] font-black">
+            <span>Chance Continuum</span>
+            <span class="text-xs font-mono-math text-[#188296]">K to 6</span>
+          </div>
+        </div>
+
+        <nav class="space-y-1 text-sm font-semibold">
+          <a href="#section-1" class="flex items-center px-3 py-2.5 rounded-lg text-[#0D2C6B] hover:bg-slate-100 transition-colors group">
+            <span class="w-6 h-6 rounded-full bg-blue-100 text-[#0D2C6B] flex items-center justify-center text-xs font-bold mr-2.5 group-hover:bg-[#0D2C6B] group-hover:text-white transition-colors">1</span>
+            Vertical Trajectory &amp; Big Ideas
+          </a>
+          <a href="#section-2" class="flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:text-[#0D2C6B] hover:bg-slate-100 transition-colors group">
+            <span class="w-6 h-6 rounded-full bg-slate-100 text-[#4C4C4E] flex items-center justify-center text-xs font-bold mr-2.5 group-hover:bg-[#0D2C6B] group-hover:text-white transition-colors">2</span>
+            Conceptual Shifts &amp; Traps
+          </a>
+          <a href="#section-3" class="flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:text-[#0D2C6B] hover:bg-slate-100 transition-colors group">
+            <span class="w-6 h-6 rounded-full bg-slate-100 text-[#4C4C4E] flex items-center justify-center text-xs font-bold mr-2.5 group-hover:bg-[#0D2C6B] group-hover:text-white transition-colors">3</span>
+            Interactive Tool Lab (4 Tools)
+          </a>
+          <a href="#section-4" class="flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:text-[#0D2C6B] hover:bg-slate-100 transition-colors group">
+            <span class="w-6 h-6 rounded-full bg-slate-100 text-[#4C4C4E] flex items-center justify-center text-xs font-bold mr-2.5 group-hover:bg-[#0D2C6B] group-hover:text-white transition-colors">4</span>
+            Diagnostic Clinic &amp; Misconceptions
+          </a>
+          <a href="#section-5" class="flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:text-[#0D2C6B] hover:bg-slate-100 transition-colors group">
+            <span class="w-6 h-6 rounded-full bg-slate-100 text-[#4C4C4E] flex items-center justify-center text-xs font-bold mr-2.5 group-hover:bg-[#0D2C6B] group-hover:text-white transition-colors">5</span>
+            Task Makeover Studio (WM Moves)
+          </a>
+          <a href="#section-6" class="flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:text-[#0D2C6B] hover:bg-slate-100 transition-colors group">
+            <span class="w-6 h-6 rounded-full bg-slate-100 text-[#4C4C4E] flex items-center justify-center text-xs font-bold mr-2.5 group-hover:bg-[#0D2C6B] group-hover:text-white transition-colors">6</span>
+            Mastery Checkpoint &amp; Takeaways
+          </a>
+          <a href="#section-7" class="flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:text-[#0D2C6B] hover:bg-slate-100 transition-colors group">
+            <span class="w-6 h-6 rounded-full bg-slate-100 text-[#4C4C4E] flex items-center justify-center text-xs font-bold mr-2.5 group-hover:bg-[#0D2C6B] group-hover:text-white transition-colors">7</span>
+            Canvas LMS Deployment Guide
+          </a>
+        </nav>
+
+        <div class="mt-6 pt-4 border-t border-[#D1D2D4] bg-[#F4F6F9] rounded-lg p-3 text-xs text-[#4C4C4E]">
+          <div class="flex items-center space-x-2 font-bold text-[#0D2C6B] mb-1">
+            <i data-lucide="info" class="w-4 h-4 text-[#188296]"></i>
+            <span>Professional Learning</span>
+          </div>
+          <p>Self-paced teacher inquiry module designed for stage team planning and individual pedagogical development.</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- CONTENT SECTIONS -->
+    <main class="flex-1 space-y-10 min-w-0">
+
+      <!-- HERO BANNER -->
+      <section class="bg-white rounded-2xl shadow-sm border border-[#D1D2D4] overflow-hidden">
+        <div class="bg-gradient-to-r from-[#0D2C6B] to-[#188296] text-white p-6 sm:p-8">
+          <div class="flex items-center space-x-2 text-xs font-black uppercase tracking-widest text-[#FBAF3F] mb-2">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>CEDoW Mathematics Curriculum Architecture</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black tracking-tight mb-2">Teaching Chance &amp; Probability: Kindergarten to Year 6</h2>
+          <p class="text-blue-100 text-sm sm:text-base max-w-3xl leading-relaxed">
+            From discussing what could happen in Early Stage 1 Data, through describing likelihood and listing combinations in Stage 1 and Stage 2, to assigning formal fraction probabilities and distinguishing observed frequency from theoretical probability in Stage 3.
+          </p>
+        </div>
+        <div class="bg-slate-50 px-6 py-3 border-t border-[#D1D2D4] flex flex-wrap items-center justify-between text-xs text-[#4C4C4E] gap-2">
+          <div class="flex items-center space-x-4">
+            <span class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-[#188296] mr-1.5"></i> NESA Syllabus (2022) Outcomes</span>
+            <span class="flex items-center"><i data-lucide="check-circle-2" class="w-4 h-4 text-[#188296] mr-1.5"></i> Working Mathematically MAO-WM-01</span>
+          </div>
+          <span class="font-mono-math text-[#0D2C6B] font-bold">Australian English Orthography Verified</span>
+        </div>
+      </section>
+
+      <!-- SECTION 1: VERTICAL TRAJECTORY & BIG IDEAS -->
+      <section id="section-1" class="bg-white rounded-2xl shadow-sm border border-[#D1D2D4] p-6 sm:p-8">
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="w-9 h-9 rounded-lg bg-[#0D2C6B] text-white flex items-center justify-center font-black text-lg">1</div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">The Vertical Trajectory &amp; Big Ideas Continuum</h3>
+            <p class="text-xs text-[#4C4C4E]">Trace outcome progression, Working Mathematically connections, and cross-stage conceptual growth</p>
+          </div>
+        </div>
+
+        <!-- Stage Filter Switcher -->
+        <div class="mb-6">
+          <div class="flex flex-wrap gap-2 border-b border-[#D1D2D4] pb-3">
+            <button onclick="switchStage('es1')" id="tab-es1" class="stage-tab px-4 py-2 rounded-lg font-bold text-sm bg-[#0D2C6B] text-white shadow-sm transition-all">Early Stage 1</button>
+            <button onclick="switchStage('s1')" id="tab-s1" class="stage-tab px-4 py-2 rounded-lg font-bold text-sm bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">Stage 1 (Y1–2)</button>
+            <button onclick="switchStage('s2')" id="tab-s2" class="stage-tab px-4 py-2 rounded-lg font-bold text-sm bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">Stage 2 (Y3–4)</button>
+            <button onclick="switchStage('s3')" id="tab-s3" class="stage-tab px-4 py-2 rounded-lg font-bold text-sm bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">Stage 3 (Y5–6)</button>
+          </div>
+        </div>
+
+        <!-- Stage Dynamic Panel -->
+        <div id="stagePanel" class="bg-slate-50 border border-[#D1D2D4] rounded-xl p-5 mb-8">
+          <!-- Dynamically populated via JS -->
+        </div>
+
+        <!-- The Cross-Stage Big Ideas Matrix -->
+        <div class="mt-8 pt-6 border-t border-[#D1D2D4]">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h4 class="text-lg font-black text-[#0D2C6B]">Cross-Stage "Big Ideas" Matrix</h4>
+              <p class="text-xs text-[#4C4C4E]">Select an overarching mathematical principle to observe how it matures from ES1 to Stage 3</p>
+            </div>
+            <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 bg-amber-100 text-amber-800 rounded">6 Core Ideas</span>
+          </div>
+
+          <!-- Big Idea Pills -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-4" id="bigIdeaButtons">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- Big Idea Display Box -->
+          <div id="bigIdeaDisplay" class="bg-white border-2 border-[#188296] rounded-xl p-5 shadow-sm">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: KEY CONCEPTUAL SHIFTS & PEDAGOGICAL TRAPS -->
+      <section id="section-2" class="bg-white rounded-2xl shadow-sm border border-[#D1D2D4] p-6 sm:p-8">
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="w-9 h-9 rounded-lg bg-[#0D2C6B] text-white flex items-center justify-center font-black text-lg">2</div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Key Conceptual Shifts &amp; Pedagogical Traps</h3>
+            <p class="text-xs text-[#4C4C4E]">Research-informed deep dive grounded in NESA Teaching Advice and probability cognition</p>
+          </div>
+        </div>
+
+        <!-- Conceptual Shifts Accordion / Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
+          <div class="bg-blue-50/50 border border-blue-200 rounded-xl p-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#188296] block mb-1">Shift 1: ES1 &rarr; Stage 1</span>
+            <h4 class="font-black text-[#0D2C6B] text-sm mb-2">From Possibility to Informal Likelihood</h4>
+            <p class="text-xs text-[#4C4C4E] leading-relaxed">
+              Moving from asking <em>"Could it be...?"</em> during data collections to bounding everyday events between two clear extremes: <strong>certain</strong> (will happen) and <strong>impossible</strong> (won't happen), then using <em>"might happen"</em>, <em>likely</em>, and <em>unlikely</em> for the space between.
+            </p>
+          </div>
+
+          <div class="bg-teal-50/50 border border-teal-200 rounded-xl p-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#188296] block mb-1">Shift 2: Stage 1 &rarr; Stage 2</span>
+            <h4 class="font-black text-[#0D2C6B] text-sm mb-2">From Everyday Scenarios to Chance Experiments</h4>
+            <p class="text-xs text-[#4C4C4E] leading-relaxed">
+              Transitioning from subjective talk to structured experiments with <strong>equally likely random generators</strong> (coins, dice, equal spinners). Students systematically list outcomes and combinations, predict frequencies, and examine whether previous events affect future ones.
+            </p>
+          </div>
+
+          <div class="bg-amber-50/50 border border-amber-200 rounded-xl p-4">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#FBAF3F] block mb-1">Shift 3: Stage 2 &rarr; Stage 3</span>
+            <h4 class="font-black text-[#0D2C6B] text-sm mb-2">From Describing Likelihood to Quantifying It</h4>
+            <p class="text-xs text-[#4C4C4E] leading-relaxed">
+              Moving from qualitative language to <strong>quantified probabilities as fractions from 0 to 1</strong> that sum to 1. Crucially distinguishing <strong>observed frequency</strong> (a trial count) from <strong>expected probability</strong>, and observing how large numbers of trials stabilize results.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 Major Pedagogical Traps (Callouts) -->
+        <h4 class="text-base font-black text-[#0D2C6B] mb-3 flex items-center">
+          <i data-lucide="alert-triangle" class="w-5 h-5 text-amber-500 mr-2"></i>
+          Critical Pedagogical Traps (NESA Teaching Advice &amp; Literature)
+        </h4>
+
+        <div class="space-y-3">
+          <div class="border-l-4 border-amber-500 bg-amber-50/40 p-4 rounded-r-xl">
+            <div class="flex items-baseline justify-between mb-1">
+              <span class="font-bold text-amber-900 text-sm">Trap 1: The "Law of Averages" Fallacy (Negative Recency)</span>
+              <span class="text-xs px-2 py-0.5 bg-amber-200 text-amber-800 rounded font-mono-math">Stages 1 to 3</span>
+            </div>
+            <p class="text-xs text-amber-950 leading-relaxed">
+              Students mistakenly believe that past chance outcomes must be balanced by future outcomes—such as expecting tails after 6 consecutive heads, or expecting colours to "take turns". 
+              <strong>Pedagogical Move:</strong> Explicitly model independent events. The coin does not possess memory; each trial begins afresh with identical 50–50 conditions. Record long series of rolls to examine run behaviour.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-red-500 bg-red-50/40 p-4 rounded-r-xl">
+            <div class="flex items-baseline justify-between mb-1">
+              <span class="font-bold text-red-900 text-sm">Trap 2: Conflating "Unlikely" with "Impossible"</span>
+              <span class="text-xs px-2 py-0.5 bg-red-200 text-red-800 rounded font-mono-math">Stages 1 &amp; 2</span>
+            </div>
+            <p class="text-xs text-red-950 leading-relaxed">
+              NESA notes that students frequently interpret events with very low probability (such as drawing 1 red cube from 9 blue cubes) as being "impossible". 
+              <strong>Pedagogical Move:</strong> Define the sample space first! For an outcome to be truly impossible, there must be <em>none of it present</em> in the collection. Repeated empirical trials show rare events actually happening.
+            </p>
+          </div>
+
+          <div class="border-l-4 border-blue-500 bg-blue-50/40 p-4 rounded-r-xl">
+            <div class="flex items-baseline justify-between mb-1">
+              <span class="font-bold text-blue-900 text-sm">Trap 3: Additive Thinking vs Proportional Reasoning</span>
+              <span class="text-xs px-2 py-0.5 bg-blue-200 text-blue-800 rounded font-mono-math">Stages 2 &amp; 3</span>
+            </div>
+            <p class="text-xs text-blue-950 leading-relaxed">
+              When comparing two bags, a student claims Bag A (5 red, 20 blue) gives a better chance of red than Bag B (2 red, 1 blue) simply because "5 is more than 2". They attend to discrete quantities rather than the part-to-whole ratio.
+              <strong>Pedagogical Move:</strong> Connect probability directly to partitioned fractions and ratio tables. In Bag A, red is <sup>5</sup>&frasl;<sub>25</sub> (<sup>1</sup>&frasl;<sub>5</sub> or 20%), while in Bag B, red is <sup>2</sup>&frasl;<sub>3</sub> (approx 67%).
+            </p>
+          </div>
+
+          <div class="border-l-4 border-purple-500 bg-purple-50/40 p-4 rounded-r-xl">
+            <div class="flex items-baseline justify-between mb-1">
+              <span class="font-bold text-purple-900 text-sm">Trap 4: Pinning Imprecise Words to Exact Number Line Points</span>
+              <span class="text-xs px-2 py-0.5 bg-purple-200 text-purple-800 rounded font-mono-math">NESA Alert K–6</span>
+            </div>
+            <p class="text-xs text-purple-950 leading-relaxed">
+              NESA Teaching Advice explicitly warns: <em>"Avoid assigning precise positions on a number line to imprecise words such as 'possible'."</em> In everyday speech, "likely" or "certain" are used loosely. A numeric value (e.g. 0.75 or 75%) is exact; everyday chance terms are qualitative intervals.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: INTERACTIVE TOOL LAB (4 RUNNABLE MANIPULATIVES) -->
+      <section id="section-3" class="bg-white rounded-2xl shadow-sm border border-[#D1D2D4] p-6 sm:p-8">
+        <div class="flex items-center justify-between mb-6">
+          <div class="flex items-center space-x-3">
+            <div class="w-9 h-9 rounded-lg bg-[#0D2C6B] text-white flex items-center justify-center font-black text-lg">3</div>
+            <div>
+              <h3 class="text-xl font-black text-[#0D2C6B]">Interactive Tool Lab</h3>
+              <p class="text-xs text-[#4C4C4E]">Hands-on JavaScript simulators tailored to every developmental stage</p>
+            </div>
+          </div>
+          <span class="hidden sm:inline-block px-3 py-1 bg-teal-100 text-[#188296] text-xs font-bold rounded-full">4 Runnable Simulators</span>
+        </div>
+
+        <!-- Tool Lab Switcher Tabs -->
+        <div class="flex flex-wrap gap-2 border-b border-[#D1D2D4] pb-3 mb-6">
+          <button onclick="switchTool('couldit')" id="toolbtn-couldit" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#0D2C6B] text-white transition-all shadow-sm">Tool 1: Will It, Might It, Won't It? (ES1/S1)</button>
+          <button onclick="switchTool('bag')" id="toolbtn-bag" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">Tool 2: Unlikely Isn't Impossible (S1/S2)</button>
+          <button onclick="switchTool('spinner')" id="toolbtn-spinner" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">Tool 3: Quarters Spinner &amp; Predictions (S2)</button>
+          <button onclick="switchTool('trials')" id="toolbtn-trials" class="px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">Tool 4: Large Number Trials Simulator (S3)</button>
+        </div>
+
+        <!-- TOOL 1 CONTAINER -->
+        <div id="tool-couldit" class="tool-content">
+          <div class="bg-slate-50 border border-[#D1D2D4] rounded-xl p-5">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296]">Diagnostic Manipulative • Early Stage 1 &amp; Stage 1</span>
+                <h4 class="text-base font-black text-[#0D2C6B]">"Could it be...?" &amp; "Why couldn't it be...?" Classifier</h4>
+              </div>
+              <span class="text-xs bg-white border border-[#D1D2D4] px-2 py-1 rounded font-mono-math" id="cqScore">0 of 0 correct</span>
+            </div>
+            <p class="text-xs text-[#4C4C4E] mb-4">
+              Look inside the bag. If one cube is taken out without looking, decide whether it <strong>will be</strong>, <strong>might be</strong>, or <strong>won't be</strong> the colour asked. This embeds NESA's foundational question starters.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+              <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] text-center shadow-inner">
+                <div class="text-xs font-bold uppercase text-[#4C4C4E] mb-2 tracking-wider">Current Bag Contents</div>
+                <div id="cqBag" class="flex flex-wrap items-center justify-center gap-2 min-h-[50px] p-2 bg-slate-50 rounded-lg border border-dashed border-[#D1D2D4]">
+                  <!-- Cubes rendered here -->
+                </div>
+              </div>
+
+              <div class="space-y-4">
+                <div class="bg-blue-50 border border-blue-200 p-3.5 rounded-xl">
+                  <p class="text-sm font-bold text-[#0D2C6B]" id="cqQ">Loading question...</p>
+                </div>
+
+                <div class="flex flex-wrap gap-2">
+                  <button class="cq-btn flex-1 py-2 px-3 bg-[#0D2C6B] hover:bg-blue-900 text-white rounded-lg text-xs font-bold shadow-sm transition-all" data-c="will">It WILL be</button>
+                  <button class="cq-btn flex-1 py-2 px-3 bg-[#188296] hover:bg-teal-700 text-white rounded-lg text-xs font-bold shadow-sm transition-all" data-c="might">It MIGHT be</button>
+                  <button class="cq-btn flex-1 py-2 px-3 bg-[#4C4C4E] hover:bg-slate-700 text-white rounded-lg text-xs font-bold shadow-sm transition-all" data-c="wont">It WON'T be</button>
+                </div>
+
+                <div id="cqFb" class="hidden text-xs p-3 rounded-lg border leading-relaxed"></div>
+
+                <div class="flex items-center space-x-2 pt-2">
+                  <button id="cqTake" class="py-1.5 px-3 bg-white border border-[#D1D2D4] hover:border-[#188296] text-[#0D2C6B] rounded-lg text-xs font-bold shadow-sm disabled:opacity-40" disabled>
+                    <i data-lucide="hand" class="w-3.5 h-3.5 inline mr-1"></i> Take One Out
+                  </button>
+                  <button id="cqNew" class="py-1.5 px-3 bg-amber-500 hover:bg-amber-600 text-white rounded-lg text-xs font-bold shadow-sm disabled:opacity-40" disabled>
+                    Next Bag &rarr;
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL 2 CONTAINER -->
+        <div id="tool-bag" class="tool-content hidden">
+          <div class="bg-slate-50 border border-[#D1D2D4] rounded-xl p-5">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296]">Dynamic Empirical Model • Stage 1 &amp; Stage 2</span>
+                <h4 class="text-base font-black text-[#0D2C6B]">"Unlikely Isn't Impossible" Sampling Laboratory</h4>
+              </div>
+              <span class="text-xs px-2.5 py-1 bg-amber-100 text-amber-900 rounded font-bold">Sampling With Replacement</span>
+            </div>
+            <p class="text-xs text-[#4C4C4E] mb-4">
+              Configure the exact ratio of red and blue cubes. Observe the mathematical likelihood description, then draw samples with replacement to prove that low-probability outcomes are <em>rare</em>, but certainly <em>not impossible</em>.
+            </p>
+
+            <!-- Sliders -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 bg-white p-4 rounded-xl border border-[#D1D2D4] mb-4">
+              <div>
+                <div class="flex justify-between text-xs font-bold text-[#0D2C6B] mb-1">
+                  <span>Red Cubes:</span>
+                  <span id="bgRv" class="font-mono-math text-red-600 font-bold">1</span>
+                </div>
+                <input type="range" id="bgR" min="0" max="10" value="1" class="w-full accent-[#0D2C6B]">
+              </div>
+              <div>
+                <div class="flex justify-between text-xs font-bold text-[#0D2C6B] mb-1">
+                  <span>Blue Cubes:</span>
+                  <span id="bgBv" class="font-mono-math text-blue-600 font-bold">9</span>
+                </div>
+                <input type="range" id="bgB" min="0" max="10" value="9" class="w-full accent-[#188296]">
+              </div>
+            </div>
+
+            <!-- Bag Visual & Analysis -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4 items-start">
+              <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] shadow-inner text-center">
+                <span class="text-xs font-bold uppercase text-[#4C4C4E] block mb-2">Cubes Inside Bag</span>
+                <div id="bgBag" class="flex flex-wrap items-center justify-center gap-1.5 min-h-[44px]"></div>
+              </div>
+              
+              <div class="md:col-span-2 bg-white p-4 rounded-xl border border-[#D1D2D4]">
+                <span class="text-xs font-bold uppercase text-[#188296] block mb-1">Syllabus Likelihood Analysis</span>
+                <div id="bgRead" class="text-sm font-bold text-[#0D2C6B] leading-tight mb-1"></div>
+                <p id="bgSubRead" class="text-xs text-[#4C4C4E]"></p>
+              </div>
+            </div>
+
+            <!-- Controls & Results -->
+            <div class="flex flex-wrap items-center gap-2 mb-4">
+              <button id="bg1" class="px-3.5 py-2 bg-[#0D2C6B] hover:bg-blue-900 text-white rounded-lg text-xs font-bold shadow-sm transition-all">Take 1 Cube</button>
+              <button id="bg20" class="px-3.5 py-2 bg-[#188296] hover:bg-teal-700 text-white rounded-lg text-xs font-bold shadow-sm transition-all">Take 20 Cubes (Fast)</button>
+              <button id="bgClear" class="px-3.5 py-2 bg-white border border-[#D1D2D4] hover:bg-slate-100 text-[#4C4C4E] rounded-lg text-xs font-bold transition-all">Clear Results</button>
+            </div>
+
+            <div id="bgResBox" class="bg-white p-4 rounded-xl border border-[#D1D2D4] min-h-[60px]">
+              <div id="bgRes" class="text-xs text-[#4C4C4E]">No draws yet. Click a button above to sample with replacement.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL 3 CONTAINER -->
+        <div id="tool-spinner" class="tool-content hidden">
+          <div class="bg-slate-50 border border-[#D1D2D4] rounded-xl p-5">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296]">Expectation &amp; Variation Model • Stage 2</span>
+                <h4 class="text-base font-black text-[#0D2C6B]">Predicted vs Actual Spins: The Quarters Spinner</h4>
+              </div>
+              <span class="text-xs px-2.5 py-1 bg-blue-100 text-[#0D2C6B] rounded font-bold font-mono-math">Equally Likely (25% each)</span>
+            </div>
+            <p class="text-xs text-[#4C4C4E] mb-4">
+              The syllabus exemplar: a spinner with red, blue, green, and yellow quarters. Enter your prediction for how many times it will land on <strong>red</strong>, conduct the spins, compare results, and repeat to observe authentic variation!
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-center">
+              <!-- SVG Spinner Canvas -->
+              <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] flex flex-col items-center justify-center shadow-inner">
+                <div id="spPic" class="w-56 h-56 flex items-center justify-center"></div>
+                <span class="text-xs text-[#4C4C4E] mt-2 font-mono-math">Fair 4-Quarter Spinner</span>
+              </div>
+
+              <!-- Controls & Prediction -->
+              <div class="space-y-4">
+                <div class="grid grid-cols-2 gap-3 bg-white p-3.5 rounded-xl border border-[#D1D2D4]">
+                  <div>
+                    <label for="spN" class="block text-xs font-bold text-[#0D2C6B] mb-1">Number of Spins:</label>
+                    <select id="spN" class="w-full text-xs font-bold border border-[#D1D2D4] rounded-lg p-2 focus:ring-2 focus:ring-[#188296] bg-white">
+                      <option value="12">12 spins (Expected: 3)</option>
+                      <option value="20" selected>20 spins (Expected: 5)</option>
+                      <option value="40">40 spins (Expected: 10)</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="spP" class="block text-xs font-bold text-[#0D2C6B] mb-1">My Prediction (Red):</label>
+                    <input type="number" id="spP" min="0" max="40" placeholder="e.g. 5" class="w-full text-xs font-mono-math border border-[#D1D2D4] rounded-lg p-2 focus:ring-2 focus:ring-[#188296]">
+                  </div>
+                </div>
+
+                <div class="flex items-center space-x-2">
+                  <button id="spGo" class="flex-1 py-2.5 px-4 bg-[#0D2C6B] hover:bg-blue-900 text-white rounded-lg text-xs font-bold shadow transition-all">
+                    <i data-lucide="play" class="w-3.5 h-3.5 inline mr-1"></i> Spin Spinner
+                  </button>
+                  <button id="spReset" class="py-2.5 px-3 bg-white border border-[#D1D2D4] hover:bg-slate-100 text-[#4C4C4E] rounded-lg text-xs font-bold transition-all">
+                    Reset History
+                  </button>
+                </div>
+
+                <div id="spRead" class="bg-white p-3.5 rounded-xl border border-[#D1D2D4] text-xs text-[#4C4C4E] min-h-[50px]">
+                  <em>Make a prediction and click "Spin Spinner" to begin.</em>
+                </div>
+              </div>
+            </div>
+
+            <!-- Run History Table / Tags -->
+            <div id="spHistBox" class="mt-4 pt-4 border-t border-[#D1D2D4]">
+              <span class="text-xs font-bold uppercase tracking-wider text-[#4C4C4E] block mb-2">Experimental Trial History</span>
+              <div id="spHist" class="text-xs text-[#4C4C4E]">No runs recorded yet.</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL 4 CONTAINER -->
+        <div id="tool-trials" class="tool-content hidden">
+          <div class="bg-slate-50 border border-[#D1D2D4] rounded-xl p-5">
+            <div class="flex items-center justify-between mb-3">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296]">Quantifying Probability &amp; Law of Large Numbers • Stage 3</span>
+                <h4 class="text-base font-black text-[#0D2C6B]">Small vs Large Numbers of Trials Simulator</h4>
+              </div>
+              <span class="text-xs px-2.5 py-1 bg-teal-100 text-[#188296] rounded font-bold font-mono-math">0 to 1 Scale</span>
+            </div>
+            <p class="text-xs text-[#4C4C4E] mb-4">
+              Select a random generator and add trials. The solid bars show <strong>observed probabilities</strong> (<span class="font-mono-math">frequency / trials</span>); the dashed markers show <strong>theoretical expected probabilities</strong>. Notice how small samples oscillate dramatically, while large samples settle tightly!
+            </p>
+
+            <!-- Generator Selector -->
+            <div class="bg-white p-3.5 rounded-xl border border-[#D1D2D4] mb-4 flex flex-wrap items-center justify-between gap-3">
+              <div class="flex items-center space-x-2">
+                <label for="trG" class="text-xs font-bold text-[#0D2C6B]">Random Generator:</label>
+                <select id="trG" class="text-xs font-semibold border border-[#D1D2D4] rounded-lg p-1.5 focus:ring-2 focus:ring-[#188296] bg-white">
+                  <option value="syl">Syllabus Spinner (1/2 green; red, grey, blue sixths)</option>
+                  <option value="q">Equal Quarters Spinner (1/4 each)</option>
+                  <option value="bag">Proportional Bag (2 red : 1 blue)</option>
+                  <option value="die">Standard 6-Sided Die (1/6 each)</option>
+                </select>
+              </div>
+              <div class="flex items-center space-x-1.5">
+                <button data-n="10" class="tr-btn px-2.5 py-1.5 bg-[#0D2C6B] hover:bg-blue-900 text-white rounded text-xs font-bold shadow-sm transition-all">+10 Trials</button>
+                <button data-n="100" class="tr-btn px-2.5 py-1.5 bg-[#188296] hover:bg-teal-700 text-white rounded text-xs font-bold shadow-sm transition-all">+100 Trials</button>
+                <button data-n="1000" class="tr-btn px-2.5 py-1.5 bg-amber-500 hover:bg-amber-600 text-white rounded text-xs font-bold shadow-sm transition-all">+1000 Trials</button>
+                <button id="trReset" class="px-2.5 py-1.5 bg-white border border-[#D1D2D4] hover:bg-slate-100 text-[#4C4C4E] rounded text-xs font-bold transition-all">Reset</button>
+              </div>
+            </div>
+
+            <!-- Graphic Display (Generator visual + Live SVG Chart) -->
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-4 mb-4 items-center bg-white p-4 rounded-xl border border-[#D1D2D4]">
+              <div class="lg:col-span-1 flex flex-col items-center justify-center p-2 border-r lg:border-[#D1D2D4]">
+                <div id="trPic" class="w-36 h-36 flex items-center justify-center"></div>
+                <span class="text-[11px] text-[#4C4C4E] mt-1 text-center font-bold">Generator Structure</span>
+              </div>
+              <div class="lg:col-span-3">
+                <div class="flex justify-between items-center mb-1 text-[11px] text-[#4C4C4E]">
+                  <span>Observed Relative Frequency (Solid) vs Expected Probability (Dashed Line)</span>
+                  <span class="font-mono-math text-[#188296] font-bold">Scale: 0.0 to 1.0</span>
+                </div>
+                <div id="trChart" class="w-full overflow-x-auto flex justify-center"></div>
+              </div>
+            </div>
+
+            <!-- Analysis Readout -->
+            <div id="trRead" class="bg-white p-3.5 rounded-xl border border-[#D1D2D4] text-xs text-[#4C4C4E] leading-relaxed">
+              <!-- Rendered via JS -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: STUDENT DIAGNOSTIC CLINIC & ROOT MISCONCEPTIONS -->
+      <section id="section-4" class="bg-white rounded-2xl shadow-sm border border-[#D1D2D4] p-6 sm:p-8">
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="w-9 h-9 rounded-lg bg-[#0D2C6B] text-white flex items-center justify-center font-black text-lg">4</div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Student Diagnostic Clinic &amp; Root Misconceptions</h3>
+            <p class="text-xs text-[#4C4C4E]">Authentic student dialogue protocols and the interactive 4-Root Diagnostic Sorter</p>
+          </div>
+        </div>
+
+        <!-- Research Dialogue Vignette -->
+        <div class="bg-slate-50 border border-[#D1D2D4] rounded-xl p-5 mb-8">
+          <div class="flex items-center space-x-2 text-xs font-bold uppercase tracking-wider text-[#188296] mb-2">
+            <i data-lucide="message-square" class="w-4 h-4"></i>
+            <span>Authentic Diagnostic Protocol (Stage 1 / Stage 2 Clinical Interview)</span>
+          </div>
+          <h4 class="font-black text-[#0D2C6B] text-sm mb-3">Protocol Vignette: The Bag with 9 Blue and 1 Red Cube</h4>
+
+          <div class="space-y-2 text-xs font-mono-math bg-white p-4 rounded-lg border border-[#D1D2D4] text-[#231F20] leading-relaxed">
+            <p><strong class="text-[#0D2C6B]">Teacher:</strong> "Here is a bag containing 9 blue cubes and 1 red cube. If you reach in and take one out without looking, what could happen?"</p>
+            <p><strong class="text-[#188296]">Student (Mia, Year 2):</strong> "It will be blue. Taking a red one is impossible."</p>
+            <p><strong class="text-[#0D2C6B]">Teacher:</strong> "Why do you say it is impossible?"</p>
+            <p><strong class="text-[#188296]">Student:</strong> "Because there's heaps of blue and only one red. You'll only ever get blue."</p>
+            <p><strong class="text-[#0D2C6B]">Teacher:</strong> "Let's test it. Take one out, look at it, put it back, and shake the bag. Do that 10 times."</p>
+            <p><em>[On draw 7, Mia pulls out the red cube. Her eyes widen in disbelief.]</em></p>
+            <p><strong class="text-[#188296]">Student:</strong> "Whoa! That wasn't supposed to happen! The bag made a mistake!"</p>
+          </div>
+
+          <div class="mt-3 p-3 bg-blue-50/60 rounded-lg text-xs text-[#0D2C6B] leading-relaxed">
+            <strong>Diagnostic Debrief:</strong> Mia displays <em>Root 1 (Not considering everything that could happen)</em>, conflating low probability with impossibility. Because an outcome is rare, young learners often banish it entirely from the possible sample space. Determining what is possible is the indispensable foundation of all probabilistic reasoning.
+          </div>
+        </div>
+
+        <!-- The Interactive 4-Root Sorter -->
+        <div>
+          <div class="flex items-center justify-between mb-3">
+            <div>
+              <h4 class="text-base font-black text-[#0D2C6B]">Interactive 4-Root Misconception Sorter</h4>
+              <p class="text-xs text-[#4C4C4E]">Read the student scenario, diagnose which foundational root caused the error, and receive immediate coaching feedback.</p>
+            </div>
+            <span class="text-xs font-mono-math px-2 py-1 bg-white border border-[#D1D2D4] rounded" id="sorterProgress">Scenario 1 of 12</span>
+          </div>
+
+          <div class="bg-white border-2 border-[#0D2C6B] rounded-xl p-5 shadow-sm mb-4">
+            <div class="flex items-center justify-between mb-2">
+              <span id="scStageBadge" class="text-[11px] font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 text-[#0D2C6B]">Stage 1</span>
+              <span class="text-xs text-[#4C4C4E] font-medium">Diagnose Conceptual Root</span>
+            </div>
+            <div class="text-sm font-bold text-[#231F20] mb-4 bg-slate-50 p-4 rounded-lg border border-[#D1D2D4]" id="scText">
+              <!-- Scenario text populated here -->
+            </div>
+
+            <!-- Root Selection Buttons -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 mb-4">
+              <button onclick="checkRoot(0)" class="root-opt text-left p-3 rounded-lg border border-[#D1D2D4] hover:border-[#188296] hover:bg-slate-50 text-xs font-bold text-[#0D2C6B] transition-all">
+                <span class="block text-[#188296] font-mono-math text-[10px] uppercase">Root 1</span>
+                Not considering everything that could happen (Sample Space)
+              </button>
+              <button onclick="checkRoot(1)" class="root-opt text-left p-3 rounded-lg border border-[#D1D2D4] hover:border-[#188296] hover:bg-slate-50 text-xs font-bold text-[#0D2C6B] transition-all">
+                <span class="block text-[#188296] font-mono-math text-[10px] uppercase">Root 2</span>
+                Personal beliefs &amp; preferences drive predictions (Subjective)
+              </button>
+              <button onclick="checkRoot(2)" class="root-opt text-left p-3 rounded-lg border border-[#D1D2D4] hover:border-[#188296] hover:bg-slate-50 text-xs font-bold text-[#0D2C6B] transition-all">
+                <span class="block text-[#188296] font-mono-math text-[10px] uppercase">Root 3</span>
+                Expecting the past to balance the future ("Law of Averages")
+              </button>
+              <button onclick="checkRoot(3)" class="root-opt text-left p-3 rounded-lg border border-[#D1D2D4] hover:border-[#188296] hover:bg-slate-50 text-xs font-bold text-[#0D2C6B] transition-all">
+                <span class="block text-[#188296] font-mono-math text-[10px] uppercase">Root 4</span>
+                Comparing amounts, not proportions (Additive Thinking)
+              </button>
+            </div>
+
+            <!-- Coaching Feedback Box -->
+            <div id="scFeedback" class="hidden text-xs p-4 rounded-xl border leading-relaxed mb-4"></div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex items-center justify-between pt-2 border-t border-[#D1D2D4]">
+              <button onclick="prevScenario()" class="px-3 py-1.5 bg-slate-100 hover:bg-slate-200 text-[#4C4C4E] rounded-lg text-xs font-bold transition-all">&larr; Previous</button>
+              <button onclick="nextScenario()" class="px-4 py-1.5 bg-[#0D2C6B] hover:bg-blue-900 text-white rounded-lg text-xs font-bold transition-all">Next Student &rarr;</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: TASK MAKEOVER STUDIO (WORKING MATHEMATICALLY - MAO-WM-01) -->
+      <section id="section-5" class="bg-white rounded-2xl shadow-sm border border-[#D1D2D4] p-6 sm:p-8">
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="w-9 h-9 rounded-lg bg-[#0D2C6B] text-white flex items-center justify-center font-black text-lg">5</div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Task Makeover Studio: Elevating Working Mathematically</h3>
+            <p class="text-xs text-[#4C4C4E]">Transforming closed worksheet drills into high-reasoning chance inquiries (MAO-WM-01)</p>
+          </div>
+        </div>
+
+        <!-- Stage Selection for Makeovers -->
+        <div class="flex flex-wrap gap-2 mb-6">
+          <button onclick="switchMakeover('es1')" id="mobtn-es1" class="mo-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#0D2C6B] text-white transition-all shadow-sm">Early Stage 1</button>
+          <button onclick="switchMakeover('s1')" id="mobtn-s1" class="mo-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">Stage 1</button>
+          <button onclick="switchMakeover('s2')" id="mobtn-s2" class="mo-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">Stage 2</button>
+          <button onclick="switchMakeover('s3')" id="mobtn-s3" class="mo-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">Stage 3</button>
+        </div>
+
+        <!-- Before & After Comparison Card -->
+        <div id="makeoverCard" class="bg-slate-50 border border-[#D1D2D4] rounded-2xl p-5 sm:p-6 mb-8">
+          <!-- Populated by JS -->
+        </div>
+
+        <!-- The 5 High-Yield Pedagogical Moves Studio -->
+        <div class="pt-6 border-t border-[#D1D2D4]">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h4 class="text-base font-black text-[#0D2C6B]">The 5 High-Yield Pedagogical Moves Studio</h4>
+              <p class="text-xs text-[#4C4C4E]">Take any routine closed prompt and apply one of 5 transformative reasoning moves</p>
+            </div>
+            <span class="text-xs font-bold uppercase tracking-wider px-2.5 py-1 bg-teal-100 text-[#188296] rounded">Routine Disruptors</span>
+          </div>
+
+          <!-- Move selector -->
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-4" id="movesButtons">
+            <button onclick="switchMove(0)" class="move-pill p-2 text-center rounded-lg text-xs font-bold bg-[#0D2C6B] text-white transition-all shadow-sm">1. Who is Correct?</button>
+            <button onclick="switchMove(1)" class="move-pill p-2 text-center rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">2. Same &amp; Different</button>
+            <button onclick="switchMove(2)" class="move-pill p-2 text-center rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">3. Always, Sometimes, Never</button>
+            <button onclick="switchMove(3)" class="move-pill p-2 text-center rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">4. Open It Up</button>
+            <button onclick="switchMove(4)" class="move-pill p-2 text-center rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all">5. Convince Me</button>
+          </div>
+
+          <div id="moveDisplay" class="bg-white border border-[#D1D2D4] rounded-xl p-5 shadow-sm">
+            <!-- Dynamically populated via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: MODULE MASTERY CHECKPOINT & TAKEAWAYS -->
+      <section id="section-6" class="bg-white rounded-2xl shadow-sm border border-[#D1D2D4] p-6 sm:p-8">
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="w-9 h-9 rounded-lg bg-[#0D2C6B] text-white flex items-center justify-center font-black text-lg">6</div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Module Mastery Checkpoint &amp; Key Pedagogical Takeaways</h3>
+            <p class="text-xs text-[#4C4C4E]">Demonstrate 80% mastery across NESA Teaching Advice scenarios to unlock the executive K–6 summary</p>
+          </div>
+        </div>
+
+        <div id="quizContainer" class="space-y-6">
+          <!-- 5 Questions rendered by JS -->
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-[#D1D2D4] flex items-center justify-between">
+          <div id="quizResultSummary" class="text-xs text-[#4C4C4E] font-medium">Select answers for all 5 scenarios above.</div>
+          <button onclick="gradeQuiz()" class="px-6 py-2.5 bg-[#0D2C6B] hover:bg-blue-900 text-white rounded-xl text-sm font-bold shadow-md transition-all">
+            Submit Checkpoint
+          </button>
+        </div>
+
+        <!-- UNLOCKED SECTION: KEY PEDAGOGICAL TAKEAWAYS (K-6 CONTINUUM) -->
+        <div id="takeawaysPanel" class="hidden mt-10 pt-8 border-t-2 border-[#188296]">
+          <div class="bg-gradient-to-r from-teal-50 to-blue-50 border-2 border-[#188296] rounded-2xl p-6 sm:p-8">
+            <div class="flex items-center space-x-3 text-[#188296] mb-3">
+              <i data-lucide="award" class="w-7 h-7 text-[#FBAF3F]"></i>
+              <h4 class="text-xl font-black text-[#0D2C6B]">Key Pedagogical Takeaways (K–6 Continuum)</h4>
+            </div>
+            <p class="text-xs text-[#4C4C4E] mb-6 leading-relaxed">
+              Congratulations on mastering the Chance professional learning sequence. Here is your executive reference summary synthesising the essential classroom practices across the continuum.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
+              <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] shadow-sm">
+                <span class="font-bold text-[#0D2C6B] text-sm block mb-1">1. Define What Can Happen First</span>
+                <p class="text-[#4C4C4E] leading-relaxed">Determining all possible outcomes (the sample space) is the mandatory first step. Low probability is never impossible as long as the element exists in the sample space.</p>
+              </div>
+
+              <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] shadow-sm">
+                <span class="font-bold text-[#0D2C6B] text-sm block mb-1">2. Predict, Then Test &amp; Repeat</span>
+                <p class="text-[#4C4C4E] leading-relaxed">Predictions highlight expectations, but randomness dictates authentic variation. Repeating trials demonstrates that single small samples fluctuate naturally.</p>
+              </div>
+
+              <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] shadow-sm">
+                <span class="font-bold text-[#0D2C6B] text-sm block mb-1">3. The Coin Doesn't Remember</span>
+                <p class="text-[#4C4C4E] leading-relaxed">Actively dismantle the "law of averages" fallacy. Independent events are never influenced by what has just occurred. The past does not balance the future.</p>
+              </div>
+
+              <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] shadow-sm">
+                <span class="font-bold text-[#0D2C6B] text-sm block mb-1">4. Numbers Are Precise; Words Aren't</span>
+                <p class="text-[#4C4C4E] leading-relaxed">Never pin imprecise words like "likely" or "possible" to exact decimal points on a number line. Exact probability is quantified through fractions and decimals from 0 to 1.</p>
+              </div>
+
+              <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] shadow-sm">
+                <span class="font-bold text-[#0D2C6B] text-sm block mb-1">5. Distinguish Frequency from Probability</span>
+                <p class="text-[#4C4C4E] leading-relaxed">In Stage 3, ensure students know that getting 6 heads in 10 tosses is a <em>frequency</em> (a count), whereas <sup>1</sup>&frasl;<sub>2</sub> is the <em>theoretical probability</em>.</p>
+              </div>
+
+              <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] shadow-sm">
+                <span class="font-bold text-[#0D2C6B] text-sm block mb-1">6. The Power of Large Numbers</span>
+                <p class="text-[#4C4C4E] leading-relaxed">As the number of trials increases, observed probabilities tend to settle closer and closer to expected theoretical values. Digital simulators make this observable in seconds.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE -->
+      <section id="section-7" class="bg-white rounded-2xl shadow-sm border border-[#D1D2D4] p-6 sm:p-8">
+        <div class="flex items-center space-x-3 mb-6">
+          <div class="w-9 h-9 rounded-lg bg-[#0D2C6B] text-white flex items-center justify-center font-black text-lg">7</div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Canvas LMS Deployment Guide</h3>
+            <p class="text-xs text-[#4C4C4E]">Step-by-step diocesan instructions for embedding this self-contained PL file into Canvas LMS</p>
+          </div>
+        </div>
+
+        <div class="space-y-4">
+          <div class="bg-slate-50 border border-[#D1D2D4] rounded-xl p-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-[#0D2C6B] mb-2 flex items-center">
+              <i data-lucide="globe" class="w-4 h-4 text-[#188296] mr-1.5"></i>
+              Option A: Hosting on GitHub Pages &amp; Embedding via Canvas iframe (Recommended)
+            </h4>
+            <p class="text-xs text-[#4C4C4E] mb-3">
+              This single file contains all HTML, styles, and vanilla scripts with zero external file dependencies. You can host it in your school's or diocese's GitHub Pages repository and embed it cleanly inside any Canvas LMS page.
+            </p>
+            <div class="bg-[#231F20] text-slate-200 p-3 rounded-lg font-mono-math text-xs overflow-x-auto relative">
+              <code>&lt;iframe src="https://your-diocese-repo.github.io/chance-k6.html" width="100%" height="900" style="border: none; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" allow="fullscreen"&gt;&lt;/iframe&gt;</code>
+            </div>
+          </div>
+
+          <div class="bg-slate-50 border border-[#D1D2D4] rounded-xl p-4">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-[#0D2C6B] mb-2 flex items-center">
+              <i data-lucide="file-code" class="w-4 h-4 text-[#188296] mr-1.5"></i>
+              Option B: Canvas Rich Content Editor (RCE) Direct Upload
+            </h4>
+            <ol class="list-decimal list-inside text-xs text-[#4C4C4E] space-y-1.5 leading-relaxed">
+              <li>Navigate to your Canvas Course &rarr; <strong>Files</strong> &rarr; Upload this <code class="font-mono-math text-slate-800">chance-k6-module.html</code> file.</li>
+              <li>Go to <strong>Modules</strong> or <strong>Pages</strong> and create a new item.</li>
+              <li>Select <em>Add File</em> and link directly to the uploaded HTML file, or use the HTML View in the RCE to embed the file via an iframe referencing Canvas course files.</li>
+              <li>Because all JavaScript, Tailwind CDN styles, and SVG generation are completely inline, the module runs seamlessly with zero asset breakage.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0D2C6B] text-white border-t border-[#D1D2D4] mt-12 py-6">
+    <div class="max-w-7xl mx-auto px-4 text-center text-xs space-y-2">
+      <p class="font-bold text-[#FBAF3F] uppercase tracking-wider">Catholic Education Diocese of Wollongong (CEDoW) • Primary Mathematics Curriculum</p>
+      <p class="text-slate-300">
+        Constructed strictly from the NESA <em>Mathematics K–10 Syllabus (2022)</em> and NESA Syllabus Support Teaching Advice. Self-paced professional development module.
+      </p>
+    </div>
+  </footer>
+
+  <!-- SCRIPT ARCHITECTURE -->
+  <script>
+    /* ==========================================================
+       1. DATA STRUCTURES (NSW 2022 SYLLABUS GROUNDED)
+       ========================================================== */
+    const STAGE_DATA = {
+      es1: {
+        title: "Early Stage 1: Kindergarten Foundations",
+        lead: "There are no standalone Chance outcomes in Kindergarten. Foundations are established within Data (MAE-DATA-01) by predicting responses to questions and discussing possible outcomes of classroom activities.",
+        outcomes: [
+          { code: "MAE-DATA-01", text: "contributes to collecting data and interprets data displays made from objects" }
+        ],
+        wm: "Explores and connects concepts by discussing what could happen versus what cannot happen before collecting data.",
+        milestones: [
+          "Uses question starters such as 'Could it be...?' and 'Why couldn't it be...?'",
+          "Distinguishes between familiar events that are certain (lunch today) and those that are not certain (snow in Wollongong)",
+          "Recognises that personal wishes or favourite colours do not dictate chance outcomes"
+        ],
+        nesaAlert: "NESA notes: 'Probability can appear to work against our sense of balance... The understanding of chance situations is developed through simple experiments that produce data so that students can make comparisons.'"
+      },
+      s1: {
+        title: "Stage 1: Years 1 & 2",
+        lead: "Students identify possible outcomes of familiar activities, describing them using 'will happen', 'might happen', or 'won't happen', then progressing to 'likely', 'unlikely', and comparing events as 'more or less likely'.",
+        outcomes: [
+          { code: "MA1-CHAN-01", text: "recognises and describes the element of chance in everyday events" }
+        ],
+        wm: "Reasons about relations by comparing familiar events and justifying why one event is more likely than another.",
+        milestones: [
+          "Identifies the two extremes: events certain to happen and events certain not to happen",
+          "Understands that 'unlikely' does not mean 'impossible' (e.g. 1 red cube in 9 blue)",
+          "Appreciates that for an event to be impossible, there must be none of it present among the possible outcomes"
+        ],
+        nesaAlert: "NESA notes: 'Some students interpret events with a low probability as being impossible. The idea of impossible, particularly in social contexts, is a more difficult concept for students than more likely or equally likely.'"
+      },
+      s2: {
+        title: "Stage 2: Years 3 & 4",
+        lead: "Students use the formal term 'outcome', list all outcomes and combinations in equally likely situations, predict results of experiments, describe likelihood, and explore whether one event affects another.",
+        outcomes: [
+          { code: "MA2-CHAN-01", text: "records and compares the results of chance experiments" }
+        ],
+        wm: "Applies probabilistic reasoning when predicting how many times an outcome might occur across a set number of trials, and reasons about relations when comparing dependent and independent events.",
+        milestones: [
+          "Focuses on equally likely random generators (fair coins, standard dice, equal quarters spinners)",
+          "Lists combinations systematically (e.g. 3 T-shirts &times; 2 shorts = 6 outfits)",
+          "Understands independence: coin tosses are independent; the coin doesn't remember previous tosses ('Law of Averages' fallacy)",
+          "Differentiates independent events from dependent events (e.g. removing an apple changes the likelihood of an orange)"
+        ],
+        nesaAlert: "NESA notes: 'The law of averages is a term sometimes used to describe the common mistaken belief that what has happened in the past will be balanced by what occurs next. Avoid assigning precise positions on a number line to imprecise words such as possible.'"
+      },
+      s3: {
+        title: "Stage 3: Years 5 & 6",
+        lead: "Students quantify probability as numbers from 0 to 1 using fractions, establish that probabilities of all outcomes add to 1, distinguish frequency from probability, and compare small versus large numbers of trials.",
+        outcomes: [
+          { code: "MA3-CHAN-01", text: "conducts chance experiments and quantifies the probability" }
+        ],
+        wm: "Chooses and applies techniques using digital simulators to model large trials, communicating reasons why observed frequencies vary from theoretical probability due to randomness.",
+        milestones: [
+          "Represents probabilities as fractions with denominators of 2, 3, 4, 5, 6, 8, and 10 on a number line from 0 to 1",
+          "Distinguishes between 'frequency' (a count of events) and 'probability' (numerical likelihood)",
+          "Analyzes random generators with unequal outcomes (e.g. spinner half green, rest sixths)",
+          "Observes the Law of Large Numbers: as trials increase, observed probabilities tend to get closer to expected probabilities"
+        ],
+        nesaAlert: "NESA notes: 'Probability 0 means impossible; 1 means the event must occur... As the number of trials increases, observed probabilities tend to get closer to expected probabilities.'"
+      }
+    };
+
+    const BIG_IDEAS = [
+      {
+        title: "1. Define Sample Space",
+        desc: "Identifying all possible outcomes is the mandatory first step in any probability problem.",
+        steps: {
+          es1: "Uses question starters: 'Could it be...?' and 'Why couldn't it be...?' to explore collections.",
+          s1: "Identifies possible outcomes of everyday events; recognises that impossible requires 0 in the collection.",
+          s2: "Uses the term 'outcome'; records all outcomes and combinations systematically (tables and trees).",
+          s3: "Records all outcomes where each is equally likely; establishes that all probabilities add to 1."
+        }
+      },
+      {
+        title: "2. The 0 to 1 Continuum",
+        desc: "Likelihood spans from certain not to happen (0) to certain to happen (1).",
+        steps: {
+          es1: "Distinguishes between familiar events that are certain and not certain.",
+          s1: "Uses 'will happen', 'might happen', 'won't happen'; introduces likely, unlikely, and possible.",
+          s2: "Uses 'equally likely', 'likely', 'unlikely', 'most likely', and 'least likely'.",
+          s3: "Quantifies likelihood on a numerical scale from 0 to 1 using benchmark fractions, decimals, and percentages."
+        }
+      },
+      {
+        title: "3. Words vs Numbers",
+        desc: "Everyday chance words are imprecise; mathematical probabilities are exact numerical values.",
+        steps: {
+          es1: "Everyday words: maybe, probably, could happen.",
+          s1: "Chance words express relative likelihood; acknowledges that unlikely does not equal impossible.",
+          s2: "NESA ALERT: Avoid assigning exact numerical points on a number line to imprecise words like 'possible'.",
+          s3: "Explicitly contrasts loose colloquial language ('very high chance') with exact mathematical values (0.85 or 85%)."
+        }
+      },
+      {
+        title: "4. Expectation & Variation",
+        desc: "Sample space creates expectations, but randomness produces natural variation.",
+        steps: {
+          es1: "Predicts class preferences and compares with actual data collected.",
+          s1: "Recognises the impact of chance when predictions do not match reality.",
+          s2: "Predicts frequencies in a set number of trials; repeats experiment to observe trial-to-trial variation.",
+          s3: "Compares expected frequencies with observed frequencies; conducts experiments with small and large trial sets."
+        }
+      },
+      {
+        title: "5. Independence vs Dependence",
+        desc: "Some events are completely independent, while other events alter the sample space.",
+        steps: {
+          es1: "Begins to understand that past draws do not force future draws.",
+          s1: "Dismantles the expectation that coloured cubes 'take turns'.",
+          s2: "Recognises coin tosses are independent; recognises removing an apple from a bag alters orange probability.",
+          s3: "Counters the fallacy 'with this, therefore because of this'; analyzes fairness in game designs."
+        }
+      },
+      {
+        title: "6. Proportional Reasoning",
+        desc: "Comparing likelihood requires comparing parts to the whole, not absolute counts.",
+        steps: {
+          es1: "Notices that having more of one colour in a bag increases its chances.",
+          s1: "Compares familiar events as more or less likely.",
+          s2: "Intuitively compares ratios (e.g. tossing a tail is more likely than rolling a 6 on a die).",
+          s3: "Calculates formal fractional probabilities; designs random generators to match specified proportions (e.g. red twice as likely as blue)."
+        }
+      }
+    ];
+
+    /* ==========================================================
+       2. INTERACTIVE TOOL LAB LOGIC
+       ========================================================== */
+    const CC = { red: "#C8553D", blue: "#3B5BBF", green: "#2F7F6F", yellow: "#E0A33A", grey: "#8A8F9C" };
+
+    function cubesHTML(list) {
+      return list.map(c => `<span class="cube-token" style="background:${CC[c] || c}" title="${c}"></span>`).join(" ");
+    }
+
+    // Tool 1: Could It Be?
+    let cqBag = [], cqAsk = "", cqRight = "", cqScore = 0, cqTotal = 0;
+    function initCouldIt() {
+      const colours = ["red", "blue", "yellow", "green"].sort(() => Math.random() - 0.5);
+      const kinds = ["will", "might", "wont"];
+      const kind = kinds[Math.floor(Math.random() * 3)];
+      cqRight = kind;
+      
+      if (kind === "will") {
+        cqBag = [];
+        const count = 4 + Math.floor(Math.random() * 4);
+        for (let i = 0; i < count; i++) cqBag.push(colours[0]);
+        cqAsk = colours[0];
+      } else if (kind === "wont") {
+        cqBag = [];
+        const n1 = 2 + Math.floor(Math.random() * 3);
+        const n2 = 2 + Math.floor(Math.random() * 3);
+        for (let i = 0; i < n1; i++) cqBag.push(colours[0]);
+        for (let i = 0; i < n2; i++) cqBag.push(colours[1]);
+        cqAsk = colours[2]; // not in bag
+      } else { // might
+        cqBag = [];
+        const n1 = 3 + Math.floor(Math.random() * 3);
+        const n2 = 2 + Math.floor(Math.random() * 3);
+        for (let i = 0; i < n1; i++) cqBag.push(colours[0]);
+        for (let i = 0; i < n2; i++) cqBag.push(colours[1]);
+        cqAsk = Math.random() < 0.5 ? colours[0] : colours[1];
+      }
+      cqBag.sort(() => Math.random() - 0.5);
+
+      document.getElementById('cqBag').innerHTML = cubesHTML(cqBag);
+      document.getElementById('cqQ').innerHTML = `If I take one cube out without looking, will it be <span class="capitalize font-black" style="color:${CC[cqAsk]}">${cqAsk}</span>?`;
+      document.getElementById('cqFb').className = "hidden text-xs p-3 rounded-lg border leading-relaxed";
+      document.querySelectorAll('.cq-btn').forEach(b => b.disabled = false);
+      document.getElementById('cqNew').disabled = true;
+      document.getElementById('cqTake').disabled = true;
+    }
+
+    function wireCouldItButtons() {
+      document.querySelectorAll('.cq-btn').forEach(btn => {
+        btn.onclick = () => {
+          const chosen = btn.dataset.c;
+          const isCorrect = (chosen === cqRight);
+          cqTotal++;
+          if (isCorrect) cqScore++;
+          document.getElementById('cqScore').textContent = `${cqScore} of ${cqTotal} correct`;
+
+          const countInBag = cqBag.filter(c => c === cqAsk).length;
+          let explanation = "";
+          if (cqRight === "will") {
+            explanation = `Every cube in the bag is ${cqAsk}. It couldn't possibly be anything else! Taking ${cqAsk} is <strong>certain</strong>.`;
+          } else if (cqRight === "might") {
+            explanation = `There are ${countInBag} ${cqAsk} cubes and other colours too. So it <strong>might</strong> be ${cqAsk}, or it might be another colour. It is <strong>possible</strong>.`;
+          } else {
+            explanation = `There are <strong>zero</strong> ${cqAsk} cubes in the bag. Why couldn't it be ${cqAsk}? Because none exist in the collection! It is <strong>impossible</strong>.`;
+          }
+
+          const fb = document.getElementById('cqFb');
+          fb.className = `text-xs p-3.5 rounded-xl border leading-relaxed ${isCorrect ? 'bg-emerald-50 border-emerald-300 text-emerald-900' : 'bg-rose-50 border-rose-300 text-rose-900'}`;
+          fb.innerHTML = `<strong>${isCorrect ? '✓ Correct Pedagogical Assessment!' : '✗ Not Quite.'}</strong> ${explanation}`;
+
+          document.querySelectorAll('.cq-btn').forEach(b => b.disabled = true);
+          document.getElementById('cqNew').disabled = false;
+          document.getElementById('cqTake').disabled = false;
+        };
+      });
+
+      document.getElementById('cqTake').onclick = () => {
+        const picked = cqBag[Math.floor(Math.random() * cqBag.length)];
+        const fb = document.getElementById('cqFb');
+        fb.innerHTML += `<div class="mt-2 pt-2 border-t border-current flex items-center space-x-2"><span>Live Draw:</span> <span class="cube-token" style="background:${CC[picked]}"></span> <span class="font-bold capitalize">${picked} cube drawn!</span></div>`;
+        document.getElementById('cqTake').disabled = true;
+      };
+
+      document.getElementById('cqNew').onclick = initCouldIt;
+    }
+
+    // Tool 2: Unlikely Isn't Impossible
+    let bgResults = [];
+    function updateBagDisplay() {
+      const r = parseInt(document.getElementById('bgR').value);
+      const b = parseInt(document.getElementById('bgB').value);
+      document.getElementById('bgRv').textContent = r;
+      document.getElementById('bgBv').textContent = b;
+
+      const bagList = [];
+      for (let i = 0; i < r; i++) bagList.push("red");
+      for (let i = 0; i < b; i++) bagList.push("blue");
+
+      const bagBox = document.getElementById('bgBag');
+      bagBox.innerHTML = bagList.length ? cubesHTML(bagList) : '<em class="text-xs text-slate-400">Bag is empty</em>';
+
+      const readTitle = document.getElementById('bgRead');
+      const readSub = document.getElementById('bgSubRead');
+
+      if (r === 0 && b === 0) {
+        readTitle.textContent = "The bag is empty.";
+        readSub.textContent = "Use the sliders above to add red or blue cubes.";
+      } else if (r === 0) {
+        readTitle.textContent = "Taking red is IMPOSSIBLE.";
+        readSub.textContent = "There are zero red cubes in the sample space. It won't happen.";
+      } else if (b === 0) {
+        readTitle.textContent = "Taking red is CERTAIN.";
+        readSub.textContent = "Every single cube is red. It will happen on every draw.";
+      } else if (r === b) {
+        readTitle.textContent = "Red and blue are EQUALLY LIKELY.";
+        readSub.textContent = `Equal quantities (${r} red vs ${b} blue). Each has an identical chance of being selected.`;
+      } else if (r < b) {
+        const isRare = (r * 3 <= b);
+        readTitle.textContent = `Taking red is ${isRare ? 'UNLIKELY' : 'LESS LIKELY than blue'}, but POSSIBLE.`;
+        readSub.textContent = `There ${r === 1 ? 'is 1 red cube' : `are ${r} red cubes`} and ${b} blue. Crucial NESA takeaway: Unlikely is never impossible! Red can still be drawn.`;
+      } else {
+        const isVeryLikely = (b * 3 <= r);
+        readTitle.textContent = `Taking red is ${isVeryLikely ? 'LIKELY' : 'MORE LIKELY than blue'}, but NOT CERTAIN.`;
+        readSub.textContent = `There are ${r} red and ${b} blue. Blue can still be selected, so red is not guaranteed.`;
+      }
+
+      renderBagResults();
+    }
+
+    function renderBagResults() {
+      const resBox = document.getElementById('bgRes');
+      if (!bgResults.length) {
+        resBox.innerHTML = '<span class="text-slate-400">No draws yet. Click "Take 1 Cube" or "Take 20 Cubes" to sample with replacement.</span>';
+        return;
+      }
+
+      const redCount = bgResults.filter(c => c === "red").length;
+      const blueCount = bgResults.length - redCount;
+      const r = parseInt(document.getElementById('bgR').value);
+      const b = parseInt(document.getElementById('bgB').value);
+
+      let html = `<div class="flex items-center justify-between mb-2 pb-1 border-b border-slate-200">
+        <span class="font-bold text-[#0D2C6B]">Sampled ${bgResults.length} Times (With Replacement):</span>
+        <span class="font-mono-math text-xs">Red: ${redCount} | Blue: ${blueCount}</span>
+      </div>`;
+      html += `<div class="flex flex-wrap gap-1 max-h-36 overflow-y-auto p-1 bg-slate-50 rounded border border-slate-200">${cubesHTML(bgResults)}</div>`;
+
+      if (r > 0 && r < b && redCount > 0) {
+        html += `<div class="mt-2 text-xs font-bold text-emerald-800 bg-emerald-50 p-2 rounded border border-emerald-200">
+          Notice: Red came out ${redCount} time${redCount > 1 ? 's' : ''}! Even with low probability, unlikely outcomes occur.
+        </div>`;
+      }
+      resBox.innerHTML = html;
+    }
+
+    function sampleBag(count) {
+      const r = parseInt(document.getElementById('bgR').value);
+      const b = parseInt(document.getElementById('bgB').value);
+      const total = r + b;
+      if (total === 0) return;
+
+      for (let i = 0; i < count; i++) {
+        const pick = Math.random() * total < r ? "red" : "blue";
+        bgResults.push(pick);
+      }
+      if (bgResults.length > 80) bgResults = bgResults.slice(-80);
+      renderBagResults();
+    }
+
+    // Tool 3: Quarters Spinner
+    const SP_SECTORS = [
+      { name: "red", p: 0.25, colour: CC.red },
+      { name: "blue", p: 0.25, colour: CC.blue },
+      { name: "green", p: 0.25, colour: CC.green },
+      { name: "yellow", p: 0.25, colour: CC.yellow }
+    ];
+    let spRuns = [];
+
+    function renderSpinnerSVG(angle = null) {
+      const cx = 100, cy = 100, r = 88;
+      let svg = `<svg viewBox="0 0 200 200" class="w-48 h-48 drop-shadow" role="img" aria-label="Equal Quarters Spinner">`;
+      let a0 = -Math.PI / 2;
+      SP_SECTORS.forEach(sec => {
+        const a1 = a0 + sec.p * 2 * Math.PI;
+        const x1 = (cx + r * Math.cos(a0)).toFixed(1);
+        const y1 = (cy + r * Math.sin(a0)).toFixed(1);
+        const x2 = (cx + r * Math.cos(a1)).toFixed(1);
+        const y2 = (cy + r * Math.sin(a1)).toFixed(1);
+        svg += `<path d="M${cx} ${cy} L${x1} ${y1} A${r} ${r} 0 0 1 ${x2} ${y2} Z" fill="${sec.colour}" stroke="#FFFFFF" stroke-width="2"/>`;
+        const am = (a0 + a1) / 2;
+        const tx = (cx + r * 0.6 * Math.cos(am)).toFixed(1);
+        const ty = (cy + r * 0.6 * Math.sin(am) + 4).toFixed(1);
+        svg += `<text x="${tx}" y="${ty}" text-anchor="middle" font-size="11" font-weight="900" fill="#FFFFFF" class="uppercase">${sec.name}</text>`;
+        a0 = a1;
+      });
+
+      if (angle !== null) {
+        const needleAngle = -Math.PI / 2 + angle * 2 * Math.PI;
+        const nx = (cx + (r - 12) * Math.cos(needleAngle)).toFixed(1);
+        const ny = (cy + (r - 12) * Math.sin(needleAngle)).toFixed(1);
+        svg += `<line x1="${cx}" y1="${cy}" x2="${nx}" y2="${ny}" stroke="#0D2C6B" stroke-width="4.5" stroke-linecap="round"/>`;
+      }
+      svg += `<circle cx="${cx}" cy="${cy}" r="6" fill="#0D2C6B" stroke="#FFFFFF" stroke-width="1.5"/>`;
+      svg += `</svg>`;
+      document.getElementById('spPic').innerHTML = svg;
+    }
+
+    function runSpinner() {
+      const n = parseInt(document.getElementById('spN').value);
+      const rawPred = document.getElementById('spP').value;
+      const pred = rawPred === "" ? null : parseInt(rawPred);
+
+      const counts = { red: 0, blue: 0, green: 0, yellow: 0 };
+      let lastAng = 0;
+
+      for (let i = 0; i < n; i++) {
+        const r = Math.random();
+        lastAng = r;
+        if (r < 0.25) counts.red++;
+        else if (r < 0.50) counts.blue++;
+        else if (r < 0.75) counts.green++;
+        else counts.yellow++;
+      }
+
+      renderSpinnerSVG(lastAng);
+      spRuns.push({ n, red: counts.red, pred });
+
+      const exp = n / 4;
+      let msg = `<strong>Result:</strong> Red appeared <strong>${counts.red}</strong> times in ${n} spins (Expected: ${exp}).<br>`;
+      msg += `<span class="text-[#4C4C4E]">Breakdown: Blue: ${counts.blue}, Green: ${counts.green}, Yellow: ${counts.yellow}.</span><br>`;
+      if (pred !== null) {
+        if (pred === counts.red) {
+          msg += `<span class="text-emerald-700 font-bold">Your prediction (${pred}) matched exactly this time! Repeat the experiment—variation means it often won't match.</span>`;
+        } else {
+          msg += `<span class="text-blue-900 font-medium">Your prediction was ${pred}. The observed count was ${counts.red}. Randomness means results usually fluctuate around the expected value.</span>`;
+        }
+      }
+      document.getElementById('spRead').innerHTML = msg;
+
+      renderSpinnerHistory();
+    }
+
+    function renderSpinnerHistory() {
+      const histBox = document.getElementById('spHist');
+      if (!spRuns.length) {
+        histBox.innerHTML = 'No runs recorded yet.';
+        return;
+      }
+
+      let totalSpins = 0;
+      let totalReds = 0;
+      spRuns.forEach(r => {
+        totalSpins += r.n;
+        totalReds += r.red;
+      });
+
+      let html = '<div class="flex flex-wrap gap-2 mb-2">';
+      spRuns.forEach((r, idx) => {
+        html += `<span class="px-2.5 py-1 bg-white border border-[#D1D2D4] rounded-lg text-xs font-mono-math">Run ${idx + 1}: <strong>${r.red}</strong>/${r.n} red ${r.pred !== null ? `(pred ${r.pred})` : ''}</span>`;
+      });
+      html += '</div>';
+
+      if (spRuns.length > 1) {
+        const pct = ((totalReds / totalSpins) * 100).toFixed(1);
+        html += `<div class="bg-blue-50 border border-blue-200 p-2.5 rounded-lg text-xs text-[#0D2C6B]">
+          <strong>Combined Experimental Trials:</strong> ${totalReds} reds in ${totalSpins} spins (${pct}%). Theoretical expectation is 25.0%. Notice how combining runs smooths out variation!
+        </div>`;
+      }
+      histBox.innerHTML = html;
+    }
+
+    // Tool 4: Small vs Large Trials Simulator
+    const TR_GEN = {
+      syl: {
+        title: "Syllabus Unequal Spinner",
+        sec: [
+          { name: "green", p: 3/6, f: "3/6", colour: CC.green },
+          { name: "red", p: 1/6, f: "1/6", colour: CC.red },
+          { name: "grey", p: 1/6, f: "1/6", colour: CC.grey },
+          { name: "blue", p: 1/6, f: "1/6", colour: CC.blue }
+        ]
+      },
+      q: {
+        title: "Equal Quarters Spinner",
+        sec: [
+          { name: "red", p: 0.25, f: "1/4", colour: CC.red },
+          { name: "blue", p: 0.25, f: "1/4", colour: CC.blue },
+          { name: "green", p: 0.25, f: "1/4", colour: CC.green },
+          { name: "yellow", p: 0.25, f: "1/4", colour: CC.yellow }
+        ]
+      },
+      bag: {
+        title: "Proportional Bag (2 Red : 1 Blue)",
+        sec: [
+          { name: "red", p: 2/3, f: "2/3", colour: CC.red },
+          { name: "blue", p: 1/3, f: "1/3", colour: CC.blue }
+        ]
+      },
+      die: {
+        title: "Standard 6-Sided Die",
+        sec: [
+          { name: "1", p: 1/6, f: "1/6", colour: "#4B5BBF" },
+          { name: "2", p: 1/6, f: "1/6", colour: "#4B5BBF" },
+          { name: "3", p: 1/6, f: "1/6", colour: "#4B5BBF" },
+          { name: "4", p: 1/6, f: "1/6", colour: "#4B5BBF" },
+          { name: "5", p: 1/6, f: "1/6", colour: "#4B5BBF" },
+          { name: "6", p: 1/6, f: "1/6", colour: "#4B5BBF" }
+        ]
+      }
+    };
+    let trCounts = [], trTotal = 0;
+
+    function resetTrials() {
+      const g = TR_GEN[document.getElementById('trG').value];
+      trCounts = g.sec.map(() => 0);
+      trTotal = 0;
+      renderTrialsVisual(g);
+      renderTrialsChart(g);
+    }
+
+    function renderTrialsVisual(g) {
+      const pic = document.getElementById('trPic');
+      if (g === TR_GEN.die) {
+        pic.innerHTML = `<div class="grid grid-cols-3 gap-1 p-2 bg-slate-100 rounded-lg text-2xl font-mono-math text-[#0D2C6B] text-center border">
+          <span>⚀</span><span>⚁</span><span>⚂</span><span>⚃</span><span>⚄</span><span>⚅</span>
+        </div>`;
+      } else if (g === TR_GEN.bag) {
+        pic.innerHTML = `<div class="p-3 bg-amber-50 rounded-xl border border-amber-200 flex flex-wrap gap-2 justify-center">${cubesHTML(["red","red","blue","red","red","blue"])}</div>`;
+      } else {
+        // Spinner SVG
+        const cx = 70, cy = 70, r = 62;
+        let svg = `<svg viewBox="0 0 140 140" class="w-32 h-32">`;
+        let a0 = -Math.PI / 2;
+        g.sec.forEach(s => {
+          const a1 = a0 + s.p * 2 * Math.PI;
+          const large = s.p > 0.5 ? 1 : 0;
+          const x1 = (cx + r * Math.cos(a0)).toFixed(1);
+          const y1 = (cy + r * Math.sin(a0)).toFixed(1);
+          const x2 = (cx + r * Math.cos(a1)).toFixed(1);
+          const y2 = (cy + r * Math.sin(a1)).toFixed(1);
+          svg += `<path d="M${cx} ${cy} L${x1} ${y1} A${r} ${r} 0 ${large} 1 ${x2} ${y2} Z" fill="${s.colour}" stroke="#fff" stroke-width="1.5"/>`;
+          a0 = a1;
+        });
+        svg += `<circle cx="${cx}" cy="${cy}" r="4" fill="#0D2C6B"/>`;
+        svg += `</svg>`;
+        pic.innerHTML = svg;
+      }
+    }
+
+    function addTrials(n) {
+      const g = TR_GEN[document.getElementById('trG').value];
+      for (let i = 0; i < n; i++) {
+        const rand = Math.random();
+        let acc = 0;
+        for (let j = 0; j < g.sec.length; j++) {
+          acc += g.sec[j].p;
+          if (rand < acc) {
+            trCounts[j]++;
+            break;
+          }
+        }
+      }
+      trTotal += n;
+      renderTrialsChart(g);
+    }
+
+    function renderTrialsChart(g) {
+      const W = Math.max(300, g.sec.length * 64 + 40);
+      const H = 180, base = 150, sc = 120;
+      let svg = `<svg viewBox="0 0 ${W} ${H}" class="w-full max-w-lg h-44 font-mono-math">`;
+
+      // Horizontal grid lines
+      [0, 0.25, 0.5, 0.75, 1.0].forEach(v => {
+        const y = base - v * sc;
+        svg += `<line x1="32" y1="${y}" x2="${W - 8}" y2="${y}" stroke="#E2E8F0" stroke-width="1"/>`;
+        svg += `<text x="28" y="${y + 3}" text-anchor="end" font-size="9" fill="#94A3B8">${v}</text>`;
+      });
+
+      // Bars & Target Markers
+      g.sec.forEach((sec, idx) => {
+        const x = 44 + idx * 60;
+        const ob = trTotal ? trCounts[idx] / trTotal : 0;
+        const barH = ob * sc;
+        const expY = base - sec.p * sc;
+
+        // Observed Bar
+        svg += `<rect x="${x}" y="${base - barH}" width="34" height="${barH}" fill="${sec.colour}" opacity="0.85" rx="2"/>`;
+
+        // Theoretical Dashed Marker
+        svg += `<line x1="${x - 5}" y1="${expY}" x2="${x + 39}" y2="${expY}" stroke="#0D2C6B" stroke-width="2.5" stroke-dasharray="4 2"/>`;
+
+        // Category Label
+        svg += `<text x="${x + 17}" y="${base + 16}" text-anchor="middle" font-size="10" font-weight="bold" fill="#0D2C6B">${sec.name}</text>`;
+      });
+
+      // Base line
+      svg += `<line x1="32" y1="${base}" x2="${W - 8}" y2="${base}" stroke="#0D2C6B" stroke-width="1.5"/>`;
+      svg += `</svg>`;
+
+      document.getElementById('trChart').innerHTML = svg;
+
+      // Analysis Text
+      const readBox = document.getElementById('trRead');
+      if (!trTotal) {
+        readBox.innerHTML = `<strong>No trials conducted yet.</strong> Expected theoretical probabilities: ${g.sec.map(s => `${s.name}: ${s.f}`).join(', ')}. All probabilities add to exactly 1.`;
+        return;
+      }
+
+      let maxDiff = 0;
+      g.sec.forEach((s, idx) => {
+        const diff = Math.abs((trCounts[idx] / trTotal) - s.p);
+        if (diff > maxDiff) maxDiff = diff;
+      });
+
+      const isLarge = trTotal >= 500;
+      let text = `<div class="flex items-center justify-between mb-1">
+        <span class="font-bold text-[#0D2C6B]">Total Trials: ${trTotal}</span>
+        <span class="font-mono-math text-xs ${isLarge ? 'text-emerald-700 font-bold' : 'text-amber-700'}">Max discrepancy from theory: ${(maxDiff).toFixed(3)}</span>
+      </div>`;
+      text += `<div class="text-[11px] text-[#4C4C4E] space-y-0.5">`;
+      g.sec.forEach((s, idx) => {
+        const obsP = (trCounts[idx] / trTotal).toFixed(3);
+        const expP = s.p.toFixed(3);
+        text += `<div>• <strong class="capitalize">${s.name}</strong>: Frequency = ${trCounts[idx]} | Observed = ${obsP} | Expected = ${expP} (${s.f})</div>`;
+      });
+      text += `</div>`;
+      text += `<div class="mt-2 pt-2 border-t border-slate-200 text-xs ${isLarge ? 'text-emerald-800 font-medium' : 'text-slate-600'}">
+        ${isLarge ? '✓ With large numbers of trials, the observed relative frequencies converge closely onto the theoretical probabilities. This is the Law of Large Numbers in action.' : 'Notice: With small numbers of trials (e.g. 10 or 20), observed frequencies deviate substantially from expectations. More trials are required to reveal the underlying probability.'}
+      </div>`;
+      readBox.innerHTML = text;
+    }
+
+    /* ==========================================================
+       3. DIAGNOSTIC CLINIC & MISCONCEPTION SORTER
+       ========================================================== */
+    const SCENARIOS = [
+      { st: "es1", text: "Ava looks at a bag with 4 red and 4 blue cubes and states: 'If you take one out without looking, it could be green.'", root: 0, why: "Ava fails to consider the sample space. She does not realise that for an outcome to be possible, at least one item must exist in the collection." },
+      { st: "es1", text: "Noah predicts everyone in the class will choose dogs as their favourite animal 'because I love dogs best'.", root: 1, why: "Noah's prediction is governed by affective personal preference rather than objective potential outcomes of a group survey." },
+      { st: "s1", text: "Mia says that drawing the 1 red cube from a bag of 9 blue cubes is 'impossible'.", root: 0, why: "Mia confuses low probability with impossibility. She fails to recognise that rare events are still strictly members of the sample space." },
+      { st: "s1", text: "Leo draws a red cube, puts it back, and insists: 'Blue must come out next because they have to take turns.'", root: 2, why: "Leo expects past draws to balance future draws. In independent sampling with replacement, trials have no memory and do not take turns." },
+      { st: "s1", text: "Grace is offered two bags to draw a red cube: Bag A (5 red, 20 blue) vs Bag B (2 red, 1 blue). She chooses Bag A because '5 is more than 2'.", root: 3, why: "Grace evaluates absolute whole numbers rather than proportional parts. Bag B has a 2 in 3 chance (67%), whereas Bag A is only 1 in 5 (20%)." },
+      { st: "s2", text: "Ben watches a fair coin land on heads 6 times in a row and wagers his pocket money on tails because 'it's due'.", root: 2, why: "The classic 'Law of Averages' fallacy (negative recency). Each coin toss is completely independent; the probability remains exactly 1/2." },
+      { st: "s2", text: "Ella is asked to list all possible outfits from 3 T-shirts and 2 pairs of shorts. She lists 5 outfits and says that's all.", root: 0, why: "Ella fails to list combinations systematically using multiplicative reasoning (3 × 2 = 6). She simply adds 3 + 2." },
+      { st: "s2", text: "Josh rolls a standard 6-sided die and insists on guessing 4 every roll because '4 is my lucky number'.", root: 1, why: "Personal belief and superstitious attribution override the mathematical understanding that all 6 faces are equally likely." },
+      { st: "s2", text: "Zoe claims: 'Rolling a 6 on a die has the exact same chance as tossing a tail on a coin, because both are just one thing.'", root: 3, why: "Zoe compares discrete individual outcomes rather than the proportion of the sample space (1 in 6 vs 1 in 2)." },
+      { st: "s3", text: "Kai tosses a fair coin 10 times and gets 6 heads. He concludes: 'The probability of heads is 6.'", root: 3, why: "Kai confuses frequency (the count of 6) with probability (a ratio between 0 and 1). The observed probability is 6/10, while the theoretical probability is 1/2." },
+      { st: "s3", text: "Ruby wears green socks on athletics carnival day and wins her race. She concludes: 'Wearing green socks increases your chance of winning.'", root: 1, why: "'With this, therefore because of this' fallacy. Events occurring concurrently do not imply causality." },
+      { st: "s3", text: "Jai rolls a fair die 12 times and gets four 3s. He complains that the die must be biased because each number didn't come up exactly twice.", root: 2, why: "Jai expects small samples to mirror expected theoretical distributions with zero variation, ignoring the nature of randomness." }
+    ];
+    let currentScenarioIdx = 0;
+
+    function renderScenario() {
+      const sc = SCENARIOS[currentScenarioIdx];
+      document.getElementById('sorterProgress').textContent = `Scenario ${currentScenarioIdx + 1} of ${SCENARIOS.length}`;
+      document.getElementById('scStageBadge').textContent = sc.st.toUpperCase();
+      document.getElementById('scText').textContent = `"${sc.text}"`;
+      document.getElementById('scFeedback').className = "hidden text-xs p-4 rounded-xl border leading-relaxed mb-4";
+      document.querySelectorAll('.root-opt').forEach(btn => {
+        btn.classList.remove('border-emerald-500', 'bg-emerald-50', 'border-rose-500', 'bg-rose-50');
+      });
+    }
+
+    function checkRoot(selectedRoot) {
+      const sc = SCENARIOS[currentScenarioIdx];
+      const isCorrect = (selectedRoot === sc.root);
+      const fb = document.getElementById('scFeedback');
+
+      const rootNames = [
+        "Root 1: Not considering everything that could happen (Sample Space failure)",
+        "Root 2: Personal beliefs & preferences drive predictions (Affective thinking)",
+        "Root 3: Expecting the past to balance the future ('Law of Averages' / Negative Recency)",
+        "Root 4: Comparing amounts, not proportions (Additive whole-number thinking)"
+      ];
+
+      fb.className = `text-xs p-4 rounded-xl border leading-relaxed mb-4 ${isCorrect ? 'bg-emerald-50 border-emerald-300 text-emerald-950' : 'bg-rose-50 border-rose-300 text-rose-950'}`;
+      fb.innerHTML = `
+        <div class="font-bold text-sm mb-1">${isCorrect ? '✓ Exact Diagnosis!' : '✗ Diagnostic Re-evaluation Needed'}</div>
+        <p class="mb-2"><strong>Target Root:</strong> ${rootNames[sc.root]}</p>
+        <p class="mb-2">${sc.why}</p>
+        <div class="text-[11px] pt-2 border-t border-current opacity-90">
+          <strong>Teacher Coaching Question:</strong> Ground intervention by asking the student to list or show the entire sample space first, or test the scenario with real concrete trials.
+        </div>
+      `;
+    }
+
+    function nextScenario() {
+      currentScenarioIdx = (currentScenarioIdx + 1) % SCENARIOS.length;
+      renderScenario();
+    }
+    function prevScenario() {
+      currentScenarioIdx = (currentScenarioIdx - 1 + SCENARIOS.length) % SCENARIOS.length;
+      renderScenario();
+    }
+
+    /* ==========================================================
+       4. TASK MAKEOVER STUDIO & 5 PEDAGOGICAL MOVES
+       ========================================================== */
+    const MAKEOVERS = {
+      es1: {
+        stage: "Early Stage 1 Data & Chance Foundations",
+        wmFocus: ["Exploring and connecting", "Communicating", "Reasoning"],
+        before: {
+          title: "Closed Drill: Bag Colouring Worksheet",
+          task: "Colour 3 cubes red and 2 cubes blue on the worksheet page.",
+          limitations: [
+            "Passive execution; zero prediction or conjecture",
+            "No exploration of 'Could it be...?' or 'Why couldn't it be...?'",
+            "Fails to establish what is certain versus not certain"
+          ]
+        },
+        after: {
+          title: "Makeover: The Mystery Bag Investigation",
+          task: "\"Here is a feely bag with red and blue cubes. If I reach inside and take one out without looking, could it be red? Could it be blue? Could it be green? Why couldn't it be green?\" Students predict, test by drawing cubes, and tally on an object display.",
+          enabling: "Begin with a bag containing only red cubes so 'certain' is physically experienced.",
+          extending: "\"How could we change the bag so that taking a blue cube is impossible?\"",
+          listenFor: "'It could be red because there are red ones in there'; 'It can't be green because there aren't any!'; will happen, might happen, won't happen."
+        }
+      },
+      s1: {
+        stage: "Stage 1 Chance (MA1-CHAN-01)",
+        wmFocus: ["Reasoning about relations", "Communicating"],
+        before: {
+          title: "Closed Drill: Binary Certainty Worksheet",
+          task: "Will it happen? Circle YES or NO: 'It will rain tomorrow.'",
+          limitations: [
+            "Forces absolute certainty onto genuine chance events",
+            "Silences intermediate language ('might', 'possible', 'likely')",
+            "No comparative reasoning between multiple events"
+          ]
+        },
+        after: {
+          title: "Makeover: The Likelihood Clothesline",
+          task: "\"Place these four cards along our string from 'Won't Happen' to 'Will Happen': (1) It will rain today; (2) We will have lunch; (3) A dinosaur will walk into class; (4) You will see a bird at recess. Which is more likely? Explain your reasoning to your partner.\"",
+          enabling: "Compare just two events at a time (e.g. having lunch vs seeing a dinosaur).",
+          extending: "\"Can you create a brand new classroom event that is unlikely, but definitely not impossible?\"",
+          listenFor: "Students using 'unlikely but possible'; justifying order using personal experience and logical deduction rather than wishes."
+        }
+      },
+      s2: {
+        stage: "Stage 2 Chance (MA2-CHAN-01)",
+        wmFocus: ["Probabilistic reasoning", "Exploring and connecting"],
+        before: {
+          title: "Closed Drill: Isolated Spinner Tally",
+          task: "Spin this 4-colour spinner 20 times and tally your results.",
+          limitations: [
+            "Procedural tally drill without prior prediction",
+            "No comparison between predicted expectation and actual outcomes",
+            "Conducted once, masking natural trial-to-trial variation"
+          ]
+        },
+        after: {
+          title: "Makeover: The Predict-Test-Combine Inquiry",
+          task: "\"Look at this fair 4-colour spinner. Predict how many reds you will get in 20 spins. Spin 20 times and compare. Now do another 20 spins! Why didn't you get the exact same number of reds? What happens if we combine all 25 students' results across our whole class?\"",
+          enabling: "Start with 10 tosses of a fair coin.",
+          extending: "\"Design a spinner where red would be expected to appear approximately 10 times in 20 spins.\"",
+          listenFor: "'About 5 reds'; 'Close but not exact because it's random'; recognising that combining class data brings the observed fraction closer to one-quarter (25%)."
+        }
+      },
+      s3: {
+        stage: "Stage 3 Chance (MA3-CHAN-01)",
+        wmFocus: ["Choosing and applying techniques", "Communicating", "Reasoning"],
+        before: {
+          title: "Closed Drill: Single Fraction Calculation",
+          task: "What is the probability of spinning green on this spinner? [Diagram shows half green]. Answer: 1/2.",
+          limitations: [
+            "Single isolated calculation; one answer",
+            "Zero empirical testing or comparison with frequency",
+            "Fails to address fairness or the effect of sample size"
+          ]
+        },
+        after: {
+          title: "Makeover: The Fair Carnival Game Challenge",
+          task: "\"This spinner is half green, with red, grey, and blue sharing the other half equally. Player A wins on Green; Player B wins on any other colour. Is this game fair? Predict outcomes for 12 spins and for 600 spins. Use the digital simulator to test both. Explain why the 600-spin experiment looks so much smoother than the 12-spin experiment.\"",
+          enabling: "Use a spinner split into two equal halves (1/2 vs 1/2) first.",
+          extending: "\"Redesign the game rules so that three players each have an equally fair chance of winning using this spinner.\"",
+          listenFor: "Fractions summing to 1 (3/6 + 1/6 + 1/6 + 1/6 = 1); distinguishing observed frequency count from 1/2 probability; articulating that large numbers of trials minimize experimental wobble."
+        }
+      }
+    };
+
+    function renderMakeover(key) {
+      const mo = MAKEOVERS[key];
+      const card = document.getElementById('makeoverCard');
+      card.innerHTML = `
+        <div class="flex items-center justify-between mb-4 pb-2 border-b border-[#D1D2D4]">
+          <span class="text-xs font-bold uppercase tracking-wider text-[#0D2C6B]">${mo.stage}</span>
+          <div class="flex flex-wrap gap-1">
+            ${mo.wmFocus.map(f => `<span class="px-2 py-0.5 bg-blue-100 text-[#0D2C6B] text-[10px] font-bold rounded">${f}</span>`).join('')}
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 items-start">
+          <!-- BEFORE -->
+          <div class="bg-white p-4 rounded-xl border border-red-200 shadow-sm">
+            <div class="flex items-center space-x-2 text-rose-700 font-bold text-xs uppercase mb-2">
+              <i data-lucide="x-circle" class="w-4 h-4"></i>
+              <span>Before: Closed Procedural Drill</span>
+            </div>
+            <h5 class="font-black text-sm text-[#0D2C6B] mb-2">${mo.before.title}</h5>
+            <div class="p-3 bg-rose-50/50 rounded-lg text-xs font-mono-math text-[#231F20] mb-3 border border-rose-100">
+              ${mo.before.task}
+            </div>
+            <span class="text-[11px] font-bold text-[#4C4C4E] block mb-1">Pedagogical Limitations:</span>
+            <ul class="text-xs text-rose-950 space-y-1 list-disc list-inside">
+              ${mo.before.limitations.map(l => `<li>${l}</li>`).join('')}
+            </ul>
+          </div>
+
+          <!-- AFTER -->
+          <div class="bg-white p-4 rounded-xl border border-emerald-300 shadow-sm">
+            <div class="flex items-center space-x-2 text-emerald-700 font-bold text-xs uppercase mb-2">
+              <i data-lucide="check-circle" class="w-4 h-4"></i>
+              <span>After: Elevated Working Mathematically Inquiries</span>
+            </div>
+            <h5 class="font-black text-sm text-[#0D2C6B] mb-2">${mo.after.title}</h5>
+            <div class="p-3 bg-emerald-50/50 rounded-lg text-xs font-medium text-[#231F20] mb-3 border border-emerald-100 leading-relaxed">
+              ${mo.after.task}
+            </div>
+            <div class="space-y-2 text-xs">
+              <div class="p-2 bg-slate-50 rounded border border-slate-200">
+                <strong class="text-[#0D2C6B]">Enabling Prompt:</strong> ${mo.after.enabling}
+              </div>
+              <div class="p-2 bg-slate-50 rounded border border-slate-200">
+                <strong class="text-[#188296]">Extending Prompt:</strong> ${mo.after.extending}
+              </div>
+              <div class="p-2 bg-blue-50/60 rounded border border-blue-200 text-[#0D2C6B]">
+                <strong>What to Listen For:</strong> ${mo.after.listenFor}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    const MOVES_DATA = [
+      {
+        name: "1. Who is Correct? (Misconception Debate)",
+        purpose: "Presents two competing student claims to spark critical evaluation and mathematical justification.",
+        s1: "\"Ari says taking a red cube from 9 blue and 1 red is impossible. Bea says it is unlikely. Who is correct? Explain to your partner.\"",
+        s2: "\"After 6 heads in a row, Tom bets tails because it's 'due'. Mei says heads and tails still have the same chance. Who is correct? Why?\"",
+        s3: "\"Kai rolled a 3 four times in 12 rolls and says the probability of rolling a 3 is 4/12. Jess says the probability is 1/6. Who is correct?\""
+      },
+      {
+        name: "2. Same and Different (Structural Comparison)",
+        purpose: "Forces attention on structural attributes rather than surface appearance.",
+        s1: "\"What is the same and what is different about the words 'unlikely' and 'impossible'? Can you give an example of each?\"",
+        s2: "\"What is the same and what is different between tossing a coin and rolling a standard 6-sided die?\"",
+        s3: "\"What is the same and what is different between an outcome's frequency and an outcome's probability?\""
+      },
+      {
+        name: "3. Always, Sometimes, Never (Generalisation)",
+        purpose: "Prompts students to test edge cases and seek mathematical counterexamples.",
+        s1: "\"If an event is unlikely, it will never happen. Always, sometimes, or never true?\"",
+        s2: "\"If you spin a fair 4-quarter spinner 20 times, you will get exactly 5 reds. Always, sometimes, or never true?\"",
+        s3: "\"As you increase the number of experimental trials, the observed results get closer to the theoretical expected probability. Always, sometimes, or never?\""
+      },
+      {
+        name: "4. Open It Up (Reversible Thinking & Design)",
+        purpose: "Flips procedural calculation into creative mathematical engineering.",
+        s1: "\"Design a bag of cubes where drawing a red cube is likely, but definitely not certain.\"",
+        s2: "\"How many different outfits can you make from 3 T-shirts and 2 pairs of shorts? How do you know for sure you haven't missed any?\"",
+        s3: "\"Design a spinner where the probability of landing on red is exactly 3/8. Find at least two completely different spinner layouts.\""
+      },
+      {
+        name: "5. Convince Me (Rigorous Justification)",
+        purpose: "Moves learners past asserting an answer to formulating coherent proof.",
+        s1: "\"Convince me that it is possible to see a bird at recess, but impossible to see a live Tyrannosaurus Rex.\"",
+        s2: "\"Convince me that removing an apple from a bag of apples and oranges changes the chance of drawing an orange next time.\"",
+        s3: "\"Convince me that the sum of the probabilities of all possible outcomes in any chance experiment must equal exactly 1.\""
+      }
+    ];
+
+    function renderMove(idx) {
+      const m = MOVES_DATA[idx];
+      const disp = document.getElementById('moveDisplay');
+      disp.innerHTML = `
+        <div class="flex items-center justify-between mb-3 pb-2 border-b border-[#D1D2D4]">
+          <h5 class="font-black text-sm text-[#0D2C6B]">${m.name}</h5>
+          <span class="text-xs text-[#188296] font-bold">Classroom Moves</span>
+        </div>
+        <p class="text-xs text-[#4C4C4E] mb-4 italic">${m.purpose}</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-[#0D2C6B] block mb-1">Stage 1 Classroom Prompt</span>
+            <p class="text-[#231F20] leading-relaxed">${m.s1}</p>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-[#0D2C6B] block mb-1">Stage 2 Classroom Prompt</span>
+            <p class="text-[#231F20] leading-relaxed">${m.s2}</p>
+          </div>
+          <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+            <span class="font-bold text-[#0D2C6B] block mb-1">Stage 3 Classroom Prompt</span>
+            <p class="text-[#231F20] leading-relaxed">${m.s3}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    /* ==========================================================
+       5. MASTERY CHECKPOINT & GRADING
+       ========================================================== */
+    const QUIZ_QUESTIONS = [
+      {
+        q: "1. According to the NESA Mathematics K–10 (2022) syllabus, how is the language of chance first introduced in Early Stage 1?",
+        opts: [
+          "Through a designated standalone Chance focus area",
+          "Through discussions of data collected and question starters like 'Could it be...?'",
+          "By assigning fraction values on a 0 to 1 number line",
+          "It is strictly deferred until Year 3"
+        ],
+        ans: 1,
+        feedback: "Correct. There are no standalone Chance outcomes in Kindergarten; chance vocabulary develops through discussing data collections (MAE-DATA-01)."
+      },
+      {
+        q: "2. In Stage 1, a student insists that taking 1 red cube from a bag containing 9 blue and 1 red is 'impossible'. What does NESA Teaching Advice identify regarding this misconception?",
+        opts: [
+          "The student is correct because 1 out of 10 is statistically insignificant",
+          "Students often interpret events with a low probability as being impossible; determining the sample space is the essential first step",
+          "Students must immediately calculate the decimal equivalent 0.1 to understand it",
+          "The student should only work with 50-50 ratios until Stage 3"
+        ],
+        ans: 1,
+        feedback: "Correct. NESA notes that students frequently confuse low-probability events with impossibility. As long as red exists in the sample space, it is possible."
+      },
+      {
+        q: "3. A fair coin lands on heads 6 times in a row. A Stage 2 student insists tails is 'due' next. How should a teacher address this?",
+        opts: [
+          "Agree with the student because the 'law of averages' requires balance over 10 tosses",
+          "Explain that coin tosses are independent events; the coin does not remember the past, so the probability remains 1/2",
+          "Tell the student that tails will only occur after 10 heads",
+          "Change the coin to a 6-sided die"
+        ],
+        ans: 1,
+        feedback: "Correct. The 'law of averages' is a common fallacy. Independent events have no memory; each coin toss has an identical 1/2 probability."
+      },
+      {
+        q: "4. Why does the Stage 2 syllabus prioritize random generators with equally likely outcomes before introducing unequal spinners?",
+        opts: [
+          "Unequal spinners cannot be manufactured accurately",
+          "Equal generators establish expectations and trial variation before introducing the proportional fraction calculations required for unequal sectors in Stage 3",
+          "Equally likely outcomes always mean a 50-50 chance",
+          "Dice and coins do not involve numbers"
+        ],
+        ans: 1,
+        feedback: "Correct. Stage 2 Chance focuses on generators with equally likely outcomes (coins, dice, equal spinners). Unequal area spinners are introduced in Stage 3."
+      },
+      {
+        q: "5. In Stage 3, what is the crucial mathematical distinction between 'frequency' and 'probability'?",
+        opts: [
+          "They are synonymous terms that can be used interchangeably",
+          "Frequency is the actual count of times an outcome occurs in an experiment; probability is the numerical measure of likelihood between 0 and 1",
+          "Frequency is always a fraction and probability is always a whole number",
+          "Frequency applies to coins while probability applies to dice"
+        ],
+        ans: 1,
+        feedback: "Correct. Frequency is an observed count (e.g. 6 heads in 10 tosses); probability is the quantified likelihood (e.g. 1/2)."
+      }
+    ];
+
+    function renderQuiz() {
+      const container = document.getElementById('quizContainer');
+      let html = '';
+      QUIZ_QUESTIONS.forEach((q, qIdx) => {
+        html += `
+          <div class="bg-slate-50 p-4 sm:p-5 rounded-xl border border-[#D1D2D4] space-y-3">
+            <h5 class="text-xs sm:text-sm font-black text-[#0D2C6B]">${q.q}</h5>
+            <div class="space-y-1.5">
+              ${q.opts.map((opt, oIdx) => `
+                <label class="flex items-start space-x-2.5 p-2 rounded-lg hover:bg-white text-xs text-[#231F20] cursor-pointer transition-colors">
+                  <input type="radio" name="quiz_q${qIdx}" value="${oIdx}" class="mt-0.5 text-[#0D2C6B] focus:ring-[#188296]">
+                  <span>${opt}</span>
+                </label>
+              `).join('')}
+            </div>
+            <div id="quizFb_${qIdx}" class="hidden text-xs p-3 rounded-lg border leading-relaxed"></div>
+          </div>
+        `;
+      });
+      container.innerHTML = html;
+    }
+
+    function gradeQuiz() {
+      let score = 0;
+      let allAnswered = true;
+
+      QUIZ_QUESTIONS.forEach((q, qIdx) => {
+        const selected = document.querySelector(`input[name="quiz_q${qIdx}"]:checked`);
+        const fbBox = document.getElementById(`quizFb_${qIdx}`);
+        fbBox.className = "text-xs p-3 rounded-lg border leading-relaxed";
+
+        if (!selected) {
+          allAnswered = false;
+          fbBox.className += " bg-amber-50 border-amber-200 text-amber-900";
+          fbBox.textContent = "Please select an answer for this scenario.";
+          fbBox.classList.remove('hidden');
+          return;
+        }
+
+        const userAns = parseInt(selected.value);
+        if (userAns === q.ans) {
+          score++;
+          fbBox.className += " bg-emerald-50 border-emerald-300 text-emerald-950";
+          fbBox.innerHTML = `<strong>✓ Correct:</strong> ${q.feedback}`;
+        } else {
+          fbBox.className += " bg-rose-50 border-rose-300 text-rose-950";
+          fbBox.innerHTML = `<strong>✗ Incorrect:</strong> ${q.feedback}`;
+        }
+        fbBox.classList.remove('hidden');
+      });
+
+      if (!allAnswered) {
+        document.getElementById('quizResultSummary').innerHTML = `<span class="text-amber-700 font-bold">Please answer all 5 questions before submitting.</span>`;
+        return;
+      }
+
+      const pass = (score >= 4); // 80% pass mark (4 of 5)
+      const resSummary = document.getElementById('quizResultSummary');
+      resSummary.innerHTML = `<span class="font-bold text-sm ${pass ? 'text-emerald-700' : 'text-rose-700'}">Checkpoint Score: ${score} / 5 (${(score/5*100)}%) ${pass ? '— Mastery Achieved!' : '— Please review and retry.'}</span>`;
+
+      if (pass) {
+        document.getElementById('takeawaysPanel').classList.remove('hidden');
+        document.getElementById('takeawaysPanel').scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+
+    /* ==========================================================
+       6. UI SWITCHERS & INITIALISATION
+       ========================================================== */
+    function switchStage(stageKey) {
+      document.querySelectorAll('.stage-tab').forEach(b => {
+        b.className = "stage-tab px-4 py-2 rounded-lg font-bold text-sm bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all";
+      });
+      document.getElementById(`tab-${stageKey}`).className = "stage-tab px-4 py-2 rounded-lg font-bold text-sm bg-[#0D2C6B] text-white shadow-sm transition-all";
+
+      const data = STAGE_DATA[stageKey];
+      const panel = document.getElementById('stagePanel');
+      panel.innerHTML = `
+        <div class="flex flex-wrap items-center justify-between mb-3 pb-2 border-b border-[#D1D2D4]">
+          <h4 class="font-black text-base text-[#0D2C6B]">${data.title}</h4>
+          <span class="text-xs px-2.5 py-0.5 rounded font-mono-math bg-white border border-[#D1D2D4] text-[#188296] font-bold">Syllabus Trajectory</span>
+        </div>
+        <p class="text-xs text-[#231F20] leading-relaxed mb-4 font-medium">${data.lead}</p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs mb-4">
+          <div class="bg-white p-3.5 rounded-xl border border-[#D1D2D4]">
+            <span class="font-bold uppercase text-[#188296] text-[10px] tracking-wider block mb-1">Formal Syllabus Outcomes</span>
+            <ul class="space-y-1">
+              ${data.outcomes.map(o => `<li><strong class="font-mono-math text-[#0D2C6B]">${o.code}:</strong> ${o.text}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="bg-white p-3.5 rounded-xl border border-[#D1D2D4]">
+            <span class="font-bold uppercase text-[#188296] text-[10px] tracking-wider block mb-1">Working Mathematically Focus (MAO-WM-01)</span>
+            <p class="text-[#4C4C4E] leading-relaxed">${data.wm}</p>
+          </div>
+        </div>
+
+        <div class="bg-white p-3.5 rounded-xl border border-[#D1D2D4] mb-3 text-xs">
+          <span class="font-bold uppercase text-[#0D2C6B] text-[10px] tracking-wider block mb-1">Key Developmental Milestones</span>
+          <ul class="space-y-1 text-[#4C4C4E] list-disc list-inside">
+            ${data.milestones.map(m => `<li>${m}</li>`).join('')}
+          </ul>
+        </div>
+
+        <div class="p-3 bg-amber-50 rounded-xl border border-amber-200 text-xs text-amber-950 flex items-start space-x-2">
+          <i data-lucide="bell" class="w-4 h-4 text-amber-600 flex-shrink-0 mt-0.5"></i>
+          <div><strong class="text-amber-900">NESA Teaching Advice Alert:</strong> ${data.nesaAlert}</div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function renderBigIdeas() {
+      const btnContainer = document.getElementById('bigIdeaButtons');
+      btnContainer.innerHTML = BIG_IDEAS.map((idea, idx) => `
+        <button onclick="selectBigIdea(${idx})" id="biBtn_${idx}" class="bi-pill p-2 text-center rounded-lg text-xs font-bold ${idx === 0 ? 'bg-[#188296] text-white shadow-sm' : 'bg-slate-100 text-[#4C4C4E] hover:bg-slate-200'} transition-all">
+          ${idea.title}
+        </button>
+      `).join('');
+      selectBigIdea(0);
+    }
+
+    function selectBigIdea(idx) {
+      document.querySelectorAll('.bi-pill').forEach((b, i) => {
+        b.className = `bi-pill p-2 text-center rounded-lg text-xs font-bold ${i === idx ? 'bg-[#188296] text-white shadow-sm' : 'bg-slate-100 text-[#4C4C4E] hover:bg-slate-200'} transition-all`;
+      });
+      const idea = BIG_IDEAS[idx];
+      const disp = document.getElementById('bigIdeaDisplay');
+      disp.innerHTML = `
+        <div class="flex items-center justify-between mb-2">
+          <h5 class="font-black text-sm text-[#0D2C6B]">${idea.title}</h5>
+          <span class="text-[11px] text-[#188296] font-bold">K–6 Trajectory</span>
+        </div>
+        <p class="text-xs text-[#4C4C4E] mb-4 italic leading-relaxed">${idea.desc}</p>
+        
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+            <span class="text-[10px] font-mono-math font-bold text-[#0D2C6B] block uppercase mb-1">Early Stage 1</span>
+            <p class="text-[#231F20]">${idea.steps.es1}</p>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+            <span class="text-[10px] font-mono-math font-bold text-[#0D2C6B] block uppercase mb-1">Stage 1</span>
+            <p class="text-[#231F20]">${idea.steps.s1}</p>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+            <span class="text-[10px] font-mono-math font-bold text-[#0D2C6B] block uppercase mb-1">Stage 2</span>
+            <p class="text-[#231F20]">${idea.steps.s2}</p>
+          </div>
+          <div class="bg-slate-50 p-3 rounded-lg border border-slate-200">
+            <span class="text-[10px] font-mono-math font-bold text-[#0D2C6B] block uppercase mb-1">Stage 3</span>
+            <p class="text-[#231F20]">${idea.steps.s3}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function switchTool(toolId) {
+      document.querySelectorAll('.tool-content').forEach(el => el.classList.add('hidden'));
+      document.querySelectorAll('[id^="toolbtn-"]').forEach(btn => {
+        btn.className = "px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all";
+      });
+      document.getElementById(`tool-${toolId}`).classList.remove('hidden');
+      document.getElementById(`toolbtn-${toolId}`).className = "px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#0D2C6B] text-white shadow-sm transition-all";
+
+      if (toolId === "couldit") initCouldIt();
+      if (toolId === "bag") updateBagDisplay();
+      if (toolId === "spinner") renderSpinnerSVG(null);
+      if (toolId === "trials") resetTrials();
+    }
+
+    function switchMakeover(stageKey) {
+      document.querySelectorAll('.mo-btn').forEach(b => {
+        b.className = "mo-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 transition-all";
+      });
+      document.getElementById(`mobtn-${stageKey}`).className = "mo-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-[#0D2C6B] text-white shadow-sm transition-all";
+      renderMakeover(stageKey);
+    }
+
+    function switchMove(idx) {
+      document.querySelectorAll('.move-pill').forEach((b, i) => {
+        b.className = `move-pill p-2 text-center rounded-lg text-xs font-bold ${i === idx ? 'bg-[#0D2C6B] text-white shadow-sm' : 'bg-slate-100 text-[#4C4C4E] hover:bg-slate-200'} transition-all`;
+      });
+      renderMove(idx);
+    }
+
+    // Window load initialisation
+    window.addEventListener('DOMContentLoaded', () => {
+      lucide.createIcons();
+
+      // Mobile Menu Toggle
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const sidebar = document.getElementById('sidebarNav');
+      if (mobileBtn && sidebar) {
+        mobileBtn.addEventListener('click', () => {
+          sidebar.classList.toggle('hidden');
+        });
+      }
+
+      // Initialise Sections
+      switchStage('es1');
+      renderBigIdeas();
+
+      // Tool 1 listeners
+      wireCouldItButtons();
+
+      // Tool 2 listeners
+      document.getElementById('bgR').oninput = updateBagDisplay;
+      document.getElementById('bgB').oninput = updateBagDisplay;
+      document.getElementById('bg1').onclick = () => sampleBag(1);
+      document.getElementById('bg20').onclick = () => sampleBag(20);
+      document.getElementById('bgClear').onclick = () => { bgResults = []; updateBagDisplay(); };
+
+      // Tool 3 listeners
+      document.getElementById('spGo').onclick = runSpinner;
+      document.getElementById('spReset').onclick = () => {
+        spRuns = [];
+        renderSpinnerSVG(null);
+        document.getElementById('spRead').innerHTML = '<em>History reset. Enter a prediction and spin!</em>';
+        renderSpinnerHistory();
+      };
+
+      // Tool 4 listeners
+      document.getElementById('trG').onchange = resetTrials;
+      document.getElementById('trReset').onclick = resetTrials;
+      document.querySelectorAll('.tr-btn').forEach(btn => {
+        btn.onclick = () => addTrials(parseInt(btn.dataset.n));
+      });
+
+      // Misconceptions
+      renderScenario();
+
+      // Makeovers & Moves
+      switchMakeover('es1');
+      switchMove(0);
+
+      // Quiz
+      renderQuiz();
+    });
+  </script>
+</body>
+</html>
