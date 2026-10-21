@@ -1,0 +1,702 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Data (K–6) | CEDoW Professional Learning</title>
+  
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Lato:wght@300;400;700;900&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cedow: {
+              blue: '#0D2C6B',
+              aqua: '#188296',
+              gold: '#FBAF3F',
+              charcoal: '#4C4C4E',
+              silver: '#D1D2D4',
+              black: '#231F20',
+              light: '#F4F6F9',
+              white: '#FFFFFF'
+            }
+          },
+          fontFamily: {
+            lato: ['Lato', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body { font-family: 'Lato', sans-serif; }
+    .math-notation { font-family: 'Fira Code', monospace; font-size: 0.9em; padding: 0.1em 0.3em; background-color: #D1D2D4; border-radius: 4px; color: #0D2C6B; }
+    
+    /* Interactive Tools Specific Styles */
+    .tool-container { background: #FFFFFF; border: 1px solid #D1D2D4; border-radius: 8px; padding: 1.5rem; margin-bottom: 1.5rem; }
+    .tool-controls { display: flex; gap: 0.5rem; margin-bottom: 1rem; align-items: center; flex-wrap: wrap; }
+    .tool-btn { padding: 0.5rem 1rem; border-radius: 4px; border: 1px solid #188296; color: #188296; font-weight: 700; cursor: pointer; transition: all 0.2s; background: transparent; }
+    .tool-btn:hover { background: #188296; color: #FFFFFF; }
+    .tool-btn.active { background: #188296; color: #FFFFFF; }
+    .tool-btn:disabled { border-color: #D1D2D4; color: #D1D2D4; cursor: not-allowed; background: transparent; }
+    .svg-container svg { width: 100%; height: auto; max-height: 400px; }
+    .feedback-pill { display: inline-block; padding: 0.25rem 0.75rem; border-radius: 9999px; font-size: 0.875rem; font-weight: 700; }
+    .feedback-pill.success { background-color: #188296; color: white; }
+    .feedback-pill.error { background-color: #4C4C4E; color: white; }
+    
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar { width: 8px; }
+    ::-webkit-scrollbar-track { background: #F4F6F9; }
+    ::-webkit-scrollbar-thumb { background: #D1D2D4; border-radius: 4px; }
+    ::-webkit-scrollbar-thumb:hover { background: #4C4C4E; }
+  </style>
+</head>
+<body class="bg-cedow-light text-cedow-black h-screen overflow-hidden flex">
+
+  <!-- Sidebar Navigation -->
+  <aside class="w-72 bg-cedow-blue text-cedow-white flex flex-col h-full shadow-xl z-20 shrink-0">
+    <div class="p-6 border-b border-cedow-aqua/30">
+      <h1 class="text-2xl font-black tracking-tight text-cedow-white leading-tight">Mathematics K–10</h1>
+      <h2 class="text-sm font-bold text-cedow-gold uppercase tracking-wider mt-1">Focus Area 9: Data</h2>
+      <p class="text-xs text-cedow-silver mt-2">Professional Learning Module</p>
+    </div>
+    <nav class="flex-1 overflow-y-auto py-4">
+      <ul class="space-y-1 px-3" id="nav-links">
+        <li><button data-target="section-1" class="nav-btn w-full text-left px-4 py-3 rounded-md transition-colors bg-cedow-aqua text-white font-bold flex items-center gap-3"><i data-lucide="trending-up" class="w-5 h-5"></i> 1. Vertical Trajectory</button></li>
+        <li><button data-target="section-2" class="nav-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-cedow-aqua/50 text-cedow-silver hover:text-white font-bold flex items-center gap-3"><i data-lucide="alert-triangle" class="w-5 h-5"></i> 2. Conceptual Shifts</button></li>
+        <li><button data-target="section-3" class="nav-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-cedow-aqua/50 text-cedow-silver hover:text-white font-bold flex items-center gap-3"><i data-lucide="monitor-play" class="w-5 h-5"></i> 3. Interactive Tool Lab</button></li>
+        <li><button data-target="section-4" class="nav-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-cedow-aqua/50 text-cedow-silver hover:text-white font-bold flex items-center gap-3"><i data-lucide="stethoscope" class="w-5 h-5"></i> 4. Diagnostic Clinic</button></li>
+        <li><button data-target="section-5" class="nav-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-cedow-aqua/50 text-cedow-silver hover:text-white font-bold flex items-center gap-3"><i data-lucide="wrench" class="w-5 h-5"></i> 5. Task Makeover Studio</button></li>
+        <li><button data-target="section-6" class="nav-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-cedow-aqua/50 text-cedow-silver hover:text-white font-bold flex items-center gap-3"><i data-lucide="check-circle" class="w-5 h-5"></i> 6. Mastery Checkpoint</button></li>
+        <li><button data-target="section-7" class="nav-btn w-full text-left px-4 py-3 rounded-md transition-colors hover:bg-cedow-aqua/50 text-cedow-silver hover:text-white font-bold flex items-center gap-3"><i data-lucide="download-cloud" class="w-5 h-5"></i> 7. Deployment Guide</button></li>
+      </ul>
+    </nav>
+    <div class="p-6 border-t border-cedow-aqua/30 text-xs text-cedow-silver text-center">
+      Catholic Education Diocese of Wollongong
+    </div>
+  </aside>
+
+  <!-- Main Content -->
+  <main class="flex-1 h-full overflow-y-auto scroll-smooth pb-24">
+    <div class="max-w-5xl mx-auto px-10 py-12">
+      
+      <!-- Section 1 -->
+      <section id="section-1" class="content-section block">
+        <div class="mb-8">
+          <h2 class="text-3xl font-black text-cedow-blue mb-2">1. The Vertical Trajectory & Big Ideas</h2>
+          <p class="text-cedow-charcoal text-lg">Explore how data concepts build across the stages, from sorting physical objects to identifying bias in statistical media. All content links directly to Working Mathematically (<span class="math-notation">MAO-WM-01</span>).</p>
+        </div>
+
+        <!-- Interactive Stage Tabs -->
+        <div class="bg-white rounded-lg border border-cedow-silver shadow-sm overflow-hidden mb-8">
+          <div class="flex border-b border-cedow-silver bg-cedow-light">
+            <button class="stage-tab flex-1 py-4 font-bold text-cedow-blue border-b-4 border-cedow-gold bg-white" data-stage="es1">Early Stage 1</button>
+            <button class="stage-tab flex-1 py-4 font-bold text-cedow-charcoal border-b-4 border-transparent hover:bg-white" data-stage="s1">Stage 1</button>
+            <button class="stage-tab flex-1 py-4 font-bold text-cedow-charcoal border-b-4 border-transparent hover:bg-white" data-stage="s2">Stage 2</button>
+            <button class="stage-tab flex-1 py-4 font-bold text-cedow-charcoal border-b-4 border-transparent hover:bg-white" data-stage="s3">Stage 3</button>
+          </div>
+          <div class="p-8" id="stage-content-area">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <h3 class="text-2xl font-bold text-cedow-blue mb-4">Big Ideas Matrix</h3>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="bg-white p-5 rounded-lg border border-cedow-silver border-l-4 border-l-cedow-aqua shadow-sm">
+            <h4 class="font-bold text-cedow-blue mb-2">Collecting & Organising</h4>
+            <p class="text-sm text-cedow-charcoal">From objects grouped by characteristics (ES1), to tally marks and lists (S1), to refined recording sheets (S2), and tabulating with spreadsheets (S3).</p>
+          </div>
+          <div class="bg-white p-5 rounded-lg border border-cedow-silver border-l-4 border-l-cedow-gold shadow-sm">
+            <h4 class="font-bold text-cedow-blue mb-2">A Display Represents Data</h4>
+            <p class="text-sm text-cedow-charcoal">From physical objects as data (ES1), to one-to-one picture graphs (S1), column graphs and dot plots with many-to-one scales (S2), to line graphs and timelines (S3).</p>
+          </div>
+          <div class="bg-white p-5 rounded-lg border border-cedow-silver border-l-4 border-l-cedow-blue shadow-sm">
+            <h4 class="font-bold text-cedow-blue mb-2">Interpret: Here, Hidden, Beyond</h4>
+            <p class="text-sm text-cedow-charcoal">Moving from reading the data explicitly ("Which has the most?"), to inferring meaning ("What does this tell us?"), to generalising beyond ("Would another class be the same?").</p>
+          </div>
+          <div class="bg-white p-5 rounded-lg border border-cedow-silver border-l-4 border-l-cedow-charcoal shadow-sm">
+            <h4 class="font-bold text-cedow-blue mb-2">Critical Reading</h4>
+            <p class="text-sm text-cedow-charcoal">From comparing by count rather than looks (ES1), to identifying misleading spacing (S1), evaluating media displays (S2), and recognising bias and broken axes (S3).</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 2 -->
+      <section id="section-2" class="content-section hidden">
+        <div class="mb-8">
+          <h2 class="text-3xl font-black text-cedow-blue mb-2">2. Key Conceptual Shifts & Pedagogical Traps</h2>
+          <p class="text-cedow-charcoal text-lg">Research-informed deep dives into how student thinking must evolve, and common instructional traps identified by NESA Teaching Advice.</p>
+        </div>
+
+        <div class="space-y-6">
+          <div class="bg-white rounded-lg border border-cedow-silver shadow-sm p-6 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-cedow-gold"></div>
+            <h3 class="text-xl font-bold text-cedow-blue mb-2">Early Stage 1 &rarr; Stage 1</h3>
+            <p class="text-cedow-charcoal mb-4"><strong>Shift:</strong> From physical objects arranged into displays, to symbols that abstractly represent a data value. Gathering moves to structured tallying.</p>
+            <div class="bg-cedow-light p-4 rounded text-sm text-cedow-black">
+              <strong class="text-cedow-aqua flex items-center gap-2 mb-1"><i data-lucide="alert-circle" class="w-4 h-4"></i> Pedagogical Trap</strong>
+              Students judging quantity by length/area rather than count. For example, believing that larger banana symbols mean bananas are more popular, even if there are fewer of them. Always enforce: <em>baseline, equal spacing, same-sized symbols.</em>
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg border border-cedow-silver shadow-sm p-6 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-cedow-aqua"></div>
+            <h3 class="text-xl font-bold text-cedow-blue mb-2">Stage 1 &rarr; Stage 2</h3>
+            <p class="text-cedow-charcoal mb-4"><strong>Shift:</strong> From picture graphs to column graphs/dot plots with labelled axes, equal intervals, and the introduction of <em>many-to-one scales</em>.</p>
+            <div class="bg-cedow-light p-4 rounded text-sm text-cedow-black">
+              <strong class="text-cedow-aqua flex items-center gap-2 mb-1"><i data-lucide="alert-circle" class="w-4 h-4"></i> Pedagogical Trap</strong>
+              Reading a many-to-one scale as one-to-one (e.g., reading a column reaching the third gridline as 3, when each interval represents 2). Or joining the columns of a column graph (suggesting continuous rather than discrete categorical data).
+            </div>
+          </div>
+
+          <div class="bg-white rounded-lg border border-cedow-silver shadow-sm p-6 relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-2 h-full bg-cedow-blue"></div>
+            <h3 class="text-xl font-bold text-cedow-blue mb-2">Stage 2 &rarr; Stage 3</h3>
+            <p class="text-cedow-charcoal mb-4"><strong>Shift:</strong> From discrete data to continuous data over time (line graphs and timelines), choosing appropriate displays, and identifying bias.</p>
+            <div class="bg-cedow-light p-4 rounded text-sm text-cedow-black">
+              <strong class="text-cedow-aqua flex items-center gap-2 mb-1"><i data-lucide="alert-circle" class="w-4 h-4"></i> Pedagogical Trap</strong>
+              Using line graphs for categorical data. Points between categories (e.g., between "Apples" and "Bananas") have no meaning. Line graphs should only be used where points between plotted values have meaning (e.g., temperature over time).
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 3 -->
+      <section id="section-3" class="content-section hidden">
+        <div class="mb-8">
+          <h2 class="text-3xl font-black text-cedow-blue mb-2">3. Interactive Tool Lab</h2>
+          <p class="text-cedow-charcoal text-lg">Click, drag, and interact with the runnable manipulatives below to explore data models across the K–6 continuum.</p>
+        </div>
+
+        <div class="space-y-8">
+          <!-- Sort Tool -->
+          <div class="tool-container">
+            <h3 class="text-xl font-bold text-cedow-blue mb-1">ES1: Sort, Line Up & Compare</h3>
+            <p class="text-sm text-cedow-charcoal mb-4">Spread-out groups can look bigger than they are. Lining them up lets you compare by counting.</p>
+            <div class="tool-controls">
+              <label class="font-bold text-cedow-black text-sm">Sort by:</label>
+              <select id="soBy" class="border border-cedow-silver rounded px-2 py-1 text-sm bg-white focus:outline-none focus:border-cedow-aqua">
+                <option value="c">Colour</option><option value="s">Shape</option><option value="z">Size</option>
+              </select>
+              <button id="soNew" class="tool-btn text-sm ml-2"><i data-lucide="refresh-cw" class="w-4 h-4 inline mr-1"></i> New Collection</button>
+            </div>
+            <div class="tool-controls" id="soView">
+              <button data-v="g" class="tool-btn active text-sm">Grouped</button>
+              <button data-v="l" class="tool-btn text-sm">Lined Up</button>
+            </div>
+            <div id="soPic" class="svg-container bg-cedow-light rounded border border-cedow-silver p-4 mt-4 flex justify-center"></div>
+            <div id="soRead" class="mt-4 text-sm text-cedow-black font-medium"></div>
+          </div>
+
+          <!-- Picture Graph Tool -->
+          <div class="tool-container">
+            <h3 class="text-xl font-bold text-cedow-blue mb-1">S1: Is this picture graph fair?</h3>
+            <p class="text-sm text-cedow-charcoal mb-4">Picture graphs need a baseline, equal spacing, and same-sized symbols. Find the flaw.</p>
+            <div id="pgPic" class="svg-container bg-white rounded border border-cedow-silver p-4 flex justify-center mb-4 min-h-[250px]"></div>
+            <div class="tool-controls justify-center" id="pgControls">
+              <button class="tool-btn text-sm" data-c="size">Different Size</button>
+              <button class="tool-btn text-sm" data-c="spacing">Unequal Spacing</button>
+              <button class="tool-btn text-sm" data-c="baseline">No Baseline</button>
+              <button class="tool-btn text-sm" data-c="none">It's Fair</button>
+            </div>
+            <div id="pgFb" class="mt-4 p-3 rounded text-sm hidden"></div>
+            <div class="flex justify-between items-center mt-4">
+              <button id="pgNew" class="tool-btn text-sm" disabled><i data-lucide="arrow-right" class="w-4 h-4 inline mr-1"></i> Next Graph</button>
+              <span id="pgScore" class="font-bold text-cedow-blue text-sm"></span>
+            </div>
+          </div>
+
+          <!-- Displays Tool -->
+          <div class="tool-container">
+            <h3 class="text-xl font-bold text-cedow-blue mb-1">S2: One Dataset, Several Displays</h3>
+            <p class="text-sm text-cedow-charcoal mb-4">Explore a dataset in different formats. Notice how the many-to-one scale changes the column graph.</p>
+            <div class="tool-controls" id="dsV">
+              <button data-v="t" class="tool-btn active text-sm">Tally Table</button>
+              <button data-v="d" class="tool-btn text-sm">Dot Plot</button>
+              <button data-v="c" class="tool-btn text-sm">Column Graph</button>
+            </div>
+            <div class="tool-controls mt-2" id="dsScaleRow" style="display:none;">
+              <label class="font-bold text-cedow-black text-sm">Scale:</label>
+              <select id="dsScale" class="border border-cedow-silver rounded px-2 py-1 text-sm bg-white focus:outline-none focus:border-cedow-aqua">
+                <option value="1">1 student</option>
+                <option value="2">2 students</option>
+              </select>
+            </div>
+            <div id="dsPic" class="svg-container bg-cedow-light rounded border border-cedow-silver p-4 mt-4 flex justify-center"></div>
+            <div id="dsRead" class="mt-4 text-sm text-cedow-black"></div>
+            <div class="mt-4"><button id="dsNew" class="tool-btn text-sm"><i data-lucide="refresh-cw" class="w-4 h-4 inline mr-1"></i> Randomise Data</button></div>
+          </div>
+
+          <!-- Axis Tool -->
+          <div class="tool-container">
+            <h3 class="text-xl font-bold text-cedow-blue mb-1">S3: How the broken axis changes the story</h3>
+            <p class="text-sm text-cedow-charcoal mb-4">A broken axis can exaggerate differences. Move the slider to change the starting value.</p>
+            <div class="tool-controls" id="axD">
+              <button data-d="ad" class="tool-btn active text-sm">Battery Ad</button>
+              <button data-d="cls" class="tool-btn text-sm">Side-by-Side (5A vs 5B)</button>
+            </div>
+            <div class="tool-controls mt-2 flex items-center gap-3" id="axRow">
+              <label class="font-bold text-cedow-black text-sm">Axis Starts At:</label>
+              <input type="range" id="axS" min="0" max="44" step="2" value="0" class="w-48 accent-cedow-aqua">
+              <span id="axSv" class="font-bold text-cedow-blue">0</span>
+            </div>
+            <div id="axPic" class="svg-container bg-white rounded border border-cedow-silver p-4 mt-4 flex justify-center min-h-[250px]"></div>
+            <div id="axRead" class="mt-4 text-sm text-cedow-black bg-cedow-light p-3 rounded"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 4 -->
+      <section id="section-4" class="content-section hidden">
+        <div class="mb-8">
+          <h2 class="text-3xl font-black text-cedow-blue mb-2">4. Student Diagnostic Clinic</h2>
+          <p class="text-cedow-charcoal text-lg">Read the authentic student response and select the conceptual root causing the misconception.</p>
+        </div>
+
+        <div class="bg-white border border-cedow-silver shadow-sm rounded-lg p-8">
+          <div class="flex justify-between items-center mb-6">
+            <h3 class="text-xl font-bold text-cedow-blue" id="diag-stage">Stage: --</h3>
+            <span class="bg-cedow-gold text-white font-bold py-1 px-3 rounded-full text-sm" id="diag-progress">1 / 12</span>
+          </div>
+
+          <div class="bg-cedow-light p-6 rounded-lg mb-8 border border-cedow-silver">
+            <p class="text-xl font-medium text-cedow-black italic" id="diag-scenario">"Student quote loading..."</p>
+          </div>
+
+          <h4 class="font-bold text-cedow-charcoal mb-4">Select the Root Misconception:</h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4" id="diag-options">
+            <button class="diag-btn border border-cedow-aqua rounded-md p-4 text-left hover:bg-cedow-aqua hover:text-white transition-colors text-sm font-bold" data-val="0">Comparing by appearance, not by count or scale</button>
+            <button class="diag-btn border border-cedow-aqua rounded-md p-4 text-left hover:bg-cedow-aqua hover:text-white transition-colors text-sm font-bold" data-val="1">Ignoring the scale or key</button>
+            <button class="diag-btn border border-cedow-aqua rounded-md p-4 text-left hover:bg-cedow-aqua hover:text-white transition-colors text-sm font-bold" data-val="2">A display that doesn’t suit the data</button>
+            <button class="diag-btn border border-cedow-aqua rounded-md p-4 text-left hover:bg-cedow-aqua hover:text-white transition-colors text-sm font-bold" data-val="3">Conclusions not tied to how data was collected</button>
+          </div>
+
+          <div id="diag-feedback" class="mt-6 p-4 rounded hidden border-l-4"></div>
+          <button id="diag-next" class="mt-4 bg-cedow-blue text-white px-6 py-2 rounded font-bold hover:bg-opacity-90 hidden">Next Scenario <i data-lucide="arrow-right" class="w-4 h-4 inline ml-1"></i></button>
+        </div>
+      </section>
+
+      <!-- Section 5 -->
+      <section id="section-5" class="content-section hidden">
+        <div class="mb-8">
+          <h2 class="text-3xl font-black text-cedow-blue mb-2">5. Task Makeover Studio</h2>
+          <p class="text-cedow-charcoal text-lg">Contrast closed procedural drills with open, Working Mathematically tasks (<span class="math-notation">MAO-WM-01</span>).</p>
+        </div>
+
+        <div class="bg-white border border-cedow-silver shadow-sm rounded-lg overflow-hidden">
+          <div class="flex border-b border-cedow-silver bg-cedow-light">
+            <button class="makeover-tab flex-1 py-4 font-bold text-cedow-blue border-b-4 border-cedow-gold bg-white" data-m-stage="s1">Stage 1</button>
+            <button class="makeover-tab flex-1 py-4 font-bold text-cedow-charcoal border-b-4 border-transparent hover:bg-white" data-m-stage="s2">Stage 2</button>
+            <button class="makeover-tab flex-1 py-4 font-bold text-cedow-charcoal border-b-4 border-transparent hover:bg-white" data-m-stage="s3">Stage 3</button>
+          </div>
+          <div class="p-8" id="makeover-content">
+            <!-- Populated via JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Section 6 -->
+      <section id="section-6" class="content-section hidden">
+        <div class="mb-8">
+          <h2 class="text-3xl font-black text-cedow-blue mb-2">6. Module Mastery Checkpoint</h2>
+          <p class="text-cedow-charcoal text-lg">Complete these 5 questions (80% to pass) to unlock your Key Pedagogical Takeaways.</p>
+        </div>
+
+        <div class="bg-white border border-cedow-silver shadow-sm rounded-lg p-8" id="quiz-container">
+          <div id="quiz-questions" class="space-y-8">
+            <!-- Quiz questions generated by JS -->
+          </div>
+          <button id="quiz-submit" class="mt-8 bg-cedow-blue text-white px-8 py-3 rounded-md font-bold text-lg hover:bg-opacity-90 transition-all shadow-md w-full md:w-auto">Submit Answers</button>
+          <div id="quiz-result" class="mt-6 font-bold text-lg hidden"></div>
+        </div>
+
+        <div id="takeaways-container" class="mt-8 bg-[#E8F2F4] border border-[#188296] shadow-sm rounded-lg p-8 hidden">
+          <h3 class="text-2xl font-black text-cedow-blue mb-4 flex items-center gap-2"><i data-lucide="award" class="text-cedow-gold w-8 h-8"></i> Key Pedagogical Takeaways (K–6)</h3>
+          <ul class="space-y-3 text-cedow-black">
+            <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-cedow-aqua shrink-0 mt-0.5"></i> <span><strong>ES1:</strong> Sort physical objects and compare counts. Acknowledge personal beliefs bias predictions.</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-cedow-aqua shrink-0 mt-0.5"></i> <span><strong>Stage 1:</strong> Transition to abstract symbols (one-to-one). Enforce baseline, equal spacing, and uniform sizing in picture graphs.</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-cedow-aqua shrink-0 mt-0.5"></i> <span><strong>Stage 2:</strong> Introduce many-to-one scales. Focus on discrete data (column graphs, dot plots). Teach "Here, Hidden, Beyond" inference.</span></li>
+            <li class="flex items-start gap-3"><i data-lucide="check-circle" class="w-5 h-5 text-cedow-aqua shrink-0 mt-0.5"></i> <span><strong>Stage 3:</strong> Match the display to the data. Line graphs for continuous change, column graphs for discrete. Recognise bias, selection flaws, and misleading axes.</span></li>
+          </ul>
+        </div>
+      </section>
+
+      <!-- Section 7 -->
+      <section id="section-7" class="content-section hidden">
+        <div class="mb-8">
+          <h2 class="text-3xl font-black text-cedow-blue mb-2">7. Canvas LMS Deployment Guide</h2>
+        </div>
+        <div class="bg-white border border-cedow-silver shadow-sm rounded-lg p-8 space-y-6">
+          
+          <div>
+            <h3 class="text-xl font-bold text-cedow-blue mb-2">Option A: Direct File Upload to Canvas</h3>
+            <ol class="list-decimal ml-5 text-cedow-charcoal space-y-2">
+              <li>Save this complete HTML module as <code>cedow_data_k6.html</code>.</li>
+              <li>In your Canvas course, go to <strong>Files</strong> and upload <code>cedow_data_k6.html</code>.</li>
+              <li>Go to <strong>Modules</strong>, click the <strong>+</strong> button to add a new item.</li>
+              <li>Select <strong>File</strong> from the dropdown, choose your uploaded HTML file, and click <strong>Add Item</strong>.</li>
+            </ol>
+          </div>
+
+          <div class="border-t border-cedow-silver pt-6">
+            <h3 class="text-xl font-bold text-cedow-blue mb-2">Option B: Embed via iFrame (GitHub Pages/Hosting)</h3>
+            <ol class="list-decimal ml-5 text-cedow-charcoal space-y-2">
+              <li>Host the <code>.html</code> file securely (e.g., GitHub Pages).</li>
+              <li>In Canvas, create a new <strong>Page</strong>.</li>
+              <li>Switch the Rich Content Editor to <strong>HTML Editor</strong>.</li>
+              <li>Paste the following code, replacing the URL:
+                <pre class="bg-cedow-light p-3 rounded border border-cedow-silver mt-2 text-sm text-cedow-blue font-mono overflow-x-auto"><code>&lt;iframe src="https://your-hosted-url.com/cedow_data_k6.html" width="100%" height="800" frameborder="0" allowfullscreen&gt;&lt;/iframe&gt;</code></pre>
+              </li>
+              <li>Save and Publish.</li>
+            </ol>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <script>
+    // Initialise Icons
+    lucide.createIcons();
+
+    // DOM Utilities
+    const $ = selector => document.querySelector(selector); const $$ = selector => document.querySelectorAll(selector);      // Navigation Logic $$('.nav-btn').forEach(btn => { btn.addEventListener('click', (e) => { // Reset styles $$('.nav-btn').forEach(b => { b.classList.remove('bg-cedow-aqua', 'text-white'); b.classList.add('text-cedow-silver', 'hover:bg-cedow-aqua/50', 'hover:text-white'); }); // Set active const targetBtn = e.currentTarget; targetBtn.classList.add('bg-cedow-aqua', 'text-white'); targetBtn.classList.remove('text-cedow-silver', 'hover:bg-cedow-aqua/50', 'hover:text-white');          // Show section const targetId = targetBtn.getAttribute('data-target'); $$('.content-section').forEach(sec => sec.classList.add('hidden'));$('#' + targetId).classList.remove('hidden');
+        $('#' + targetId).classList.add('block');
+      });
+    });
+
+    /* --- DATA FROM AI --- */
+    const STAGE_CONTENT = {
+      es1: { name: "Early Stage 1", lead: "In Kindergarten, students collect information about themselves and their environment with teacher assistance, use objects as data, group them by characteristics into a display, and compare the groups by counting.", outcomes: [["MAE-DATA-01","contributes to collecting data and interprets data displays made from objects"]], advice: ["Collect information about students and their environment, with teacher assistance.","Group objects by colour, size, shape or texture, and compare groups by counting.","Discuss possible outcomes with question starters such as ‘Could it be …?’"] },
+      s1: { name: "Stage 1", lead: "In Years 1 and 2, students choose questions, gather data with objects, tally marks, lists and symbols, and represent it in one-to-one displays, lists, tables and picture graphs.", outcomes: [["MA1-DATA-01","gathers and organises data, displays data in lists, tables and picture graphs"],["MA1-DATA-02","reasons about representations of data to describe and interpret the results"]], advice: ["Align rows or columns on a common baseline.","Make sure each object or symbol in a one-to-one display represents one data value.","Teach tally marks in groups of five."] },
+      s2: { name: "Stage 2", lead: "In Years 3 and 4, students collect discrete data, create and refine surveys, and construct tables, column graphs and dot plots with labelled axes and equal intervals. Many-to-one scales are introduced.", outcomes: [["MA2-DATA-01","collects discrete data and constructs graphs using a given scale"],["MA2-DATA-02","interprets data in tables, dot plots and column graphs"]], advice: ["Use dot stickers or graphing software for dot plots.","Ask ‘here’, ‘hidden’ and ‘beyond’ questions to build inference.","Keep surveys short with a clear purpose."] },
+      s3: { name: "Stage 3", lead: "In Years 5 and 6, students collect categorical and numerical data, choose appropriate displays, and construct column graphs and timelines with many-to-one scales. They interpret line graphs and identify bias.", outcomes: [["MA3-DATA-01","constructs graphs using many-to-one scales"],["MA3-DATA-02","interprets data displays, including timelines and line graphs"]], advice: ["Match the display to the data: column graphs for discrete data, line graphs for change over time.","Discuss who created or paid for data.","Avoid 3D charts; discuss why they mislead."] }
+    };
+
+    // Render Stage 1 Tabs
+    function renderStageContent(stage) {
+      const data = STAGE_CONTENT[stage];
+      let html = `<h3 class="text-2xl font-bold text-cedow-black mb-3">${data.name} Focus</h3>
+                  <p class="text-cedow-charcoal mb-6">${data.lead}</p>
+                  <h4 class="font-bold text-cedow-blue mb-2 uppercase text-sm tracking-wider">Formal Outcomes</h4>
+                  <ul class="space-y-2 mb-6">`;
+      data.outcomes.forEach(out => {
+        html += `<li class="flex items-start gap-3"><span class="math-notation shrink-0">${out[0]}</span> <span class="text-cedow-charcoal">${out[1]}</span></li>`;
+      });
+      html += `</ul><h4 class="font-bold text-cedow-blue mb-2 uppercase text-sm tracking-wider">NESA Teaching Advice Alerts</h4><ul class="list-disc ml-5 text-cedow-charcoal space-y-1">`;
+      data.advice.forEach(adv => html += `<li>${adv}</li>`);
+      html += `</ul>`;
+      $('#stage-content-area').innerHTML = html;
+    }
+    
+    $$('.stage-tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        $$('.stage-tab').forEach(t => { t.classList.remove('border-b-cedow-gold', 'text-cedow-blue'); t.classList.add('border-transparent', 'text-cedow-charcoal'); });
+        e.target.classList.add('border-b-cedow-gold', 'text-cedow-blue');
+        e.target.classList.remove('border-transparent', 'text-cedow-charcoal');
+        renderStageContent(e.target.dataset.stage);
+      });
+    });
+    renderStageContent('es1'); // init
+
+    /* --- INTERACTIVE TOOLS JS --- */
+    // Tool 1: Sort
+    const SO_COL={red:"#c8553d",blue:"#188296",yellow:"#FBAF3F",green:"#2f7f6f"};
+    function soShape(o,x,y){
+      let r=o.z==="big"?15:9, c=SO_COL[o.c];
+      if(o.s==="circle") return `<circle cx="${x}" cy="${y}" r="${r}" fill="${c}"/>`;
+      if(o.s==="square") return `<rect x="${x-r}" y="${y-r}" width="${2*r}" height="${2*r}" fill="${c}"/>`;
+      return `<polygon points="${x},${y-r-2} ${x+r+2},${y+r} ${x-r-2},${y+r}" fill="${c}"/>`;
+    }
+    let sortObjs=[], sortView="g";
+    function makeSort(){
+      let cols=Object.keys(SO_COL).sort(()=>Math.random()-.5).slice(0,3), shapes=["circle","square","triangle"], n=12+Math.floor(Math.random()*5);
+      sortObjs=[]; for(let i=0;i<n;i++) sortObjs.push({c:cols[Math.floor(Math.random()*3)],s:shapes[Math.floor(Math.random()*3)],z:Math.random()<.5?"big":"small"});
+    }
+    function drawSort(){
+      let by=$("#soBy").value, key=o=>by==="c"?o.c:by==="s"?o.s:o.z, groups={};
+      sortObjs.forEach(o=>{ (groups[key(o)]=groups[key(o)]||[]).push(o); });
+      let names=Object.keys(groups).sort(), counts=names.map(k=>groups[k].length), s='';
+      let minI=counts.indexOf(Math.min(...counts));
+      if(sortView==="g"){
+        let W=names.length*170, H=190; s=`<svg viewBox="0 0 ${W} ${H+24}" style="max-width:${W}px">`;
+        names.forEach((k,gi)=>{
+          let x0=gi*170+6, g=groups[k], seed=gi*7+1;
+          s+=`<rect x="${x0}" y="4" width="158" height="${H}" rx="12" fill="none" stroke="#D1D2D4" stroke-width="2"/>`;
+          let cell=gi===minI?Math.min(56,Math.sqrt(130*160/g.length)):34, cols=Math.max(1,Math.floor(140/cell)), rows=Math.ceil(g.length/cols);
+          g.forEach((o,j)=>{ seed=(seed*37+11)%101; let c=j%cols, rr=Math.floor(j/cols), cx=x0+79+(c-(cols-1)/2)*cell+((seed%7)-3)*(gi===minI?2:1), cy=99+(rr-(rows-1)/2)*cell+(((seed*3)%7)-3)*(gi===minI?2:1); s+=soShape(o,cx.toFixed(1),cy.toFixed(1)); });
+          s+=`<text x="${x0+79}" y="${H+20}" text-anchor="middle" font-size="13" font-weight="700" fill="#4C4C4E">${k}</text>`;
+        });
+      } else {
+        let cw=90, W2=names.length*cw+40, H2=Math.max(...counts)*34+40; s=`<svg viewBox="0 0 ${W2} ${H2+24}" style="max-width:${W2}px">`;
+        s+=`<line x1="10" y1="${H2}" x2="${W2-10}" y2="${H2}" stroke="#231F20" stroke-width="2.5"/>`;
+        names.forEach((k,gi)=>{ let cx=30+gi*cw+cw/2;
+          groups[k].forEach((o,j)=>{ s+=soShape(o,cx,H2-18-j*34); });
+          s+=`<text x="${cx}" y="${H2+18}" text-anchor="middle" font-size="13" font-weight="700" fill="#4C4C4E">${k} (${groups[k].length})</text>`;
+        });
+      }
+      $("#soPic").innerHTML=s+'</svg>';
+      let mx=Math.max(...counts), mn=Math.min(...counts);
+      let most=names.filter(k=>groups[k].length===mx), least=names.filter(k=>groups[k].length===mn);
+      let cmp=names.map(k=>k+": "+groups[k].length).join(" &middot; ");
+      $("#soRead").innerHTML=(sortView==="g"?"Which group has the most? ":cmp) + `<br><span class="text-xs text-cedow-charcoal mt-1 block">` + (sortView==="g"?`The ${names[minI]} group is spread out, so it may look biggest. Line the groups up to check.`:"") + (sortView==="l"?(most.length>1?most.join(" and ")+" have the most.":"Most: "+most[0]+"."):"") + `</span>`;
+    }
+    $$('#soView button').forEach(b => b.addEventListener('click', e => { sortView=e.target.dataset.v; $$('#soView button').forEach(x=>x.classList.toggle('active',x===e.target)); drawSort(); }));
+    $('#soBy').addEventListener('change', drawSort);
+    $('#soNew').addEventListener('click', ()=>{ makeSort(); drawSort(); });
+    makeSort(); drawSort();
+
+    // Tool 2: Picgraph
+    const PG_FRUIT=[["apples","#c8553d","apple"],["bananas","#FBAF3F","banana"],["oranges","#e07a2a","orange"],["grapes","#8a3f8f","grape"]];
+    let pgCounts, pgFlaw, pgTarget, pgMaxI, pgScore=0, pgRound=0, pgLast="";
+    function makePG(){
+      const flaws=["size","spacing","baseline","none"]; do{ pgFlaw=flaws[Math.floor(Math.random()*4)]; }while(pgFlaw===pgLast); pgLast=pgFlaw;
+      let mx=6+Math.floor(Math.random()*2); pgCounts=[mx,mx-1,mx-2,2+Math.floor(Math.random()*2)].sort(()=>Math.random()-.5);
+      pgMaxI=pgCounts.indexOf(mx);
+      let cands=[0,1,2,3].filter(i=>pgCounts[i]<mx&&pgCounts[i]>=mx-2); pgTarget=pgFlaw==="size"?pgCounts.indexOf(mx-1):cands[Math.floor(Math.random()*cands.length)];
+    }
+    function drawPG(fair){
+      let lab=90, sp=32, H=4*46+30, W=lab+8*50+20, s=`<svg viewBox="0 0 ${W} ${H}" style="max-width:${W}px">`;
+      s+=`<text x="${W/2}" y="18" text-anchor="middle" font-size="14" font-weight="700" fill="#0D2C6B">Our Favourite Fruit</text>`;
+      PG_FRUIT.forEach((f,i)=>{
+        let y=48+i*46, big=!fair&&pgFlaw==="size"&&i===pgTarget, wide=!fair&&pgFlaw==="spacing"&&i===pgTarget, off=(!fair&&pgFlaw==="baseline"&&i===pgTarget)?(pgCounts[pgMaxI]-pgCounts[i])*sp+44:0;
+        let r=big?21:12, step=big?48:wide?52:sp;
+        s+=`<text x="${lab-10}" y="${y+5}" text-anchor="end" font-size="13" font-weight="700" fill="#4C4C4E">${f[0]}</text>`;
+        for(let k=0;k<pgCounts[i];k++){ let cx=lab+off+r+4+k*step; s+=`<circle cx="${cx}" cy="${y}" r="${r}" fill="${f[1]}"/><circle cx="${cx-r*.35}" cy="${y-r*.35}" r="${r*.25}" fill="#fff" fill-opacity=".5"/>`; }
+      });
+      if(fair||pgFlaw!=="baseline") s+=`<line x1="${lab}" y1="28" x2="${lab}" y2="${H-6}" stroke="#231F20" stroke-width="2"/>`;
+      $("#pgPic").innerHTML=s+'</svg>';
+    }
+    function nextPG(){ pgRound++; makePG(); drawPG(false); $("#pgFb").classList.add("hidden"); $$("#pgControls button").forEach(x=>x.disabled=false); $("#pgNew").disabled=true; }
+    $$("#pgControls button").forEach(btn=>btn.addEventListener('click', e=>{
+      let ok=e.target.dataset.c===pgFlaw; if(ok) pgScore++;
+      let tn=PG_FRUIT[pgTarget][0], mn=PG_FRUIT[pgMaxI][0], msg;
+      if(pgFlaw==="none") msg="This graph has a baseline, equal spacing and same-sized symbols, so the longest row really does show the most.";
+      else msg={size:`The ${PG_FRUIT[pgTarget][2]} symbols are bigger, making the row look longest.`,spacing:`The ${PG_FRUIT[pgTarget][2]} symbols are spaced further apart.`,baseline:`The ${PG_FRUIT[pgTarget][2]} row doesn’t start at the baseline.`}[pgFlaw] + ` Count: ${tn} has ${pgCounts[pgTarget]}, but ${mn} has ${pgCounts[pgMaxI]}.`;
+      if(pgFlaw!=="none") drawPG(true);
+      const fb = $("#pgFb"); fb.className = `mt-4 p-3 rounded text-sm ${ok?'bg-[#188296] text-white':'bg-[#4C4C4E] text-white'} block`;
+      fb.innerHTML = (ok?"<strong>Yes!</strong> ":"<strong>Not quite.</strong> ") + msg + (pgFlaw!=="none"?" <em>Fair graph shown above.</em>":"");
+      $$("#pgControls button").forEach(x=>x.disabled=true); $("#pgNew").disabled=false;
+      $("#pgScore").textContent=`Score: ${pgScore} / ${pgRound}`;
+    }));
+    $("#pgNew").addEventListener('click', nextPG);
+    nextPG();
+
+    // Tool 3: Displays
+    function tallySVG(n,x,y){
+      let s='', g=Math.floor(n/5), r=n%5, px=x;
+      for(let i=0;i<g;i++){ for(let k=0;k<4;k++) s+=`<line x1="${px+k*7}" y1="${y-11}" x2="${px+k*7}" y2="${y+11}" stroke="#231F20" stroke-width="2"/>`; s+=`<line x1="${px-4}" y1="${y+8}" x2="${px+25}" y2="${y-8}" stroke="#231F20" stroke-width="2"/>`; px+=38; }
+      for(let j=0;j<r;j++) s+=`<line x1="${px+j*7}" y1="${y-11}" x2="${px+j*7}" y2="${y+11}" stroke="#231F20" stroke-width="2"/>`;
+      return s;
+    }
+    let dsF, dsView="t";
+    function makeDS(){ let base=[3,7,6,3,2,1]; dsF=base.map(v=>Math.max(0,v+Math.floor(Math.random()*5)-2)); if(dsF.reduce((a,b)=>a+b,0)<12) dsF[1]+=4; }
+    function drawDS(){
+      $("#dsScaleRow").style.display=dsView==="c"?"flex":"none";
+      let N=dsF.reduce((a,b)=>a+b,0), mx=Math.max(...dsF), s;
+      if(dsView==="t"){
+        s=`<table class="w-full text-left border-collapse"><tr class="border-b border-cedow-silver"><th>Pets</th><th>Tally</th><th>Count</th></tr>`+dsF.map((v,i)=>`<tr><td class="py-2">${i}</td><td><svg viewBox="0 0 120 26" width="120" height="26">${tallySVG(v,6,13)}</svg></td><td>${v}</td></tr>`).join("")+`<tr class="border-t border-cedow-silver font-bold"><td class="py-2">Total</td><td></td><td>${N}</td></tr></table>`;
+      } else if(dsView==="d"){
+        let W=6*60+40, H=mx*22+60; s=`<svg viewBox="0 0 ${W} ${H}" style="max-width:${W}px"><line x1="20" y1="${H-34}" x2="${W-10}" y2="${H-34}" stroke="#231F20" stroke-width="2"/>`;
+        dsF.forEach((v,i)=>{ let x=50+i*60; s+=`<line x1="${x}" y1="${H-34}" x2="${x}" y2="${H-28}" stroke="#231F20" stroke-width="2"/><text x="${x}" y="${H-14}" text-anchor="middle" font-size="13" font-weight="700" fill="#231F20">${i}</text>`; for(let k=0;k<v;k++) s+=`<circle cx="${x}" cy="${H-46-k*22}" r="8" fill="#188296"/>`; });
+        s+=`<text x="${W/2}" y="${H-1}" text-anchor="middle" font-size="12" fill="#4C4C4E">Number of pets</text></svg>`;
+      } else {
+        let sc=+$("#dsScale").value, top=Math.ceil(mx/sc)*sc, unit=Math.round(150/(top/sc)), W3=6*58+70, H3=(top/sc)*unit+70;
+        s=`<svg viewBox="0 0 ${W3} ${H3}" style="max-width:${W3}px">`;
+        for(let g=0;g<=top;g+=sc){ let gy=H3-40-(g/sc)*unit; s+=`<line x1="46" y1="${gy}" x2="${W3-8}" y2="${gy}" stroke="#e2e5ec"/><text x="40" y="${gy+4}" text-anchor="end" font-size="12" fill="#231F20">${g}</text>`; }
+        dsF.forEach((v,i)=>{ let x=60+i*58, h=(v/sc)*unit; s+=`<rect x="${x}" y="${H3-40-h}" width="36" height="${h}" fill="#0D2C6B"/><text x="${x+18}" y="${H3-24}" text-anchor="middle" font-size="13" font-weight="700" fill="#231F20">${i}</text>`; });
+        s+=`<line x1="46" y1="${H3-40}" x2="${W3-8}" y2="${H3-40}" stroke="#231F20" stroke-width="2"/><line x1="46" y1="10" x2="46" y2="${H3-40}" stroke="#231F20" stroke-width="2"/>`;
+        s+=`<text x="${W3/2+20}" y="${H3-4}" text-anchor="middle" font-size="12" fill="#4C4C4E">Number of pets</text><text x="12" y="${(H3-40)/2}" text-anchor="middle" font-size="12" fill="#4C4C4E" transform="rotate(-90 12 ${(H3-40)/2})">Students</text></svg>`;
+      }
+      $("#dsPic").innerHTML=s;
+      let mode=dsF.indexOf(mx), fewer3=dsF[0]+dsF[1]+dsF[2];
+      $("#dsRead").innerHTML=`<strong>Hidden:</strong> ${fewer3>N/2?`Most students (${fewer3}/${N}) have fewer than 3 pets.`:`Only ${fewer3}/${N} students have fewer than 3 pets.`} Mode is ${mode}.`;
+    }
+    $$('#dsV button').forEach(b => b.addEventListener('click', e => { dsView=e.target.dataset.v; $$('#dsV button').forEach(x=>x.classList.toggle('active',x===e.target)); drawDS(); }));
+    $('#dsScale').addEventListener('change', drawDS);
+    $('#dsNew').addEventListener('click', ()=>{ makeDS(); drawDS(); });
+    makeDS(); drawDS();
+
+    // Tool 4: Axis
+    const AX_AD=[["Brand A",52],["Brand B",48],["Brand C",46]];
+    const AX_CLS={subj:["Maths","English","Science","PDHPE","History","Art"],a:[11,6,4,7,2,1],b:[12,7,5,4,1,8]};
+    let axD="ad";
+    function drawAxis(){
+      $("#axRow").style.display=axD==="ad"?"flex":"none";
+      let s, W, H=240, base=200, top=20, x0=56;
+      if(axD==="ad"){
+        let st=+$("#axS").value, mx=56, sc=(base-top)/(mx-st); $("#axSv").textContent=st;
+        W=x0+3*110+20; s=`<svg viewBox="0 0 ${W} ${H}" style="max-width:${W}px">`;
+        for(let g=st;g<=mx;g+=(mx-st)>20?10:2){ let gy=base-(g-st)*sc; s+=`<line x1="${x0}" y1="${gy}" x2="${W-10}" y2="${gy}" stroke="#e2e5ec"/><text x="${x0-6}" y="${gy+4}" text-anchor="end" font-size="12" fill="#231F20">${g}</text>`; }
+        AX_AD.forEach((r,i)=>{ let x=x0+24+i*110, h=(r[1]-st)*sc; s+=`<rect x="${x}" y="${base-h}" width="64" height="${h}" fill="${i===0?"#188296":"#D1D2D4"}"/><text x="${x+32}" y="${base-h-6}" text-anchor="middle" font-size="12" font-weight="700" fill="#231F20">${r[1]} h</text><text x="${x+32}" y="${base+18}" text-anchor="middle" font-size="13" font-weight="700" fill="#4C4C4E">${r[0]}</text>`; });
+        s+=`<line x1="${x0}" y1="${top}" x2="${x0}" y2="${base}" stroke="#231F20" stroke-width="2"/><line x1="${x0}" y1="${base}" x2="${W-10}" y2="${base}" stroke="#231F20" stroke-width="2"/>`;
+        if(st>0) s+=`<rect x="${x0-7}" y="${base-24}" width="14" height="14" fill="#fff"/><path d="M${x0-9} ${base-13} l6 -6 l6 6 l6 -6" fill="none" stroke="#188296" stroke-width="2.5"/>`;
+        s+=`<text x="14" y="${(base+top)/2}" text-anchor="middle" font-size="12" fill="#4C4C4E" transform="rotate(-90 14 ${(base+top)/2})">Battery life (hours)</text>`;
+        let a=AX_AD[0][1], c=AX_AD[2][1], looks=(a-st)/(c-st), real=a/c;
+        $("#axRead").innerHTML=st===0?`Axis from zero: Brand A looks ${looks.toFixed(2)}x as tall.`:`Brand A looks ${looks.toFixed(1)}x as tall (exaggerated by broken axis). In reality it lasts ${real.toFixed(2)}x as long.`;
+      } else {
+        let cm=13, scl=(base-top)/cm; W=x0+6*74+20; s=`<svg viewBox="0 0 ${W} ${H+18}" style="max-width:${W}px">`;
+        for(let g2=0;g2<=cm;g2+=1){ let gy2=base-g2*scl; s+=`<line x1="${x0}" y1="${gy2}" x2="${W-10}" y2="${gy2}" stroke="#eef0f4"/>${g2%2===0?`<text x="${x0-6}" y="${gy2+4}" text-anchor="end" font-size="11" fill="#231F20">${g2}</text>`:''}`; }
+        AX_CLS.subj.forEach((n,i)=>{ let x=x0+10+i*74; s+=`<rect x="${x}" y="${base-AX_CLS.a[i]*scl}" width="26" height="${AX_CLS.a[i]*scl}" fill="#0D2C6B"/><rect x="${x+28}" y="${base-AX_CLS.b[i]*scl}" width="26" height="${AX_CLS.b[i]*scl}" fill="#FBAF3F"/><text x="${x+27}" y="${base+16}" text-anchor="middle" font-size="10.5" font-weight="700" fill="#4C4C4E">${n}</text>`; });
+        s+=`<line x1="${x0}" y1="${top}" x2="${x0}" y2="${base}" stroke="#231F20" stroke-width="2"/><line x1="${x0}" y1="${base}" x2="${W-10}" y2="${base}" stroke="#231F20" stroke-width="2"/>`;
+        s+=`<rect x="${x0+10}" y="${H}" width="12" height="12" fill="#0D2C6B"/><text x="${x0+28}" y="${H+10}" font-size="12" fill="#231F20">5A</text><rect x="${x0+70}" y="${H}" width="12" height="12" fill="#FBAF3F"/><text x="${x0+88}" y="${H+10}" font-size="12" fill="#231F20">5B</text>`;
+        s+=`<text x="14" y="${(base+top)/2}" text-anchor="middle" font-size="12" fill="#4C4C4E" transform="rotate(-90 14 ${(base+top)/2})">Number of students</text>`;
+        $("#axRead").innerHTML="Mode is Maths for both. Notice how a side-by-side graph highlights differences between two categorical variables (e.g., Art).";
+      }
+      $("#axPic").innerHTML=s+'</svg>';
+    }
+    $$('#axD button').forEach(b => b.addEventListener('click', e => { axD=e.target.dataset.d; $$('#axD button').forEach(x=>x.classList.toggle('active',x===e.target)); drawAxis(); }));
+    $('#axS').addEventListener('input', drawAxis);
+    drawAxis();
+
+    /* --- SECTION 4 DIAGNOSTIC SORTER --- */
+    const DIAG_SCENARIOS = [
+      {st:"ES1",q:"Ava says the red group has more because its row of blocks is longer, though the blocks are spread out.",a:0,why:"Ava compares by length, not by count. Count and line them up."},
+      {st:"ES1",q:"Noah predicts the whole class will choose blue because blue is his favourite.",a:3,why:"Personal preferences influence predictions. Collect the data and compare."},
+      {st:"Stage 1",q:"Mia says bananas are most popular because the banana pictures stretch furthest, though they are bigger pictures.",a:0,why:"Symbols must be the same size. Count the symbols."},
+      {st:"Stage 1",q:"Leo spaces his apple symbols wider than his orange symbols and doesn’t notice the problem.",a:1,why:"Unequal spacing misleads. Use grid paper."},
+      {st:"Stage 1",q:"Grace asks 'What do you do at lunch?' and can’t sort the answers into a graph.",a:3,why:"Pose questions whose answers form categories."},
+      {st:"Stage 2",q:"Ben reads a column on a scale where each interval is 2 families as '3 families' because it reaches the third line.",a:1,why:"Ben reads a many-to-one scale as one-to-one. Read the scale first."},
+      {st:"Stage 2",q:"Ella draws a column graph of favourite sports with all the columns touching.",a:2,why:"Columns represent distinct categories, so they aren’t joined."},
+      {st:"Stage 2",q:"Josh says everyone in Australia prefers soccer, based on his class survey.",a:3,why:"Josh generalises beyond the data. Ask whether another class would be the same."},
+      {st:"Stage 3",q:"Kai says Brand A lasts 3 times as long, from a graph whose axis starts at 40.",a:0,why:"A broken axis exaggerates differences. Read the values."},
+      {st:"Stage 3",q:"Ruby draws a line graph of favourite fruits.",a:2,why:"Line graphs suit change over time, not categories."},
+      {st:"Stage 3",q:"Jai surveys only his friends and concludes the school prefers basketball.",a:3,why:"Selection bias: the sample isn’t representative."},
+      {st:"Stage 3",q:"Lily misreads a timeline where 1 cm = 10 years, saying two events 3 cm apart were 3 years apart.",a:1,why:"Lily ignores the many-to-one scale: 3 cm represents 30 years."}
+    ];
+    let currentDiag = 0;
+    function loadDiag() {
+      const s = DIAG_SCENARIOS[currentDiag];
+      $('#diag-stage').textContent = `Stage: ${s.st}`;
+      $('#diag-progress').textContent = `${currentDiag + 1} / ${DIAG_SCENARIOS.length}`;
+      $('#diag-scenario').textContent = `"${s.q}"`;
+      $('#diag-feedback').classList.add('hidden');
+      $('#diag-next').classList.add('hidden');
+      $$('.diag-btn').forEach(b => { b.disabled = false; b.classList.remove('bg-cedow-aqua','text-white','opacity-50'); b.classList.add('hover:bg-cedow-aqua', 'hover:text-white'); });
+    }
+    $$('.diag-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
+        const selected = parseInt(e.target.dataset.val);
+        const correct = DIAG_SCENARIOS[currentDiag].a;
+        const feedback = $('#diag-feedback');
+        $$('.diag-btn').forEach(b => { b.disabled = true; b.classList.remove('hover:bg-cedow-aqua', 'hover:text-white'); b.classList.add('opacity-50'); });
+        e.target.classList.remove('opacity-50');
+        e.target.classList.add('bg-cedow-aqua', 'text-white');
+        
+        feedback.classList.remove('hidden', 'border-red-500', 'bg-red-50', 'text-red-900', 'border-green-500', 'bg-green-50', 'text-green-900');
+        if(selected === correct) {
+          feedback.classList.add('border-green-500', 'bg-green-50', 'text-green-900');
+          feedback.innerHTML = `<strong>Correct!</strong> ${DIAG_SCENARIOS[currentDiag].why}`;
+        } else {
+          feedback.classList.add('border-red-500', 'bg-red-50', 'text-red-900');
+          feedback.innerHTML = `<strong>Not quite.</strong> ${DIAG_SCENARIOS[currentDiag].why}`;
+        }
+        $('#diag-next').classList.remove('hidden');
+      });
+    });
+    $('#diag-next').addEventListener('click', () => {
+      currentDiag = (currentDiag + 1) % DIAG_SCENARIOS.length;
+      loadDiag();
+    });
+    loadDiag();
+
+    /* --- SECTION 5 MAKEOVER --- */
+    const WM = {
+      s1: { task: "Colour one square for each child. (a given grid of favourite pets)", lim: ["Question and categories are given","No choices about the display","No interpreting or critiquing"], afterTask: "“Sam made this picture graph of our favourite pets. Sam says dogs are most popular. Is Sam’s graph fair? How would you fix it?”", enable: "Provide cut-out same-sized symbols and grid paper.", extend: "“Make a graph that makes cats look most popular, then explain why it’s misleading.”" },
+      s2: { task: "Draw a column graph of this data. (a table of pets: 0, 1, 2, 3, 4)", lim: ["One display, chosen by the teacher","No comparison of displays","No inference beyond the data"], afterTask: "“Show our pets data in a table, a dot plot and a column graph. What does each display make easy to see? Which would you choose to convince the principal we need a pet day? Why?”", enable: "Provide a partly drawn dot plot and graph paper.", extend: "“Would this data be the same in a Year 6 class? What might be different?”" },
+      s3: { task: "Read the graph. How many hours does Brand A last? (a column graph of battery life)", lim: ["Reading one value","The axis and source aren’t questioned","No reasoning about the display"], afterTask: "“This advertisement says Brand A lasts much longer. Who made the graph? What do you notice about the vertical axis? Redraw it fairly and write a headline for each version.”", enable: "Provide the values in a table and graph paper with the axis from zero.", extend: "“Find a graph in the media. Is it misleading or biased? How do you know?”" }
+    };
+    function renderMakeover(stage) {
+      const data = WM[stage];
+      $('#makeover-content').innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div class="bg-gray-100 p-6 rounded border border-gray-300">
+            <h4 class="font-bold text-gray-600 mb-2 uppercase text-sm tracking-widest"><i data-lucide="x-circle" class="w-4 h-4 inline text-red-500 mb-1"></i> Before (Closed/Procedural)</h4>
+            <p class="text-cedow-black mb-4 font-mono text-sm bg-white p-3 rounded border border-gray-200">${data.task}</p>
+            <h5 class="text-xs font-bold text-gray-500 uppercase">Limitations</h5>
+            <ul class="list-disc ml-4 text-sm text-gray-600 space-y-1 mt-2">
+              ${data.lim.map(l => `<li>${l}</li>`).join('')}
+            </ul>
+          </div>
+          <div class="bg-[#E8F2F4] p-6 rounded border border-[#188296]">
+            <h4 class="font-bold text-cedow-blue mb-2 uppercase text-sm tracking-widest"><i data-lucide="check-circle" class="w-4 h-4 inline text-green-500 mb-1"></i> After (Working Mathematically)</h4>
+            <p class="text-cedow-black mb-4 font-bold italic bg-white p-3 rounded border border-[#188296]">${data.afterTask}</p>
+            <p class="text-sm text-cedow-charcoal mb-2"><strong>Enable:</strong> ${data.enable}</p>
+            <p class="text-sm text-cedow-charcoal"><strong>Extend:</strong> ${data.extend}</p>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+    $$('.makeover-tab').forEach(tab => {
+      tab.addEventListener('click', (e) => {
+        $$('.makeover-tab').forEach(t => { t.classList.remove('border-b-cedow-gold', 'text-cedow-blue'); t.classList.add('border-transparent', 'text-cedow-charcoal'); });
+        e.target.classList.add('border-b-cedow-gold', 'text-cedow-blue');
+        e.target.classList.remove('border-transparent', 'text-cedow-charcoal');
+        renderMakeover(e.target.dataset.mStage);
+      });
+    });
+    renderMakeover('s1');
+
+    /* --- SECTION 6 QUIZ --- */
+    const QUIZ = [
+      { q: "What does NESA say influences young students’ predictions in ES1?", o: ["Counting skills", "Personal beliefs (e.g., favourite colours)", "Class size", "Age"], a: 1 },
+      { q: "Which features are mandatory for a Stage 1 picture graph?", o: ["Title, key, colour", "Axes, scale, gridlines", "Baseline, equal spacing, same-sized symbols", "Tally marks, list, table"], a: 2 },
+      { q: "When is a many-to-one scale warranted (introduced Stage 2)?", o: ["Always", "When data ranges from 1 to 5", "Only in Stage 4", "When there are enough data points (e.g., up to 83)"], a: 3 },
+      { q: "Which question moves students ‘beyond’ the data?", o: ["How many have 2 pets?", "Most students have fewer than 3 pets.", "Would this be the same in a different class?", "What is the title?"], a: 2 },
+      { q: "When is a line graph appropriate in Stage 3?", o: ["For discrete categorical data", "For change over time where points between values have meaning", "For tracking favourite colours", "Always"], a: 1 }
+    ];
+    
+    let quizHtml = '';
+    QUIZ.forEach((q, i) => {
+      quizHtml += `<div class="quiz-item" data-idx="${i}"><h4 class="font-bold text-cedow-blue mb-3">${i+1}. ${q.q}</h4><div class="space-y-2 ml-2">`;
+      q.o.forEach((opt, j) => {
+        quizHtml += `<label class="flex items-center gap-3 cursor-pointer"><input type="radio" name="q${i}" value="${j}" class="w-4 h-4 text-cedow-aqua focus:ring-cedow-aqua"> <span class="text-cedow-charcoal">${opt}</span></label>`;
+      });
+      quizHtml += `</div></div>`;
+    });
+    $('#quiz-questions').innerHTML = quizHtml;
+
+    $('#quiz-submit').addEventListener('click', () => {
+      let score = 0;
+      let answeredAll = true;
+      QUIZ.forEach((q, i) => {
+        const checked = $(`input[name="q${i}"]:checked`);
+        if(!checked) { answeredAll = false; }
+        else if(parseInt(checked.value) === q.a) { score++; }
+      });
+
+      if(!answeredAll) {
+        alert("Please answer all questions before submitting.");
+        return;
+      }
+
+      const res = $('#quiz-result');
+      res.classList.remove('hidden');
+      if(score >= 4) {
+        res.innerHTML = `<span class="text-green-600 flex items-center gap-2"><i data-lucide="check-circle"></i> Passed! Score: ${score}/5. You have unlocked the takeaways.</span>`;
+        $('#takeaways-container').classList.remove('hidden');
+        $('#takeaways-container').scrollIntoView({behavior: "smooth"});
+      } else {
+        res.innerHTML = `<span class="text-red-600 flex items-center gap-2"><i data-lucide="x-circle"></i> Score: ${score}/5. 80% (4/5) required to pass. Please review and try again.</span>`;
+      }
+      lucide.createIcons();
+    });
+
+  </script>
+</body>
+</html>
