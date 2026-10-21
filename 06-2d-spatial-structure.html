@@ -1,14 +1,12 @@
 <!DOCTYPE html>
-<html lang="en-AU" class="scroll-smooth">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Focus Area 6: Two-dimensional Spatial Structure (K–6) | CEDoW Mathematics PL</title>
-  
-  <!-- Google Fonts: Lato & Fira Code -->
+  <title>Focus Area 6: Two-dimensional Spatial Structure (K&ndash;6) | CEDoW Primary Mathematics PL</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
   
   <!-- Tailwind CSS via CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
@@ -79,136 +77,192 @@
       display: block;
     }
   </style>
-</head>
-<body class="min-h-screen flex flex-col antialiased selection:bg-cedow-gold selection:text-cedow-blue">
+  <style id="cd-shell-css">
+    /* ===== CEDoW Primary Mathematics PL — shared module shell =====
+       Identical in every module. Edit here, then copy to all modules. */
+    :root {
+      --cd-navy: #0D2C6B; --cd-aqua: #188296; --cd-gold: #FBAF3F;
+      --cd-silver: #D1D2D4; --cd-charcoal: #4C4C4E; --cd-black: #231F20;
+      --cd-light: #F4F6F9; --cd-white: #FFFFFF;
+      --cd-aqua-soft: #E6F3F5; --cd-header-h: 72px;
+    }
+    html { scroll-behavior: smooth; }
+    body.cd-page {
+      margin: 0; min-height: 100vh; display: flex; flex-direction: column;
+      background: var(--cd-light); color: var(--cd-black);
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    section[id] { scroll-margin-top: calc(var(--cd-header-h) + 24px); }
 
-  <!-- Top Diocesan Banner Header -->
-  <header class="bg-cedow-blue text-white sticky top-0 z-50 shadow-md border-b-4 border-cedow-gold">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
-      <div class="flex items-center space-x-3.5">
-        <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center p-1.5 shadow">
-          <!-- Mitre / Cross / Geometric Insignia -->
-          <svg class="w-full h-full text-cedow-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-            <path d="M12 2L4 7v10l8 5 8-5V7L12 2z"/>
-            <path d="M12 7v10M8 12h8"/>
-          </svg>
-        </div>
-        <div>
-          <span class="block text-xs uppercase tracking-widest text-cedow-gold font-bold">Catholic Education Diocese of Wollongong</span>
-          <h1 class="text-lg sm:text-xl font-black tracking-tight leading-tight">Focus Area 6: Two-dimensional Spatial Structure (K–6)</h1>
-        </div>
-      </div>
-      <div class="flex items-center space-x-3">
-        <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-cedow-aqua text-white border border-white/20">
-          <i data-lucide="compass" class="w-3.5 h-3.5 mr-1.5"></i> NSW Syllabus K–10 (2022)
+    /* Header */
+    .cd-header { position: sticky; top: 0; z-index: 50; background: var(--cd-navy); color: var(--cd-white);
+      border-bottom: 4px solid var(--cd-gold); box-shadow: 0 2px 8px rgba(13,44,107,.18); }
+    .cd-header-inner { max-width: 80rem; margin: 0 auto; padding: 12px 24px; min-height: 48px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .cd-brand { display: flex; align-items: center; gap: 14px; min-width: 0; color: inherit; text-decoration: none; }
+    .cd-logo { flex: none; width: 44px; height: 44px; border-radius: 10px; background: var(--cd-aqua);
+      display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1px rgba(255,255,255,.15); }
+    .cd-logo svg { width: 24px; height: 24px; }
+    .cd-brand-text { min-width: 0; }
+    .cd-org { display: block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cd-silver); }
+    .cd-title { margin: 2px 0 0; font-size: 20px; line-height: 1.25; font-weight: 900; color: var(--cd-white); letter-spacing: -.01em; }
+    .cd-header-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+    .cd-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 6px 12px;
+      border-radius: 999px; background: rgba(24,130,150,.35); border: 1px solid rgba(24,130,150,.8); color: var(--cd-white); white-space: nowrap; }
+    .cd-btn { display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 13px; font-weight: 700; padding: 8px 14px;
+      border-radius: 8px; background: var(--cd-white); color: var(--cd-navy); border: 0; text-decoration: none; cursor: pointer; white-space: nowrap; }
+    .cd-btn:hover { background: var(--cd-gold); }
+    .cd-btn svg { width: 16px; height: 16px; }
+    .cd-menu-btn { display: none; }
+
+    /* Layout */
+    .cd-shell { flex: 1 0 auto; width: 100%; max-width: 80rem; margin: 0 auto; padding: 28px 24px 48px;
+      box-sizing: border-box; display: flex; align-items: flex-start; gap: 32px; }
+    .cd-main { flex: 1; min-width: 0; display: block; }
+    .cd-main > * + * { margin-top: 40px; }
+
+    /* Sidebar */
+    .cd-sidebar { flex: none; width: 272px; position: sticky; top: calc(var(--cd-header-h) + 24px); }
+    .cd-side-card { background: var(--cd-white); border: 1px solid var(--cd-silver); border-radius: 14px; overflow: hidden;
+      box-shadow: 0 1px 2px rgba(35,31,32,.05); }
+    .cd-side-head { padding: 14px 16px; background: var(--cd-light); border-bottom: 1px solid var(--cd-silver); }
+    .cd-side-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cd-charcoal); }
+    .cd-side-name { display: block; margin-top: 2px; font-size: 14px; font-weight: 900; color: var(--cd-navy); }
+    .cd-nav { padding: 8px; display: flex; flex-direction: column; gap: 2px; }
+    .cd-nav-link { display: flex; align-items: center; gap: 10px; width: 100%; box-sizing: border-box; text-align: left;
+      padding: 9px 10px; border-radius: 8px; border: 0; border-left: 3px solid transparent; background: transparent;
+      font: inherit; font-size: 14px; font-weight: 700; color: var(--cd-charcoal); text-decoration: none; cursor: pointer; }
+    .cd-nav-link:hover { background: var(--cd-light); color: var(--cd-navy); }
+    .cd-nav-link.is-active { background: var(--cd-aqua-soft); color: var(--cd-navy); border-left-color: var(--cd-aqua); }
+    .cd-nav-num { flex: none; width: 24px; height: 24px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 900; background: var(--cd-light); color: var(--cd-navy); border: 1px solid var(--cd-silver); }
+    .cd-nav-link.is-active .cd-nav-num { background: var(--cd-aqua); border-color: var(--cd-aqua); color: var(--cd-white); }
+    .cd-progress { padding: 12px 16px 14px; border-top: 1px solid var(--cd-silver); }
+    .cd-progress-row { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--cd-charcoal); margin-bottom: 6px; }
+    .cd-progress-row span:last-child { color: var(--cd-navy); }
+    .cd-progress-track { height: 8px; border-radius: 999px; background: var(--cd-light); border: 1px solid var(--cd-silver); overflow: hidden; }
+    .cd-progress-bar { height: 100%; background: var(--cd-aqua); border-radius: 999px; transition: width .3s ease; }
+    .cd-backdrop { display: none; }
+
+    /* Module intro */
+    .cd-hero { background: var(--cd-white); border: 1px solid var(--cd-silver); border-radius: 16px; padding: 32px;
+      border-top: 6px solid var(--cd-aqua); box-shadow: 0 1px 2px rgba(35,31,32,.05); }
+    .cd-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--cd-aqua); background: var(--cd-aqua-soft); padding: 4px 10px; border-radius: 6px; }
+    .cd-hero h2 { margin: 12px 0 0; font-size: 30px; line-height: 1.2; font-weight: 900; color: var(--cd-navy); letter-spacing: -.01em; }
+    .cd-hero-text { margin: 12px 0 0; max-width: 52rem; font-size: 16px; line-height: 1.65; color: var(--cd-charcoal); }
+    .cd-hero-text strong { color: var(--cd-black); }
+    .cd-highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 20px; }
+    .cd-highlight { background: var(--cd-light); border-left: 4px solid var(--cd-gold); border-radius: 8px; padding: 12px 14px; }
+    .cd-highlight b { display: block; font-size: 13px; color: var(--cd-navy); }
+    .cd-highlight span { display: block; margin-top: 2px; font-size: 13px; line-height: 1.5; color: var(--cd-charcoal); }
+    .cd-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+    .cd-fact { background: var(--cd-light); border: 1px solid var(--cd-silver); border-radius: 12px; padding: 14px 16px; text-align: center; }
+    .cd-fact-label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cd-charcoal); }
+    .cd-fact-value { display: block; margin-top: 4px; font-size: 18px; font-weight: 900; color: var(--cd-navy); }
+    .cd-fact:nth-child(2) .cd-fact-value { color: var(--cd-aqua); }
+    .cd-fact:nth-child(3) .cd-fact-value { color: #B87500; }
+
+    /* Sections */
+    .cd-section { background: var(--cd-white); border: 1px solid var(--cd-silver); border-radius: 16px; padding: 32px;
+      box-shadow: 0 1px 2px rgba(35,31,32,.05); }
+    .cd-section-title { margin: 0; font-size: 24px !important; line-height: 1.25 !important; font-weight: 900 !important;
+      color: var(--cd-navy) !important; letter-spacing: -.01em; }
+
+    /* Footer */
+    .cd-footer { background: var(--cd-navy); color: var(--cd-silver); border-top: 4px solid var(--cd-gold); }
+    .cd-footer-inner { max-width: 80rem; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between; gap: 8px 24px; font-size: 13px; line-height: 1.5; }
+    .cd-footer strong { color: var(--cd-white); }
+    .cd-footer a { color: var(--cd-gold); font-weight: 700; text-decoration: none; }
+    .cd-footer a:hover { text-decoration: underline; }
+
+    /* Tablet and phone */
+    @media (max-width: 1023px) {
+      .cd-pill { display: none; }
+      .cd-menu-btn { display: inline-flex; }
+      .cd-shell { display: block; padding: 20px 16px 40px; }
+      .cd-sidebar { position: fixed; z-index: 60; top: 0; bottom: 0; left: 0; width: min(300px, 86vw);
+        transform: translateX(-105%); transition: transform .2s ease; padding: 16px; box-sizing: border-box;
+        background: var(--cd-light); overflow-y: auto; }
+      body.cd-nav-open .cd-sidebar { transform: none; box-shadow: 8px 0 24px rgba(0,0,0,.2); }
+      body.cd-nav-open .cd-backdrop { display: block; position: fixed; inset: 0; z-index: 55; background: rgba(35,31,32,.45); }
+    }
+    @media (max-width: 640px) {
+      :root { --cd-header-h: 64px; }
+      .cd-header-inner { padding: 10px 16px; }
+      .cd-logo { width: 38px; height: 38px; }
+      .cd-org { display: none; }
+      .cd-title { font-size: 16px; }
+      .cd-btn .cd-btn-text { display: none; }
+      .cd-btn { padding: 8px 10px; }
+      .cd-hero, .cd-section { padding: 20px; border-radius: 12px; }
+      .cd-hero h2 { font-size: 24px; }
+      .cd-facts { grid-template-columns: 1fr; }
+      .cd-section-title { font-size: 20px !important; }
+    }
+    @media print {
+      .cd-header { position: static; }
+      .cd-sidebar, .cd-menu-btn, .cd-backdrop { display: none !important; }
+      .cd-shell { display: block; }
+    }
+  </style>
+</head>
+<body class="cd-page">
+  <header class="cd-header">
+    <div class="cd-header-inner">
+      <a class="cd-brand" href="index.html" title="All modules">
+        <span class="cd-logo"><svg viewBox="0 0 24 24" fill="none" stroke="#FBAF3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2.5 9 2.5 12 0v-5"/></svg></span>
+        <span class="cd-brand-text">
+          <span class="cd-org">Catholic Education Diocese of Wollongong &middot; Primary Mathematics K&ndash;6</span>
+          <h1 class="cd-title">Focus Area 6: Two-dimensional Spatial Structure</h1>
         </span>
-        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg bg-cedow-blue border border-cedow-silver text-white hover:bg-cedow-aqua transition">
-          <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
+      </a>
+      <div class="cd-header-actions">
+        <span class="cd-pill">NSW Mathematics K&ndash;10 (2022)</span>
+        <a class="cd-btn" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span class="cd-btn-text">All modules</span></a>
+        <button type="button" class="cd-btn cd-menu-btn" id="cdNavToggle" aria-controls="cdSidebar" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="cd-btn-text">Sections</span></button>
       </div>
     </div>
   </header>
-
-  <!-- Main Container with Responsive Sidebar -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-1 flex flex-col md:flex-row gap-8">
-    
-    <!-- Sidebar Navigation -->
-    <aside id="sidebar" class="hidden md:block w-full md:w-64 lg:w-72 flex-shrink-0">
-      <div class="sticky top-20 space-y-4">
-        
-        <!-- Module Index Card -->
-        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-4">
-          <div class="text-xs font-black uppercase text-cedow-charcoal tracking-wider mb-3 px-2 flex items-center justify-between">
-            <span>Module Navigation</span>
-            <span class="text-cedow-aqua font-mono text-[11px]">7 Sections</span>
-          </div>
-          <nav class="space-y-1.5 text-sm font-medium" id="moduleNav">
-            <a href="#section-1" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
-              <i data-lucide="git-commit" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
-              <span>1. Trajectory &amp; Big Ideas</span>
-            </a>
-            <a href="#section-2" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
-              <i data-lucide="brain-circuit" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
-              <span>2. Conceptual Shifts &amp; Traps</span>
-            </a>
-            <a href="#section-3" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
-              <i data-lucide="layout-grid" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
-              <span>3. Interactive Tool Lab</span>
-            </a>
-            <a href="#section-4" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
-              <i data-lucide="stethoscope" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
-              <span>4. Diagnostic Clinic</span>
-            </a>
-            <a href="#section-5" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
-              <i data-lucide="sparkles" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
-              <span>5. Task Makeover Studio</span>
-            </a>
-            <a href="#section-6" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
-              <i data-lucide="check-circle" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
-              <span>6. Mastery Checkpoint</span>
-            </a>
-            <a href="#section-7" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
-              <i data-lucide="cloud-download" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
-              <span>7. Canvas LMS Guide</span>
-            </a>
-          </nav>
+  <div class="cd-backdrop" id="cdBackdrop"></div>
+  <div class="cd-shell">
+    <aside class="cd-sidebar" id="cdSidebar" aria-label="Module sections">
+      <div class="cd-side-card">
+        <div class="cd-side-head">
+          <span class="cd-side-label">Module sections</span>
+          <span class="cd-side-name">Focus Area 6: Two-dimensional Spatial Structure</span>
         </div>
-
-        <!-- Diocesan Pedagogical Callout Card -->
-        <div class="bg-gradient-to-br from-cedow-blue to-[#133d8f] rounded-xl text-white p-4.5 shadow-sm border border-cedow-blue">
-          <div class="flex items-center space-x-2 text-cedow-gold mb-2 font-bold text-xs uppercase tracking-wider">
-            <i data-lucide="award" class="w-4 h-4"></i>
-            <span>Spatial Reasoning Superpower</span>
-          </div>
-          <p class="text-xs text-white/90 leading-relaxed">
-            NESA and diocesan research confirm spatial reasoning is malleable: explicit training in decomposing, rotating, and visualizing 2D structures directly transfers to multi-digit arithmetic, fractions, and STEM reasoning.
-          </p>
-        </div>
-
+        <nav class="cd-nav">
+          <a class="cd-nav-link" href="#section-1"><span class="cd-nav-num">1</span><span>Vertical Trajectory &amp; Big Ideas</span></a>
+          <a class="cd-nav-link" href="#section-2"><span class="cd-nav-num">2</span><span>Conceptual Shifts &amp; Traps</span></a>
+          <a class="cd-nav-link" href="#section-3"><span class="cd-nav-num">3</span><span>Interactive Tool Lab</span></a>
+          <a class="cd-nav-link" href="#section-4"><span class="cd-nav-num">4</span><span>Diagnostic Clinic</span></a>
+          <a class="cd-nav-link" href="#section-5"><span class="cd-nav-num">5</span><span>Task Makeover Studio</span></a>
+          <a class="cd-nav-link" href="#section-6"><span class="cd-nav-num">6</span><span>Mastery Checkpoint</span></a>
+          <a class="cd-nav-link" href="#section-7"><span class="cd-nav-num">7</span><span>Canvas LMS Guide</span></a>
+        </nav>
       </div>
     </aside>
 
-    <!-- Main Learning Content Area -->
-    <main class="flex-1 space-y-12 min-w-0">
 
-      <!-- Hero Welcome Unit -->
-      <section class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8">
-        <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-cedow-gold/20 text-cedow-blue border border-cedow-gold/40 mb-3">
-          <i data-lucide="book-open" class="w-3.5 h-3.5 mr-1.5 text-cedow-blue"></i> CEDoW Primary Mathematics Curriculum Specialist Series
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-black text-cedow-blue tracking-tight mb-3">
-          Two-dimensional Spatial Structure (K–6 Continuum)
-        </h2>
-        <p class="text-cedow-charcoal text-base sm:text-lg leading-relaxed mb-6">
-          This self-paced professional learning module traces the mathematical architecture of <strong>Two-dimensional spatial structure</strong> across Kindergarten to Year 6. Follow the two interconnected syllabus strands: <strong>2D shapes</strong> (from visual prototype recognition to property-based classification and dissection) and <strong>area</strong> (from intuitive direct superposition to uniform informal tiling, array composite units, and transformational formulas).
-        </p>
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
-          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
-            <span class="block text-xs uppercase font-bold text-cedow-charcoal">Focus Area</span>
-            <span class="text-sm font-black text-cedow-blue">2D Spatial Structure</span>
-          </div>
-          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
-            <span class="block text-xs uppercase font-bold text-cedow-charcoal">Syllabus</span>
-            <span class="text-sm font-black text-cedow-blue">NSW K–10 (2022)</span>
-          </div>
-          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
-            <span class="block text-xs uppercase font-bold text-cedow-charcoal">Strands</span>
-            <span class="text-sm font-black text-cedow-aqua">2D Shapes &amp; Area</span>
-          </div>
-          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
-            <span class="block text-xs uppercase font-bold text-cedow-charcoal">WM Outcome</span>
-            <span class="text-sm font-black text-cedow-gold">MAO-WM-01</span>
-          </div>
+    <!-- Main Learning Content Area -->
+    <main class="cd-main">
+      <section class="cd-hero" aria-label="Module overview">
+        <span class="cd-eyebrow">Focus Area 6 &middot; Self-paced professional learning</span>
+        <h2>How Students Learn About 2D Shapes and Area (K&ndash;6)</h2>
+        <p class="cd-hero-text">This module traces two-dimensional spatial structure from Kindergarten to Year 6 through two connected ideas: <strong>2D shapes</strong> (from visual prototype recognition to property-based classification and dissection) and <strong>area</strong> (from direct comparison to informal tiling, arrays of composite units and formulas built from transformations).</p>
+        <div class="cd-facts">
+          <div class="cd-fact"><span class="cd-fact-label">Syllabus</span><span class="cd-fact-value">NSW K&ndash;10 (2022)</span></div>
+          <div class="cd-fact"><span class="cd-fact-label">Stages</span><span class="cd-fact-value">Early Stage 1 &ndash; Stage 3</span></div>
+          <div class="cd-fact"><span class="cd-fact-label">Working Mathematically</span><span class="cd-fact-value">MAO-WM-01</span></div>
         </div>
       </section>
 
-      <!-- =================================================================== -->
-      <!-- SECTION 1: THE VERTICAL TRAJECTORY & BIG IDEAS                      -->
-      <!-- =================================================================== -->
-      <section id="section-1" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+      <section id="section-1" class="cd-section space-y-6">
         <div class="border-b border-cedow-silver pb-4">
-          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 1</div>
-          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">The Vertical Trajectory &amp; Big Ideas</h3>
+          <h3 class="cd-section-title">Section 1: The Vertical Trajectory &amp; Big Ideas</h3>
           <p class="text-sm text-cedow-charcoal mt-1">Syllabus outcomes, Working Mathematically connections, and developmental progressions from Early Stage 1 to Stage 3.</p>
         </div>
 
@@ -435,10 +489,9 @@
       <!-- =================================================================== -->
       <!-- SECTION 2: KEY CONCEPTUAL SHIFTS & PEDAGOGICAL TRAPS                -->
       <!-- =================================================================== -->
-      <section id="section-2" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+      <section id="section-2" class="cd-section space-y-6">
         <div class="border-b border-cedow-silver pb-4">
-          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 2</div>
-          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Key Conceptual Shifts &amp; Pedagogical Traps</h3>
+          <h3 class="cd-section-title">Section 2: Key Conceptual Shifts &amp; Pedagogical Traps</h3>
           <p class="text-sm text-cedow-charcoal mt-1">Research-informed insights grounded in the NESA Teaching Advice, Clements &amp; Sarama, Lowrie et al. (2021), and Hourigan &amp; Leavy (2015).</p>
         </div>
 
@@ -541,10 +594,9 @@
       <!-- =================================================================== -->
       <!-- SECTION 3: INTERACTIVE TOOL LAB (4 RUNNABLE MANIPULATIVES)          -->
       <!-- =================================================================== -->
-      <section id="section-3" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+      <section id="section-3" class="cd-section space-y-6">
         <div class="border-b border-cedow-silver pb-4">
-          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 3</div>
-          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Interactive Tool Lab (4 Runnable Manipulatives)</h3>
+          <h3 class="cd-section-title">Section 3: Interactive Tool Lab</h3>
           <p class="text-sm text-cedow-charcoal mt-1">Live, dynamic simulators tailored to Two-dimensional spatial structure. Test, manipulate variables, and observe real-time feedback.</p>
         </div>
 
@@ -695,10 +747,9 @@
       <!-- =================================================================== -->
       <!-- SECTION 4: STUDENT DIAGNOSTIC CLINIC & ROOT MISCONCEPTIONS          -->
       <!-- =================================================================== -->
-      <section id="section-4" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+      <section id="section-4" class="cd-section space-y-6">
         <div class="border-b border-cedow-silver pb-4">
-          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 4</div>
-          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Student Diagnostic Clinic &amp; Root Misconceptions</h3>
+          <h3 class="cd-section-title">Section 4: Student Diagnostic Clinic &amp; Root Misconceptions</h3>
           <p class="text-sm text-cedow-charcoal mt-1">Diagnose student thinking across the K–6 continuum using the 4 core conceptual roots identified in research and diocesan data.</p>
         </div>
 
@@ -775,10 +826,9 @@
       <!-- =================================================================== -->
       <!-- SECTION 5: TASK MAKEOVER STUDIO (WORKING MATHEMATICALLY)           -->
       <!-- =================================================================== -->
-      <section id="section-5" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+      <section id="section-5" class="cd-section space-y-6">
         <div class="border-b border-cedow-silver pb-4">
-          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 5</div>
-          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Task Makeover Studio (Working Mathematically - MAO-WM-01)</h3>
+          <h3 class="cd-section-title">Section 5: Task Makeover Studio (Working Mathematically)</h3>
           <p class="text-sm text-cedow-charcoal mt-1">Transform closed procedural worksheet drills into rich, inquiry-based spatial challenges embedding reasoning and communication.</p>
         </div>
 
@@ -824,10 +874,9 @@
       <!-- =================================================================== -->
       <!-- SECTION 6: MODULE MASTERY CHECKPOINT                                -->
       <!-- =================================================================== -->
-      <section id="section-6" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+      <section id="section-6" class="cd-section space-y-6">
         <div class="border-b border-cedow-silver pb-4">
-          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 6</div>
-          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Module Mastery Checkpoint</h3>
+          <h3 class="cd-section-title">Section 6: Module Mastery Checkpoint</h3>
           <p class="text-sm text-cedow-charcoal mt-1">Demonstrate your understanding across the NESA Teaching Advice and diocesan spatial continuum. An 80% result unlocks the Executive Pedagogical Summary.</p>
         </div>
 
@@ -888,10 +937,9 @@
       <!-- =================================================================== -->
       <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE                              -->
       <!-- =================================================================== -->
-      <section id="section-7" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+      <section id="section-7" class="cd-section space-y-6">
         <div class="border-b border-cedow-silver pb-4">
-          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 7</div>
-          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Canvas LMS Deployment Guide</h3>
+          <h3 class="cd-section-title">Section 7: Canvas LMS Deployment Guide</h3>
           <p class="text-sm text-cedow-charcoal mt-1">Seamlessly deploy this single-file module into your school or diocesan Canvas LMS environment.</p>
         </div>
 
@@ -933,17 +981,10 @@
     </main>
 
   </div>
-
-  <!-- Diocesan Footer -->
-  <footer class="bg-cedow-blue text-white mt-12 border-t-4 border-cedow-gold py-6">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
-      <div class="text-xs text-white/80 space-y-1">
-        <p class="font-bold text-white">Catholic Education Diocese of Wollongong &bull; Primary Mathematics Professional Learning</p>
-        <p>Built from the NESA <em>Mathematics K–10 Syllabus (2022)</em>, Syllabus Support Teaching Advice, and CEDoW Diocesan PL Modules.</p>
-      </div>
-      <div class="text-xs font-mono text-cedow-gold font-bold">
-        Pure Australian English &bull; Single-File Architecture
-      </div>
+  <footer class="cd-footer">
+    <div class="cd-footer-inner">
+      <span><strong>Catholic Education Diocese of Wollongong</strong> &middot; Primary Mathematics K&ndash;6 Professional Learning</span>
+      <span>Aligned to the NSW Mathematics K&ndash;10 Syllabus (2022) and NESA Teaching Advice &middot; <a href="index.html">All modules</a></span>
     </div>
   </footer>
 
@@ -953,13 +994,6 @@
   <script>
     // Initialize Lucide Icons
     lucide.createIcons();
-
-    // Mobile Menu Toggle
-    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
-    const sidebar = document.getElementById('sidebar');
-    mobileMenuBtn.addEventListener('click', () => {
-      sidebar.classList.toggle('hidden');
-    });
 
     // -------------------------------------------------------------
     // DATA STRUCTURES (Grounding in NESA Syllabus & CEDoW PL)
@@ -2013,25 +2047,33 @@
     });
 
     renderQuiz();
-
-    // Active Navigation Highlighting on Scroll
-    window.addEventListener('scroll', () => {
-      const sections = document.querySelectorAll('section[id]');
-      const scrollY = window.pageYOffset;
-
-      sections.forEach(current => {
-        const sectionHeight = current.offsetHeight;
-        const sectionTop = current.offsetTop - 120;
-        const sectionId = current.getAttribute('id');
-        const navLink = document.querySelector(`#moduleNav a[href*=${sectionId}]`);
-
-        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
-          if (navLink) navLink.classList.add('nav-active');
-        } else {
-          if (navLink) navLink.classList.remove('nav-active');
-        }
+  </script>
+  <script id="cd-shell-js">
+    /* Shared module shell: section menu on small screens + current-section highlight */
+    (function () {
+      var body = document.body;
+      var toggle = document.getElementById('cdNavToggle');
+      var backdrop = document.getElementById('cdBackdrop');
+      var links = Array.prototype.slice.call(document.querySelectorAll('.cd-nav-link'));
+      function closeNav() { body.classList.remove('cd-nav-open'); if (toggle) toggle.setAttribute('aria-expanded', 'false'); }
+      if (toggle) toggle.addEventListener('click', function () {
+        var open = body.classList.toggle('cd-nav-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       });
-    });
+      if (backdrop) backdrop.addEventListener('click', closeNav);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
+      links.forEach(function (l) { l.addEventListener('click', function () { if (window.innerWidth < 1024) closeNav(); }); });
+      var anchors = links.filter(function (l) { return (l.getAttribute('href') || '').charAt(0) === '#'; });
+      if (!anchors.length) return;
+      var targets = anchors.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+      function update() {
+        var line = window.scrollY + 140, idx = 0;
+        targets.forEach(function (t, i) { if (t && t.getBoundingClientRect().top + window.scrollY <= line) idx = i; });
+        anchors.forEach(function (a, i) { a.classList.toggle('is-active', i === idx); });
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
   </script>
 </body>
 </html>

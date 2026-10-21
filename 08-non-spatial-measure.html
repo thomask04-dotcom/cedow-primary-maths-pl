@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="en-AU" class="scroll-smooth">
+<html lang="en-AU">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Non-Spatial Measure (K–6) Professional Learning Module | CEDoW</title>
-  <!-- Google Fonts: Lato & Fira Code -->
+  <title>Focus Area 8: Non-spatial Measure (K&ndash;6) | CEDoW Primary Mathematics PL</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&family=Fira+Code:wght@400;500;600;700&display=swap" rel="stylesheet">
   <!-- Tailwind CSS CDN -->
   <script src="https://cdn.tailwindcss.com"></script>
   <!-- Lucide Icons CDN -->
@@ -83,130 +82,194 @@
       transform-origin: 200px 70px;
     }
   </style>
-</head>
-<body class="flex flex-col min-h-screen">
+  <style id="cd-shell-css">
+    /* ===== CEDoW Primary Mathematics PL — shared module shell =====
+       Identical in every module. Edit here, then copy to all modules. */
+    :root {
+      --cd-navy: #0D2C6B; --cd-aqua: #188296; --cd-gold: #FBAF3F;
+      --cd-silver: #D1D2D4; --cd-charcoal: #4C4C4E; --cd-black: #231F20;
+      --cd-light: #F4F6F9; --cd-white: #FFFFFF;
+      --cd-aqua-soft: #E6F3F5; --cd-header-h: 72px;
+    }
+    html { scroll-behavior: smooth; }
+    body.cd-page {
+      margin: 0; min-height: 100vh; display: flex; flex-direction: column;
+      background: var(--cd-light); color: var(--cd-black);
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased; overflow-x: hidden;
+    }
+    section[id] { scroll-margin-top: calc(var(--cd-header-h) + 24px); }
 
-  <!-- TOP HEADER / BANNER -->
-  <header class="bg-[#0D2C6B] text-white sticky top-0 z-50 shadow-md border-b-4 border-[#FBAF3F]">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
-      <div class="flex items-center space-x-3">
-        <div class="bg-[#188296] p-2 rounded-lg text-white shadow-inner flex items-center justify-center">
-          <i data-lucide="compass" class="w-6 h-6"></i>
-        </div>
-        <div>
-          <span class="text-xs uppercase tracking-widest text-[#FBAF3F] font-bold block">Catholic Education Diocese of Wollongong</span>
-          <h1 class="text-lg sm:text-xl font-black tracking-tight flex items-center gap-2">
-            Non-Spatial Measure (K–6)
-            <span class="text-xs font-normal bg-[#188296] text-white px-2 py-0.5 rounded-full border border-white/20">Focus Area 8</span>
-          </h1>
-        </div>
-      </div>
-      <div class="flex items-center space-x-4">
-        <span class="hidden md:inline-flex items-center text-xs text-slate-200 bg-white/10 px-3 py-1 rounded-md border border-white/10">
-          <i data-lucide="book-open" class="w-3.5 h-3.5 mr-1.5 text-[#FBAF3F]"></i> NSW Maths K–10 (2022)
+    /* Header */
+    .cd-header { position: sticky; top: 0; z-index: 50; background: var(--cd-navy); color: var(--cd-white);
+      border-bottom: 4px solid var(--cd-gold); box-shadow: 0 2px 8px rgba(13,44,107,.18); }
+    .cd-header-inner { max-width: 80rem; margin: 0 auto; padding: 12px 24px; min-height: 48px;
+      display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .cd-brand { display: flex; align-items: center; gap: 14px; min-width: 0; color: inherit; text-decoration: none; }
+    .cd-logo { flex: none; width: 44px; height: 44px; border-radius: 10px; background: var(--cd-aqua);
+      display: flex; align-items: center; justify-content: center; box-shadow: inset 0 0 0 1px rgba(255,255,255,.15); }
+    .cd-logo svg { width: 24px; height: 24px; }
+    .cd-brand-text { min-width: 0; }
+    .cd-org { display: block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cd-silver); }
+    .cd-title { margin: 2px 0 0; font-size: 20px; line-height: 1.25; font-weight: 900; color: var(--cd-white); letter-spacing: -.01em; }
+    .cd-header-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+    .cd-pill { display: inline-flex; align-items: center; gap: 6px; font-size: 12px; font-weight: 700; padding: 6px 12px;
+      border-radius: 999px; background: rgba(24,130,150,.35); border: 1px solid rgba(24,130,150,.8); color: var(--cd-white); white-space: nowrap; }
+    .cd-btn { display: inline-flex; align-items: center; gap: 6px; font: inherit; font-size: 13px; font-weight: 700; padding: 8px 14px;
+      border-radius: 8px; background: var(--cd-white); color: var(--cd-navy); border: 0; text-decoration: none; cursor: pointer; white-space: nowrap; }
+    .cd-btn:hover { background: var(--cd-gold); }
+    .cd-btn svg { width: 16px; height: 16px; }
+    .cd-menu-btn { display: none; }
+
+    /* Layout */
+    .cd-shell { flex: 1 0 auto; width: 100%; max-width: 80rem; margin: 0 auto; padding: 28px 24px 48px;
+      box-sizing: border-box; display: flex; align-items: flex-start; gap: 32px; }
+    .cd-main { flex: 1; min-width: 0; display: block; }
+    .cd-main > * + * { margin-top: 40px; }
+
+    /* Sidebar */
+    .cd-sidebar { flex: none; width: 272px; position: sticky; top: calc(var(--cd-header-h) + 24px); }
+    .cd-side-card { background: var(--cd-white); border: 1px solid var(--cd-silver); border-radius: 14px; overflow: hidden;
+      box-shadow: 0 1px 2px rgba(35,31,32,.05); }
+    .cd-side-head { padding: 14px 16px; background: var(--cd-light); border-bottom: 1px solid var(--cd-silver); }
+    .cd-side-label { display: block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cd-charcoal); }
+    .cd-side-name { display: block; margin-top: 2px; font-size: 14px; font-weight: 900; color: var(--cd-navy); }
+    .cd-nav { padding: 8px; display: flex; flex-direction: column; gap: 2px; }
+    .cd-nav-link { display: flex; align-items: center; gap: 10px; width: 100%; box-sizing: border-box; text-align: left;
+      padding: 9px 10px; border-radius: 8px; border: 0; border-left: 3px solid transparent; background: transparent;
+      font: inherit; font-size: 14px; font-weight: 700; color: var(--cd-charcoal); text-decoration: none; cursor: pointer; }
+    .cd-nav-link:hover { background: var(--cd-light); color: var(--cd-navy); }
+    .cd-nav-link.is-active { background: var(--cd-aqua-soft); color: var(--cd-navy); border-left-color: var(--cd-aqua); }
+    .cd-nav-num { flex: none; width: 24px; height: 24px; border-radius: 999px; display: inline-flex; align-items: center; justify-content: center;
+      font-size: 12px; font-weight: 900; background: var(--cd-light); color: var(--cd-navy); border: 1px solid var(--cd-silver); }
+    .cd-nav-link.is-active .cd-nav-num { background: var(--cd-aqua); border-color: var(--cd-aqua); color: var(--cd-white); }
+    .cd-progress { padding: 12px 16px 14px; border-top: 1px solid var(--cd-silver); }
+    .cd-progress-row { display: flex; justify-content: space-between; font-size: 12px; font-weight: 700; color: var(--cd-charcoal); margin-bottom: 6px; }
+    .cd-progress-row span:last-child { color: var(--cd-navy); }
+    .cd-progress-track { height: 8px; border-radius: 999px; background: var(--cd-light); border: 1px solid var(--cd-silver); overflow: hidden; }
+    .cd-progress-bar { height: 100%; background: var(--cd-aqua); border-radius: 999px; transition: width .3s ease; }
+    .cd-backdrop { display: none; }
+
+    /* Module intro */
+    .cd-hero { background: var(--cd-white); border: 1px solid var(--cd-silver); border-radius: 16px; padding: 32px;
+      border-top: 6px solid var(--cd-aqua); box-shadow: 0 1px 2px rgba(35,31,32,.05); }
+    .cd-eyebrow { display: inline-block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase;
+      color: var(--cd-aqua); background: var(--cd-aqua-soft); padding: 4px 10px; border-radius: 6px; }
+    .cd-hero h2 { margin: 12px 0 0; font-size: 30px; line-height: 1.2; font-weight: 900; color: var(--cd-navy); letter-spacing: -.01em; }
+    .cd-hero-text { margin: 12px 0 0; max-width: 52rem; font-size: 16px; line-height: 1.65; color: var(--cd-charcoal); }
+    .cd-hero-text strong { color: var(--cd-black); }
+    .cd-highlights { display: grid; grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)); gap: 12px; margin-top: 20px; }
+    .cd-highlight { background: var(--cd-light); border-left: 4px solid var(--cd-gold); border-radius: 8px; padding: 12px 14px; }
+    .cd-highlight b { display: block; font-size: 13px; color: var(--cd-navy); }
+    .cd-highlight span { display: block; margin-top: 2px; font-size: 13px; line-height: 1.5; color: var(--cd-charcoal); }
+    .cd-facts { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; margin-top: 24px; }
+    .cd-fact { background: var(--cd-light); border: 1px solid var(--cd-silver); border-radius: 12px; padding: 14px 16px; text-align: center; }
+    .cd-fact-label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cd-charcoal); }
+    .cd-fact-value { display: block; margin-top: 4px; font-size: 18px; font-weight: 900; color: var(--cd-navy); }
+    .cd-fact:nth-child(2) .cd-fact-value { color: var(--cd-aqua); }
+    .cd-fact:nth-child(3) .cd-fact-value { color: #B87500; }
+
+    /* Sections */
+    .cd-section { background: var(--cd-white); border: 1px solid var(--cd-silver); border-radius: 16px; padding: 32px;
+      box-shadow: 0 1px 2px rgba(35,31,32,.05); }
+    .cd-section-title { margin: 0; font-size: 24px !important; line-height: 1.25 !important; font-weight: 900 !important;
+      color: var(--cd-navy) !important; letter-spacing: -.01em; }
+
+    /* Footer */
+    .cd-footer { background: var(--cd-navy); color: var(--cd-silver); border-top: 4px solid var(--cd-gold); }
+    .cd-footer-inner { max-width: 80rem; margin: 0 auto; padding: 20px 24px; display: flex; flex-wrap: wrap;
+      align-items: center; justify-content: space-between; gap: 8px 24px; font-size: 13px; line-height: 1.5; }
+    .cd-footer strong { color: var(--cd-white); }
+    .cd-footer a { color: var(--cd-gold); font-weight: 700; text-decoration: none; }
+    .cd-footer a:hover { text-decoration: underline; }
+
+    /* Tablet and phone */
+    @media (max-width: 1023px) {
+      .cd-pill { display: none; }
+      .cd-menu-btn { display: inline-flex; }
+      .cd-shell { display: block; padding: 20px 16px 40px; }
+      .cd-sidebar { position: fixed; z-index: 60; top: 0; bottom: 0; left: 0; width: min(300px, 86vw);
+        transform: translateX(-105%); transition: transform .2s ease; padding: 16px; box-sizing: border-box;
+        background: var(--cd-light); overflow-y: auto; }
+      body.cd-nav-open .cd-sidebar { transform: none; box-shadow: 8px 0 24px rgba(0,0,0,.2); }
+      body.cd-nav-open .cd-backdrop { display: block; position: fixed; inset: 0; z-index: 55; background: rgba(35,31,32,.45); }
+    }
+    @media (max-width: 640px) {
+      :root { --cd-header-h: 64px; }
+      .cd-header-inner { padding: 10px 16px; }
+      .cd-logo { width: 38px; height: 38px; }
+      .cd-org { display: none; }
+      .cd-title { font-size: 16px; }
+      .cd-btn .cd-btn-text { display: none; }
+      .cd-btn { padding: 8px 10px; }
+      .cd-hero, .cd-section { padding: 20px; border-radius: 12px; }
+      .cd-hero h2 { font-size: 24px; }
+      .cd-facts { grid-template-columns: 1fr; }
+      .cd-section-title { font-size: 20px !important; }
+    }
+    @media print {
+      .cd-header { position: static; }
+      .cd-sidebar, .cd-menu-btn, .cd-backdrop { display: none !important; }
+      .cd-shell { display: block; }
+    }
+  </style>
+</head>
+<body class="cd-page">
+  <header class="cd-header">
+    <div class="cd-header-inner">
+      <a class="cd-brand" href="index.html" title="All modules">
+        <span class="cd-logo"><svg viewBox="0 0 24 24" fill="none" stroke="#FBAF3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2.5 9 2.5 12 0v-5"/></svg></span>
+        <span class="cd-brand-text">
+          <span class="cd-org">Catholic Education Diocese of Wollongong &middot; Primary Mathematics K&ndash;6</span>
+          <h1 class="cd-title">Focus Area 8: Non-spatial Measure</h1>
         </span>
-        <button id="mobileNavToggle" class="lg:hidden p-2 rounded-md hover:bg-white/10 text-white focus:outline-none" aria-label="Toggle Navigation">
-          <i data-lucide="menu" class="w-6 h-6"></i>
-        </button>
+      </a>
+      <div class="cd-header-actions">
+        <span class="cd-pill">NSW Mathematics K&ndash;10 (2022)</span>
+        <a class="cd-btn" href="index.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg><span class="cd-btn-text">All modules</span></a>
+        <button type="button" class="cd-btn cd-menu-btn" id="cdNavToggle" aria-controls="cdSidebar" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 6h16M4 12h16M4 18h16"/></svg><span class="cd-btn-text">Sections</span></button>
       </div>
     </div>
   </header>
-
-  <!-- MAIN APP CONTAINER -->
-  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow flex flex-col lg:flex-row gap-6">
-
-    <!-- RESPONSIVE SIDEBAR NAVIGATION -->
-    <aside id="sidebarNav" class="hidden lg:block w-full lg:w-72 flex-shrink-0">
-      <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-4 sticky top-20">
-        <div class="pb-3 border-b border-[#D1D2D4] mb-3">
-          <h2 class="text-xs font-black uppercase text-[#4C4C4E] tracking-wider flex items-center">
-            <i data-lucide="list-tree" class="w-4 h-4 mr-1.5 text-[#188296]"></i> Learning Pathway
-          </h2>
-          <p class="text-xs text-gray-500 mt-1">Self-paced professional study module</p>
+  <div class="cd-backdrop" id="cdBackdrop"></div>
+  <div class="cd-shell">
+    <aside class="cd-sidebar" id="cdSidebar" aria-label="Module sections">
+      <div class="cd-side-card">
+        <div class="cd-side-head">
+          <span class="cd-side-label">Module sections</span>
+          <span class="cd-side-name">Focus Area 8: Non-spatial Measure</span>
         </div>
-        <nav class="space-y-1 text-sm font-medium">
-          <a href="#section-1" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
-            <i data-lucide="git-commit" class="w-4 h-4 mr-2.5 text-[#188296]"></i>
-            <span>1. Trajectory & Big Ideas</span>
-          </a>
-          <a href="#section-2" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
-            <i data-lucide="alert-triangle" class="w-4 h-4 mr-2.5 text-[#FBAF3F]"></i>
-            <span>2. Shifts & Pedagogical Traps</span>
-          </a>
-          <a href="#section-3" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
-            <i data-lucide="sliders" class="w-4 h-4 mr-2.5 text-[#188296]"></i>
-            <span>3. Interactive Tool Lab</span>
-          </a>
-          <a href="#section-4" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
-            <i data-lucide="stethoscope" class="w-4 h-4 mr-2.5 text-[#188296]"></i>
-            <span>4. Diagnostic Clinic & Sorter</span>
-          </a>
-          <a href="#section-5" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
-            <i data-lucide="sparkles" class="w-4 h-4 mr-2.5 text-[#FBAF3F]"></i>
-            <span>5. Task Makeover Studio</span>
-          </a>
-          <a href="#section-6" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
-            <i data-lucide="check-circle-2" class="w-4 h-4 mr-2.5 text-[#188296]"></i>
-            <span>6. Mastery Checkpoint</span>
-          </a>
-          <a href="#section-7" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
-            <i data-lucide="share-2" class="w-4 h-4 mr-2.5 text-[#0D2C6B]"></i>
-            <span>7. Canvas Deployment</span>
-          </a>
+        <nav class="cd-nav">
+          <a class="cd-nav-link" href="#section-1"><span class="cd-nav-num">1</span><span>Vertical Trajectory &amp; Big Ideas</span></a>
+          <a class="cd-nav-link" href="#section-2"><span class="cd-nav-num">2</span><span>Conceptual Shifts &amp; Traps</span></a>
+          <a class="cd-nav-link" href="#section-3"><span class="cd-nav-num">3</span><span>Interactive Tool Lab</span></a>
+          <a class="cd-nav-link" href="#section-4"><span class="cd-nav-num">4</span><span>Diagnostic Clinic</span></a>
+          <a class="cd-nav-link" href="#section-5"><span class="cd-nav-num">5</span><span>Task Makeover Studio</span></a>
+          <a class="cd-nav-link" href="#section-6"><span class="cd-nav-num">6</span><span>Mastery Checkpoint</span></a>
+          <a class="cd-nav-link" href="#section-7"><span class="cd-nav-num">7</span><span>Canvas LMS Guide</span></a>
         </nav>
-
-        <!-- Quick Summary Box -->
-        <div class="mt-6 p-3 bg-[#F4F6F9] rounded-lg border border-[#D1D2D4] text-xs text-[#4C4C4E]">
-          <div class="flex items-center gap-1.5 font-bold text-[#0D2C6B] mb-1">
-            <i data-lucide="info" class="w-3.5 h-3.5 text-[#188296]"></i> Focus Overview
-          </div>
-          <p>Two distinct strands running across K–6: <strong>Mass</strong> (non-spatial units, conservation, kilograms, tonnes) and <strong>Time</strong> (cyclical turns, base-60, elapsed bridging)[cite: 226, 263].</p>
-        </div>
       </div>
     </aside>
 
-    <!-- MAIN CONTENT COLUMN -->
-    <main class="flex-1 space-y-10 min-w-0">
 
-      <!-- HERO INTRO CARD -->
-      <section class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
-        <div class="flex flex-wrap items-center gap-2 mb-3">
-          <span class="bg-[#0D2C6B] text-white text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Focus Area 8</span>
-          <span class="bg-[#188296]/10 text-[#188296] text-xs px-2.5 py-1 rounded-full font-semibold border border-[#188296]/20">Early Stage 1 to Stage 3</span>
-          <span class="bg-[#FBAF3F]/20 text-[#0D2C6B] text-xs px-2.5 py-1 rounded-full font-semibold border border-[#FBAF3F]/40">Outcome Aligned: MAO-WM-01</span>
-        </div>
-        <h2 class="text-2xl sm:text-3xl font-black text-[#0D2C6B] tracking-tight">How Students Learn About Mass and Time (K–6)</h2>
-        <p class="mt-3 text-base text-[#4C4C4E] leading-relaxed">
-          Non-spatial measure explores the two foundational measurement domains where units do not tile physical space[cite: 226]. In <strong>Mass</strong>, the spatial arrangement of matter does not change total weight: unlike length or area, units need not lie end-to-end with no gaps[cite: 226]. In <strong>Time</strong>, durations and moments are anchored in personal experience, cultural calendars, analog rotations, and base-60 cycles rather than base-10 length lines[cite: 226, 263].
-        </p>
-        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-[#D1D2D4] text-sm">
-          <div class="flex items-start space-x-3">
-            <div class="p-2 bg-blue-50 text-[#0D2C6B] rounded-lg mt-0.5"><i data-lucide="scale" class="w-5 h-5"></i></div>
-            <div>
-              <strong class="text-[#0D2C6B] block font-bold">The Mass Progression</strong>
-              <span class="text-gray-600">From sensory hefting and equal-arm balance with informal units, to standard kilograms and grams, through to decimal conversions and tonnes[cite: 226, 262, 327, 188, 190].</span>
-            </div>
-          </div>
-          <div class="flex items-start space-x-3">
-            <div class="p-2 bg-teal-50 text-[#188296] rounded-lg mt-0.5"><i data-lucide="clock" class="w-5 h-5"></i></div>
-            <div>
-              <strong class="text-[#188296] block font-bold">The Time Progression</strong>
-              <span class="text-gray-600">From event sequencing and o’clock, to half and quarter turns, to reading clocks to the minute, am/pm, 24-hour time, and timeline bridging[cite: 227, 263, 327, 189, 190].</span>
-            </div>
-          </div>
+    <!-- MAIN CONTENT COLUMN -->
+    <main class="cd-main">
+      <section class="cd-hero" aria-label="Module overview">
+        <span class="cd-eyebrow">Focus Area 8 &middot; Self-paced professional learning</span>
+        <h2>How Students Learn About Mass and Time (K&ndash;6)</h2>
+        <p class="cd-hero-text">Non-spatial measure explores two measurement ideas where units do not tile physical space. In <strong>mass</strong>, the arrangement of matter does not change total weight: unlike length or area, units need not lie end-to-end with no gaps. In <strong>time</strong>, durations and moments are anchored in personal experience, calendars, analog rotations and base-60 cycles rather than base-10 length lines.</p>
+        <div class="cd-highlights"><div class="cd-highlight"><b>Mass</b><span>From hefting and equal-arm balances with informal units, to kilograms and grams, through to decimal conversions and tonnes.</span></div><div class="cd-highlight"><b>Time</b><span>From sequencing events and o&rsquo;clock, to half and quarter turns, reading clocks to the minute, am/pm, 24-hour time and timelines.</span></div></div>
+        <div class="cd-facts">
+          <div class="cd-fact"><span class="cd-fact-label">Syllabus</span><span class="cd-fact-value">NSW K&ndash;10 (2022)</span></div>
+          <div class="cd-fact"><span class="cd-fact-label">Stages</span><span class="cd-fact-value">Early Stage 1 &ndash; Stage 3</span></div>
+          <div class="cd-fact"><span class="cd-fact-label">Working Mathematically</span><span class="cd-fact-value">MAO-WM-01</span></div>
         </div>
       </section>
 
-      <!-- ========================================== -->
-      <!-- SECTION 1: TRAJECTORY & BIG IDEAS MATRIX   -->
-      <!-- ========================================== -->
-      <section id="section-1" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+      <section id="section-1" class="cd-section">
         <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
-          <div class="bg-[#0D2C6B] text-white p-2 rounded-lg">
-            <i data-lucide="git-merge" class="w-6 h-6"></i>
-          </div>
           <div>
-            <h3 class="text-xl font-black text-[#0D2C6B]">Section 1: The Vertical Trajectory & Big Ideas</h3>
+            <h3 class="cd-section-title">Section 1: The Vertical Trajectory &amp; Big Ideas</h3>
             <p class="text-sm text-[#4C4C4E]">Syllabus outcomes, Working Mathematically connections, and cross-stage conceptual architecture.</p>
           </div>
         </div>
@@ -259,13 +322,10 @@
       <!-- ========================================== -->
       <!-- SECTION 2: KEY CONCEPTUAL SHIFTS & TRAPS   -->
       <!-- ========================================== -->
-      <section id="section-2" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+      <section id="section-2" class="cd-section">
         <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
-          <div class="bg-[#FBAF3F] text-[#0D2C6B] p-2 rounded-lg">
-            <i data-lucide="compass" class="w-6 h-6"></i>
-          </div>
           <div>
-            <h3 class="text-xl font-black text-[#0D2C6B]">Section 2: Key Conceptual Shifts & Pedagogical Traps</h3>
+            <h3 class="cd-section-title">Section 2: Key Conceptual Shifts &amp; Pedagogical Traps</h3>
             <p class="text-sm text-[#4C4C4E]">Research-grounded breakdown of cognitive roadblocks, NESA teaching advice, and linguistic hazards.</p>
           </div>
         </div>
@@ -279,12 +339,12 @@
               <h4 class="font-bold text-[#0D2C6B] text-base">Mass is Non-Spatial (Size &ne; Weight)</h4>
             </div>
             <p class="text-sm text-[#4C4C4E] leading-relaxed">
-              Early experiences intuitively lead students to assume that large objects are heavier than small ones[cite: 226]. Because mass is non-spatial, packing or reforming matter alters volume and surface area while leaving mass invariant[cite: 226].
+              Early experiences intuitively lead students to assume that large objects are heavier than small ones. Because mass is non-spatial, packing or reforming matter alters volume and surface area while leaving mass invariant.
             </p>
             <div class="mt-3 bg-red-50 border-l-4 border-red-500 p-3 rounded text-xs text-red-900 space-y-1">
-              <strong>Pedagogical Trap:</strong> Presenting worksheet pictures of objects (e.g. comparing a drawn elephant to a mouse) reinforces the misconception that bigger always weighs more[cite: 327].
+              <strong>Pedagogical Trap:</strong> Presenting worksheet pictures of objects (e.g. comparing a drawn elephant to a mouse) reinforces the misconception that bigger always weighs more.
               <div class="text-xs text-red-800 font-medium mt-1">
-                <strong>NESA Advice:</strong> Always compare real, physical objects[cite: 327]. Deliberately select counter-intuitive pairs: large but light (foam block, beach ball) vs small but heavy (lead weight, rock)[cite: 226].
+                <strong>NESA Advice:</strong> Always compare real, physical objects. Deliberately select counter-intuitive pairs: large but light (foam block, beach ball) vs small but heavy (lead weight, rock).
               </div>
             </div>
           </div>
@@ -299,9 +359,9 @@
               Students continually attempt to apply standard base-10 decomposition to time calculations. When solving elapsed time or decimal hours, whole-number decimal habits intrude directly.
             </p>
             <div class="mt-3 bg-red-50 border-l-4 border-red-500 p-3 rounded text-xs text-red-900 space-y-1">
-              <strong>Pedagogical Trap:</strong> Calculating duration by column subtraction (<span class="math-badge">5:00 &minus; 2:45 = 2.55</span>) or declaring that <span class="math-badge">1.5 hours</span> equals <span class="math-badge">1 hour 50 minutes</span>[cite: 191].
+              <strong>Pedagogical Trap:</strong> Calculating duration by column subtraction (<span class="math-badge">5:00 &minus; 2:45 = 2.55</span>) or declaring that <span class="math-badge">1.5 hours</span> equals <span class="math-badge">1 hour 50 minutes</span>.
               <div class="text-xs text-red-800 font-medium mt-1">
-                <strong>NESA Advice:</strong> Explicitly model regrouping time in units of 60 rather than 10 or 100[cite: 191]. Bridge to the hour on an unscaled timeline to keep duration mental and relational[cite: 190].
+                <strong>NESA Advice:</strong> Explicitly model regrouping time in units of 60 rather than 10 or 100. Bridge to the hour on an unscaled timeline to keep duration mental and relational.
               </div>
             </div>
           </div>
@@ -313,12 +373,12 @@
               <h4 class="font-bold text-[#0D2C6B] text-base">The Hour Hand Travels Continuously</h4>
             </div>
             <p class="text-sm text-[#4C4C4E] leading-relaxed">
-              Earnest et al. (2018) demonstrated that students routinely locate the minute hand correctly while positioning the hour hand inaccurately[cite: 328]. For example, drawing half-past 3 with the hour hand pointing directly at the 3[cite: 328].
+              Earnest et al. (2018) demonstrated that students routinely locate the minute hand correctly while positioning the hour hand inaccurately. For example, drawing half-past 3 with the hour hand pointing directly at the 3.
             </p>
             <div class="mt-3 bg-amber-50 border-l-4 border-[#FBAF3F] p-3 rounded text-xs text-amber-900 space-y-1">
-              <strong>Pedagogical Trap:</strong> Labelling hands as "the big hand" and "the little hand", which strips the dials of their mathematical function[cite: 327].
+              <strong>Pedagogical Trap:</strong> Labelling hands as "the big hand" and "the little hand", which strips the dials of their mathematical function.
               <div class="text-xs text-amber-800 font-medium mt-1">
-                <strong>NESA Advice:</strong> Consistently use <em>hour hand</em> and <em>minute hand</em>[cite: 327]. Use geared clocks so teachers and students can observe the hour hand travel halfway between markers at half past[cite: 65, 328].
+                <strong>NESA Advice:</strong> Consistently use <em>hour hand</em> and <em>minute hand</em>. Use geared clocks so teachers and students can observe the hour hand travel halfway between markers at half past.
               </div>
             </div>
           </div>
@@ -330,12 +390,12 @@
               <h4 class="font-bold text-[#0D2C6B] text-base">Analog Numerals Represent Two Scales</h4>
             </div>
             <p class="text-sm text-[#4C4C4E] leading-relaxed">
-              On an analog clock, the numeral <span class="math-badge">2</span> represents 2 hours for the hour hand, but 10 minutes (two 5-minute intervals) for the minute hand[cite: 128].
+              On an analog clock, the numeral <span class="math-badge">2</span> represents 2 hours for the hour hand, but 10 minutes (two 5-minute intervals) for the minute hand.
             </p>
             <div class="mt-3 bg-amber-50 border-l-4 border-[#FBAF3F] p-3 rounded text-xs text-amber-900 space-y-1">
-              <strong>Pedagogical Trap:</strong> Students reading the minute hand pointing at 2 as "7:02" instead of "ten past seven"[cite: 129].
+              <strong>Pedagogical Trap:</strong> Students reading the minute hand pointing at 2 as "7:02" instead of "ten past seven".
               <div class="text-xs text-amber-800 font-medium mt-1">
-                <strong>NESA Advice:</strong> Introduce watch faces with separate scales for hours and minutes (e.g. Type B Navigator dials)[cite: 327]. Separate analog language (Part A) from digital language (Part B) in Stage 2[cite: 328].
+                <strong>NESA Advice:</strong> Introduce watch faces with separate scales for hours and minutes (e.g. Type B Navigator dials). Separate analog language (Part A) from digital language (Part B) in Stage 2.
               </div>
             </div>
           </div>
@@ -348,7 +408,7 @@
           <div class="text-sm">
             <h5 class="font-bold text-[#0D2C6B]">Aboriginal & Cultural Perspectives on Time (NESA Teaching Advice)</h5>
             <p class="text-[#4C4C4E] mt-1 leading-relaxed">
-              In Early Stage 1 and Stage 1, time spans represent personal and contextual judgements[cite: 227]. Aboriginal concepts of time are deeply connected to environmental markers, cyclical seasonal changes, tides, and astronomical patterns[cite: 328]. Support students in code-switching between Australian Eastern Standard Time (EST) and cultural ways of knowing time[cite: 328]. When using phrases like <em>"a long time"</em>, recognise that 5 years, 500 years, or 50,000 years are all valid comparatives[cite: 228].
+              In Early Stage 1 and Stage 1, time spans represent personal and contextual judgements. Aboriginal concepts of time are deeply connected to environmental markers, cyclical seasonal changes, tides, and astronomical patterns. Support students in code-switching between Australian Eastern Standard Time (EST) and cultural ways of knowing time. When using phrases like <em>"a long time"</em>, recognise that 5 years, 500 years, or 50,000 years are all valid comparatives.
             </p>
           </div>
         </div>
@@ -357,13 +417,10 @@
       <!-- ========================================== -->
       <!-- SECTION 3: INTERACTIVE TOOL LAB (4 TOOLS)  -->
       <!-- ========================================== -->
-      <section id="section-3" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+      <section id="section-3" class="cd-section">
         <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
-          <div class="bg-[#188296] text-white p-2 rounded-lg">
-            <i data-lucide="sliders" class="w-6 h-6"></i>
-          </div>
           <div>
-            <h3 class="text-xl font-black text-[#0D2C6B]">Section 3: Interactive Tool Lab</h3>
+            <h3 class="cd-section-title">Section 3: Interactive Tool Lab</h3>
             <p class="text-sm text-[#4C4C4E]">Four runnable manipulatives with real-time feedback for teacher demonstration and diagnostic exploration.</p>
           </div>
         </div>
@@ -397,7 +454,7 @@
               </span>
             </div>
             <p class="text-xs text-[#4C4C4E] mb-4">
-              Predict the tilt of the balance beam before releasing. NESA specifically recommends comparing objects that challenge the belief that larger items weigh more[cite: 226].
+              Predict the tilt of the balance beam before releasing. NESA specifically recommends comparing objects that challenge the belief that larger items weigh more.
             </p>
 
             <!-- SVG Visual Display -->
@@ -444,7 +501,7 @@
               </div>
             </div>
             <p class="text-xs text-[#4C4C4E] mb-4">
-              Move the minute slider and observe how the hour hand moves smoothly between numerals. Earnest et al. (2018) identified that students frequently leave the hour hand pinned directly on the hour numeral at half past[cite: 328].
+              Move the minute slider and observe how the hour hand moves smoothly between numerals. Earnest et al. (2018) identified that students frequently leave the hour hand pinned directly on the hour numeral at half past.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
@@ -510,7 +567,7 @@
               </span>
             </div>
             <p class="text-xs text-[#4C4C4E] mb-4">
-              Each numeral on the clock face represents two values: the hour for the hour hand and 5-minute increments for the minute hand[cite: 128]. Identify the time shown from four diagnostic choices.
+              Each numeral on the clock face represents two values: the hour for the hour hand and 5-minute increments for the minute hand. Identify the time shown from four diagnostic choices.
             </p>
 
             <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
@@ -553,7 +610,7 @@
               </div>
             </div>
             <p class="text-xs text-[#4C4C4E] mb-4">
-              NESA Teaching Advice recommends unscaled timelines to bridge to the next hour, jump whole hours, and add remaining minutes to prevent students treating time as base-10 decimals[cite: 190].
+              NESA Teaching Advice recommends unscaled timelines to bridge to the next hour, jump whole hours, and add remaining minutes to prevent students treating time as base-10 decimals.
             </p>
 
             <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] mb-4 space-y-3">
@@ -574,8 +631,8 @@
               <!-- Quick Presets -->
               <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
                 <span class="text-gray-500 font-medium">Syllabus Exemplars:</span>
-                <button onclick="setTimelinePreset('08:40', '11:05')" class="px-2 py-1 bg-[#F4F6F9] hover:bg-gray-100 rounded border border-[#D1D2D4] text-[#0D2C6B] font-semibold">School Start to Recess (8:40 am &rarr; 11:05 am)[cite: 190]</button>
-                <button onclick="setTimelinePreset('14:45', '17:00')" class="px-2 py-1 bg-[#F4F6F9] hover:bg-gray-100 rounded border border-[#D1D2D4] text-[#0D2C6B] font-semibold">Afternoon Excursion (2:45 pm &rarr; 5:00 pm)[cite: 190]</button>
+                <button onclick="setTimelinePreset('08:40', '11:05')" class="px-2 py-1 bg-[#F4F6F9] hover:bg-gray-100 rounded border border-[#D1D2D4] text-[#0D2C6B] font-semibold">School Start to Recess (8:40 am &rarr; 11:05 am)</button>
+                <button onclick="setTimelinePreset('14:45', '17:00')" class="px-2 py-1 bg-[#F4F6F9] hover:bg-gray-100 rounded border border-[#D1D2D4] text-[#0D2C6B] font-semibold">Afternoon Excursion (2:45 pm &rarr; 5:00 pm)</button>
                 <button onclick="setTimelinePreset('09:15', '14:35')" class="px-2 py-1 bg-[#F4F6F9] hover:bg-gray-100 rounded border border-[#D1D2D4] text-[#0D2C6B] font-semibold">Day Excursion (0915 &rarr; 1435)</button>
               </div>
             </div>
@@ -597,13 +654,10 @@
       <!-- ========================================== -->
       <!-- SECTION 4: DIAGNOSTIC CLINIC & SORTER      -->
       <!-- ========================================== -->
-      <section id="section-4" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+      <section id="section-4" class="cd-section">
         <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
-          <div class="bg-[#0D2C6B] text-white p-2 rounded-lg">
-            <i data-lucide="stethoscope" class="w-6 h-6"></i>
-          </div>
           <div>
-            <h3 class="text-xl font-black text-[#0D2C6B]">Section 4: Student Diagnostic Clinic & Root Misconceptions</h3>
+            <h3 class="cd-section-title">Section 4: Student Diagnostic Clinic &amp; Root Misconceptions</h3>
             <p class="text-sm text-[#4C4C4E]">Analyse authentic student dialogue and categorise errors into the 4 fundamental conceptual roots.</p>
           </div>
         </div>
@@ -613,17 +667,17 @@
           <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg">
             <span class="text-xs font-bold text-[#0D2C6B] block">Root 1</span>
             <strong class="text-sm text-[#0D2C6B] block font-bold">Mass Judged by Size/Appearance</strong>
-            <p class="text-xs text-gray-600 mt-1">Conflating visual volume with mass; believing deformation changes matter[cite: 226].</p>
+            <p class="text-xs text-gray-600 mt-1">Conflating visual volume with mass; believing deformation changes matter.</p>
           </div>
           <div class="p-3 bg-teal-50 border border-teal-200 rounded-lg">
             <span class="text-xs font-bold text-[#188296] block">Root 2</span>
             <strong class="text-sm text-[#188296] block font-bold">Time Treated as Base 10</strong>
-            <p class="text-xs text-gray-600 mt-1">Assuming an hour has 100 minutes; subtracting durations as standard decimals[cite: 191].</p>
+            <p class="text-xs text-gray-600 mt-1">Assuming an hour has 100 minutes; subtracting durations as standard decimals.</p>
           </div>
           <div class="p-3 bg-amber-50 border border-amber-200 rounded-lg">
             <span class="text-xs font-bold text-amber-800 block">Root 3</span>
             <strong class="text-sm text-amber-900 block font-bold">Clock Hands & Notation Misread</strong>
-            <p class="text-xs text-gray-600 mt-1">Ignoring hour hand travel; reading dial numerals directly as minute counts[cite: 128, 328].</p>
+            <p class="text-xs text-gray-600 mt-1">Ignoring hour hand travel; reading dial numerals directly as minute counts.</p>
           </div>
           <div class="p-3 bg-purple-50 border border-purple-200 rounded-lg">
             <span class="text-xs font-bold text-purple-800 block">Root 4</span>
@@ -686,13 +740,10 @@
       <!-- ========================================== -->
       <!-- SECTION 5: TASK MAKEOVER STUDIO (MAO-WM-01)-->
       <!-- ========================================== -->
-      <section id="section-5" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+      <section id="section-5" class="cd-section">
         <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
-          <div class="bg-[#FBAF3F] text-[#0D2C6B] p-2 rounded-lg">
-            <i data-lucide="sparkles" class="w-6 h-6"></i>
-          </div>
           <div>
-            <h3 class="text-xl font-black text-[#0D2C6B]">Section 5: Task Makeover Studio (Working Mathematically)</h3>
+            <h3 class="cd-section-title">Section 5: Task Makeover Studio (Working Mathematically)</h3>
             <p class="text-sm text-[#4C4C4E]">Transform closed procedural worksheets into high-yield, reasoning-rich tasks embedded in MAO-WM-01.</p>
           </div>
         </div>
@@ -750,13 +801,10 @@
       <!-- ========================================== -->
       <!-- SECTION 6: MODULE MASTERY CHECKPOINT       -->
       <!-- ========================================== -->
-      <section id="section-6" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+      <section id="section-6" class="cd-section">
         <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
-          <div class="bg-[#0D2C6B] text-white p-2 rounded-lg">
-            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
-          </div>
           <div>
-            <h3 class="text-xl font-black text-[#0D2C6B]">Section 6: Module Mastery Checkpoint</h3>
+            <h3 class="cd-section-title">Section 6: Module Mastery Checkpoint</h3>
             <p class="text-sm text-[#4C4C4E]">Five scenario-based questions mapped to the NESA Teaching Advice. Achieve 80% to reveal the Key Pedagogical Takeaways summary.</p>
           </div>
         </div>
@@ -790,7 +838,7 @@
                 <thead>
                   <tr class="bg-[#0D2C6B] text-white">
                     <th class="p-3 font-bold border border-white/20">Stage</th>
-                    <th class="p-3 font-bold border border-white/20">Strand</th>
+                    <th class="p-3 font-bold border border-white/20">Focus</th>
                     <th class="p-3 font-bold border border-white/20">Core Mathematical Shift</th>
                     <th class="p-3 font-bold border border-white/20">Essential Teacher Move</th>
                   </tr>
@@ -799,50 +847,50 @@
                   <tr>
                     <td class="p-3 font-bold text-[#0D2C6B]">Early Stage 1</td>
                     <td class="p-3 font-semibold text-[#188296]">Mass</td>
-                    <td class="p-3">Physical hefting; size does not decide weight[cite: 226].</td>
-                    <td class="p-3">Use surprise pairs (large light vs small heavy) with real objects[cite: 226].</td>
+                    <td class="p-3">Physical hefting; size does not decide weight.</td>
+                    <td class="p-3">Use surprise pairs (large light vs small heavy) with real objects.</td>
                   </tr>
                   <tr class="bg-gray-50">
                     <td class="p-3 font-bold text-[#0D2C6B]">Early Stage 1</td>
                     <td class="p-3 font-semibold text-[#188296]">Time</td>
-                    <td class="p-3">Personal &amp; cultural sequences; o’clock numerals describe hours[cite: 227, 28].</td>
-                    <td class="p-3">Connect days to routines; build clock layouts using numeral cards around hoops[cite: 227, 28].</td>
+                    <td class="p-3">Personal &amp; cultural sequences; o’clock numerals describe hours.</td>
+                    <td class="p-3">Connect days to routines; build clock layouts using numeral cards around hoops.</td>
                   </tr>
                   <tr>
                     <td class="p-3 font-bold text-[#0D2C6B]">Stage 1</td>
                     <td class="p-3 font-semibold text-[#188296]">Mass</td>
-                    <td class="p-3">Conservation of mass; uniform informal units on equal-arm balance[cite: 262, 66].</td>
-                    <td class="p-3">Reshape plasticine to prove invariance; emphasize identical informal units[cite: 262, 66].</td>
+                    <td class="p-3">Conservation of mass; uniform informal units on equal-arm balance.</td>
+                    <td class="p-3">Reshape plasticine to prove invariance; emphasize identical informal units.</td>
                   </tr>
                   <tr class="bg-gray-50">
                     <td class="p-3 font-bold text-[#0D2C6B]">Stage 1</td>
                     <td class="p-3 font-semibold text-[#188296]">Time</td>
-                    <td class="p-3">Half &amp; quarter turns; hour hand travels halfway between numerals[cite: 65, 67].</td>
-                    <td class="p-3">Say 'hour hand' and 'minute hand'; watch the hour hand travel smoothly[cite: 263, 65].</td>
+                    <td class="p-3">Half &amp; quarter turns; hour hand travels halfway between numerals.</td>
+                    <td class="p-3">Say 'hour hand' and 'minute hand'; watch the hour hand travel smoothly.</td>
                   </tr>
                   <tr>
                     <td class="p-3 font-bold text-[#0D2C6B]">Stage 2</td>
                     <td class="p-3 font-semibold text-[#188296]">Mass</td>
-                    <td class="p-3">Standard kilograms and grams on scaled dials; fractions of a kg[cite: 327, 130].</td>
-                    <td class="p-3">Use kitchen scales and real benchmark items (1 kg flour, 60 g egg)[cite: 127, 130].</td>
+                    <td class="p-3">Standard kilograms and grams on scaled dials; fractions of a kg.</td>
+                    <td class="p-3">Use kitchen scales and real benchmark items (1 kg flour, 60 g egg).</td>
                   </tr>
                   <tr class="bg-gray-50">
                     <td class="p-3 font-bold text-[#0D2C6B]">Stage 2</td>
                     <td class="p-3 font-semibold text-[#188296]">Time</td>
-                    <td class="p-3">Each dial numeral represents two values; reading analog to the minute[cite: 128, 129].</td>
-                    <td class="p-3">Separate analog (Part A) from digital (Part B); use dual-scale Navigator dials[cite: 327, 328].</td>
+                    <td class="p-3">Each dial numeral represents two values; reading analog to the minute.</td>
+                    <td class="p-3">Separate analog (Part A) from digital (Part B); use dual-scale Navigator dials.</td>
                   </tr>
                   <tr>
                     <td class="p-3 font-bold text-[#0D2C6B]">Stage 3</td>
                     <td class="p-3 font-semibold text-[#188296]">Mass</td>
-                    <td class="p-3">Tonnes, metric units of 1000, 3-decimal notation, gross vs net[cite: 188, 190].</td>
-                    <td class="p-3">Place value charts to thousandths; subtract container tare mass[cite: 141, 188].</td>
+                    <td class="p-3">Tonnes, metric units of 1000, 3-decimal notation, gross vs net.</td>
+                    <td class="p-3">Place value charts to thousandths; subtract container tare mass.</td>
                   </tr>
                   <tr class="bg-gray-50">
                     <td class="p-3 font-bold text-[#0D2C6B]">Stage 3</td>
                     <td class="p-3 font-semibold text-[#188296]">Time</td>
-                    <td class="p-3">24-hour time; elapsed time bridging; base-60 vs decimal hours[cite: 189, 190, 191].</td>
-                    <td class="p-3">Use unscaled timelines to bridge the hour; explicitly model that 1.5 h = 90 min[cite: 190, 191].</td>
+                    <td class="p-3">24-hour time; elapsed time bridging; base-60 vs decimal hours.</td>
+                    <td class="p-3">Use unscaled timelines to bridge the hour; explicitly model that 1.5 h = 90 min.</td>
                   </tr>
                 </tbody>
               </table>
@@ -855,9 +903,9 @@
               </h5>
               <ul class="text-xs text-[#4C4C4E] space-y-1.5 list-disc pl-5">
                 <li>Identify one quick diagnostic check to run with three diverse students in your class over the next fortnight.</li>
-                <li>Audit your classroom materials to ensure mass tasks feature physical weighing rather than textbook illustrations[cite: 327].</li>
-                <li>Ensure all staff and students consistently say <em>hour hand</em> and <em>minute hand</em> rather than "big hand" and "little hand"[cite: 327].</li>
-                <li>Introduce unscaled timelines for calculating elapsed time across Years 3–6 to safeguard against decimal subtraction errors[cite: 190].</li>
+                <li>Audit your classroom materials to ensure mass tasks feature physical weighing rather than textbook illustrations.</li>
+                <li>Ensure all staff and students consistently say <em>hour hand</em> and <em>minute hand</em> rather than "big hand" and "little hand".</li>
+                <li>Introduce unscaled timelines for calculating elapsed time across Years 3–6 to safeguard against decimal subtraction errors.</li>
               </ul>
             </div>
           </div>
@@ -867,13 +915,10 @@
       <!-- ========================================== -->
       <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE     -->
       <!-- ========================================== -->
-      <section id="section-7" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+      <section id="section-7" class="cd-section">
         <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
-          <div class="bg-[#0D2C6B] text-white p-2 rounded-lg">
-            <i data-lucide="share-2" class="w-6 h-6"></i>
-          </div>
           <div>
-            <h3 class="text-xl font-black text-[#0D2C6B]">Section 7: Canvas LMS Deployment Guide</h3>
+            <h3 class="cd-section-title">Section 7: Canvas LMS Deployment Guide</h3>
             <p class="text-sm text-[#4C4C4E]">Technical instructions for hosting on GitHub Pages and embedding into Canvas LMS courses or staff portals.</p>
           </div>
         </div>
@@ -931,19 +976,10 @@
 
     </main>
   </div>
-
-  <!-- FOOTER -->
-  <footer class="bg-[#0D2C6B] text-white border-t border-white/10 mt-12 py-8">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4">
-      <div>
-        <h5 class="font-bold text-white tracking-wide">Catholic Education Diocese of Wollongong</h5>
-        <p class="text-xs text-slate-300 mt-1">
-          NSW Mathematics K–10 (2022) Syllabus Professional Learning Continuum.
-        </p>
-      </div>
-      <div class="text-xs text-slate-400">
-        Focus Area: Non-Spatial Measure &bull; Single-File Architecture &bull; Australian English Orthography
-      </div>
+  <footer class="cd-footer">
+    <div class="cd-footer-inner">
+      <span><strong>Catholic Education Diocese of Wollongong</strong> &middot; Primary Mathematics K&ndash;6 Professional Learning</span>
+      <span>Aligned to the NSW Mathematics K&ndash;10 Syllabus (2022) and NESA Teaching Advice &middot; <a href="index.html">All modules</a></span>
     </div>
   </footer>
 
@@ -1056,55 +1092,55 @@
         id: 0,
         title: "Mass Isn't Decided by Size",
         summary: "Objects with identical volume can have vastly different masses; deformation does not alter mass.",
-        es1: "Hefting large-light and small-heavy items directly[cite: 226].",
-        s1: "Conservation of mass: reshaping plasticine into a snake does not alter balance[cite: 66].",
-        s2: "Use real objects on scales; avoid textbook drawings that reinforce 'bigger is heavier'[cite: 327].",
+        es1: "Hefting large-light and small-heavy items directly.",
+        s1: "Conservation of mass: reshaping plasticine into a snake does not alter balance.",
+        s2: "Use real objects on scales; avoid textbook drawings that reinforce 'bigger is heavier'.",
         s3: "Differentiate gross mass from net mass; containers add volume without net product."
       },
       {
         id: 1,
         title: "Measuring Mass Needs a Unit",
         summary: "Progressing from direct bodily resistance to uniform informal units and formal metric measures.",
-        es1: "Sensory hefting and feeling resistance against the body or lap[cite: 227, 228].",
-        s1: "Balancing with uniform informal units (blocks, pop sticks); non-uniform items fail[cite: 262].",
-        s2: "Formal units: kilograms and grams read from calibrated dial and digital scales[cite: 327].",
-        s3: "Selecting instruments by capacity and precision: kitchen scales vs weighbridges[cite: 188]."
+        es1: "Sensory hefting and feeling resistance against the body or lap.",
+        s1: "Balancing with uniform informal units (blocks, pop sticks); non-uniform items fail.",
+        s2: "Formal units: kilograms and grams read from calibrated dial and digital scales.",
+        s3: "Selecting instruments by capacity and precision: kitchen scales vs weighbridges."
       },
       {
         id: 2,
         title: "Metric Mass Uses Units of 1000",
         summary: "Grams, kilograms, and tonnes rely on powers of 1000, aligning with decimal place value.",
-        es1: "Comparative vocabulary: heavy, heavier, heaviest; light, lighter, lightest[cite: 229].",
-        s1: "Unit size relationship: more light toothpicks needed than heavy pop sticks[cite: 66].",
-        s2: "Benchmark fractions: 1/2 kg = 500 g, 1/4 kg = 250 g, 3/4 kg = 750 g[cite: 130].",
-        s3: "Converting decimals to 3 places: 2.08 kg = 2080 g; 4.32 t = 4320 kg[cite: 188, 190]."
+        es1: "Comparative vocabulary: heavy, heavier, heaviest; light, lighter, lightest.",
+        s1: "Unit size relationship: more light toothpicks needed than heavy pop sticks.",
+        s2: "Benchmark fractions: 1/2 kg = 500 g, 1/4 kg = 250 g, 3/4 kg = 750 g.",
+        s3: "Converting decimals to 3 places: 2.08 kg = 2080 g; 4.32 t = 4320 kg."
       },
       {
         id: 3,
         title: "Time is Sequence & Duration",
         summary: "Moments in time (when an event occurs) differ fundamentally from durations (how long it lasts).",
-        es1: "Sequencing daily routines, before/after, and identifying days of the week[cite: 227].",
-        s1: "Annual calendar cycles (Aboriginal, Lunar, Gregorian); measuring duration in claps[cite: 64, 67].",
-        s2: "Using minutes and seconds to describe duration; identifying time to the next hour[cite: 127, 131].",
-        s3: "Calculating elapsed time from start and finish times using timeline bridging[cite: 190]."
+        es1: "Sequencing daily routines, before/after, and identifying days of the week.",
+        s1: "Annual calendar cycles (Aboriginal, Lunar, Gregorian); measuring duration in claps.",
+        s2: "Using minutes and seconds to describe duration; identifying time to the next hour.",
+        s3: "Calculating elapsed time from start and finish times using timeline bridging."
       },
       {
         id: 4,
         title: "Clocks Show Turns & Base 60",
         summary: "The minute hand completes a 360-degree revolution each hour while the hour hand travels 30 degrees.",
-        es1: "O’clock time; recognizing that numerals around the hoop represent hours[cite: 228, 28].",
-        s1: "Half and quarter turns; hour hand travels halfway between numerals at half past[cite: 65, 67].",
-        s2: "Dual values: numeral 2 represents 2 hours or 10 minutes; reading to the minute[cite: 128, 129].",
-        s3: "Regrouping in units of 60 rather than 100; decimal hours (1.5 h = 90 min)[cite: 191]."
+        es1: "O’clock time; recognizing that numerals around the hoop represent hours.",
+        s1: "Half and quarter turns; hour hand travels halfway between numerals at half past.",
+        s2: "Dual values: numeral 2 represents 2 hours or 10 minutes; reading to the minute.",
+        s3: "Regrouping in units of 60 rather than 100; decimal hours (1.5 h = 90 min)."
       },
       {
         id: 5,
         title: "Time Has Multiple Representations",
         summary: "Navigating between analog, digital, am/pm, 24-hour systems, and cultural perspectives.",
-        es1: "Connecting days of the week to personal events and Aboriginal concepts of time[cite: 227].",
-        s1: "Relating analog turns to digital time displays; days in months[cite: 64, 65].",
-        s2: "Separate analog language (Part A) from digital precise language (Part B); noon and midnight[cite: 328, 330].",
-        s3: "24-hour system (1800 hours) to eliminate am/pm ambiguity; reading transport timetables[cite: 189, 190]."
+        es1: "Connecting days of the week to personal events and Aboriginal concepts of time.",
+        s1: "Relating analog turns to digital time displays; days in months.",
+        s2: "Separate analog language (Part A) from digital precise language (Part B); noon and midnight.",
+        s3: "24-hour system (1800 hours) to eliminate am/pm ambiguity; reading transport timetables."
       }
     ];
 
@@ -1228,31 +1264,31 @@
         left: { name: "Beach Ball", type: "circle", w: 76, h: 76, col: "#FBAF3F" },
         right: { name: "Lead Sinker", type: "rock", w: 34, h: 26, col: "#4C4C4E" },
         ans: "r",
-        why: "The rock/lead sinker is much smaller in volume but significantly denser and heavier. NESA emphasizes using objects where size and mass disagree[cite: 226]."
+        why: "The rock/lead sinker is much smaller in volume but significantly denser and heavier. NESA emphasizes using objects where size and mass disagree."
       },
       {
         left: { name: "Tin of Beans", type: "tin", w: 38, h: 48, col: "#c8553d" },
         right: { name: "Fluffy Pillow", type: "pillow", w: 86, h: 42, col: "#c9d0f0" },
         ans: "l",
-        why: "The tin of beans is compact but heavy, while the pillow is large and light. The heavier tin tilts down[cite: 226]."
+        why: "The tin of beans is compact but heavy, while the pillow is large and light. The heavier tin tilts down."
       },
       {
         left: { name: "Full Water Bottle", type: "bottle", w: 30, h: 64, col: "#188296" },
         right: { name: "Empty Cardboard Box", type: "box", w: 80, h: 60, col: "#d9c3a3" },
         ans: "l",
-        why: "The water bottle has smaller external dimensions than the empty carton, but far greater mass[cite: 226]."
+        why: "The water bottle has smaller external dimensions than the empty carton, but far greater mass."
       },
       {
         left: { name: "Plasticine Ball", type: "circle", w: 46, h: 46, col: "#2f7f6f" },
         right: { name: "Reshaped into Snake", type: "snake", w: 90, h: 14, col: "#2f7f6f" },
         ans: "s",
-        why: "Conservation of Mass (Stage 1B): The lump contains identical matter; reshaping it does not change its mass[cite: 66]. The beam stays level[cite: 64]!"
+        why: "Conservation of Mass (Stage 1B): The lump contains identical matter; reshaping it does not change its mass. The beam stays level!"
       },
       {
         left: { name: "Box of Blocks", type: "box", w: 60, h: 50, col: "#8b6b4a" },
         right: { name: "Identical Empty Box", type: "box", w: 60, h: 50, col: "#d9c3a3" },
         ans: "l",
-        why: "Two containers with the exact same shape and size have different masses because of their contents[cite: 226]."
+        why: "Two containers with the exact same shape and size have different masses because of their contents."
       }
     ];
 
@@ -1450,7 +1486,7 @@
             <span class="font-mono bg-blue-50 px-2 py-0.5 rounded border border-blue-200 text-[#0D2C6B] font-bold">${digitalStr}</span>
           </div>
           <p class="text-xs text-[#4C4C4E] leading-relaxed">
-            The <strong>minute hand</strong> has completed ${fractionTurn} from the 12. The <strong>hour hand</strong> has proportionally progressed ${(m / 60 * 100).toFixed(0)}% of the distance from ${h} towards ${nextH}[cite: 65, 328].
+            The <strong>minute hand</strong> has completed ${fractionTurn} from the 12. The <strong>hour hand</strong> has proportionally progressed ${(m / 60 * 100).toFixed(0)}% of the distance from ${h} towards ${nextH}.
             ${m === 30 ? '<span class="block mt-1 font-semibold text-[#188296]">Stage 1 Syllabus Focus: This explains why the hour hand is halfway between successive hour markers at half-past (MA1-NSM-02 Reasoning).</span>' : ''}
             ${m > 30 ? `<span class="block mt-1 font-semibold text-[#4C4C4E]">Notice: The hour hand is physically closer to ${nextH}, which is why 'to' language names the arriving hour!</span>` : ''}
           </p>
@@ -1526,10 +1562,10 @@
       const swappedText = `${approxNumeral}:${readH < 10 ? '0' : ''}${readH} (swapping the hour and minute hands)`;
 
       readOpts = [
-        { text: correctText, key: 'correct', why: `The minute hand points to ${readM} minutes (counting by fives from the 12, then ones). The hour hand has passed ${readH} on its way to ${nextH}[cite: 65, 328].` },
-        { text: numeralErrorText, key: 'numeral', why: `Diagnostic Error: The student treated the numeral ${approxNumeral} as the number of minutes instead of calculating the 5-minute interval (${approxNumeral} &times; 5 = ${approxNumeral * 5} min)[cite: 128].` },
-        { text: toHourErrorText, key: 'tohour', why: `Diagnostic Error: For 'minutes to' times, students often name the hour the hand has just left rather than the arriving hour (${nextH})[cite: 67].` },
-        { text: swappedText, key: 'swap', why: `Diagnostic Error: The student confused the short hour hand with the long minute hand[cite: 327].` }
+        { text: correctText, key: 'correct', why: `The minute hand points to ${readM} minutes (counting by fives from the 12, then ones). The hour hand has passed ${readH} on its way to ${nextH}.` },
+        { text: numeralErrorText, key: 'numeral', why: `Diagnostic Error: The student treated the numeral ${approxNumeral} as the number of minutes instead of calculating the 5-minute interval (${approxNumeral} &times; 5 = ${approxNumeral * 5} min).` },
+        { text: toHourErrorText, key: 'tohour', why: `Diagnostic Error: For 'minutes to' times, students often name the hour the hand has just left rather than the arriving hour (${nextH}).` },
+        { text: swappedText, key: 'swap', why: `Diagnostic Error: The student confused the short hour hand with the long minute hand.` }
       ];
 
       // Shuffle options
@@ -1709,10 +1745,10 @@
 
         <div class="space-y-2 text-xs text-[#4C4C4E] leading-relaxed">
           <p>
-            <strong>Bridging Strategy (NESA Method):</strong> Jump from ${formatMinutesDisplay(uniquePoints[0], timelineFormat)} to the nearest hour (${formatMinutesDisplay(uniquePoints[1], timelineFormat)}), bridge whole hours, then add the final interval[cite: 190].
+            <strong>Bridging Strategy (NESA Method):</strong> Jump from ${formatMinutesDisplay(uniquePoints[0], timelineFormat)} to the nearest hour (${formatMinutesDisplay(uniquePoints[1], timelineFormat)}), bridge whole hours, then add the final interval.
           </p>
           <div class="bg-red-50 border-l-4 border-red-500 p-2.5 rounded text-red-900 mt-2">
-            <strong>The Base-10 Decimal Trap:</strong> If a student attempts to subtract times like standard decimals (e.g. subtracting <span class="math-badge">11.05 &minus; 8.40</span>), they obtain <span class="math-badge">2.65</span>. This is entirely incorrect because an hour contains <strong>60 minutes</strong>, not 100[cite: 191]! The unscaled timeline visually and structurally protects students from this error[cite: 190].
+            <strong>The Base-10 Decimal Trap:</strong> If a student attempts to subtract times like standard decimals (e.g. subtracting <span class="math-badge">11.05 &minus; 8.40</span>), they obtain <span class="math-badge">2.65</span>. This is entirely incorrect because an hour contains <strong>60 minutes</strong>, not 100! The unscaled timeline visually and structurally protects students from this error.
           </div>
         </div>
       `;
@@ -1745,49 +1781,49 @@
         student: "Ava",
         quote: "Ava says the big beach ball must be heavier than the small rock because the ball is much bigger.",
         correctRoot: 0,
-        remedy: "Root 1 (Mass judged by size). Ava equates visual volume with gravitational mass. Provide physical hefting with large-light vs small-heavy pairs[cite: 226]."
+        remedy: "Root 1 (Mass judged by size). Ava equates visual volume with gravitational mass. Provide physical hefting with large-light vs small-heavy pairs."
       },
       {
         stage: "Early Stage 1",
         student: "Leo",
         quote: "Leo says eating lunch took 'a short time' because his vegemite sandwich was small and short.",
         correctRoot: 3,
-        remedy: "Root 4 (Moment/Duration confused with Length). Leo transfers spatial length terms directly to temporal duration. Model 'long time' and 'short time' exclusively in temporal contexts[cite: 228]."
+        remedy: "Root 4 (Moment/Duration confused with Length). Leo transfers spatial length terms directly to temporal duration. Model 'long time' and 'short time' exclusively in temporal contexts."
       },
       {
         stage: "Stage 1",
         student: "Mia",
         quote: "Mia says rolling a ball of plasticine into a long thin snake made it heavier because it takes up more space on the desk.",
         correctRoot: 0,
-        remedy: "Root 1 (Conservation not established). Mia believes shape deformation increases mass. Use an equal-arm balance to test the lump before and after reshaping to prove conservation[cite: 66]."
+        remedy: "Root 1 (Conservation not established). Mia believes shape deformation increases mass. Use an equal-arm balance to test the lump before and after reshaping to prove conservation."
       },
       {
         stage: "Stage 1",
         student: "Tom",
         quote: "Tom is asked to show half-past 3 on an analog clock. He places the minute hand on the 6 and points the hour hand directly at the 3.",
         correctRoot: 2,
-        remedy: "Root 3 (Clock hands misread). Tom does not realise the hour hand moves continuously across the 60 minutes. Use a geared clock to demonstrate that the hour hand sits halfway between 3 and 4[cite: 65, 328]."
+        remedy: "Root 3 (Clock hands misread). Tom does not realise the hour hand moves continuously across the 60 minutes. Use a geared clock to demonstrate that the hour hand sits halfway between 3 and 4."
       },
       {
         stage: "Stage 1",
         student: "Grace",
         quote: "Grace looks at a digital clock and insists that 3:50 is 'half-past three' because 50 is half of 100.",
         correctRoot: 1,
-        remedy: "Root 2 (Time treated as base 10). Grace transfers base-10 knowledge (50 as half of 100) to a base-60 system. Use an analog clock to connect half-past to a half-turn of 30 minutes[cite: 263]."
+        remedy: "Root 2 (Time treated as base 10). Grace transfers base-10 knowledge (50 as half of 100) to a base-60 system. Use an analog clock to connect half-past to a half-turn of 30 minutes."
       },
       {
         stage: "Stage 2",
         student: "Ben",
         quote: "Ben looks at an analog clock with the hour hand past 7 and the minute hand pointing to 2. He announces the time is '7:02'.",
         correctRoot: 2,
-        remedy: "Root 3 (Clock hands & dial numerals misread). Ben reads the dial numeral literally as minutes. Use dual-scale watch dials to show that 2 represents 10 minutes for the minute hand[cite: 128, 327]."
+        remedy: "Root 3 (Clock hands & dial numerals misread). Ben reads the dial numeral literally as minutes. Use dual-scale watch dials to show that 2 represents 10 minutes for the minute hand."
       },
       {
         stage: "Stage 2",
         student: "Ella",
         quote: "The digital display reads 4:57. When asked how many minutes until 5:00, Ella calculates 100 &minus; 57 and answers '43 minutes'.",
         correctRoot: 1,
-        remedy: "Root 2 (Time treated as base 10). Ella assumes a complete hour comprises 100 minutes. Explicitly teach that hours cycle at 60 minutes: 60 &minus; 57 = 3 minutes[cite: 131]."
+        remedy: "Root 2 (Time treated as base 10). Ella assumes a complete hour comprises 100 minutes. Explicitly teach that hours cycle at 60 minutes: 60 &minus; 57 = 3 minutes."
       },
       {
         stage: "Stage 2",
@@ -1801,7 +1837,7 @@
         student: "Kai",
         quote: "Kai records 1.5 hours on his maths sheet as '1 hour 50 minutes'.",
         correctRoot: 1,
-        remedy: "Root 2 (Time treated as base 10). Kai treats 0.5 as 50 minutes rather than half of 60 minutes. Model fraction benchmark equivalences: 0.5 hours = 1/2 of 60 min = 30 min[cite: 191]."
+        remedy: "Root 2 (Time treated as base 10). Kai treats 0.5 as 50 minutes rather than half of 60 minutes. Model fraction benchmark equivalences: 0.5 hours = 1/2 of 60 min = 30 min."
       },
       {
         stage: "Stage 3",
@@ -1815,7 +1851,7 @@
         student: "Jai",
         quote: "Jai is asked, 'The movie started at 8:40 am and ended at 11:05 am. How long was the movie?' He responds: '11:05'.",
         correctRoot: 3,
-        remedy: "Root 4 (Finish time given for duration). Jai provides the finishing timestamp instead of calculating the elapsed duration. Model bridging on an unscaled timeline to sum intervals[cite: 190]."
+        remedy: "Root 4 (Finish time given for duration). Jai provides the finishing timestamp instead of calculating the elapsed duration. Model bridging on an unscaled timeline to sum intervals."
       },
       {
         stage: "Stage 3",
@@ -1884,16 +1920,16 @@
         before: {
           task: "Circle the heavier object: [Image of an elephant next to an image of a mouse]",
           limits: [
-            "Size and mass perfectly agree, confirming the misconception that bigger always equals heavier[cite: 226].",
-            "Passive 2D drawing rather than physical, sensory hefting[cite: 226, 327].",
-            "Zero prediction, zero mathematical reasoning, zero communication of physical sensation[cite: 226, 27]."
+            "Size and mass perfectly agree, confirming the misconception that bigger always equals heavier.",
+            "Passive 2D drawing rather than physical, sensory hefting.",
+            "Zero prediction, zero mathematical reasoning, zero communication of physical sensation."
           ]
         },
         after: {
           task: "'Here is a large empty cardboard box and a small tin of baked beans. Which do you think will be heavier? Why?' Students make predictions, heft with both hands, and explain. Then: 'Can you find something in the room bigger than the tin that is lighter?'",
           enable: "Begin with two items that have vastly contrasting densities (e.g. feather vs large wooden block).",
-          extend: "Find two objects of different shapes that feel about the same mass. How can we verify using our equal-arm balance[cite: 64]?",
-          listen: "'It is much bigger, but it feels light like air'; 'The tin pulls my hand down harder'[cite: 226, 228]."
+          extend: "Find two objects of different shapes that feel about the same mass. How can we verify using our equal-arm balance?",
+          listen: "'It is much bigger, but it feels light like air'; 'The tin pulls my hand down harder'."
         }
       },
       s1: {
@@ -1901,16 +1937,16 @@
         before: {
           task: "Draw the hands on the clock face to show half-past 3: [A blank clock circle with numbers 1 to 12]",
           limits: [
-            "Encourages pointing the hour hand rigidly at the numeral 3[cite: 65, 328].",
-            "Treats clock hands as static lines rather than continuously synchronised turning gears[cite: 65, 328].",
-            "No connection to fractions or turns[cite: 65]."
+            "Encourages pointing the hour hand rigidly at the numeral 3.",
+            "Treats clock hands as static lines rather than continuously synchronised turning gears.",
+            "No connection to fractions or turns."
           ]
         },
         after: {
           task: "'Set your geared clock to 3 o’clock. Slowly turn the minute hand to half-past 3. What is happening to the hour hand? Why does it stop halfway between 3 and 4?'",
           enable: "Use geared clocks where moving the minute hand automatically drives the hour hand.",
-          extend: "'Where will the hour hand point at quarter-past 3? At quarter-to 4? How do the turns relate?'[cite: 67]",
-          listen: "'The hour hand has to move too because half of the hour has passed'; 'Half a turn of the big hand makes half a space for the little hand'[cite: 65, 328]."
+          extend: "'Where will the hour hand point at quarter-past 3? At quarter-to 4? How do the turns relate?'",
+          listen: "'The hour hand has to move too because half of the hour has passed'; 'Half a turn of the big hand makes half a space for the little hand'."
         }
       },
       s2: {
@@ -1919,15 +1955,15 @@
           task: "What time is shown on this clock? [Analog clock showing 7:10]",
           limits: [
             "Closed procedural drill with only one right answer.",
-            "Masks student confusion regarding why the numeral 2 represents 10 minutes[cite: 128].",
-            "No connection between relative and precise language[cite: 328]."
+            "Masks student confusion regarding why the numeral 2 represents 10 minutes.",
+            "No connection between relative and precise language."
           ]
         },
         after: {
           task: "'The minute hand points directly at the numeral 2. Sam says the time is 7:02. Lee says it is ten past seven. Who is correct? How many different ways can you say and write this time?'",
-          enable: "Place an outer dial ring around the clock marking the 5-minute multiples (00, 05, 10, 15...)[cite: 327].",
+          enable: "Place an outer dial ring around the clock marking the 5-minute multiples (00, 05, 10, 15...).",
           extend: "'Can you find a time where the hour hand and minute hand point to the exact same numeral? How many can you find?'",
-          listen: "'Each number has two jobs: it counts hours by ones, but minutes by fives'; 'Ten past seven is the same as 7:10'[cite: 128]."
+          listen: "'Each number has two jobs: it counts hours by ones, but minutes by fives'; 'Ten past seven is the same as 7:10'."
         }
       },
       s3: {
@@ -1935,16 +1971,16 @@
         before: {
           task: "Calculate elapsed time: An excursion bus departs at 2:45 pm and returns at 5:00 pm. How long was the trip?",
           limits: [
-            "Directly invites naive decimal column subtraction (5.00 &minus; 2.45 = 2.55)[cite: 191].",
-            "Lacks authentic real-world timetable application[cite: 189].",
-            "No spatial or linear bridging model[cite: 190]."
+            "Directly invites naive decimal column subtraction (5.00 &minus; 2.45 = 2.55).",
+            "Lacks authentic real-world timetable application.",
+            "No spatial or linear bridging model."
           ]
         },
         after: {
           task: "'Jo claims that from 2:45 pm to 5:00 pm is 2 hours and 55 minutes. Draw an unscaled timeline to prove whether Jo is correct. Then, use this South Coast train timetable (in 24-hour time) to plan a 2 hour 15 minute journey from Wollongong to Sydney.'",
-          enable: "Provide an unscaled timeline scaffold with the hour markers 3:00 pm, 4:00 pm, 5:00 pm pre-marked[cite: 190].",
-          extend: "'Express the duration in decimal hours. Why is it 2.25 hours and not 2.15 hours?'[cite: 191]",
-          listen: "'We jump 15 minutes to 3:00, then 2 hours to 5:00, making 2 hours 15 minutes'; 'Time counts in 60s, so Jo subtracted like base 10'[cite: 190, 191]."
+          enable: "Provide an unscaled timeline scaffold with the hour markers 3:00 pm, 4:00 pm, 5:00 pm pre-marked.",
+          extend: "'Express the duration in decimal hours. Why is it 2.25 hours and not 2.15 hours?'",
+          listen: "'We jump 15 minutes to 3:00, then 2 hours to 5:00, making 2 hours 15 minutes'; 'Time counts in 60s, so Jo subtracted like base 10'."
         }
       }
     };
@@ -1996,35 +2032,35 @@
         subtitle: "Constructing mathematical arguments around competing claims",
         prompt: "'Jo says 1.5 hours is 1 hour 50 minutes. Sam says it is 1 hour 30 minutes. Who is correct? How can you prove it to someone who is unsure?'",
         wm: "Reasoning and Communicating (MAO-WM-01)",
-        why: "Forces students to move beyond asserting an answer to articulating why base-60 structures differ from base-10 decimals[cite: 191]."
+        why: "Forces students to move beyond asserting an answer to articulating why base-60 structures differ from base-10 decimals."
       },
       {
         name: "Same and different",
         subtitle: "Drawing connections across representations and units",
         prompt: "'What is the same and what is different about 1 kg 250 g, 1250 g, and 1&frac14; kg?'",
         wm: "Exploring and Connecting; Understanding and Fluency",
-        why: "Establishes representational transfer between mixed metric units, pure grams, and benchmark fractions[cite: 130, 305]."
+        why: "Establishes representational transfer between mixed metric units, pure grams, and benchmark fractions."
       },
       {
         name: "Always, sometimes, never",
         subtitle: "Testing conjectures and identifying boundary conditions",
         prompt: "'A larger parcel has a greater mass than a smaller parcel. Always, sometimes, or never true? Provide three proofs.'",
         wm: "Reasoning and Generalising",
-        why: "Directly shatters the visual heuristic that volume equals mass by forcing students to generate counter-examples[cite: 226]."
+        why: "Directly shatters the visual heuristic that volume equals mass by forcing students to generate counter-examples."
       },
       {
         name: "Open it up",
         subtitle: "Transforming single-answer recall into multiple-pathway investigation",
         prompt: "'Find three items in our school hall that together have a total mass of approximately 1 kg. How will you verify your prediction?'",
         wm: "Choosing and Applying Techniques; Problem Solving",
-        why: "Transitions students from passive reading to active estimation, additive partitioning, and benchmark verification[cite: 127]."
+        why: "Transitions students from passive reading to active estimation, additive partitioning, and benchmark verification."
       },
       {
         name: "Convince me",
         subtitle: "Demanding multi-modal justification and proof",
         prompt: "'Convince me that the duration between 8:40 am and 11:05 am is exactly 2 hours and 25 minutes using an unscaled timeline.'",
         wm: "Communicating and Reasoning",
-        why: "Prevents reliance on unexamined column algorithms and compels students to illustrate bridging to the hour[cite: 190]."
+        why: "Prevents reliance on unexamined column algorithms and compels students to illustrate bridging to the hour."
       }
     ];
 
@@ -2070,7 +2106,7 @@
           "Because Kindergarten students are required to calculate density by dividing mass by volume."
         ],
         answer: 1,
-        rationale: "NESA notes that images often reinforce the misconception that larger objects weigh more[cite: 327]. Mass does not depend on volume, so physical hefting with large-light and small-heavy items is essential[cite: 226]."
+        rationale: "NESA notes that images often reinforce the misconception that larger objects weigh more. Mass does not depend on volume, so physical hefting with large-light and small-heavy items is essential."
       },
       {
         id: 1,
@@ -2082,7 +2118,7 @@
           "Analog clocks are calibrated in decimal tenths rather than base 60."
         ],
         answer: 1,
-        rationale: "Earnest et al. (2018) showed students frequently leave the hour hand pointing directly at the hour numeral at half-past[cite: 328]. Synchronised geared clocks demonstrate continuous travel to the midpoint[cite: 65, 328]."
+        rationale: "Earnest et al. (2018) showed students frequently leave the hour hand pointing directly at the hour numeral at half-past. Synchronised geared clocks demonstrate continuous travel to the midpoint."
       },
       {
         id: 2,
@@ -2094,7 +2130,7 @@
           "Stopwatches are taught in Part A; calendars are taught in Part B."
         ],
         answer: 1,
-        rationale: "Stage 2 separates time by instrument: analog time in Part A, and digital displays with am/pm in Part B[cite: 328]. This allows students to develop the distinct language of relative time ('ten to nine') before mixing it with precise digital notation ('8:50')[cite: 328]."
+        rationale: "Stage 2 separates time by instrument: analog time in Part A, and digital displays with am/pm in Part B. This allows students to develop the distinct language of relative time ('ten to nine') before mixing it with precise digital notation ('8:50')."
       },
       {
         id: 3,
@@ -2106,7 +2142,7 @@
           "The student gave the finish time instead of duration; they should use a digital stopwatch."
         ],
         answer: 2,
-        rationale: "The student treated time as base 10 (assuming 100 minutes per hour)[cite: 191]. NESA Teaching Advice recommends bridging to the next hour on an unscaled timeline (20 min to 9:00, 2 h to 11:00, 5 min to 11:05 = 2 h 25 min)[cite: 190]."
+        rationale: "The student treated time as base 10 (assuming 100 minutes per hour). NESA Teaching Advice recommends bridging to the next hour on an unscaled timeline (20 min to 9:00, 2 h to 11:00, 5 min to 11:05 = 2 h 25 min)."
       },
       {
         id: 4,
@@ -2118,7 +2154,7 @@
           "The difference between metric units and imperial ounces."
         ],
         answer: 1,
-        rationale: "Gross mass is the total mass of the contents and the container[cite: 188]. Net mass is the contents only[cite: 188]. Students must weigh the empty container (tare) and subtract it to determine the net mass of the food[cite: 188]."
+        rationale: "Gross mass is the total mass of the contents and the container. Net mass is the contents only. Students must weigh the empty container (tare) and subtract it to determine the net mass of the food."
       }
     ];
 
@@ -2209,16 +2245,34 @@
       showPedMove(0);
       renderMasteryQuiz();
       lucide.createIcons();
-
-      // Mobile Nav Drawer Toggle
-      const mobileToggle = document.getElementById('mobileNavToggle');
-      const sidebarNav = document.getElementById('sidebarNav');
-      if (mobileToggle && sidebarNav) {
-        mobileToggle.addEventListener('click', () => {
-          sidebarNav.classList.toggle('hidden');
-        });
-      }
     });
+  </script>
+  <script id="cd-shell-js">
+    /* Shared module shell: section menu on small screens + current-section highlight */
+    (function () {
+      var body = document.body;
+      var toggle = document.getElementById('cdNavToggle');
+      var backdrop = document.getElementById('cdBackdrop');
+      var links = Array.prototype.slice.call(document.querySelectorAll('.cd-nav-link'));
+      function closeNav() { body.classList.remove('cd-nav-open'); if (toggle) toggle.setAttribute('aria-expanded', 'false'); }
+      if (toggle) toggle.addEventListener('click', function () {
+        var open = body.classList.toggle('cd-nav-open');
+        toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
+      });
+      if (backdrop) backdrop.addEventListener('click', closeNav);
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') closeNav(); });
+      links.forEach(function (l) { l.addEventListener('click', function () { if (window.innerWidth < 1024) closeNav(); }); });
+      var anchors = links.filter(function (l) { return (l.getAttribute('href') || '').charAt(0) === '#'; });
+      if (!anchors.length) return;
+      var targets = anchors.map(function (a) { return document.getElementById(a.getAttribute('href').slice(1)); });
+      function update() {
+        var line = window.scrollY + 140, idx = 0;
+        targets.forEach(function (t, i) { if (t && t.getBoundingClientRect().top + window.scrollY <= line) idx = i; });
+        anchors.forEach(function (a, i) { a.classList.toggle('is-active', i === idx); });
+      }
+      window.addEventListener('scroll', update, { passive: true });
+      update();
+    })();
   </script>
 </body>
 </html>

@@ -3,269 +3,231 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>CEDoW Primary Mathematics K–6 PL Hub</title>
-  <!-- Tailwind CSS CDN -->
-  <script src="https://cdn.tailwindcss.com"></script>
-  <!-- Lucide Icons -->
-  <script src="https://unpkg.com/lucide@latest"></script>
-  <!-- Google Fonts: Lato & Fira Code -->
+  <title>Module Finder | CEDoW Primary Mathematics PL</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
-
+  <link href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <!--
+    CEDoW Primary Mathematics K–6 — Module Finder
+    Works two ways:
+      1. As the home page of the GitHub Pages site.
+      2. Pasted into Google Sites: Insert > Embed > "Embed code", paste this whole file.
+    Module links point to the published GitHub Pages site (SITE_URL below), and open
+    in a new tab when the finder is embedded in another site.
+  -->
   <style>
     :root {
-      --cedow-dark-blue: #0D2C6B;
-      --cedow-aqua: #188296;
-      --cedow-gold: #FBAF3F;
-      --cedow-silver: #D1D2D4;
-      --cedow-charcoal: #4C4C4E;
-      --cedow-black: #231F20;
-      --cedow-white: #FFFFFF;
-      --cedow-light-bg: #F4F6F9;
+      --cd-navy: #0D2C6B; --cd-aqua: #188296; --cd-gold: #FBAF3F;
+      --cd-silver: #D1D2D4; --cd-charcoal: #4C4C4E; --cd-black: #231F20;
+      --cd-light: #F4F6F9; --cd-white: #FFFFFF; --cd-aqua-soft: #E6F3F5;
     }
-    body {
-      font-family: 'Lato', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-      color: var(--cedow-black);
-      background-color: var(--cedow-light-bg);
+    * { box-sizing: border-box; }
+    body { margin: 0; background: var(--cd-light); color: var(--cd-black);
+      font-family: 'Lato', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; -webkit-font-smoothing: antialiased; }
+
+    .cd-header { background: var(--cd-navy); color: var(--cd-white); border-bottom: 4px solid var(--cd-gold); }
+    .cd-header-inner { max-width: 80rem; margin: 0 auto; padding: 14px 24px; display: flex; align-items: center; justify-content: space-between; gap: 16px; }
+    .cd-brand { display: flex; align-items: center; gap: 14px; min-width: 0; }
+    .cd-logo { flex: none; width: 44px; height: 44px; border-radius: 10px; background: var(--cd-aqua); display: flex; align-items: center; justify-content: center; }
+    .cd-logo svg { width: 24px; height: 24px; }
+    .cd-org { display: block; font-size: 11px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cd-silver); }
+    .cd-title { margin: 2px 0 0; font-size: 20px; line-height: 1.25; font-weight: 900; }
+    .cd-pill { font-size: 12px; font-weight: 700; padding: 6px 12px; border-radius: 999px; background: rgba(24,130,150,.35);
+      border: 1px solid rgba(24,130,150,.8); white-space: nowrap; }
+
+    .cd-wrap { max-width: 80rem; margin: 0 auto; padding: 28px 24px 40px; }
+    .cd-intro h2 { margin: 0; font-size: 28px; line-height: 1.2; font-weight: 900; color: var(--cd-navy); }
+    .cd-intro p { margin: 8px 0 0; max-width: 52rem; font-size: 16px; line-height: 1.6; color: var(--cd-charcoal); }
+
+    .cd-tools { margin-top: 20px; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; }
+    .cd-search { position: relative; flex: 1 1 320px; max-width: 520px; }
+    .cd-search svg { position: absolute; left: 14px; top: 50%; width: 18px; height: 18px; transform: translateY(-50%); color: var(--cd-charcoal); pointer-events: none; }
+    .cd-search input { width: 100%; font: inherit; font-size: 15px; padding: 12px 14px 12px 42px; border-radius: 10px;
+      border: 1px solid var(--cd-silver); background: var(--cd-white); color: var(--cd-black); }
+    .cd-search input:focus { outline: 3px solid rgba(24,130,150,.35); border-color: var(--cd-aqua); }
+    .cd-count { font-size: 14px; font-weight: 700; color: var(--cd-charcoal); }
+
+    .cd-grid { margin-top: 20px; display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 16px; }
+    .cd-card { display: flex; flex-direction: column; background: var(--cd-white); border: 1px solid var(--cd-silver); border-radius: 14px;
+      border-top: 5px solid var(--cd-aqua); overflow: hidden; color: inherit; text-decoration: none;
+      box-shadow: 0 1px 2px rgba(35,31,32,.05); transition: box-shadow .15s, transform .15s, border-color .15s; }
+    .cd-card[hidden], .cd-empty[hidden] { display: none; }
+    .cd-card:hover, .cd-card:focus-visible { box-shadow: 0 8px 20px rgba(13,44,107,.14); transform: translateY(-2px); border-color: var(--cd-aqua); outline: none; }
+    .cd-card-body { padding: 18px 18px 14px; flex: 1; }
+    .cd-fa { font-size: 12px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--cd-aqua); }
+    .cd-card h3 { margin: 6px 0 0; font-size: 18px; line-height: 1.3; font-weight: 900; color: var(--cd-navy); }
+    .cd-card p { margin: 8px 0 0; font-size: 14px; line-height: 1.55; color: var(--cd-charcoal); }
+    .cd-codes { margin-top: 12px; display: flex; flex-wrap: wrap; gap: 6px; }
+    .cd-code { font-size: 12px; font-weight: 700; padding: 3px 8px; border-radius: 6px; background: var(--cd-light);
+      border: 1px solid var(--cd-silver); color: var(--cd-charcoal); }
+    .cd-card-foot { display: flex; align-items: center; justify-content: space-between; padding: 12px 18px;
+      background: var(--cd-light); border-top: 1px solid var(--cd-silver); font-size: 13px; color: var(--cd-charcoal); }
+    .cd-open { display: inline-flex; align-items: center; gap: 6px; font-weight: 900; color: var(--cd-navy); }
+    .cd-card:hover .cd-open { color: var(--cd-aqua); }
+    .cd-open svg { width: 16px; height: 16px; }
+
+    .cd-empty { margin-top: 20px; padding: 32px; text-align: center; background: var(--cd-white); border: 1px dashed var(--cd-silver);
+      border-radius: 14px; color: var(--cd-charcoal); }
+    .cd-empty button { margin-top: 8px; font: inherit; font-weight: 700; color: var(--cd-aqua); background: none; border: 0; cursor: pointer; text-decoration: underline; }
+
+    .cd-footer { background: var(--cd-navy); color: var(--cd-silver); border-top: 4px solid var(--cd-gold); }
+    .cd-footer-inner { max-width: 80rem; margin: 0 auto; padding: 18px 24px; font-size: 13px; line-height: 1.5;
+      display: flex; flex-wrap: wrap; justify-content: space-between; gap: 6px 24px; }
+    .cd-footer strong { color: var(--cd-white); }
+
+    /* Compact mode for embedding (Google Sites): no header or footer */
+    body.cd-embedded .cd-header, body.cd-embedded .cd-footer { display: none; }
+    body.cd-embedded { background: transparent; }
+    body.cd-embedded .cd-wrap { padding: 8px 4px 16px; }
+
+    @media (max-width: 640px) {
+      .cd-header-inner { padding: 12px 16px; }
+      .cd-pill, .cd-org { display: none; }
+      .cd-title { font-size: 17px; }
+      .cd-wrap { padding: 20px 16px 32px; }
+      .cd-intro h2 { font-size: 23px; }
+      .cd-grid { grid-template-columns: 1fr; }
     }
   </style>
 </head>
-<body class="min-h-screen flex flex-col antialiased">
-
-  <!-- Header -->
-  <header class="bg-[#0D2C6B] text-white px-6 py-5 shadow-md border-b-4 border-[#FBAF3F]">
-    <div class="max-w-7xl mx-auto flex flex-col sm:flex-row sm:items-center justify-between gap-4">
-      <div class="flex items-center space-x-3.5">
-        <div class="bg-[#188296] p-2.5 rounded-lg text-white shadow-sm flex items-center justify-center">
-          <i data-lucide="graduation-cap" class="w-6 h-6"></i>
-        </div>
+<body>
+  <header class="cd-header">
+    <div class="cd-header-inner">
+      <div class="cd-brand">
+        <span class="cd-logo"><svg viewBox="0 0 24 24" fill="none" stroke="#FBAF3F" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 10 12 5 2 10l10 5 10-5z"/><path d="M6 12v5c3 2.5 9 2.5 12 0v-5"/></svg></span>
         <div>
-          <div class="text-[11px] text-[#D1D2D4] uppercase tracking-wider font-semibold">Catholic Education Diocese of Wollongong</div>
-          <h1 class="text-xl sm:text-2xl font-bold leading-tight">Primary Mathematics K–6 Learning Hub</h1>
+          <span class="cd-org">Catholic Education Diocese of Wollongong</span>
+          <h1 class="cd-title">Primary Mathematics K&ndash;6 Professional Learning</h1>
         </div>
       </div>
-      <div class="flex items-center space-x-3 text-xs text-[#D1D2D4]">
-        <span class="bg-[#188296]/30 px-3 py-1.5 rounded-lg border border-[#188296]/50 text-white flex items-center space-x-1.5 font-medium">
-          <i data-lucide="compass" class="w-4 h-4 text-[#FBAF3F]"></i>
-          <span>NSW Curriculum (2022)</span>
-        </span>
-      </div>
+      <span class="cd-pill">NSW Mathematics K&ndash;10 (2022)</span>
     </div>
   </header>
 
-  <!-- Hero Banner -->
-  <div class="bg-white border-b border-[#D1D2D4] py-8 px-6 shadow-sm">
-    <div class="max-w-7xl mx-auto">
-      <span class="inline-block bg-[#188296]/15 text-[#188296] text-xs px-2.5 py-1 rounded font-bold uppercase tracking-wider mb-2">Self-Paced Professional Learning</span>
-      <h2 class="text-2xl sm:text-3xl font-black text-[#0D2C6B]">Curriculum Continuum &amp; Pedagogy Modules</h2>
-      <p class="text-[#4C4C4E] mt-2 text-sm sm:text-base max-w-3xl leading-relaxed">
-        Explore the developmental trajectories, key conceptual shifts, authentic student misconceptions, and Working Mathematically tasks across all 10 focus areas of the NSW Mathematics K–6 syllabus.
-      </p>
-    </div>
-  </div>
-
-  <!-- Main Modules Grid -->
-  <main class="max-w-7xl mx-auto px-6 py-8 flex-grow w-full">
-    <div class="flex items-center justify-between mb-6">
-      <h3 class="text-lg font-bold text-[#0D2C6B] flex items-center space-x-2">
-        <i data-lucide="layout-grid" class="w-5 h-5 text-[#188296]"></i>
-        <span>Syllabus Focus Areas</span>
-      </h3>
-      <span class="text-xs text-[#4C4C4E]">10 Focus Areas &bull; Early Stage 1 to Stage 3</span>
+  <main class="cd-wrap">
+    <div class="cd-intro">
+      <h2>Module Finder</h2>
+      <p>Ten self-paced modules, one for each K&ndash;6 focus area. Each traces the progression from Early Stage 1 to Stage 3, with key conceptual shifts, interactive tools, student diagnostics, a Working Mathematically task makeover and a mastery checkpoint.</p>
     </div>
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+    <div class="cd-tools">
+      <label class="cd-search">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+        <input type="search" id="cdSearch" placeholder="Search by topic or outcome code, e.g. arrays, time, MA2-PF" aria-label="Search modules" autocomplete="off">
+      </label>
+      <span class="cd-count" id="cdCount" aria-live="polite"></span>
+    </div>
 
-      <!-- Module 1: Active -->
-      <div class="bg-white rounded-xl border-2 border-[#188296] shadow-sm hover:shadow-md transition flex flex-col justify-between overflow-hidden">
-        <div class="p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-emerald-100 text-emerald-800 px-2.5 py-0.5 rounded-full border border-emerald-300">Live &bull; Ready</span>
-            <span class="text-xs font-mono font-bold text-[#188296]">Focus Area 01</span>
-          </div>
-          <h4 class="text-base font-bold text-[#0D2C6B]">Representing Number</h4>
-          <p class="text-xs text-[#4C4C4E] leading-relaxed">
-            From perceptual subitising and cardinality in Kindergarten to composite units of ten, decimal symmetry around the ones, and powers of 10.
-          </p>
-          <div class="pt-2 flex flex-wrap gap-1.5">
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MAE-RWN</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA1-RWN</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA2-RN</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA3-RN</span>
-          </div>
-        </div>
-        <div class="bg-gray-50 p-4 border-t border-gray-100 flex items-center justify-between">
-          <span class="text-[11px] text-gray-500 flex items-center space-x-1">
-            <i data-lucide="sliders" class="w-3.5 h-3.5 text-[#188296]"></i>
-            <span>4 Interactive Tools</span>
-          </span>
-          <a href="01-representing-number.html" class="bg-[#0D2C6B] hover:bg-[#188296] text-white font-bold text-xs px-4 py-2 rounded-lg flex items-center space-x-1.5 transition shadow">
-            <span>Launch Module</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Module 2: Additive Relations -->
-      <div class="bg-white rounded-xl border border-[#D1D2D4] shadow-sm flex flex-col justify-between overflow-hidden opacity-90">
-        <div class="p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-amber-50 text-amber-800 px-2.5 py-0.5 rounded-full border border-amber-300">In Development</span>
-            <span class="text-xs font-mono font-bold text-[#4C4C4E]">Focus Area 02</span>
-          </div>
-          <h4 class="text-base font-bold text-[#0D2C6B]">Combining &amp; Separating / Additive Relations</h4>
-          <p class="text-xs text-[#4C4C4E] leading-relaxed">
-            Part-part-whole relationships, number bonds to 10 and 20, comparison subtraction, constant difference, and mental strategies versus algorithms.
-          </p>
-          <div class="pt-2 flex flex-wrap gap-1.5">
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MAE-CSQ</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA1-CSQ</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA2-AR</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA3-AR</span>
-          </div>
-        </div>
-        <div class="bg-gray-50 p-4 border-t border-gray-100 flex items-center justify-between">
-          <span class="text-[11px] text-gray-500 flex items-center space-x-1">
-            <i data-lucide="clock" class="w-3.5 h-3.5 text-amber-600"></i>
-            <span>Module 2</span>
-          </span>
-          <a href="02-additive-relations.html" class="bg-gray-200 hover:bg-[#0D2C6B] hover:text-white text-[#4C4C4E] font-bold text-xs px-4 py-2 rounded-lg flex items-center space-x-1.5 transition">
-            <span>View Draft</span>
-            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
-          </a>
-        </div>
-      </div>
-
-      <!-- Module 3: Multiplicative Relations -->
-      <div class="bg-white rounded-xl border border-[#D1D2D4] shadow-sm flex flex-col justify-between overflow-hidden opacity-90">
-        <div class="p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-gray-100 text-gray-600 px-2.5 py-0.5 rounded-full border border-gray-300">Upcoming</span>
-            <span class="text-xs font-mono font-bold text-[#4C4C4E]">Focus Area 03</span>
-          </div>
-          <h4 class="text-base font-bold text-[#0D2C6B]">Forming Groups / Multiplicative Relations</h4>
-          <p class="text-xs text-[#4C4C4E] leading-relaxed">
-            Equal sharing and grouping, coordinating rows and columns in arrays, the distributive property, and transitioning to area models.
-          </p>
-          <div class="pt-2 flex flex-wrap gap-1.5">
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MAE-FG</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA1-FG</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA2-MR</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA3-MR</span>
-          </div>
-        </div>
-        <div class="bg-gray-50 p-4 border-t border-gray-100 flex items-center justify-between">
-          <span class="text-[11px] text-gray-400">Array &amp; Area Models</span>
-          <span class="text-xs text-gray-400 font-semibold">Planned</span>
-        </div>
-      </div>
-
-      <!-- Module 4: Fractions -->
-      <div class="bg-white rounded-xl border border-[#D1D2D4] shadow-sm flex flex-col justify-between overflow-hidden opacity-90">
-        <div class="p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-gray-100 text-gray-600 px-2.5 py-0.5 rounded-full border border-gray-300">Upcoming</span>
-            <span class="text-xs font-mono font-bold text-[#4C4C4E]">Focus Area 04</span>
-          </div>
-          <h4 class="text-base font-bold text-[#0D2C6B]">Partitioned &amp; Quantity Fractions</h4>
-          <p class="text-xs text-[#4C4C4E] leading-relaxed">
-            Linear fraction strips, why discrete models create misconceptions, reversible reasoning (part-to-whole), and benchmark equivalence.
-          </p>
-          <div class="pt-2 flex flex-wrap gap-1.5">
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA2-PF</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA3-RQF</span>
-          </div>
-        </div>
-        <div class="bg-gray-50 p-4 border-t border-gray-100 flex items-center justify-between">
-          <span class="text-[11px] text-gray-400">Linear Fraction Strips</span>
-          <span class="text-xs text-gray-400 font-semibold">Planned</span>
-        </div>
-      </div>
-
-      <!-- Module 5: Geometric Measure -->
-      <div class="bg-white rounded-xl border border-[#D1D2D4] shadow-sm flex flex-col justify-between overflow-hidden opacity-90">
-        <div class="p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-gray-100 text-gray-600 px-2.5 py-0.5 rounded-full border border-gray-300">Upcoming</span>
-            <span class="text-xs font-mono font-bold text-[#4C4C4E]">Focus Area 05</span>
-          </div>
-          <h4 class="text-base font-bold text-[#0D2C6B]">Geometric Measure (Length, Angles, Position)</h4>
-          <p class="text-xs text-[#4C4C4E] leading-relaxed">
-            Direct comparison, make-mark-move, formal units, angles as amount of turn rather than arm length, and the Cartesian plane.
-          </p>
-          <div class="pt-2 flex flex-wrap gap-1.5">
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MAE-GM</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA1-GM</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA2-GM</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA3-GM</span>
-          </div>
-        </div>
-        <div class="bg-gray-50 p-4 border-t border-gray-100 flex items-center justify-between">
-          <span class="text-[11px] text-gray-400">360&deg; Angle Simulator</span>
-          <span class="text-xs text-gray-400 font-semibold">Planned</span>
-        </div>
-      </div>
-
-      <!-- Module 6: 2D Spatial Structure -->
-      <div class="bg-white rounded-xl border border-[#D1D2D4] shadow-sm flex flex-col justify-between overflow-hidden opacity-90">
-        <div class="p-5 space-y-3">
-          <div class="flex items-center justify-between">
-            <span class="text-[10px] font-bold uppercase tracking-wider bg-gray-100 text-gray-600 px-2.5 py-0.5 rounded-full border border-gray-300">Upcoming</span>
-            <span class="text-xs font-mono font-bold text-[#4C4C4E]">Focus Area 06</span>
-          </div>
-          <h4 class="text-base font-bold text-[#0D2C6B]">Two-Dimensional Spatial Structure (Area &amp; Shapes)</h4>
-          <p class="text-xs text-[#4C4C4E] leading-relaxed">
-            Covering, grid overlays, dissecting and rearranging composite figures (L-shapes), and transforming parallelograms and triangles.
-          </p>
-          <div class="pt-2 flex flex-wrap gap-1.5">
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MAE-2DS</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA1-2DS</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA2-2DS</span>
-            <span class="bg-[#F4F6F9] text-[11px] px-2 py-0.5 rounded border border-[#D1D2D4] text-[#4C4C4E]">MA3-2DS</span>
-          </div>
-        </div>
-        <div class="bg-gray-50 p-4 border-t border-gray-100 flex items-center justify-between">
-          <span class="text-[11px] text-gray-400">Dissect &amp; Rearrange Tool</span>
-          <span class="text-xs text-gray-400 font-semibold">Planned</span>
-        </div>
-      </div>
-
-      <!-- Modules 7-10 Compact Overview -->
-      <div class="bg-white rounded-xl border border-[#D1D2D4] shadow-sm p-5 space-y-2 opacity-90">
-        <span class="text-xs font-mono font-bold text-[#4C4C4E]">Focus Area 07</span>
-        <h4 class="text-base font-bold text-[#0D2C6B]">Three-Dimensional Spatial Structure</h4>
-        <p class="text-xs text-[#4C4C4E]">Packing, filling, isometric drawings, nets of prisms/pyramids, and layer structure of volume.</p>
-        <div class="text-[11px] text-[#188296] font-semibold pt-1">MAE-3DS &bull; MA1-3DS &bull; MA2-3DS &bull; MA3-3DS</div>
-      </div>
-
-      <div class="bg-white rounded-xl border border-[#D1D2D4] shadow-sm p-5 space-y-2 opacity-90">
-        <span class="text-xs font-mono font-bold text-[#4C4C4E]">Focus Area 08</span>
-        <h4 class="text-base font-bold text-[#0D2C6B]">Non-Spatial Measure (Mass &amp; Time)</h4>
-        <p class="text-xs text-[#4C4C4E]">Hefting, equal-arm balances, conservation of mass, and analog versus digital time bases.</p>
-        <div class="text-[11px] text-[#188296] font-semibold pt-1">MAE-NSM &bull; MA1-NSM &bull; MA2-NSM &bull; MA3-NSM</div>
-      </div>
-
-      <div class="bg-white rounded-xl border border-[#D1D2D4] shadow-sm p-5 space-y-2 opacity-90">
-        <span class="text-xs font-mono font-bold text-[#4C4C4E]">Focus Area 09 &amp; 10</span>
-        <h4 class="text-base font-bold text-[#0D2C6B]">Data &amp; Chance</h4>
-        <p class="text-xs text-[#4C4C4E]">Categorical to numerical data, many-to-one scaling, misleading graphs, and proportional chance.</p>
-        <div class="text-[11px] text-[#188296] font-semibold pt-1">DATA &bull; CHANCE (ES1 to Stage 3)</div>
-      </div>
-
+    <div class="cd-grid" id="cdGrid"></div>
+    <div class="cd-empty" id="cdEmpty" hidden>
+      No modules match that search.<br>
+      <button type="button" id="cdClear">Show all modules</button>
     </div>
   </main>
 
-  <!-- Footer -->
-  <footer class="bg-white border-t border-[#D1D2D4] py-6 px-6 text-center text-xs text-[#4C4C4E]">
-    <div class="max-w-7xl mx-auto space-y-1">
-      <p>Catholic Education Diocese of Wollongong &bull; Teacher Professional Learning Suite</p>
-      <p class="text-[11px] text-gray-400">Aligned with the NSW Mathematics K&ndash;10 Syllabus (2022) &bull; Designed for Canvas LMS &amp; Google Sites</p>
+  <footer class="cd-footer">
+    <div class="cd-footer-inner">
+      <span><strong>Catholic Education Diocese of Wollongong</strong> &middot; Primary Mathematics K&ndash;6 Professional Learning</span>
+      <span>Aligned to the NSW Mathematics K&ndash;10 Syllabus (2022) and NESA Teaching Advice</span>
     </div>
   </footer>
 
   <script>
-    lucide.createIcons();
+    // Where the modules are published. Links use this address whenever the finder
+    // is not itself running on that site (for example, when embedded in Google Sites).
+    var SITE_URL = 'https://thomask04-dotcom.github.io/cedow-primary-maths-pl/';
+
+    var MODULES = [
+      { n: 1, file: '01-representing-number.html', name: 'Representing Number',
+        desc: 'From subitising and cardinality in Kindergarten to composite units of ten, decimal place value and powers of ten.',
+        codes: ['MAE-RWN', 'MA1-RWN', 'MA2-RN', 'MA3-RN'],
+        tags: 'place value counting subitising number line decimals number slide partitioning' },
+      { n: 2, file: '02-additive-relations.html', name: 'Combining & Separating Quantities / Additive Relations',
+        desc: 'Part-part-whole relationships, number bonds to 10 and 20, comparison subtraction, constant difference, and mental strategies versus algorithms.',
+        codes: ['MAE-CSQ', 'MA1-CSQ', 'MA2-AR', 'MA3-AR'],
+        tags: 'addition subtraction add subtract ten frame empty number line bridging strategies' },
+      { n: 3, file: '03-multiplicative-relations.html', name: 'Forming Groups / Multiplicative Relations',
+        desc: 'Equal sharing and grouping, coordinating rows and columns in arrays, the distributive property, and the move to area models.',
+        codes: ['MAE-FG', 'MA1-FG', 'MA2-MR', 'MA3-MR'],
+        tags: 'multiplication division multiply divide multiplication facts arrays sharing grouping area model' },
+      { n: 4, file: '04-fractions.html', name: 'Partitioned Fractions / Quantity Fractions',
+        desc: 'Halving, linear fraction strips, why discrete models create misconceptions, reversible reasoning and benchmark equivalence.',
+        codes: ['MA2-PF', 'MA3-RQF'],
+        tags: 'fractions halves quarters halving fraction strips number line equivalence' },
+      { n: 5, file: '05-geometric-measure.html', name: 'Geometric Measure',
+        desc: 'Position, length and angles: direct comparison, informal units, formal measurement, angles as amount of turn, and the Cartesian plane.',
+        codes: ['MAE-GM', 'MA1-GM', 'MA2-GM', 'MA3-GM'],
+        tags: 'length angles position direction ruler units perimeter turn degrees grid coordinates' },
+      { n: 6, file: '06-2d-spatial-structure.html', name: 'Two-dimensional Spatial Structure',
+        desc: '2D shapes and area: covering, grid overlays, dissecting and rearranging composite figures, and transforming parallelograms and triangles.',
+        codes: ['MAE-2DS', 'MA1-2DS', 'MA2-2DS', 'MA3-2DS'],
+        tags: '2d shapes area tiling square units triangles quadrilaterals properties tangram' },
+      { n: 7, file: '07-3d-spatial-structure.html', name: 'Three-dimensional Spatial Structure',
+        desc: '3D objects and volume: packing and filling, views and drawings, nets of prisms and pyramids, and the layer structure of volume.',
+        codes: ['MAE-3DS', 'MA1-3DS', 'MA2-3DS', 'MA3-3DS'],
+        tags: '3d objects volume capacity cubes prisms pyramids nets litres' },
+      { n: 8, file: '08-non-spatial-measure.html', name: 'Non-spatial Measure',
+        desc: 'Mass and time: hefting, equal-arm balances, conservation of mass, reading analog and digital clocks, and elapsed time.',
+        codes: ['MAE-NSM', 'MA1-NSM', 'MA2-NSM', 'MA3-NSM'],
+        tags: 'mass time weight balance kilograms grams clock analog digital 24-hour timeline calendar' },
+      { n: 9, file: '09-data.html', name: 'Data',
+        desc: 'From objects as data to picture graphs, column graphs and dot plots, many-to-one scales, line graphs and misleading displays.',
+        codes: ['MAE-DATA', 'MA1-DATA', 'MA2-DATA', 'MA3-DATA'],
+        tags: 'data graphs statistics tally survey column graph dot plot picture graph bias' },
+      { n: 10, file: '10-chance.html', name: 'Chance',
+        desc: 'Describing likelihood, listing outcomes, and moving from observed frequency to theoretical probability.',
+        codes: ['MA1-CHAN', 'MA2-CHAN', 'MA3-CHAN'],
+        tags: 'chance probability likelihood likely unlikely spinner dice experiments outcomes' }
+    ];
+
+    (function () {
+      var embedded = false;
+      try { embedded = window.self !== window.top; } catch (e) { embedded = true; }
+      var onSite = location.href.indexOf(SITE_URL) === 0;
+      var base = onSite ? '' : SITE_URL;
+      if (embedded || location.search.indexOf('embed') !== -1) document.body.classList.add('cd-embedded');
+
+      var grid = document.getElementById('cdGrid');
+      var input = document.getElementById('cdSearch');
+      var count = document.getElementById('cdCount');
+      var empty = document.getElementById('cdEmpty');
+      var arrow = '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>';
+
+      function esc(t) { return t.replace(/&/g, '&amp;').replace(/</g, '&lt;'); }
+
+      MODULES.forEach(function (m) {
+        var a = document.createElement('a');
+        a.className = 'cd-card';
+        a.href = base + m.file;
+        if (embedded) { a.target = '_blank'; a.rel = 'noopener'; }
+        a.innerHTML =
+          '<div class="cd-card-body">' +
+            '<span class="cd-fa">Focus Area ' + m.n + '</span>' +
+            '<h3>' + esc(m.name) + '</h3>' +
+            '<p>' + esc(m.desc) + '</p>' +
+            '<div class="cd-codes">' + m.codes.map(function (c) { return '<span class="cd-code">' + c + '</span>'; }).join('') + '</div>' +
+          '</div>' +
+          '<div class="cd-card-foot"><span>K&ndash;6 &middot; 7 sections</span><span class="cd-open">Open module ' + arrow + '</span></div>';
+        m.el = a;
+        m.haystack = (m.n + ' focus area ' + m.name + ' ' + m.desc + ' ' + m.codes.join(' ') + ' ' + m.tags).toLowerCase();
+        grid.appendChild(a);
+      });
+
+      function filter() {
+        var words = input.value.toLowerCase().split(/\s+/).filter(Boolean);
+        var shown = 0;
+        MODULES.forEach(function (m) {
+          var ok = words.every(function (w) { return m.haystack.indexOf(w) !== -1; });
+          m.el.hidden = !ok;
+          if (ok) shown++;
+        });
+        count.textContent = shown === MODULES.length ? MODULES.length + ' modules' : shown + ' of ' + MODULES.length + ' modules';
+        empty.hidden = shown !== 0;
+      }
+      input.addEventListener('input', filter);
+      document.getElementById('cdClear').addEventListener('click', function () { input.value = ''; filter(); input.focus(); });
+      filter();
+    })();
   </script>
 </body>
 </html>
