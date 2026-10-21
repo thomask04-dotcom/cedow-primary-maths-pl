@@ -1,0 +1,2311 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Area 4: Partitioned &amp; Quantity Fractions (K–6) | CEDoW Mathematics PL</title>
+
+  <!-- Google Fonts: Lato (Body & Headings) and Fira Code (Math & Data) -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Custom Palette Configuration for CEDoW -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cedow: {
+              darkblue: '#0D2C6B',
+              aqua: '#188296',
+              gold: '#FBAF3F',
+              charcoal: '#4C4C4E',
+              silver: '#D1D2D4',
+              black: '#231F20',
+              bg: '#F4F6F9',
+              accentLight: '#E8F4F7'
+            }
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      color: #231F20;
+      background-color: #F4F6F9;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .math-font {
+      font-family: 'Fira Code', monospace;
+    }
+
+    /* Fraction Formatting */
+    .fr {
+      display: inline-flex;
+      flex-direction: column;
+      vertical-align: middle;
+      text-align: center;
+      line-height: 1;
+      font-size: 0.9em;
+      margin: 0 0.18em;
+      font-family: 'Fira Code', monospace;
+      font-weight: 600;
+    }
+    .fr > .num {
+      border-bottom: 1.5px solid currentColor;
+      padding: 0 2px 1px 2px;
+      display: block;
+    }
+    .fr > .den {
+      padding: 1px 2px 0 2px;
+      display: block;
+    }
+
+    /* Custom Scrollbars */
+    ::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F4F6F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D1D2D4;
+      border-radius: 3px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #188296;
+    }
+
+    /* Smooth Scrolling */
+    html {
+      scroll-behavior: smooth;
+    }
+
+    /* Interactive ribbon simulator */
+    .ribbon-track {
+      position: relative;
+      height: 48px;
+      background: #E5E7EB;
+      border-radius: 8px;
+      overflow: hidden;
+      border: 2px solid #0D2C6B;
+    }
+    .ribbon-piece-a {
+      background: linear-gradient(135deg, #0D2C6B 0%, #188296 100%);
+      height: 100%;
+      transition: width 0.05s ease-out;
+    }
+    .ribbon-piece-b {
+      background: #FBAF3F;
+      height: 100%;
+    }
+    .ribbon-cut-handle {
+      position: absolute;
+      top: -6px;
+      transform: translateX(-50%);
+      font-size: 26px;
+      cursor: ew-resize;
+      user-select: none;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+      transition: left 0.05s ease-out;
+    }
+
+    /* Collapsible states */
+    .nav-active {
+      background-color: #188296 !important;
+      color: #FFFFFF !important;
+      font-weight: 700;
+      border-left: 4px solid #FBAF3F;
+    }
+  </style>
+</head>
+<body class="bg-cedow-bg min-h-screen flex flex-col antialiased selection:bg-cedow-aqua selection:text-white">
+
+  <!-- Top Global Header -->
+  <header class="bg-cedow-darkblue text-white sticky top-0 z-50 shadow-md border-b-4 border-cedow-gold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="bg-white p-1.5 rounded-lg flex items-center justify-center shadow-sm">
+          <i data-lucide="compass" class="w-6 h-6 text-cedow-darkblue"></i>
+        </div>
+        <div>
+          <span class="text-xs tracking-wider uppercase font-semibold text-cedow-gold block">Catholic Education Diocese of Wollongong</span>
+          <h1 class="text-base sm:text-lg font-bold tracking-tight text-white flex items-center gap-2">
+            Mathematics K–6 Professional Learning
+            <span class="hidden sm:inline-block text-xs bg-cedow-aqua px-2 py-0.5 rounded text-white font-medium">Syllabus 2022</span>
+          </h1>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="hidden md:flex items-center text-xs text-cedow-silver">
+          <i data-lucide="book-open" class="w-4 h-4 mr-1.5 text-cedow-gold"></i>
+          Focus Area 4: Partitioned &amp; Quantity Fractions
+        </span>
+        <button id="mobileNavToggle" class="lg:hidden p-2 rounded-md hover:bg-cedow-aqua text-white transition focus:outline-none" aria-label="Toggle Navigation">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container with Responsive Sidebar Layout -->
+  <div class="max-w-7xl mx-auto w-full flex-1 flex px-4 sm:px-6 lg:px-8 py-6 gap-6 relative">
+    
+    <!-- Left Navigation Sidebar -->
+    <aside id="sidebar" class="fixed lg:sticky top-20 left-0 h-[calc(100vh-6rem)] w-72 bg-white rounded-xl shadow-sm border border-cedow-silver/60 flex-col z-40 transform -translate-x-full lg:translate-x-0 transition-transform duration-200 ease-in-out overflow-y-auto hidden lg:flex">
+      <div class="p-4 border-b border-cedow-silver/40 bg-slate-50">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase tracking-wider text-cedow-charcoal">Module Navigation</span>
+          <span class="text-xs bg-cedow-darkblue text-white px-2 py-0.5 rounded-full font-mono">7 Sections</span>
+        </div>
+      </div>
+      <nav class="p-3 space-y-1 text-sm font-medium flex-1">
+        <a href="#section1" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-cedow-black hover:bg-cedow-accentLight hover:text-cedow-aqua transition group">
+          <i data-lucide="milestone" class="w-4 h-4 mr-3 text-cedow-aqua group-hover:scale-110 transition"></i>
+          <span>1. Vertical Trajectory &amp; Big Ideas</span>
+        </a>
+        <a href="#section2" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-cedow-black hover:bg-cedow-accentLight hover:text-cedow-aqua transition group">
+          <i data-lucide="alert-triangle" class="w-4 h-4 mr-3 text-cedow-gold group-hover:scale-110 transition"></i>
+          <span>2. Conceptual Shifts &amp; Traps</span>
+        </a>
+        <a href="#section3" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-cedow-black hover:bg-cedow-accentLight hover:text-cedow-aqua transition group">
+          <i data-lucide="sliders" class="w-4 h-4 mr-3 text-cedow-aqua group-hover:scale-110 transition"></i>
+          <span>3. Interactive Tool Lab</span>
+        </a>
+        <a href="#section4" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-cedow-black hover:bg-cedow-accentLight hover:text-cedow-aqua transition group">
+          <i data-lucide="stethoscope" class="w-4 h-4 mr-3 text-cedow-darkblue group-hover:scale-110 transition"></i>
+          <span>4. Diagnostic Clinic &amp; Roots</span>
+        </a>
+        <a href="#section5" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-cedow-black hover:bg-cedow-accentLight hover:text-cedow-aqua transition group">
+          <i data-lucide="sparkles" class="w-4 h-4 mr-3 text-cedow-gold group-hover:scale-110 transition"></i>
+          <span>5. Task Makeover Studio</span>
+        </a>
+        <a href="#section6" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-cedow-black hover:bg-cedow-accentLight hover:text-cedow-aqua transition group">
+          <i data-lucide="award" class="w-4 h-4 mr-3 text-cedow-aqua group-hover:scale-110 transition"></i>
+          <span>6. Module Mastery Checkpoint</span>
+        </a>
+        <a href="#section7" class="sidebar-link flex items-center px-3 py-2.5 rounded-lg text-cedow-black hover:bg-cedow-accentLight hover:text-cedow-aqua transition group">
+          <i data-lucide="layout-template" class="w-4 h-4 mr-3 text-cedow-charcoal group-hover:scale-110 transition"></i>
+          <span>7. Canvas Deployment Guide</span>
+        </a>
+      </nav>
+
+      <!-- Sidebar Footer Info -->
+      <div class="p-4 border-t border-cedow-silver/40 text-xs text-cedow-charcoal bg-slate-50 space-y-1">
+        <p class="font-bold text-cedow-darkblue">CEDoW Mathematics Team</p>
+        <p>Built for NSW Mathematics K–10 (2022)</p>
+        <p class="text-slate-500 text-[11px]">Self-paced teacher inquiry</p>
+      </div>
+    </aside>
+
+    <!-- Mobile Drawer Backdrop -->
+    <div id="mobileBackdrop" class="fixed inset-0 bg-black/40 z-30 hidden lg:hidden"></div>
+
+    <!-- Main Content Area -->
+    <main class="flex-1 min-w-0 space-y-12">
+
+      <!-- Hero Header Banner -->
+      <section class="bg-gradient-to-r from-cedow-darkblue via-[#123E8E] to-cedow-aqua text-white rounded-2xl p-6 sm:p-8 shadow-sm border border-cedow-darkblue/20">
+        <div class="max-w-3xl space-y-3">
+          <div class="inline-flex items-center gap-2 bg-white/10 backdrop-blur px-3 py-1 rounded-full text-xs font-semibold text-cedow-gold">
+            <i data-lucide="sparkle" class="w-3.5 h-3.5"></i>
+            <span>Professional Learning Continuum &bull; Focus Area 4</span>
+          </div>
+          <h2 class="text-2xl sm:text-4xl font-extrabold tracking-tight">
+            Partitioned &amp; Quantity Fractions (K–6)
+          </h2>
+          <p class="text-sm sm:text-base text-slate-100 font-light leading-relaxed">
+            Unpack how fractions evolve from halving continuous lengths in Kindergarten, to partitioned strips and number lines in Stage 2, reaching multiplicative quantity fractions and division in Stage 3.
+          </p>
+          <div class="pt-2 flex flex-wrap gap-2 text-xs">
+            <span class="bg-white/15 px-2.5 py-1 rounded-md flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-3.5 h-3.5 text-cedow-gold"></i> Working Mathematically MAO-WM-01</span>
+            <span class="bg-white/15 px-2.5 py-1 rounded-md flex items-center gap-1.5"><i data-lucide="layers" class="w-3.5 h-3.5 text-cedow-gold"></i> Linear Continuous Model Priority</span>
+            <span class="bg-white/15 px-2.5 py-1 rounded-md flex items-center gap-1.5"><i data-lucide="refresh-cw" class="w-3.5 h-3.5 text-cedow-gold"></i> Reversible Reasoning</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 1: THE VERTICAL TRAJECTORY & BIG IDEAS                            -->
+      <!-- ========================================================================= -->
+      <section id="section1" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver/60 pb-3 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-black uppercase tracking-wider text-cedow-aqua">Section 1</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-cedow-darkblue">The Vertical Trajectory &amp; Big Ideas</h3>
+          </div>
+          <span class="text-xs bg-cedow-darkblue/10 text-cedow-darkblue font-semibold px-3 py-1 rounded-full">Syllabus Continuum</span>
+        </div>
+
+        <p class="text-sm text-cedow-charcoal leading-relaxed">
+          In the NSW Mathematics K–10 (2022) syllabus, there are <strong>no isolated fraction outcomes in Kindergarten and Stage 1</strong>. Foundations are intentionally constructed through continuous length subdivision in <em>Geometric measure</em> and fair sharing in <em>Forming groups</em>. Explore each stage card below to inspect outcomes, key milestones, and NESA Teaching Advice.
+        </p>
+
+        <!-- Stage Filter Tabs -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 bg-slate-200/60 p-1.5 rounded-xl text-xs sm:text-sm font-semibold">
+          <button onclick="setStageTab('es1')" id="tab-es1" class="stage-tab py-2.5 px-3 rounded-lg text-center transition bg-cedow-darkblue text-white shadow-sm">Early Stage 1</button>
+          <button onclick="setStageTab('s1')" id="tab-s1" class="stage-tab py-2.5 px-3 rounded-lg text-center transition text-cedow-charcoal hover:bg-white/60">Stage 1 (Y1–2)</button>
+          <button onclick="setStageTab('s2')" id="tab-s2" class="stage-tab py-2.5 px-3 rounded-lg text-center transition text-cedow-charcoal hover:bg-white/60">Stage 2 (Y3–4)</button>
+          <button onclick="setStageTab('s3')" id="tab-s3" class="stage-tab py-2.5 px-3 rounded-lg text-center transition text-cedow-charcoal hover:bg-white/60">Stage 3 (Y5–6)</button>
+        </div>
+
+        <!-- Stage Dynamic Content Card -->
+        <div id="stageCardContainer" class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-6 transition-all duration-300">
+          <!-- Populated by JavaScript -->
+        </div>
+
+        <!-- Cross-Stage Big Ideas Matrix Explorer -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-cedow-aqua">Foundational Principles</span>
+              <h4 class="text-lg font-bold text-cedow-darkblue">Cross-Stage "Big Ideas Matrix"</h4>
+            </div>
+            <span class="text-xs bg-cedow-gold/20 text-cedow-darkblue font-semibold px-2.5 py-1 rounded">Interactive Matrix</span>
+          </div>
+          <p class="text-xs sm:text-sm text-cedow-charcoal">
+            Select a big idea to trace its deliberate evolution from Kindergarten through Year 6. Notice how the mathematical whole transitions from a context-dependent ribbon to the universal number 1.
+          </p>
+
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-2" id="bigIdeaButtons">
+            <!-- Dynamic Big Idea Buttons -->
+          </div>
+
+          <div id="bigIdeaDisplay" class="bg-cedow-bg rounded-lg p-5 border-l-4 border-cedow-aqua space-y-3">
+            <!-- Dynamic Big Idea Trajectory Detail -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 2: KEY CONCEPTUAL SHIFTS & PEDAGOGICAL TRAPS                      -->
+      <!-- ========================================================================= -->
+      <section id="section2" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver/60 pb-3 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-black uppercase tracking-wider text-cedow-aqua">Section 2</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-cedow-darkblue">Key Conceptual Shifts &amp; Pedagogical Traps</h3>
+          </div>
+          <span class="text-xs bg-cedow-gold/20 text-cedow-darkblue font-semibold px-3 py-1 rounded-full">Research &amp; Evidence</span>
+        </div>
+
+        <!-- 3 Crucial Trajectory Shifts Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          <div class="bg-white rounded-xl p-5 shadow-sm border-t-4 border-cedow-darkblue space-y-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-cedow-darkblue">Shift 1 (ES1 &rarr; S1)</span>
+            <h4 class="font-bold text-cedow-black">Single Halving to Repeated Halving</h4>
+            <p class="text-xs text-cedow-charcoal leading-relaxed">
+              Moving from a single cut of a ribbon to successive halving (producing quarters and eighths). Crucially, students learn <em>reversible reasoning</em>: re-creating the entire whole when given a half length or half a collection.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl p-5 shadow-sm border-t-4 border-cedow-aqua space-y-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-cedow-aqua">Shift 2 (S1 &rarr; S2)</span>
+            <h4 class="font-bold text-cedow-black">Halving to Thirds, Fifths &amp; Number Lines</h4>
+            <p class="text-xs text-cedow-charcoal leading-relaxed">
+              Thirds and fifths cannot begin with halving; they require iterative folding and adjusting. Fraction strips are mapped onto number lines like rulers, establishing fractions as single numbers with specific linear positions.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl p-5 shadow-sm border-t-4 border-cedow-gold space-y-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-cedow-gold">Shift 3 (S2 &rarr; S3)</span>
+            <h4 class="font-bold text-cedow-black">Contextual Whole to Universal Whole '1'</h4>
+            <p class="text-xs text-cedow-charcoal leading-relaxed">
+              In Stage 2, the whole is the length of the specific ribbon or strip. In Stage 3 quantity fractions, the whole is always the abstract number 1. Fractions represent division (<span class="fr"><span class="num">3</span><span class="den">4</span></span> is 3 &divide; 4) and operators on quantities.
+            </p>
+          </div>
+        </div>
+
+        <!-- Research Deep Dive & Pitfalls Card -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-5">
+          <h4 class="text-lg font-bold text-cedow-darkblue flex items-center gap-2">
+            <i data-lucide="shield-alert" class="w-5 h-5 text-cedow-gold"></i>
+            Pedagogical Traps Highlighted by NESA &amp; Academic Literature
+          </h4>
+
+          <div class="space-y-4 text-sm text-cedow-charcoal">
+            <!-- Trap 1 -->
+            <div class="p-4 bg-slate-50 rounded-lg border-l-4 border-red-500 space-y-1">
+              <div class="flex items-center justify-between">
+                <strong class="text-cedow-black font-bold">Trap 1: The 'Shading Shapes' Trap &amp; Whole-Number Thinking</strong>
+                <span class="text-[11px] font-mono bg-red-100 text-red-800 px-2 py-0.5 rounded">Gould (2014)</span>
+              </div>
+              <p class="text-xs sm:text-sm">
+                Shading parts inside circles or rectangles encourages students to view fractions as two separate whole numbers (counting shaded parts vs counting total parts). In a landmark Australian study of 52,000 Year 7 students, over half estimated <span class="fr"><span class="num">4</span><span class="den">5</span></span> + <span class="fr"><span class="num">11</span><span class="den">12</span></span> as 15 or 17 (Gould 2014), directly operating on numerators or denominators.
+              </p>
+              <p class="text-xs text-cedow-darkblue font-semibold pt-1">
+                &bull; NESA Fix: Introduce the continuous linear model first (fraction strips and number lines) where magnitude is visualised as length from 0 to 1.
+              </p>
+            </div>
+
+            <!-- Trap 2 -->
+            <div class="p-4 bg-slate-50 rounded-lg border-l-4 border-amber-500 space-y-1">
+              <div class="flex items-center justify-between">
+                <strong class="text-cedow-black font-bold">Trap 2: Saying "2 over 3" or "2 out of 3" instead of "Two-Thirds"</strong>
+                <span class="text-[11px] font-mono bg-amber-100 text-amber-800 px-2 py-0.5 rounded">Way &amp; Bobis (2011)</span>
+              </div>
+              <p class="text-xs sm:text-sm">
+                Reading <span class="fr"><span class="num">2</span><span class="den">3</span></span> as "two over three" or "two out of three" creates an active cognitive barrier to recognising it as a single distinct number on the number line. "Two out of three" also prevents understanding fractions greater than one (e.g. how do you take "four out of three"?).
+              </p>
+              <p class="text-xs text-cedow-darkblue font-semibold pt-1">
+                &bull; NESA Fix: Strictly say "two-thirds". Denominator names the fraction family (Latin <em>that which names</em>); numerator counts the parts (Latin <em>counter</em>). Use "fraction bar" rather than complex terms like vinculum.
+              </p>
+            </div>
+
+            <!-- Trap 3 -->
+            <div class="p-4 bg-slate-50 rounded-lg border-l-4 border-blue-500 space-y-1">
+              <div class="flex items-center justify-between">
+                <strong class="text-cedow-black font-bold">Trap 3: Rushing to Procedural Algorithms without Intuitive Strategies</strong>
+                <span class="text-[11px] font-mono bg-blue-100 text-blue-800 px-2 py-0.5 rounded">Empson &amp; Levi (2011)</span>
+              </div>
+              <p class="text-xs sm:text-sm">
+                Empson and Levi emphasise that if students lack intuitive strategies for tasks such as 1 &minus; <span class="fr"><span class="num">1</span><span class="den">3</span></span> or 2 &minus; <span class="fr"><span class="num">5</span><span class="den">8</span></span> (e.g. understanding that <span class="fr"><span class="num">5</span><span class="den">8</span></span> is <span class="fr"><span class="num">3</span><span class="den">8</span></span> away from 1, so the result is 1<span class="fr"><span class="num">3</span><span class="den">8</span></span>), they are not yet cognitively ready for abstract algorithms or finding common denominators.
+              </p>
+              <p class="text-xs text-cedow-darkblue font-semibold pt-1">
+                &bull; NESA Fix: Ground early operations in the complement principle (<span class="fr"><span class="num">1</span><span class="den">5</span></span> and <span class="fr"><span class="num">4</span><span class="den">5</span></span> complete the whole) and tape diagrams.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 3: INTERACTIVE TOOL LAB (4 RUNNABLE MANIPULATIVES)                -->
+      <!-- ========================================================================= -->
+      <section id="section3" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver/60 pb-3 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-black uppercase tracking-wider text-cedow-aqua">Section 3</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-cedow-darkblue">Interactive Tool Lab</h3>
+          </div>
+          <span class="text-xs bg-cedow-aqua text-white font-semibold px-3 py-1 rounded-full">4 Runnable Simulators</span>
+        </div>
+
+        <p class="text-sm text-cedow-charcoal leading-relaxed">
+          These embedded, interactive manipulatives model the precise concrete-to-representational progression recommended by NESA and the CEDoW PL framework. Switch between tools to experience how each model addresses a specific stage milestone.
+        </p>
+
+        <!-- Tool Switcher Tabs -->
+        <div class="flex flex-wrap gap-2 border-b border-cedow-silver/50 pb-2">
+          <button onclick="switchTool('half')" id="toolBtn-half" class="tool-tab-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-cedow-darkblue text-white shadow-sm flex items-center gap-2">
+            <i data-lucide="scissors" class="w-4 h-4"></i> Tool 1: ES1 Ribbon &amp; Halfway Point
+          </button>
+          <button onclick="switchTool('halving')" id="toolBtn-halving" class="tool-tab-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-white text-cedow-charcoal hover:bg-slate-100 flex items-center gap-2">
+            <i data-lucide="copy" class="w-4 h-4"></i> Tool 2: S1 Repeated Halving
+          </button>
+          <button onclick="switchTool('strips')" id="toolBtn-strips" class="tool-tab-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-white text-cedow-charcoal hover:bg-slate-100 flex items-center gap-2">
+            <i data-lucide="ruler" class="w-4 h-4"></i> Tool 3: S2 Strips on Number Line
+          </button>
+          <button onclick="switchTool('tape')" id="toolBtn-tape" class="tool-tab-btn px-4 py-2 text-xs sm:text-sm font-bold rounded-lg bg-white text-cedow-charcoal hover:bg-slate-100 flex items-center gap-2">
+            <i data-lucide="split" class="w-4 h-4"></i> Tool 4: S3 Tape &amp; Reversible Reasoning
+          </button>
+        </div>
+
+        <!-- Tool 1: ES1 Cut Ribbon -->
+        <div id="toolPanel-half" class="tool-panel bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div>
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Early Stage 1 &bull; Geometric Measure (MAE-GM-03)</span>
+              <h4 class="text-lg font-bold text-cedow-darkblue">Cut the Ribbon in Half</h4>
+            </div>
+            <span class="text-xs bg-slate-100 text-cedow-charcoal px-3 py-1 rounded-full font-mono">Continuous Linear Model</span>
+          </div>
+          <p class="text-xs sm:text-sm text-cedow-charcoal">
+            Drag the scissors slider along the ribbon to make a cut. Then click <strong>Fold to check</strong> to test if the two lengths match exactly side-by-side, or toggle the <strong>Halfway point</strong> marker to demonstrate how a position differs from a length.
+          </p>
+
+          <div class="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-200">
+            <!-- Ribbon Track Display -->
+            <div class="ribbon-track flex">
+              <div id="hfPieceA" class="ribbon-piece-a" style="width: 38%;"></div>
+              <div id="hfPieceB" class="ribbon-piece-b flex-1"></div>
+              <div id="hfCutHandle" class="ribbon-cut-handle" style="left: 38%;">✂️</div>
+              <div id="hfHalfwayMarker" class="absolute top-0 bottom-0 left-1/2 w-0.5 bg-red-600 border-dashed border-l-2 border-white hidden flex-col items-center justify-end pb-1">
+                <span class="bg-red-600 text-[10px] text-white px-1.5 py-0.5 rounded font-mono shadow">50% Halfway Point</span>
+              </div>
+            </div>
+
+            <!-- Slider Control -->
+            <div class="space-y-1">
+              <div class="flex justify-between text-xs font-semibold text-cedow-charcoal">
+                <span>Start (0%)</span>
+                <span>Cut Position: <span id="hfPosLabel" class="font-mono text-cedow-darkblue font-bold">38%</span></span>
+                <span>End (100%)</span>
+              </div>
+              <input type="range" id="hfSlider" min="5" max="95" value="38" class="w-full accent-cedow-aqua cursor-pointer" aria-label="Ribbon cut position">
+            </div>
+
+            <!-- Action Controls -->
+            <div class="flex flex-wrap gap-3 items-center pt-2">
+              <button id="hfFoldBtn" class="px-4 py-2 bg-cedow-darkblue text-white text-xs font-bold rounded-lg hover:bg-opacity-90 shadow-sm flex items-center gap-1.5">
+                <i data-lucide="fold-horizontal" class="w-4 h-4"></i> Fold to Check Equality
+              </button>
+              <button id="hfTogglePointBtn" class="px-4 py-2 bg-white text-cedow-darkblue border border-cedow-darkblue text-xs font-bold rounded-lg hover:bg-cedow-accentLight flex items-center gap-1.5">
+                <i data-lucide="map-pin" class="w-4 h-4 text-cedow-aqua"></i> Show Halfway Point
+              </button>
+            </div>
+
+            <!-- Real-Time Readout & Comparison View -->
+            <div id="hfFoldDisplay" class="pt-2"></div>
+            <div id="hfStatusAlert" class="p-3 rounded-lg text-xs font-medium"></div>
+          </div>
+        </div>
+
+        <!-- Tool 2: S1 Repeated Halving -->
+        <div id="toolPanel-halving" class="tool-panel bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-6 hidden">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div>
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Stage 1 &bull; Geometric Measure &amp; Forming Groups (MA1-GM-03, MA1-FG-01)</span>
+              <h4 class="text-lg font-bold text-cedow-darkblue">Repeated Halving: Lengths &amp; Collections</h4>
+            </div>
+            <span class="text-xs bg-slate-100 text-cedow-charcoal px-3 py-1 rounded-full font-mono">Continuous &amp; Discrete Coordination</span>
+          </div>
+          <p class="text-xs sm:text-sm text-cedow-charcoal">
+            Compare halving the whole strip repeatedly (halves &rarr; quarters &rarr; eighths) versus halving <em>only one half</em>. Observe what happens to a discrete collection of counters when partitioned alongside the continuous strip!
+          </p>
+
+          <div class="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-200">
+            <!-- Mode Toggle & Collection Size Controls -->
+            <div class="flex flex-wrap items-center justify-between gap-3 pb-2 border-b border-slate-200">
+              <div class="flex rounded-lg bg-slate-200 p-1 text-xs font-bold">
+                <button id="hvModeAll" onclick="setHalvingMode('all')" class="px-3 py-1.5 rounded-md bg-cedow-darkblue text-white shadow-sm transition">Halve Every Piece</button>
+                <button id="hvModeOne" onclick="setHalvingMode('one')" class="px-3 py-1.5 rounded-md text-cedow-charcoal hover:text-cedow-darkblue transition">Halve One Piece Only (Pedagogical Trap)</button>
+              </div>
+
+              <div class="flex items-center gap-2 text-xs">
+                <label for="hvCountSelect" class="font-semibold text-cedow-charcoal">Collection size:</label>
+                <select id="hvCountSelect" onchange="resetHalving()" class="border border-cedow-silver rounded px-2 py-1 bg-white font-mono font-bold text-cedow-darkblue">
+                  <option value="8">8 counters</option>
+                  <option value="16" selected>16 counters</option>
+                  <option value="24">24 counters</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- Halving Action Buttons -->
+            <div class="flex items-center gap-3">
+              <button id="hvStepBtn" onclick="stepHalve()" class="px-4 py-2 bg-cedow-aqua text-white text-xs font-bold rounded-lg hover:bg-opacity-90 shadow-sm flex items-center gap-1.5">
+                <i data-lucide="git-branch" class="w-4 h-4"></i> Halve Strip
+              </button>
+              <button onclick="resetHalving()" class="px-3 py-2 bg-white text-cedow-charcoal border border-cedow-silver text-xs font-bold rounded-lg hover:bg-slate-100 flex items-center gap-1.5">
+                <i data-lucide="rotate-ccw" class="w-4 h-4"></i> Reset
+              </button>
+              <span id="hvLevelBadge" class="text-xs font-mono font-semibold text-cedow-darkblue bg-white border border-slate-200 px-2.5 py-1 rounded">Level: Whole (1)</span>
+            </div>
+
+            <!-- Dynamic Strip Container -->
+            <div class="space-y-2">
+              <span class="text-xs font-bold uppercase text-cedow-charcoal tracking-wider">Continuous Linear Strip</span>
+              <div id="hvStripView" class="h-12 w-full flex rounded-lg overflow-hidden border-2 border-cedow-darkblue shadow-sm bg-white">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <!-- Dynamic Discrete Collection Container -->
+            <div class="space-y-2">
+              <span class="text-xs font-bold uppercase text-cedow-charcoal tracking-wider">Discrete Collection Alignment</span>
+              <div id="hvCollectionView" class="p-3 bg-white rounded-lg border border-slate-200 flex flex-wrap gap-2 items-center justify-around min-h-[64px]">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+
+            <!-- Insight Description Banner -->
+            <div id="hvFeedback" class="p-4 rounded-lg bg-blue-50 border-l-4 border-cedow-darkblue text-xs text-cedow-charcoal leading-relaxed">
+              <!-- Injected via JS -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 3: S2 Strips on Number Line -->
+        <div id="toolPanel-strips" class="tool-panel bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-6 hidden">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div>
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Stage 2 &bull; Partitioned Fractions A &amp; B (MA2-PF-01)</span>
+              <h4 class="text-lg font-bold text-cedow-darkblue">Fraction Strips on a Number Line</h4>
+            </div>
+            <span class="text-xs bg-slate-100 text-cedow-charcoal px-3 py-1 rounded-full font-mono">Measurement Ruler Alignment</span>
+          </div>
+          <p class="text-xs sm:text-sm text-cedow-charcoal">
+            Hamdan &amp; Gunderson (2017) proved that mapping fraction strips onto a number line like a ruler builds fraction magnitude faster than area shading. Test what happens when the number line extends to 2—does <span class="fr"><span class="num">1</span><span class="den">4</span></span> move to a quarter of the line, or does it stay at a quarter of the distance to 1?
+          </p>
+
+          <div class="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-200">
+            <!-- Controls Bar -->
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 bg-white p-3 rounded-lg border border-slate-200 text-xs">
+              <div>
+                <label for="fsFamilySelect" class="font-bold text-cedow-darkblue block mb-1">Fraction Family:</label>
+                <select id="fsFamilySelect" class="w-full border border-cedow-silver rounded px-2 py-1.5 font-mono text-xs">
+                  <option value="2">Halves (2)</option>
+                  <option value="3">Thirds (3)</option>
+                  <option value="4" selected>Quarters (4)</option>
+                  <option value="5">Fifths (5)</option>
+                  <option value="6">Sixths (6)</option>
+                  <option value="8">Eighths (8)</option>
+                  <option value="10">Tenths (10)</option>
+                </select>
+              </div>
+
+              <div>
+                <div class="flex justify-between items-center mb-1">
+                  <label for="fsPartsSlider" class="font-bold text-cedow-darkblue">Parts Selected:</label>
+                  <span id="fsPartsLabel" class="font-mono font-bold text-cedow-aqua">3</span>
+                </div>
+                <input type="range" id="fsPartsSlider" min="0" max="8" value="3" class="w-full accent-cedow-aqua cursor-pointer">
+              </div>
+
+              <div>
+                <label for="fsLineEndSelect" class="font-bold text-cedow-darkblue block mb-1">Number Line Ends At:</label>
+                <select id="fsLineEndSelect" class="w-full border border-cedow-silver rounded px-2 py-1.5 font-mono text-xs">
+                  <option value="1">1 (Standard Whole)</option>
+                  <option value="2" selected>2 (Exceeding One)</option>
+                </select>
+              </div>
+
+              <div>
+                <label for="fsCompareSelect" class="font-bold text-cedow-darkblue block mb-1">Compare With:</label>
+                <select id="fsCompareSelect" class="w-full border border-cedow-silver rounded px-2 py-1.5 font-mono text-xs">
+                  <option value="">(None)</option>
+                  <option value="1/2">One-half (1/2)</option>
+                  <option value="1/3">One-third (1/3)</option>
+                  <option value="3/8">Three-eighths (3/8)</option>
+                  <option value="2/5">Two-fifths (2/5)</option>
+                  <option value="4/8">Four-eighths (4/8)</option>
+                </select>
+              </div>
+            </div>
+
+            <!-- SVG Container for High Precision Geometric Diagram -->
+            <div id="fsSvgContainer" class="bg-white p-4 rounded-xl border border-slate-200 overflow-x-auto shadow-inner">
+              <!-- Rendered via drawStripsTool() -->
+            </div>
+
+            <!-- Real-time Mathematical Analysis Readout -->
+            <div id="fsReadout" class="p-4 bg-white rounded-lg border-l-4 border-cedow-aqua shadow-sm text-xs sm:text-sm text-cedow-charcoal space-y-1">
+              <!-- Rendered dynamically -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Tool 4: S3 Tape Diagram & Reversible Reasoning -->
+        <div id="toolPanel-tape" class="tool-panel bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-6 hidden">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div>
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Stage 3 &bull; Representing Quantity Fractions A &amp; B (MA3-RQF-01, MA3-RQF-02)</span>
+              <h4 class="text-lg font-bold text-cedow-darkblue">Tape Diagram &amp; Reversible Reasoning Studio</h4>
+            </div>
+            <span class="text-xs bg-slate-100 text-cedow-charcoal px-3 py-1 rounded-full font-mono">Multiplicative Reasoning</span>
+          </div>
+          <p class="text-xs sm:text-sm text-cedow-charcoal">
+            Spencer &amp; Fielding (2015) demonstrate how tape diagrams scaffold the move from shapes to quantity operators. Test both directions: finding a fraction of a quantity (e.g. <span class="fr"><span class="num">2</span><span class="den">5</span></span> of 30) and <strong>reversing from a part back to the whole</strong> (e.g. "if <span class="fr"><span class="num">3</span><span class="den">5</span></span> is 18, find the whole").
+          </p>
+
+          <div class="space-y-4 bg-slate-50 p-5 rounded-xl border border-slate-200">
+            <!-- Mode Switcher -->
+            <div class="flex rounded-lg bg-slate-200 p-1 text-xs font-bold w-fit">
+              <button id="tpModeOf" onclick="setTapeMode('of')" class="px-3 py-1.5 rounded-md bg-cedow-darkblue text-white shadow-sm transition">Fraction of a Quantity</button>
+              <button id="tpModeWhole" onclick="setTapeMode('whole')" class="px-3 py-1.5 rounded-md text-cedow-charcoal hover:text-cedow-darkblue transition">Reversible Reasoning: Find the Whole</button>
+            </div>
+
+            <!-- Parameters Input Row -->
+            <div class="flex flex-wrap items-center gap-3 bg-white p-3 rounded-lg border border-slate-200 text-xs">
+              <div class="flex items-center gap-1.5">
+                <label for="tpNum" class="font-bold text-cedow-charcoal">Fraction:</label>
+                <input type="number" id="tpNum" value="2" min="1" max="12" class="w-14 border border-cedow-silver rounded px-2 py-1 font-mono font-bold text-center">
+                <span class="font-mono text-base font-bold">/</span>
+                <select id="tpDen" class="border border-cedow-silver rounded px-2 py-1 font-mono font-bold">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5" selected>5</option>
+                  <option value="6">6</option>
+                  <option value="8">8</option>
+                  <option value="10">10</option>
+                </select>
+              </div>
+
+              <span id="tpModeLabel" class="font-bold text-cedow-aqua">of total quantity:</span>
+
+              <input type="number" id="tpQuantity" value="30" min="1" max="1000" class="w-20 border border-cedow-silver rounded px-2 py-1 font-mono font-bold text-center">
+
+              <button onclick="drawTapeTool()" class="px-4 py-1.5 bg-cedow-aqua text-white font-bold rounded hover:bg-opacity-90 transition">
+                Update Model
+              </button>
+
+              <div class="text-[11px] text-slate-500 italic ml-auto hidden sm:block">
+                Preset ideas: <span class="font-mono font-semibold text-cedow-darkblue cursor-pointer underline" onclick="setTapePreset(2,5,30,'of')">2/5 of 30</span> | <span class="font-mono font-semibold text-cedow-darkblue cursor-pointer underline" onclick="setTapePreset(3,5,18,'whole')">3/5 is 18</span> | <span class="font-mono font-semibold text-cedow-darkblue cursor-pointer underline" onclick="setTapePreset(4,3,60,'of')">4/3 of 60</span>
+              </div>
+            </div>
+
+            <!-- Dynamic Tape Visualization Output -->
+            <div id="tpVisualContainer" class="bg-white p-5 rounded-xl border border-slate-200 space-y-3">
+              <!-- Dynamic Tape Grid injected via JS -->
+            </div>
+
+            <!-- Mathematical Coaching Explanations -->
+            <div id="tpReadout" class="p-4 bg-white rounded-lg border-l-4 border-cedow-gold shadow-sm text-xs sm:text-sm text-cedow-charcoal">
+              <!-- Dynamic coaching feedback -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 4: STUDENT DIAGNOSTIC CLINIC & ROOT MISCONCEPTIONS                -->
+      <!-- ========================================================================= -->
+      <section id="section4" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver/60 pb-3 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-black uppercase tracking-wider text-cedow-aqua">Section 4</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-cedow-darkblue">Student Diagnostic Clinic &amp; Root Misconceptions</h3>
+          </div>
+          <span class="text-xs bg-cedow-darkblue text-white font-semibold px-3 py-1 rounded-full">Clinical Diagnostic Sorter</span>
+        </div>
+
+        <p class="text-sm text-cedow-charcoal leading-relaxed">
+          Mathematics education research identifies that most fraction misunderstandings stem from <strong>four core root misconceptions</strong>. Review the authentic classroom transcript below, then test your diagnostic skills across 11 authentic student responses.
+        </p>
+
+        <!-- Authentic Research Dialogue Box -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-5 space-y-3">
+          <div class="flex items-center gap-2 text-cedow-darkblue font-bold text-sm">
+            <i data-lucide="messages-square" class="w-4 h-4 text-cedow-aqua"></i>
+            Authentic Clinical Interview Protocol (Gould 2013 / Ross 2002 Adaptation)
+          </div>
+          <div class="bg-slate-50 rounded-lg p-4 font-mono text-xs space-y-2 text-cedow-black border border-slate-200">
+            <p><strong class="text-cedow-aqua">Teacher:</strong> "Here is a number line with endpoints 0 and 2. Where would the fraction <span class="fr"><span class="num">1</span><span class="den">4</span></span> go?"</p>
+            <p><strong class="text-cedow-charcoal">Student (Year 4):</strong> [Immediately places the peg one-quarter of the way along the total line, right at 0.5.]</p>
+            <p><strong class="text-cedow-aqua">Teacher:</strong> "Can you tell me how you decided to place it there?"</p>
+            <p><strong class="text-cedow-charcoal">Student:</strong> "Well, one-quarter means you break the whole line into 4 pieces. So it goes at the first line."</p>
+            <p><strong class="text-cedow-aqua">Teacher:</strong> "And what number is right there at your peg?"</p>
+            <p><strong class="text-cedow-charcoal">Student:</strong> "It's half... wait, half is one-quarter?"</p>
+          </div>
+          <p class="text-xs text-cedow-charcoal italic">
+            <strong>Diagnosis:</strong> The student is experiencing <em>Root 2: The whole is ignored (or assumed to be the full visual line rather than the unit distance from 0 to 1)</em>.
+          </p>
+        </div>
+
+        <!-- 4 Roots Summary Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="bg-blue-50 border border-blue-200 p-3.5 rounded-xl space-y-1">
+            <span class="text-[11px] font-bold uppercase text-cedow-darkblue">Root 1</span>
+            <h5 class="text-xs font-bold text-cedow-black">Counting Parts Over Whole</h5>
+            <p class="text-[11px] text-cedow-charcoal">Treats any cut as 'a half', unequal folds as quarters, or counts shaded boxes without verifying equal partition areas.</p>
+          </div>
+          <div class="bg-amber-50 border border-amber-200 p-3.5 rounded-xl space-y-1">
+            <span class="text-[11px] font-bold uppercase text-amber-900">Root 2</span>
+            <h5 class="text-xs font-bold text-cedow-black">The Whole is Ignored</h5>
+            <p class="text-[11px] text-cedow-charcoal">Assumes 'half is always the same size' regardless of the whole; compares fractions from cakes of different sizes.</p>
+          </div>
+          <div class="bg-emerald-50 border border-emerald-200 p-3.5 rounded-xl space-y-1">
+            <span class="text-[11px] font-bold uppercase text-emerald-900">Root 3</span>
+            <h5 class="text-xs font-bold text-cedow-black">Fraction as 2 Whole Numbers</h5>
+            <p class="text-[11px] text-cedow-charcoal">Thinks <span class="fr"><span class="num">1</span><span class="den">8</span></span> &gt; <span class="fr"><span class="num">1</span><span class="den">3</span></span> because 8 &gt; 3; adds across: <span class="fr"><span class="num">1</span><span class="den">5</span></span> + <span class="fr"><span class="num">2</span><span class="den">5</span></span> = <span class="fr"><span class="num">3</span><span class="den">10</span></span>; reads '2 over 3'.</p>
+          </div>
+          <div class="bg-purple-50 border border-purple-200 p-3.5 rounded-xl space-y-1">
+            <span class="text-[11px] font-bold uppercase text-purple-900">Root 4</span>
+            <h5 class="text-xs font-bold text-cedow-black">Reasoning Only Whole &rarr; Part</h5>
+            <p class="text-[11px] text-cedow-charcoal">Cannot reverse: given a half or <span class="fr"><span class="num">3</span><span class="den">5</span></span>, cannot construct the whole. Struggles to solve 1 &minus; <span class="fr"><span class="num">1</span><span class="den">3</span></span> without a formula.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Sorter App -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-5">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+            <div>
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Interactive Clinic</span>
+              <h4 class="text-lg font-bold text-cedow-darkblue">Diagnose the Root Cause</h4>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-bold text-cedow-charcoal">Scenario:</span>
+              <span id="scenarioTracker" class="text-xs font-mono font-bold bg-cedow-darkblue text-white px-2 py-0.5 rounded">1 of 11</span>
+            </div>
+          </div>
+
+          <!-- Scenario Card -->
+          <div class="bg-slate-50 p-5 rounded-xl border border-slate-200 space-y-4">
+            <div class="flex items-center justify-between">
+              <span id="scenarioStageTag" class="text-xs font-bold uppercase px-2.5 py-0.5 rounded bg-cedow-aqua text-white font-mono">Stage 1</span>
+              <span class="text-xs text-slate-500 italic">Authentic Classroom Observation</span>
+            </div>
+
+            <div class="p-4 bg-white rounded-lg border border-slate-200 shadow-sm">
+              <p id="scenarioQuote" class="text-base text-cedow-black font-semibold italic"></p>
+            </div>
+
+            <!-- Choice Buttons (The 4 Roots) -->
+            <div class="space-y-2">
+              <p class="text-xs font-bold uppercase tracking-wider text-cedow-charcoal">Select the primary root misconception:</p>
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5" id="rootOptionsContainer">
+                <!-- Injected via renderScenario() -->
+              </div>
+            </div>
+
+            <!-- Instant Coaching Feedback -->
+            <div id="diagnosticFeedback" class="hidden p-4 rounded-lg text-xs leading-relaxed space-y-2">
+              <!-- Injected on selection -->
+            </div>
+
+            <!-- Navigation Buttons -->
+            <div class="flex justify-between items-center pt-2">
+              <button id="prevScenBtn" onclick="prevScenario()" class="px-3 py-1.5 bg-white border border-cedow-silver text-cedow-charcoal text-xs font-bold rounded hover:bg-slate-100 disabled:opacity-40">
+                &larr; Previous Case
+              </button>
+              <button id="nextScenBtn" onclick="nextScenario()" class="px-4 py-1.5 bg-cedow-darkblue text-white text-xs font-bold rounded hover:bg-opacity-90">
+                Next Case &rarr;
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 5: TASK MAKEOVER STUDIO (WORKING MATHEMATICALLY)                  -->
+      <!-- ========================================================================= -->
+      <section id="section5" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver/60 pb-3 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-black uppercase tracking-wider text-cedow-aqua">Section 5</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-cedow-darkblue">Task Makeover Studio (MAO-WM-01)</h3>
+          </div>
+          <span class="text-xs bg-cedow-gold text-cedow-black font-bold px-3 py-1 rounded-full">High-Yield Makeovers</span>
+        </div>
+
+        <p class="text-sm text-cedow-charcoal leading-relaxed">
+          The <em>Working mathematically</em> outcome (<strong>MAO-WM-01</strong>) requires students to explore and connect concepts, choose and apply techniques, communicate coherently, and reason purposefully. Closed worksheets can be transformed into rich tasks using 5 high-yield pedagogical moves.
+        </p>
+
+        <!-- Stage Task Makeover Selector -->
+        <div class="flex flex-wrap gap-2">
+          <button onclick="setMakeoverStage('s1')" id="moTab-s1" class="mo-tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-cedow-darkblue text-white">Stage 1: Halving Lengths</button>
+          <button onclick="setMakeoverStage('s2')" id="moTab-s2" class="mo-tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-white text-cedow-charcoal hover:bg-slate-100">Stage 2: Thirds on Number Line</button>
+          <button onclick="setMakeoverStage('s3')" id="moTab-s3" class="mo-tab-btn px-4 py-2 text-xs font-bold rounded-lg bg-white text-cedow-charcoal hover:bg-slate-100">Stage 3: Multiplicative Tape</button>
+        </div>
+
+        <!-- Before vs After Interactive Showcase -->
+        <div id="makeoverDisplayContainer" class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Dynamically populated via renderMakeover() -->
+        </div>
+
+        <!-- The 5 High-Yield Pedagogical Moves Explorer -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-5">
+          <div class="flex items-center justify-between">
+            <div>
+              <span class="text-xs font-bold uppercase tracking-wider text-cedow-aqua">Pedagogical Repertoire</span>
+              <h4 class="text-lg font-bold text-cedow-darkblue">The 5 High-Yield Pedagogical Moves</h4>
+            </div>
+            <span class="text-xs bg-slate-100 text-cedow-charcoal px-2.5 py-1 rounded font-mono">Routine Templates</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" id="movesButtonGroup">
+            <button onclick="showMove(0)" class="move-btn p-2.5 rounded-lg border border-slate-200 text-xs font-bold text-center bg-cedow-darkblue text-white">1. Who is correct?</button>
+            <button onclick="showMove(1)" class="move-btn p-2.5 rounded-lg border border-slate-200 text-xs font-bold text-center bg-white text-cedow-charcoal hover:bg-slate-50">2. Same &amp; different</button>
+            <button onclick="showMove(2)" class="move-btn p-2.5 rounded-lg border border-slate-200 text-xs font-bold text-center bg-white text-cedow-charcoal hover:bg-slate-50">3. Always, sometimes, never</button>
+            <button onclick="showMove(3)" class="move-btn p-2.5 rounded-lg border border-slate-200 text-xs font-bold text-center bg-white text-cedow-charcoal hover:bg-slate-50">4. Open it up</button>
+            <button onclick="showMove(4)" class="move-btn p-2.5 rounded-lg border border-slate-200 text-xs font-bold text-center bg-white text-cedow-charcoal hover:bg-slate-50">5. Convince me</button>
+          </div>
+
+          <div id="moveDetailCard" class="p-5 bg-cedow-bg rounded-xl border border-slate-200 space-y-3">
+            <!-- Dynamic move showcase -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 6: MODULE MASTERY CHECKPOINT                                      -->
+      <!-- ========================================================================= -->
+      <section id="section6" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver/60 pb-3 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-black uppercase tracking-wider text-cedow-aqua">Section 6</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-cedow-darkblue">Module Mastery Checkpoint</h3>
+          </div>
+          <span class="text-xs bg-cedow-aqua text-white font-semibold px-3 py-1 rounded-full">Self-Assessment</span>
+        </div>
+
+        <p class="text-sm text-cedow-charcoal leading-relaxed">
+          Complete these 5 scenario-based questions drawn directly from the NESA Syllabus Support and CEDoW teaching advice. Achieving an 80% pass mark (4 out of 5) unlocks the comprehensive <strong>Key Pedagogical Takeaways (K–6 Continuum)</strong> summary.
+        </p>
+
+        <!-- Quiz Container -->
+        <div id="quizContainer" class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-8">
+          <!-- Dynamically populated via renderQuiz() -->
+        </div>
+
+        <!-- Grade & Submit Bar -->
+        <div class="flex items-center justify-between bg-slate-50 p-4 rounded-xl border border-slate-200">
+          <div class="text-xs text-cedow-charcoal">
+            Target Pass Mark: <span class="font-mono font-bold text-cedow-darkblue">80% (4 of 5 correct)</span>
+          </div>
+          <button onclick="gradeQuiz()" class="px-6 py-2.5 bg-cedow-darkblue text-white text-sm font-bold rounded-lg hover:bg-opacity-90 shadow-sm flex items-center gap-2">
+            <i data-lucide="check-circle" class="w-4 h-4 text-cedow-gold"></i> Submit &amp; Calculate Mastery
+          </button>
+        </div>
+
+        <!-- Quiz Feedback & Takeaways Container (Revealed upon passing) -->
+        <div id="masteryResultContainer" class="hidden space-y-6">
+          <!-- Result Banner -->
+          <div id="quizScoreBanner" class="p-5 rounded-xl border"></div>
+
+          <!-- Key Pedagogical Takeaways (K–6 Continuum) -->
+          <div id="takeawaysPanel" class="bg-white rounded-xl shadow-md border-2 border-cedow-darkblue p-6 sm:p-8 space-y-6 hidden">
+            <div class="flex items-center gap-3 border-b border-slate-200 pb-4">
+              <div class="bg-cedow-gold/20 p-2.5 rounded-lg">
+                <i data-lucide="compass" class="w-7 h-7 text-cedow-darkblue"></i>
+              </div>
+              <div>
+                <span class="text-xs font-black uppercase tracking-wider text-cedow-aqua">Executive Professional Learning Synthesis</span>
+                <h4 class="text-xl font-extrabold text-cedow-darkblue">Key Pedagogical Takeaways (K–6 Continuum)</h4>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-cedow-charcoal">
+              <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                <strong class="text-cedow-darkblue font-bold flex items-center gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Linear Continuous Models First
+                </strong>
+                <p>Prioritise continuous paper ribbons, fraction strips, and number lines with one-directional folds before multi-directional area models. This grounds fractions firmly in division rather than counting discrete pieces.</p>
+              </div>
+
+              <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                <strong class="text-cedow-darkblue font-bold flex items-center gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> The Whole Dictates the Size
+                </strong>
+                <p>Fractions can only be compared when wholes are equal. Emphasise that one-half of a 6 m plank is greater than two-thirds of a 3 m plank. On number lines, 1 must always be identified first.</p>
+              </div>
+
+              <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                <strong class="text-cedow-darkblue font-bold flex items-center gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Fraction Language Precision
+                </strong>
+                <p>Consistently say "two-thirds", never "2 over 3" or "2 out of 3". Teach fraction families using the Latin denominator (namer) and numerator (counter). Reserve symbols for Stage 2 and beyond.</p>
+              </div>
+
+              <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 space-y-2">
+                <strong class="text-cedow-darkblue font-bold flex items-center gap-2">
+                  <i data-lucide="check" class="w-4 h-4 text-emerald-600"></i> Reversible &amp; Relational Reasoning
+                </strong>
+                <p>Continually challenge students to rebuild the whole from a given part (e.g. "if this is a quarter, build the strip", or "if <span class="fr"><span class="num">3</span><span class="den">5</span></span> is 18, find the whole"). Reversible reasoning builds genuine multiplicative coordination.</p>
+              </div>
+            </div>
+
+            <!-- Stage-by-Stage Implementation Roadmap -->
+            <div class="border-t border-slate-200 pt-5 space-y-3">
+              <h5 class="text-sm font-bold text-cedow-darkblue uppercase tracking-wide">Next Steps for Stage Collaboration Teams</h5>
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 text-xs">
+                <div class="bg-cedow-accentLight/40 p-3 rounded-lg border border-cedow-aqua/30">
+                  <strong class="text-cedow-aqua block mb-1">1. Classroom Quick Check</strong>
+                  <span>Administer one clinical interview check (e.g. positioning <span class="fr"><span class="num">2</span><span class="den">3</span></span> on a 0–2 number line) with 3 diverse learners.</span>
+                </div>
+                <div class="bg-cedow-accentLight/40 p-3 rounded-lg border border-cedow-aqua/30">
+                  <strong class="text-cedow-aqua block mb-1">2. Evidence Sharing</strong>
+                  <span>Bring 2 student work samples to your next stage planning meeting to classify the root misconception together.</span>
+                </div>
+                <div class="bg-cedow-accentLight/40 p-3 rounded-lg border border-cedow-aqua/30">
+                  <strong class="text-cedow-aqua block mb-1">3. Consistent Tool Usage</strong>
+                  <span>Adopt one shared visual representation (e.g. tape diagrams or number line fraction rulers) across your entire stage.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE                                    -->
+      <!-- ========================================================================= -->
+      <section id="section7" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver/60 pb-3 flex items-center justify-between">
+          <div>
+            <span class="text-xs font-black uppercase tracking-wider text-cedow-aqua">Section 7</span>
+            <h3 class="text-xl sm:text-2xl font-bold text-cedow-darkblue">Canvas LMS Deployment Guide</h3>
+          </div>
+          <span class="text-xs bg-slate-200 text-cedow-charcoal font-semibold px-3 py-1 rounded-full">School Leaders &amp; Coaches</span>
+        </div>
+
+        <p class="text-sm text-cedow-charcoal leading-relaxed">
+          This module is compiled into a single, fully self-contained HTML file. It has zero external dependencies other than standard CDNs, making it effortlessly deployable into Canvas LMS or any web hosting environment.
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- Method 1: GitHub Pages & Iframe -->
+          <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-5 space-y-3">
+            <div class="flex items-center gap-2 text-cedow-darkblue font-bold text-sm">
+              <i data-lucide="globe" class="w-4 h-4 text-cedow-aqua"></i>
+              Method A: GitHub Pages / Cloud Embed (Recommended)
+            </div>
+            <ol class="list-decimal list-inside text-xs text-cedow-charcoal space-y-2 leading-relaxed">
+              <li>Upload this single <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">index.html</code> file to a GitHub repository or diocesan web server.</li>
+              <li>Enable <strong>GitHub Pages</strong> in repository settings to get your public HTTPS URL.</li>
+              <li>In Canvas LMS, create a new <strong>Page</strong> or <strong>Assignment</strong> and switch to the HTML Editor (<code class="font-mono bg-slate-100 px-1 py-0.5 rounded">&lt;/&gt;</code>).</li>
+              <li>Paste the responsive embed snippet below:</li>
+            </ol>
+            <div class="bg-slate-900 text-slate-100 p-3 rounded-lg font-mono text-[11px] overflow-x-auto relative">
+              <code>&lt;iframe src="https://your-domain.github.io/fractions-module/" width="100%" height="900" style="border:none; border-radius:12px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);" allowfullscreen&gt;&lt;/iframe&gt;</code>
+            </div>
+          </div>
+
+          <!-- Method 2: Direct Canvas Files -->
+          <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-5 space-y-3">
+            <div class="flex items-center gap-2 text-cedow-darkblue font-bold text-sm">
+              <i data-lucide="file-code" class="w-4 h-4 text-cedow-gold"></i>
+              Method B: Direct Canvas Files Upload
+            </div>
+            <ol class="list-decimal list-inside text-xs text-cedow-charcoal space-y-2 leading-relaxed">
+              <li>Navigate to your Canvas course and click <strong>Files</strong>.</li>
+              <li>Upload this <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">fractions-k6-module.html</code> file directly.</li>
+              <li>In your course <strong>Modules</strong>, click <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">+</code> to add an item.</li>
+              <li>Select <strong>File</strong> from the dropdown and choose the uploaded HTML file.</li>
+              <li>Canvas will serve the interactive module directly within the LMS course frame with zero path errors.</li>
+            </ol>
+          </div>
+        </div>
+      </section>
+
+      <!-- Global Footer -->
+      <footer class="border-t border-cedow-silver/60 pt-6 pb-12 text-xs text-cedow-charcoal space-y-3">
+        <div class="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="flex items-center space-x-2">
+            <div class="w-3 h-3 rounded-full bg-cedow-darkblue"></div>
+            <div class="w-3 h-3 rounded-full bg-cedow-aqua"></div>
+            <div class="w-3 h-3 rounded-full bg-cedow-gold"></div>
+            <span class="font-bold text-cedow-darkblue ml-2">Catholic Education Diocese of Wollongong (CEDoW)</span>
+          </div>
+          <p class="text-slate-500 text-[11px]">Designed in accordance with NESA Mathematics K–10 (2022) syllabus</p>
+        </div>
+        <p class="text-[11px] text-slate-500 leading-relaxed">
+          Grounding sources include the NESA Mathematics K–10 (2022) syllabus outcomes and teaching advice for Early Stage 1 to Stage 3, NESA Stage 2 Additional Teaching Advice (Partitioned Fractions A: Language &amp; Vocabulary), and CEDoW primary mathematics professional learning research resources.
+        </p>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- ========================================================================= -->
+  <!-- JAVASCRIPT LOGIC & MODULE ENGINE                                          -->
+  <!-- ========================================================================= -->
+  <script>
+    // Initialize Lucide Icons
+    document.addEventListener("DOMContentLoaded", function() {
+      lucide.createIcons();
+      initModule();
+    });
+
+    /* ------------------------------------------------------------------------- */
+    /* 1. CURRICULUM DATA MODEL                                                  */
+    /* ------------------------------------------------------------------------- */
+    const STAGE_DATA = {
+      es1: {
+        short: "ES1",
+        title: "Early Stage 1 (Kindergarten)",
+        focus: "Foundations: Length & Fair Sharing",
+        outcomes: [
+          { code: "MAE-GM-03", desc: "identifies half the length and the halfway point (Geometric measure)" },
+          { code: "MAE-FG-02", desc: "forms equal groups by sharing and counting collections of objects (Forming groups)" }
+        ],
+        wm: "MAO-WM-01: Reasons about relations (dividing a length into two equal parts; comparing collections).",
+        lead: "There are no formal fraction outcomes in Kindergarten, but the concept of a fraction begins here. In Geometric measure, students divide a continuous length into two equal parts and distinguish between the halfway point (a position) and half a length (a measure). NESA explicitly introduces fractions through length so that a fraction is fundamentally grounded in division rather than counting discrete pieces.",
+        advice: [
+          "Model and reinforce the language of two equal lengths when describing halfway, and supply non-examples where parts are visibly unequal.",
+          "Introduce half through both continuous (one length of ribbon) and discrete (a shared group of counters) models.",
+          "Extend proficient students by repeatedly halving to find quarters, or folding paper to explore making thirds."
+        ],
+        vocab: ["half", "halves", "about halfway", "more than halfway", "less than halfway", "equal lengths", "share fairly"]
+      },
+      s1: {
+        short: "S1",
+        title: "Stage 1 (Years 1–2)",
+        focus: "Repeated Halving: Halves, Quarters & Eighths",
+        outcomes: [
+          { code: "MA1-GM-03", desc: "creates and recognises halves, quarters and eighths as part measures of a whole length (Geometric measure)" },
+          { code: "MA1-FG-01", desc: "uses the structure of equal groups to solve multiplication problems, and shares or groups to solve division problems (Forming groups)" }
+        ],
+        wm: "MAO-WM-01: Explores and connects repeated halving; reasons about the relation between doubling and halving; re-creates the whole given half.",
+        lead: "In Years 1 and 2, students use repeated halving to generate quarters and eighths of whole lengths and collections. NESA emphasises that the size of each part depends entirely on the size of the whole. Stage 1 students do not need to write symbols (1/2 or 1/4); oral words carry the conceptual weight.",
+        advice: [
+          "Continuous linear models (one-directional folds highlighting the long edge) must come before area models.",
+          "Use a train of 10 connecting cubes as a measuring device; half of it connects measurement directly to fractions.",
+          "Ask reversible questions: 'If half is 3 marbles, how many altogether?' to build bidirectional thinking from the outset."
+        ],
+        vocab: ["half", "halves", "quarter", "eighth", "equal parts", "whole", "halve", "double", "one-half", "one-quarter", "one-eighth"]
+      },
+      s2: {
+        short: "S2",
+        title: "Stage 2 (Years 3–4)",
+        focus: "Partitioned Fractions A & B",
+        outcomes: [
+          { code: "MA2-PF-01", desc: "represents and compares halves, quarters, thirds and fifths as lengths on a number line and their related fractions formed by halving (eighths, sixths and tenths)" }
+        ],
+        wm: "MAO-WM-01: Reasons about relations (equal wholes required for comparison); reversible reasoning (recreates whole from 1/2, 1/4, 1/3, 1/8).",
+        lead: "Students construct thirds and fifths without halving, map fraction strips directly onto number lines like rulers, model equivalence as equal lengths, and extend beyond one whole. Fractions transition from physical partitioned objects into abstract numbers with unique positions on the number line.",
+        advice: [
+          "Say 'two-thirds', not '2 over 3' or '2 out of 3' (Way & Bobis 2011).",
+          "Compare fractions only when wholes are equal; demonstrate why 1/4 of a long plank can be more than 1/4 of a short plank.",
+          "When number lines extend beyond 1, reinforce that 1/4 is a quarter of the distance from 0 to 1, not a quarter of the entire line."
+        ],
+        vocab: ["whole", "part", "equal parts", "third", "sixth", "fifth", "tenth", "number line", "equivalent fractions", "complement"]
+      },
+      s3: {
+        short: "S3",
+        title: "Stage 3 (Years 5–6)",
+        focus: "Representing Quantity Fractions A & B",
+        outcomes: [
+          { code: "MA3-RQF-01", desc: "compares and orders fractions with denominators of 2, 3, 4, 5, 6, 8 and 10" },
+          { code: "MA3-RQF-02", desc: "determines 1/2, 1/4, 1/5 and 1/10 of measures and quantities" }
+        ],
+        wm: "MAO-WM-01: Reasons about quantity (the number 1 is the universal common whole); reversible reasoning (generates whole from non-unit fractions like 3/5).",
+        lead: "Fractions become distinct numbers referencing the universal whole '1'. Students recognise fractions as division (3/4 represents 3 &divide; 4), add and subtract with same and related denominators, calculate fractions of quantities (2/5 of 30) using tape diagrams, and reconstruct the whole from non-unit fractions.",
+        advice: [
+          "Pose fraction problems in words before symbols (e.g. 12 lamingtons shared between 24 people is easier than 12 &divide; 24).",
+          "Use tape diagrams to link fractions to the four operations and make sense of the unit fraction.",
+          "Check intuitive strategies for 1 &minus; 1/3 and 2 &minus; 5/8 before teaching standard algebraic procedures (Empson & Levi 2011)."
+        ],
+        vocab: ["fraction", "numerator", "denominator", "fraction bar", "whole", "equivalent", "ascending order", "descending order"]
+      }
+    };
+
+    const BIG_IDEAS = [
+      {
+        id: "div",
+        title: "1. Fractions Arise from Division",
+        desc: "Fractions are grounded in fair sharing and division, not counting pieces.",
+        stages: {
+          es1: "Cutting a ribbon into 2 equal parts; sharing collections between two friends fairly.",
+          s1: "Repeated halving for quarters and eighths; division as equal sharing and grouping.",
+          s2: "Making thirds and fifths without halving; folding and adjusting equal lengths.",
+          s3: "Fractions as division: 3/4 represents 3 &divide; 4; sharing 2 cakes among 3 people gives 2/3 cake."
+        }
+      },
+      {
+        id: "whole",
+        title: "2. The Whole Dictates the Size",
+        desc: "A fraction always references a whole; comparison requires equal wholes.",
+        stages: {
+          es1: "Halfway along a specific length of string or ribbon.",
+          s1: "The size of a part depends strictly on the size of the original whole strip.",
+          s2: "Equal wholes needed to compare; 1/4 of a 6 m board is more than 1/4 of a 2 m board.",
+          s3: "The abstract number 1 is established as the universal common whole for all quantity fractions."
+        }
+      },
+      {
+        id: "number",
+        title: "3. A Fraction is a Single Number",
+        desc: "Each fraction represents a specific magnitude and position on a number line.",
+        stages: {
+          es1: "Language of proximity: about halfway, more than halfway, less than halfway.",
+          s1: "Eighths labelled along a strip, preparing to become linear distance positions.",
+          s2: "Fraction strips mapped directly onto number lines; fractions extending beyond 1.",
+          s3: "Ordering fractions on the number line using benchmark 1/2; converting to decimals and percentages."
+        }
+      },
+      {
+        id: "equiv",
+        title: "4. Equivalence: Same Position, Different Names",
+        desc: "Subdividing equal lengths creates equivalent representations of the same magnitude.",
+        stages: {
+          es1: "Two halves reconnected make the complete original whole.",
+          s1: "Half of a half is one-quarter; two quarters make one-half.",
+          s2: "4 eighths is one-half; 4 tenths is 2 fifths; 4 quarters equals 1 whole.",
+          s3: "Subdividing rectangles by length and width to reveal common denominators (e.g. 6/8 = 3/4)."
+        }
+      },
+      {
+        id: "rev",
+        title: "5. Reversible Reasoning (Part to Whole)",
+        desc: "Thinking backwards from the fractional part to reconstruct the original whole.",
+        stages: {
+          es1: "Two equal pieces put back together re-create the whole ribbon.",
+          s1: "Re-creating the whole collection given half (if half is 3 marbles, the whole is 6).",
+          s2: "Complement to 1 whole; rebuilding the whole strip from 1/4, 1/3, or 1/8.",
+          s3: "Reconstructing the whole from a non-unit fraction (given 3/5 of tape is 18 cm, find 5/5 = 30 cm)."
+        }
+      },
+      {
+        id: "quant",
+        title: "6. Fractions as Operators on Quantities",
+        desc: "Operating on quantities and finding fractional measures of whole numbers.",
+        stages: {
+          es1: "Distributing a collection of objects one-by-one into two equal groups.",
+          s1: "Finding halves, quarters and eighths of collections (e.g. quarters of 12).",
+          s2: "Representing totals beyond 1; renaming 4 quarters as 1 litre.",
+          s3: "Adding/subtracting with same/related denominators; calculating 2/5 of 30 using tape diagrams."
+        }
+      }
+    ];
+
+    /* ------------------------------------------------------------------------- */
+    /* 2. SECTION 1 LOGIC: STAGE CARDS & BIG IDEAS MATRIX                        */
+    /* ------------------------------------------------------------------------- */
+    let currentStage = 'es1';
+    let currentBigIdea = 'div';
+
+    function setStageTab(stageKey) {
+      currentStage = stageKey;
+      document.querySelectorAll('.stage-tab').forEach(b => {
+        b.classList.remove('bg-cedow-darkblue', 'text-white', 'shadow-sm');
+        b.classList.add('text-cedow-charcoal');
+      });
+      const activeBtn = document.getElementById(`tab-${stageKey}`);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-cedow-darkblue', 'text-white', 'shadow-sm');
+        activeBtn.classList.remove('text-cedow-charcoal');
+      }
+      renderStageCard();
+    }
+
+    function renderStageCard() {
+      const data = STAGE_DATA[currentStage];
+      const container = document.getElementById('stageCardContainer');
+      
+      let outcomesHtml = data.outcomes.map(o => `
+        <li class="flex items-start gap-2">
+          <span class="font-mono text-xs font-bold bg-cedow-darkblue/10 text-cedow-darkblue px-2 py-0.5 rounded shrink-0">${o.code}</span>
+          <span class="text-xs sm:text-sm text-cedow-charcoal">${o.desc}</span>
+        </li>
+      `).join('');
+
+      let adviceHtml = data.advice.map(a => `
+        <li class="flex items-start gap-2 text-xs sm:text-sm text-cedow-charcoal">
+          <i data-lucide="check-circle" class="w-4 h-4 text-cedow-aqua shrink-0 mt-0.5"></i>
+          <span>${a}</span>
+        </li>
+      `).join('');
+
+      let vocabHtml = data.vocab.map(v => `
+        <span class="bg-white border border-cedow-silver px-2 py-1 rounded text-xs font-mono text-cedow-darkblue font-semibold">${v}</span>
+      `).join('');
+
+      container.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-slate-100 pb-3">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-cedow-aqua">${data.focus}</span>
+            <h4 class="text-xl font-bold text-cedow-darkblue">${data.title}</h4>
+          </div>
+          <span class="text-xs font-mono font-bold bg-slate-100 px-3 py-1 rounded text-cedow-charcoal">NSW Syllabus 2022</span>
+        </div>
+
+        <p class="text-xs sm:text-sm text-cedow-black leading-relaxed font-normal">${data.lead}</p>
+
+        <!-- Formal Outcomes -->
+        <div class="space-y-2 bg-slate-50 p-4 rounded-lg border border-slate-200">
+          <span class="text-xs font-bold text-cedow-darkblue uppercase tracking-wider block">Syllabus Outcomes &amp; Working Mathematically:</span>
+          <ul class="space-y-2">${outcomesHtml}</ul>
+          <p class="text-xs text-cedow-aqua font-semibold pt-1 border-t border-slate-200">${data.wm}</p>
+        </div>
+
+        <!-- NESA Teaching Advice Highlights -->
+        <div class="space-y-2">
+          <span class="text-xs font-bold text-cedow-darkblue uppercase tracking-wider block">NESA Teaching Advice &amp; Diocesan Guidance:</span>
+          <ul class="space-y-2">${adviceHtml}</ul>
+        </div>
+
+        <!-- Key Vocabulary -->
+        <div class="space-y-2 pt-2 border-t border-slate-100">
+          <span class="text-xs font-bold text-cedow-charcoal uppercase tracking-wider block">Target Mathematical Vocabulary:</span>
+          <div class="flex flex-wrap gap-1.5">${vocabHtml}</div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function initBigIdeas() {
+      const btnContainer = document.getElementById('bigIdeaButtons');
+      btnContainer.innerHTML = BIG_IDEAS.map((item, idx) => `
+        <button onclick="selectBigIdea('${item.id}')" id="biBtn-${item.id}" class="bi-btn text-left p-3 rounded-lg border border-slate-200 text-xs font-bold transition hover:border-cedow-aqua ${idx === 0 ? 'bg-cedow-darkblue text-white shadow-sm' : 'bg-white text-cedow-charcoal'}">
+          ${item.title}
+        </button>
+      `).join('');
+      renderBigIdeaDisplay();
+    }
+
+    function selectBigIdea(id) {
+      currentBigIdea = id;
+      document.querySelectorAll('.bi-btn').forEach(b => {
+        b.classList.remove('bg-cedow-darkblue', 'text-white', 'shadow-sm');
+        b.classList.add('bg-white', 'text-cedow-charcoal');
+      });
+      const activeBtn = document.getElementById(`biBtn-${id}`);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-cedow-darkblue', 'text-white', 'shadow-sm');
+        activeBtn.classList.remove('bg-white', 'text-cedow-charcoal');
+      }
+      renderBigIdeaDisplay();
+    }
+
+    function renderBigIdeaDisplay() {
+      const idea = BIG_IDEAS.find(i => i.id === currentBigIdea);
+      const display = document.getElementById('bigIdeaDisplay');
+      display.innerHTML = `
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm font-bold text-cedow-darkblue">${idea.title}</h5>
+          <span class="text-xs text-slate-500 italic">${idea.desc}</span>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2 text-xs">
+          <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+            <strong class="text-cedow-darkblue font-bold block">Early Stage 1</strong>
+            <p class="text-cedow-charcoal">${idea.stages.es1}</p>
+          </div>
+          <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+            <strong class="text-cedow-aqua font-bold block">Stage 1</strong>
+            <p class="text-cedow-charcoal">${idea.stages.s1}</p>
+          </div>
+          <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+            <strong class="text-cedow-darkblue font-bold block">Stage 2</strong>
+            <p class="text-cedow-charcoal">${idea.stages.s2}</p>
+          </div>
+          <div class="bg-white p-3 rounded-lg border border-slate-200 space-y-1">
+            <strong class="text-cedow-gold font-bold block">Stage 3</strong>
+            <p class="text-cedow-charcoal">${idea.stages.s3}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    /* ------------------------------------------------------------------------- */
+    /* 3. SECTION 3 LOGIC: RUNNABLE MANIPULATIVE SIMULATORS                      */
+    /* ------------------------------------------------------------------------- */
+    function switchTool(toolKey) {
+      document.querySelectorAll('.tool-panel').forEach(p => p.classList.add('hidden'));
+      document.querySelectorAll('.tool-tab-btn').forEach(b => {
+        b.classList.remove('bg-cedow-darkblue', 'text-white', 'shadow-sm');
+        b.classList.add('bg-white', 'text-cedow-charcoal');
+      });
+
+      const activePanel = document.getElementById(`toolPanel-${toolKey}`);
+      const activeBtn = document.getElementById(`toolBtn-${toolKey}`);
+      if (activePanel) activePanel.classList.remove('hidden');
+      if (activeBtn) {
+        activeBtn.classList.add('bg-cedow-darkblue', 'text-white', 'shadow-sm');
+        activeBtn.classList.remove('bg-white', 'text-cedow-charcoal');
+      }
+
+      // Re-trigger visual engines
+      if (toolKey === 'strips') drawStripsTool();
+      if (toolKey === 'tape') drawTapeTool();
+    }
+
+    // Tool 1: ES1 Cut Ribbon Simulator
+    let hfPos = 38;
+    let hfShowPoint = false;
+
+    function initHalfTool() {
+      const slider = document.getElementById('hfSlider');
+      const foldBtn = document.getElementById('hfFoldBtn');
+      const pointBtn = document.getElementById('hfTogglePointBtn');
+
+      slider.addEventListener('input', function() {
+        hfPos = parseInt(this.value, 10);
+        updateHalfVisual();
+      });
+
+      foldBtn.addEventListener('click', function() {
+        checkHalfFold();
+      });
+
+      pointBtn.addEventListener('click', function() {
+        hfShowPoint = !hfShowPoint;
+        const marker = document.getElementById('hfHalfwayMarker');
+        if (hfShowPoint) {
+          marker.classList.remove('hidden');
+          pointBtn.innerHTML = `<i data-lucide="eye-off" class="w-4 h-4"></i> Hide Halfway Point`;
+        } else {
+          marker.classList.add('hidden');
+          pointBtn.innerHTML = `<i data-lucide="map-pin" class="w-4 h-4 text-cedow-aqua"></i> Show Halfway Point`;
+        }
+        lucide.createIcons();
+      });
+
+      updateHalfVisual();
+    }
+
+    function updateHalfVisual() {
+      const pieceA = document.getElementById('hfPieceA');
+      const handle = document.getElementById('hfCutHandle');
+      const label = document.getElementById('hfPosLabel');
+      const status = document.getElementById('hfStatusAlert');
+      const foldPic = document.getElementById('hfFoldDisplay');
+
+      foldPic.innerHTML = ""; // Clear fold preview on adjustment
+      pieceA.style.width = `${hfPos}%`;
+      handle.style.left = `${hfPos}%`;
+      label.textContent = `${hfPos}%`;
+
+      const diff = hfPos - 50;
+      let proximity = "";
+      if (Math.abs(diff) <= 3) {
+        proximity = "about halfway";
+        status.className = "p-3 rounded-lg text-xs font-semibold bg-emerald-50 text-emerald-800 border border-emerald-200";
+        status.innerHTML = `<strong>Position:</strong> The cut is <em>${proximity}</em>. The two pieces appear equal in length. Click 'Fold to Check' to verify.`;
+      } else if (diff < 0) {
+        proximity = "less than halfway";
+        status.className = "p-3 rounded-lg text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200";
+        status.innerHTML = `<strong>Position:</strong> The cut is <em>${proximity}</em>. The left piece is noticeably shorter than the right.`;
+      } else {
+        proximity = "more than halfway";
+        status.className = "p-3 rounded-lg text-xs font-semibold bg-amber-50 text-amber-800 border border-amber-200";
+        status.innerHTML = `<strong>Position:</strong> The cut is <em>${proximity}</em>. The left piece is longer than the right.`;
+      }
+    }
+
+    function checkHalfFold() {
+      const a = hfPos;
+      const b = 100 - hfPos;
+      const isFair = Math.abs(a - b) <= 4;
+      const foldPic = document.getElementById('hfFoldDisplay');
+
+      foldPic.innerHTML = `
+        <div class="p-4 bg-white rounded-xl border border-slate-200 space-y-3">
+          <span class="text-xs font-bold text-cedow-darkblue uppercase tracking-wider block">Folded Direct Comparison (Side-by-Side):</span>
+          <div class="space-y-1.5">
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono font-bold w-16 text-cedow-darkblue">Piece A:</span>
+              <div class="h-6 rounded bg-cedow-darkblue transition-all" style="width: ${a}%;"></div>
+              <span class="text-xs font-mono text-slate-500">${a}%</span>
+            </div>
+            <div class="flex items-center gap-2">
+              <span class="text-xs font-mono font-bold w-16 text-cedow-gold">Piece B:</span>
+              <div class="h-6 rounded bg-cedow-gold transition-all" style="width: ${b}%;"></div>
+              <span class="text-xs font-mono text-slate-500">${b}%</span>
+            </div>
+          </div>
+          <p class="text-xs font-medium ${isFair ? 'text-emerald-700 font-bold' : 'text-red-700'}">
+            ${isFair ? '&check; Equal lengths confirmed! Each piece is one-half of the ribbon because both lengths match.' : '&cross; Unequal lengths! Laid side-by-side they do not match. A half must be one of two equal lengths.'}
+          </p>
+        </div>
+      `;
+    }
+
+    // Tool 2: S1 Repeated Halving Simulator
+    let hvMode = "all";
+    let hvLevel = 0; // 0=whole, 1=halves, 2=quarters, 3=eighths
+
+    function setHalvingMode(m) {
+      hvMode = m;
+      document.getElementById('hvModeAll').className = m === 'all' ? 'px-3 py-1.5 rounded-md bg-cedow-darkblue text-white shadow-sm transition' : 'px-3 py-1.5 rounded-md text-cedow-charcoal hover:text-cedow-darkblue transition';
+      document.getElementById('hvModeOne').className = m === 'one' ? 'px-3 py-1.5 rounded-md bg-cedow-darkblue text-white shadow-sm transition' : 'px-3 py-1.5 rounded-md text-cedow-charcoal hover:text-cedow-darkblue transition';
+      resetHalving();
+    }
+
+    function resetHalving() {
+      hvLevel = 0;
+      updateHalvingVisual();
+    }
+
+    function stepHalve() {
+      if (hvLevel < 3) {
+        hvLevel++;
+        updateHalvingVisual();
+      }
+    }
+
+    function updateHalvingVisual() {
+      const stripView = document.getElementById('hvStripView');
+      const collView = document.getElementById('hvCollectionView');
+      const feedback = document.getElementById('hvFeedback');
+      const levelBadge = document.getElementById('hvLevelBadge');
+      const stepBtn = document.getElementById('hvStepBtn');
+      const totalCount = parseInt(document.getElementById('hvCountSelect').value, 10);
+
+      stepBtn.disabled = hvLevel >= 3;
+      stepBtn.classList.toggle('opacity-50', hvLevel >= 3);
+
+      const levelNames = ["Whole (1)", "Halves (2 parts)", "Quarters (4 parts)", "Eighths (8 parts)"];
+      levelBadge.textContent = `Level: ${levelNames[hvLevel]}`;
+
+      if (hvMode === "all") {
+        const partsCount = Math.pow(2, hvLevel);
+        const partWidth = 100 / partsCount;
+        const partNames = { 1: "Whole", 2: "one-half", 4: "one-quarter", 8: "one-eighth" };
+
+        let stripHtml = "";
+        for (let i = 0; i < partsCount; i++) {
+          const bg = i % 2 === 0 ? 'bg-cedow-aqua/20 text-cedow-darkblue' : 'bg-cedow-gold/30 text-cedow-darkblue';
+          stripHtml += `
+            <div style="width: ${partWidth}%;" class="h-full border-r border-cedow-darkblue/40 flex items-center justify-center font-mono text-[11px] font-bold ${bg}">
+              ${partNames[partsCount]}
+            </div>
+          `;
+        }
+        stripView.innerHTML = stripHtml;
+
+        // Collection groups
+        const itemsPerGroup = totalCount / partsCount;
+        let collHtml = "";
+        for (let g = 0; g < partsCount; g++) {
+          let dots = "";
+          for (let d = 0; d < itemsPerGroup; d++) {
+            dots += `<span class="w-3 h-3 rounded-full bg-cedow-darkblue inline-block"></span>`;
+          }
+          collHtml += `
+            <div class="flex flex-col items-center p-2 rounded bg-slate-100 border border-slate-200">
+              <div class="flex gap-1 mb-1">${dots}</div>
+              <span class="text-[10px] font-mono font-bold text-cedow-charcoal">${itemsPerGroup} items</span>
+            </div>
+          `;
+        }
+        collView.innerHTML = collHtml;
+
+        feedback.innerHTML = `
+          <strong>Repeated Halving (Equal Decomposition):</strong>
+          Halving ${hvLevel} time(s) divides the whole length into ${partsCount} equal parts (${partNames[partsCount]}). In the collection of ${totalCount}, each ${partNames[partsCount]} equals exactly <strong>${itemsPerGroup} counters</strong>. Notice how halving 3 times systematically generates eighths!
+        `;
+      } else {
+        // Pedagogical Trap: Halving one piece only
+        let pieces = [];
+        if (hvLevel === 0) pieces = [100];
+        if (hvLevel === 1) pieces = [50, 50];
+        if (hvLevel === 2) pieces = [50, 25, 25];
+        if (hvLevel === 3) pieces = [50, 25, 12.5, 12.5];
+
+        let stripHtml = pieces.map((p, idx) => `
+          <div style="width: ${p}%;" class="h-full border-r border-cedow-darkblue/40 flex items-center justify-center font-mono text-[10px] sm:text-xs font-bold ${idx % 2 === 0 ? 'bg-amber-100 text-amber-900' : 'bg-slate-200 text-slate-800'}">
+            ${p}%
+          </div>
+        `).join('');
+        stripView.innerHTML = stripHtml;
+
+        collView.innerHTML = `
+          <div class="text-xs text-amber-800 p-2 italic text-center w-full">
+            Collections cannot be partitioned into fractional names when parts of the length are unequal!
+          </div>
+        `;
+
+        feedback.innerHTML = `
+          <strong class="text-amber-900">Pedagogical Alert (NESA Syllabus Observation):</strong>
+          When a student folds a strip in half, and then folds <em>only one half</em> again, there are 3 pieces (50%, 25%, 25%). Students often erroneously call these 'quarters' because they see 4 sections or 3 folds. Unfolding and laying the parts side-by-side demonstrates that they are <strong>not equal</strong>, so the strip has not been divided into quarters!
+        `;
+      }
+    }
+
+    // Tool 3: S2 Fraction Strips on a Number Line
+    const FNAME = {
+      2: ["half", "halves"],
+      3: ["third", "thirds"],
+      4: ["quarter", "quarters"],
+      5: ["fifth", "fifths"],
+      6: ["sixth", "sixths"],
+      8: ["eighth", "eighths"],
+      10: ["tenth", "tenths"]
+    };
+
+    function initStripsTool() {
+      const dSel = document.getElementById('fsFamilySelect');
+      const kSlider = document.getElementById('fsPartsSlider');
+      const eSel = document.getElementById('fsLineEndSelect');
+      const cSel = document.getElementById('fsCompareSelect');
+
+      dSel.addEventListener('change', drawStripsTool);
+      kSlider.addEventListener('input', drawStripsTool);
+      eSel.addEventListener('change', drawStripsTool);
+      cSel.addEventListener('change', drawStripsTool);
+
+      drawStripsTool();
+    }
+
+    function drawStripsTool() {
+      const d = parseInt(document.getElementById('fsFamilySelect').value, 10);
+      const E = parseInt(document.getElementById('fsLineEndSelect').value, 10);
+      const kSlider = document.getElementById('fsPartsSlider');
+      
+      kSlider.max = d * E;
+      let k = Math.min(parseInt(kSlider.value, 10), d * E);
+      kSlider.value = k;
+      document.getElementById('fsPartsLabel').textContent = k;
+
+      const compVal = document.getElementById('fsCompareSelect').value;
+      const L = 40;
+      const R = 640;
+      const X = (v) => L + (v / E) * (R - L);
+      const svgHeight = compVal ? 240 : 180;
+
+      let s = `<svg viewBox="0 0 680 ${svgHeight}" class="w-full h-auto select-none font-sans" role="img" aria-label="Fraction Strip on Number Line">`;
+
+      // 1. Draw Fraction Strip(s)
+      for (let w = 0; w < E; w++) {
+        for (let i = 0; i < d; i++) {
+          const idx = w * d + i;
+          const x1 = X(w + i / d);
+          const x2 = X(w + (i + 1) / d);
+          const fill = idx < k ? '#188296' : '#FFFFFF';
+          const fillOp = idx < k ? '0.85' : '1';
+          s += `<rect x="${x1}" y="25" width="${x2 - x1}" height="40" fill="${fill}" fill-opacity="${fillOp}" stroke="#0D2C6B" stroke-width="1.5"/>`;
+        }
+      }
+
+      // 2. Draw Number Line Baseline
+      s += `<line x1="${L - 10}" y1="100" x2="${R + 10}" y2="100" stroke="#0D2C6B" stroke-width="2.5"/>`;
+
+      // Number Line Tick Marks & Labels
+      for (let j = 0; j <= d * E; j++) {
+        const v = j / d;
+        const x = X(v);
+        const isWhole = j % d === 0;
+        s += `<line x1="${x}" y1="${isWhole ? 88 : 94}" x2="${x}" y2="${isWhole ? 112 : 106}" stroke="#0D2C6B" stroke-width="${isWhole ? 2.5 : 1.5}"/>`;
+        
+        if (isWhole) {
+          s += `<text x="${x}" y="134" text-anchor="middle" font-size="16" font-weight="900" fill="#0D2C6B">${j / d}</text>`;
+        } else if (d <= 6 || j === k) {
+          s += `<text x="${x}" y="128" text-anchor="middle" font-size="11" font-family="Fira Code" font-weight="600" fill="#4C4C4E">${j}/${d}</text>`;
+        }
+      }
+
+      // Current Selected Position Indicator
+      if (k > 0) {
+        const curX = X(k / d);
+        s += `
+          <circle cx="${curX}" cy="100" r="6" fill="#FBAF3F" stroke="#0D2C6B" stroke-width="2"/>
+          <text x="${curX}" y="18" text-anchor="middle" font-size="13" font-family="Fira Code" font-weight="700" fill="#0D2C6B">${k}/${d}</text>
+        `;
+      }
+
+      // 3. Comparison Strip (if active)
+      if (compVal) {
+        const [ckStr, cdStr] = compVal.split('/');
+        const ck = parseInt(ckStr, 10);
+        const cd = parseInt(cdStr, 10);
+        
+        for (let i = 0; i < cd; i++) {
+          const x1 = X(i / cd);
+          const x2 = X((i + 1) / cd);
+          const fill = i < ck ? '#FBAF3F' : '#FFFFFF';
+          s += `<rect x="${x1}" y="155" width="${x2 - x1}" height="35" fill="${fill}" fill-opacity="${i < ck ? '0.85' : '1'}" stroke="#4C4C4E" stroke-width="1.5"/>`;
+        }
+
+        const compX = X(ck / cd);
+        s += `
+          <line x1="${compX}" y1="155" x2="${compX}" y2="100" stroke="#FBAF3F" stroke-dasharray="4 3" stroke-width="2"/>
+          <text x="${compX}" y="210" text-anchor="middle" font-size="12" font-family="Fira Code" font-weight="700" fill="#0D2C6B">${ck}/${cd} (${FNAME[cd][0]})</text>
+        `;
+      }
+
+      s += `</svg>`;
+      document.getElementById('fsSvgContainer').innerHTML = s;
+
+      // Mathematical Coaching Readout
+      const readout = document.getElementById('fsReadout');
+      const fractionWord = `${k} ${k === 1 ? FNAME[d][0] : FNAME[d][1]}`;
+      let complementText = "";
+      if (k === 0) complementText = "Select parts using the slider.";
+      else if (k === d) complementText = `That is exactly one complete whole (<strong>${d} ${FNAME[d][1]} = 1</strong>).`;
+      else if (k > d) complementText = `This quantity exceeds one: <strong>${Math.floor(k/d)} whole</strong> and <strong>${k % d}/${d}</strong>.`;
+      else complementText = `The complement needed to complete 1 whole is <strong>${d - k} ${d - k === 1 ? FNAME[d][0] : FNAME[d][1]}</strong>.`;
+
+      let compText = "";
+      if (compVal) {
+        const [ckStr, cdStr] = compVal.split('/');
+        const val1 = k / d;
+        const val2 = parseInt(ckStr, 10) / parseInt(cdStr, 10);
+        if (Math.abs(val1 - val2) < 0.0001) {
+          compText = `<span class="text-emerald-700 font-bold block pt-1">&check; EQUIVALENCE CONFIRMED: ${k}/${d} and ${compVal} align at the exact same location on the number line!</span>`;
+        } else if (val1 > val2) {
+          compText = `<span class="text-cedow-darkblue font-bold block pt-1">&bull; Comparison: ${k}/${d} is LARGER than ${compVal}.</span>`;
+        } else {
+          compText = `<span class="text-cedow-darkblue font-bold block pt-1">&bull; Comparison: ${k}/${d} is SMALLER than ${compVal}.</span>`;
+        }
+      }
+
+      readout.innerHTML = `
+        <div class="flex items-center justify-between font-bold text-cedow-darkblue">
+          <span class="text-base">${fractionWord} (<span class="font-mono">${k}/${d}</span>)</span>
+          <span class="text-xs bg-slate-100 px-2 py-0.5 rounded font-mono">Position on Number Line</span>
+        </div>
+        <p class="text-xs text-cedow-charcoal">${complementText} ${E === 2 ? 'Notice that when the number line extends to 2, the number 1 is halfway along the line. Unit fractions always measure distance from 0 to 1!' : ''}</p>
+        ${compText}
+      `;
+    }
+
+    // Tool 4: S3 Tape Diagram & Reversible Reasoning Studio
+    let tpMode = "of";
+
+    function setTapeMode(m) {
+      tpMode = m;
+      document.getElementById('tpModeOf').className = m === 'of' ? 'px-3 py-1.5 rounded-md bg-cedow-darkblue text-white shadow-sm transition' : 'px-3 py-1.5 rounded-md text-cedow-charcoal hover:text-cedow-darkblue transition';
+      document.getElementById('tpModeWhole').className = m === 'whole' ? 'px-3 py-1.5 rounded-md bg-cedow-darkblue text-white shadow-sm transition' : 'px-3 py-1.5 rounded-md text-cedow-charcoal hover:text-cedow-darkblue transition';
+      
+      const label = document.getElementById('tpModeLabel');
+      if (m === 'whole') {
+        label.textContent = "is equivalent to:";
+        document.getElementById('tpNum').value = 3;
+        document.getElementById('tpDen').value = "5";
+        document.getElementById('tpQuantity').value = 18;
+      } else {
+        label.textContent = "of total quantity:";
+        document.getElementById('tpNum').value = 2;
+        document.getElementById('tpDen').value = "5";
+        document.getElementById('tpQuantity').value = 30;
+      }
+      drawTapeTool();
+    }
+
+    function setTapePreset(n, d, q, m) {
+      document.getElementById('tpNum').value = n;
+      document.getElementById('tpDen').value = d;
+      document.getElementById('tpQuantity').value = q;
+      setTapeMode(m);
+    }
+
+    function drawTapeTool() {
+      const a = parseInt(document.getElementById('tpNum').value, 10);
+      const b = parseInt(document.getElementById('tpDen').value, 10);
+      const N = parseInt(document.getElementById('tpQuantity').value, 10);
+      const vis = document.getElementById('tpVisualContainer');
+      const readout = document.getElementById('tpReadout');
+
+      if (!a || !b || !N || a < 1 || N < 1) {
+        readout.innerHTML = `<span class="text-red-600 font-bold">Please enter valid whole numbers.</span>`;
+        vis.innerHTML = "";
+        return;
+      }
+
+      let unitValue = 0;
+      let calculatedWhole = 0;
+
+      if (tpMode === "of") {
+        if (N % b !== 0) {
+          readout.innerHTML = `
+            <span class="text-amber-800 font-bold block mb-1">Pedagogical Suggestion:</span>
+            Choose a quantity that is a multiple of ${b} (e.g. ${b * 2}, ${b * 5}, ${b * 6}) so that each ${FNAME[b][0]} evaluates to a whole number unit for clear student visual modeling.
+          `;
+          vis.innerHTML = "";
+          return;
+        }
+        unitValue = N / b;
+        calculatedWhole = N;
+      } else {
+        // Reversible mode: a/b is N
+        if (N % a !== 0) {
+          readout.innerHTML = `
+            <span class="text-amber-800 font-bold block mb-1">Pedagogical Suggestion:</span>
+            Choose a known part that can be equally divided into ${a} parts so that 1 ${FNAME[b][0]} is a whole number unit.
+          `;
+          vis.innerHTML = "";
+          return;
+        }
+        unitValue = N / a;
+        calculatedWhole = unitValue * b;
+      }
+
+      const totalCells = Math.max(a, b);
+      let cellsHtml = "";
+      for (let i = 0; i < totalCells; i++) {
+        const isShaded = i < a;
+        const isInWhole = i < b;
+        let cellBg = "bg-white text-slate-400";
+        if (isShaded) cellBg = "bg-cedow-aqua text-white font-bold shadow-sm";
+        else if (isInWhole) cellBg = "bg-slate-100 text-cedow-charcoal";
+        else cellBg = "bg-amber-100 text-amber-900 border-dashed";
+
+        cellsHtml += `
+          <div class="h-14 border border-cedow-darkblue/40 rounded flex flex-col items-center justify-center font-mono ${cellBg}">
+            <span class="text-xs sm:text-sm font-bold">${unitValue}</span>
+            <span class="text-[9px] opacity-80">${i+1}/${b}</span>
+          </div>
+        `;
+      }
+
+      vis.innerHTML = `
+        <div class="space-y-2">
+          <div class="flex items-center justify-between text-xs font-bold text-cedow-charcoal">
+            <span>Tape Model (${totalCells} parts)</span>
+            <span class="font-mono text-cedow-aqua font-bold">1 unit = ${unitValue}</span>
+          </div>
+          <div class="grid gap-1.5" style="grid-template-columns: repeat(${totalCells}, minmax(0, 1fr));">
+            ${cellsHtml}
+          </div>
+          <div class="flex justify-between items-center text-xs font-mono font-bold text-cedow-darkblue pt-1">
+            <span>0</span>
+            <span class="bg-cedow-gold/30 px-2 py-0.5 rounded">Whole = ${calculatedWhole}</span>
+          </div>
+        </div>
+      `;
+
+      if (tpMode === "of") {
+        readout.innerHTML = `
+          <div class="space-y-1">
+            <strong class="text-sm font-bold text-cedow-darkblue block">
+              ${a}/${b} of ${N} = ${(unitValue * a)}
+            </strong>
+            <p class="text-xs">
+              <strong>Step 1 (Find the Unit Fraction):</strong> Split the total quantity ${N} into ${b} equal parts &rarr; 1 ${FNAME[b][0]} = <strong>${unitValue}</strong>.
+            </p>
+            <p class="text-xs">
+              <strong>Step 2 (Scale Multiplicatively):</strong> Iterate ${a} groups of the unit fraction &rarr; ${a} &times; ${unitValue} = <strong>${unitValue * a}</strong>.
+              ${a > b ? '<span class="text-amber-800 font-bold block pt-1">Note: Because this fraction is greater than 1, the product exceeds the initial whole!</span>' : ''}
+            </p>
+          </div>
+        `;
+      } else {
+        readout.innerHTML = `
+          <div class="space-y-1">
+            <strong class="text-sm font-bold text-cedow-darkblue block">
+              Reversible Reasoning Solution: The Whole is ${calculatedWhole}
+            </strong>
+            <p class="text-xs">
+              <strong>Step 1 (Partition to find Unit Fraction):</strong> ${a} ${FNAME[b][1]} equal ${N}. Divide ${N} by ${a} &rarr; 1 ${FNAME[b][0]} = <strong>${unitValue}</strong>.
+            </p>
+            <p class="text-xs">
+              <strong>Step 2 (Reconstruct the Whole):</strong> One complete whole requires all ${b} ${FNAME[b][1]} &rarr; ${b} &times; ${unitValue} = <strong>${calculatedWhole}</strong>.
+            </p>
+          </div>
+        `;
+      }
+    }
+
+    /* ------------------------------------------------------------------------- */
+    /* 4. SECTION 4 LOGIC: DIAGNOSTIC CLINIC & ROOT MISCONCEPTION SORTER         */
+    /* ------------------------------------------------------------------------- */
+    const ROOT_TITLES = [
+      "Root 1: Counting parts instead of comparing to the whole",
+      "Root 2: The whole is ignored",
+      "Root 3: A fraction read as two whole numbers",
+      "Root 4: Reasoning only from whole to part"
+    ];
+
+    const SCENARIOS = [
+      {
+        stage: "Early Stage 1",
+        quote: "Asked for half the ribbon, Ava snips a small 5 cm piece off the very end and proudly declares: 'This is my half!'",
+        correctRoot: 0,
+        rationale: "Treats any piece as 'half'. Laying the two pieces side-by-side and developing the language of two equal lengths directly remedies this error."
+      },
+      {
+        stage: "Stage 1",
+        quote: "Mia folds a paper strip in half, then folds only one of the halves again, and insists the strip is now in quarters.",
+        correctRoot: 0,
+        rationale: "Counts four sections or fold lines without coordinating that each part must be an equal measure of the whole length."
+      },
+      {
+        stage: "Stage 1",
+        quote: "Josh argues that half of a short pop stick is exactly the same amount as half of a metre ruler 'because a half is always a half'.",
+        correctRoot: 1,
+        rationale: "Ignores that the size of a fractional part depends strictly on the size of the original whole."
+      },
+      {
+        stage: "Stage 2",
+        quote: "Ella confidently claims that 1/8 is larger than 1/3 'because 8 is bigger than 3'.",
+        correctRoot: 2,
+        rationale: "Reads the denominator as an isolated whole number. Aligned strips demonstrate that dividing into more parts produces smaller unit lengths."
+      },
+      {
+        stage: "Stage 2",
+        quote: "On a number line drawn from 0 to 2, Ben places 1/4 right in the middle (at 0.5), saying it is one-quarter of the line.",
+        correctRoot: 1,
+        rationale: "Ben uses the visual boundary of the entire line as the whole. A quarter is a quarter of the distance from 0 to 1, regardless of line length."
+      },
+      {
+        stage: "Stage 2",
+        quote: "Given a 4 cm strip and told it is one-quarter of a strip, Zoe is completely unable to draw the original strip.",
+        correctRoot: 3,
+        rationale: "Zoe can reason from whole to part, but lacks reversible thinking to iterate the unit fraction 4 times to re-create the whole."
+      },
+      {
+        stage: "Stage 2",
+        quote: "Shown a circle with 3 of 4 quadrants shaded, Noah states the fraction is '3 and 1'.",
+        correctRoot: 0,
+        rationale: "Shading inside shapes invites counting discrete parts rather than relating the shaded area multiplicatively to the complete unit."
+      },
+      {
+        stage: "Stage 3",
+        quote: "When asked to estimate 4/5 + 11/12, Sam chooses 15 as his answer.",
+        correctRoot: 2,
+        rationale: "Whole-number thinking (Gould 2014): Sam added the numerators 4 + 11. Benchmarks show both are near 1, so the sum is close to 2."
+      },
+      {
+        stage: "Stage 3",
+        quote: "Ruby says Jake could never eat more cake than Kate because Jake ate 1/4 and Kate ate 1/2 (of two different cakes).",
+        correctRoot: 1,
+        rationale: "Ignores the whole: 1/4 of a large catering cake is substantially greater than 1/2 of a miniature cupcake."
+      },
+      {
+        stage: "Stage 3",
+        quote: "Kai writes: 1/5 + 2/5 = 3/10 in his workbook.",
+        correctRoot: 2,
+        rationale: "Treats numerators and denominators as independent whole numbers to add. In quantity fractions, the denominator is the family name (fifths); only parts are combined."
+      },
+      {
+        stage: "Stage 3",
+        quote: "Asked to calculate 1 &minus; 1/3, Lily pauses and says she cannot begin because she hasn't been given the written rule yet.",
+        correctRoot: 3,
+        rationale: "Lacks intuitive complement reasoning (Empson & Levi 2011). She does not intuitively see that 2/3 completes the whole unit."
+      }
+    ];
+
+    let currentScenIdx = 0;
+
+    function renderScenario() {
+      const scen = SCENARIOS[currentScenIdx];
+      document.getElementById('scenarioTracker').textContent = `${currentScenIdx + 1} of ${SCENARIOS.length}`;
+      document.getElementById('scenarioStageTag').textContent = scen.stage;
+      document.getElementById('scenarioQuote').innerHTML = `&ldquo;${scen.quote}&rdquo;`;
+
+      const optionsBox = document.getElementById('rootOptionsContainer');
+      optionsBox.innerHTML = ROOT_TITLES.map((title, idx) => `
+        <button onclick="diagnoseRoot(${idx})" id="diagOpt-${idx}" class="text-left p-3 rounded-lg border border-slate-200 text-xs font-semibold hover:border-cedow-aqua transition bg-white text-cedow-black">
+          ${title}
+        </button>
+      `).join('');
+
+      const feedback = document.getElementById('diagnosticFeedback');
+      feedback.className = "hidden p-4 rounded-lg text-xs leading-relaxed space-y-2";
+      feedback.innerHTML = "";
+
+      document.getElementById('prevScenBtn').disabled = currentScenIdx === 0;
+      document.getElementById('nextScenBtn').disabled = currentScenIdx === SCENARIOS.length - 1;
+    }
+
+    function diagnoseRoot(selectedIdx) {
+      const scen = SCENARIOS[currentScenIdx];
+      const isCorrect = selectedIdx === scen.correctRoot;
+      const feedback = document.getElementById('diagnosticFeedback');
+
+      document.querySelectorAll('#rootOptionsContainer button').forEach((btn, idx) => {
+        btn.classList.remove('border-emerald-500', 'bg-emerald-50', 'border-red-500', 'bg-red-50');
+        if (idx === scen.correctRoot) {
+          btn.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-950', 'font-bold');
+        } else if (idx === selectedIdx && !isCorrect) {
+          btn.classList.add('border-red-500', 'bg-red-50', 'text-red-900');
+        }
+      });
+
+      feedback.classList.remove('hidden');
+      if (isCorrect) {
+        feedback.className = "p-4 rounded-lg text-xs leading-relaxed space-y-1 bg-emerald-50 border-l-4 border-emerald-600 text-emerald-950";
+        feedback.innerHTML = `
+          <strong class="text-sm font-bold flex items-center gap-1.5"><i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i> Accurate Clinical Diagnosis!</strong>
+          <p>${scen.rationale}</p>
+        `;
+      } else {
+        feedback.className = "p-4 rounded-lg text-xs leading-relaxed space-y-1 bg-red-50 border-l-4 border-red-600 text-red-950";
+        feedback.innerHTML = `
+          <strong class="text-sm font-bold flex items-center gap-1.5"><i data-lucide="x-circle" class="w-4 h-4 text-red-600"></i> Re-examine the Clinical Evidence:</strong>
+          <p>The primary root is <strong>${ROOT_TITLES[scen.correctRoot]}</strong>.</p>
+          <p>${scen.rationale}</p>
+        `;
+      }
+      lucide.createIcons();
+    }
+
+    function nextScenario() {
+      if (currentScenIdx < SCENARIOS.length - 1) {
+        currentScenIdx++;
+        renderScenario();
+      }
+    }
+
+    function prevScenario() {
+      if (currentScenIdx > 0) {
+        currentScenIdx--;
+        renderScenario();
+      }
+    }
+
+    /* ------------------------------------------------------------------------- */
+    /* 5. SECTION 5 LOGIC: TASK MAKEOVER STUDIO & 5 PEDAGOGICAL MOVES            */
+    /* ------------------------------------------------------------------------- */
+    const MAKEOVERS = {
+      s1: {
+        title: "Stage 1: Halving Lengths & Shapes",
+        before: {
+          task: "Shade one-quarter of the rectangle.<br><br><div class='w-32 h-10 border-2 border-slate-400 bg-white mx-auto'></div>",
+          limitations: [
+            "Shading inside shapes invites whole-number counting of parts.",
+            "Closed task: only one correct configuration.",
+            "No requirement to prove or reason whether the sections are equal."
+          ]
+        },
+        after: {
+          task: "“Fold a paper strip to show quarters. Now fold a second strip in half, and fold just one half in half again. Are these quarters too? Convince me.”",
+          enabling: "Start with halves: fold and compare the two pieces side-by-side.",
+          extending: "“Make eighths. How many eighths are in one quarter? How do you know?”",
+          listening: "Listen for students placing pieces side-by-side; articulating that 'a quarter must be half of a half'; recognising that unequal folds cannot be quarters.",
+          wm: ["Understanding and Fluency", "Communicating", "Reasoning"]
+        }
+      },
+      s2: {
+        title: "Stage 2: Thirds & Benchmark Number Lines",
+        before: {
+          task: "What fraction is shaded?<br><br><div class='w-28 h-28 rounded-full border-2 border-slate-400 mx-auto bg-gradient-to-r from-blue-300 via-blue-300 to-white'></div>",
+          limitations: [
+            "Encourages 'part out of whole' counting (3 shaded, 4 total).",
+            "Fails to connect the fraction to its magnitude on a number line.",
+            "Does not develop benchmark comparison or the complement."
+          ]
+        },
+        after: {
+          task: "“Position two-thirds on a number line from 0 to 2. Then position it on a line from 0 to 1. Why does it look different but remain the exact same number?”",
+          enabling: "Lay a physical thirds fraction strip along the number line from 0 to 1 like a ruler.",
+          extending: "“Where would four-thirds go on each line? Convince me.”",
+          listening: "Listen for students identifying 1 first; dividing the 0 to 1 unit interval into 3 equal lengths; noting that two-thirds is 1 third less than 1 whole.",
+          wm: ["Exploring and Connecting", "Choosing and Applying", "Reasoning"]
+        }
+      },
+      s3: {
+        title: "Stage 3: Multiplicative Tape Diagrams",
+        before: {
+          task: "Calculate 2/5 of 30.<br><br>Answer: ________",
+          limitations: [
+            "Easily executed via a rote, memorised procedure ('divide by bottom, times by top').",
+            "Zero mental representation of the part-whole relationship.",
+            "One-way thinking only (cannot solve: 12 is 2/5 of what number?)."
+          ]
+        },
+        after: {
+          task: "“Bella says 2/5 of 30 is 12. Jack says it is 2 &times; 30 &divide; 5. Use a tape diagram to prove whether they agree.”<br><br>“Now: 12 is 2/5 of an unknown number. What is the number?”",
+          enabling: "Model 1/5 of 30 on a 5-cell tape diagram first.",
+          extending: "“Find four-thirds of 60. Is the answer more or less than 60? Why?”",
+          listening: "Listen for students identifying unit fraction (each fifth is 6); multiplying by 2 to get 12; reversing: 12 is 2 parts, so 1 part is 6, whole is 30.",
+          wm: ["Understanding and Fluency", "Exploring and Connecting", "Reasoning"]
+        }
+      }
+    };
+
+    function setMakeoverStage(stKey) {
+      document.querySelectorAll('.mo-tab-btn').forEach(b => {
+        b.classList.remove('bg-cedow-darkblue', 'text-white');
+        b.classList.add('bg-white', 'text-cedow-charcoal');
+      });
+      const activeBtn = document.getElementById(`moTab-${stKey}`);
+      if (activeBtn) {
+        activeBtn.classList.add('bg-cedow-darkblue', 'text-white');
+        activeBtn.classList.remove('bg-white', 'text-cedow-charcoal');
+      }
+      renderMakeover(stKey);
+    }
+
+    function renderMakeover(stKey) {
+      const data = MAKEOVERS[stKey];
+      const container = document.getElementById('makeoverDisplayContainer');
+
+      const wmBadges = data.after.wm.map(w => `
+        <span class="bg-cedow-aqua/10 text-cedow-darkblue border border-cedow-aqua/30 px-2 py-0.5 rounded text-[11px] font-semibold">${w}</span>
+      `).join('');
+
+      const limits = data.before.limitations.map(l => `
+        <li class="flex items-start gap-1.5 text-xs text-red-900">
+          <i data-lucide="x" class="w-3.5 h-3.5 text-red-600 shrink-0 mt-0.5"></i>
+          <span>${l}</span>
+        </li>
+      `).join('');
+
+      container.innerHTML = `
+        <!-- Before Card -->
+        <div class="bg-white rounded-xl shadow-sm border border-red-200 p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-red-100 pb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-red-600">Before: Closed Procedural Drill</span>
+            <span class="text-xs bg-red-100 text-red-800 px-2 py-0.5 rounded font-mono">Traditional</span>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-center font-mono text-sm text-cedow-black">
+            ${data.before.task}
+          </div>
+          <div class="space-y-1.5">
+            <span class="text-xs font-bold text-red-900 uppercase tracking-wide block">Cognitive Limitations:</span>
+            <ul class="space-y-1">${limits}</ul>
+          </div>
+        </div>
+
+        <!-- After Card -->
+        <div class="bg-white rounded-xl shadow-sm border-2 border-cedow-aqua p-5 space-y-4">
+          <div class="flex items-center justify-between border-b border-slate-100 pb-2">
+            <span class="text-xs font-bold uppercase tracking-wider text-cedow-aqua">After: Inquiry &amp; Reasoning Makeover</span>
+            <span class="text-xs bg-cedow-darkblue text-white px-2 py-0.5 rounded font-mono">MAO-WM-01</span>
+          </div>
+          <div class="p-4 bg-slate-50 rounded-lg border border-slate-200 text-xs sm:text-sm text-cedow-black font-semibold leading-relaxed">
+            ${data.after.task}
+          </div>
+          <div class="space-y-2 text-xs text-cedow-charcoal">
+            <p><strong class="text-cedow-aqua">Enabling Prompt:</strong> ${data.after.enabling}</p>
+            <p><strong class="text-cedow-gold">Extending Prompt:</strong> ${data.after.extending}</p>
+            <p><strong class="text-cedow-darkblue">What to Listen For:</strong> ${data.after.listening}</p>
+          </div>
+          <div class="pt-2 border-t border-slate-100 flex flex-wrap gap-1.5">
+            ${wmBadges}
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    // 5 High-Yield Pedagogical Moves Data
+    const MOVES_DATA = [
+      {
+        title: "1. Who is correct?",
+        subtitle: "Promotes critique, multiple perspectives & justification",
+        example: "“Ari folded his paper square diagonally corner-to-corner. Bella folded her square horizontally edge-to-edge. Both claim they made halves. Who is correct? How do you know?”",
+        teachingNote: "Forces students to move beyond identical prototype shapes. Both are halves because both represent equal halves of the same whole area (MA2-2DS-03)."
+      },
+      {
+        title: "2. Same and different",
+        subtitle: "Uncovers structural connections & representations",
+        example: "“What is the same and what is different about one-half of a ribbon, one-half of 8 counters, and the halfway point of a path?”",
+        teachingNote: "Distinguishes between continuous linear measure, discrete collections, and spatial position on a journey."
+      },
+      {
+        title: "3. Always, sometimes, never",
+        subtitle: "Deepens generalisation & mathematical rule boundaries",
+        example: "“'A fraction with a larger denominator is smaller than a fraction with a smaller denominator.' Is this always, sometimes, or never true?”",
+        teachingNote: "Always true for unit fractions of equal wholes (1/8 &lt; 1/3), but false if the wholes are unequal (1/8 of a huge cake vs 1/3 of a muffin) or if numerators differ (7/8 &gt; 1/3)!"
+      },
+      {
+        title: "4. Open it up",
+        subtitle: "Expands procedural questions into multi-solution inquiries",
+        example: "“Find as many fractions as you can that sit between one-half and one whole, using the fraction families you know. Show them on a number line.”",
+        teachingNote: "Invites students to draw upon quarters, eighths, thirds, sixths, fifths and tenths, verifying their reasoning with benchmark 1/2."
+      },
+      {
+        title: "5. Convince me",
+        subtitle: "Demands proof, argumentation & representation",
+        example: "“Convince me that 1/4 + 1/8 is less than one-half without calculating the exact numerical answer.”",
+        teachingNote: "Encourages benchmark reasoning: since 1/4 is half of 1/2, and 1/8 is less than 1/4, their sum must fall short of 1/2."
+      }
+    ];
+
+    function showMove(idx) {
+      document.querySelectorAll('#movesButtonGroup button').forEach((b, i) => {
+        b.className = i === idx ? 'move-btn p-2.5 rounded-lg border border-slate-200 text-xs font-bold text-center bg-cedow-darkblue text-white' : 'move-btn p-2.5 rounded-lg border border-slate-200 text-xs font-bold text-center bg-white text-cedow-charcoal hover:bg-slate-50';
+      });
+
+      const move = MOVES_DATA[idx];
+      const card = document.getElementById('moveDetailCard');
+      card.innerHTML = `
+        <div class="flex items-center justify-between">
+          <h5 class="text-sm font-bold text-cedow-darkblue">${move.title}</h5>
+          <span class="text-xs text-cedow-aqua font-semibold">${move.subtitle}</span>
+        </div>
+        <div class="p-3 bg-white rounded-lg border border-slate-200 font-semibold text-xs sm:text-sm text-cedow-black">
+          ${move.example}
+        </div>
+        <p class="text-xs text-cedow-charcoal leading-relaxed">
+          <strong class="text-cedow-darkblue">Pedagogical Purpose:</strong> ${move.teachingNote}
+        </p>
+      `;
+    }
+
+    /* ------------------------------------------------------------------------- */
+    /* 6. SECTION 6 LOGIC: MODULE MASTERY CHECKPOINT & TAKEAWAYS                 */
+    /* ------------------------------------------------------------------------- */
+    const QUIZ_QUESTIONS = [
+      {
+        q: "1. According to NESA's Geometric measure advice in Early Stage 1, what is the crucial mathematical difference between the 'halfway point' and 'half a length'?",
+        options: [
+          "There is no difference; they are interchangeable colloquial terms.",
+          "The halfway point is a specific position; half a length is one of two equal lengths.",
+          "Half a length is a position; the halfway point only applies to discrete collections.",
+          "The halfway point is measured in centimetres; half a length is informal."
+        ],
+        correct: 1,
+        why: "NESA notes the halfway point is a position that builds on the equality of two lengths and introduces subdividing a continuous length."
+      },
+      {
+        q: "2. Which sequence of fraction models does NESA advise introducing across the primary years?",
+        options: [
+          "Continuous area models (shading circles) first, then linear number lines, then discrete sets.",
+          "Discrete collections first, followed by area models and then fraction symbols.",
+          "Continuous linear models (one-directional cuts/folds) first, then continuous area models once area is understood in Stage 2, alongside number lines.",
+          "Fraction symbols and algorithms first, followed by virtual manipulatives."
+        ],
+        correct: 2,
+        why: "NESA advises introducing the continuous linear model first with one-directional folds, as area models require a developed concept of two-dimensional area."
+      },
+      {
+        q: "3. When reading the fraction 2/3 aloud, what does NESA additional teaching advice recommend, and why (Way & Bobis 2011)?",
+        options: [
+          "Say 'two out of three' to emphasize part-whole counting.",
+          "Say 'two over three' to match the vertical algorithm layout.",
+          "Say 'two-thirds' because treating the numerator and denominator as two separate numbers creates a barrier to seeing the fraction as a single number.",
+          "Only write the symbols and do not read them aloud until Stage 3."
+        ],
+        correct: 2,
+        why: "Reading a fraction as two separate whole numbers ('2 over 3' or '2 out of 3') prevents students from understanding it as a unified magnitude with a single position on the number line."
+      },
+      {
+        q: "4. In Gould's (2014) study of 52,000 Year 7 students, over half estimated 4/5 + 11/12 as 15 or 17. What root misconception does this empirical finding reveal?",
+        options: [
+          "Students had not memorised their single-digit addition facts.",
+          "Students were treating fractions as two independent whole numbers (adding numerators 4 + 11 or denominators 5 + 12) rather than estimating magnitudes.",
+          "Students had not yet learned common denominators.",
+          "Students did not have access to calculators during the assessment."
+        ],
+        correct: 1,
+        why: "Both fractions are close to 1, so the sum is close to 2. Adding the numbers directly indicates deep-seated whole-number thinking."
+      },
+      {
+        q: "5. Empson & Levi (2011) propose that before students learn standard algorithms for adding and subtracting fractions, they must demonstrate intuitive strategies for tasks such as:",
+        options: [
+          "Multiplying numerators and finding least common multiples.",
+          "Solving problems such as 1 &minus; 1/3 and 2 &minus; 5/8 using the complement principle and intuitive sense of fraction size.",
+          "Converting all fractions to decimals using long division.",
+          "Memorising acronyms like BOMDAS or Keep-Change-Flip."
+        ],
+        correct: 1,
+        why: "Recognising that 5/8 is 3/8 away from 1 (so 2 &minus; 5/8 = 1 3/8) demonstrates intuitive magnitude understanding, without which formal procedures become meaningless rituals."
+      }
+    ];
+
+    function renderQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = QUIZ_QUESTIONS.map((q, qIdx) => `
+        <div class="space-y-3 pb-5 border-b border-slate-200 last:border-b-0">
+          <p class="text-xs sm:text-sm font-bold text-cedow-darkblue">${q.q}</p>
+          <div class="space-y-2">
+            ${q.options.map((opt, optIdx) => `
+              <label class="flex items-start gap-2.5 p-3 rounded-lg border border-slate-200 hover:bg-slate-50 cursor-pointer text-xs transition">
+                <input type="radio" name="quiz_q_${qIdx}" value="${optIdx}" class="mt-0.5 accent-cedow-darkblue">
+                <span class="text-cedow-charcoal font-medium">${opt}</span>
+              </label>
+            `).join('')}
+          </div>
+          <div id="qFeedback_${qIdx}" class="hidden text-xs p-3 rounded-lg"></div>
+        </div>
+      `).join('');
+    }
+
+    function gradeQuiz() {
+      let score = 0;
+      let allAnswered = true;
+
+      QUIZ_QUESTIONS.forEach((q, qIdx) => {
+        const selected = document.querySelector(`input[name="quiz_q_${qIdx}"]:checked`);
+        const feedbackBox = document.getElementById(`qFeedback_${qIdx}`);
+        feedbackBox.classList.remove('hidden');
+
+        if (!selected) {
+          allAnswered = false;
+          feedbackBox.className = "text-xs p-3 rounded-lg bg-amber-50 text-amber-900 border border-amber-200";
+          feedbackBox.textContent = "Please select an answer for this question.";
+          return;
+        }
+
+        const ans = parseInt(selected.value, 10);
+        if (ans === q.correct) {
+          score++;
+          feedbackBox.className = "text-xs p-3 rounded-lg bg-emerald-50 text-emerald-900 border border-emerald-200";
+          feedbackBox.innerHTML = `<strong>&check; Correct:</strong> ${q.why}`;
+        } else {
+          feedbackBox.className = "text-xs p-3 rounded-lg bg-red-50 text-red-900 border border-red-200";
+          feedbackBox.innerHTML = `<strong>&cross; Incorrect:</strong> ${q.why}`;
+        }
+      });
+
+      if (!allAnswered) return;
+
+      const pct = Math.round((score / QUIZ_QUESTIONS.length) * 100);
+      const passed = pct >= 80;
+      const resContainer = document.getElementById('masteryResultContainer');
+      const banner = document.getElementById('quizScoreBanner');
+      const takeaways = document.getElementById('takeawaysPanel');
+
+      resContainer.classList.remove('hidden');
+
+      if (passed) {
+        banner.className = "p-5 rounded-xl border bg-emerald-50 border-emerald-300 text-emerald-950 space-y-2";
+        banner.innerHTML = `
+          <div class="flex items-center gap-2 font-bold text-base sm:text-lg">
+            <i data-lucide="check-check" class="w-6 h-6 text-emerald-600"></i>
+            Mastery Threshold Achieved: ${score} / ${QUIZ_QUESTIONS.length} (${pct}%)
+          </div>
+          <p class="text-xs sm:text-sm">
+            Outstanding! You have demonstrated advanced mastery of the NESA Mathematics K–10 (2022) fraction continuum and root misconceptions. Your synthesized <strong>Key Pedagogical Takeaways (K–6 Continuum)</strong> summary is unlocked below.
+          </p>
+        `;
+        takeaways.classList.remove('hidden');
+        takeaways.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        banner.className = "p-5 rounded-xl border bg-amber-50 border-amber-300 text-amber-950 space-y-2";
+        banner.innerHTML = `
+          <div class="flex items-center gap-2 font-bold text-base sm:text-lg">
+            <i data-lucide="alert-circle" class="w-6 h-6 text-amber-700"></i>
+            Score: ${score} / ${QUIZ_QUESTIONS.length} (${pct}%) &bull; 80% Required to Unlock Executive Summary
+          </div>
+          <p class="text-xs sm:text-sm">
+            Review the rationale notes provided above for incorrect items and re-test to achieve mastery.
+          </p>
+        `;
+        takeaways.classList.add('hidden');
+      }
+      lucide.createIcons();
+    }
+
+    /* ------------------------------------------------------------------------- */
+    /* 7. INITIALIZATION & NAVIGATION LOGIC                                      */
+    /* ------------------------------------------------------------------------- */
+    function initModule() {
+      // Sidebar mobile drawer controls
+      const navToggle = document.getElementById('mobileNavToggle');
+      const sidebar = document.getElementById('sidebar');
+      const backdrop = document.getElementById('mobileBackdrop');
+
+      function toggleSidebar() {
+        const isHidden = sidebar.classList.contains('hidden');
+        if (isHidden) {
+          sidebar.classList.remove('hidden');
+          sidebar.classList.remove('-translate-x-full');
+          backdrop.classList.remove('hidden');
+        } else {
+          sidebar.classList.add('-translate-x-full');
+          setTimeout(() => sidebar.classList.add('hidden'), 200);
+          backdrop.classList.add('hidden');
+        }
+      }
+
+      navToggle.addEventListener('click', toggleSidebar);
+      backdrop.addEventListener('click', toggleSidebar);
+
+      document.querySelectorAll('.sidebar-link').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 1024) toggleSidebar();
+        });
+      });
+
+      // Active section highlight on scroll
+      window.addEventListener('scroll', () => {
+        const sections = document.querySelectorAll('section');
+        let currentSec = "";
+        sections.forEach(sec => {
+          const top = sec.offsetTop - 120;
+          if (window.scrollY >= top) {
+            currentSec = sec.getAttribute('id');
+          }
+        });
+        document.querySelectorAll('.sidebar-link').forEach(link => {
+          link.classList.remove('nav-active');
+          if (link.getAttribute('href') === `#${currentSec}`) {
+            link.classList.add('nav-active');
+          }
+        });
+      });
+
+      // Section 1 Init
+      renderStageCard();
+      initBigIdeas();
+
+      // Section 3 Init
+      initHalfTool();
+      resetHalving();
+      initStripsTool();
+      drawTapeTool();
+
+      // Section 4 Init
+      renderScenario();
+
+      // Section 5 Init
+      renderMakeover('s1');
+      showMove(0);
+
+      // Section 6 Init
+      renderQuiz();
+    }
+  </script>
+</body>
+</html>
