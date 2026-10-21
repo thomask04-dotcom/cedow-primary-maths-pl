@@ -1,0 +1,2224 @@
+<!DOCTYPE html>
+<html lang="en-AU" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Non-Spatial Measure (K–6) Professional Learning Module | CEDoW</title>
+  <!-- Google Fonts: Lato & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              blue: '#0D2C6B',
+              aqua: '#188296',
+              gold: '#FBAF3F',
+              charcoal: '#4C4C4E',
+              silver: '#D1D2D4',
+              black: '#231F20',
+              light: '#F4F6F9',
+              white: '#FFFFFF'
+            }
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      color: #231F20;
+      background-color: #F4F6F9;
+      -webkit-font-smoothing: antialiased;
+    }
+    .math-badge {
+      font-family: 'Fira Code', monospace;
+      background-color: #EBF3F5;
+      color: #0D2C6B;
+      padding: 0.15rem 0.45rem;
+      border-radius: 0.25rem;
+      font-size: 0.9em;
+      border: 1px solid #D1D2D4;
+      display: inline-block;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F4F6F9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #D1D2D4;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #188296;
+    }
+    .tab-active {
+      background-color: #0D2C6B !important;
+      color: #FFFFFF !important;
+      border-color: #0D2C6B !important;
+    }
+    .nav-active {
+      background-color: #E8F4F7 !important;
+      color: #188296 !important;
+      border-left: 4px solid #188296 !important;
+      font-weight: 700 !important;
+    }
+    .balance-beam {
+      transition: transform 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+      transform-origin: 200px 70px;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- TOP HEADER / BANNER -->
+  <header class="bg-[#0D2C6B] text-white sticky top-0 z-50 shadow-md border-b-4 border-[#FBAF3F]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="bg-[#188296] p-2 rounded-lg text-white shadow-inner flex items-center justify-center">
+          <i data-lucide="compass" class="w-6 h-6"></i>
+        </div>
+        <div>
+          <span class="text-xs uppercase tracking-widest text-[#FBAF3F] font-bold block">Catholic Education Diocese of Wollongong</span>
+          <h1 class="text-lg sm:text-xl font-black tracking-tight flex items-center gap-2">
+            Non-Spatial Measure (K–6)
+            <span class="text-xs font-normal bg-[#188296] text-white px-2 py-0.5 rounded-full border border-white/20">Focus Area 8</span>
+          </h1>
+        </div>
+      </div>
+      <div class="flex items-center space-x-4">
+        <span class="hidden md:inline-flex items-center text-xs text-slate-200 bg-white/10 px-3 py-1 rounded-md border border-white/10">
+          <i data-lucide="book-open" class="w-3.5 h-3.5 mr-1.5 text-[#FBAF3F]"></i> NSW Maths K–10 (2022)
+        </span>
+        <button id="mobileNavToggle" class="lg:hidden p-2 rounded-md hover:bg-white/10 text-white focus:outline-none" aria-label="Toggle Navigation">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-grow flex flex-col lg:flex-row gap-6">
+
+    <!-- RESPONSIVE SIDEBAR NAVIGATION -->
+    <aside id="sidebarNav" class="hidden lg:block w-full lg:w-72 flex-shrink-0">
+      <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-4 sticky top-20">
+        <div class="pb-3 border-b border-[#D1D2D4] mb-3">
+          <h2 class="text-xs font-black uppercase text-[#4C4C4E] tracking-wider flex items-center">
+            <i data-lucide="list-tree" class="w-4 h-4 mr-1.5 text-[#188296]"></i> Learning Pathway
+          </h2>
+          <p class="text-xs text-gray-500 mt-1">Self-paced professional study module</p>
+        </div>
+        <nav class="space-y-1 text-sm font-medium">
+          <a href="#section-1" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
+            <i data-lucide="git-commit" class="w-4 h-4 mr-2.5 text-[#188296]"></i>
+            <span>1. Trajectory & Big Ideas</span>
+          </a>
+          <a href="#section-2" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
+            <i data-lucide="alert-triangle" class="w-4 h-4 mr-2.5 text-[#FBAF3F]"></i>
+            <span>2. Shifts & Pedagogical Traps</span>
+          </a>
+          <a href="#section-3" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
+            <i data-lucide="sliders" class="w-4 h-4 mr-2.5 text-[#188296]"></i>
+            <span>3. Interactive Tool Lab</span>
+          </a>
+          <a href="#section-4" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
+            <i data-lucide="stethoscope" class="w-4 h-4 mr-2.5 text-[#188296]"></i>
+            <span>4. Diagnostic Clinic & Sorter</span>
+          </a>
+          <a href="#section-5" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
+            <i data-lucide="sparkles" class="w-4 h-4 mr-2.5 text-[#FBAF3F]"></i>
+            <span>5. Task Makeover Studio</span>
+          </a>
+          <a href="#section-6" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
+            <i data-lucide="check-circle-2" class="w-4 h-4 mr-2.5 text-[#188296]"></i>
+            <span>6. Mastery Checkpoint</span>
+          </a>
+          <a href="#section-7" class="nav-link flex items-center px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition-all">
+            <i data-lucide="share-2" class="w-4 h-4 mr-2.5 text-[#0D2C6B]"></i>
+            <span>7. Canvas Deployment</span>
+          </a>
+        </nav>
+
+        <!-- Quick Summary Box -->
+        <div class="mt-6 p-3 bg-[#F4F6F9] rounded-lg border border-[#D1D2D4] text-xs text-[#4C4C4E]">
+          <div class="flex items-center gap-1.5 font-bold text-[#0D2C6B] mb-1">
+            <i data-lucide="info" class="w-3.5 h-3.5 text-[#188296]"></i> Focus Overview
+          </div>
+          <p>Two distinct strands running across K–6: <strong>Mass</strong> (non-spatial units, conservation, kilograms, tonnes) and <strong>Time</strong> (cyclical turns, base-60, elapsed bridging)[cite: 226, 263].</p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT COLUMN -->
+    <main class="flex-1 space-y-10 min-w-0">
+
+      <!-- HERO INTRO CARD -->
+      <section class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+        <div class="flex flex-wrap items-center gap-2 mb-3">
+          <span class="bg-[#0D2C6B] text-white text-xs px-2.5 py-1 rounded-full font-bold uppercase tracking-wider">Focus Area 8</span>
+          <span class="bg-[#188296]/10 text-[#188296] text-xs px-2.5 py-1 rounded-full font-semibold border border-[#188296]/20">Early Stage 1 to Stage 3</span>
+          <span class="bg-[#FBAF3F]/20 text-[#0D2C6B] text-xs px-2.5 py-1 rounded-full font-semibold border border-[#FBAF3F]/40">Outcome Aligned: MAO-WM-01</span>
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-[#0D2C6B] tracking-tight">How Students Learn About Mass and Time (K–6)</h2>
+        <p class="mt-3 text-base text-[#4C4C4E] leading-relaxed">
+          Non-spatial measure explores the two foundational measurement domains where units do not tile physical space[cite: 226]. In <strong>Mass</strong>, the spatial arrangement of matter does not change total weight: unlike length or area, units need not lie end-to-end with no gaps[cite: 226]. In <strong>Time</strong>, durations and moments are anchored in personal experience, cultural calendars, analog rotations, and base-60 cycles rather than base-10 length lines[cite: 226, 263].
+        </p>
+        <div class="mt-4 grid grid-cols-1 md:grid-cols-2 gap-4 pt-4 border-t border-[#D1D2D4] text-sm">
+          <div class="flex items-start space-x-3">
+            <div class="p-2 bg-blue-50 text-[#0D2C6B] rounded-lg mt-0.5"><i data-lucide="scale" class="w-5 h-5"></i></div>
+            <div>
+              <strong class="text-[#0D2C6B] block font-bold">The Mass Progression</strong>
+              <span class="text-gray-600">From sensory hefting and equal-arm balance with informal units, to standard kilograms and grams, through to decimal conversions and tonnes[cite: 226, 262, 327, 188, 190].</span>
+            </div>
+          </div>
+          <div class="flex items-start space-x-3">
+            <div class="p-2 bg-teal-50 text-[#188296] rounded-lg mt-0.5"><i data-lucide="clock" class="w-5 h-5"></i></div>
+            <div>
+              <strong class="text-[#188296] block font-bold">The Time Progression</strong>
+              <span class="text-gray-600">From event sequencing and o’clock, to half and quarter turns, to reading clocks to the minute, am/pm, 24-hour time, and timeline bridging[cite: 227, 263, 327, 189, 190].</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 1: TRAJECTORY & BIG IDEAS MATRIX   -->
+      <!-- ========================================== -->
+      <section id="section-1" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+        <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
+          <div class="bg-[#0D2C6B] text-white p-2 rounded-lg">
+            <i data-lucide="git-merge" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Section 1: The Vertical Trajectory & Big Ideas</h3>
+            <p class="text-sm text-[#4C4C4E]">Syllabus outcomes, Working Mathematically connections, and cross-stage conceptual architecture.</p>
+          </div>
+        </div>
+
+        <!-- Stage Filter Navigation Tabs -->
+        <div class="flex flex-wrap gap-2 mb-6" id="stageTabs">
+          <button onclick="switchStage('es1')" id="btn-es1" class="stage-tab-btn px-4 py-2 rounded-lg text-sm font-bold border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] hover:border-[#0D2C6B] transition-all tab-active">
+            Early Stage 1 (Kindergarten)
+          </button>
+          <button onclick="switchStage('s1')" id="btn-s1" class="stage-tab-btn px-4 py-2 rounded-lg text-sm font-bold border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] hover:border-[#0D2C6B] transition-all">
+            Stage 1 (Years 1–2)
+          </button>
+          <button onclick="switchStage('s2')" id="btn-s2" class="stage-tab-btn px-4 py-2 rounded-lg text-sm font-bold border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] hover:border-[#0D2C6B] transition-all">
+            Stage 2 (Years 3–4)
+          </button>
+          <button onclick="switchStage('s3')" id="btn-s3" class="stage-tab-btn px-4 py-2 rounded-lg text-sm font-bold border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] hover:border-[#0D2C6B] transition-all">
+            Stage 3 (Years 5–6)
+          </button>
+        </div>
+
+        <!-- STAGE CONTENT CARD DISPLAY -->
+        <div id="stageContentCard" class="bg-[#F4F6F9] rounded-xl p-6 border border-[#D1D2D4]">
+          <!-- Dynamic Content injected via JS -->
+        </div>
+
+        <!-- BIG IDEAS MATRIX EXPLORER -->
+        <div class="mt-8 pt-6 border-t border-[#D1D2D4]">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h4 class="text-lg font-black text-[#0D2C6B]">The 6 Cross-Stage Big Ideas Matrix</h4>
+              <p class="text-xs text-[#4C4C4E]">Select any mathematical principle to trace its structural emergence from Kindergarten to Year 6.</p>
+            </div>
+            <span class="text-xs font-mono bg-blue-100 text-[#0D2C6B] px-2.5 py-1 rounded font-semibold border border-blue-200 hidden sm:inline-block">
+              Interactive Matrix
+            </span>
+          </div>
+
+          <!-- Big Idea Pills -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-4" id="bigIdeaButtons">
+            <!-- Injected via JavaScript -->
+          </div>
+
+          <!-- Big Idea Detail Display -->
+          <div id="bigIdeaDetailBox" class="bg-white rounded-lg p-5 border border-[#188296] shadow-sm">
+            <!-- Dynamic Big Idea View -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 2: KEY CONCEPTUAL SHIFTS & TRAPS   -->
+      <!-- ========================================== -->
+      <section id="section-2" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+        <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
+          <div class="bg-[#FBAF3F] text-[#0D2C6B] p-2 rounded-lg">
+            <i data-lucide="compass" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Section 2: Key Conceptual Shifts & Pedagogical Traps</h3>
+            <p class="text-sm text-[#4C4C4E]">Research-grounded breakdown of cognitive roadblocks, NESA teaching advice, and linguistic hazards.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Deep Dive 1: Mass is Non-Spatial -->
+          <div class="border border-[#D1D2D4] rounded-xl p-5 bg-[#F4F6F9] hover:border-[#188296] transition-all">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-7 h-7 rounded-full bg-[#0D2C6B] text-white flex items-center justify-center font-bold text-xs">1</span>
+              <h4 class="font-bold text-[#0D2C6B] text-base">Mass is Non-Spatial (Size &ne; Weight)</h4>
+            </div>
+            <p class="text-sm text-[#4C4C4E] leading-relaxed">
+              Early experiences intuitively lead students to assume that large objects are heavier than small ones[cite: 226]. Because mass is non-spatial, packing or reforming matter alters volume and surface area while leaving mass invariant[cite: 226].
+            </p>
+            <div class="mt-3 bg-red-50 border-l-4 border-red-500 p-3 rounded text-xs text-red-900 space-y-1">
+              <strong>Pedagogical Trap:</strong> Presenting worksheet pictures of objects (e.g. comparing a drawn elephant to a mouse) reinforces the misconception that bigger always weighs more[cite: 327].
+              <div class="text-xs text-red-800 font-medium mt-1">
+                <strong>NESA Advice:</strong> Always compare real, physical objects[cite: 327]. Deliberately select counter-intuitive pairs: large but light (foam block, beach ball) vs small but heavy (lead weight, rock)[cite: 226].
+              </div>
+            </div>
+          </div>
+
+          <!-- Deep Dive 2: Base-60 Duodecimal vs Base-10 Decimals -->
+          <div class="border border-[#D1D2D4] rounded-xl p-5 bg-[#F4F6F9] hover:border-[#188296] transition-all">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-7 h-7 rounded-full bg-[#0D2C6B] text-white flex items-center justify-center font-bold text-xs">2</span>
+              <h4 class="font-bold text-[#0D2C6B] text-base">Time Cycles Regroup in 60s, Not 10s</h4>
+            </div>
+            <p class="text-sm text-[#4C4C4E] leading-relaxed">
+              Students continually attempt to apply standard base-10 decomposition to time calculations. When solving elapsed time or decimal hours, whole-number decimal habits intrude directly.
+            </p>
+            <div class="mt-3 bg-red-50 border-l-4 border-red-500 p-3 rounded text-xs text-red-900 space-y-1">
+              <strong>Pedagogical Trap:</strong> Calculating duration by column subtraction (<span class="math-badge">5:00 &minus; 2:45 = 2.55</span>) or declaring that <span class="math-badge">1.5 hours</span> equals <span class="math-badge">1 hour 50 minutes</span>[cite: 191].
+              <div class="text-xs text-red-800 font-medium mt-1">
+                <strong>NESA Advice:</strong> Explicitly model regrouping time in units of 60 rather than 10 or 100[cite: 191]. Bridge to the hour on an unscaled timeline to keep duration mental and relational[cite: 190].
+              </div>
+            </div>
+          </div>
+
+          <!-- Deep Dive 3: Clock Hands & Proportional Travel -->
+          <div class="border border-[#D1D2D4] rounded-xl p-5 bg-[#F4F6F9] hover:border-[#188296] transition-all">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-7 h-7 rounded-full bg-[#0D2C6B] text-white flex items-center justify-center font-bold text-xs">3</span>
+              <h4 class="font-bold text-[#0D2C6B] text-base">The Hour Hand Travels Continuously</h4>
+            </div>
+            <p class="text-sm text-[#4C4C4E] leading-relaxed">
+              Earnest et al. (2018) demonstrated that students routinely locate the minute hand correctly while positioning the hour hand inaccurately[cite: 328]. For example, drawing half-past 3 with the hour hand pointing directly at the 3[cite: 328].
+            </p>
+            <div class="mt-3 bg-amber-50 border-l-4 border-[#FBAF3F] p-3 rounded text-xs text-amber-900 space-y-1">
+              <strong>Pedagogical Trap:</strong> Labelling hands as "the big hand" and "the little hand", which strips the dials of their mathematical function[cite: 327].
+              <div class="text-xs text-amber-800 font-medium mt-1">
+                <strong>NESA Advice:</strong> Consistently use <em>hour hand</em> and <em>minute hand</em>[cite: 327]. Use geared clocks so teachers and students can observe the hour hand travel halfway between markers at half past[cite: 65, 328].
+              </div>
+            </div>
+          </div>
+
+          <!-- Deep Dive 4: Numerals Carry Two Values -->
+          <div class="border border-[#D1D2D4] rounded-xl p-5 bg-[#F4F6F9] hover:border-[#188296] transition-all">
+            <div class="flex items-center gap-2 mb-3">
+              <span class="w-7 h-7 rounded-full bg-[#0D2C6B] text-white flex items-center justify-center font-bold text-xs">4</span>
+              <h4 class="font-bold text-[#0D2C6B] text-base">Analog Numerals Represent Two Scales</h4>
+            </div>
+            <p class="text-sm text-[#4C4C4E] leading-relaxed">
+              On an analog clock, the numeral <span class="math-badge">2</span> represents 2 hours for the hour hand, but 10 minutes (two 5-minute intervals) for the minute hand[cite: 128].
+            </p>
+            <div class="mt-3 bg-amber-50 border-l-4 border-[#FBAF3F] p-3 rounded text-xs text-amber-900 space-y-1">
+              <strong>Pedagogical Trap:</strong> Students reading the minute hand pointing at 2 as "7:02" instead of "ten past seven"[cite: 129].
+              <div class="text-xs text-amber-800 font-medium mt-1">
+                <strong>NESA Advice:</strong> Introduce watch faces with separate scales for hours and minutes (e.g. Type B Navigator dials)[cite: 327]. Separate analog language (Part A) from digital language (Part B) in Stage 2[cite: 328].
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Callout Banner: Cultural Perspectives on Time -->
+        <div class="mt-6 p-4 bg-teal-50 border border-[#188296]/30 rounded-xl flex items-start gap-3">
+          <div class="p-2 bg-[#188296] text-white rounded-lg mt-0.5"><i data-lucide="globe" class="w-5 h-5"></i></div>
+          <div class="text-sm">
+            <h5 class="font-bold text-[#0D2C6B]">Aboriginal & Cultural Perspectives on Time (NESA Teaching Advice)</h5>
+            <p class="text-[#4C4C4E] mt-1 leading-relaxed">
+              In Early Stage 1 and Stage 1, time spans represent personal and contextual judgements[cite: 227]. Aboriginal concepts of time are deeply connected to environmental markers, cyclical seasonal changes, tides, and astronomical patterns[cite: 328]. Support students in code-switching between Australian Eastern Standard Time (EST) and cultural ways of knowing time[cite: 328]. When using phrases like <em>"a long time"</em>, recognise that 5 years, 500 years, or 50,000 years are all valid comparatives[cite: 228].
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 3: INTERACTIVE TOOL LAB (4 TOOLS)  -->
+      <!-- ========================================== -->
+      <section id="section-3" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+        <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
+          <div class="bg-[#188296] text-white p-2 rounded-lg">
+            <i data-lucide="sliders" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Section 3: Interactive Tool Lab</h3>
+            <p class="text-sm text-[#4C4C4E]">Four runnable manipulatives with real-time feedback for teacher demonstration and diagnostic exploration.</p>
+          </div>
+        </div>
+
+        <!-- Tool Lab Tabs -->
+        <div class="flex flex-wrap gap-2 border-b border-[#D1D2D4] pb-3 mb-6" id="toolTabs">
+          <button onclick="switchTool('balance')" id="tab-balance" class="tool-tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-[#0D2C6B] text-white transition-all flex items-center gap-2">
+            <i data-lucide="scale" class="w-4 h-4"></i> 1. Equal-Arm Balance
+          </button>
+          <button onclick="switchTool('clock')" id="tab-clock" class="tool-tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-[#F4F6F9] text-[#4C4C4E] hover:text-[#0D2C6B] transition-all flex items-center gap-2">
+            <i data-lucide="clock" class="w-4 h-4"></i> 2. Geared Clock Hands
+          </button>
+          <button onclick="switchTool('readclock')" id="tab-readclock" class="tool-tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-[#F4F6F9] text-[#4C4C4E] hover:text-[#0D2C6B] transition-all flex items-center gap-2">
+            <i data-lucide="eye" class="w-4 h-4"></i> 3. Dual-Dial Clock
+          </button>
+          <button onclick="switchTool('elapsed')" id="tab-elapsed" class="tool-tab-btn px-4 py-2 rounded-lg text-sm font-bold bg-[#F4F6F9] text-[#4C4C4E] hover:text-[#0D2C6B] transition-all flex items-center gap-2">
+            <i data-lucide="git-commit" class="w-4 h-4"></i> 4. Unscaled Timeline
+          </button>
+        </div>
+
+        <!-- TOOL CONTAINER 1: EQUAL-ARM BALANCE -->
+        <div id="tool-balance-panel" class="tool-panel">
+          <div class="bg-[#F4F6F9] rounded-xl p-5 border border-[#D1D2D4]">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296] bg-teal-100 px-2 py-0.5 rounded">Early Stage 1 & Stage 1</span>
+                <h4 class="text-lg font-bold text-[#0D2C6B] mt-1">Equal-Arm Balance: Which Side Goes Down?</h4>
+              </div>
+              <span id="balanceScore" class="text-xs font-mono font-bold bg-white px-3 py-1.5 rounded-md border border-[#D1D2D4] text-[#0D2C6B]">
+                0 of 0 correct
+              </span>
+            </div>
+            <p class="text-xs text-[#4C4C4E] mb-4">
+              Predict the tilt of the balance beam before releasing. NESA specifically recommends comparing objects that challenge the belief that larger items weigh more[cite: 226].
+            </p>
+
+            <!-- SVG Visual Display -->
+            <div class="bg-white rounded-xl p-4 border border-[#D1D2D4] flex flex-col items-center justify-center min-h-[260px] shadow-inner" id="balanceCanvas">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Controls -->
+            <div class="mt-4 flex flex-wrap items-center justify-center gap-2" id="balanceControls">
+              <button onclick="testBalance('l')" class="px-4 py-2 bg-[#0D2C6B] text-white rounded-lg text-sm font-bold hover:bg-[#188296] transition-all shadow-sm">
+                Left is Heavier
+              </button>
+              <button onclick="testBalance('s')" class="px-4 py-2 bg-[#4C4C4E] text-white rounded-lg text-sm font-bold hover:bg-gray-700 transition-all shadow-sm">
+                About the Same (Level)
+              </button>
+              <button onclick="testBalance('r')" class="px-4 py-2 bg-[#0D2C6B] text-white rounded-lg text-sm font-bold hover:bg-[#188296] transition-all shadow-sm">
+                Right is Heavier
+              </button>
+              <button onclick="nextBalancePair()" id="btnNextBalance" class="px-4 py-2 bg-white border border-[#D1D2D4] text-[#0D2C6B] rounded-lg text-sm font-bold hover:bg-gray-50 transition-all disabled:opacity-40" disabled>
+                Next Pair
+              </button>
+            </div>
+
+            <!-- Feedback Area -->
+            <div id="balanceFeedback" class="mt-4 hidden p-3 rounded-lg text-sm font-medium"></div>
+          </div>
+        </div>
+
+        <!-- TOOL CONTAINER 2: GEARED CLOCK HANDS -->
+        <div id="tool-clock-panel" class="tool-panel hidden">
+          <div class="bg-[#F4F6F9] rounded-xl p-5 border border-[#D1D2D4]">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296] bg-teal-100 px-2 py-0.5 rounded">Stage 1 & Stage 2</span>
+                <h4 class="text-lg font-bold text-[#0D2C6B] mt-1">Watch the Hour Hand: Continuous Travel vs Stuck Error</h4>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="setClockMode('move')" id="btnModeMove" class="px-3 py-1 rounded text-xs font-bold bg-[#0D2C6B] text-white border border-[#0D2C6B]">
+                  Hour Hand Moves
+                </button>
+                <button onclick="setClockMode('stuck')" id="btnModeStuck" class="px-3 py-1 rounded text-xs font-bold bg-white text-[#4C4C4E] border border-[#D1D2D4]">
+                  Hour Hand Stuck (Error Mode)
+                </button>
+              </div>
+            </div>
+            <p class="text-xs text-[#4C4C4E] mb-4">
+              Move the minute slider and observe how the hour hand moves smoothly between numerals. Earnest et al. (2018) identified that students frequently leave the hour hand pinned directly on the hour numeral at half past[cite: 328].
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              <div class="md:col-span-5 flex justify-center bg-white p-4 rounded-xl border border-[#D1D2D4] shadow-inner" id="clockSVGContainer">
+                <!-- SVG injected via JS -->
+              </div>
+              <div class="md:col-span-7 space-y-4">
+                <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] space-y-3">
+                  <div class="flex items-center justify-between">
+                    <label for="hourInput" class="text-xs font-bold uppercase text-[#4C4C4E]">Hour Marker:</label>
+                    <select id="hourInput" onchange="renderClock()" class="border border-[#D1D2D4] rounded-md px-3 py-1.5 text-sm font-bold text-[#0D2C6B]">
+                      <option value="1">1</option>
+                      <option value="2">2</option>
+                      <option value="3" selected>3</option>
+                      <option value="4">4</option>
+                      <option value="5">5</option>
+                      <option value="6">6</option>
+                      <option value="7">7</option>
+                      <option value="8">8</option>
+                      <option value="9">9</option>
+                      <option value="10">10</option>
+                      <option value="11">11</option>
+                      <option value="12">12</option>
+                    </select>
+                  </div>
+
+                  <div>
+                    <div class="flex items-center justify-between text-xs font-bold text-[#4C4C4E] mb-1">
+                      <span>Minute Hand Rotation:</span>
+                      <span id="minuteValueLabel" class="font-mono text-[#188296] text-sm">30 minutes</span>
+                    </div>
+                    <input type="range" id="minuteSlider" min="0" max="59" value="30" oninput="renderClock()" class="w-full accent-[#188296] cursor-pointer">
+                  </div>
+
+                  <!-- Quick Turn Presets -->
+                  <div class="grid grid-cols-4 gap-1.5 pt-2">
+                    <button onclick="setClockMinute(0)" class="px-2 py-1 text-xs rounded border border-[#D1D2D4] bg-[#F4F6F9] hover:bg-gray-100 font-semibold text-[#0D2C6B]">o’clock</button>
+                    <button onclick="setClockMinute(15)" class="px-2 py-1 text-xs rounded border border-[#D1D2D4] bg-[#F4F6F9] hover:bg-gray-100 font-semibold text-[#0D2C6B]">quarter past</button>
+                    <button onclick="setClockMinute(30)" class="px-2 py-1 text-xs rounded border border-[#D1D2D4] bg-[#F4F6F9] hover:bg-gray-100 font-semibold text-[#0D2C6B]">half past</button>
+                    <button onclick="setClockMinute(45)" class="px-2 py-1 text-xs rounded border border-[#D1D2D4] bg-[#F4F6F9] hover:bg-gray-100 font-semibold text-[#0D2C6B]">quarter to</button>
+                  </div>
+                </div>
+
+                <!-- Live Readout Box -->
+                <div id="clockReadoutBox" class="p-4 bg-white rounded-xl border border-[#188296] text-sm shadow-sm">
+                  <!-- Dynamic text injected via JS -->
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL CONTAINER 3: DUAL-DIAL CLOCK -->
+        <div id="tool-readclock-panel" class="tool-panel hidden">
+          <div class="bg-[#F4F6F9] rounded-xl p-5 border border-[#D1D2D4]">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296] bg-teal-100 px-2 py-0.5 rounded">Stage 2 Focus</span>
+                <h4 class="text-lg font-bold text-[#0D2C6B] mt-1">Read the Clock to the Minute Diagnostic</h4>
+              </div>
+              <span id="readScore" class="text-xs font-mono font-bold bg-white px-3 py-1.5 rounded-md border border-[#D1D2D4] text-[#0D2C6B]">
+                0 of 0 correct
+              </span>
+            </div>
+            <p class="text-xs text-[#4C4C4E] mb-4">
+              Each numeral on the clock face represents two values: the hour for the hour hand and 5-minute increments for the minute hand[cite: 128]. Identify the time shown from four diagnostic choices.
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-12 gap-6 items-center">
+              <div class="md:col-span-5 flex flex-col items-center bg-white p-4 rounded-xl border border-[#D1D2D4] shadow-inner">
+                <div id="readClockCanvas"></div>
+                <label class="mt-3 inline-flex items-center text-xs text-[#4C4C4E] cursor-pointer">
+                  <input type="checkbox" id="checkShowMinuteMarks" onchange="generateReadClock(true)" class="rounded text-[#188296] mr-2">
+                  Show 5-minute outer benchmark labels
+                </label>
+              </div>
+              <div class="md:col-span-7 space-y-3">
+                <div class="text-xs font-bold text-[#4C4C4E] uppercase tracking-wide">Select the correct time:</div>
+                <div id="readClockOptions" class="grid grid-cols-1 gap-2">
+                  <!-- Injected via JS -->
+                </div>
+                <div id="readClockFeedback" class="mt-3 hidden p-3 rounded-lg text-sm font-medium"></div>
+                <button onclick="generateReadClock(false)" id="btnNextReadClock" class="w-full py-2 bg-[#0D2C6B] text-white rounded-lg text-sm font-bold hover:bg-[#188296] transition-all disabled:opacity-40" disabled>
+                  Generate New Time
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL CONTAINER 4: UNSCALED TIMELINE -->
+        <div id="tool-elapsed-panel" class="tool-panel hidden">
+          <div class="bg-[#F4F6F9] rounded-xl p-5 border border-[#D1D2D4]">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-3">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296] bg-teal-100 px-2 py-0.5 rounded">Stage 3 Focus</span>
+                <h4 class="text-lg font-bold text-[#0D2C6B] mt-1">Elapsed Time on an Unscaled Timeline (Bridging to the Hour)</h4>
+              </div>
+              <div class="flex items-center gap-2">
+                <button onclick="setTimeFormat('12')" id="btnFmt12" class="px-3 py-1 rounded text-xs font-bold bg-[#0D2C6B] text-white border border-[#0D2C6B]">
+                  12-Hour (am/pm)
+                </button>
+                <button onclick="setTimeFormat('24')" id="btnFmt24" class="px-3 py-1 rounded text-xs font-bold bg-white text-[#4C4C4E] border border-[#D1D2D4]">
+                  24-Hour Time
+                </button>
+              </div>
+            </div>
+            <p class="text-xs text-[#4C4C4E] mb-4">
+              NESA Teaching Advice recommends unscaled timelines to bridge to the next hour, jump whole hours, and add remaining minutes to prevent students treating time as base-10 decimals[cite: 190].
+            </p>
+
+            <div class="bg-white p-4 rounded-xl border border-[#D1D2D4] mb-4 space-y-3">
+              <div class="flex flex-wrap items-center gap-4">
+                <div class="flex items-center gap-2">
+                  <label for="timelineStart" class="text-xs font-bold text-[#4C4C4E] uppercase">Start Time:</label>
+                  <input type="time" id="timelineStart" value="08:40" onchange="renderTimeline()" class="border border-[#D1D2D4] rounded px-2 py-1 text-sm font-mono font-bold text-[#0D2C6B]">
+                </div>
+                <div class="flex items-center gap-2">
+                  <label for="timelineEnd" class="text-xs font-bold text-[#4C4C4E] uppercase">Finish Time:</label>
+                  <input type="time" id="timelineEnd" value="11:05" onchange="renderTimeline()" class="border border-[#D1D2D4] rounded px-2 py-1 text-sm font-mono font-bold text-[#0D2C6B]">
+                </div>
+                <button onclick="renderTimeline()" class="px-4 py-1.5 bg-[#188296] text-white text-sm font-bold rounded-lg hover:bg-[#0D2C6B] transition-all">
+                  Calculate Jumps
+                </button>
+              </div>
+
+              <!-- Quick Presets -->
+              <div class="flex flex-wrap items-center gap-2 pt-1 text-xs">
+                <span class="text-gray-500 font-medium">Syllabus Exemplars:</span>
+                <button onclick="setTimelinePreset('08:40', '11:05')" class="px-2 py-1 bg-[#F4F6F9] hover:bg-gray-100 rounded border border-[#D1D2D4] text-[#0D2C6B] font-semibold">School Start to Recess (8:40 am &rarr; 11:05 am)[cite: 190]</button>
+                <button onclick="setTimelinePreset('14:45', '17:00')" class="px-2 py-1 bg-[#F4F6F9] hover:bg-gray-100 rounded border border-[#D1D2D4] text-[#0D2C6B] font-semibold">Afternoon Excursion (2:45 pm &rarr; 5:00 pm)[cite: 190]</button>
+                <button onclick="setTimelinePreset('09:15', '14:35')" class="px-2 py-1 bg-[#F4F6F9] hover:bg-gray-100 rounded border border-[#D1D2D4] text-[#0D2C6B] font-semibold">Day Excursion (0915 &rarr; 1435)</button>
+              </div>
+            </div>
+
+            <!-- Dynamic Timeline SVG -->
+            <div class="bg-white rounded-xl p-4 border border-[#D1D2D4] overflow-x-auto custom-scrollbar shadow-inner" id="timelineSVGContainer">
+              <!-- Rendered via JS -->
+            </div>
+
+            <!-- Detailed Pedagogical Calculation Breakdown -->
+            <div id="timelineBreakdown" class="mt-4 p-4 bg-white rounded-xl border border-[#188296] text-sm">
+              <!-- Injected via JS -->
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 4: DIAGNOSTIC CLINIC & SORTER      -->
+      <!-- ========================================== -->
+      <section id="section-4" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+        <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
+          <div class="bg-[#0D2C6B] text-white p-2 rounded-lg">
+            <i data-lucide="stethoscope" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Section 4: Student Diagnostic Clinic & Root Misconceptions</h3>
+            <p class="text-sm text-[#4C4C4E]">Analyse authentic student dialogue and categorise errors into the 4 fundamental conceptual roots.</p>
+          </div>
+        </div>
+
+        <!-- The 4 Roots Reference Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mb-6">
+          <div class="p-3 bg-blue-50 border border-blue-200 rounded-lg">
+            <span class="text-xs font-bold text-[#0D2C6B] block">Root 1</span>
+            <strong class="text-sm text-[#0D2C6B] block font-bold">Mass Judged by Size/Appearance</strong>
+            <p class="text-xs text-gray-600 mt-1">Conflating visual volume with mass; believing deformation changes matter[cite: 226].</p>
+          </div>
+          <div class="p-3 bg-teal-50 border border-teal-200 rounded-lg">
+            <span class="text-xs font-bold text-[#188296] block">Root 2</span>
+            <strong class="text-sm text-[#188296] block font-bold">Time Treated as Base 10</strong>
+            <p class="text-xs text-gray-600 mt-1">Assuming an hour has 100 minutes; subtracting durations as standard decimals[cite: 191].</p>
+          </div>
+          <div class="p-3 bg-amber-50 border border-amber-200 rounded-lg">
+            <span class="text-xs font-bold text-amber-800 block">Root 3</span>
+            <strong class="text-sm text-amber-900 block font-bold">Clock Hands & Notation Misread</strong>
+            <p class="text-xs text-gray-600 mt-1">Ignoring hour hand travel; reading dial numerals directly as minute counts[cite: 128, 328].</p>
+          </div>
+          <div class="p-3 bg-purple-50 border border-purple-200 rounded-lg">
+            <span class="text-xs font-bold text-purple-800 block">Root 4</span>
+            <strong class="text-sm text-purple-900 block font-bold">Moment in Time Confused with Duration</strong>
+            <p class="text-xs text-gray-600 mt-1">Answering "when" instead of "how long"; giving timestamp instead of elapsed interval.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Misconception Sorter -->
+        <div class="bg-[#F4F6F9] rounded-xl p-5 border border-[#D1D2D4]">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 mb-4">
+            <div>
+              <h4 class="text-base font-bold text-[#0D2C6B]">Interactive 4-Root Misconception Sorter</h4>
+              <p class="text-xs text-gray-500">Read each student scenario and diagnose its underlying conceptual root.</p>
+            </div>
+            <div class="text-xs font-mono font-bold text-[#188296] bg-white px-3 py-1.5 rounded-md border border-[#D1D2D4]" id="sorterProgress">
+              Scenario 1 of 12
+            </div>
+          </div>
+
+          <!-- Scenario Card -->
+          <div class="bg-white rounded-xl p-5 border border-[#D1D2D4] shadow-sm mb-4" id="sorterCard">
+            <!-- Dynamic scenario injected via JS -->
+          </div>
+
+          <!-- Diagnosis Buttons -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="sorterButtons">
+            <button onclick="diagnoseScenario(0)" class="p-3 text-left bg-white border border-[#D1D2D4] hover:border-[#0D2C6B] hover:bg-blue-50/50 rounded-lg text-xs sm:text-sm font-semibold text-[#0D2C6B] transition-all flex items-center justify-between">
+              <span>Root 1: Mass judged by size or appearance</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+            </button>
+            <button onclick="diagnoseScenario(1)" class="p-3 text-left bg-white border border-[#D1D2D4] hover:border-[#0D2C6B] hover:bg-blue-50/50 rounded-lg text-xs sm:text-sm font-semibold text-[#0D2C6B] transition-all flex items-center justify-between">
+              <span>Root 2: Time treated as base 10</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+            </button>
+            <button onclick="diagnoseScenario(2)" class="p-3 text-left bg-white border border-[#D1D2D4] hover:border-[#0D2C6B] hover:bg-blue-50/50 rounded-lg text-xs sm:text-sm font-semibold text-[#0D2C6B] transition-all flex items-center justify-between">
+              <span>Root 3: Clock hands and notation misread</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+            </button>
+            <button onclick="diagnoseScenario(3)" class="p-3 text-left bg-white border border-[#D1D2D4] hover:border-[#0D2C6B] hover:bg-blue-50/50 rounded-lg text-xs sm:text-sm font-semibold text-[#0D2C6B] transition-all flex items-center justify-between">
+              <span>Root 4: A moment in time confused with duration</span>
+              <i data-lucide="chevron-right" class="w-4 h-4 text-gray-400"></i>
+            </button>
+          </div>
+
+          <!-- Sorter Feedback -->
+          <div id="sorterFeedback" class="mt-4 hidden p-4 rounded-xl text-sm font-medium"></div>
+
+          <div class="mt-4 flex justify-between items-center">
+            <button onclick="prevScenario()" id="btnPrevScenario" class="px-3 py-1.5 text-xs font-bold text-gray-500 hover:text-[#0D2C6B] disabled:opacity-30" disabled>
+              &larr; Previous Scenario
+            </button>
+            <button onclick="nextScenario()" id="btnNextScenario" class="px-4 py-2 bg-[#0D2C6B] text-white text-xs font-bold rounded-lg hover:bg-[#188296] transition-all disabled:opacity-40" disabled>
+              Next Scenario &rarr;
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 5: TASK MAKEOVER STUDIO (MAO-WM-01)-->
+      <!-- ========================================== -->
+      <section id="section-5" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+        <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
+          <div class="bg-[#FBAF3F] text-[#0D2C6B] p-2 rounded-lg">
+            <i data-lucide="sparkles" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Section 5: Task Makeover Studio (Working Mathematically)</h3>
+            <p class="text-sm text-[#4C4C4E]">Transform closed procedural worksheets into high-yield, reasoning-rich tasks embedded in MAO-WM-01.</p>
+          </div>
+        </div>
+
+        <!-- Before / After Tabs -->
+        <div class="flex flex-wrap gap-2 mb-6" id="makeoverStageTabs">
+          <button onclick="switchMakeover('es1')" id="mbtn-es1" class="px-3 py-1.5 text-xs sm:text-sm font-bold rounded-lg border border-[#D1D2D4] bg-[#0D2C6B] text-white">
+            Early Stage 1: Mass & Duration
+          </button>
+          <button onclick="switchMakeover('s1')" id="mbtn-s1" class="px-3 py-1.5 text-xs sm:text-sm font-bold rounded-lg border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] hover:text-[#0D2C6B]">
+            Stage 1: Half-Past Clock Dynamics
+          </button>
+          <button onclick="switchMakeover('s2')" id="mbtn-s2" class="px-3 py-1.5 text-xs sm:text-sm font-bold rounded-lg border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] hover:text-[#0D2C6B]">
+            Stage 2: The Two-Value Numeral
+          </button>
+          <button onclick="switchMakeover('s3')" id="mbtn-s3" class="px-3 py-1.5 text-xs sm:text-sm font-bold rounded-lg border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] hover:text-[#0D2C6B]">
+            Stage 3: Timetable & Elapsed Time
+          </button>
+        </div>
+
+        <!-- Makeover Side-by-Side Container -->
+        <div id="makeoverContentCard" class="bg-[#F4F6F9] rounded-xl p-5 border border-[#D1D2D4]">
+          <!-- Injected via JS -->
+        </div>
+
+        <!-- The 5 High-Yield Pedagogical Moves Interactive Showcase -->
+        <div class="mt-8 pt-6 border-t border-[#D1D2D4]">
+          <h4 class="text-lg font-black text-[#0D2C6B] mb-2">The 5 High-Yield Pedagogical Moves</h4>
+          <p class="text-xs text-[#4C4C4E] mb-4">Five flexible questioning routines to spark mathematical argument, conjecture, and justification.</p>
+
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2 mb-4" id="movesButtons">
+            <button onclick="showPedMove(0)" id="pmove-0" class="p-2 text-xs font-bold rounded-lg border border-[#D1D2D4] bg-[#0D2C6B] text-white text-center">
+              Who is correct?
+            </button>
+            <button onclick="showPedMove(1)" id="pmove-1" class="p-2 text-xs font-bold rounded-lg border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] text-center hover:bg-gray-100">
+              Same &amp; different
+            </button>
+            <button onclick="showPedMove(2)" id="pmove-2" class="p-2 text-xs font-bold rounded-lg border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] text-center hover:bg-gray-100">
+              Always, sometimes, never
+            </button>
+            <button onclick="showPedMove(3)" id="pmove-3" class="p-2 text-xs font-bold rounded-lg border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] text-center hover:bg-gray-100">
+              Open it up
+            </button>
+            <button onclick="showPedMove(4)" id="pmove-4" class="p-2 text-xs font-bold rounded-lg border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] text-center hover:bg-gray-100">
+              Convince me
+            </button>
+          </div>
+
+          <div id="pedMoveCard" class="bg-white p-5 rounded-xl border border-[#188296] shadow-sm">
+            <!-- Dynamic Ped Move content -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 6: MODULE MASTERY CHECKPOINT       -->
+      <!-- ========================================== -->
+      <section id="section-6" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+        <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
+          <div class="bg-[#0D2C6B] text-white p-2 rounded-lg">
+            <i data-lucide="check-circle-2" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Section 6: Module Mastery Checkpoint</h3>
+            <p class="text-sm text-[#4C4C4E]">Five scenario-based questions mapped to the NESA Teaching Advice. Achieve 80% to reveal the Key Pedagogical Takeaways summary.</p>
+          </div>
+        </div>
+
+        <div id="quizContainer" class="space-y-6">
+          <!-- Quiz Questions Injected via JS -->
+        </div>
+
+        <div class="mt-8 pt-4 border-t border-[#D1D2D4] flex flex-col sm:flex-row items-center justify-between gap-4">
+          <div class="text-sm">
+            <span id="quizStatusText" class="font-bold text-[#0D2C6B]">Answer all 5 questions above.</span>
+          </div>
+          <button onclick="submitMasteryQuiz()" id="btnSubmitQuiz" class="px-6 py-2.5 bg-[#0D2C6B] text-white font-bold rounded-lg hover:bg-[#188296] transition-all shadow-md">
+            Submit Assessment
+          </button>
+        </div>
+
+        <!-- REVEALED TAKEAWAYS SECTION (ON PASSING 80%) -->
+        <div id="takeawaysContainer" class="mt-8 pt-6 border-t-2 border-[#188296] hidden">
+          <div class="bg-gradient-to-r from-teal-50 to-blue-50 border border-[#188296] rounded-xl p-6 shadow-sm">
+            <div class="flex items-center gap-3 mb-4">
+              <div class="p-2 bg-[#188296] text-white rounded-lg"><i data-lucide="award" class="w-6 h-6"></i></div>
+              <div>
+                <h4 class="text-lg font-black text-[#0D2C6B]">Key Pedagogical Takeaways (K–6 Continuum)</h4>
+                <p class="text-xs text-[#4C4C4E]">Executive synthesis for curriculum planning and stage team moderation.</p>
+              </div>
+            </div>
+
+            <div class="overflow-x-auto custom-scrollbar">
+              <table class="w-full text-left text-xs sm:text-sm border-collapse bg-white rounded-lg overflow-hidden border border-[#D1D2D4]">
+                <thead>
+                  <tr class="bg-[#0D2C6B] text-white">
+                    <th class="p-3 font-bold border border-white/20">Stage</th>
+                    <th class="p-3 font-bold border border-white/20">Strand</th>
+                    <th class="p-3 font-bold border border-white/20">Core Mathematical Shift</th>
+                    <th class="p-3 font-bold border border-white/20">Essential Teacher Move</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-gray-200 text-[#4C4C4E]">
+                  <tr>
+                    <td class="p-3 font-bold text-[#0D2C6B]">Early Stage 1</td>
+                    <td class="p-3 font-semibold text-[#188296]">Mass</td>
+                    <td class="p-3">Physical hefting; size does not decide weight[cite: 226].</td>
+                    <td class="p-3">Use surprise pairs (large light vs small heavy) with real objects[cite: 226].</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="p-3 font-bold text-[#0D2C6B]">Early Stage 1</td>
+                    <td class="p-3 font-semibold text-[#188296]">Time</td>
+                    <td class="p-3">Personal &amp; cultural sequences; o’clock numerals describe hours[cite: 227, 28].</td>
+                    <td class="p-3">Connect days to routines; build clock layouts using numeral cards around hoops[cite: 227, 28].</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold text-[#0D2C6B]">Stage 1</td>
+                    <td class="p-3 font-semibold text-[#188296]">Mass</td>
+                    <td class="p-3">Conservation of mass; uniform informal units on equal-arm balance[cite: 262, 66].</td>
+                    <td class="p-3">Reshape plasticine to prove invariance; emphasize identical informal units[cite: 262, 66].</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="p-3 font-bold text-[#0D2C6B]">Stage 1</td>
+                    <td class="p-3 font-semibold text-[#188296]">Time</td>
+                    <td class="p-3">Half &amp; quarter turns; hour hand travels halfway between numerals[cite: 65, 67].</td>
+                    <td class="p-3">Say 'hour hand' and 'minute hand'; watch the hour hand travel smoothly[cite: 263, 65].</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold text-[#0D2C6B]">Stage 2</td>
+                    <td class="p-3 font-semibold text-[#188296]">Mass</td>
+                    <td class="p-3">Standard kilograms and grams on scaled dials; fractions of a kg[cite: 327, 130].</td>
+                    <td class="p-3">Use kitchen scales and real benchmark items (1 kg flour, 60 g egg)[cite: 127, 130].</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="p-3 font-bold text-[#0D2C6B]">Stage 2</td>
+                    <td class="p-3 font-semibold text-[#188296]">Time</td>
+                    <td class="p-3">Each dial numeral represents two values; reading analog to the minute[cite: 128, 129].</td>
+                    <td class="p-3">Separate analog (Part A) from digital (Part B); use dual-scale Navigator dials[cite: 327, 328].</td>
+                  </tr>
+                  <tr>
+                    <td class="p-3 font-bold text-[#0D2C6B]">Stage 3</td>
+                    <td class="p-3 font-semibold text-[#188296]">Mass</td>
+                    <td class="p-3">Tonnes, metric units of 1000, 3-decimal notation, gross vs net[cite: 188, 190].</td>
+                    <td class="p-3">Place value charts to thousandths; subtract container tare mass[cite: 141, 188].</td>
+                  </tr>
+                  <tr class="bg-gray-50">
+                    <td class="p-3 font-bold text-[#0D2C6B]">Stage 3</td>
+                    <td class="p-3 font-semibold text-[#188296]">Time</td>
+                    <td class="p-3">24-hour time; elapsed time bridging; base-60 vs decimal hours[cite: 189, 190, 191].</td>
+                    <td class="p-3">Use unscaled timelines to bridge the hour; explicitly model that 1.5 h = 90 min[cite: 190, 191].</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Stage Team Commitment Prompts -->
+            <div class="mt-6 p-4 bg-white rounded-lg border border-[#D1D2D4]">
+              <h5 class="font-bold text-[#0D2C6B] text-sm flex items-center gap-1.5 mb-2">
+                <i data-lucide="check-square" class="w-4 h-4 text-[#FBAF3F]"></i> Professional Action Commitments
+              </h5>
+              <ul class="text-xs text-[#4C4C4E] space-y-1.5 list-disc pl-5">
+                <li>Identify one quick diagnostic check to run with three diverse students in your class over the next fortnight.</li>
+                <li>Audit your classroom materials to ensure mass tasks feature physical weighing rather than textbook illustrations[cite: 327].</li>
+                <li>Ensure all staff and students consistently say <em>hour hand</em> and <em>minute hand</em> rather than "big hand" and "little hand"[cite: 327].</li>
+                <li>Introduce unscaled timelines for calculating elapsed time across Years 3–6 to safeguard against decimal subtraction errors[cite: 190].</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================== -->
+      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE     -->
+      <!-- ========================================== -->
+      <section id="section-7" class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 lg:p-8">
+        <div class="flex items-center space-x-3 border-b border-[#D1D2D4] pb-4 mb-6">
+          <div class="bg-[#0D2C6B] text-white p-2 rounded-lg">
+            <i data-lucide="share-2" class="w-6 h-6"></i>
+          </div>
+          <div>
+            <h3 class="text-xl font-black text-[#0D2C6B]">Section 7: Canvas LMS Deployment Guide</h3>
+            <p class="text-sm text-[#4C4C4E]">Technical instructions for hosting on GitHub Pages and embedding into Canvas LMS courses or staff portals.</p>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+
+          <!-- Method 1: GitHub Pages & Iframe -->
+          <div class="p-5 bg-[#F4F6F9] rounded-xl border border-[#D1D2D4]">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#188296] bg-teal-100 px-2 py-0.5 rounded">Recommended Method</span>
+            <h4 class="text-base font-bold text-[#0D2C6B] mt-2 mb-2">Host via GitHub Pages &amp; Embed via iframe</h4>
+            <ol class="text-xs text-[#4C4C4E] space-y-2 list-decimal pl-4">
+              <li>Save this file as <span class="font-mono bg-white px-1.5 py-0.5 rounded border border-gray-300">index.html</span> in your GitHub repository.</li>
+              <li>Go to <strong>Settings &rarr; Pages</strong> and enable GitHub Pages from the <span class="font-mono">main</span> branch.</li>
+              <li>In your Canvas LMS Course, create a new <strong>Page</strong>.</li>
+              <li>Switch to the <strong>HTML View (&lt;/&gt;)</strong> in the Canvas Rich Content Editor.</li>
+              <li>Paste the responsive iframe embed snippet below.</li>
+            </ol>
+          </div>
+
+          <!-- Method 2: Direct Canvas HTML File Upload -->
+          <div class="p-5 bg-[#F4F6F9] rounded-xl border border-[#D1D2D4]">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#0D2C6B] bg-blue-100 px-2 py-0.5 rounded">Alternative Method</span>
+            <h4 class="text-base font-bold text-[#0D2C6B] mt-2 mb-2">Direct Canvas Files Upload</h4>
+            <ol class="text-xs text-[#4C4C4E] space-y-2 list-decimal pl-4">
+              <li>Navigate to your Canvas course and select <strong>Files</strong> in the course navigation.</li>
+              <li>Upload this single self-contained <span class="font-mono bg-white px-1.5 py-0.5 rounded border border-gray-300">non-spatial-measure.html</span> file.</li>
+              <li>Click the three vertical dots next to the uploaded file and select <strong>Publish</strong>.</li>
+              <li>Link the file directly in a Canvas Module or embed it inside an iframe pointing to the Canvas file preview URL.</li>
+            </ol>
+          </div>
+
+        </div>
+
+        <!-- Copyable Embed Code Snippet -->
+        <div class="mt-6">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-bold uppercase tracking-wide text-[#4C4C4E]">Responsive Canvas Embed Code:</span>
+            <button onclick="copyEmbedCode()" id="btnCopyCode" class="text-xs font-bold text-[#188296] hover:text-[#0D2C6B] flex items-center gap-1">
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Snippet
+            </button>
+          </div>
+          <div class="relative">
+            <pre class="bg-gray-900 text-gray-100 p-4 rounded-xl text-xs font-mono overflow-x-auto custom-scrollbar border border-gray-800" id="embedCodeSnippet">&lt;div style="position: relative; width: 100%; height: 0; padding-bottom: 85%; min-height: 750px; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);"&gt;
+  &lt;iframe 
+    src="https://your-diocese-username.github.io/non-spatial-measure/" 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+    title="Non-Spatial Measure K-6 Professional Learning Module" 
+    allow="fullscreen" 
+    loading="lazy"&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;</pre>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-[#0D2C6B] text-white border-t border-white/10 mt-12 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row justify-between items-center gap-4">
+      <div>
+        <h5 class="font-bold text-white tracking-wide">Catholic Education Diocese of Wollongong</h5>
+        <p class="text-xs text-slate-300 mt-1">
+          NSW Mathematics K–10 (2022) Syllabus Professional Learning Continuum.
+        </p>
+      </div>
+      <div class="text-xs text-slate-400">
+        Focus Area: Non-Spatial Measure &bull; Single-File Architecture &bull; Australian English Orthography
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================= -->
+  <!-- SINGLE-FILE CLIENT JAVASCRIPT: DATA, MODELS & LOGIC           -->
+  <!-- ============================================================= -->
+  <script>
+    /* -----------------------------------------------------------
+       DATA REPOSITORY: SYLLABUS, BIG IDEAS & PEDAGOGY
+    ----------------------------------------------------------- */
+    const STAGE_DATA = {
+      es1: {
+        title: "Early Stage 1 (Kindergarten)",
+        focus: "Non-spatial measure",
+        outcomes: [
+          { code: "MAE-NSM-01", text: "describes and compares the masses of objects" },
+          { code: "MAE-NSM-02", text: "sequences events and reads hour time on clocks" }
+        ],
+        wm: "Predict which object would be heavier than, lighter than, or have about the same weight as another object and explain reasons for this prediction (Reasons about relations).",
+        massHighlights: [
+          "Direct comparison of two masses by sensory hefting.",
+          "Identify that objects can be heavy or light.",
+          "NESA Teaching Advice: Compare two objects that are quite different in mass.",
+          "Include objects that are large but light, small but heavy, and large but lighter than a smaller object."
+        ],
+        timeHighlights: [
+          "Sequence events in time using terms such as before, after, next, daytime, night-time, today, tomorrow, yesterday.",
+          "Connect the 7 days of the week to familiar class routines.",
+          "Create analog clock layouts using numeral cards positioned around a hoop.",
+          "Read analog and digital clocks to the hour using 'o’clock'."
+        ],
+        traps: "Belief that bigger objects are always heavier; confusion between 'long'/'short' as spatial length vs temporal duration."
+      },
+      s1: {
+        title: "Stage 1 (Years 1–2)",
+        focus: "Non-spatial measure A & B",
+        outcomes: [
+          { code: "MA1-NSM-01", text: "measures, records, compares and estimates the masses of objects using uniform informal units" },
+          { code: "MA1-NSM-02", text: "describes, compares and orders durations of events, and reads half- and quarter-hour time" }
+        ],
+        wm: "Explain why the hour hand on a clock is halfway between successive hour-markers when the minute hand shows the half-hour (Reasons about relations). Predict balance beam actions and explain unit size relationships.",
+        massHighlights: [
+          "Use an equal-arm balance to obtain a level balance and compare two masses.",
+          "Measure mass using uniform informal units (e.g. counting identical blocks or counters).",
+          "Recognise that mass is conserved: mass remains constant regardless of whether a ball of plasticine is moulded into a snake or divided.",
+          "Explain the relationship between unit mass and number of units needed (more toothpicks than pop sticks)."
+        ],
+        timeHighlights: [
+          "Name and order the cycle of months; connect monthly and annual cycles (Gregorian, Aboriginal, Lunar calendars).",
+          "Read analog clocks to the half-hour using 'half past' and relate to half-turns of the minute hand.",
+          "Read analog clocks to the quarter-hour using 'past' and 'to', relating to quarter turns.",
+          "Associate numerals 3, 6, and 9 with 15, 30, and 45 minutes.",
+          "Measure duration with repeated informal units (e.g. claps while the teacher writes a name)."
+        ],
+        traps: "Assuming reshaped plasticine changes mass; pointing the hour hand directly at 3 for half-past three; using non-uniform informal units like pebbles."
+      },
+      s2: {
+        title: "Stage 2 (Years 3–4)",
+        focus: "Non-spatial measure A & B",
+        outcomes: [
+          { code: "MA2-NSM-01", text: "estimates, measures and compares the masses of objects using kilograms and grams" },
+          { code: "MA2-NSM-02", text: "represents and interprets analog and digital time in hours, minutes and seconds" }
+        ],
+        wm: "Every content point addresses MAO-WM-01. Build reasoning by interrogating the dual values of numerals and justifying benchmark estimations.",
+        massHighlights: [
+          "Recognise the need for a formal unit to measure mass accurately.",
+          "Identify familiar objects of about 1 kg (e.g. 1 kg pack of flour, 1 L milk).",
+          "Relate 1000 grams to one kilogram using scaled instruments.",
+          "Interpret benchmark fractions of a kilogram: 1/2 kg (500 g), 1/4 kg (250 g), 3/4 kg (750 g).",
+          "Record masses as kilograms and grams (e.g. 1 kg 200 grams)."
+        ],
+        timeHighlights: [
+          "Separation by instrument: Analog clocks in Part A; Digital displays, seconds, and am/pm in Part B.",
+          "Recognise that a numeral on the clock face represents two values (e.g. 2 means 2 hours or 10 minutes).",
+          "Use 5-minute intervals as benchmarks (e.g. 4:19 is about twenty past four).",
+          "Read analog clocks to the minute: past the hour to half-past, then towards the next hour.",
+          "Use '12 noon' or '12 midday' and '12 midnight' rather than am/pm forms.",
+          "Determine the time remaining until the next hour on a digital clock (e.g. 4:57 is 3 minutes to five)."
+        ],
+        traps: "Reading the minute hand on the 2 as '7:02'; reading 6:40 as 'twenty to six'; reading 4:00 as 'four, zero, zero'."
+      },
+      s3: {
+        title: "Stage 3 (Years 5–6)",
+        focus: "Non-spatial measure A & B",
+        outcomes: [
+          { code: "MA3-NSM-01", text: "selects and uses the appropriate unit and device to measure the masses of objects" },
+          { code: "MA3-NSM-02", text: "measures and compares duration, using 12- and 24-hour time and am and pm notation" }
+        ],
+        wm: "Apply mental bridging techniques on unscaled timelines and justify unit choices across complex multi-step conversions.",
+        massHighlights: [
+          "Select the appropriate unit and device (electronic scales for school bags in kg; kitchen scales for ingredients in g).",
+          "Recognise situations measured in tonnes (t): trucks at a weighing station.",
+          "Connect decimal representations to metric units of 1000: 3 kg 250 g = 3.25 kg; 2.08 kg = 2 kg 80 g (to 3 decimal places).",
+          "Convert between grams, kilograms, and tonnes (1250 g = 1.25 kg; 4.32 t = 4320 kg).",
+          "Differentiate between gross mass (container + contents) and net mass (contents only)."
+        ],
+        timeHighlights: [
+          "Recognise that 24-hour time avoids am/pm confusion; read 1800 hours as 'eighteen-hundred hours'.",
+          "Convert between 12-hour and 24-hour time (e.g. 11:30 pm is 2330 hours).",
+          "Read, interpret, and use real timetables from transport networks.",
+          "Calculate elapsed time by bridging to the next hour on an unscaled timeline.",
+          "Represent intervals as decimals: 2.25 hours = 2 hours 15 minutes; explicitly recognise that 1.5 hours is 1 hour 30 minutes, NOT 1 hour 50 minutes."
+        ],
+        traps: "Treating time as base 10 (e.g. 1.5 h = 1 h 50 min; subtracting 5.00 &minus; 2.45 = 2.55); misinterpreting 2.08 kg as 2 kg 8 g; giving finish time instead of elapsed duration."
+      }
+    };
+
+    const BIG_IDEAS = [
+      {
+        id: 0,
+        title: "Mass Isn't Decided by Size",
+        summary: "Objects with identical volume can have vastly different masses; deformation does not alter mass.",
+        es1: "Hefting large-light and small-heavy items directly[cite: 226].",
+        s1: "Conservation of mass: reshaping plasticine into a snake does not alter balance[cite: 66].",
+        s2: "Use real objects on scales; avoid textbook drawings that reinforce 'bigger is heavier'[cite: 327].",
+        s3: "Differentiate gross mass from net mass; containers add volume without net product."
+      },
+      {
+        id: 1,
+        title: "Measuring Mass Needs a Unit",
+        summary: "Progressing from direct bodily resistance to uniform informal units and formal metric measures.",
+        es1: "Sensory hefting and feeling resistance against the body or lap[cite: 227, 228].",
+        s1: "Balancing with uniform informal units (blocks, pop sticks); non-uniform items fail[cite: 262].",
+        s2: "Formal units: kilograms and grams read from calibrated dial and digital scales[cite: 327].",
+        s3: "Selecting instruments by capacity and precision: kitchen scales vs weighbridges[cite: 188]."
+      },
+      {
+        id: 2,
+        title: "Metric Mass Uses Units of 1000",
+        summary: "Grams, kilograms, and tonnes rely on powers of 1000, aligning with decimal place value.",
+        es1: "Comparative vocabulary: heavy, heavier, heaviest; light, lighter, lightest[cite: 229].",
+        s1: "Unit size relationship: more light toothpicks needed than heavy pop sticks[cite: 66].",
+        s2: "Benchmark fractions: 1/2 kg = 500 g, 1/4 kg = 250 g, 3/4 kg = 750 g[cite: 130].",
+        s3: "Converting decimals to 3 places: 2.08 kg = 2080 g; 4.32 t = 4320 kg[cite: 188, 190]."
+      },
+      {
+        id: 3,
+        title: "Time is Sequence & Duration",
+        summary: "Moments in time (when an event occurs) differ fundamentally from durations (how long it lasts).",
+        es1: "Sequencing daily routines, before/after, and identifying days of the week[cite: 227].",
+        s1: "Annual calendar cycles (Aboriginal, Lunar, Gregorian); measuring duration in claps[cite: 64, 67].",
+        s2: "Using minutes and seconds to describe duration; identifying time to the next hour[cite: 127, 131].",
+        s3: "Calculating elapsed time from start and finish times using timeline bridging[cite: 190]."
+      },
+      {
+        id: 4,
+        title: "Clocks Show Turns & Base 60",
+        summary: "The minute hand completes a 360-degree revolution each hour while the hour hand travels 30 degrees.",
+        es1: "O’clock time; recognizing that numerals around the hoop represent hours[cite: 228, 28].",
+        s1: "Half and quarter turns; hour hand travels halfway between numerals at half past[cite: 65, 67].",
+        s2: "Dual values: numeral 2 represents 2 hours or 10 minutes; reading to the minute[cite: 128, 129].",
+        s3: "Regrouping in units of 60 rather than 100; decimal hours (1.5 h = 90 min)[cite: 191]."
+      },
+      {
+        id: 5,
+        title: "Time Has Multiple Representations",
+        summary: "Navigating between analog, digital, am/pm, 24-hour systems, and cultural perspectives.",
+        es1: "Connecting days of the week to personal events and Aboriginal concepts of time[cite: 227].",
+        s1: "Relating analog turns to digital time displays; days in months[cite: 64, 65].",
+        s2: "Separate analog language (Part A) from digital precise language (Part B); noon and midnight[cite: 328, 330].",
+        s3: "24-hour system (1800 hours) to eliminate am/pm ambiguity; reading transport timetables[cite: 189, 190]."
+      }
+    ];
+
+    /* -----------------------------------------------------------
+       SECTION 1: RENDER STAGE CONTENT & MATRIX
+    ----------------------------------------------------------- */
+    function switchStage(stageKey) {
+      document.querySelectorAll('.stage-tab-btn').forEach(btn => btn.classList.remove('tab-active'));
+      document.getElementById('btn-' + stageKey).classList.add('tab-active');
+
+      const data = STAGE_DATA[stageKey];
+      let outcomesHtml = data.outcomes.map(o => `
+        <div class="bg-white p-2.5 rounded-lg border border-[#D1D2D4] shadow-xs">
+          <span class="font-mono text-xs font-bold text-[#0D2C6B] bg-blue-50 px-1.5 py-0.5 rounded">${o.code}</span>
+          <span class="text-xs text-[#231F20] font-medium ml-1.5">${o.text}</span>
+        </div>
+      `).join('');
+
+      let massList = data.massHighlights.map(h => `<li class="flex items-start gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-[#188296] flex-shrink-0 mt-0.5"></i><span>${h}</span></li>`).join('');
+      let timeList = data.timeHighlights.map(h => `<li class="flex items-start gap-1.5"><i data-lucide="check" class="w-3.5 h-3.5 text-[#0D2C6B] flex-shrink-0 mt-0.5"></i><span>${h}</span></li>`).join('');
+
+      document.getElementById('stageContentCard').innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 border-b border-[#D1D2D4] pb-3 mb-4">
+          <div>
+            <span class="text-xs font-bold text-[#188296] uppercase tracking-wider">${data.focus}</span>
+            <h4 class="text-lg font-black text-[#0D2C6B]">${data.title}</h4>
+          </div>
+          <span class="text-xs bg-white text-[#4C4C4E] px-3 py-1 rounded-full border border-[#D1D2D4] font-semibold">NESA NSW Syllabus (2022)</span>
+        </div>
+
+        <div class="space-y-4 text-xs sm:text-sm">
+          <div>
+            <div class="text-xs font-bold text-[#4C4C4E] uppercase tracking-wide mb-1.5">Formal Syllabus Outcomes:</div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2">${outcomesHtml}</div>
+          </div>
+
+          <div class="bg-amber-50/70 border-l-4 border-[#FBAF3F] p-3 rounded text-xs text-amber-900">
+            <strong>Working Mathematically Alignment (MAO-WM-01):</strong> ${data.wm}
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2">
+            <div class="bg-white p-3.5 rounded-lg border border-[#D1D2D4]">
+              <strong class="text-xs font-bold text-[#188296] uppercase tracking-wide flex items-center gap-1.5 mb-2">
+                <i data-lucide="scale" class="w-4 h-4"></i> Mass Learning Milestones
+              </strong>
+              <ul class="space-y-1.5 text-xs text-[#4C4C4E]">${massList}</ul>
+            </div>
+            <div class="bg-white p-3.5 rounded-lg border border-[#D1D2D4]">
+              <strong class="text-xs font-bold text-[#0D2C6B] uppercase tracking-wide flex items-center gap-1.5 mb-2">
+                <i data-lucide="clock" class="w-4 h-4"></i> Time Learning Milestones
+              </strong>
+              <ul class="space-y-1.5 text-xs text-[#4C4C4E]">${timeList}</ul>
+            </div>
+          </div>
+
+          <div class="p-3 bg-red-50/70 border border-red-200 rounded-lg text-xs text-red-900 flex items-start gap-2">
+            <i data-lucide="alert-circle" class="w-4 h-4 text-red-600 flex-shrink-0 mt-0.5"></i>
+            <div>
+              <strong>Primary Pedagogical Trap to Disrupt:</strong> ${data.traps}
+            </div>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    let activeBigIdeaId = 0;
+    function renderBigIdeaButtons() {
+      const container = document.getElementById('bigIdeaButtons');
+      container.innerHTML = BIG_IDEAS.map((idea, index) => `
+        <button onclick="selectBigIdea(${index})" id="btn-idea-${index}" class="big-idea-btn p-2 text-xs font-bold rounded-lg border text-center transition-all ${index === 0 ? 'bg-[#188296] text-white border-[#188296]' : 'bg-white text-[#4C4C4E] border-[#D1D2D4] hover:border-[#188296]'}">
+          ${idea.title}
+        </button>
+      `).join('');
+      selectBigIdea(0);
+    }
+
+    function selectBigIdea(index) {
+      activeBigIdeaId = index;
+      document.querySelectorAll('.big-idea-btn').forEach((btn, i) => {
+        if (i === index) {
+          btn.className = 'big-idea-btn p-2 text-xs font-bold rounded-lg border text-center transition-all bg-[#188296] text-white border-[#188296] shadow-sm';
+        } else {
+          btn.className = 'big-idea-btn p-2 text-xs font-bold rounded-lg border text-center transition-all bg-white text-[#4C4C4E] border-[#D1D2D4] hover:border-[#188296]';
+        }
+      });
+
+      const idea = BIG_IDEAS[index];
+      document.getElementById('bigIdeaDetailBox').innerHTML = `
+        <div class="border-b border-[#D1D2D4] pb-2 mb-3">
+          <div class="text-xs uppercase font-bold text-[#188296]">Big Idea Principle ${index + 1}</div>
+          <h5 class="text-base font-black text-[#0D2C6B]">${idea.title}</h5>
+          <p class="text-xs text-gray-600 mt-0.5">${idea.summary}</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+          <div class="p-2.5 bg-gray-50 rounded-lg border border-gray-200">
+            <span class="font-bold text-[#0D2C6B] block mb-1">Early Stage 1</span>
+            <p class="text-[#4C4C4E]">${idea.es1}</p>
+          </div>
+          <div class="p-2.5 bg-gray-50 rounded-lg border border-gray-200">
+            <span class="font-bold text-[#0D2C6B] block mb-1">Stage 1</span>
+            <p class="text-[#4C4C4E]">${idea.s1}</p>
+          </div>
+          <div class="p-2.5 bg-gray-50 rounded-lg border border-gray-200">
+            <span class="font-bold text-[#0D2C6B] block mb-1">Stage 2</span>
+            <p class="text-[#4C4C4E]">${idea.s2}</p>
+          </div>
+          <div class="p-2.5 bg-gray-50 rounded-lg border border-gray-200">
+            <span class="font-bold text-[#0D2C6B] block mb-1">Stage 3</span>
+            <p class="text-[#4C4C4E]">${idea.s3}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 3: RUNNABLE MANIPULATIVE 1 - EQUAL-ARM BALANCE
+    ----------------------------------------------------------- */
+    const BALANCE_PAIRS = [
+      {
+        left: { name: "Beach Ball", type: "circle", w: 76, h: 76, col: "#FBAF3F" },
+        right: { name: "Lead Sinker", type: "rock", w: 34, h: 26, col: "#4C4C4E" },
+        ans: "r",
+        why: "The rock/lead sinker is much smaller in volume but significantly denser and heavier. NESA emphasizes using objects where size and mass disagree[cite: 226]."
+      },
+      {
+        left: { name: "Tin of Beans", type: "tin", w: 38, h: 48, col: "#c8553d" },
+        right: { name: "Fluffy Pillow", type: "pillow", w: 86, h: 42, col: "#c9d0f0" },
+        ans: "l",
+        why: "The tin of beans is compact but heavy, while the pillow is large and light. The heavier tin tilts down[cite: 226]."
+      },
+      {
+        left: { name: "Full Water Bottle", type: "bottle", w: 30, h: 64, col: "#188296" },
+        right: { name: "Empty Cardboard Box", type: "box", w: 80, h: 60, col: "#d9c3a3" },
+        ans: "l",
+        why: "The water bottle has smaller external dimensions than the empty carton, but far greater mass[cite: 226]."
+      },
+      {
+        left: { name: "Plasticine Ball", type: "circle", w: 46, h: 46, col: "#2f7f6f" },
+        right: { name: "Reshaped into Snake", type: "snake", w: 90, h: 14, col: "#2f7f6f" },
+        ans: "s",
+        why: "Conservation of Mass (Stage 1B): The lump contains identical matter; reshaping it does not change its mass[cite: 66]. The beam stays level[cite: 64]!"
+      },
+      {
+        left: { name: "Box of Blocks", type: "box", w: 60, h: 50, col: "#8b6b4a" },
+        right: { name: "Identical Empty Box", type: "box", w: 60, h: 50, col: "#d9c3a3" },
+        ans: "l",
+        why: "Two containers with the exact same shape and size have different masses because of their contents[cite: 226]."
+      }
+    ];
+
+    let balIndex = 0;
+    let balRounds = 0;
+    let balCorrect = 0;
+
+    function renderBalanceObject(obj, cx, cy) {
+      const w = obj.w, h = obj.h, c = obj.col;
+      const x0 = cx - w / 2, y0 = cy - h;
+      if (obj.type === "circle") {
+        return `<circle cx="${cx}" cy="${cy - h / 2}" r="${w / 2}" fill="${c}" stroke="#231F20" stroke-width="1.5"/>`;
+      } else if (obj.type === "rock") {
+        return `<path d="M${x0} ${cy} Q${x0 - 4} ${y0 + 4} ${x0 + 8} ${y0} Q${cx + 8} ${y0 - 4} ${x0 + w} ${y0 + 8} Q${x0 + w + 4} ${cy} ${x0 + w - 4} ${cy} Z" fill="${c}" stroke="#231F20" stroke-width="1.5"/>`;
+      } else if (obj.type === "tin") {
+        return `<rect x="${x0}" y="${y0}" width="${w}" height="${h}" rx="3" fill="${c}" stroke="#231F20" stroke-width="1.5"/>
+                <rect x="${x0}" y="${y0 + 10}" width="${w}" height="${h - 20}" fill="#FFFFFF" fill-opacity="0.4"/>`;
+      } else if (obj.type === "bottle") {
+        return `<rect x="${x0}" y="${y0 + 12}" width="${w}" height="${h - 12}" rx="4" fill="${c}" stroke="#231F20" stroke-width="1.5"/>
+                <rect x="${cx - 5}" y="${y0}" width="10" height="12" fill="${c}" stroke="#231F20" stroke-width="1.5"/>`;
+      } else if (obj.type === "pillow") {
+        return `<rect x="${x0}" y="${y0}" width="${w}" height="${h}" rx="14" fill="${c}" stroke="#231F20" stroke-width="1.5"/>`;
+      } else if (obj.type === "snake") {
+        return `<rect x="${x0}" y="${y0 + h / 2}" width="${w}" height="${h}" rx="6" fill="${c}" stroke="#231F20" stroke-width="1.5"/>`;
+      } else {
+        return `<rect x="${x0}" y="${y0}" width="${w}" height="${h}" rx="3" fill="${c}" stroke="#231F20" stroke-width="1.5"/>`;
+      }
+    }
+
+    function drawBalance(tiltAngle = 0) {
+      const p = BALANCE_PAIRS[balIndex];
+      const cx = 200, cy = 70, L = 125;
+      const rad = (tiltAngle * Math.PI) / 180;
+      const dx = Math.cos(rad) * L;
+      const dy = Math.sin(rad) * L;
+
+      const lx = cx - dx, ly = cy - dy;
+      const rx = cx + dx, ry = cy + dy;
+      const panDrop = 65;
+
+      let svg = `<svg viewBox="0 0 400 240" class="w-full max-w-[460px] h-auto select-none">
+        <!-- Stand Base -->
+        <path d="M 160 230 L 240 230 L 208 74 L 192 74 Z" fill="#D1D2D4" stroke="#4C4C4E" stroke-width="1.5"/>
+        <line x1="140" y1="230" x2="260" y2="230" stroke="#0D2C6B" stroke-width="4" stroke-linecap="round"/>
+
+        <!-- Pivoted Beam -->
+        <g class="balance-beam" style="transform: rotate(${tiltAngle}deg);">
+          <line x1="${cx - L}" y1="${cy}" x2="${cx + L}" y2="${cy}" stroke="#0D2C6B" stroke-width="6" stroke-linecap="round"/>
+          <circle cx="${cx}" cy="${cy}" r="7" fill="#FBAF3F" stroke="#0D2C6B" stroke-width="2"/>
+        </g>
+
+        <!-- Left Pan & Cords -->
+        <g>
+          <line x1="${lx}" y1="${ly}" x2="${lx - 45}" y2="${ly + panDrop}" stroke="#4C4C4E" stroke-width="1.5"/>
+          <line x1="${lx}" y1="${ly}" x2="${lx + 45}" y2="${ly + panDrop}" stroke="#4C4C4E" stroke-width="1.5"/>
+          ${renderBalanceObject(p.left, lx, ly + panDrop)}
+          <path d="M ${lx - 52} ${ly + panDrop} Q ${lx} ${ly + panDrop + 18} ${lx + 52} ${ly + panDrop} Z" fill="#188296" stroke="#0D2C6B" stroke-width="1.5"/>
+        </g>
+
+        <!-- Right Pan & Cords -->
+        <g>
+          <line x1="${rx}" y1="${ry}" x2="${rx - 45}" y2="${ry + panDrop}" stroke="#4C4C4E" stroke-width="1.5"/>
+          <line x1="${rx}" y1="${ry}" x2="${rx + 45}" y2="${ry + panDrop}" stroke="#4C4C4E" stroke-width="1.5"/>
+          ${renderBalanceObject(p.right, rx, ry + panDrop)}
+          <path d="M ${rx - 52} ${ry + panDrop} Q ${rx} ${ry + panDrop + 18} ${rx + 52} ${ry + panDrop} Z" fill="#188296" stroke="#0D2C6B" stroke-width="1.5"/>
+        </g>
+      </svg>`;
+
+      svg += `<div class="w-full max-w-[460px] flex justify-between text-xs font-bold text-[#0D2C6B] mt-2 px-6">
+        <span class="bg-gray-100 px-2 py-0.5 rounded border border-gray-200">Left: ${p.left.name}</span>
+        <span class="bg-gray-100 px-2 py-0.5 rounded border border-gray-200">Right: ${p.right.name}</span>
+      </div>`;
+
+      document.getElementById('balanceCanvas').innerHTML = svg;
+    }
+
+    function testBalance(userChoice) {
+      const p = BALANCE_PAIRS[balIndex];
+      const isCorrect = userChoice === p.ans;
+      balRounds++;
+      if (isCorrect) balCorrect++;
+
+      const tilt = p.ans === 'l' ? -13 : p.ans === 'r' ? 13 : 0;
+      drawBalance(tilt);
+
+      const fb = document.getElementById('balanceFeedback');
+      fb.classList.remove('hidden', 'bg-green-50', 'text-green-900', 'border-green-300', 'bg-red-50', 'text-red-900', 'border-red-300');
+      fb.classList.add(isCorrect ? 'bg-green-50' : 'bg-red-50', isCorrect ? 'text-green-900' : 'text-red-900', 'border', isCorrect ? 'border-green-300' : 'border-red-300');
+
+      fb.innerHTML = `<strong>${isCorrect ? 'Correct!' : 'Not quite.'}</strong> ${p.ans === 's' ? 'The balance stays perfectly level.' : (p.ans === 'l' ? 'The Left pan goes down.' : 'The Right pan goes down.')} ${p.why}`;
+
+      document.getElementById('balanceScore').textContent = `${balCorrect} of ${balRounds} correct`;
+      document.querySelectorAll('#balanceControls button:not(#btnNextBalance)').forEach(b => b.disabled = true);
+      document.getElementById('btnNextBalance').disabled = false;
+    }
+
+    function nextBalancePair() {
+      balIndex = (balIndex + 1) % BALANCE_PAIRS.length;
+      drawBalance(0);
+      document.getElementById('balanceFeedback').classList.add('hidden');
+      document.querySelectorAll('#balanceControls button').forEach(b => b.disabled = false);
+      document.getElementById('btnNextBalance').disabled = true;
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 3: RUNNABLE MANIPULATIVE 2 - GEARED CLOCK
+    ----------------------------------------------------------- */
+    let clockMode = 'move'; // 'move' or 'stuck'
+
+    function setClockMode(mode) {
+      clockMode = mode;
+      document.getElementById('btnModeMove').className = mode === 'move' ? 'px-3 py-1 rounded text-xs font-bold bg-[#0D2C6B] text-white border border-[#0D2C6B]' : 'px-3 py-1 rounded text-xs font-bold bg-white text-[#4C4C4E] border border-[#D1D2D4]';
+      document.getElementById('btnModeStuck').className = mode === 'stuck' ? 'px-3 py-1 rounded text-xs font-bold bg-red-600 text-white border border-red-600' : 'px-3 py-1 rounded text-xs font-bold bg-white text-[#4C4C4E] border border-[#D1D2D4]';
+      renderClock();
+    }
+
+    function setClockMinute(min) {
+      document.getElementById('minuteSlider').value = min;
+      renderClock();
+    }
+
+    function renderClock() {
+      const h = parseInt(document.getElementById('hourInput').value, 10);
+      const m = parseInt(document.getElementById('minuteSlider').value, 10);
+      document.getElementById('minuteValueLabel').textContent = `${m} minute${m === 1 ? '' : 's'}`;
+
+      const cx = 110, cy = 110, R = 95;
+      let svg = `<svg viewBox="0 0 220 220" class="w-52 h-52 select-none">
+        <circle cx="${cx}" cy="${cy}" r="${R}" fill="#FFFFFF" stroke="#0D2C6B" stroke-width="4.5"/>`;
+
+      // Minute ticks & numerals
+      for (let i = 0; i < 60; i++) {
+        const ang = (i * Math.PI) / 30;
+        const isBig = i % 5 === 0;
+        const r1 = isBig ? R - 12 : R - 6;
+        svg += `<line x1="${(cx + Math.sin(ang) * r1).toFixed(1)}" y1="${(cy - Math.cos(ang) * r1).toFixed(1)}" x2="${(cx + Math.sin(ang) * (R - 2)).toFixed(1)}" y2="${(cy - Math.cos(ang) * (R - 2)).toFixed(1)}" stroke="#4C4C4E" stroke-width="${isBig ? 2.5 : 1}"/>`;
+      }
+
+      for (let num = 1; num <= 12; num++) {
+        const ang = (num * Math.PI) / 6;
+        svg += `<text x="${(cx + Math.sin(ang) * (R - 24)).toFixed(1)}" y="${(cy - Math.cos(ang) * (R - 24) + 5).toFixed(1)}" text-anchor="middle" font-size="16" font-weight="900" fill="#0D2C6B">${num}</text>`;
+      }
+
+      // Shaded sector for turn
+      if (m > 0) {
+        const endRad = (m * Math.PI) / 30;
+        svg += `<path d="M ${cx} ${cy} L ${cx} ${cy - R + 14} A ${R - 14} ${R - 14} 0 ${m > 30 ? 1 : 0} 1 ${(cx + Math.sin(endRad) * (R - 14)).toFixed(1)} ${(cy - Math.cos(endRad) * (R - 14)).toFixed(1)} Z" fill="#188296" fill-opacity="0.15"/>`;
+      }
+
+      // Hand angles
+      const minAngleRad = (m * Math.PI) / 30;
+      const hourTravel = clockMode === 'stuck' ? 0 : m / 60;
+      const hourAngleRad = (((h % 12) + hourTravel) * Math.PI) / 6;
+
+      // Minute Hand (Aqua/Teal)
+      svg += `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.sin(minAngleRad) * (R - 18)).toFixed(1)}" y2="${(cy - Math.cos(minAngleRad) * (R - 18)).toFixed(1)}" stroke="#188296" stroke-width="4.5" stroke-linecap="round"/>`;
+
+      // Hour Hand (Dark Blue or Red if stuck error)
+      const hourHandColor = clockMode === 'stuck' ? '#DC2626' : '#0D2C6B';
+      svg += `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.sin(hourAngleRad) * (R - 44)).toFixed(1)}" y2="${(cy - Math.cos(hourAngleRad) * (R - 44)).toFixed(1)}" stroke="${hourHandColor}" stroke-width="7" stroke-linecap="round"/>`;
+
+      // Center Pin
+      svg += `<circle cx="${cx}" cy="${cy}" r="6" fill="#FBAF3F" stroke="#0D2C6B" stroke-width="1.5"/>
+      </svg>`;
+
+      document.getElementById('clockSVGContainer').innerHTML = svg;
+
+      // Construct Text Narrative
+      const nextH = (h % 12) + 1;
+      let spokenWords = "";
+      if (m === 0) spokenWords = `${h} o’clock`;
+      else if (m === 15) spokenWords = `quarter past ${h}`;
+      else if (m === 30) spokenWords = `half past ${h}`;
+      else if (m === 45) spokenWords = `quarter to ${nextH}`;
+      else if (m < 30) spokenWords = `${m} minute${m === 1 ? '' : 's'} past ${h}`;
+      else spokenWords = `${60 - m} minute${60 - m === 1 ? '' : 's'} to ${nextH}`;
+
+      const digitalStr = `${h}:${m < 10 ? '0' : ''}${m}`;
+      const fractionTurn = m === 0 ? "zero turn" : m === 15 ? "a quarter turn (90&deg;)" : m === 30 ? "a half turn (180&deg;)" : m === 45 ? "three-quarter turn (270&deg;)" : `${m}/60 of a revolution`;
+
+      let feedbackMsg = "";
+      if (clockMode === 'stuck') {
+        feedbackMsg = `
+          <div class="text-red-700 font-bold flex items-center gap-1.5 mb-1">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-red-600"></i> Common Student Misconception Active:
+          </div>
+          <p class="text-xs text-red-800 leading-relaxed">
+            The hour hand remains rigidly fixed pointing at ${h}. ${m === 0 ? "At o’clock, this is correct." : `After ${m} minutes, students who hold this misconception assume the hour hand doesn't begin travelling until the new hour arrives. In reality, the hour hand must travel continuously across the 30&deg; arc, reaching ${(m / 60 * 100).toFixed(0)}% of the distance toward ${nextH}.`}
+          </p>
+        `;
+      } else {
+        feedbackMsg = `
+          <div class="flex items-center justify-between mb-1">
+            <span class="font-black text-[#0D2C6B] text-base capitalize">${spokenWords}</span>
+            <span class="font-mono bg-blue-50 px-2 py-0.5 rounded border border-blue-200 text-[#0D2C6B] font-bold">${digitalStr}</span>
+          </div>
+          <p class="text-xs text-[#4C4C4E] leading-relaxed">
+            The <strong>minute hand</strong> has completed ${fractionTurn} from the 12. The <strong>hour hand</strong> has proportionally progressed ${(m / 60 * 100).toFixed(0)}% of the distance from ${h} towards ${nextH}[cite: 65, 328].
+            ${m === 30 ? '<span class="block mt-1 font-semibold text-[#188296]">Stage 1 Syllabus Focus: This explains why the hour hand is halfway between successive hour markers at half-past (MA1-NSM-02 Reasoning).</span>' : ''}
+            ${m > 30 ? `<span class="block mt-1 font-semibold text-[#4C4C4E]">Notice: The hour hand is physically closer to ${nextH}, which is why 'to' language names the arriving hour!</span>` : ''}
+          </p>
+        `;
+      }
+
+      document.getElementById('clockReadoutBox').innerHTML = feedbackMsg;
+      lucide.createIcons();
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 3: RUNNABLE MANIPULATIVE 3 - DUAL-DIAL CLOCK
+    ----------------------------------------------------------- */
+    let readH = 7, readM = 10;
+    let readOpts = [];
+    let readRounds = 0;
+    let readCorrect = 0;
+    let readAnswered = false;
+
+    function generateReadClock(keepCurrentTime = false) {
+      readAnswered = false;
+      document.getElementById('btnNextReadClock').disabled = true;
+      document.getElementById('readClockFeedback').classList.add('hidden');
+
+      if (!keepCurrentTime) {
+        // Randomise time to non-benchmark values
+        const validMinutes = [8, 10, 12, 18, 22, 24, 38, 40, 42, 50, 52];
+        readH = 1 + Math.floor(Math.random() * 12);
+        readM = validMinutes[Math.floor(Math.random() * validMinutes.length)];
+      }
+
+      const showOuterMarks = document.getElementById('checkShowMinuteMarks').checked;
+      const cx = 110, cy = 110, R = 80;
+
+      let svg = `<svg viewBox="0 0 220 220" class="w-52 h-52 select-none">
+        <circle cx="${cx}" cy="${cy}" r="${R}" fill="#FFFFFF" stroke="#0D2C6B" stroke-width="4"/>`;
+
+      // 60 tick lines
+      for (let i = 0; i < 60; i++) {
+        const ang = (i * Math.PI) / 30;
+        const isBig = i % 5 === 0;
+        const r1 = isBig ? R - 10 : R - 5;
+        svg += `<line x1="${(cx + Math.sin(ang) * r1).toFixed(1)}" y1="${(cy - Math.cos(ang) * r1).toFixed(1)}" x2="${(cx + Math.sin(ang) * (R - 2)).toFixed(1)}" y2="${(cy - Math.cos(ang) * (R - 2)).toFixed(1)}" stroke="#4C4C4E" stroke-width="${isBig ? 2 : 1}"/>`;
+      }
+
+      // Numerals 1 to 12
+      for (let num = 1; num <= 12; num++) {
+        const ang = (num * Math.PI) / 6;
+        svg += `<text x="${(cx + Math.sin(ang) * (R - 22)).toFixed(1)}" y="${(cy - Math.cos(ang) * (R - 22) + 5).toFixed(1)}" text-anchor="middle" font-size="14" font-weight="900" fill="#0D2C6B">${num}</text>`;
+        if (showOuterMarks) {
+          const minLabel = num * 5 === 60 ? "00" : (num * 5 < 10 ? "0" + num * 5 : num * 5);
+          svg += `<text x="${(cx + Math.sin(ang) * (R + 15)).toFixed(1)}" y="${(cy - Math.cos(ang) * (R + 15) + 4).toFixed(1)}" text-anchor="middle" font-size="10" font-weight="700" fill="#188296">${minLabel}</text>`;
+        }
+      }
+
+      // Hands
+      const minAngle = (readM * Math.PI) / 30;
+      const hourAngle = (((readH % 12) + readM / 60) * Math.PI) / 6;
+
+      svg += `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.sin(minAngle) * (R - 14)).toFixed(1)}" y2="${(cy - Math.cos(minAngle) * (R - 14)).toFixed(1)}" stroke="#188296" stroke-width="4" stroke-linecap="round"/>`;
+      svg += `<line x1="${cx}" y1="${cy}" x2="${(cx + Math.sin(hourAngle) * (R - 36)).toFixed(1)}" y2="${(cy - Math.cos(hourAngle) * (R - 36)).toFixed(1)}" stroke="#0D2C6B" stroke-width="6" stroke-linecap="round"/>`;
+      svg += `<circle cx="${cx}" cy="${cy}" r="5" fill="#FBAF3F" stroke="#0D2C6B" stroke-width="1.5"/>
+      </svg>`;
+
+      document.getElementById('readClockCanvas').innerHTML = svg;
+
+      // Construct 4 Diagnostic Choices
+      const nextH = (readH % 12) + 1;
+      const correctText = readM <= 30 ? `${readM} minutes past ${readH} (${readH}:${readM < 10 ? '0' : ''}${readM})` : `${60 - readM} minutes to ${nextH} (${readH}:${readM})`;
+      const approxNumeral = Math.round(readM / 5);
+      const numeralErrorText = `${readH}:${approxNumeral < 10 ? '0' : ''}${approxNumeral} (reading the dial numeral as minutes)`;
+      const toHourErrorText = readM > 30 ? `${60 - readM} minutes to ${readH} (naming previous hour for 'to' time)` : `${readM} minutes past ${nextH} (jumping ahead)`;
+      const swappedText = `${approxNumeral}:${readH < 10 ? '0' : ''}${readH} (swapping the hour and minute hands)`;
+
+      readOpts = [
+        { text: correctText, key: 'correct', why: `The minute hand points to ${readM} minutes (counting by fives from the 12, then ones). The hour hand has passed ${readH} on its way to ${nextH}[cite: 65, 328].` },
+        { text: numeralErrorText, key: 'numeral', why: `Diagnostic Error: The student treated the numeral ${approxNumeral} as the number of minutes instead of calculating the 5-minute interval (${approxNumeral} &times; 5 = ${approxNumeral * 5} min)[cite: 128].` },
+        { text: toHourErrorText, key: 'tohour', why: `Diagnostic Error: For 'minutes to' times, students often name the hour the hand has just left rather than the arriving hour (${nextH})[cite: 67].` },
+        { text: swappedText, key: 'swap', why: `Diagnostic Error: The student confused the short hour hand with the long minute hand[cite: 327].` }
+      ];
+
+      // Shuffle options
+      readOpts.sort(() => Math.random() - 0.5);
+
+      const optsContainer = document.getElementById('readClockOptions');
+      optsContainer.innerHTML = readOpts.map((opt, i) => `
+        <button onclick="answerReadClock(${i})" id="read-opt-${i}" class="w-full text-left p-3 text-xs sm:text-sm font-semibold rounded-lg border border-[#D1D2D4] bg-white hover:border-[#188296] hover:bg-teal-50/40 text-[#231F20] transition-all">
+          ${opt.text}
+        </button>
+      `).join('');
+    }
+
+    function answerReadClock(selectedIndex) {
+      if (readAnswered) return;
+      readAnswered = true;
+      readRounds++;
+
+      const chosen = readOpts[selectedIndex];
+      const isCorrect = chosen.key === 'correct';
+      if (isCorrect) readCorrect++;
+
+      document.getElementById('readScore').textContent = `${readCorrect} of ${readRounds} correct`;
+
+      readOpts.forEach((opt, i) => {
+        const btn = document.getElementById(`read-opt-${i}`);
+        btn.disabled = true;
+        if (opt.key === 'correct') {
+          btn.classList.add('bg-green-100', 'border-green-500', 'text-green-950');
+        } else if (i === selectedIndex) {
+          btn.classList.add('bg-red-100', 'border-red-500', 'text-red-950');
+        }
+      });
+
+      const fb = document.getElementById('readClockFeedback');
+      fb.classList.remove('hidden', 'bg-green-50', 'text-green-900', 'border-green-300', 'bg-red-50', 'text-red-900', 'border-red-300');
+      fb.classList.add(isCorrect ? 'bg-green-50' : 'bg-red-50', isCorrect ? 'text-green-900' : 'text-red-900', 'border', isCorrect ? 'border-green-300' : 'border-red-300');
+      fb.innerHTML = `<strong>${isCorrect ? 'Correct!' : 'Incorrect.'}</strong> ${chosen.why}`;
+
+      document.getElementById('btnNextReadClock').disabled = false;
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 3: RUNNABLE MANIPULATIVE 4 - UNSCALED TIMELINE
+    ----------------------------------------------------------- */
+    let timelineFormat = '12'; // '12' or '24'
+
+    function setTimeFormat(fmt) {
+      timelineFormat = fmt;
+      document.getElementById('btnFmt12').className = fmt === '12' ? 'px-3 py-1 rounded text-xs font-bold bg-[#0D2C6B] text-white border border-[#0D2C6B]' : 'px-3 py-1 rounded text-xs font-bold bg-white text-[#4C4C4E] border border-[#D1D2D4]';
+      document.getElementById('btnFmt24').className = fmt === '24' ? 'px-3 py-1 rounded text-xs font-bold bg-[#0D2C6B] text-white border border-[#0D2C6B]' : 'px-3 py-1 rounded text-xs font-bold bg-white text-[#4C4C4E] border border-[#D1D2D4]';
+      renderTimeline();
+    }
+
+    function setTimelinePreset(start, end) {
+      document.getElementById('timelineStart').value = start;
+      document.getElementById('timelineEnd').value = end;
+      renderTimeline();
+    }
+
+    function parseTimeToMinutes(str) {
+      if (!str) return null;
+      const parts = str.split(':');
+      if (parts.length < 2) return null;
+      return parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+    }
+
+    function formatMinutesDisplay(totMin, fmt) {
+      totMin = ((totMin % 1440) + 1440) % 1440;
+      const h = Math.floor(totMin / 60);
+      const m = totMin % 60;
+      const mStr = m < 10 ? '0' + m : m;
+
+      if (fmt === '24') {
+        const hStr = h < 10 ? '0' + h : h;
+        return `${hStr}${mStr} hours`;
+      }
+      if (totMin === 720) return "12 noon";
+      if (totMin === 0) return "12 midnight";
+      const h12 = ((h - 1) % 12 + 12) % 12 + 1;
+      const ampm = h < 12 ? 'am' : 'pm';
+      return `${h12}:${mStr} ${ampm}`;
+    }
+
+    function renderTimeline() {
+      const sMin = parseTimeToMinutes(document.getElementById('timelineStart').value);
+      const eMin = parseTimeToMinutes(document.getElementById('timelineEnd').value);
+
+      if (sMin === null || eMin === null) return;
+
+      const spansNextDay = eMin <= sMin;
+      const finishMin = spansNextDay ? eMin + 1440 : eMin;
+
+      // Construct Bridging Points
+      const points = [sMin];
+      const nextHour = Math.ceil((sMin + 1) / 60) * 60;
+      if (nextHour < finishMin && nextHour > sMin) {
+        points.push(nextHour);
+      }
+
+      const finalHour = Math.floor(finishMin / 60) * 60;
+      if (finalHour > points[points.length - 1] && finalHour < finishMin) {
+        points.push(finalHour);
+      }
+      points.push(finishMin);
+
+      // Unique sorted points
+      const uniquePoints = Array.from(new Set(points)).sort((a, b) => a - b);
+      const jumps = [];
+      for (let i = 1; i < uniquePoints.length; i++) {
+        jumps.push(uniquePoints[i] - uniquePoints[i - 1]);
+      }
+
+      // Render Dynamic Unscaled SVG
+      const numPts = uniquePoints.length;
+      const width = Math.max(480, numPts * 140);
+      const height = 140;
+      const x0 = 60;
+      const step = (width - 120) / (numPts - 1);
+
+      let svg = `<svg viewBox="0 0 ${width} ${height}" class="w-full select-none" style="min-width: ${width}px;">
+        <!-- Baseline -->
+        <line x1="30" y1="100" x2="${width - 30}" y2="100" stroke="#0D2C6B" stroke-width="2.5" stroke-linecap="round"/>`;
+
+      // Draw Ticks & Labels
+      uniquePoints.forEach((p, idx) => {
+        const x = x0 + idx * step;
+        svg += `
+          <line x1="${x}" y1="92" x2="${x}" y2="108" stroke="#0D2C6B" stroke-width="2.5"/>
+          <text x="${x}" y="125" text-anchor="middle" font-size="12" font-weight="900" fill="#0D2C6B">${formatMinutesDisplay(p, timelineFormat)}</text>
+        `;
+      });
+
+      // Draw Jumps Arcs
+      jumps.forEach((dur, idx) => {
+        const xA = x0 + idx * step;
+        const xB = xA + step;
+        const midX = (xA + xB) / 2;
+
+        let label = "";
+        const jh = Math.floor(dur / 60);
+        const jm = dur % 60;
+        if (jh > 0 && jm > 0) label = `+ ${jh} h ${jm} min`;
+        else if (jh > 0) label = `+ ${jh} hour${jh > 1 ? 's' : ''}`;
+        else label = `+ ${jm} min`;
+
+        svg += `
+          <path d="M ${xA + 4} 95 Q ${midX} 32 ${xB - 4} 95" fill="none" stroke="#188296" stroke-width="2.5"/>
+          <polygon points="${xB - 2},95 ${xB - 10},90 ${xB - 8},98" fill="#188296"/>
+          <text x="${midX}" y="42" text-anchor="middle" font-size="12" font-weight="900" fill="#188296">${label}</text>
+        `;
+      });
+
+      svg += `</svg>`;
+      document.getElementById('timelineSVGContainer').innerHTML = svg;
+
+      // Calculate Total Duration
+      const totalMinutes = finishMin - sMin;
+      const totH = Math.floor(totalMinutes / 60);
+      const totM = totalMinutes % 60;
+      const decimalHours = (totalMinutes / 60).toFixed(2);
+
+      // Decimal Misconception Demonstration
+      const naiveH = Math.floor(finishMin / 60) - Math.floor(sMin / 60);
+      const naiveM = (finishMin % 60) - (sMin % 60);
+
+      document.getElementById('timelineBreakdown').innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between border-b border-[#D1D2D4] pb-2 mb-3">
+          <div>
+            <span class="text-xs uppercase font-bold text-[#188296]">Total Calculated Duration</span>
+            <div class="text-lg font-black text-[#0D2C6B]">${totH} hour${totH === 1 ? '' : 's'} and ${totM} minute${totM === 1 ? '' : 's'}</div>
+          </div>
+          <div class="text-xs font-mono text-gray-600 bg-[#F4F6F9] px-3 py-1 rounded border border-[#D1D2D4]">
+            Total: <strong>${totalMinutes} minutes</strong> | <strong>${decimalHours} hours</strong> (in decimal notation)
+          </div>
+        </div>
+
+        <div class="space-y-2 text-xs text-[#4C4C4E] leading-relaxed">
+          <p>
+            <strong>Bridging Strategy (NESA Method):</strong> Jump from ${formatMinutesDisplay(uniquePoints[0], timelineFormat)} to the nearest hour (${formatMinutesDisplay(uniquePoints[1], timelineFormat)}), bridge whole hours, then add the final interval[cite: 190].
+          </p>
+          <div class="bg-red-50 border-l-4 border-red-500 p-2.5 rounded text-red-900 mt-2">
+            <strong>The Base-10 Decimal Trap:</strong> If a student attempts to subtract times like standard decimals (e.g. subtracting <span class="math-badge">11.05 &minus; 8.40</span>), they obtain <span class="math-badge">2.65</span>. This is entirely incorrect because an hour contains <strong>60 minutes</strong>, not 100[cite: 191]! The unscaled timeline visually and structurally protects students from this error[cite: 190].
+          </div>
+        </div>
+      `;
+    }
+
+    function switchTool(toolId) {
+      document.querySelectorAll('.tool-panel').forEach(p => p.classList.add('hidden'));
+      document.querySelectorAll('.tool-tab-btn').forEach(b => {
+        b.classList.remove('bg-[#0D2C6B]', 'text-white');
+        b.classList.add('bg-[#F4F6F9]', 'text-[#4C4C4E]');
+      });
+
+      document.getElementById(`tool-${toolId}-panel`).classList.remove('hidden');
+      const activeBtn = document.getElementById(`tab-${toolId}`);
+      activeBtn.classList.remove('bg-[#F4F6F9]', 'text-[#4C4C4E]');
+      activeBtn.classList.add('bg-[#0D2C6B]', 'text-white');
+
+      if (toolId === 'balance') drawBalance(0);
+      if (toolId === 'clock') renderClock();
+      if (toolId === 'readclock') generateReadClock(true);
+      if (toolId === 'elapsed') renderTimeline();
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 4: DIAGNOSTIC CLINIC & ROOT MISCONCEPTION SORTER
+    ----------------------------------------------------------- */
+    const SCENARIOS = [
+      {
+        stage: "Early Stage 1",
+        student: "Ava",
+        quote: "Ava says the big beach ball must be heavier than the small rock because the ball is much bigger.",
+        correctRoot: 0,
+        remedy: "Root 1 (Mass judged by size). Ava equates visual volume with gravitational mass. Provide physical hefting with large-light vs small-heavy pairs[cite: 226]."
+      },
+      {
+        stage: "Early Stage 1",
+        student: "Leo",
+        quote: "Leo says eating lunch took 'a short time' because his vegemite sandwich was small and short.",
+        correctRoot: 3,
+        remedy: "Root 4 (Moment/Duration confused with Length). Leo transfers spatial length terms directly to temporal duration. Model 'long time' and 'short time' exclusively in temporal contexts[cite: 228]."
+      },
+      {
+        stage: "Stage 1",
+        student: "Mia",
+        quote: "Mia says rolling a ball of plasticine into a long thin snake made it heavier because it takes up more space on the desk.",
+        correctRoot: 0,
+        remedy: "Root 1 (Conservation not established). Mia believes shape deformation increases mass. Use an equal-arm balance to test the lump before and after reshaping to prove conservation[cite: 66]."
+      },
+      {
+        stage: "Stage 1",
+        student: "Tom",
+        quote: "Tom is asked to show half-past 3 on an analog clock. He places the minute hand on the 6 and points the hour hand directly at the 3.",
+        correctRoot: 2,
+        remedy: "Root 3 (Clock hands misread). Tom does not realise the hour hand moves continuously across the 60 minutes. Use a geared clock to demonstrate that the hour hand sits halfway between 3 and 4[cite: 65, 328]."
+      },
+      {
+        stage: "Stage 1",
+        student: "Grace",
+        quote: "Grace looks at a digital clock and insists that 3:50 is 'half-past three' because 50 is half of 100.",
+        correctRoot: 1,
+        remedy: "Root 2 (Time treated as base 10). Grace transfers base-10 knowledge (50 as half of 100) to a base-60 system. Use an analog clock to connect half-past to a half-turn of 30 minutes[cite: 263]."
+      },
+      {
+        stage: "Stage 2",
+        student: "Ben",
+        quote: "Ben looks at an analog clock with the hour hand past 7 and the minute hand pointing to 2. He announces the time is '7:02'.",
+        correctRoot: 2,
+        remedy: "Root 3 (Clock hands & dial numerals misread). Ben reads the dial numeral literally as minutes. Use dual-scale watch dials to show that 2 represents 10 minutes for the minute hand[cite: 128, 327]."
+      },
+      {
+        stage: "Stage 2",
+        student: "Ella",
+        quote: "The digital display reads 4:57. When asked how many minutes until 5:00, Ella calculates 100 &minus; 57 and answers '43 minutes'.",
+        correctRoot: 1,
+        remedy: "Root 2 (Time treated as base 10). Ella assumes a complete hour comprises 100 minutes. Explicitly teach that hours cycle at 60 minutes: 60 &minus; 57 = 3 minutes[cite: 131]."
+      },
+      {
+        stage: "Stage 2",
+        student: "Josh",
+        quote: "When his teacher asks, 'How long is lunch break?', Josh answers, 'At 1:15 pm!'.",
+        correctRoot: 3,
+        remedy: "Root 4 (Moment in time vs Duration). Josh confuses the moment in time an event occurs with the duration/length of the interval. Differentiate timestamps from durations using sand timers."
+      },
+      {
+        stage: "Stage 3",
+        student: "Kai",
+        quote: "Kai records 1.5 hours on his maths sheet as '1 hour 50 minutes'.",
+        correctRoot: 1,
+        remedy: "Root 2 (Time treated as base 10). Kai treats 0.5 as 50 minutes rather than half of 60 minutes. Model fraction benchmark equivalences: 0.5 hours = 1/2 of 60 min = 30 min[cite: 191]."
+      },
+      {
+        stage: "Stage 3",
+        student: "Ruby",
+        quote: "Ruby converts 1800 hours in 24-hour time to 12-hour time and writes '8:00 pm'.",
+        correctRoot: 2,
+        remedy: "Root 3 (Notation misread). Ruby subtracted 10 instead of 12. For times past 12:00 midday, subtract 12 hours: 18 &minus; 12 = 6:00 pm."
+      },
+      {
+        stage: "Stage 3",
+        student: "Jai",
+        quote: "Jai is asked, 'The movie started at 8:40 am and ended at 11:05 am. How long was the movie?' He responds: '11:05'.",
+        correctRoot: 3,
+        remedy: "Root 4 (Finish time given for duration). Jai provides the finishing timestamp instead of calculating the elapsed duration. Model bridging on an unscaled timeline to sum intervals[cite: 190]."
+      },
+      {
+        stage: "Stage 3",
+        student: "Lily",
+        quote: "Lily insists a large parcel containing foam must cost more to post than a small, dense package of metal bolts.",
+        correctRoot: 0,
+        remedy: "Root 1 (Mass judged by appearance). Even in Stage 3, visual volume biases intuition. Weigh both on kitchen/postal scales to confirm postal costs are driven by grams/kilograms, not volume."
+      }
+    ];
+
+    let currentScenarioIndex = 0;
+
+    function renderScenario() {
+      const sc = SCENARIOS[currentScenarioIndex];
+      document.getElementById('sorterProgress').textContent = `Scenario ${currentScenarioIndex + 1} of ${SCENARIOS.length}`;
+      document.getElementById('sorterCard').innerHTML = `
+        <div class="flex items-center justify-between mb-2">
+          <span class="text-xs font-bold text-[#188296] bg-teal-50 px-2 py-0.5 rounded border border-teal-200">${sc.stage}</span>
+          <span class="text-xs font-semibold text-gray-500">Student: <strong>${sc.student}</strong></span>
+        </div>
+        <p class="text-sm sm:text-base font-medium text-[#0D2C6B] italic mb-1">
+          "${sc.quote}"
+        </p>
+      `;
+
+      document.getElementById('sorterFeedback').classList.add('hidden');
+      document.querySelectorAll('#sorterButtons button').forEach(b => b.disabled = false);
+      document.getElementById('btnPrevScenario').disabled = currentScenarioIndex === 0;
+      document.getElementById('btnNextScenario').disabled = true;
+    }
+
+    function diagnoseScenario(chosenRoot) {
+      const sc = SCENARIOS[currentScenarioIndex];
+      const isCorrect = chosenRoot === sc.correctRoot;
+
+      const fb = document.getElementById('sorterFeedback');
+      fb.classList.remove('hidden', 'bg-green-50', 'text-green-900', 'border-green-300', 'bg-red-50', 'text-red-900', 'border-red-300');
+      fb.classList.add(isCorrect ? 'bg-green-50' : 'bg-red-50', isCorrect ? 'text-green-900' : 'text-red-900', 'border', isCorrect ? 'border-green-300' : 'border-red-300');
+
+      fb.innerHTML = `<strong>${isCorrect ? 'Accurate Diagnosis!' : 'Incorrect Diagnosis.'}</strong> ${sc.remedy}`;
+
+      document.querySelectorAll('#sorterButtons button').forEach(b => b.disabled = true);
+      document.getElementById('btnNextScenario').disabled = false;
+    }
+
+    function nextScenario() {
+      if (currentScenarioIndex < SCENARIOS.length - 1) {
+        currentScenarioIndex++;
+        renderScenario();
+      }
+    }
+
+    function prevScenario() {
+      if (currentScenarioIndex > 0) {
+        currentScenarioIndex--;
+        renderScenario();
+      }
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 5: TASK MAKEOVER STUDIO & PEDAGOGICAL MOVES
+    ----------------------------------------------------------- */
+    const MAKEOVERS = {
+      es1: {
+        stage: "Early Stage 1",
+        before: {
+          task: "Circle the heavier object: [Image of an elephant next to an image of a mouse]",
+          limits: [
+            "Size and mass perfectly agree, confirming the misconception that bigger always equals heavier[cite: 226].",
+            "Passive 2D drawing rather than physical, sensory hefting[cite: 226, 327].",
+            "Zero prediction, zero mathematical reasoning, zero communication of physical sensation[cite: 226, 27]."
+          ]
+        },
+        after: {
+          task: "'Here is a large empty cardboard box and a small tin of baked beans. Which do you think will be heavier? Why?' Students make predictions, heft with both hands, and explain. Then: 'Can you find something in the room bigger than the tin that is lighter?'",
+          enable: "Begin with two items that have vastly contrasting densities (e.g. feather vs large wooden block).",
+          extend: "Find two objects of different shapes that feel about the same mass. How can we verify using our equal-arm balance[cite: 64]?",
+          listen: "'It is much bigger, but it feels light like air'; 'The tin pulls my hand down harder'[cite: 226, 228]."
+        }
+      },
+      s1: {
+        stage: "Stage 1",
+        before: {
+          task: "Draw the hands on the clock face to show half-past 3: [A blank clock circle with numbers 1 to 12]",
+          limits: [
+            "Encourages pointing the hour hand rigidly at the numeral 3[cite: 65, 328].",
+            "Treats clock hands as static lines rather than continuously synchronised turning gears[cite: 65, 328].",
+            "No connection to fractions or turns[cite: 65]."
+          ]
+        },
+        after: {
+          task: "'Set your geared clock to 3 o’clock. Slowly turn the minute hand to half-past 3. What is happening to the hour hand? Why does it stop halfway between 3 and 4?'",
+          enable: "Use geared clocks where moving the minute hand automatically drives the hour hand.",
+          extend: "'Where will the hour hand point at quarter-past 3? At quarter-to 4? How do the turns relate?'[cite: 67]",
+          listen: "'The hour hand has to move too because half of the hour has passed'; 'Half a turn of the big hand makes half a space for the little hand'[cite: 65, 328]."
+        }
+      },
+      s2: {
+        stage: "Stage 2",
+        before: {
+          task: "What time is shown on this clock? [Analog clock showing 7:10]",
+          limits: [
+            "Closed procedural drill with only one right answer.",
+            "Masks student confusion regarding why the numeral 2 represents 10 minutes[cite: 128].",
+            "No connection between relative and precise language[cite: 328]."
+          ]
+        },
+        after: {
+          task: "'The minute hand points directly at the numeral 2. Sam says the time is 7:02. Lee says it is ten past seven. Who is correct? How many different ways can you say and write this time?'",
+          enable: "Place an outer dial ring around the clock marking the 5-minute multiples (00, 05, 10, 15...)[cite: 327].",
+          extend: "'Can you find a time where the hour hand and minute hand point to the exact same numeral? How many can you find?'",
+          listen: "'Each number has two jobs: it counts hours by ones, but minutes by fives'; 'Ten past seven is the same as 7:10'[cite: 128]."
+        }
+      },
+      s3: {
+        stage: "Stage 3",
+        before: {
+          task: "Calculate elapsed time: An excursion bus departs at 2:45 pm and returns at 5:00 pm. How long was the trip?",
+          limits: [
+            "Directly invites naive decimal column subtraction (5.00 &minus; 2.45 = 2.55)[cite: 191].",
+            "Lacks authentic real-world timetable application[cite: 189].",
+            "No spatial or linear bridging model[cite: 190]."
+          ]
+        },
+        after: {
+          task: "'Jo claims that from 2:45 pm to 5:00 pm is 2 hours and 55 minutes. Draw an unscaled timeline to prove whether Jo is correct. Then, use this South Coast train timetable (in 24-hour time) to plan a 2 hour 15 minute journey from Wollongong to Sydney.'",
+          enable: "Provide an unscaled timeline scaffold with the hour markers 3:00 pm, 4:00 pm, 5:00 pm pre-marked[cite: 190].",
+          extend: "'Express the duration in decimal hours. Why is it 2.25 hours and not 2.15 hours?'[cite: 191]",
+          listen: "'We jump 15 minutes to 3:00, then 2 hours to 5:00, making 2 hours 15 minutes'; 'Time counts in 60s, so Jo subtracted like base 10'[cite: 190, 191]."
+        }
+      }
+    };
+
+    function switchMakeover(stageKey) {
+      document.querySelectorAll('#makeoverStageTabs button').forEach(b => {
+        b.className = 'px-3 py-1.5 text-xs sm:text-sm font-bold rounded-lg border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] hover:text-[#0D2C6B]';
+      });
+      document.getElementById(`mbtn-${stageKey}`).className = 'px-3 py-1.5 text-xs sm:text-sm font-bold rounded-lg border border-[#D1D2D4] bg-[#0D2C6B] text-white';
+
+      const mo = MAKEOVERS[stageKey];
+      const limitsList = mo.before.limits.map(l => `<li>&bull; ${l}</li>`).join('');
+
+      document.getElementById('makeoverContentCard').innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+          <!-- Before Card -->
+          <div class="bg-white p-5 rounded-xl border border-red-200 shadow-xs">
+            <span class="text-xs font-bold uppercase tracking-wider text-red-600 bg-red-50 px-2 py-0.5 rounded border border-red-200">Before: Closed Procedural Drill</span>
+            <div class="mt-3 p-3 bg-gray-50 rounded-lg border border-gray-200 font-mono text-xs text-[#0D2C6B]">
+              ${mo.before.task}
+            </div>
+            <div class="mt-3 text-red-900">
+              <strong class="text-xs uppercase font-bold text-red-700 block mb-1">Pedagogical Limitations:</strong>
+              <ul class="space-y-1 text-xs text-red-800">${limitsList}</ul>
+            </div>
+          </div>
+
+          <!-- After Card -->
+          <div class="bg-white p-5 rounded-xl border border-teal-200 shadow-xs">
+            <span class="text-xs font-bold uppercase tracking-wider text-[#188296] bg-teal-50 px-2 py-0.5 rounded border border-teal-200">After: Reasoning Makeover (MAO-WM-01)</span>
+            <div class="mt-3 p-3 bg-teal-50/50 rounded-lg border border-teal-200 text-xs sm:text-sm font-medium text-[#0D2C6B]">
+              ${mo.after.task}
+            </div>
+            <div class="mt-3 space-y-2 text-xs">
+              <div><strong class="text-[#188296]">Enabling Prompt:</strong> ${mo.after.enable}</div>
+              <div><strong class="text-[#0D2C6B]">Extending Prompt:</strong> ${mo.after.extend}</div>
+              <div class="p-2 bg-gray-50 rounded border border-gray-200 text-gray-700 italic">
+                <strong>What to listen for:</strong> ${mo.after.listen}
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    const PED_MOVES = [
+      {
+        name: "Who is correct?",
+        subtitle: "Constructing mathematical arguments around competing claims",
+        prompt: "'Jo says 1.5 hours is 1 hour 50 minutes. Sam says it is 1 hour 30 minutes. Who is correct? How can you prove it to someone who is unsure?'",
+        wm: "Reasoning and Communicating (MAO-WM-01)",
+        why: "Forces students to move beyond asserting an answer to articulating why base-60 structures differ from base-10 decimals[cite: 191]."
+      },
+      {
+        name: "Same and different",
+        subtitle: "Drawing connections across representations and units",
+        prompt: "'What is the same and what is different about 1 kg 250 g, 1250 g, and 1&frac14; kg?'",
+        wm: "Exploring and Connecting; Understanding and Fluency",
+        why: "Establishes representational transfer between mixed metric units, pure grams, and benchmark fractions[cite: 130, 305]."
+      },
+      {
+        name: "Always, sometimes, never",
+        subtitle: "Testing conjectures and identifying boundary conditions",
+        prompt: "'A larger parcel has a greater mass than a smaller parcel. Always, sometimes, or never true? Provide three proofs.'",
+        wm: "Reasoning and Generalising",
+        why: "Directly shatters the visual heuristic that volume equals mass by forcing students to generate counter-examples[cite: 226]."
+      },
+      {
+        name: "Open it up",
+        subtitle: "Transforming single-answer recall into multiple-pathway investigation",
+        prompt: "'Find three items in our school hall that together have a total mass of approximately 1 kg. How will you verify your prediction?'",
+        wm: "Choosing and Applying Techniques; Problem Solving",
+        why: "Transitions students from passive reading to active estimation, additive partitioning, and benchmark verification[cite: 127]."
+      },
+      {
+        name: "Convince me",
+        subtitle: "Demanding multi-modal justification and proof",
+        prompt: "'Convince me that the duration between 8:40 am and 11:05 am is exactly 2 hours and 25 minutes using an unscaled timeline.'",
+        wm: "Communicating and Reasoning",
+        why: "Prevents reliance on unexamined column algorithms and compels students to illustrate bridging to the hour[cite: 190]."
+      }
+    ];
+
+    function showPedMove(index) {
+      document.querySelectorAll('#movesButtons button').forEach((b, i) => {
+        if (i === index) {
+          b.className = 'p-2 text-xs font-bold rounded-lg border border-[#0D2C6B] bg-[#0D2C6B] text-white text-center shadow-sm';
+        } else {
+          b.className = 'p-2 text-xs font-bold rounded-lg border border-[#D1D2D4] bg-[#F4F6F9] text-[#4C4C4E] text-center hover:bg-gray-100';
+        }
+      });
+
+      const m = PED_MOVES[index];
+      document.getElementById('pedMoveCard').innerHTML = `
+        <div class="flex items-center justify-between border-b border-[#D1D2D4] pb-2 mb-3">
+          <div>
+            <span class="text-xs font-bold text-[#188296] uppercase tracking-wider">Pedagogical Move</span>
+            <h5 class="text-base font-black text-[#0D2C6B]">${m.name}</h5>
+          </div>
+          <span class="text-xs bg-amber-100 text-amber-900 font-bold px-2 py-0.5 rounded border border-amber-300">${m.wm}</span>
+        </div>
+        <p class="text-xs text-gray-500 mb-2 italic">${m.subtitle}</p>
+        <div class="p-3 bg-[#F4F6F9] rounded-lg border border-[#D1D2D4] font-medium text-xs sm:text-sm text-[#0D2C6B] mb-3">
+          ${m.prompt}
+        </div>
+        <p class="text-xs text-[#4C4C4E] leading-relaxed">
+          <strong>Why this works:</strong> ${m.why}
+        </p>
+      `;
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 6: MODULE MASTERY CHECKPOINT
+    ----------------------------------------------------------- */
+    const QUIZ_QUESTIONS = [
+      {
+        id: 0,
+        question: "Why does the NESA Teaching Advice explicitly mandate comparing objects that are large but light and small but heavy in Early Stage 1, while warning against textbook illustrations?",
+        options: [
+          "Because 2D textbook pictures make it difficult to read metric units in grams.",
+          "Because pictures reinforce the belief that size equals mass, whereas physical hefting reveals mass is non-spatial.",
+          "Because Kindergarten students must learn to use calibrated electronic scales before hefting.",
+          "Because Kindergarten students are required to calculate density by dividing mass by volume."
+        ],
+        answer: 1,
+        rationale: "NESA notes that images often reinforce the misconception that larger objects weigh more[cite: 327]. Mass does not depend on volume, so physical hefting with large-light and small-heavy items is essential[cite: 226]."
+      },
+      {
+        id: 1,
+        question: "In Stage 1, when students are learning to tell time to the half-hour, why is an analog clock with synchronised gears preferred over a static clock face or digital clock?",
+        options: [
+          "Digital clocks do not display morning or afternoon times.",
+          "A static clock face prevents students from seeing that the hour hand travels halfway between numerals at half past.",
+          "Geared clocks are easier to manipulate for gross motor skills.",
+          "Analog clocks are calibrated in decimal tenths rather than base 60."
+        ],
+        answer: 1,
+        rationale: "Earnest et al. (2018) showed students frequently leave the hour hand pointing directly at the hour numeral at half-past[cite: 328]. Synchronised geared clocks demonstrate continuous travel to the midpoint[cite: 65, 328]."
+      },
+      {
+        id: 2,
+        question: "In Stage 2 Non-Spatial Measure, how does the syllabus sequence the introduction of time instrumentation across parts A and B?",
+        options: [
+          "Digital time and seconds are taught in Part A; analog clocks are taught in Part B.",
+          "Analog clocks to the minute are taught in Part A; digital time displays, seconds, and am/pm are developed in Part B.",
+          "24-hour time is mastered in Part A; analog time is taught in Part B.",
+          "Stopwatches are taught in Part A; calendars are taught in Part B."
+        ],
+        answer: 1,
+        rationale: "Stage 2 separates time by instrument: analog time in Part A, and digital displays with am/pm in Part B[cite: 328]. This allows students to develop the distinct language of relative time ('ten to nine') before mixing it with precise digital notation ('8:50')[cite: 328]."
+      },
+      {
+        id: 3,
+        question: "A Stage 3 student calculates the time interval between 8:40 am and 11:05 am by writing 11.05 &minus; 8.40 = 2.65. What is the root cause of this error and the recommended instructional response?",
+        options: [
+          "The student made an algorithm trading error; they should practise vertical subtraction algorithms with zeros.",
+          "The student confused am with pm; they should convert all times to 24-hour format first.",
+          "The student treated base-60 time as base-10 decimals; the teacher should scaffold bridging to the hour on an unscaled timeline.",
+          "The student gave the finish time instead of duration; they should use a digital stopwatch."
+        ],
+        answer: 2,
+        rationale: "The student treated time as base 10 (assuming 100 minutes per hour)[cite: 191]. NESA Teaching Advice recommends bridging to the next hour on an unscaled timeline (20 min to 9:00, 2 h to 11:00, 5 min to 11:05 = 2 h 25 min)[cite: 190]."
+      },
+      {
+        id: 4,
+        question: "In Stage 3, a student measures the mass of a lunchbox full of food as 650 grams and claims the food weighs 650 g. What conceptual distinction does the teacher need to teach?",
+        options: [
+          "The difference between weight on Earth and mass on the Moon.",
+          "The difference between gross mass (container + contents) and net mass (contents only).",
+          "The conversion of 650 g into kilograms and tonnes.",
+          "The difference between metric units and imperial ounces."
+        ],
+        answer: 1,
+        rationale: "Gross mass is the total mass of the contents and the container[cite: 188]. Net mass is the contents only[cite: 188]. Students must weigh the empty container (tare) and subtract it to determine the net mass of the food[cite: 188]."
+      }
+    ];
+
+    let userAnswers = {};
+
+    function renderMasteryQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = QUIZ_QUESTIONS.map((q, qIndex) => {
+        const optsHtml = q.options.map((opt, oIndex) => `
+          <label class="flex items-start gap-3 p-3 rounded-lg border border-[#D1D2D4] bg-[#F4F6F9] hover:bg-white cursor-pointer text-xs sm:text-sm text-[#231F20] transition-all">
+            <input type="radio" name="q_${qIndex}" value="${oIndex}" onchange="recordQuizAnswer(${qIndex}, ${oIndex})" class="mt-1 text-[#0D2C6B] accent-[#0D2C6B]">
+            <span>${opt}</span>
+          </label>
+        `).join('');
+
+        return `
+          <div class="bg-white p-5 rounded-xl border border-[#D1D2D4] shadow-xs" id="quizCard_${qIndex}">
+            <div class="text-xs font-bold text-[#188296] uppercase tracking-wide mb-1">Question ${qIndex + 1} of 5</div>
+            <p class="font-bold text-[#0D2C6B] text-sm sm:text-base mb-3">${q.question}</p>
+            <div class="space-y-2">${optsHtml}</div>
+            <div id="quizRationale_${qIndex}" class="mt-3 hidden p-3 rounded-lg text-xs leading-relaxed"></div>
+          </div>
+        `;
+      }).join('');
+    }
+
+    function recordQuizAnswer(qIndex, oIndex) {
+      userAnswers[qIndex] = oIndex;
+    }
+
+    function submitMasteryQuiz() {
+      if (Object.keys(userAnswers).length < QUIZ_QUESTIONS.length) {
+        alert("Please answer all 5 checkpoint questions before submitting.");
+        return;
+      }
+
+      let score = 0;
+      QUIZ_QUESTIONS.forEach((q, idx) => {
+        const isCorrect = userAnswers[idx] === q.answer;
+        if (isCorrect) score++;
+
+        const rat = document.getElementById(`quizRationale_${idx}`);
+        rat.classList.remove('hidden', 'bg-green-50', 'text-green-900', 'border-green-300', 'bg-red-50', 'text-red-900', 'border-red-300');
+        rat.classList.add(isCorrect ? 'bg-green-50' : 'bg-red-50', isCorrect ? 'text-green-900' : 'text-red-900', 'border', isCorrect ? 'border-green-300' : 'border-red-300');
+        rat.innerHTML = `<strong>${isCorrect ? 'Correct!' : 'Incorrect.'}</strong> ${q.rationale}`;
+      });
+
+      const percent = (score / QUIZ_QUESTIONS.length) * 100;
+      const statusText = document.getElementById('quizStatusText');
+
+      if (percent >= 80) {
+        statusText.innerHTML = `<span class="text-green-700 font-bold">Mastery Achieved! Score: ${score}/5 (${percent}%). Key Pedagogical Takeaways unlocked below.</span>`;
+        document.getElementById('takeawaysContainer').classList.remove('hidden');
+        document.getElementById('takeawaysContainer').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        statusText.innerHTML = `<span class="text-red-600 font-bold">Score: ${score}/5 (${percent}%). Review the rationales and retry to achieve the 80% pass threshold.</span>`;
+      }
+    }
+
+    /* -----------------------------------------------------------
+       SECTION 7: COPY EMBED SNIPPET
+    ----------------------------------------------------------- */
+    function copyEmbedCode() {
+      const code = document.getElementById('embedCodeSnippet').innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById('btnCopyCode');
+        btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-green-600"></i> Copied!`;
+        lucide.createIcons();
+        setTimeout(() => {
+          btn.innerHTML = `<i data-lucide="copy" class="w-3.5 h-3.5"></i> Copy Snippet`;
+          lucide.createIcons();
+        }, 2000);
+      });
+    }
+
+    /* -----------------------------------------------------------
+       INITIALISATION ON PAGE LOAD
+    ----------------------------------------------------------- */
+    document.addEventListener('DOMContentLoaded', () => {
+      switchStage('es1');
+      renderBigIdeaButtons();
+      drawBalance(0);
+      renderClock();
+      generateReadClock(false);
+      renderTimeline();
+      renderScenario();
+      switchMakeover('es1');
+      showPedMove(0);
+      renderMasteryQuiz();
+      lucide.createIcons();
+
+      // Mobile Nav Drawer Toggle
+      const mobileToggle = document.getElementById('mobileNavToggle');
+      const sidebarNav = document.getElementById('sidebarNav');
+      if (mobileToggle && sidebarNav) {
+        mobileToggle.addEventListener('click', () => {
+          sidebarNav.classList.toggle('hidden');
+        });
+      }
+    });
+  </script>
+</body>
+</html>
