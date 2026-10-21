@@ -1,0 +1,2257 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Area 2: Combining & Separating Quantities / Additive Relations (K–6) | CEDoW Professional Learning</title>
+  
+  <!-- Google Fonts: Lato & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Configuration for CEDoW Design System -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cedow: {
+              navy: '#0D2C6B',
+              aqua: '#188296',
+              gold: '#FBAF3F',
+              charcoal: '#4C4C4E',
+              silver: '#D1D2D4',
+              black: '#231F20',
+              white: '#FFFFFF',
+              bg: '#F4F6F9'
+            }
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      color: #231F20;
+      background-color: #F4F6F9;
+    }
+    .font-mono-math {
+      font-family: 'Fira Code', monospace;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F4F6F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D1D2D4;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #188296;
+    }
+    /* Active Nav link indicator */
+    .nav-item.active {
+      background-color: #188296;
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+    .nav-item.active i {
+      color: #FBAF3F;
+    }
+    /* Smooth transitions */
+    .tab-btn.active {
+      border-bottom: 3px solid #188296;
+      color: #0D2C6B;
+      font-weight: 700;
+    }
+    /* Ten Frame Grid Styling */
+    .tf-grid {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      gap: 6px;
+      background-color: #0D2C6B;
+      padding: 8px;
+      border-radius: 8px;
+      border: 3px solid #0D2C6B;
+      max-width: 320px;
+      margin: 0 auto;
+    }
+    .tf-cell {
+      background-color: #FFFFFF;
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 4px;
+    }
+    .tf-counter {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      box-shadow: inset 0 2px 4px rgba(0,0,0,0.2), 0 2px 4px rgba(0,0,0,0.15);
+      transition: all 0.2s ease-in-out;
+    }
+  </style>
+</head>
+<body class="antialiased min-h-screen flex flex-col">
+
+  <!-- TOP HEADER / BRAND BAR -->
+  <header class="bg-cedow-navy text-white sticky top-0 z-50 shadow-md border-b-4 border-cedow-aqua">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center justify-between">
+      <div class="flex items-center space-x-3">
+        <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center p-1.5 shadow">
+          <i data-lucide="compass" class="text-cedow-navy w-7 h-7"></i>
+        </div>
+        <div>
+          <span class="text-xs uppercase tracking-wider text-cedow-gold font-bold block">Catholic Education Diocese of Wollongong</span>
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white leading-tight">Focus Area 2: Combining & Separating Quantities / Additive Relations (K–6)</h1>
+        </div>
+      </div>
+      <div class="flex items-center space-x-2">
+        <span class="hidden md:inline-flex items-center px-2.5 py-1 rounded-full text-xs font-semibold bg-cedow-aqua text-white">
+          <i data-lucide="book-open" class="w-3.5 h-3.5 mr-1 text-cedow-gold"></i> NSW Maths K–10 (2022)
+        </span>
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-md hover:bg-blue-900 focus:outline-none" aria-label="Toggle Navigation">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-1 flex flex-col lg:flex-row gap-8">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside id="sidebarNav" class="hidden lg:block w-full lg:w-72 flex-shrink-0">
+      <div class="sticky top-20 bg-white rounded-xl shadow-sm border border-cedow-silver overflow-hidden">
+        <div class="p-4 bg-slate-50 border-b border-cedow-silver">
+          <span class="text-xs font-bold text-cedow-charcoal uppercase tracking-wider block">Professional Learning</span>
+          <p class="text-sm font-semibold text-cedow-navy">Module Navigation</p>
+        </div>
+        <nav class="p-2 space-y-1 text-sm font-medium">
+          <a href="#section-1" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-slate-100 hover:text-cedow-navy transition-colors">
+            <i data-lucide="git-merge" class="w-4 h-4 mr-2.5 text-cedow-aqua"></i>
+            <span>1. Vertical Trajectory & Big Ideas</span>
+          </a>
+          <a href="#section-2" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-slate-100 hover:text-cedow-navy transition-colors">
+            <i data-lucide="alert-triangle" class="w-4 h-4 mr-2.5 text-cedow-aqua"></i>
+            <span>2. Conceptual Shifts & Traps</span>
+          </a>
+          <a href="#section-3" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-slate-100 hover:text-cedow-navy transition-colors">
+            <i data-lucide="sliders" class="w-4 h-4 mr-2.5 text-cedow-aqua"></i>
+            <span>3. Interactive Tool Lab</span>
+          </a>
+          <a href="#section-4" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-slate-100 hover:text-cedow-navy transition-colors">
+            <i data-lucide="stethoscope" class="w-4 h-4 mr-2.5 text-cedow-aqua"></i>
+            <span>4. Diagnostic Clinic & Sorter</span>
+          </a>
+          <a href="#section-5" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-slate-100 hover:text-cedow-navy transition-colors">
+            <i data-lucide="sparkles" class="w-4 h-4 mr-2.5 text-cedow-aqua"></i>
+            <span>5. Task Makeover Studio (WM)</span>
+          </a>
+          <a href="#section-6" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-slate-100 hover:text-cedow-navy transition-colors">
+            <i data-lucide="check-circle-2" class="w-4 h-4 mr-2.5 text-cedow-aqua"></i>
+            <span>6. Mastery Checkpoint</span>
+          </a>
+          <a href="#section-7" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-slate-100 hover:text-cedow-navy transition-colors">
+            <i data-lucide="share-2" class="w-4 h-4 mr-2.5 text-cedow-aqua"></i>
+            <span>7. Canvas LMS & Deployment</span>
+          </a>
+        </nav>
+        <div class="p-3 bg-amber-50/70 border-t border-amber-200 text-xs text-amber-900 rounded-b-xl flex items-start gap-2">
+          <i data-lucide="info" class="w-4 h-4 text-cedow-gold flex-shrink-0 mt-0.5"></i>
+          <span>Self-paced professional study aligned to the NESA Mathematics K–10 (2022) syllabus.</span>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 space-y-12 min-w-0">
+
+      <!-- WELCOME / OVERVIEW BANNER -->
+      <section class="bg-gradient-to-r from-cedow-navy to-blue-900 rounded-2xl p-6 sm:p-8 text-white shadow-md relative overflow-hidden border-l-8 border-cedow-gold">
+        <div class="relative z-10 max-w-3xl">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-cedow-aqua text-white mb-3">
+            One Continuous Thread across Four Stages
+          </span>
+          <h2 class="text-2xl sm:text-3xl font-black mb-3">How Students Learn to Add and Subtract: K to 6</h2>
+          <p class="text-slate-200 text-base sm:text-lg leading-relaxed mb-4">
+            This module traces the cognitive progression from Early Stage 1 and Stage 1 (<em class="text-cedow-gold">Combining and separating quantities</em>) to Stages 2 and 3 (<em class="text-cedow-gold">Additive relations</em>). Explore the explicit structural shifts, evaluate authentic student diagnostics, run dynamic manipulative simulators, and redesign closed drill sheets into rich reasoning tasks aligned with <span class="font-mono-math bg-blue-950 px-2 py-0.5 rounded text-cedow-gold">MAO-WM-01</span>.
+          </p>
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2 border-t border-blue-800 text-center text-xs">
+            <div class="p-2 bg-blue-950/60 rounded-lg">
+              <span class="text-cedow-gold font-bold block text-sm">ES1</span>
+              Combining & Separating (up to 10)
+            </div>
+            <div class="p-2 bg-blue-950/60 rounded-lg">
+              <span class="text-cedow-gold font-bold block text-sm">Stage 1</span>
+              Part-Whole Bonds & Bridging 10
+            </div>
+            <div class="p-2 bg-blue-950/60 rounded-lg">
+              <span class="text-cedow-gold font-bold block text-sm">Stage 2</span>
+              Strategy Repertoire & Algorithms
+            </div>
+            <div class="p-2 bg-blue-950/60 rounded-lg">
+              <span class="text-cedow-gold font-bold block text-sm">Stage 3</span>
+              Strategic Flexibility & Decimals
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 1: THE VERTICAL TRAJECTORY & BIG IDEAS -->
+      <!-- ========================================================================= -->
+      <section id="section-1" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-cedow-silver scroll-mt-20">
+        <div class="border-b border-cedow-silver pb-4 mb-6">
+          <div class="flex items-center space-x-2 text-cedow-aqua text-sm font-bold uppercase tracking-wider">
+            <i data-lucide="git-merge" class="w-4 h-4"></i>
+            <span>Curriculum Continuum</span>
+          </div>
+          <h2 class="text-2xl font-black text-cedow-navy mt-1">Section 1: The Vertical Trajectory & Big Ideas</h2>
+          <p class="text-cedow-charcoal text-sm mt-1">
+            Additive thinking develops from counting concrete objects to using numbers as replacements for completed counts, culminating in flexible mental strategies grounded in number structure.
+          </p>
+        </div>
+
+        <!-- Stage Filter Switcher -->
+        <div class="mb-6">
+          <label class="text-xs font-bold uppercase tracking-wider text-cedow-charcoal block mb-2">Select Syllabus Stage Filter:</label>
+          <div class="flex flex-wrap gap-2" id="stageTabs">
+            <button onclick="switchStage('es1')" data-stage="es1" class="stage-btn px-4 py-2 rounded-lg font-bold text-sm bg-cedow-navy text-white shadow-sm transition-all flex items-center gap-1.5">
+              <span>Early Stage 1</span> <span class="text-xs font-normal opacity-85">(Kindergarten)</span>
+            </button>
+            <button onclick="switchStage('s1')" data-stage="s1" class="stage-btn px-4 py-2 rounded-lg font-bold text-sm bg-slate-100 text-cedow-charcoal hover:bg-slate-200 transition-all flex items-center gap-1.5">
+              <span>Stage 1</span> <span class="text-xs font-normal opacity-85">(Years 1–2)</span>
+            </button>
+            <button onclick="switchStage('s2')" data-stage="s2" class="stage-btn px-4 py-2 rounded-lg font-bold text-sm bg-slate-100 text-cedow-charcoal hover:bg-slate-200 transition-all flex items-center gap-1.5">
+              <span>Stage 2</span> <span class="text-xs font-normal opacity-85">(Years 3–4)</span>
+            </button>
+            <button onclick="switchStage('s3')" data-stage="s3" class="stage-btn px-4 py-2 rounded-lg font-bold text-sm bg-slate-100 text-cedow-charcoal hover:bg-slate-200 transition-all flex items-center gap-1.5">
+              <span>Stage 3</span> <span class="text-xs font-normal opacity-85">(Years 5–6)</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Dynamic Stage Card Display -->
+        <div id="stageCardContainer" class="bg-cedow-bg p-5 sm:p-6 rounded-xl border border-cedow-silver mb-8 transition-all">
+          <!-- Content injected via JS -->
+        </div>
+
+        <!-- Cross-Stage Big Ideas Matrix -->
+        <div class="mt-8">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-lg font-bold text-cedow-navy">The Cross-Stage Big Ideas Matrix (K–6)</h3>
+              <p class="text-xs text-cedow-charcoal">Six foundational principles carrying the developmental arc of addition and subtraction.</p>
+            </div>
+            <span class="text-xs font-bold px-2.5 py-1 bg-cedow-aqua/10 text-cedow-aqua rounded-md">Interactive Matrix</span>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4" id="bigIdeasGrid">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 2: KEY CONCEPTUAL SHIFTS & PEDAGOGICAL TRAPS -->
+      <!-- ========================================================================= -->
+      <section id="section-2" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-cedow-silver scroll-mt-20">
+        <div class="border-b border-cedow-silver pb-4 mb-6">
+          <div class="flex items-center space-x-2 text-cedow-aqua text-sm font-bold uppercase tracking-wider">
+            <i data-lucide="alert-triangle" class="w-4 h-4"></i>
+            <span>Evidence-Based Teaching Advice</span>
+          </div>
+          <h2 class="text-2xl font-black text-cedow-navy mt-1">Section 2: Key Conceptual Shifts & Pedagogical Traps</h2>
+          <p class="text-cedow-charcoal text-sm mt-1">
+            Research-informed analysis drawn from NESA Teaching Advice and mathematics education literature, uncovering why procedural defaults often mask student misunderstandings.
+          </p>
+        </div>
+
+        <!-- The 4 Core Pedagogical Traps Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8">
+          
+          <!-- Trap 1 -->
+          <div class="p-5 rounded-xl border-l-4 border-amber-500 bg-amber-50/50 shadow-sm">
+            <div class="flex items-center space-x-2 text-amber-900 font-bold text-base mb-2">
+              <i data-lucide="arrow-left-right" class="w-5 h-5 text-amber-600"></i>
+              <h4>Trap 1: The 'Key-Word' Strategy Fallacy</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-cedow-charcoal leading-relaxed mb-3">
+              Teaching children that words like <em>'total'</em>, <em>'more than'</em>, or <em>'altogether'</em> automatically signal addition causes persistent errors. In comparison subtraction (e.g. <em>"Jake has 18 apples. How many more does he need to have 30 in total?"</em>), students frequently add 18 and 30 to get 48.
+            </p>
+            <div class="bg-white p-3 rounded-lg border border-amber-200 text-xs">
+              <strong class="text-cedow-navy block mb-1">NESA Teaching Advice Alert:</strong>
+              There are more than a dozen ways of expressing <span class="font-mono-math font-bold">9 &minus; 3</span> (e.g. <em>"By how much does 9 exceed 3?"</em>, <em>"How many added to 3 make 9?"</em>, <em>"What is the difference between 9 and 3?"</em>). This proves the futility of relying on superficial key words. Students must model the situational story using bar models or tape diagrams.
+            </div>
+          </div>
+
+          <!-- Trap 2 -->
+          <div class="p-5 rounded-xl border-l-4 border-red-500 bg-red-50/50 shadow-sm">
+            <div class="flex items-center space-x-2 text-red-900 font-bold text-base mb-2">
+              <i data-lucide="equal-not" class="w-5 h-5 text-red-600"></i>
+              <h4>Trap 2: The '=' Symbol Read as 'The Answer Comes Next'</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-cedow-charcoal leading-relaxed mb-3">
+              Early learners almost universally view the equals sign operationally as a 'do-something' signal. When shown <span class="font-mono-math font-bold">8 + 4 = &square; + 5</span>, over 70% of Stage 2 students fill in 12 (ignoring the + 5) or 17 (adding everything) (McNeil & Alibali 2005).
+            </p>
+            <div class="bg-white p-3 rounded-lg border border-red-200 text-xs">
+              <strong class="text-cedow-navy block mb-1">Pedagogical Remedy:</strong>
+              Read <span class="font-mono-math">=</span> consistently as <strong>'is the same amount as'</strong> or <strong>'balances'</strong>. Vary sentence structures regularly (<span class="font-mono-math">5 = 4 + 1</span>) and use sweeping hand gestures under each expression to physically demonstrate balanced equilibrium.
+            </div>
+          </div>
+
+          <!-- Trap 3 -->
+          <div class="p-5 rounded-xl border-l-4 border-rose-600 bg-rose-50/50 shadow-sm">
+            <div class="flex items-center space-x-2 text-rose-950 font-bold text-base mb-2">
+              <i data-lucide="layers" class="w-5 h-5 text-rose-600"></i>
+              <h4>Trap 3: Split Strategy Misapplied to Subtraction</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-cedow-charcoal leading-relaxed mb-3">
+              Partitioning tens and ones works smoothly in addition (<span class="font-mono-math">37 + 45 = 70 + 12 = 82</span>). But when students apply the split strategy to subtraction (<span class="font-mono-math">96 &minus; 58</span>), they compute <span class="font-mono-math">90 &minus; 50 = 40</span> and then swap the ones (<span class="font-mono-math">8 &minus; 6 = 2</span>) to answer 42!
+            </p>
+            <div class="bg-white p-3 rounded-lg border border-rose-200 text-xs">
+              <strong class="text-cedow-navy block mb-1">NESA Explicit Mandate:</strong>
+              Use the split strategy for <strong>addition only</strong>. For subtraction involving regrouping, teach the jump strategy on an empty number line or indirect addition (adding up from 58 to 96).
+            </div>
+          </div>
+
+          <!-- Trap 4 -->
+          <div class="p-5 rounded-xl border-l-4 border-blue-600 bg-blue-50/50 shadow-sm">
+            <div class="flex items-center space-x-2 text-cedow-navy font-bold text-base mb-2">
+              <i data-lucide="file-text" class="w-5 h-5 text-cedow-aqua"></i>
+              <h4>Trap 4: Premature Algorithms & The Smaller-from-Larger Error</h4>
+            </div>
+            <p class="text-xs sm:text-sm text-cedow-charcoal leading-relaxed mb-3">
+              Research demonstrates that after just one year of practicing column algorithms, students blindly apply them to problems like <span class="font-mono-math">500 &minus; 498</span> or <span class="font-mono-math">9000 &minus; 7</span> (Torbeyns & Verschaffel 2013). Worse, in <span class="font-mono-math">543 &minus; 289</span>, students write 346 by taking 3 from 9 and 4 from 8.
+            </p>
+            <div class="bg-white p-3 rounded-lg border border-blue-200 text-xs">
+              <strong class="text-cedow-navy block mb-1">Pedagogical Remedy:</strong>
+              Teach expanded column recording (<span class="font-mono-math">400 + 120 + 8</span>) so that trading 1 hundred is explicitly seen as exchanging for 10 tens, not just writing a '1' in the tens column. Always estimate first: <em>"Will it be more or less than 300?"</em>
+            </div>
+          </div>
+        </div>
+
+        <!-- Research Deep Dive: The Meaning of the Traded '1' -->
+        <div class="p-5 rounded-xl bg-slate-50 border border-cedow-silver">
+          <div class="flex items-center gap-2 mb-3">
+            <span class="p-1 rounded bg-cedow-navy text-white text-xs font-bold uppercase tracking-wider">Research Focus</span>
+            <h4 class="font-bold text-cedow-navy">The Dual Nature of the Traded '1': Addition vs Subtraction</h4>
+          </div>
+          <p class="text-xs sm:text-sm text-cedow-charcoal leading-relaxed mb-4">
+            Even students proficient in algorithmic execution struggle to explain why the '1' recorded above a column behaves differently in addition compared to subtraction (NESA Stage 2 & 3 Support Advice):
+          </p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs font-mono-math">
+            <div class="bg-white p-3.5 rounded-lg border border-slate-200">
+              <div class="font-bold text-cedow-navy border-b pb-1 mb-2">Addition: 259 + 38</div>
+              <div class="leading-relaxed">
+                9 ones + 8 ones = 17 ones<br>
+                10 ones are bundled into <strong class="text-blue-700">1 ten</strong>.<br>
+                This traded '1' is added directly to the existing tens:<br>
+                <span class="text-blue-700">1 ten</span> + 5 tens + 3 tens = 9 tens (90).
+              </div>
+            </div>
+            <div class="bg-white p-3.5 rounded-lg border border-slate-200">
+              <div class="font-bold text-cedow-navy border-b pb-1 mb-2">Subtraction: 429 &minus; 34</div>
+              <div class="leading-relaxed">
+                Cannot subtract 3 tens from 2 tens.<br>
+                1 hundred is unbundled into <strong class="text-amber-600">10 tens</strong>.<br>
+                The 4 hundreds becomes 3 hundreds, and the 2 tens becomes 12 tens (120).<br>
+                Here, <strong class="text-amber-600">10 is added</strong> to the tens column, not 1!
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 3: INTERACTIVE TOOL LAB (4 RUNNABLE MANIPULATIVES) -->
+      <!-- ========================================================================= -->
+      <section id="section-3" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-cedow-silver scroll-mt-20">
+        <div class="border-b border-cedow-silver pb-4 mb-6">
+          <div class="flex items-center space-x-2 text-cedow-aqua text-sm font-bold uppercase tracking-wider">
+            <i data-lucide="sliders" class="w-4 h-4"></i>
+            <span>Interactive Laboratory</span>
+          </div>
+          <h2 class="text-2xl font-black text-cedow-navy mt-1">Section 3: Interactive Tool Lab</h2>
+          <p class="text-cedow-charcoal text-sm mt-1">
+            Test and manipulate four runnable tools designed to build structural models across the stages: part-whole ten frames, empty number line jumping, strategy efficiency comparison, and diagnostic error analysis.
+          </p>
+        </div>
+
+        <!-- Tool Lab Tabs -->
+        <div class="flex flex-wrap border-b border-cedow-silver gap-2 mb-6" id="toolTabs">
+          <button onclick="selectTool('tf')" id="btn-tool-tf" class="tab-btn active px-4 py-2.5 text-sm font-bold text-cedow-navy transition-colors flex items-center gap-2">
+            <i data-lucide="grid" class="w-4 h-4 text-cedow-aqua"></i>
+            <span>1. Part-Part-Whole Ten Frame (ES1–S1)</span>
+          </button>
+          <button onclick="selectTool('enl')" id="btn-tool-enl" class="tab-btn px-4 py-2.5 text-sm font-medium text-cedow-charcoal hover:text-cedow-navy transition-colors flex items-center gap-2">
+            <i data-lucide="git-commit" class="w-4 h-4 text-cedow-aqua"></i>
+            <span>2. Empty Number Line (S1–S3)</span>
+          </button>
+          <button onclick="selectTool('sc')" id="btn-tool-sc" class="tab-btn px-4 py-2.5 text-sm font-medium text-cedow-charcoal hover:text-cedow-navy transition-colors flex items-center gap-2">
+            <i data-lucide="scale" class="w-4 h-4 text-cedow-aqua"></i>
+            <span>3. Strategy Chooser & Efficiency (S2–S3)</span>
+          </button>
+          <button onclick="selectTool('ste')" id="btn-tool-ste" class="tab-btn px-4 py-2.5 text-sm font-medium text-cedow-charcoal hover:text-cedow-navy transition-colors flex items-center gap-2">
+            <i data-lucide="check-square" class="w-4 h-4 text-cedow-aqua"></i>
+            <span>4. Spot the Error Diagnostic (S2–S3)</span>
+          </button>
+        </div>
+
+        <!-- TOOL 1: TEN FRAME -->
+        <div id="tool-tf" class="tool-pane block">
+          <div class="bg-cedow-bg p-5 sm:p-6 rounded-xl border border-cedow-silver">
+            <div class="max-w-xl mx-auto">
+              <div class="text-center mb-4">
+                <span class="text-xs uppercase font-bold text-cedow-aqua tracking-wider">Early Stage 1 & Stage 1 Model</span>
+                <h3 class="text-lg font-bold text-cedow-navy">Part-Part-Whole Ten Frame Simulator</h3>
+                <p class="text-xs text-cedow-charcoal">Select a whole quantity (up to 10), then partition it between Part A (Navy) and Part B (Gold). Notice how the whole is conserved while the parts change.</p>
+              </div>
+
+              <!-- Controls -->
+              <div class="flex flex-wrap items-center justify-center gap-3 mb-6 bg-white p-3.5 rounded-lg border border-cedow-silver shadow-sm">
+                <div class="flex items-center space-x-2">
+                  <label for="tfWholeSelect" class="text-xs font-bold text-cedow-charcoal">Whole:</label>
+                  <select id="tfWholeSelect" onchange="updateTFWhole(this.value)" class="text-sm font-bold border border-cedow-silver rounded px-2.5 py-1 focus:ring-2 focus:ring-cedow-aqua">
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                    <option value="6">6</option>
+                    <option value="7" selected>7</option>
+                    <option value="8">8</option>
+                    <option value="9">9</option>
+                    <option value="10">10</option>
+                  </select>
+                </div>
+                <div class="flex items-center space-x-1">
+                  <button onclick="shiftTF(-1)" id="tfLeftBtn" class="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 text-cedow-charcoal rounded border border-cedow-silver flex items-center gap-1">
+                    <i data-lucide="chevron-left" class="w-3.5 h-3.5"></i> Move to Part A
+                  </button>
+                  <button onclick="shiftTF(1)" id="tfRightBtn" class="px-2.5 py-1 text-xs font-bold bg-slate-100 hover:bg-slate-200 text-cedow-charcoal rounded border border-cedow-silver flex items-center gap-1">
+                    Move to Part B <i data-lucide="chevron-right" class="w-3.5 h-3.5"></i>
+                  </button>
+                </div>
+                <button onclick="toggleTFCombinations()" class="px-3 py-1 text-xs font-bold bg-cedow-navy text-white rounded hover:bg-blue-900 transition-colors">
+                  Show All Combinations
+                </button>
+              </div>
+
+              <!-- Ten Frame Grid Container -->
+              <div class="tf-grid mb-5" id="tfGrid">
+                <!-- 10 cells rendered dynamically -->
+              </div>
+
+              <!-- Readout Banner -->
+              <div id="tfReadout" class="p-4 bg-white rounded-lg border border-cedow-silver text-center text-sm shadow-sm mb-4">
+                <!-- Dynamically generated -->
+              </div>
+
+              <!-- Combinations Drawer -->
+              <div id="tfCombosDrawer" class="hidden bg-white p-4 rounded-lg border border-cedow-silver text-xs">
+                <!-- Generated by JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL 2: EMPTY NUMBER LINE -->
+        <div id="tool-enl" class="tool-pane hidden">
+          <div class="bg-cedow-bg p-5 sm:p-6 rounded-xl border border-cedow-silver">
+            <div class="max-w-3xl mx-auto">
+              <div class="text-center mb-4">
+                <span class="text-xs uppercase font-bold text-cedow-aqua tracking-wider">Stage 1 to Stage 3 Model</span>
+                <h3 class="text-lg font-bold text-cedow-navy">Empty Number Line Jump & Bridge Simulator</h3>
+                <p class="text-xs text-cedow-charcoal">Visualise mental strategies on a continuous linear model. Compare jumping by tens and ones versus bridging to multiples of 10 and indirect addition.</p>
+              </div>
+
+              <!-- Controls -->
+              <div class="bg-white p-4 rounded-lg border border-cedow-silver shadow-sm mb-6 flex flex-wrap items-center justify-center gap-3 text-sm">
+                <div class="flex items-center space-x-1.5">
+                  <label for="enlNumA" class="text-xs font-bold text-cedow-charcoal">A:</label>
+                  <input type="number" id="enlNumA" value="38" min="0" max="200" class="w-16 p-1 border border-cedow-silver rounded font-mono-math text-center font-bold">
+                </div>
+
+                <select id="enlOp" onchange="updateENLStrategyOptions()" class="p-1 border border-cedow-silver rounded font-bold text-cedow-navy">
+                  <option value="+">+</option>
+                  <option value="-">&minus;</option>
+                </select>
+
+                <div class="flex items-center space-x-1.5">
+                  <label for="enlNumB" class="text-xs font-bold text-cedow-charcoal">B:</label>
+                  <input type="number" id="enlNumB" value="25" min="0" max="200" class="w-16 p-1 border border-cedow-silver rounded font-mono-math text-center font-bold">
+                </div>
+
+                <div class="flex items-center space-x-1.5">
+                  <label for="enlStrategy" class="text-xs font-bold text-cedow-charcoal">Strategy:</label>
+                  <select id="enlStrategy" class="p-1 border border-cedow-silver rounded text-xs font-semibold max-w-[220px]">
+                    <!-- Dynamically populated -->
+                  </select>
+                </div>
+
+                <button onclick="renderENL()" class="px-4 py-1.5 bg-cedow-aqua hover:bg-teal-700 text-white font-bold rounded text-xs shadow-sm flex items-center gap-1">
+                  <i data-lucide="play" class="w-3.5 h-3.5"></i> Plot Jumps
+                </button>
+              </div>
+
+              <!-- SVG Display -->
+              <div class="bg-white p-4 rounded-xl border border-cedow-silver shadow-sm overflow-x-auto mb-4">
+                <div id="enlSvgContainer" class="w-full min-w-[620px] flex justify-center">
+                  <!-- SVG rendered here -->
+                </div>
+              </div>
+
+              <!-- ENL Readout -->
+              <div id="enlReadout" class="p-4 bg-white rounded-lg border-l-4 border-cedow-aqua text-sm text-cedow-charcoal shadow-sm">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL 3: STRATEGY CHOOSER -->
+        <div id="tool-sc" class="tool-pane hidden">
+          <div class="bg-cedow-bg p-5 sm:p-6 rounded-xl border border-cedow-silver">
+            <div class="max-w-2xl mx-auto">
+              <div class="text-center mb-4">
+                <span class="text-xs uppercase font-bold text-cedow-aqua tracking-wider">Stage 2 & Stage 3 Mental Flexibility</span>
+                <h3 class="text-lg font-bold text-cedow-navy">Strategy Chooser & Efficiency Comparator</h3>
+                <p class="text-xs text-cedow-charcoal">NESA emphasizes that strategy flexibility means choosing a strategy that responds directly to the specific numbers in the problem.</p>
+              </div>
+
+              <!-- Problem Selector -->
+              <div class="mb-4 flex items-center justify-center gap-3">
+                <label for="scProblemSelect" class="text-xs font-bold text-cedow-charcoal">Select Problem:</label>
+                <select id="scProblemSelect" onchange="loadSCProblem()" class="font-mono-math font-bold text-cedow-navy bg-white border border-cedow-silver rounded-lg px-3 py-1.5 shadow-sm text-sm">
+                  <!-- Options generated via JS -->
+                </select>
+              </div>
+
+              <!-- Strategy Buttons -->
+              <div class="flex flex-wrap gap-2 justify-center mb-5" id="scStrategyButtons">
+                <!-- Injected via JS -->
+              </div>
+
+              <!-- Strategy Output Display -->
+              <div id="scOutputCard" class="bg-white p-5 rounded-xl border border-cedow-silver shadow-sm mb-4 min-h-[100px] flex items-center justify-center text-sm text-slate-400">
+                Select a strategy above to inspect its execution.
+              </div>
+
+              <!-- Efficiency Benchmark Card -->
+              <div id="scEfficiencyTip" class="p-4 bg-blue-50/80 border border-blue-200 rounded-lg text-xs text-cedow-charcoal">
+                <!-- Rationale injected via JS -->
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL 4: SPOT THE ERROR -->
+        <div id="tool-ste" class="tool-pane hidden">
+          <div class="bg-cedow-bg p-5 sm:p-6 rounded-xl border border-cedow-silver">
+            <div class="max-w-2xl mx-auto">
+              <div class="text-center mb-4">
+                <span class="text-xs uppercase font-bold text-cedow-aqua tracking-wider">Stage 2 & 3 Error Analysis</span>
+                <h3 class="text-lg font-bold text-cedow-navy">Spot the Error Diagnostic Tool</h3>
+                <p class="text-xs text-cedow-charcoal">Each authentic piece of student work contains a misconception described in NESA Teaching Advice. First estimate reasonableness, then diagnose the conceptual root.</p>
+              </div>
+
+              <!-- Tracker Banner -->
+              <div class="flex items-center justify-between text-xs font-bold text-cedow-charcoal mb-3 px-1">
+                <span id="steProgressText">Sample 1 of 6</span>
+                <span id="steScoreBadge" class="bg-cedow-navy text-white px-2.5 py-0.5 rounded-full">Score: 0</span>
+              </div>
+
+              <!-- Student Work Box -->
+              <div class="bg-white p-5 rounded-xl border border-cedow-silver shadow-sm mb-4">
+                <div class="flex items-start justify-between">
+                  <div class="w-1/2">
+                    <span class="text-xs uppercase tracking-wider font-bold text-slate-400 block mb-1">Student Working</span>
+                    <div id="steWorkDisplay" class="font-mono-math text-base sm:text-lg bg-slate-50 p-3 rounded-lg border border-slate-200 inline-block font-bold text-cedow-navy whitespace-pre">
+                      <!-- Student code -->
+                    </div>
+                  </div>
+                  <div class="w-1/2 pl-4 border-l border-slate-100">
+                    <span class="text-xs uppercase tracking-wider font-bold text-slate-400 block mb-1">Estimation Benchmark</span>
+                    <button onclick="revealSTEEstimate()" id="steEstBtn" class="px-2.5 py-1 text-xs font-bold bg-amber-50 hover:bg-amber-100 text-amber-900 border border-amber-200 rounded mb-2 flex items-center gap-1">
+                      <i data-lucide="eye" class="w-3.5 h-3.5 text-amber-600"></i> Estimate First
+                    </button>
+                    <div id="steEstText" class="text-xs text-cedow-charcoal italic min-h-[30px]"></div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Diagnosis Options -->
+              <div class="space-y-2 mb-4" id="steOptionsContainer">
+                <!-- 4 radio options populated via JS -->
+              </div>
+
+              <!-- Feedback Line -->
+              <div id="steFeedback" class="hidden p-3.5 rounded-lg text-xs leading-relaxed mb-4">
+                <!-- Feedback injected via JS -->
+              </div>
+
+              <!-- Next Button -->
+              <div class="text-right">
+                <button onclick="nextSTESample()" id="steNextBtn" disabled class="px-4 py-2 bg-cedow-navy hover:bg-blue-900 disabled:opacity-40 disabled:cursor-not-allowed text-white text-xs font-bold rounded-lg shadow-sm">
+                  Next Student Work Sample &rarr;
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 4: STUDENT DIAGNOSTIC CLINIC & ROOT MISCONCEPTIONS -->
+      <!-- ========================================================================= -->
+      <section id="section-4" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-cedow-silver scroll-mt-20">
+        <div class="border-b border-cedow-silver pb-4 mb-6">
+          <div class="flex items-center space-x-2 text-cedow-aqua text-sm font-bold uppercase tracking-wider">
+            <i data-lucide="stethoscope" class="w-4 h-4"></i>
+            <span>Clinical Interview Protocols</span>
+          </div>
+          <h2 class="text-2xl font-black text-cedow-navy mt-1">Section 4: Student Diagnostic Clinic & Root Misconceptions</h2>
+          <p class="text-cedow-charcoal text-sm mt-1">
+            Research-grounded clinical interview transcripts (e.g. Ross's 16-tile correspondence protocol) and an interactive 4-Root Misconception Sorter covering 12 real classroom scenarios.
+          </p>
+        </div>
+
+        <!-- Research Diagnostic Protocol: Ross's 16 Tiles Task -->
+        <div class="bg-slate-50 p-5 rounded-xl border border-cedow-silver mb-8">
+          <div class="flex items-center gap-2 mb-2">
+            <span class="px-2 py-0.5 rounded text-xs font-bold uppercase bg-cedow-navy text-white">Classic Research Protocol</span>
+            <h3 class="font-bold text-cedow-navy">The Digit-Correspondence Protocol: 16 Tiles (Ross 2002)</h3>
+          </div>
+          <p class="text-xs sm:text-sm text-cedow-charcoal mb-4">
+            A student counts out 16 individual tiles accurately, writes the numeral <span class="font-mono-math font-bold">16</span>, and confirms there are sixteen tiles. Observe the transcript when asked to correlate the written digits to the physical quantities:
+          </p>
+          <div class="space-y-2 text-xs sm:text-sm bg-white p-4 rounded-lg border border-slate-200 font-mono-math leading-relaxed mb-4">
+            <p><span class="text-blue-700 font-bold">Teacher:</span> "With the number 16... this 6 here [points to 6], can you show me with the tiles how you make that?"</p>
+            <p><span class="text-emerald-700 font-bold">Student:</span> [Pushes 6 tiles into two groups of three] "Three and three."</p>
+            <p><span class="text-blue-700 font-bold">Teacher:</span> "Great. And this 1 here [points to 1 in 16]... what does that mean for the tiles?"</p>
+            <p><span class="text-emerald-700 font-bold">Student:</span> [Moves a single tile next to the 1] "For the units... it stands for the units in the tens and ones."</p>
+            <p><span class="text-blue-700 font-bold">Teacher:</span> "So altogether [points to the 7 tiles grouped near 16] there are how many here?"</p>
+            <p><span class="text-emerald-700 font-bold">Student:</span> "Seven."</p>
+            <p><span class="text-blue-700 font-bold">Teacher:</span> "If this number is 16 and there were 16 tiles altogether, what happens to these remaining 9 tiles?"</p>
+            <p><span class="text-emerald-700 font-bold">Student:</span> "They are the leftovers."</p>
+          </div>
+          <div class="p-3 bg-amber-50 rounded border border-amber-200 text-xs text-amber-950">
+            <strong>Diagnostic Insight:</strong> This student’s understanding of positional place value has collapsed into face value. The '1' in 16 is viewed as one object rather than 1 ten (a composite unit of 10). Without this composite unit understanding, regrouping in addition and subtraction remains purely mechanical symbol-pushing.
+          </div>
+        </div>
+
+        <!-- Interactive 4-Root Misconception Sorter -->
+        <div>
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h3 class="text-lg font-bold text-cedow-navy">The 4-Root Misconception Sorter</h3>
+              <p class="text-xs text-cedow-charcoal">Read each student response, diagnose which of the four conceptual roots is responsible, and review coaching feedback.</p>
+            </div>
+            <div class="text-right">
+              <span id="sorterScoreBadge" class="text-xs font-bold bg-cedow-aqua text-white px-3 py-1 rounded-full shadow-sm">
+                Solved: 0 / 12
+              </span>
+            </div>
+          </div>
+
+          <!-- Sorter Card Box -->
+          <div class="bg-cedow-bg p-5 sm:p-6 rounded-xl border border-cedow-silver">
+            <div class="max-w-2xl mx-auto">
+              <!-- Scenario Header & Prompt -->
+              <div class="bg-white p-5 rounded-xl border border-cedow-silver shadow-sm mb-5">
+                <div class="flex items-center justify-between mb-2">
+                  <span id="sorterStagePill" class="text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded bg-blue-100 text-cedow-navy">Stage 1</span>
+                  <span id="sorterIndexText" class="text-xs font-bold text-slate-400">Scenario 1 of 12</span>
+                </div>
+                <p id="sorterScenarioText" class="text-base font-semibold text-cedow-navy leading-relaxed">
+                  <!-- Text injected via JS -->
+                </p>
+              </div>
+
+              <!-- 4 Root Category Buttons -->
+              <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-4" id="sorterRootButtons">
+                <button onclick="diagnoseRoot(0)" class="sorter-btn p-3 text-left rounded-lg border border-cedow-silver bg-white hover:border-cedow-aqua text-xs font-bold text-cedow-charcoal transition-all shadow-sm flex items-start gap-2">
+                  <span class="w-5 h-5 rounded-full bg-slate-100 text-cedow-navy flex items-center justify-center flex-shrink-0 text-xs">1</span>
+                  <span>Counting or procedures used instead of number structure</span>
+                </button>
+                <button onclick="diagnoseRoot(1)" class="sorter-btn p-3 text-left rounded-lg border border-cedow-silver bg-white hover:border-cedow-aqua text-xs font-bold text-cedow-charcoal transition-all shadow-sm flex items-start gap-2">
+                  <span class="w-5 h-5 rounded-full bg-slate-100 text-cedow-navy flex items-center justify-center flex-shrink-0 text-xs">2</span>
+                  <span>The equals sign read as 'the answer comes next'</span>
+                </button>
+                <button onclick="diagnoseRoot(2)" class="sorter-btn p-3 text-left rounded-lg border border-cedow-silver bg-white hover:border-cedow-aqua text-xs font-bold text-cedow-charcoal transition-all shadow-sm flex items-start gap-2">
+                  <span class="w-5 h-5 rounded-full bg-slate-100 text-cedow-navy flex items-center justify-center flex-shrink-0 text-xs">3</span>
+                  <span>Digits treated without their quantity value</span>
+                </button>
+                <button onclick="diagnoseRoot(3)" class="sorter-btn p-3 text-left rounded-lg border border-cedow-silver bg-white hover:border-cedow-aqua text-xs font-bold text-cedow-charcoal transition-all shadow-sm flex items-start gap-2">
+                  <span class="w-5 h-5 rounded-full bg-slate-100 text-cedow-navy flex items-center justify-center flex-shrink-0 text-xs">4</span>
+                  <span>Words and problem types misread / key-word fallacy</span>
+                </button>
+              </div>
+
+              <!-- Sorter Feedback -->
+              <div id="sorterFeedback" class="hidden p-4 rounded-xl text-xs sm:text-sm leading-relaxed mb-4">
+                <!-- Feedback injected via JS -->
+              </div>
+
+              <!-- Sorter Navigation -->
+              <div class="flex justify-between items-center pt-2">
+                <button onclick="prevSorterScenario()" id="sorterPrevBtn" class="px-3 py-1.5 text-xs font-bold text-cedow-charcoal hover:text-cedow-navy flex items-center gap-1">
+                  <i data-lucide="arrow-left" class="w-3.5 h-3.5"></i> Previous
+                </button>
+                <button onclick="nextSorterScenario()" id="sorterNextBtn" class="px-4 py-1.5 bg-cedow-navy hover:bg-blue-900 text-white rounded text-xs font-bold flex items-center gap-1 shadow-sm">
+                  Next Scenario <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 5: TASK MAKEOVER STUDIO (WORKING MATHEMATICALLY) -->
+      <!-- ========================================================================= -->
+      <section id="section-5" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-cedow-silver scroll-mt-20">
+        <div class="border-b border-cedow-silver pb-4 mb-6">
+          <div class="flex items-center space-x-2 text-cedow-aqua text-sm font-bold uppercase tracking-wider">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span>Pedagogical Transformation</span>
+          </div>
+          <h2 class="text-2xl font-black text-cedow-navy mt-1">Section 5: Task Makeover Studio (MAO-WM-01)</h2>
+          <p class="text-cedow-charcoal text-sm mt-1">
+            Working Mathematically (<span class="font-mono-math font-bold">MAO-WM-01</span>) is embedded across all syllabus content. Transform traditional closed worksheets into low-floor, high-ceiling reasoning tasks using the 5 High-Yield Pedagogical Moves.
+          </p>
+        </div>
+
+        <!-- Makeover Stage Switcher -->
+        <div class="flex flex-wrap gap-2 mb-6" id="makeoverStageTabs">
+          <button onclick="loadMakeover('es1')" data-mo="es1" class="mo-btn px-4 py-2 rounded-lg font-bold text-xs bg-cedow-navy text-white shadow-sm">
+            Early Stage 1 Makeover
+          </button>
+          <button onclick="loadMakeover('s1')" data-mo="s1" class="mo-btn px-4 py-2 rounded-lg font-bold text-xs bg-slate-100 text-cedow-charcoal hover:bg-slate-200">
+            Stage 1 Makeover
+          </button>
+          <button onclick="loadMakeover('s2')" data-mo="s2" class="mo-btn px-4 py-2 rounded-lg font-bold text-xs bg-slate-100 text-cedow-charcoal hover:bg-slate-200">
+            Stage 2 Makeover
+          </button>
+          <button onclick="loadMakeover('s3')" data-mo="s3" class="mo-btn px-4 py-2 rounded-lg font-bold text-xs bg-slate-100 text-cedow-charcoal hover:bg-slate-200">
+            Stage 3 Makeover
+          </button>
+        </div>
+
+        <!-- Before & After Comparison Layout -->
+        <div id="makeoverDisplayContainer" class="mb-8">
+          <!-- Injected via JS -->
+        </div>
+
+        <!-- The 5 High-Yield Pedagogical Moves Studio -->
+        <div class="mt-8 pt-6 border-t border-cedow-silver">
+          <div class="mb-4">
+            <h3 class="text-lg font-bold text-cedow-navy">The 5 High-Yield Pedagogical Moves Studio</h3>
+            <p class="text-xs text-cedow-charcoal">Select a closed procedural calculation to see how five structured question prompts elevate cognitive demand and activate Working Mathematically.</p>
+          </div>
+
+          <!-- Closed Problem Selector -->
+          <div class="flex flex-wrap items-center gap-2 mb-4">
+            <span class="text-xs font-bold text-cedow-charcoal">Select Closed Problem:</span>
+            <button onclick="loadMoveProblem(0)" id="mvProbBtn0" class="mv-prob-btn px-3 py-1 rounded text-xs font-bold bg-cedow-navy text-white">
+              Stage 1: 9 &minus; 3 = ___
+            </button>
+            <button onclick="loadMoveProblem(1)" id="mvProbBtn1" class="mv-prob-btn px-3 py-1 rounded text-xs font-bold bg-slate-100 text-cedow-charcoal hover:bg-slate-200">
+              Stage 2: 125 &minus; 78 = ___
+            </button>
+            <button onclick="loadMoveProblem(2)" id="mvProbBtn2" class="mv-prob-btn px-3 py-1 rounded text-xs font-bold bg-slate-100 text-cedow-charcoal hover:bg-slate-200">
+              Stage 3: 4988 + 955 = ___
+            </button>
+          </div>
+
+          <!-- The 5 Moves Tab Carousel -->
+          <div class="grid grid-cols-1 md:grid-cols-5 gap-2 mb-4" id="movesNavContainer">
+            <!-- 5 buttons -->
+          </div>
+
+          <!-- Dynamic Move Content Display -->
+          <div id="moveContentDisplay" class="bg-cedow-bg p-5 rounded-xl border border-cedow-silver text-sm">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 6: MODULE MASTERY CHECKPOINT -->
+      <!-- ========================================================================= -->
+      <section id="section-6" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-cedow-silver scroll-mt-20">
+        <div class="border-b border-cedow-silver pb-4 mb-6">
+          <div class="flex items-center space-x-2 text-cedow-aqua text-sm font-bold uppercase tracking-wider">
+            <i data-lucide="check-circle-2" class="w-4 h-4"></i>
+            <span>Knowledge Consolidation</span>
+          </div>
+          <h2 class="text-2xl font-black text-cedow-navy mt-1">Section 6: Module Mastery Checkpoint</h2>
+          <p class="text-cedow-charcoal text-sm mt-1">
+            Complete this 5-question scenario-based check mapping directly to the NESA Teaching Advice. Attain an 80% score (4 out of 5) to unlock the structured <em>Key Pedagogical Takeaways (K–6 Continuum)</em> executive summary.
+          </p>
+        </div>
+
+        <form id="masteryForm" class="space-y-6">
+          
+          <!-- Q1 -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold uppercase text-cedow-aqua tracking-wider block mb-1">Question 1 (NESA Stage 1 Teaching Advice)</span>
+            <p class="font-bold text-cedow-navy text-sm mb-3">Why does the NESA Teaching Advice explicitly warn against teaching a "key word approach" to additive word problems?</p>
+            <div class="space-y-2 text-xs sm:text-sm">
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq0" value="0" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>Key words like 'total' and 'more' are vocabulary items that primary students cannot decode phonetically.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq0" value="1" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>Subtraction can be expressed in many distinct linguistic ways (e.g. comparison, difference, take away), meaning key words do not reliably indicate the required operation.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq0" value="2" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>Key words are only permitted in Stage 3 multistep rate and ratio investigations.</span>
+              </label>
+            </div>
+            <div id="qfb0" class="hidden mt-3 p-3 rounded text-xs leading-relaxed"></div>
+          </div>
+
+          <!-- Q2 -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold uppercase text-cedow-aqua tracking-wider block mb-1">Question 2 (NESA Stage 1 & 2 Teaching Advice)</span>
+            <p class="font-bold text-cedow-navy text-sm mb-3">Why does NESA specify that the split strategy (separating tens and ones) should be restricted to addition only?</p>
+            <div class="space-y-2 text-xs sm:text-sm">
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq1" value="0" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>It is too slow for mental computation with three-digit numbers.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq1" value="1" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>When applied to subtraction with regrouping (e.g. 96 &minus; 58), it invites the smaller-from-larger error where students calculate 90 &minus; 50 = 40 and 8 &minus; 6 = 2, yielding 42.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq1" value="2" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>The split strategy does not work when one of the numbers is an odd number.</span>
+              </label>
+            </div>
+            <div id="qfb1" class="hidden mt-3 p-3 rounded text-xs leading-relaxed"></div>
+          </div>
+
+          <!-- Q3 -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold uppercase text-cedow-aqua tracking-wider block mb-1">Question 3 (Algebraic Reasoning & Equivalence)</span>
+            <p class="font-bold text-cedow-navy text-sm mb-3">A Stage 2 student answers 12 for the number sentence <span class="font-mono-math">8 + 4 = &square; + 5</span>. What conceptual trap does this signify?</p>
+            <div class="space-y-2 text-xs sm:text-sm">
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq2" value="0" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>The student has forgotten their basic number bonds to 10.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq2" value="1" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>The student reads the equals sign operationally as a directive to calculate ('the answer comes next') rather than relationally as a statement of equivalence.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq2" value="2" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>The student cannot add 5 to 12.</span>
+              </label>
+            </div>
+            <div id="qfb2" class="hidden mt-3 p-3 rounded text-xs leading-relaxed"></div>
+          </div>
+
+          <!-- Q4 -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold uppercase text-cedow-aqua tracking-wider block mb-1">Question 4 (NESA Additional Teaching Advice - Stage 2 Additive Relations A)</span>
+            <p class="font-bold text-cedow-navy text-sm mb-3">According to NESA's definition of strategy flexibility and efficiency, what makes a calculation method truly "efficient"?</p>
+            <div class="space-y-2 text-xs sm:text-sm">
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq3" value="0" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>The student always executes the standard column algorithm regardless of the numbers.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq3" value="1" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>The problem is solved accurately in a small number of steps, used with relative ease, chosen because it fits the numerical structure of the problem.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq3" value="2" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>The student finishes the worksheet in the fastest time in the classroom.</span>
+              </label>
+            </div>
+            <div id="qfb3" class="hidden mt-3 p-3 rounded text-xs leading-relaxed"></div>
+          </div>
+
+          <!-- Q5 -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <span class="text-xs font-bold uppercase text-cedow-aqua tracking-wider block mb-1">Question 5 (NESA Stage 3 Teaching Advice - Place Value Regrouping)</span>
+            <p class="font-bold text-cedow-navy text-sm mb-3">In the vertical subtraction <span class="font-mono-math">429 &minus; 34</span>, why is 10 added to the 2 in the tens column during regrouping?</p>
+            <div class="space-y-2 text-xs sm:text-sm">
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq4" value="0" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>Because 1 hundred is unbundled and exchanged for 10 tens, making 12 tens (120).</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq4" value="1" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>Because 10 ones are traded for 1 ten.</span>
+              </label>
+              <label class="flex items-start gap-2.5 p-2 rounded hover:bg-white transition-colors cursor-pointer">
+                <input type="radio" name="mq4" value="2" class="mt-1 text-cedow-aqua focus:ring-cedow-aqua">
+                <span>It is simply a mathematical convention and does not have a physical quantity value.</span>
+              </label>
+            </div>
+            <div id="qfb4" class="hidden mt-3 p-3 rounded text-xs leading-relaxed"></div>
+          </div>
+
+          <div class="text-center pt-2">
+            <button type="button" onclick="evaluateMasteryCheck()" class="px-6 py-3 bg-cedow-navy hover:bg-blue-900 text-white font-black text-sm rounded-xl shadow-md transition-all flex items-center gap-2 mx-auto">
+              <i data-lucide="check-circle" class="w-4 h-4 text-cedow-gold"></i>
+              <span>Submit Checkpoint & Calculate Score</span>
+            </button>
+          </div>
+        </form>
+
+        <!-- Unlocked Key Pedagogical Takeaways (K–6 Continuum) -->
+        <div id="takeawaysContainer" class="hidden mt-10 pt-8 border-t-2 border-cedow-aqua">
+          <div class="bg-gradient-to-br from-blue-50 to-teal-50 border-2 border-cedow-aqua rounded-2xl p-6 sm:p-8 shadow-sm">
+            <div class="flex items-center space-x-3 mb-4">
+              <div class="p-2 bg-cedow-aqua text-white rounded-lg">
+                <i data-lucide="award" class="w-6 h-6 text-cedow-gold"></i>
+              </div>
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-cedow-aqua block">Checkpoint Passed (&ge; 80%)</span>
+                <h3 class="text-xl font-black text-cedow-navy">Key Pedagogical Takeaways (K–6 Continuum)</h3>
+              </div>
+            </div>
+
+            <p class="text-xs sm:text-sm text-cedow-charcoal leading-relaxed mb-6">
+              Congratulations! You have successfully completed the Additive Relations professional learning checkpoint. Here is the executive synthesis of foundational pedagogical shifts across the primary continuum:
+            </p>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+              <div class="bg-white p-4 rounded-xl border border-cedow-silver shadow-sm">
+                <strong class="text-cedow-navy block text-sm mb-1.5 flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-cedow-gold"></span> 1. Both Meanings of Subtraction
+                </strong>
+                Ensure students experience subtraction as both <em>taking away from a group</em> and <em>comparing two collections</em> (finding the difference). Comparison is linguistically harder; model it using matching and empty number lines.
+              </div>
+
+              <div class="bg-white p-4 rounded-xl border border-cedow-silver shadow-sm">
+                <strong class="text-cedow-navy block text-sm mb-1.5 flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-cedow-aqua"></span> 2. Read Equals as Relational
+                </strong>
+                Always read <span class="font-mono-math">=</span> as <em>'is the same amount as'</em>. Expose students regularly to non-standard equations (<span class="font-mono-math">5 = 4 + 1</span>, <span class="font-mono-math">8 + 4 = 7 + 5</span>) to secure algebraic readiness.
+              </div>
+
+              <div class="bg-white p-4 rounded-xl border border-cedow-silver shadow-sm">
+                <strong class="text-cedow-navy block text-sm mb-1.5 flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-cedow-navy"></span> 3. Split for Addition Only
+                </strong>
+                Restrict partitioning into tens and ones to addition. For multi-digit subtraction, champion the jump strategy, constant difference, and indirect addition (shopkeeper's method).
+              </div>
+
+              <div class="bg-white p-4 rounded-xl border border-cedow-silver shadow-sm">
+                <strong class="text-cedow-navy block text-sm mb-1.5 flex items-center gap-1.5">
+                  <span class="w-2.5 h-2.5 rounded-full bg-emerald-600"></span> 4. Look at the Numbers First
+                </strong>
+                Prioritise mental computation over algorithms. Teach students to inspect numerical characteristics before selecting a strategy; problems like <span class="font-mono-math">500 &minus; 498</span> or <span class="font-mono-math">9000 &minus; 7</span> reward relational looking.
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- ========================================================================= -->
+      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE -->
+      <!-- ========================================================================= -->
+      <section id="section-7" class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-cedow-silver scroll-mt-20">
+        <div class="border-b border-cedow-silver pb-4 mb-6">
+          <div class="flex items-center space-x-2 text-cedow-aqua text-sm font-bold uppercase tracking-wider">
+            <i data-lucide="share-2" class="w-4 h-4"></i>
+            <span>System Architecture</span>
+          </div>
+          <h2 class="text-2xl font-black text-cedow-navy mt-1">Section 7: Canvas LMS Deployment Guide</h2>
+          <p class="text-cedow-charcoal text-sm mt-1">
+            Instructions for School Curriculum Leaders and Teachers to host this standalone module on GitHub Pages and deploy directly into Canvas LMS courses via iframe or HTML editor.
+          </p>
+        </div>
+
+        <div class="space-y-6 text-xs sm:text-sm text-cedow-charcoal leading-relaxed">
+          
+          <!-- Method 1 -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <h3 class="font-bold text-cedow-navy text-base mb-2 flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded bg-cedow-aqua text-white text-xs">Method 1</span>
+              Host via GitHub Pages & Embed via Canvas iFrame (Recommended)
+            </h3>
+            <p class="mb-3">
+              Because this module is completely self-contained in a single <code class="font-mono-math bg-slate-200 px-1 py-0.5 rounded text-cedow-navy">.html</code> file, it requires zero external build steps, NodeJS dependencies, or asset folders:
+            </p>
+            <ol class="list-decimal pl-5 space-y-1.5 mb-4 text-xs">
+              <li>Save this code as <code class="font-mono-math font-bold">index.html</code> inside a GitHub repository (e.g. <code class="font-mono-math text-cedow-navy">cedow-maths-additive-relations</code>).</li>
+              <li>Under repository <strong>Settings &rarr; Pages</strong>, set the branch to <strong>main / root</strong> and click Save.</li>
+              <li>Copy your live GitHub Pages URL (e.g. <code class="font-mono-math text-cedow-navy">https://[org].github.io/cedow-maths-additive-relations/</code>).</li>
+              <li>In Canvas LMS, create a new <strong>Page</strong>, switch to the <strong>HTML View (&lt;/&gt;)</strong> in the Rich Content Editor, and paste the responsive embed code:</li>
+            </ol>
+            <div class="relative bg-slate-900 text-slate-100 p-3.5 rounded-lg font-mono-math text-xs overflow-x-auto">
+              <code>&lt;div style="position: relative; width: 100%; height: 0; padding-bottom: 75%; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"&gt;<br>
+&nbsp;&nbsp;&lt;iframe src="https://YOUR-ORG.github.io/YOUR-REPO/" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen&gt;&lt;/iframe&gt;<br>
+&lt;/div&gt;</code>
+            </div>
+          </div>
+
+          <!-- Method 2 -->
+          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
+            <h3 class="font-bold text-cedow-navy text-base mb-2 flex items-center gap-2">
+              <span class="px-2 py-0.5 rounded bg-cedow-navy text-white text-xs">Method 2</span>
+              Direct Canvas Page Rich Content Editor (RCE) / Local File
+            </h3>
+            <p class="text-xs mb-2">
+              You can also upload this HTML file directly into <strong>Canvas Course Files</strong> and link it as an assignment or module resource, or distribute it to teachers on staff USB drives for completely offline access in any modern web browser (Edge, Chrome, Safari).
+            </p>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-cedow-navy text-slate-300 py-6 text-xs border-t-4 border-cedow-aqua">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>
+        <p class="font-bold text-white">Catholic Education Diocese of Wollongong (CEDoW)</p>
+        <p class="text-slate-400 mt-0.5">Primary Mathematics Professional Learning &middot; Focus Area 2: Additive Relations Continuum</p>
+      </div>
+      <div class="text-center sm:text-right text-slate-400">
+        <p>Aligned to the NSW Mathematics K–10 (2022) Syllabus Outcomes &amp; NESA Teaching Advice.</p>
+        <p class="text-[11px] mt-0.5">Self-paced professional study. Progress and interactions are preserved in-browser.</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC -->
+  <script>
+    /* ========================================================================= */
+    /* DATA STORE & CONFIGURATION */
+    /* ========================================================================= */
+    const STAGE_DATA = {
+      es1: {
+        title: "Early Stage 1: Kindergarten",
+        focusArea: "Combining and separating quantities",
+        outcomes: [
+          { code: "MAE-CSQ-01", desc: "reasons about number relations to model addition and subtraction by combining and separating, and comparing collections" },
+          { code: "MAE-CSQ-02", desc: "represents the relations between the parts that form the whole, with numbers up to 10" }
+        ],
+        wmConnection: "MAO-WM-01: Communicating and Reasoning about quantity relations when combining and separating groups using concrete materials and fingers.",
+        trajectory: "From perceptual counting all to counting on/back; building five as a reference point on a ten frame; developing addition and subtraction together as inverse actions.",
+        adviceAlert: "NESA notes subtraction covers two distinct situations: taking away from a group and comparing two groups. Comparison questions ('How many more?') are much harder than 'Which has more?' because the phrasing is unfamiliar. Students often just state the larger number.",
+        quickCheck: "Present a pile of 15 counters. Ask: 'Can you get me 8 counters? How do you know that is 8?' Point to the 8 and 7 left: 'Are there more here or more there?' Combine them: 'If you put them all together, how many are there?'",
+        vocab: ["combine", "joins", "take away", "how many more", "altogether", "makes", "count forwards", "count backwards"]
+      },
+      s1: {
+        title: "Stage 1: Years 1–2",
+        focusArea: "Combining and separating quantities A & B",
+        outcomes: [
+          { code: "MA1-CSQ-01", desc: "uses number bonds and the relationship between addition and subtraction to solve problems involving partitioning" }
+        ],
+        wmConnection: "MAO-WM-01: Reasons about relations by applying quantity value and bridging to 10, modelling commutativity, and interpreting '=' as an equivalence relation.",
+        trajectory: "From counting on by ones to automatic recall of number bonds to 10 and 20; empty number line jump and bridge strategies; reading '=' as 'is the same amount as'.",
+        adviceAlert: "Separating tens and ones (split strategy) should be restricted to ADDITION only. When applied to subtraction (e.g. 96 − 58), students invariably fall into the smaller-from-larger error (8 − 6 = 2), reaching 42.",
+        quickCheck: "Bridging to ten: 'I have $23. How much more do I need to make $30?' Bridging through ten: 'I have $44. How much more to reach $51? How did you work it out?' Relate: 'Can you use 27 + 13 = 40 to solve 40 − 13?'",
+        vocab: ["count on", "count back", "difference between", "number bond", "bridge", "is the same as", "equals", "commutative"]
+      },
+      s2: {
+        title: "Stage 2: Years 3–4",
+        focusArea: "Additive relations A & B",
+        outcomes: [
+          { code: "MA2-AR-01", desc: "selects and uses mental and written strategies for addition and subtraction involving 2- and 3-digit numbers" },
+          { code: "MA2-AR-02", desc: "completes number sentences involving addition and subtraction by finding missing values" }
+        ],
+        wmConnection: "MAO-WM-01: Evaluates strategy efficiency; uses the complement principle (a &minus; b = c implies a &minus; c = b); applies algebraic reasoning to number sentences.",
+        trajectory: "Repertoire of holistic mental strategies (compensation, levelling, constant difference); bar models for part-whole and comparison; column algorithms taught with expanded place value understanding.",
+        adviceAlert: "Research shows that after one year of learning vertical algorithms, students default to using them for problems better solved mentally (e.g. 527 + 399 or 500 − 498). Never write single-digit subtractions vertically.",
+        quickCheck: "Show true/false balance: '8 + 2 = 10 + 4' and '7 + 4 = 15 − 4'. Ask: 'Find the missing number in 8 + 4 = [ ] + 5.' Show 543 − 289: 'Will the answer be more or less than 300? Why?'",
+        vocab: ["sum", "difference", "estimate", "round to", "compensation", "levelling", "constant difference", "bar model", "empty number line"]
+      },
+      s3: {
+        title: "Stage 3: Years 5–6",
+        focusArea: "Additive relations A & B",
+        outcomes: [
+          { code: "MA3-AR-01", desc: "selects and applies appropriate strategies to solve addition and subtraction problems" }
+        ],
+        wmConnection: "MAO-WM-01: Chooses flexibly between mental computation, written methods, and calculators; justifies reasonableness using estimation; solves multi-step decimal word problems.",
+        trajectory: "Strategic flexibility across multi-digit whole numbers and decimals up to 3 decimal places; mental indirect addition for small differences; number problem strings for constant difference.",
+        adviceAlert: "Before adding decimals like 3.428 + 1.1, students require deep conceptual knowledge of equivalent decimals (0.1 is 100 thousandths), not just a mechanical rule for 'lining up the decimal point'. Watch for whole-number thinking (2.25 + 1.5 = 2.40).",
+        quickCheck: "Show 259 + 38 = 297 and 429 − 34 = 395: 'Does the 1 in the working out represent the same amount in both? Why is 1 added to 5 in the first, but 10 added to 2 in the second?'",
+        vocab: ["efficient", "inefficient", "order of operations", "regrouping", "decimal point", "equivalent decimals", "reasonableness", "multi-step"]
+      }
+    };
+
+    const BIG_IDEAS = [
+      {
+        title: "1. Parts Make the Whole",
+        desc: "Every addition and subtraction sentence reflects a structural relationship between two or more parts and a whole.",
+        stages: {
+          es1: "Decomposing collections up to 10; ten seen as five and five.",
+          s1: "All whole-number combinations to 10 and 20; part-whole number bonds.",
+          s2: "Bar models showing 64 split into 47 and 17; complement principle.",
+          s3: "Multi-step contextual word problems structured via tape diagrams."
+        }
+      },
+      {
+        title: "2. Addition & Subtraction Undo Each Other",
+        desc: "Addition and subtraction are inverse operations. Subtraction can always be calculated through indirect addition.",
+        stages: {
+          es1: "Separating 10 into 4 and 6, then pushing them back together.",
+          s1: "8 = 5 + 3, so 8 &minus; 3 = 5; shopkeeper's change method.",
+          s2: "The complement principle: if 64 &minus; 17 = 47, then 64 &minus; 47 = 17.",
+          s3: "Addition for subtraction with close values: 2003 &minus; 1997 = 6."
+        }
+      },
+      {
+        title: "3. Equals Means 'Is the Same As'",
+        desc: "The equals sign indicates a relational balance of equivalence between two expressions, not an operational prompt.",
+        stages: {
+          es1: "Using 'is the same as' when matching equal groups of objects.",
+          s1: "5 + 2 = 3 + 4; 5 = 4 + 1; missing addends: 8 + [ ] = 10 + 5.",
+          s2: "True/false evaluations; 8 + 4 = [ ] + 5; 20 &minus; 13 = 10 &minus; 3.",
+          s3: "Equivalent transformations: 5009 &minus; 3997 = 5012 &minus; 4000."
+        }
+      },
+      {
+        title: "4. Subtraction is Taking Away & Comparing",
+        desc: "Subtraction models two different situations: removal from a whole, and the distance/difference between two quantities.",
+        stages: {
+          es1: "Taking away counters vs matching two groups to ask 'How many more?'.",
+          s1: "Difference represented as a jump on a number line.",
+          s2: "Bar models for comparison; indirect addition for small differences.",
+          s3: "Finding difference between continuous metric lengths: 2.14 m &minus; 1.4 m."
+        }
+      },
+      {
+        title: "5. Strategies Use the Structure of Numbers",
+        desc: "Efficient calculations exploit number structure: number bonds, benchmark multiples of 10, and properties of operations.",
+        stages: {
+          es1: "Five as an anchor frame for six through ten.",
+          s1: "Near doubles, bridging to 10, partitioning via quantity value.",
+          s2: "Compensation, levelling, constant difference, expanded algorithms.",
+          s3: "Levelling multi-digit numbers (4988 + 955) and decimal places."
+        }
+      },
+      {
+        title: "6. Look, Choose, Then Check",
+        desc: "Students inspect the numbers in a task before selecting a method, and verify reasonableness through estimation.",
+        stages: {
+          es1: "Explaining thinking using gestures, words, and drawings.",
+          s1: "Discussing which strategies are practical and require fewer steps.",
+          s2: "Comparing mental strategies vs vertical algorithms; estimating change.",
+          s3: "Deciding between mental methods, algorithms, and calculators."
+        }
+      }
+    ];
+
+    /* ========================================================================= */
+    /* SECTION 1 LOGIC: STAGE FILTER & BIG IDEAS MATRIX */
+    /* ========================================================================= */
+    function switchStage(stageKey) {
+      document.querySelectorAll('.stage-btn').forEach(btn => {
+        if(btn.dataset.stage === stageKey) {
+          btn.className = 'stage-btn px-4 py-2 rounded-lg font-bold text-sm bg-cedow-navy text-white shadow-sm transition-all flex items-center gap-1.5';
+        } else {
+          btn.className = 'stage-btn px-4 py-2 rounded-lg font-bold text-sm bg-slate-100 text-cedow-charcoal hover:bg-slate-200 transition-all flex items-center gap-1.5';
+        }
+      });
+
+      const d = STAGE_DATA[stageKey];
+      const container = document.getElementById('stageCardContainer');
+      container.innerHTML = `
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-2 border-b border-cedow-silver pb-3 mb-4">
+          <div>
+            <span class="text-xs font-bold uppercase tracking-wider text-cedow-aqua">${d.focusArea}</span>
+            <h3 class="text-xl font-black text-cedow-navy">${d.title}</h3>
+          </div>
+          <span class="text-xs px-2.5 py-1 bg-white border border-cedow-silver text-cedow-navy font-mono-math font-bold rounded">
+            NESA K–10 (2022)
+          </span>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+          <!-- Outcomes & WM -->
+          <div class="bg-white p-4 rounded-lg border border-cedow-silver">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-cedow-navy mb-2 flex items-center gap-1.5">
+              <i data-lucide="book-open" class="w-4 h-4 text-cedow-aqua"></i> Formal Outcomes
+            </h4>
+            <div class="space-y-2 mb-3">
+              ${d.outcomes.map(o => `
+                <div class="text-xs">
+                  <span class="font-mono-math font-bold text-cedow-navy bg-slate-100 px-1.5 py-0.5 rounded">${o.code}</span>
+                  <span class="text-cedow-charcoal ml-1">${o.desc}</span>
+                </div>
+              `).join('')}
+            </div>
+            <div class="p-2.5 bg-blue-50/70 rounded border border-blue-100 text-xs text-cedow-charcoal">
+              <strong class="text-cedow-navy block mb-0.5">Working Mathematically Connection:</strong>
+              ${d.wmConnection}
+            </div>
+          </div>
+
+          <!-- Trajectory & Advice Alert -->
+          <div class="bg-white p-4 rounded-lg border border-cedow-silver space-y-3">
+            <div>
+              <h4 class="text-xs font-bold uppercase tracking-wider text-cedow-navy mb-1 flex items-center gap-1.5">
+                <i data-lucide="milestone" class="w-4 h-4 text-cedow-aqua"></i> Key Milestone Trajectory
+              </h4>
+              <p class="text-xs text-cedow-charcoal leading-relaxed">${d.trajectory}</p>
+            </div>
+            <div class="p-2.5 bg-amber-50 rounded border border-amber-200 text-xs text-amber-950">
+              <strong class="text-amber-900 block mb-0.5 flex items-center gap-1">
+                <i data-lucide="alert-triangle" class="w-3.5 h-3.5 text-amber-600"></i> NESA Teaching Advice Alert:
+              </strong>
+              ${d.adviceAlert}
+            </div>
+          </div>
+        </div>
+
+        <!-- Assessment Quick Check & Vocab -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-4">
+          <div class="lg:col-span-2 bg-white p-4 rounded-lg border border-cedow-silver">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-cedow-navy mb-1.5 flex items-center gap-1.5">
+              <i data-lucide="clipboard-check" class="w-4 h-4 text-cedow-aqua"></i> Classroom Progress Quick Check
+            </h4>
+            <p class="text-xs text-cedow-charcoal italic leading-relaxed">${d.quickCheck}</p>
+          </div>
+          <div class="bg-white p-4 rounded-lg border border-cedow-silver">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-cedow-navy mb-1.5 flex items-center gap-1.5">
+              <i data-lucide="message-square" class="w-4 h-4 text-cedow-aqua"></i> Target Vocabulary
+            </h4>
+            <div class="flex flex-wrap gap-1">
+              ${d.vocab.map(v => `<span class="px-2 py-0.5 bg-slate-100 text-cedow-charcoal rounded text-[11px] font-mono-math">${v}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function renderBigIdeasGrid() {
+      const container = document.getElementById('bigIdeasGrid');
+      container.innerHTML = BIG_IDEAS.map((idea, idx) => `
+        <div class="bg-cedow-bg p-4 rounded-xl border border-cedow-silver hover:border-cedow-aqua transition-colors flex flex-col justify-between">
+          <div>
+            <span class="text-[10px] font-bold uppercase tracking-wider text-cedow-aqua block mb-1">Core Principle</span>
+            <h4 class="font-bold text-cedow-navy text-sm mb-1.5">${idea.title}</h4>
+            <p class="text-xs text-cedow-charcoal leading-relaxed mb-3">${idea.desc}</p>
+          </div>
+          <div class="space-y-1.5 pt-2 border-t border-slate-200 text-[11px]">
+            <div><strong class="text-cedow-navy">ES1:</strong> <span class="text-slate-600">${idea.stages.es1}</span></div>
+            <div><strong class="text-cedow-navy">S1:</strong> <span class="text-slate-600">${idea.stages.s1}</span></div>
+            <div><strong class="text-cedow-navy">S2:</strong> <span class="text-slate-600">${idea.stages.s2}</span></div>
+            <div><strong class="text-cedow-navy">S3:</strong> <span class="text-slate-600">${idea.stages.s3}</span></div>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    /* ========================================================================= */
+    /* SECTION 3 LOGIC: INTERACTIVE TOOL LAB */
+    /* ========================================================================= */
+    function selectTool(toolKey) {
+      document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.tool-pane').forEach(p => p.classList.add('hidden'));
+
+      document.getElementById(`btn-tool-${toolKey}`).classList.add('active');
+      document.getElementById(`tool-${toolKey}`).classList.remove('hidden');
+
+      if (toolKey === 'tf') renderTF();
+      if (toolKey === 'enl') renderENL();
+      if (toolKey === 'sc') loadSCProblem();
+      if (toolKey === 'ste') renderSTESample();
+    }
+
+    // --- TOOL 1: TEN FRAME ---
+    let tfWhole = 7;
+    let tfPartA = 5;
+
+    function updateTFWhole(val) {
+      tfWhole = parseInt(val, 10);
+      tfPartA = Math.min(tfPartA, tfWhole);
+      document.getElementById('tfCombosDrawer').classList.add('hidden');
+      renderTF();
+    }
+
+    function shiftTF(dir) {
+      if (dir === -1 && tfPartA > 0) tfPartA--;
+      if (dir === 1 && tfPartA < tfWhole) tfPartA++;
+      renderTF();
+    }
+
+    function renderTF() {
+      const grid = document.getElementById('tfGrid');
+      let html = '';
+      const partB = tfWhole - tfPartA;
+
+      for (let i = 0; i < 10; i++) {
+        let counterHtml = '';
+        if (i < tfPartA) {
+          counterHtml = `<div class="tf-counter" style="background-color: #0D2C6B;" title="Part A (Navy)"></div>`;
+        } else if (i < tfWhole) {
+          counterHtml = `<div class="tf-counter" style="background-color: #FBAF3F;" title="Part B (Gold)"></div>`;
+        }
+        html += `<div class="tf-cell">${counterHtml}</div>`;
+      }
+      grid.innerHTML = html;
+
+      // Update Shift Button states
+      document.getElementById('tfLeftBtn').disabled = (tfPartA <= 0);
+      document.getElementById('tfRightBtn').disabled = (tfPartA >= tfWhole);
+
+      // Structure notes
+      let extra = '';
+      if (tfPartA === 5 && partB > 0) extra = 'Five and ' + partB + ' more.';
+      else if (partB === 5 && tfPartA > 0) extra = 'Five and ' + tfPartA + ' more.';
+      else if (tfPartA === partB) extra = `Double ${tfPartA}.`;
+      else if (Math.abs(tfPartA - partB) === 1) extra = `Near double: double ${Math.min(tfPartA, partB)} and 1 more.`;
+
+      document.getElementById('tfReadout').innerHTML = `
+        <div class="text-base font-bold text-cedow-navy mb-1">
+          ${tfWhole} is <span class="text-blue-900">${tfPartA}</span> and <span class="text-amber-600">${partB}</span>
+        </div>
+        <div class="text-xs text-cedow-charcoal font-mono-math">
+          ${tfPartA} + ${partB} = ${tfWhole} &nbsp;&middot;&nbsp; ${tfWhole} &minus; ${partB} = ${tfPartA} &nbsp;&middot;&nbsp; ${tfWhole} &minus; ${tfPartA} = ${partB}
+        </div>
+        ${extra ? `<div class="mt-2 text-xs font-semibold text-cedow-aqua">${extra}</div>` : ''}
+      `;
+    }
+
+    function toggleTFCombinations() {
+      const drawer = document.getElementById('tfCombosDrawer');
+      if (!drawer.classList.contains('hidden')) {
+        drawer.classList.add('hidden');
+        return;
+      }
+      let rows = [];
+      for (let i = tfWhole; i >= 0; i--) {
+        rows.push(`${i} + ${tfWhole - i} = ${tfWhole}`);
+      }
+      drawer.innerHTML = `
+        <strong class="text-cedow-navy block mb-2 font-bold">Systematic Whole Combinations for ${tfWhole}:</strong>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-1.5 font-mono-math mb-2 text-center">
+          ${rows.map(r => `<span class="bg-slate-50 p-1 rounded border border-slate-200">${r}</span>`).join('')}
+        </div>
+        <p class="text-slate-500 italic">Notice the inverse pattern: as Part A decreases by one, Part B increases by one, maintaining a conserved whole.</p>
+      `;
+      drawer.classList.remove('hidden');
+    }
+
+    // --- TOOL 2: EMPTY NUMBER LINE ---
+    const ENL_STRATS = {
+      "+": [
+        ["jump", "Jump: Tens, then Ones"],
+        ["bridge", "Bridge to the Next Multiple of 10"]
+      ],
+      "-": [
+        ["back", "Jump Back: Tens, then Ones"],
+        ["up", "Add Up: Indirect Addition (Shopkeeper's Method)"]
+      ]
+    };
+
+    function updateENLStrategyOptions() {
+      const op = document.getElementById('enlOp').value;
+      const stratSel = document.getElementById('enlStrategy');
+      stratSel.innerHTML = ENL_STRATS[op].map(s => `<option value="${s[0]}">${s[1]}</option>`).join('');
+      renderENL();
+    }
+
+    function computeJumps(a, b, op, strat) {
+      const jumps = [];
+      let cur;
+      if (op === "+" && strat === "jump") {
+        cur = a;
+        const tens = Math.floor(b / 10) * 10;
+        const ones = b % 10;
+        if (tens) { jumps.push([cur, cur + tens]); cur += tens; }
+        if (ones) { jumps.push([cur, cur + ones]); }
+      }
+      if (op === "+" && strat === "bridge") {
+        cur = a;
+        let rem = b;
+        const gap = (10 - (a % 10)) % 10;
+        if (gap && rem >= gap) { jumps.push([cur, cur + gap]); cur += gap; rem -= gap; }
+        const tens = Math.floor(rem / 10) * 10;
+        const ones = rem % 10;
+        if (tens) { jumps.push([cur, cur + tens]); cur += tens; }
+        if (ones) { jumps.push([cur, cur + ones]); }
+      }
+      if (op === "-" && strat === "back") {
+        cur = a;
+        const tens = Math.floor(b / 10) * 10;
+        let ones = b % 10;
+        if (tens) { jumps.push([cur, cur - tens]); cur -= tens; }
+        if (ones) {
+          const mod = cur % 10;
+          if (mod && ones > mod) { jumps.push([cur, cur - mod]); cur -= mod; ones -= mod; }
+          jumps.push([cur, cur - ones]);
+        }
+      }
+      if (op === "-" && strat === "up") {
+        cur = b;
+        const gap = (10 - (b % 10)) % 10;
+        if (gap && cur + gap <= a) { jumps.push([cur, cur + gap]); cur += gap; }
+        const tens = Math.floor((a - cur) / 10) * 10;
+        if (tens) { jumps.push([cur, cur + tens]); cur += tens; }
+        if (a - cur) { jumps.push([cur, a]); }
+      }
+      return jumps;
+    }
+
+    function renderENL() {
+      const a = parseInt(document.getElementById('enlNumA').value, 10) || 0;
+      const b = parseInt(document.getElementById('enlNumB').value, 10) || 0;
+      const op = document.getElementById('enlOp').value;
+      const strat = document.getElementById('enlStrategy').value;
+      const readout = document.getElementById('enlReadout');
+      const container = document.getElementById('enlSvgContainer');
+
+      if (a < 0 || b <= 0 || a > 200 || b > 200) {
+        readout.innerHTML = '<span class="text-red-600 font-bold">Please enter numbers between 1 and 200.</span>';
+        container.innerHTML = '';
+        return;
+      }
+      if (op === "-" && b >= a) {
+        readout.innerHTML = '<span class="text-red-600 font-bold">For subtraction, the starting number A must be greater than B.</span>';
+        container.innerHTML = '';
+        return;
+      }
+
+      const J = computeJumps(a, b, op, strat);
+      const pts = [];
+      J.forEach(x => pts.push(x[0], x[1]));
+      const uniq = pts.filter((v, i) => pts.indexOf(v) === i).sort((x, y) => x - y);
+
+      const W = 680, L = 45, R = 635;
+      const minW = 60;
+      const rawSpan = Math.max(uniq[uniq.length - 1] - uniq[0], 1);
+      const rawPos = uniq.map(v => ((v - uniq[0]) / rawSpan) * (R - L));
+
+      const pos = [];
+      let acc = 0;
+      for (let i = 0; i < uniq.length; i++) {
+        if (i === 0) { pos.push(0); continue; }
+        const d = Math.max(rawPos[i] - rawPos[i - 1], minW);
+        acc += d;
+        pos.push(acc);
+      }
+      const scaleK = (R - L) / Math.max(acc, 1);
+      const X = v => L + pos[uniq.indexOf(v)] * scaleK;
+
+      let svg = `<svg viewBox="0 0 ${W} 140" class="w-full max-w-[680px]" role="img" aria-label="Empty number line display">`;
+      svg += `<line x1="20" y1="100" x2="${W - 20}" y2="100" stroke="#0D2C6B" stroke-width="2.5"/>`;
+
+      // Tick marks and numbers
+      uniq.forEach(v => {
+        const xPos = X(v);
+        svg += `<line x1="${xPos}" y1="92" x2="${xPos}" y2="108" stroke="#0D2C6B" stroke-width="2"/>`;
+        svg += `<text x="${xPos}" y="125" text-anchor="middle" font-size="13" font-family="'Fira Code', monospace" font-weight="700" fill="#0D2C6B">${v}</text>`;
+      });
+
+      // Jump arcs
+      J.forEach((x, i) => {
+        const x1 = X(x[0]);
+        const x2 = X(x[1]);
+        const mx = (x1 + x2) / 2;
+        const h = Math.min(65, 20 + Math.abs(x2 - x1) * 0.3);
+        const dir = x[1] > x[0] ? 1 : -1;
+        const color = (i % 2 === 0) ? "#188296" : "#FBAF3F";
+        const sign = x[1] > x[0] ? "+" : "&minus;";
+        const diff = Math.abs(x[1] - x[0]);
+
+        svg += `<path d="M ${x1} 96 Q ${mx} ${96 - h * 1.5} ${x2} 96" fill="none" stroke="${color}" stroke-width="2.5"/>`;
+        svg += `<polygon points="${x2},96 ${x2 - 6 * dir},88 ${x2 - 3 * dir},96 ${x2 - 6 * dir},104" fill="${color}"/>`;
+        svg += `<text x="${mx}" y="${96 - h * 0.8 - 6}" text-anchor="middle" font-size="12" font-family="'Fira Code', monospace" font-weight="700" fill="${color}">${x[1] > x[0] ? '+' : '−'}${diff}</text>`;
+      });
+
+      svg += `</svg>`;
+      container.innerHTML = svg;
+
+      const result = (op === "+") ? a + b : a - b;
+      const jumpSeq = J.map(x => `${x[1] > x[0] ? '+' : '&minus;'}${Math.abs(x[1] - x[0])}`).join(', ');
+      const stratNotes = {
+        jump: "Jumping forwards by tens then ones utilizes quantity values (e.g. 20 and 5).",
+        bridge: "Bridging to the next ten utilizes an active number bond to land on a multiple of 10 first.",
+        back: "Jumping backwards preserves place value by retreating through tens and bridging back through the decade.",
+        up: "Adding up from the smaller number harnesses the inverse relation: total jumps equal the difference."
+      }[strat];
+
+      readout.innerHTML = `
+        <div class="font-bold text-cedow-navy text-sm sm:text-base mb-1 font-mono-math">
+          ${a} ${op === '+' ? '+' : '&minus;'} ${b} = ${result}
+        </div>
+        <div class="text-xs text-cedow-charcoal mb-1">
+          <strong>Recorded Jumps:</strong> <span class="font-mono-math font-semibold">${jumpSeq}</span>
+          ${strat === "up" ? ` &rarr; Total Difference = <span class="font-mono-math font-bold">${J.map(x => Math.abs(x[1] - x[0])).join(' + ')} = ${result}</span>` : ''}
+        </div>
+        <p class="text-xs text-slate-500 italic">${stratNotes}</p>
+      `;
+    }
+
+    // --- TOOL 3: STRATEGY CHOOSER ---
+    const STRAT_PROBLEMS = [
+      {
+        p: "28 + 35",
+        best: "Levelling or Compensation: 28 is only 2 away from 30. (28 + 35 = 30 + 33 = 63).",
+        strategies: {
+          jump: { label: "Jump Strategy", desc: "28 + 30 = 58, then 58 + 5 = 63.", warn: false },
+          bridge: { label: "Bridge to Ten", desc: "28 + 2 = 30, then 30 + 33 = 63.", warn: false },
+          comp: { label: "Compensation", desc: "Round 28 to 30: 30 + 35 = 65, then subtract the 2 added: 65 &minus; 2 = 63.", warn: false },
+          level: { label: "Levelling (Give & Take)", desc: "Add 2 to 28 and take 2 from 35: 28 + 35 = 30 + 33 = 63. One mental step!", warn: false },
+          split: { label: "Split Strategy", desc: "20 + 30 = 50, 8 + 5 = 13, 50 + 13 = 63. Reliable for addition.", warn: false },
+          up: { label: "Adding Up", desc: "Adding up is an inverse strategy intended for subtraction, not addition.", warn: true }
+        }
+      },
+      {
+        p: "125 &minus; 78",
+        best: "Constant Difference or Compensation: 78 is 2 away from 80. (127 &minus; 80 = 47).",
+        strategies: {
+          jump: { label: "Jump Strategy", desc: "125 &minus; 70 = 55, then 55 &minus; 8 = 47.", warn: false },
+          bridge: { label: "Bridge to 100", desc: "125 &minus; 25 = 100, then 100 &minus; 53 = 47.", warn: false },
+          comp: { label: "Compensation", desc: "125 &minus; 80 = 45, then add 2 because we subtracted 2 too many: 45 + 2 = 47.", warn: false },
+          level: { label: "Constant Difference", desc: "Add 2 to both numbers: 125 &minus; 78 = 127 &minus; 80 = 47. Immediate mental answer!", warn: false },
+          split: { label: "Split Strategy", desc: "DANGER: 120 &minus; 70 = 50, then 5 &minus; 8? Students flip to 8 &minus; 5 = 3, reaching 53. NESA advises NEVER using split on subtraction.", warn: true },
+          up: { label: "Adding Up", desc: "78 + 2 = 80, 80 + 20 = 100, 100 + 25 = 125. Total jumps: 2 + 20 + 25 = 47.", warn: false }
+        }
+      },
+      {
+        p: "456 &minus; 298",
+        best: "Constant Difference: 298 is 2 away from 300. Add 2 to both: 458 &minus; 300 = 158.",
+        strategies: {
+          jump: { label: "Jump Strategy", desc: "Sequential: 456 &minus; 200 = 256, 256 &minus; 90 = 166, 166 &minus; 8 = 158 (Three cumbersome steps).", warn: false },
+          bridge: { label: "Bridge to 400", desc: "456 &minus; 56 = 400, then 400 &minus; 242 = 158.", warn: false },
+          comp: { label: "Compensation", desc: "456 &minus; 300 = 156, then add 2: 156 + 2 = 158.", warn: false },
+          level: { label: "Constant Difference", desc: "Add 2 to both numbers: 456 &minus; 298 = 458 &minus; 300 = 158. Solved in seconds!", warn: false },
+          split: { label: "Split Strategy", desc: "DANGER: Breaks down completely across multiple place values with regrouping.", warn: true },
+          up: { label: "Adding Up", desc: "298 + 2 = 300, 300 + 100 = 400, 400 + 56 = 456. Jumps: 2 + 100 + 56 = 158.", warn: false }
+        }
+      },
+      {
+        p: "713 &minus; 695",
+        best: "Indirect Addition (Adding Up): The difference between 695 and 713 is very small (18).",
+        strategies: {
+          jump: { label: "Jump Strategy", desc: "Sequential: 713 &minus; 600 = 113, 113 &minus; 90 = 23, 23 &minus; 5 = 18.", warn: false },
+          bridge: { label: "Bridge to 700", desc: "713 &minus; 13 = 700, then 700 &minus; 682 = 18.", warn: false },
+          comp: { label: "Compensation", desc: "713 &minus; 700 = 13, then add 5 = 18.", warn: false },
+          level: { label: "Constant Difference", desc: "Add 5 to both: 718 &minus; 700 = 18.", warn: false },
+          split: { label: "Split Strategy", desc: "DANGER: 700 &minus; 600 = 100, then 10 &minus; 90? Catastrophic smaller-from-larger error.", warn: true },
+          up: { label: "Adding Up", desc: "695 + 5 = 700, 700 + 13 = 713. Total difference: 5 + 13 = 18. Minimal cognitive load!", warn: false }
+        }
+      },
+      {
+        p: "500 &minus; 498",
+        best: "Look & Notice (Adding Up): 498 is 2 away from 500. Difference is 2 without any written algorithm.",
+        strategies: {
+          jump: { label: "Jump Strategy", desc: "500 &minus; 400 = 100, 100 &minus; 90 = 10, 10 &minus; 8 = 2 (Far too many steps for an obvious fact).", warn: false },
+          bridge: { label: "Bridge to 10", desc: "500 &minus; 400 = 100, 100 &minus; 98 = 2.", warn: false },
+          comp: { label: "Compensation", desc: "500 &minus; 500 = 0, add 2 = 2.", warn: false },
+          level: { label: "Constant Difference", desc: "502 &minus; 500 = 2.", warn: false },
+          split: { label: "Split / Algorithm", desc: "Using a column algorithm here requires double regrouping across zeros for an answer that is immediately 2.", warn: true },
+          up: { label: "Adding Up", desc: "498 + 2 = 500. Result: 2 in one single thought.", warn: false }
+        }
+      }
+    ];
+
+    function initSC() {
+      const sel = document.getElementById('scProblemSelect');
+      sel.innerHTML = STRAT_PROBLEMS.map((item, idx) => `<option value="${idx}">${item.p}</option>`).join('');
+    }
+
+    function loadSCProblem() {
+      const idx = document.getElementById('scProblemSelect').value || 0;
+      const prob = STRAT_PROBLEMS[idx];
+      const btnContainer = document.getElementById('scStrategyButtons');
+
+      btnContainer.innerHTML = Object.keys(prob.strategies).map(k => {
+        const s = prob.strategies[k];
+        return `
+          <button onclick="displaySCStrategy('${idx}', '${k}')" class="sc-btn px-3 py-1.5 rounded-lg border border-cedow-silver bg-white text-xs font-bold text-cedow-navy hover:bg-slate-100 transition-colors">
+            ${s.label}
+          </button>
+        `;
+      }).join('');
+
+      document.getElementById('scOutputCard').innerHTML = `<span class="text-xs text-slate-400">Click a strategy above to analyze its mechanical steps.</span>`;
+      document.getElementById('scEfficiencyTip').innerHTML = `
+        <div class="flex items-start gap-2">
+          <i data-lucide="zap" class="w-4 h-4 text-cedow-gold flex-shrink-0 mt-0.5"></i>
+          <div>
+            <strong class="text-cedow-navy block font-bold mb-0.5">Most Efficient Method for ${prob.p}:</strong>
+            <span>${prob.best}</span>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function displaySCStrategy(probIdx, stratKey) {
+      const prob = STRAT_PROBLEMS[probIdx];
+      const s = prob.strategies[stratKey];
+      const out = document.getElementById('scOutputCard');
+
+      if (s.warn) {
+        out.innerHTML = `
+          <div class="p-4 rounded-lg bg-red-50 border border-red-200 text-xs text-red-950 w-full">
+            <strong class="font-bold text-red-700 block text-sm mb-1">Pedagogical Warning / Inefficient Default:</strong>
+            ${s.desc}
+          </div>
+        `;
+      } else {
+        out.innerHTML = `
+          <div class="p-4 rounded-lg bg-teal-50 border border-teal-200 text-xs text-teal-950 w-full">
+            <div class="flex items-center justify-between mb-1">
+              <strong class="font-bold text-cedow-navy text-sm">${s.label} Execution:</strong>
+              <span class="font-mono-math text-xs bg-white px-2 py-0.5 rounded border border-teal-200">${prob.p}</span>
+            </div>
+            <p class="font-mono-math text-sm text-cedow-navy mb-1">${s.desc}</p>
+          </div>
+        `;
+      }
+    }
+
+    // --- TOOL 4: SPOT THE ERROR ---
+    const STE_SAMPLES = [
+      {
+        stage: "Stage 2",
+        work: "  543\n&minus; 289\n-----\n  346",
+        est: "543 &minus; 289 is roughly 540 &minus; 290 = 250. An answer of 346 is way too large!",
+        ans: 0,
+        why: "Smaller-from-larger error: The student subtracted 3 from 9 (6) and 4 from 8 (4). Emphasise place value via number expanders and always estimate before calculating."
+      },
+      {
+        stage: "Stage 1",
+        work: "96 &minus; 58\n90 &minus; 50 = 40\n8 &minus; 6 = 2\nAnswer = 42",
+        est: "96 &minus; 58 is roughly 100 &minus; 60 = 40. But 58 + 42 = 100, not 96!",
+        ans: 0,
+        why: "Misuse of split strategy for subtraction: When splitting into tens and ones, the student reversed 6 &minus; 8 to 8 &minus; 6. NESA advises split strategy for addition only."
+      },
+      {
+        stage: "Stage 3",
+        work: "2.25 + 1.5 = 2.40",
+        est: "2.25 is more than 2, and adding 1.5 should equal about 3.75. 2.40 is far too small!",
+        ans: 2,
+        why: "Whole-number decimal thinking: The student added 25 and 15 hundredths as if they were whole numbers. Rename 1.5 as 1.50 and represent using a metre ruler or string number line."
+      },
+      {
+        stage: "Stage 3",
+        work: "2.25 &minus; 1.5 = 2.10",
+        est: "2.25 &minus; 1.5 must be less than 1 (0.75). 2.10 is completely unreasonable.",
+        ans: 2,
+        why: "Whole-number decimal thinking: The student subtracted 15 from 25 and kept the 2 ones. Have students explain why 2.25 &minus; 1.5 is NOT 2.10."
+      },
+      {
+        stage: "Stage 3",
+        work: "   1438\n +  129\n-------\n   2728",
+        est: "1438 + 129 is roughly 1440 + 130 = 1570. 2728 indicates a catastrophic column shift.",
+        ans: 1,
+        why: "Place value misalignment: The student aligned digits to the left, effectively adding 1290 instead of 129. Check place value columns."
+      },
+      {
+        stage: "Stage 2",
+        work: "  528\n&minus;  43\n-----\n  585",
+        est: "528 &minus; 43 should be around 485. 585 is larger than the starting minuend!",
+        ans: 3,
+        why: "Regrouping recorded incorrectly: The student traded a hundred into 12 tens, but forgot to reduce 5 hundreds to 4 hundreds. Expanded notation (400 + 120 + 8) makes the trade transparent."
+      }
+    ];
+
+    const STE_OPTIONS = [
+      "Smaller digit taken from larger (ignoring place value structure)",
+      "Digits misaligned by column place value",
+      "Decimal parts treated as whole numbers (ragged decimals)",
+      "Regrouping/exchange recorded incorrectly across zero or columns"
+    ];
+
+    let steCurrentIdx = 0;
+    let steScore = 0;
+    let steFirstAttempt = true;
+
+    function renderSTESample() {
+      const s = STE_SAMPLES[steCurrentIdx];
+      steFirstAttempt = true;
+
+      document.getElementById('steProgressText').textContent = `Sample ${steCurrentIdx + 1} of ${STE_SAMPLES.length} (${s.stage})`;
+      document.getElementById('steScoreBadge').textContent = `Score: ${steScore}`;
+      document.getElementById('steWorkDisplay').innerHTML = s.work;
+      document.getElementById('steEstText').textContent = '';
+      document.getElementById('steFeedback').className = 'hidden';
+      document.getElementById('steNextBtn').disabled = true;
+
+      const optsBox = document.getElementById('steOptionsContainer');
+      optsBox.innerHTML = STE_OPTIONS.map((opt, i) => `
+        <button onclick="handleSTEChoice(${i})" class="ste-opt-btn w-full p-2.5 text-left rounded-lg border border-slate-200 bg-white hover:bg-slate-50 text-xs font-semibold text-cedow-charcoal transition-all flex items-center justify-between">
+          <span>${opt}</span>
+          <i data-lucide="circle" class="w-3.5 h-3.5 text-slate-300 flex-shrink-0"></i>
+        </button>
+      `).join('');
+      lucide.createIcons();
+    }
+
+    function revealSTEEstimate() {
+      document.getElementById('steEstText').innerHTML = `<strong>Reasonableness:</strong> ${STE_SAMPLES[steCurrentIdx].est}`;
+    }
+
+    function handleSTEChoice(selectedIdx) {
+      const s = STE_SAMPLES[steCurrentIdx];
+      const fb = document.getElementById('steFeedback');
+      const btns = document.querySelectorAll('.ste-opt-btn');
+
+      if (selectedIdx === s.ans) {
+        if (steFirstAttempt) steScore++;
+        document.getElementById('steScoreBadge').textContent = `Score: ${steScore}`;
+        btns.forEach((b, i) => {
+          b.disabled = true;
+          if (i === s.ans) {
+            b.classList.remove('bg-white', 'hover:bg-slate-50');
+            b.classList.add('bg-emerald-50', 'border-emerald-500', 'text-emerald-900');
+          }
+        });
+        fb.className = 'p-3.5 rounded-lg text-xs leading-relaxed bg-emerald-50 border border-emerald-300 text-emerald-950 block';
+        fb.innerHTML = `<strong>Correct Diagnosis!</strong> ${s.why}`;
+        document.getElementById('steNextBtn').disabled = false;
+        revealSTEEstimate();
+      } else {
+        steFirstAttempt = false;
+        btns[selectedIdx].classList.add('bg-rose-50', 'border-rose-300', 'text-rose-900');
+        btns[selectedIdx].disabled = true;
+        fb.className = 'p-3 rounded-lg text-xs leading-relaxed bg-rose-50 border border-rose-200 text-rose-950 block';
+        fb.innerHTML = `<strong>Not quite.</strong> Look closely at the digits and columns. Estimate the answer first.`;
+      }
+    }
+
+    function nextSTESample() {
+      steCurrentIdx++;
+      if (steCurrentIdx >= STE_SAMPLES.length) {
+        document.getElementById('steWorkDisplay').innerHTML = `Completed!`;
+        document.getElementById('steOptionsContainer').innerHTML = `
+          <div class="p-6 bg-white rounded-xl text-center border border-cedow-silver">
+            <h4 class="font-bold text-cedow-navy text-base mb-1">Diagnostic Practice Complete!</h4>
+            <p class="text-xs text-cedow-charcoal mb-4">You diagnosed ${steScore} out of ${STE_SAMPLES.length} on your first attempt.</p>
+            <button onclick="steCurrentIdx=0;steScore=0;renderSTESample();" class="px-4 py-2 bg-cedow-navy text-white font-bold text-xs rounded-lg shadow-sm">
+              Restart Clinic
+            </button>
+          </div>
+        `;
+        document.getElementById('steFeedback').className = 'hidden';
+        document.getElementById('steNextBtn').disabled = true;
+        return;
+      }
+      renderSTESample();
+    }
+
+    /* ========================================================================= */
+    /* SECTION 4 LOGIC: 4-ROOT MISCONCEPTION SORTER */
+    /* ========================================================================= */
+    const SCENARIOS = [
+      {
+        st: "Early Stage 1",
+        q: "Sam has 8 counters and Lily has 5. Asked 'How many more counters does Sam have?', Lily immediately answers '8'.",
+        root: 3,
+        why: "Root 4: Words and problem types misread. Comparison questions ('How many more?') are unfamiliar. Students mistake it for 'Which has more?' and state the larger quantity."
+      },
+      {
+        st: "Stage 1",
+        q: "Josh knows 8 + 2 = 10 automatically, but when asked to solve 28 + 7, he counts on by ones on his fingers: '29, 30, 31, 32, 33, 34, 35'.",
+        root: 0,
+        why: "Root 1: Counting used instead of number structure. Students frequently know their bonds in isolation but fail to apply them to bridge across multiples of 10."
+      },
+      {
+        st: "Stage 1",
+        q: "Mia splits 96 &minus; 58 into 90 &minus; 50 = 40, and 8 &minus; 6 = 2, writing the answer as 42.",
+        root: 2,
+        why: "Root 3: Digits treated without quantity value (smaller-from-larger error). The split strategy invites reversing the ones column from 6 &minus; 8 to 8 &minus; 6."
+      },
+      {
+        st: "Stage 2",
+        q: "Ari writes 12 in the missing box for 8 + 4 = &square; + 5.",
+        root: 1,
+        why: "Root 2: The equals sign read as 'the answer comes next'. Ari evaluates 8 + 4 = 12 and ignores the trailing '+ 5'."
+      },
+      {
+        st: "Stage 2",
+        q: "Ben writes 543 &minus; 289 = 346 using a vertical algorithm.",
+        root: 2,
+        why: "Root 3: Digits treated without quantity value. Ben subtracted 3 from 9 and 4 from 8 rather than regrouping place values."
+      },
+      {
+        st: "Stage 1",
+        q: "Ella says the number sentence 5 = 4 + 1 is 'backwards and must be wrong'.",
+        root: 1,
+        why: "Root 2: The equals sign read as an operational directive. Ella expects the operation on the left and the answer on the right."
+      },
+      {
+        st: "Stage 3",
+        q: "Kerry has $5 and Kim has $3. Asked 'How much more money does Kerry have?', Tom answers '$8'.",
+        root: 3,
+        why: "Root 4: Words misread (key-word fallacy). Tom assumed the word 'more' automatically indicates addition."
+      },
+      {
+        st: "Stage 3",
+        q: "Zoe writes 2.25 + 1.5 = 2.40.",
+        root: 2,
+        why: "Root 3: Digits treated without quantity value. Zoe added 15 hundredths instead of 5 tenths, treating decimals as whole numbers."
+      },
+      {
+        st: "Stage 2",
+        q: "Sam sets out 500 &minus; 498 as a vertical column algorithm, getting tangled with double zeros.",
+        root: 0,
+        why: "Root 1: Procedures used instead of number structure. Looking at the numbers first shows a difference of only 2."
+      },
+      {
+        st: "Stage 3",
+        q: "To work out 183 &minus; 96, Jai draws 183 tally marks in his book and crosses off 96.",
+        root: 0,
+        why: "Root 1: NESA classifies this as 'counting from one three times': slow, primitive, and prone to tally errors."
+      },
+      {
+        st: "Stage 2",
+        q: "Mia hears: 'I have 18 apples. How many more do I need to make 30 in total?' She adds 18 + 30 = 48.",
+        root: 3,
+        why: "Root 4: The word 'total' was assumed to dictate addition. A bar model shows 30 is the whole and 18 is a part."
+      },
+      {
+        st: "Early Stage 1",
+        q: "Ava hears: 'I had six beans and took away four. How many do I have now?' She answers 10.",
+        root: 3,
+        why: "Root 4: Two tenses in one word problem ('had' vs 'now') are linguistically confusing for young learners. Storytelling with concrete actions clarifies the shift."
+      }
+    ];
+
+    let sorterIdx = 0;
+    let sorterSolvedCount = 0;
+    const sorterSolvedMap = {};
+
+    function renderSorterScenario() {
+      const s = SCENARIOS[sorterIdx];
+      document.getElementById('sorterStagePill').textContent = s.st;
+      document.getElementById('sorterIndexText').textContent = `Scenario ${sorterIdx + 1} of ${SCENARIOS.length}`;
+      document.getElementById('sorterScenarioText').innerHTML = `&ldquo;${s.q}&rdquo;`;
+      document.getElementById('sorterFeedback').className = 'hidden';
+
+      document.querySelectorAll('.sorter-btn').forEach((btn, i) => {
+        btn.classList.remove('bg-emerald-50', 'border-emerald-500', 'bg-rose-50', 'border-rose-300');
+        btn.disabled = false;
+      });
+
+      document.getElementById('sorterPrevBtn').disabled = (sorterIdx === 0);
+      document.getElementById('sorterNextBtn').disabled = (sorterIdx === SCENARIOS.length - 1);
+    }
+
+    function diagnoseRoot(rootIdx) {
+      const s = SCENARIOS[sorterIdx];
+      const fb = document.getElementById('sorterFeedback');
+      const btns = document.querySelectorAll('.sorter-btn');
+
+      if (rootIdx === s.root) {
+        btns[rootIdx].classList.add('bg-emerald-50', 'border-emerald-500');
+        fb.className = 'p-4 rounded-xl text-xs sm:text-sm leading-relaxed bg-emerald-50 border border-emerald-300 text-emerald-950 block';
+        fb.innerHTML = `<strong>Accurate Diagnosis!</strong> ${s.why}`;
+        if (!sorterSolvedMap[sorterIdx]) {
+          sorterSolvedMap[sorterIdx] = true;
+          sorterSolvedCount++;
+          document.getElementById('sorterScoreBadge').textContent = `Solved: ${sorterSolvedCount} / ${SCENARIOS.length}`;
+        }
+      } else {
+        btns[rootIdx].classList.add('bg-rose-50', 'border-rose-300');
+        fb.className = 'p-3 rounded-xl text-xs leading-relaxed bg-rose-50 border border-rose-200 text-rose-950 block';
+        fb.innerHTML = `<strong>Not this root.</strong> Re-read the student's actions and consider what cognitive model they were applying.`;
+      }
+    }
+
+    function prevSorterScenario() {
+      if (sorterIdx > 0) {
+        sorterIdx--;
+        renderSorterScenario();
+      }
+    }
+
+    function nextSorterScenario() {
+      if (sorterIdx < SCENARIOS.length - 1) {
+        sorterIdx++;
+        renderSorterScenario();
+      }
+    }
+
+    /* ========================================================================= */
+    /* SECTION 5 LOGIC: TASK MAKEOVER STUDIO */
+    /* ========================================================================= */
+    const MAKEOVERS = {
+      es1: {
+        stage: "Early Stage 1: Kindergarten",
+        tags: ["Reasons about quantity", "Reasons about relations"],
+        before: {
+          task: "Count the dots. Write the total in the box.<br><br><span class='text-lg font-mono-math'>●●●●● &nbsp;+&nbsp; ●●● &nbsp;=&nbsp; [ &nbsp; ]</span>",
+          flaws: [
+            "Encourages perceptual counting-by-ones from one.",
+            "Only examines a single isolated partition of 8.",
+            "Zero communication or mathematical reasoning."
+          ]
+        },
+        after: {
+          task: "&ldquo;I have 8 counters hidden inside my two closed hands. How many could be in each hand? Find as many different combinations as you can.<br><br>How do you know you have found every possible way?&rdquo;",
+          enable: "Begin with 5 counters and a physical 5-frame.",
+          extend: "&ldquo;If one hand has 3 counters, how many must be in the other? How did you know without opening my hand?&rdquo;",
+          listenFor: "Reference to 5 ('five and three'); noticing pairs (3 and 5, 5 and 3); systematic listing (as one hand goes down, the other goes up).",
+          wmElements: ["Understanding and Fluency", "Exploring and Connecting", "Communicating", "Reasoning"]
+        }
+      },
+      s1: {
+        stage: "Stage 1: Years 1–2",
+        tags: ["Reasons about relations", "Reasons about patterns"],
+        before: {
+          task: "<span class='font-mono-math text-lg font-bold'>28 + 7 = _____</span>",
+          flaws: [
+            "Invites students to count on by ones on their fingers (29, 30, 31...).",
+            "Fails to prompt students to utilize known number bonds (8 + 2 = 10).",
+            "Single numeric answer with no recording of strategic thinking."
+          ]
+        },
+        after: {
+          task: "&ldquo;Use what you know about <span class='font-mono-math'>8 + 2</span> to solve <span class='font-mono-math'>28 + 7</span>. Show your thinking on an empty number line.<br><br>What other questions could you solve using this exact same bridging strategy?&rdquo;",
+          enable: "Model 8 + 5 using a bead string first.",
+          extend: "&ldquo;Write three problems where bridging to ten is the most efficient strategy, and one problem where bridging doesn't help at all. Explain why.&rdquo;",
+          listenFor: "Partitioning 7 into 2 and 5; landing on the benchmark 30; generalising to 38 + 7 and 48 + 7; noticing when bridging is inefficient (e.g. 21 + 3).",
+          wmElements: ["Understanding and Fluency", "Choosing and Applying Techniques", "Communicating", "Reasoning"]
+        }
+      },
+      s2: {
+        stage: "Stage 2: Years 3–4",
+        tags: ["Reasons about relations", "Algebraic reasoning"],
+        before: {
+          task: "Use the column algorithm to calculate:<br><br><pre class='font-mono-math text-base font-bold'>  456\n&minus; 298\n-----</pre>",
+          flaws: [
+            "The calculation method is dictated for the student.",
+            "The numbers (298 close to 300) strongly invite a far simpler mental strategy.",
+            "Zero strategic evaluation or mathematical justification."
+          ]
+        },
+        after: {
+          task: "&ldquo;Solve <span class='font-mono-math'>456 &minus; 298</span> in two distinctly different ways. Which method is more efficient for these particular numbers, and why?<br><br>Now write a subtraction problem where the column algorithm WOULD be the better choice.&rdquo;",
+          enable: "Begin with 56 &minus; 29 using compensation.",
+          extend: "&ldquo;Change one digit in 456 &minus; 298 so that indirect addition (adding up) becomes the fastest method.&rdquo;",
+          listenFor: "Constant difference (458 &minus; 300 = 158); compensation (456 &minus; 300 + 2 = 158); articulating that 298 is very close to 300.",
+          wmElements: ["Exploring and Connecting", "Choosing and Applying Techniques", "Communicating", "Reasoning"]
+        }
+      },
+      s3: {
+        stage: "Stage 3: Years 5–6",
+        tags: ["Reasons about quantity", "Reasons about relations"],
+        before: {
+          task: "Calculate:<br><br><span class='font-mono-math text-base font-bold'>2.25 &minus; 1.5 = _____</span>",
+          flaws: [
+            "A mechanical procedure can mask whole-number decimal thinking.",
+            "Zero representation of continuous metric quantities.",
+            "Fails to develop estimation habits."
+          ]
+        },
+        after: {
+          task: "&ldquo;Leila claims that <span class='font-mono-math'>2.25 &minus; 1.5 = 2.10</span>. Is she correct? Use a metre ruler or a number line to convince her.<br><br>What was Leila thinking when she wrote 2.10? Write another subtraction that someone with Leila's misconception would get right by accident.&rdquo;",
+          enable: "Start with 2.5 &minus; 1.5 on a metre ruler.",
+          extend: "&ldquo;Write a decimal subtraction problem where the difference is exactly 0.05.&rdquo;",
+          listenFor: "Renaming 1.5 as 1.50 (equivalent decimals); adding up from 1.50 to 2.00 (0.50) then to 2.25 (0.25) = 0.75; estimating 'a bit less than 1'.",
+          wmElements: ["Understanding and Fluency", "Exploring and Connecting", "Communicating", "Reasoning"]
+        }
+      }
+    };
+
+    function loadMakeover(stageKey) {
+      document.querySelectorAll('.mo-btn').forEach(btn => {
+        if(btn.dataset.mo === stageKey) {
+          btn.className = 'mo-btn px-4 py-2 rounded-lg font-bold text-xs bg-cedow-navy text-white shadow-sm';
+        } else {
+          btn.className = 'mo-btn px-4 py-2 rounded-lg font-bold text-xs bg-slate-100 text-cedow-charcoal hover:bg-slate-200';
+        }
+      });
+
+      const m = MAKEOVERS[stageKey];
+      const container = document.getElementById('makeoverDisplayContainer');
+      container.innerHTML = `
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+          
+          <!-- BEFORE CARD -->
+          <div class="p-5 rounded-xl border border-red-200 bg-red-50/40 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded text-[11px] font-bold uppercase bg-red-200 text-red-900">Before: Closed Worksheet Drill</span>
+                <span class="text-xs font-bold text-slate-400">${m.stage}</span>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-red-200 text-cedow-navy text-sm font-semibold mb-4">
+                ${m.before.task}
+              </div>
+            </div>
+            <div>
+              <strong class="text-xs font-bold text-red-900 uppercase tracking-wider block mb-1.5">Cognitive Limitations:</strong>
+              <ul class="list-disc pl-4 space-y-1 text-xs text-red-950">
+                ${m.before.flaws.map(f => `<li>${f}</li>`).join('')}
+              </ul>
+            </div>
+          </div>
+
+          <!-- AFTER CARD -->
+          <div class="p-5 rounded-xl border border-teal-200 bg-teal-50/40 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-2">
+                <span class="px-2 py-0.5 rounded text-[11px] font-bold uppercase bg-cedow-aqua text-white">After: Rich Reasoning Task</span>
+                <div class="flex gap-1">
+                  ${m.tags.map(t => `<span class="px-1.5 py-0.5 bg-white text-cedow-navy border border-teal-200 rounded text-[10px] font-mono-math font-bold">${t}</span>`).join('')}
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-teal-200 text-cedow-navy text-sm font-semibold mb-4 leading-relaxed">
+                ${m.after.task}
+              </div>
+              <div class="space-y-2 mb-4 text-xs">
+                <div class="p-2 bg-emerald-50 rounded border border-emerald-200">
+                  <strong class="text-emerald-900 block">Enabling Prompt:</strong> ${m.after.enable}
+                </div>
+                <div class="p-2 bg-blue-50 rounded border border-blue-200">
+                  <strong class="text-blue-900 block">Extending Prompt:</strong> ${m.after.extend}
+                </div>
+                <div class="p-2 bg-amber-50 rounded border border-amber-200">
+                  <strong class="text-amber-900 block">What to Listen For:</strong> ${m.after.listenFor}
+                </div>
+              </div>
+            </div>
+            <div>
+              <strong class="text-[11px] font-bold text-cedow-navy uppercase tracking-wider block mb-1">Working Mathematically Activated:</strong>
+              <div class="flex flex-wrap gap-1.5">
+                ${m.after.wmElements.map(el => `<span class="px-2 py-0.5 bg-white text-cedow-aqua font-bold border border-teal-300 rounded text-[11px]">${el}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+
+        </div>
+      `;
+    }
+
+    // --- 5 HIGH-YIELD MOVES STUDIO ---
+    const CLOSED_PROBS = [
+      {
+        st: "Stage 1",
+        task: "9 &minus; 3 = ___",
+        moves: [
+          { m: "Who is correct?", prompt: "&ldquo;Ari claims that 9 &minus; 3 is the exact same as 3 &minus; 9. Bella says they have completely different answers. Who is correct? Show it using counters.&rdquo;", el: ["Reasoning", "Communicating"] },
+          { m: "Same and different", prompt: "&ldquo;What is the same and what is different about 9 &minus; 3 = 6, 6 + 3 = 9, and 9 &minus; 6 = 3?&rdquo;", el: ["Exploring and Connecting", "Communicating"] },
+          { m: "Always, sometimes, never", prompt: "&ldquo;&lsquo;When you subtract two numbers, the answer is always smaller than the starting number.&rsquo; Always, sometimes, or never true?&rdquo;", el: ["Reasoning", "Exploring and Connecting"] },
+          { m: "Open it up", prompt: "&ldquo;The difference between two numbers is 6. What could the two numbers be? How many different pairs can you find?&rdquo;", el: ["Choosing and Applying Techniques", "Reasoning"] },
+          { m: "Convince me", prompt: "&ldquo;Convince me that 9 &minus; 3 = 6 by counting UP from 3 on a number line.&rdquo;", el: ["Understanding and Fluency", "Communicating"] }
+        ]
+      },
+      {
+        st: "Stage 2",
+        task: "125 &minus; 78 = ___",
+        moves: [
+          { m: "Who is correct?", prompt: "&ldquo;Tom says 125 &minus; 78 is the same as 127 &minus; 80. Mei says it is 125 &minus; 80 + 2. Who is correct? Explain their thinking.&rdquo;", el: ["Reasoning", "Communicating"] },
+          { m: "Same and different", prompt: "&ldquo;What is the same and what is different about 125 &minus; 78, 127 &minus; 80, and 78 + &square; = 125?&rdquo;", el: ["Exploring and Connecting", "Communicating"] },
+          { m: "Always, sometimes, never", prompt: "&ldquo;&lsquo;Adding the exact same amount to both numbers in a subtraction does not change the final difference.&rsquo; Always, sometimes, or never true?&rdquo;", el: ["Reasoning", "Exploring and Connecting"] },
+          { m: "Open it up", prompt: "&ldquo;Find three different subtraction questions that have the exact same answer as 125 &minus; 78 without using an algorithm. What patterns do you notice?&rdquo;", el: ["Choosing and Applying Techniques", "Reasoning"] },
+          { m: "Convince me", prompt: "&ldquo;Convince me that the answer to 125 &minus; 78 must be about 50 without calculating the exact number.&rdquo;", el: ["Understanding and Fluency", "Communicating"] }
+        ]
+      },
+      {
+        st: "Stage 3",
+        task: "4988 + 955 = ___",
+        moves: [
+          { m: "Who is correct?", prompt: "&ldquo;Kai levels the numbers to 5000 + 943. Jess sets up a column algorithm. Who has the more efficient method for these numbers, and why?&rdquo;", el: ["Reasoning", "Communicating"] },
+          { m: "Same and different", prompt: "&ldquo;What is the same and what is different about 4988 + 955, 4990 + 953, and 5000 + 943?&rdquo;", el: ["Exploring and Connecting", "Communicating"] },
+          { m: "Always, sometimes, never", prompt: "&ldquo;&lsquo;A mental strategy is always faster than a column algorithm.&rsquo; Always, sometimes, or never true?&rdquo;", el: ["Reasoning", "Exploring and Connecting"] },
+          { m: "Open it up", prompt: "&ldquo;Write an addition question where levelling makes it extremely easy to solve, and one where levelling does not help at all.&rdquo;", el: ["Choosing and Applying Techniques", "Reasoning"] },
+          { m: "Convince me", prompt: "&ldquo;Convince me that the answer to 4988 + 955 must be between 5900 and 6000 without doing the exact addition.&rdquo;", el: ["Understanding and Fluency", "Communicating"] }
+        ]
+      }
+    ];
+
+    let currentMoveProb = 0;
+    let currentMoveIdx = 0;
+
+    function loadMoveProblem(probIdx) {
+      currentMoveProb = probIdx;
+      currentMoveIdx = 0;
+      document.querySelectorAll('.mv-prob-btn').forEach((b, i) => {
+        b.className = (i === probIdx) ? 'mv-prob-btn px-3 py-1 rounded text-xs font-bold bg-cedow-navy text-white' : 'mv-prob-btn px-3 py-1 rounded text-xs font-bold bg-slate-100 text-cedow-charcoal hover:bg-slate-200';
+      });
+      renderMovesNavigation();
+    }
+
+    function renderMovesNavigation() {
+      const p = CLOSED_PROBS[currentMoveProb];
+      const nav = document.getElementById('movesNavContainer');
+      nav.innerHTML = p.moves.map((mv, i) => `
+        <button onclick="selectMove(${i})" class="move-nav-btn p-2 rounded-lg border text-xs font-bold text-center transition-all ${i === currentMoveIdx ? 'bg-cedow-aqua text-white border-cedow-aqua shadow-sm' : 'bg-white text-cedow-charcoal border-cedow-silver hover:bg-slate-50'}">
+          ${mv.m}
+        </button>
+      `).join('');
+      renderMoveContent();
+    }
+
+    function selectMove(moveIdx) {
+      currentMoveIdx = moveIdx;
+      renderMovesNavigation();
+    }
+
+    function renderMoveContent() {
+      const p = CLOSED_PROBS[currentMoveProb];
+      const m = p.moves[currentMoveIdx];
+      const container = document.getElementById('moveContentDisplay');
+      container.innerHTML = `
+        <div class="bg-white p-5 rounded-xl border border-cedow-silver shadow-sm">
+          <div class="flex items-center justify-between mb-3 border-b border-slate-100 pb-2">
+            <div>
+              <span class="text-xs uppercase font-bold text-cedow-aqua tracking-wider block">Pedagogical Move: ${m.m}</span>
+              <h4 class="font-bold text-cedow-navy text-base">Makeover for: <span class="font-mono-math">${p.task}</span></h4>
+            </div>
+            <span class="text-xs font-bold px-2 py-0.5 rounded bg-blue-50 text-cedow-navy border border-blue-200">${p.st}</span>
+          </div>
+
+          <p class="text-sm sm:text-base font-semibold text-cedow-navy leading-relaxed mb-4">
+            ${m.prompt}
+          </p>
+
+          <div class="flex items-center gap-2 pt-2 border-t border-slate-100">
+            <span class="text-xs font-bold text-slate-500 uppercase">Working Mathematically:</span>
+            <div class="flex flex-wrap gap-1">
+              ${m.el.map(e => `<span class="px-2 py-0.5 bg-slate-100 text-cedow-charcoal rounded text-xs font-mono-math font-semibold">${e}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    /* ========================================================================= */
+    /* SECTION 6 LOGIC: MASTERY CHECKPOINT */
+    /* ========================================================================= */
+    const MASTERY_ANSWERS = [1, 1, 1, 1, 0];
+    const MASTERY_FEEDBACK = [
+      "Correct. Subtraction covers multiple distinct situations (taking away, comparison, constant difference), meaning superficial key words frequently trigger incorrect operations.",
+      "Correct. When splitting 96 &minus; 58 into tens and ones, students invariably flip 6 &minus; 8 into 8 &minus; 6, yielding 42. NESA restricts split to addition only.",
+      "Correct. An answer of 12 demonstrates an operational view of '=' as a 'give me the answer' prompt, completely ignoring the + 5 on the right side.",
+      "Correct. Efficiency means solving with relative ease in a minimal number of steps, deliberately chosen because it responds to the numbers in the problem.",
+      "Correct. In multi-digit subtraction, 1 hundred is decomposed into 10 tens (making 12 tens), unlike addition where 10 ones are bundled into 1 ten."
+    ];
+
+    function evaluateMasteryCheck() {
+      let score = 0;
+      let allAnswered = true;
+
+      for (let i = 0; i < 5; i++) {
+        const radios = document.getElementsByName(`mq${i}`);
+        let answered = false;
+        let selected = -1;
+
+        for (const r of radios) {
+          if (r.checked) {
+            answered = true;
+            selected = parseInt(r.value, 10);
+            break;
+          }
+        }
+
+        const fbBox = document.getElementById(`qfb${i}`);
+        if (!answered) {
+          allAnswered = false;
+          fbBox.className = 'mt-3 p-2.5 rounded text-xs bg-amber-50 text-amber-900 border border-amber-200 block';
+          fbBox.innerHTML = 'Please select an answer for this scenario.';
+        } else {
+          fbBox.classList.remove('hidden');
+          if (selected === MASTERY_ANSWERS[i]) {
+            score++;
+            fbBox.className = 'mt-3 p-3 rounded text-xs bg-emerald-50 text-emerald-950 border border-emerald-300 block';
+            fbBox.innerHTML = `<strong>Accurate:</strong> ${MASTERY_FEEDBACK[i]}`;
+          } else {
+            fbBox.className = 'mt-3 p-3 rounded text-xs bg-rose-50 text-rose-950 border border-rose-200 block';
+            fbBox.innerHTML = `<strong>Incorrect.</strong> Review the Teaching Advice guidance for this question above.`;
+          }
+        }
+      }
+
+      if (!allAnswered) {
+        alert("Please answer all 5 questions before submitting.");
+        return;
+      }
+
+      const pass = score >= 4; // 80% pass mark
+      const container = document.getElementById('takeawaysContainer');
+
+      if (pass) {
+        container.classList.remove('hidden');
+        container.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      } else {
+        container.classList.add('hidden');
+        alert(`Your score is ${score}/5 (80% required). Please review Sections 2, 4, and 5 and retry.`);
+      }
+    }
+
+    /* ========================================================================= */
+    /* INITIALISATION */
+    /* ========================================================================= */
+    window.addEventListener('DOMContentLoaded', () => {
+      // Init Section 1
+      switchStage('es1');
+      renderBigIdeasGrid();
+
+      // Init Section 3
+      updateENLStrategyOptions();
+      initSC();
+      renderTF();
+      renderSTESample();
+
+      // Init Section 4
+      renderSorterScenario();
+
+      // Init Section 5
+      loadMakeover('es1');
+      loadMoveProblem(0);
+
+      // Render Icons
+      lucide.createIcons();
+
+      // Mobile Menu Toggle
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const sidebar = document.getElementById('sidebarNav');
+      mobileBtn.addEventListener('click', () => {
+        sidebar.classList.toggle('hidden');
+      });
+
+      // Active Section Highlighting on Scroll
+      const navLinks = document.querySelectorAll('.nav-item');
+      const sections = document.querySelectorAll('section[id]');
+      window.addEventListener('scroll', () => {
+        let current = '';
+        sections.forEach(sec => {
+          const top = sec.offsetTop - 120;
+          if (window.pageYOffset >= top) {
+            current = sec.getAttribute('id');
+          }
+        });
+        navLinks.forEach(link => {
+          link.classList.remove('active');
+          if (link.getAttribute('href') === `#${current}`) {
+            link.classList.add('active');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
