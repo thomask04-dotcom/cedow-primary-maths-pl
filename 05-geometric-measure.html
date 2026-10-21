@@ -1,0 +1,2338 @@
+<!DOCTYPE html>
+<html lang="en-AU" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Area 5: Geometric Measure (K–6) | CEDoW Professional Learning</title>
+  
+  <!-- Google Fonts: Lato & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cedow: {
+              blue: '#0D2C6B',       /* Dark Blue - Headers, primary accents, borders */
+              aqua: '#188296',       /* Aqua - Active navigation, highlights */
+              gold: '#FBAF3F',       /* Gold - Ones, accents, callout badges */
+              charcoal: '#4C4C4E',   /* Charcoal - Secondary text, borders */
+              silver: '#D1D2D4',     /* Silver - Card borders, dividers */
+              black: '#231F20',      /* Black - Primary body text */
+              white: '#FFFFFF',      /* White - Surfaces */
+              light: '#F4F6F9',      /* Light Background */
+            }
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    :root {
+      --cedow-blue: #0D2C6B;
+      --cedow-aqua: #188296;
+      --cedow-gold: #FBAF3F;
+      --cedow-charcoal: #4C4C4E;
+      --cedow-silver: #D1D2D4;
+      --cedow-black: #231F20;
+      --cedow-white: #FFFFFF;
+      --cedow-light: #F4F6F9;
+    }
+
+    body {
+      color: var(--cedow-black);
+      background-color: var(--cedow-light);
+      font-family: 'Lato', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    .math-badge {
+      font-family: 'Fira Code', monospace;
+      background-color: #EBF3F5;
+      color: #0D2C6B;
+      border: 1px solid #D1D2D4;
+      border-radius: 0.25rem;
+      padding: 0.1rem 0.35rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+
+    /* Interactive Simulator Visuals */
+    .ruler-tick {
+      border-left: 2px solid var(--cedow-charcoal);
+    }
+    .ruler-tick-major {
+      border-left: 2px solid var(--cedow-blue);
+      height: 100%;
+    }
+    
+    /* Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F4F6F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D1D2D4;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #188296;
+    }
+
+    /* Custom Transitions */
+    .tab-active {
+      background-color: #0D2C6B !important;
+      color: #FFFFFF !important;
+      border-color: #0D2C6B !important;
+    }
+    .subtab-active {
+      background-color: #188296 !important;
+      color: #FFFFFF !important;
+      border-color: #188296 !important;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col">
+
+  <!-- TOP HEADER & BRAND IDENTIFIER -->
+  <header class="bg-cedow-blue text-white sticky top-0 z-50 shadow-md border-b-4 border-cedow-gold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-full bg-white flex items-center justify-center font-black text-cedow-blue border-2 border-cedow-gold text-lg tracking-tighter">
+          CE
+        </div>
+        <div>
+          <div class="text-xs uppercase tracking-widest text-cedow-gold font-bold">Catholic Education Diocese of Wollongong</div>
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white flex items-center gap-2">
+            <span>NSW Maths PL Architect: Geometric Measure</span>
+            <span class="hidden md:inline-block text-xs bg-cedow-aqua px-2 py-0.5 rounded font-medium text-white uppercase tracking-wider">K–6 Continuum</span>
+          </h1>
+        </div>
+      </div>
+      
+      <div class="flex items-center space-x-4">
+        <div class="hidden lg:flex items-center text-xs text-cedow-silver space-x-2">
+          <i data-lucide="book-open" class="w-4 h-4 text-cedow-gold"></i>
+          <span>NESA Mathematics K–10 (2022)</span>
+        </div>
+        <button id="mobileNavToggle" class="lg:hidden p-2 rounded-lg bg-cedow-aqua text-white hover:bg-opacity-90 focus:outline-none" aria-label="Toggle Navigation">
+          <i data-lucide="menu" class="w-5 h-5"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col lg:flex-row gap-6">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside id="sidebarNav" class="hidden lg:block w-full lg:w-64 flex-shrink-0">
+      <div class="sticky top-20 bg-white rounded-xl shadow-sm border border-cedow-silver p-4 space-y-2">
+        <div class="px-3 py-2 text-xs font-bold uppercase tracking-wider text-cedow-charcoal border-b border-cedow-silver">
+          Module Sections
+        </div>
+        <nav class="space-y-1 text-sm font-medium" id="moduleNavLinks">
+          <a href="#section-1" class="flex items-center px-3 py-2.5 rounded-lg text-cedow-blue hover:bg-cedow-light transition border-l-4 border-transparent hover:border-cedow-aqua">
+            <i data-lucide="git-merge" class="w-4 h-4 mr-3 text-cedow-aqua"></i>
+            <span>1. Vertical Trajectory</span>
+          </a>
+          <a href="#section-2" class="flex items-center px-3 py-2.5 rounded-lg text-cedow-blue hover:bg-cedow-light transition border-l-4 border-transparent hover:border-cedow-aqua">
+            <i data-lucide="compass" class="w-4 h-4 mr-3 text-cedow-aqua"></i>
+            <span>2. Conceptual Shifts</span>
+          </a>
+          <a href="#section-3" class="flex items-center px-3 py-2.5 rounded-lg text-cedow-blue hover:bg-cedow-light transition border-l-4 border-transparent hover:border-cedow-aqua">
+            <i data-lucide="wrench" class="w-4 h-4 mr-3 text-cedow-aqua"></i>
+            <span>3. Interactive Tool Lab</span>
+          </a>
+          <a href="#section-4" class="flex items-center px-3 py-2.5 rounded-lg text-cedow-blue hover:bg-cedow-light transition border-l-4 border-transparent hover:border-cedow-aqua">
+            <i data-lucide="stethoscope" class="w-4 h-4 mr-3 text-cedow-aqua"></i>
+            <span>4. Diagnostic Clinic</span>
+          </a>
+          <a href="#section-5" class="flex items-center px-3 py-2.5 rounded-lg text-cedow-blue hover:bg-cedow-light transition border-l-4 border-transparent hover:border-cedow-aqua">
+            <i data-lucide="sparkles" class="w-4 h-4 mr-3 text-cedow-aqua"></i>
+            <span>5. Task Makeover Studio</span>
+          </a>
+          <a href="#section-6" class="flex items-center px-3 py-2.5 rounded-lg text-cedow-blue hover:bg-cedow-light transition border-l-4 border-transparent hover:border-cedow-aqua">
+            <i data-lucide="award" class="w-4 h-4 mr-3 text-cedow-aqua"></i>
+            <span>6. Mastery Checkpoint</span>
+          </a>
+          <a href="#section-7" class="flex items-center px-3 py-2.5 rounded-lg text-cedow-blue hover:bg-cedow-light transition border-l-4 border-transparent hover:border-cedow-aqua">
+            <i data-lucide="share-2" class="w-4 h-4 mr-3 text-cedow-aqua"></i>
+            <span>7. Canvas LMS Guide</span>
+          </a>
+        </nav>
+        
+        <div class="mt-6 pt-4 border-t border-cedow-silver/60">
+          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver text-xs space-y-1">
+            <span class="font-bold text-cedow-blue block">Focus Area 5</span>
+            <span class="text-cedow-charcoal block">Strands: Position, Length, Angles</span>
+            <span class="text-cedow-aqua font-semibold block mt-1">Self-Paced Professional Learning</span>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN CONTENT AREA -->
+    <main class="flex-1 space-y-12 min-w-0">
+      
+      <!-- HERO BANNER -->
+      <section class="bg-white rounded-2xl border border-cedow-silver p-6 sm:p-8 shadow-sm relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-32 h-32 bg-cedow-gold/15 rounded-bl-full pointer-events-none"></div>
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-cedow-blue/10 text-cedow-blue mb-3">
+            <i data-lucide="ruler" class="w-3.5 h-3.5 text-cedow-aqua"></i>
+            <span>NESA Mathematics K–10 (2022) Focus Area 5</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-cedow-blue tracking-tight mb-3">
+            Geometric Measure K–6: Position, Length and Angles
+          </h2>
+          <p class="text-cedow-charcoal text-base leading-relaxed mb-4">
+            Measure is not simply reading numbers off an instrument; it is the quantification of spatial attributes. This professional learning module maps the vertical continuum across four stages: tracking position (from self-referential prepositions to the four-quadrant Cartesian plane), length (from direct baseline alignment to iterating informal units, scaled devices, and perimeter), and angles (from bodily amounts of turn to degree measurement and geometric deductions).
+          </p>
+          <div class="flex flex-wrap gap-2 text-xs font-semibold text-cedow-charcoal">
+            <span class="bg-cedow-light px-2.5 py-1 rounded border border-cedow-silver">Outcome Focus: MAO-WM-01</span>
+            <span class="bg-cedow-light px-2.5 py-1 rounded border border-cedow-silver">Early Stage 1 to Stage 3</span>
+            <span class="bg-cedow-light px-2.5 py-1 rounded border border-cedow-silver">Grounded in NESA Teaching Advice</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1: THE VERTICAL TRAJECTORY & BIG IDEAS -->
+      <section id="section-1" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-cedow-blue pl-4">
+          <h2 class="text-xl sm:text-2xl font-black text-cedow-blue tracking-tight">
+            Section 1: The Vertical Trajectory &amp; Big Ideas
+          </h2>
+          <p class="text-sm text-cedow-charcoal mt-1">
+            Navigate through formal syllabus outcomes, Working Mathematically connections, milestones, and the core Big Ideas Matrix.
+          </p>
+        </div>
+
+        <!-- Stage Filter Tabs -->
+        <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm space-y-6">
+          <div class="flex items-center justify-between flex-wrap gap-3 pb-3 border-b border-cedow-silver">
+            <h3 class="text-base font-bold text-cedow-blue flex items-center gap-2">
+              <i data-lucide="layers" class="w-4 h-4 text-cedow-aqua"></i>
+              <span>Interactive Stage Explorer</span>
+            </h3>
+            <div class="flex flex-wrap gap-1.5" id="stageTabsContainer">
+              <button class="stage-tab px-3.5 py-1.5 rounded-lg text-xs font-bold transition border border-cedow-silver tab-active" data-stage="es1">
+                Early Stage 1
+              </button>
+              <button class="stage-tab px-3.5 py-1.5 rounded-lg text-xs font-bold transition border border-cedow-silver text-cedow-blue hover:bg-cedow-light" data-stage="s1">
+                Stage 1 (A &amp; B)
+              </button>
+              <button class="stage-tab px-3.5 py-1.5 rounded-lg text-xs font-bold transition border border-cedow-silver text-cedow-blue hover:bg-cedow-light" data-stage="s2">
+                Stage 2 (A &amp; B)
+              </button>
+              <button class="stage-tab px-3.5 py-1.5 rounded-lg text-xs font-bold transition border border-cedow-silver text-cedow-blue hover:bg-cedow-light" data-stage="s3">
+                Stage 3 (A &amp; B)
+              </button>
+            </div>
+          </div>
+
+          <!-- Dynamic Stage Content Container -->
+          <div id="stageDetailsBox" class="space-y-6">
+            <!-- Injected via JavaScript -->
+          </div>
+        </div>
+
+        <!-- Cross-Stage Big Ideas Matrix -->
+        <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm space-y-5">
+          <div class="flex items-center justify-between pb-3 border-b border-cedow-silver flex-wrap gap-2">
+            <div>
+              <h3 class="text-base font-bold text-cedow-blue flex items-center gap-2">
+                <i data-lucide="grid" class="w-4 h-4 text-cedow-gold"></i>
+                <span>Cross-Stage Big Ideas Matrix</span>
+              </h3>
+              <p class="text-xs text-cedow-charcoal mt-0.5">Select a mathematical principle to observe its cognitive progression from Kindergarten to Year 6.</p>
+            </div>
+          </div>
+
+          <!-- Big Idea Pills -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-2" id="bigIdeaButtons">
+            <!-- Populated via JavaScript -->
+          </div>
+
+          <!-- Selected Big Idea Display Card -->
+          <div id="bigIdeaDetailCard" class="bg-cedow-light rounded-xl border border-cedow-silver p-5 space-y-4">
+            <!-- Dynamic Content -->
+          </div>
+        </div>
+
+        <!-- Tools & Concrete Models Progression Matrix -->
+        <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-cedow-blue flex items-center gap-2 pb-2 border-b border-cedow-silver">
+            <i data-lucide="hammer" class="w-4 h-4 text-cedow-aqua"></i>
+            <span>Pedagogical Models &amp; Concrete Representational Continuum</span>
+          </h3>
+          <p class="text-xs text-cedow-charcoal">
+            NESA Teaching Advice highlights that abstract measuring devices must be preceded by student construction and calibration of informal tools.
+          </p>
+          <div class="overflow-x-auto">
+            <table class="w-full text-left text-xs border border-cedow-silver rounded-lg overflow-hidden">
+              <thead class="bg-cedow-blue text-white uppercase tracking-wider text-[11px]">
+                <tr>
+                  <th class="p-3">Model / Concrete Tool</th>
+                  <th class="p-3">Primary Focus Strand</th>
+                  <th class="p-3">Stage Span</th>
+                  <th class="p-3">Pedagogical Purpose &amp; Construction Advice</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-cedow-silver/60 bg-white" id="modelsTableBody">
+                <!-- Injected via JavaScript -->
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: KEY CONCEPTUAL SHIFTS & PEDAGOGICAL TRAPS -->
+      <section id="section-2" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-cedow-aqua pl-4">
+          <h2 class="text-xl sm:text-2xl font-black text-cedow-blue tracking-tight">
+            Section 2: Key Conceptual Shifts &amp; Pedagogical Traps
+          </h2>
+          <p class="text-sm text-cedow-charcoal mt-1">
+            Research-informed analysis of cognitive transitions, linguistic hurdles, and classroom misconceptions grounded in NESA Teaching Advice.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Shift 1 -->
+          <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[11px] font-bold uppercase tracking-wider bg-cedow-blue text-white px-2 py-0.5 rounded">Shift 1 &bull; Position</span>
+                <span class="text-xs font-semibold text-cedow-aqua">ES1 &rarr; Stage 3</span>
+              </div>
+              <h3 class="text-base font-bold text-cedow-blue mb-2">From Egocentric Proximity to Cartesian Coordinate Systems</h3>
+              <p class="text-xs text-cedow-charcoal leading-relaxed mb-3">
+                In Early Stage 1, position begins in relation to the child’s own body using prepositions (<span class="math-badge">in</span>, <span class="math-badge">on</span>, <span class="math-badge">under</span>) and referencing their dominant hand. Stage 1 demands de-centring to describe left and right from the perspective of an observer facing opposite. Stage 2 formalises this using row/column grid systems (where <span class="math-badge">B3</span> designates a <em>region/area</em>). Stage 3 executes the profound conceptual leap to the Cartesian coordinate plane, where coordinates <span class="math-badge">(x, y)</span> designate a unique <em>point of intersection</em>, lines (not spaces) are numbered, and the origin is <span class="math-badge">(0, 0)</span>.
+              </p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-3 rounded text-xs text-red-900 mt-2">
+              <strong class="font-bold flex items-center gap-1.5 mb-1 text-red-700">
+                <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i> Common Pedagogical Trap
+              </strong>
+              Students persistently number the white spaces between grid lines on Cartesian planes, transferring their Stage 2 grid-map thinking. When locating <span class="math-badge">(2, 3)</span>, they look inside the second column and third row rather than tracing linear axes to their exact intersection.
+            </div>
+          </div>
+
+          <!-- Shift 2 -->
+          <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[11px] font-bold uppercase tracking-wider bg-cedow-aqua text-white px-2 py-0.5 rounded">Shift 2 &bull; Length</span>
+                <span class="text-xs font-semibold text-cedow-blue">Direct Comparison &rarr; Scaled Units</span>
+              </div>
+              <h3 class="text-base font-bold text-cedow-blue mb-2">From Perceptual Alignment to "Make, Mark &amp; Move" Iteration</h3>
+              <p class="text-xs text-cedow-charcoal leading-relaxed mb-3">
+                Young learners intuitively decide which object is longer by which end protrudes further, ignoring the baseline. Establishing conservation of length requires direct side-by-side alignment. Stage 1 replaces direct comparison with uniform informal units, requiring the understanding that units must be identical, placed end-to-end without gaps or overlaps, and that smaller units require a higher count. The NESA protocol <span class="math-badge">make, mark and move</span> ensures students discover that the unit of length is the <em>continuous space (interval) between marks</em>, rather than the marks themselves.
+              </p>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-cedow-gold p-3 rounded text-xs text-amber-900 mt-2">
+              <strong class="font-bold flex items-center gap-1.5 mb-1 text-amber-800">
+                <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i> Counting Hash Marks vs Intervals
+              </strong>
+              When transitioned too quickly to a commercial ruler, students either start measuring from the numeral <span class="math-badge">1</span> instead of <span class="math-badge">0</span>, or count the hash marks along the ruler, yielding an answer exactly <span class="math-badge">1 cm</span> too large.
+            </div>
+          </div>
+
+          <!-- Shift 3 -->
+          <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[11px] font-bold uppercase tracking-wider bg-cedow-blue text-white px-2 py-0.5 rounded">Shift 3 &bull; Angles</span>
+                <span class="text-xs font-semibold text-cedow-aqua">Stage 2 &rarr; Stage 3</span>
+              </div>
+              <h3 class="text-base font-bold text-cedow-blue mb-2">Angles as Dynamic Rotational Turn, Not Static Sharpness</h3>
+              <p class="text-xs text-cedow-charcoal leading-relaxed mb-3">
+                Angles appear in Stage 2 not as static corner shapes, but as measures of turn between two arms meeting at a common vertex. NESA explicitly advises against labelling acute and obtuse angles as &ldquo;sharp&rdquo; or &ldquo;blunt&rdquo;, because this linguistic shorthand anchors students to the static vertex shape rather than the amount of turn. A right angle is established as a quarter-turn benchmark across multiple orientations. Stage 3 quantifies turn in degrees (<span class="math-badge">360°</span> in a full revolution) and introduces protractors.
+              </p>
+            </div>
+            <div class="bg-red-50 border-l-4 border-red-500 p-3 rounded text-xs text-red-900 mt-2">
+              <strong class="font-bold flex items-center gap-1.5 mb-1 text-red-700">
+                <i data-lucide="alert-triangle" class="w-3.5 h-3.5"></i> The Arm-Length Illusion
+              </strong>
+              Students consistently judge an angle with long ray arms as &ldquo;bigger&rdquo; than a wider angle drawn with short stubby arms. Teachers must physically superimpose angles with aligned rays to demonstrate that arm extension does not alter rotation.
+            </div>
+          </div>
+
+          <!-- Shift 4 -->
+          <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-[11px] font-bold uppercase tracking-wider bg-cedow-aqua text-white px-2 py-0.5 rounded">Shift 4 &bull; Boundary vs Region</span>
+                <span class="text-xs font-semibold text-cedow-blue">Stage 2 &rarr; Stage 3</span>
+              </div>
+              <h3 class="text-base font-bold text-cedow-blue mb-2">Decoupling Perimeter (1D Length) from Area (2D Surface)</h3>
+              <p class="text-xs text-cedow-charcoal leading-relaxed mb-3">
+                Perimeter is derived from Greek <span class="math-badge">peri</span> (around) and <span class="math-badge">metron</span> (measure)&mdash;the continuous 1D length of a boundary. Students often conflate perimeter with the 2D surface enclosed (Area). In Stage 3, students must recognise that rectangles possessing identical perimeters can enclose drastically different areas, and conversely, rectangles of identical area can require wildly varying boundary lengths.
+              </p>
+            </div>
+            <div class="bg-amber-50 border-l-4 border-cedow-gold p-3 rounded text-xs text-amber-900 mt-2">
+              <strong class="font-bold flex items-center gap-1.5 mb-1 text-amber-800">
+                <i data-lucide="alert-circle" class="w-3.5 h-3.5"></i> The Isoperimetric Fallacy
+              </strong>
+              Assuming that a garden bed requiring 20 m of timber fencing will always provide the same space for planting. Exploring whole-number rectangles reveals areas ranging from 9 m&sup2; (<span class="math-badge">9 &times; 1</span>) up to 25 m&sup2; (<span class="math-badge">5 &times; 5</span> square).
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: INTERACTIVE TOOL LAB -->
+      <section id="section-3" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-cedow-gold pl-4">
+          <h2 class="text-xl sm:text-2xl font-black text-cedow-blue tracking-tight">
+            Section 3: Interactive Tool Lab (Runnable Manipulatives)
+          </h2>
+          <p class="text-sm text-cedow-charcoal mt-1">
+            Explore 4 purpose-built interactive mathematical manipulatives designed to diagnose, demonstrate, and deconstruct geometric measure concepts.
+          </p>
+        </div>
+
+        <!-- Tool Selection Tabs -->
+        <div class="flex flex-wrap gap-2 border-b border-cedow-silver pb-3" id="toolSwitcher">
+          <button class="tool-btn px-4 py-2 rounded-lg text-xs font-bold transition border border-cedow-silver subtab-active" data-tool="compare">
+            Tool 1: ES1 Baseline Length Comparer
+          </button>
+          <button class="tool-btn px-4 py-2 rounded-lg text-xs font-bold transition border border-cedow-silver text-cedow-blue bg-white hover:bg-cedow-light" data-tool="units">
+            Tool 2: S1 Informal Unit Iteration Lab
+          </button>
+          <button class="tool-btn px-4 py-2 rounded-lg text-xs font-bold transition border border-cedow-silver text-cedow-blue bg-white hover:bg-cedow-light" data-tool="angles">
+            Tool 3: S2 Angle Dynamic Turn Tester
+          </button>
+          <button class="tool-btn px-4 py-2 rounded-lg text-xs font-bold transition border border-cedow-silver text-cedow-blue bg-white hover:bg-cedow-light" data-tool="rects">
+            Tool 4: S3 Isoperimetric Rectangle Explorer
+          </button>
+        </div>
+
+        <!-- Tool Container Wrapper -->
+        <div class="bg-white rounded-xl border border-cedow-silver p-5 sm:p-6 shadow-sm min-h-[420px]" id="activeToolContainer">
+          <!-- Dynamic Tool Container -->
+        </div>
+      </section>
+
+      <!-- SECTION 4: STUDENT DIAGNOSTIC CLINIC & ROOT MISCONCEPTIONS -->
+      <section id="section-4" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-cedow-blue pl-4">
+          <h2 class="text-xl sm:text-2xl font-black text-cedow-blue tracking-tight">
+            Section 4: Student Diagnostic Clinic &amp; Root Misconceptions
+          </h2>
+          <p class="text-sm text-cedow-charcoal mt-1">
+            Authentic dialogue transcripts and an interactive 4-Root Misconception Sorter to sharpen teacher diagnostic acuity.
+          </p>
+        </div>
+
+        <!-- Diagnostic Transcripts Card -->
+        <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm space-y-4">
+          <h3 class="text-base font-bold text-cedow-blue flex items-center gap-2 pb-2 border-b border-cedow-silver">
+            <i data-lucide="message-square" class="w-4 h-4 text-cedow-aqua"></i>
+            <span>Clinical Interview Transcript: Probing the Scale Origin</span>
+          </h3>
+          <div class="bg-cedow-light p-4 rounded-lg border border-cedow-silver text-xs font-mono space-y-2 text-cedow-black">
+            <p><strong class="text-cedow-blue">Teacher:</strong> &ldquo;Liam, please use this 15 cm ruler to measure the length of this fresh pencil.&rdquo;</p>
+            <p><strong class="text-cedow-charcoal">Liam (Year 2):</strong> [Places pencil down. Carefully aligns the eraser end of the pencil with the &lsquo;1&rsquo; numeral mark on the ruler. Looks at the tip.] &ldquo;It finishes right on the 9. It is 9 centimetres long.&rdquo;</p>
+            <p><strong class="text-cedow-blue">Teacher:</strong> &ldquo;Liam, look at this first section from the start of the ruler to the 1. Did we measure that part of the pencil?&rdquo;</p>
+            <p><strong class="text-cedow-charcoal">Liam:</strong> &ldquo;Well, 1 is where you start counting: 1, 2, 3, 4, 5, 6, 7, 8, 9. Zero means nothing, so you can&rsquo;t measure from nothing.&rdquo;</p>
+          </div>
+          <div class="text-xs text-cedow-charcoal bg-white p-3 rounded border border-cedow-silver">
+            <strong class="text-cedow-blue font-bold">Diagnostic Insight:</strong> Liam treats the ruler as a discrete numeral track for item counting rather than a calibrated continuous length scale. He has not consolidated that measurement is the iteration of intervals (the space between 0 and 1 represents the first unit of length).
+          </div>
+        </div>
+
+        <!-- The 4 Roots Reference Box -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="bg-white p-3.5 rounded-lg border-t-4 border-cedow-blue shadow-sm border border-cedow-silver">
+            <span class="text-[10px] font-black uppercase text-cedow-blue tracking-wider">Root 1</span>
+            <h4 class="text-xs font-bold text-cedow-black mt-1">Rules of Measuring Ignored</h4>
+            <p class="text-[11px] text-cedow-charcoal mt-1">Gaps, overlaps, counting hash marks rather than spaces, ignoring baseline alignment.</p>
+          </div>
+          <div class="bg-white p-3.5 rounded-lg border-t-4 border-cedow-aqua shadow-sm border border-cedow-silver">
+            <span class="text-[10px] font-black uppercase text-cedow-aqua tracking-wider">Root 2</span>
+            <h4 class="text-xs font-bold text-cedow-black mt-1">Judged by Appearance</h4>
+            <p class="text-[11px] text-cedow-charcoal mt-1">Length changes if bent/coiled; longer arms mean bigger angle; same perimeter = same area.</p>
+          </div>
+          <div class="bg-white p-3.5 rounded-lg border-t-4 border-cedow-gold shadow-sm border border-cedow-silver">
+            <span class="text-[10px] font-black uppercase text-amber-700 tracking-wider">Root 3</span>
+            <h4 class="text-xs font-bold text-cedow-black mt-1">Frame of Reference Uncoordinated</h4>
+            <p class="text-[11px] text-cedow-charcoal mt-1">Left/right of a partner reversed; vertical before horizontal; numbering spaces not lines.</p>
+          </div>
+          <div class="bg-white p-3.5 rounded-lg border-t-4 border-cedow-charcoal shadow-sm border border-cedow-silver">
+            <span class="text-[10px] font-black uppercase text-cedow-charcoal tracking-wider">Root 4</span>
+            <h4 class="text-xs font-bold text-cedow-black mt-1">Units &amp; Scales Unrelated</h4>
+            <p class="text-[11px] text-cedow-charcoal mt-1">More units always means longer; reading wrong protractor scale; dividing to convert km to m.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Misconception Sorter Widget -->
+        <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm space-y-4">
+          <div class="flex items-center justify-between flex-wrap gap-2 pb-3 border-b border-cedow-silver">
+            <div>
+              <h3 class="text-base font-bold text-cedow-blue flex items-center gap-2">
+                <i data-lucide="check-circle-2" class="w-4 h-4 text-cedow-aqua"></i>
+                <span>Interactive Student Misconception Sorter</span>
+              </h3>
+              <p class="text-xs text-cedow-charcoal">Read each student response, diagnose the conceptual root, and review pedagogical actions.</p>
+            </div>
+            <div class="text-xs font-bold bg-cedow-light px-3 py-1 rounded-full border border-cedow-silver text-cedow-blue" id="sorterScore">
+              Progress: 0 / 11 Analysed
+            </div>
+          </div>
+
+          <div id="sorterCardContainer" class="space-y-4">
+            <!-- Rendered via JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: TASK MAKEOVER STUDIO -->
+      <section id="section-5" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-cedow-aqua pl-4">
+          <h2 class="text-xl sm:text-2xl font-black text-cedow-blue tracking-tight">
+            Section 5: Task Makeover Studio (Working Mathematically - MAO-WM-01)
+          </h2>
+          <p class="text-sm text-cedow-charcoal mt-1">
+            Transforming closed procedural drills into inquiry-rich reasoning tasks activating Working Mathematically processes.
+          </p>
+        </div>
+
+        <!-- Side-by-Side Makeovers Tabbed by Stage -->
+        <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm space-y-5">
+          <div class="flex items-center justify-between flex-wrap gap-2 pb-3 border-b border-cedow-silver">
+            <h3 class="text-base font-bold text-cedow-blue flex items-center gap-2">
+              <i data-lucide="refresh-cw" class="w-4 h-4 text-cedow-gold"></i>
+              <span>Before &amp; After Task Transformations</span>
+            </h3>
+            <div class="flex flex-wrap gap-1.5" id="makeoverStageTabs">
+              <button class="mo-tab px-3 py-1 rounded text-xs font-bold border border-cedow-silver tab-active" data-mostage="es1">Early Stage 1</button>
+              <button class="mo-tab px-3 py-1 rounded text-xs font-bold border border-cedow-silver text-cedow-blue hover:bg-cedow-light" data-mostage="s1">Stage 1</button>
+              <button class="mo-tab px-3 py-1 rounded text-xs font-bold border border-cedow-silver text-cedow-blue hover:bg-cedow-light" data-mostage="s2">Stage 2</button>
+              <button class="mo-tab px-3 py-1 rounded text-xs font-bold border border-cedow-silver text-cedow-blue hover:bg-cedow-light" data-mostage="s3">Stage 3</button>
+            </div>
+          </div>
+
+          <div id="makeoverContainer" class="space-y-4">
+            <!-- Dynamic Side-by-Side Injected via JS -->
+          </div>
+        </div>
+
+        <!-- The 5 High-Yield Pedagogical Moves Studio -->
+        <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm space-y-5">
+          <div class="pb-3 border-b border-cedow-silver">
+            <h3 class="text-base font-bold text-cedow-blue flex items-center gap-2">
+              <i data-lucide="wand-2" class="w-4 h-4 text-cedow-aqua"></i>
+              <span>The 5 High-Yield Pedagogical Moves Studio</span>
+            </h3>
+            <p class="text-xs text-cedow-charcoal mt-1">
+              Select a stage-appropriate routine to explore how standard worksheet exercises are unlocked through high-impact discursive questions.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2" id="closedTasksNav">
+            <!-- Stage Buttons injected via JS -->
+          </div>
+
+          <div id="closedMovesDisplay" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
+            <!-- Dynamic 5 moves cards -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: MODULE MASTERY CHECKPOINT -->
+      <section id="section-6" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-cedow-gold pl-4">
+          <h2 class="text-xl sm:text-2xl font-black text-cedow-blue tracking-tight">
+            Section 6: Module Mastery Checkpoint
+          </h2>
+          <p class="text-sm text-cedow-charcoal mt-1">
+            Complete the 5 scenario-based clinical questions (80% benchmark) to unlock the structured K–6 Pedagogical Takeaways continuum.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl border border-cedow-silver p-6 shadow-sm space-y-6" id="checkpointContainer">
+          <div class="flex items-center justify-between border-b border-cedow-silver pb-3">
+            <div>
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Formative Assessment</span>
+              <h3 class="text-lg font-bold text-cedow-blue">Teaching Advice Mastery Assessment</h3>
+            </div>
+            <div class="text-xs font-bold bg-cedow-light px-3 py-1.5 rounded-lg border border-cedow-silver text-cedow-blue" id="checkpointScoreBadge">
+              Pass mark: 80% (4 of 5)
+            </div>
+          </div>
+
+          <form id="checkpointForm" class="space-y-6">
+            <!-- 5 Scenario Questions Injected via JS -->
+            <div id="questionsList" class="space-y-6"></div>
+
+            <div class="pt-4 border-t border-cedow-silver flex items-center justify-between">
+              <button type="button" id="submitCheckpointBtn" class="px-6 py-2.5 bg-cedow-blue text-white text-xs font-bold rounded-lg hover:bg-opacity-90 shadow transition flex items-center gap-2">
+                <i data-lucide="check" class="w-4 h-4 text-cedow-gold"></i>
+                <span>Submit Assessment</span>
+              </button>
+              <button type="button" id="resetCheckpointBtn" class="px-4 py-2 border border-cedow-silver text-cedow-charcoal text-xs font-bold rounded-lg hover:bg-cedow-light transition">
+                Reset
+              </button>
+            </div>
+          </form>
+
+          <!-- Checkpoint Feedback Banner -->
+          <div id="checkpointResultBanner" class="hidden p-4 rounded-xl border"></div>
+
+          <!-- UNLOCKED EXECUTIVE SUMMARY (K-6 Continuum) -->
+          <div id="unlockedContinuumSummary" class="hidden mt-8 pt-8 border-t-2 border-cedow-gold space-y-6">
+            <div class="bg-cedow-blue text-white p-6 rounded-2xl shadow-lg relative overflow-hidden">
+              <div class="absolute -right-10 -bottom-10 w-40 h-40 bg-cedow-gold/20 rounded-full pointer-events-none"></div>
+              <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-bold bg-cedow-gold text-cedow-blue mb-2">
+                <i data-lucide="award" class="w-4 h-4"></i>
+                <span>Checkpoint Passed &bull; 80% Benchmark Achieved</span>
+              </div>
+              <h3 class="text-xl font-black tracking-tight text-white mb-2">Key Pedagogical Takeaways (K–6 Continuum)</h3>
+              <p class="text-xs text-cedow-silver leading-relaxed max-w-2xl">
+                Synthesis of systemic instructional standards for teaching Geometric Measure across the Catholic Education Diocese of Wollongong.
+              </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <!-- ES1 -->
+              <div class="bg-white p-5 rounded-xl border border-cedow-silver shadow-sm space-y-2">
+                <span class="text-xs font-black text-cedow-blue uppercase tracking-wider">Early Stage 1 Focus</span>
+                <h4 class="text-sm font-bold text-cedow-black">Grounding Linear &amp; Positional Perception</h4>
+                <ul class="text-xs text-cedow-charcoal space-y-1.5 list-disc pl-4 leading-relaxed">
+                  <li><strong>Baseline Alignment:</strong> Physical superposition and baseline alignment are foundational. Comparing lengths without aligning both ends breeds perpetual perceptual errors.</li>
+                  <li><strong>Conservation:</strong> Students must witness string bending, straight paths, and folded ribbons to understand length does not diminish when rearranged.</li>
+                  <li><strong>Fractions through Length:</strong> Half is a continuous measure of length (cutting/folding), distinct from the halfway point as a spatial coordinate.</li>
+                </ul>
+              </div>
+
+              <!-- S1 -->
+              <div class="bg-white p-5 rounded-xl border border-cedow-silver shadow-sm space-y-2">
+                <span class="text-xs font-black text-cedow-aqua uppercase tracking-wider">Stage 1 Focus</span>
+                <h4 class="text-sm font-bold text-cedow-black">Uniform Iteration &amp; Calibrated Strips</h4>
+                <ul class="text-xs text-cedow-charcoal space-y-1.5 list-disc pl-4 leading-relaxed">
+                  <li><strong>Rules of Measuring:</strong> No gaps, no overlaps, uniform identical units, and recording both the count and unit type.</li>
+                  <li><strong>Make, Mark &amp; Move:</strong> Calibrate devices (e.g. 10 cubes or paper footprints) before using rulers so students recognise that units are the <em>spaces between lines</em>.</li>
+                  <li><strong>Unit Size vs Quantity:</strong> The smaller the unit, the more units required. Inverse relationship must be predicted before measuring.</li>
+                </ul>
+              </div>
+
+              <!-- S2 -->
+              <div class="bg-white p-5 rounded-xl border border-cedow-silver shadow-sm space-y-2">
+                <span class="text-xs font-black text-cedow-gold uppercase tracking-wider">Stage 2 Focus</span>
+                <h4 class="text-sm font-bold text-cedow-black">Angles as Turn &amp; Scaled Instruments</h4>
+                <ul class="text-xs text-cedow-charcoal space-y-1.5 list-disc pl-4 leading-relaxed">
+                  <li><strong>Dynamic Angle Conception:</strong> Angles are measures of turn between rays, completely independent of arm length or orientation on the page.</li>
+                  <li><strong>Discard &ldquo;Sharp&rdquo; and &ldquo;Blunt&rdquo;:</strong> Use quarter-turn comparisons against a right angle benchmark (acute, obtuse, straight, reflex).</li>
+                  <li><strong>Grid Maps &amp; Direction:</strong> Horizontal before vertical (B3), connecting north/compass directions in the playground before map reading.</li>
+                </ul>
+              </div>
+
+              <!-- S3 -->
+              <div class="bg-white p-5 rounded-xl border border-cedow-silver shadow-sm space-y-2">
+                <span class="text-xs font-black text-cedow-charcoal uppercase tracking-wider">Stage 3 Focus</span>
+                <h4 class="text-sm font-bold text-cedow-black">Cartesian Precision &amp; Isoperimetric Decoupling</h4>
+                <ul class="text-xs text-cedow-charcoal space-y-1.5 list-disc pl-4 leading-relaxed">
+                  <li><strong>Cartesian Points:</strong> Number plane lines are numbered, not spaces. The origin is (0, 0) and (x, y) coordinates locate unique mathematical points.</li>
+                  <li><strong>Numberless Protractors:</strong> Anchor protractor placement to the vertex as rotational sweep before reading dual semicircular scales.</li>
+                  <li><strong>Perimeter vs Area:</strong> Distinctly separate boundary length from 2D surface area through isoperimetric investigations.</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE -->
+      <section id="section-7" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-cedow-blue pl-4">
+          <h2 class="text-xl sm:text-2xl font-black text-cedow-blue tracking-tight">
+            Section 7: Canvas LMS Deployment Guide
+          </h2>
+          <p class="text-sm text-cedow-charcoal mt-1">
+            Complete technical documentation for hosting on GitHub Pages and embedding into Canvas LMS pages.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Method 1: Iframe via GitHub Pages -->
+          <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm space-y-3">
+            <div class="flex items-center gap-2 text-cedow-blue font-bold text-sm">
+              <i data-lucide="globe" class="w-4 h-4 text-cedow-aqua"></i>
+              <span>Method A: GitHub Pages + Canvas Iframe (Recommended)</span>
+            </div>
+            <p class="text-xs text-cedow-charcoal leading-relaxed">
+              Provides seamless full-screen responsiveness, preserves standalone vanilla JavaScript execution, and avoids LMS CSS clashes.
+            </p>
+            <ol class="text-xs text-cedow-charcoal space-y-1.5 list-decimal pl-4">
+              <li>Save this file as <code class="math-badge">index.html</code> in a dedicated GitHub repository.</li>
+              <li>Under repository <strong>Settings &rarr; Pages</strong>, set the build branch to <strong>main</strong> and save.</li>
+              <li>Copy your live GitHub Pages URL (e.g. <code class="math-badge">https://cedow.github.io/geometric-measure/</code>).</li>
+              <li>In Canvas LMS, open a Course Page, switch to the <strong>HTML View (&lt;/&gt;)</strong> in the Rich Content Editor, and paste:</li>
+            </ol>
+            <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver font-mono text-[11px] text-cedow-black overflow-x-auto">
+              &lt;iframe src="https://YOUR-ORG.github.io/REPO-NAME/" width="100%" height="900" style="border:none; border-radius:12px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);" allowfullscreen&gt;&lt;/iframe&gt;
+            </div>
+          </div>
+
+          <!-- Method 2: Direct Canvas Page RCE -->
+          <div class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm space-y-3">
+            <div class="flex items-center gap-2 text-cedow-blue font-bold text-sm">
+              <i data-lucide="code-2" class="w-4 h-4 text-cedow-gold"></i>
+              <span>Method B: Direct Canvas Page HTML Embed</span>
+            </div>
+            <p class="text-xs text-cedow-charcoal leading-relaxed">
+              When hosting externally is restricted by school policy, deploy via Canvas Files and Page link, or paste directly into the Canvas RCE.
+            </p>
+            <ol class="text-xs text-cedow-charcoal space-y-1.5 list-decimal pl-4">
+              <li>Navigate to <strong>Files</strong> in your Canvas LMS Course and upload this self-contained <code class="math-badge">.html</code> file.</li>
+              <li>Select <strong>View in Browser</strong> or embed the file link directly into your Canvas Modules list.</li>
+              <li>Alternatively, paste the internal <code class="math-badge">&lt;main&gt;</code> content into the Canvas HTML editor. Note that some script tags may be stripped depending on institution-level Canvas sanitisation rules.</li>
+            </ol>
+            <div class="bg-amber-50 border-l-4 border-cedow-gold p-3 rounded text-xs text-amber-900">
+              <strong class="font-bold block mb-1">Canvas Mobile App Note:</strong>
+              When viewing via the Canvas Student mobile app, iframe embed with 100% width provides the highest level of touch responsiveness for the interactive SVG manipulatives.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- DIOCESAN FOOTER -->
+  <footer class="bg-cedow-blue text-white border-t-4 border-cedow-gold mt-16 py-8">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col md:flex-row items-center justify-between gap-4 text-xs">
+      <div class="flex items-center space-x-3">
+        <div class="w-8 h-8 rounded-full bg-white flex items-center justify-center font-black text-cedow-blue text-xs border border-cedow-gold">
+          CE
+        </div>
+        <div>
+          <span class="font-bold block">Catholic Education Diocese of Wollongong</span>
+          <span class="text-cedow-silver block">Primary Mathematics Professional Learning &bull; Focus Area 5: Geometric Measure</span>
+        </div>
+      </div>
+      <div class="text-cedow-silver text-center md:text-right">
+        <span>Aligned to NSW NESA Mathematics K–10 Syllabus (2022)</span>
+        <span class="block mt-0.5">Working Mathematically Outcome MAO-WM-01</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- SCRIPT LOGIC: ALL INTERACTIVE MODULES & MANIPULATIVES -->
+  <script>
+    /* -------------------------------------------------------------
+       DATA ARCHITECTURE: NESA Mathematics K-10 (2022) Focus Area 5
+       ------------------------------------------------------------- */
+    const STAGE_DATA = {
+      es1: {
+        short: "ES1",
+        name: "Early Stage 1",
+        years: "Kindergarten",
+        lead: "In Kindergarten, students describe where things are, follow simple directions, compare lengths directly and indirectly, and create half a length. NESA highlights accurately aligning the ends of objects and developing conservation of length.",
+        outcomes: [
+          { code: "MAE-GM-01", desc: "describes position and gives and follows simple directions" },
+          { code: "MAE-GM-02", desc: "describes and compares lengths" },
+          { code: "MAE-GM-03", desc: "identifies half the length and the halfway point" },
+          { code: "MAO-WM-01", desc: "Working mathematically: explores, connects, communicates, and reasons" }
+        ],
+        wmFocus: "Students reason about relations when copying a length with a paper strip to compare objects that cannot be moved, and when dividing a ribbon into equal halves.",
+        milestones: [
+          "Describe position using prepositions (in, on, under, up, down).",
+          "Begin using 'left' and 'right' in relation to themselves referencing dominant hand/foot.",
+          "Identify length as the continuous measure of an object from end to end.",
+          "Directly compare lengths side by side by physically aligning the ends.",
+          "Distinguish between the halfway point (a spatial coordinate) and half a length (a measure)."
+        ],
+        adviceAlerts: [
+          "Conservation of Length: Students consistently say two objects are equal in length even after their relative positions change. Start with obvious differences before close comparisons.",
+          "Language Precisions: Young students say 'big' when meaning 'tall' or 'long'. Introduce specific terminology (high, low, long, short, thick).",
+          "Double Duty Prepositions: 'Next to', 'before' and 'after' operate in space and number (13 is before 14). Clarify 'on top of' (resting on vs directly above)."
+        ],
+        vocab: ["position", "between", "next to", "behind", "inside", "outside", "left", "right", "length", "end to end", "side by side", "longer than", "shorter than", "the same as", "half", "halfway point"]
+      },
+      s1: {
+        short: "S1",
+        name: "Stage 1",
+        years: "Years 1–2",
+        lead: "In Years 1 and 2, students measure with repeated uniform informal units, then metres and centimetres, describe positions on simple maps, and use left and right from other people's perspectives. Halves, quarters, and eighths of lengths are formalised.",
+        outcomes: [
+          { code: "MA1-GM-01", desc: "represents and describes the positions of objects in familiar locations" },
+          { code: "MA1-GM-02", desc: "measures, records, compares and estimates lengths and distances using uniform informal units, as well as metres and centimetres" },
+          { code: "MA1-GM-03", desc: "creates and recognises halves, quarters and eighths as part measures of a whole length" }
+        ],
+        wmFocus: "Students explain the relationship between unit size and the number of units needed (more paper clips than pop sticks) and reason about constant length when objects are rearranged.",
+        milestones: [
+          "Place informal units end to end without gaps or overlaps.",
+          "Iterate a single unit repeatedly using the 'make, mark and move' process.",
+          "Estimate with visualised personal benchmarks (finger-width, handspan).",
+          "Measure to the nearest metre or half-metre, and nearest centimetre.",
+          "Repeatedly halve lengths to construct quarters and eighths."
+        ],
+        adviceAlerts: [
+          "Make, Mark and Move: Placing one unit, marking its end, and moving it along reveals that the unit is the space between marks, not the tick marks.",
+          "Device Before Commercial Ruler: Build a 10-cube train or calibrated paper strip before using a commercial ruler so ruler marks are seen as unit endpoints.",
+          "Inverse Unit Relationship: The smaller the unit chosen, the greater the number of units required to cover the identical distance."
+        ],
+        vocab: ["length", "distance", "end to end", "unit", "handspan", "estimate", "measure", "metre (m)", "centimetre (cm)", "left", "right", "map", "path", "half", "quarter", "eighth"]
+      },
+      s2: {
+        short: "S2",
+        name: "Stage 2",
+        years: "Years 3–4",
+        lead: "In Years 3 and 4, students use grid maps and compass directions, measure in metres, centimetres and millimetres with scaled instruments, calculate perimeter, and encounter angles as dynamic amounts of turn compared with a right angle.",
+        outcomes: [
+          { code: "MA2-GM-01", desc: "uses grid maps and directional language to locate positions and follow routes" },
+          { code: "MA2-GM-02", desc: "measures and estimates lengths in metres, centimetres and millimetres" },
+          { code: "MA2-GM-03", desc: "identifies angles and classifies them by comparing to a right angle" }
+        ],
+        wmFocus: "Students reason about spatial orientation when describing return journeys on grid maps, and explain that ray arm length does not affect angle magnitude.",
+        milestones: [
+          "Coordinate horizontal and vertical references (horizontal named first: B3).",
+          "Identify N, S, E, W compass directions in the playground before map reading.",
+          "Use millimetres for precision (10 mm = 1 cm) and record to 2 decimal places (1.25 m).",
+          "Recognise length as a perimeter boundary around quadrilaterals.",
+          "Classify angles against a quarter-turn right angle (acute, right, obtuse, straight, reflex)."
+        ],
+        adviceAlerts: [
+          "Avoid 'Sharp' and 'Blunt': These words anchor students to static vertex shapes. Angles must be defined by the rotational turn between arms.",
+          "Arm-Length Pitfall: Students judge angles with longer arms as larger. Superimpose angles to demonstrate that arm length is irrelevant.",
+          "Grid Reference vs Coordinate: A grid reference labels an area/square, not a point."
+        ],
+        vocab: ["grid reference", "aerial view", "compass", "north", "south", "east", "west", "millimetre (mm)", "perimeter", "angle", "arm", "vertex", "right angle", "acute", "obtuse", "straight angle", "reflex angle"]
+      },
+      s3: {
+        short: "S3",
+        name: "Stage 3",
+        years: "Years 5–6",
+        lead: "In Years 5 and 6, students transition from grid areas to points on the Cartesian plane, convert metric units using place value, calculate perimeters of composite shapes, and measure, construct, and reason about angles in degrees.",
+        outcomes: [
+          { code: "MA3-GM-01", desc: "locates and describes points on a coordinate plane" },
+          { code: "MA3-GM-02", desc: "selects and uses the appropriate unit and device to measure lengths and distances including perimeters" },
+          { code: "MA3-GM-03", desc: "measures and constructs angles, and identifies the relationships between angles on a straight line and angles at a point" }
+        ],
+        wmFocus: "Students use spatial reasoning to recognise that rectangles with equal perimeters can have different areas, and deduce missing side lengths in shapes.",
+        milestones: [
+          "Plot and read points in all 4 quadrants of the Cartesian plane: (x, y) with origin (0, 0).",
+          "Convert between mm, cm, m, and km using multiplicative place value (1000 m = 1 km).",
+          "Calculate perimeter of polygons and rectangles using perimeter = 2(l + w).",
+          "Measure and construct angles up to 360° using circular and semicircular protractors.",
+          "Establish angle rules: angles on a line sum to 180°; angles around a point sum to 360°."
+        ],
+        adviceAlerts: [
+          "Area to Point Leap: On Cartesian planes, the lines are numbered, not the spaces. (2, 3) is a unique point, distinct from (3, 2).",
+          "Numberless Protractor: Placing the centre mark at the vertex prior to reading dual scales clarifies angle as rotation and avoids scale confusion (e.g. reading 140° for 40°).",
+          "Isoperimetric Truth: Same perimeter does not equal same area! A 5 m &times; 5 m square has area 25 m², while a 9 m &times; 1 m rectangle has the same 20 m perimeter but only 9 m² area."
+        ],
+        vocab: ["Cartesian plane", "coordinates", "origin (0, 0)", "quadrant", "axis", "kilometre (km)", "perimeter", "dimensions", "degree (°)", "protractor", "adjacent angles", "angles on a straight line", "angles at a point", "revolution"]
+      }
+    };
+
+    const BIG_IDEAS = [
+      {
+        id: "attr",
+        title: "1. Know the attribute before measuring it",
+        desc: "Measurement is only meaningful when students understand what physical property is being quantified: continuous length, distance, perimeter, or rotational turn.",
+        stages: {
+          es1: "Length is understood as continuous distance from one end of an object to the other.",
+          s1: "Length and distance are quantified using uniform units placed without gaps or overlaps.",
+          s2: "Angle is recognised as the amount of turn between two rays; perimeter is the linear boundary of a shape.",
+          s3: "Angles are measured precisely in degrees (°); perimeter is calculated algebraically and separated from area."
+        }
+      },
+      {
+        id: "units",
+        title: "2. Units are repeated, equal and fit together",
+        desc: "Measuring is an iteration of identical units; the size of the chosen unit inversely determines the count required.",
+        stages: {
+          es1: "Direct comparison side by side, and indirect comparison by copying a length with a ribbon or paper strip.",
+          s1: "Uniform informal units; 'make, mark and move' process; transitioning to standard metres and centimetres.",
+          s2: "Millimetres for precision (10 mm = 1 cm); combining units (1 m 25 cm); using scaled rulers.",
+          s3: "Kilometres (1000 m = 1 km); metric conversions using place value; multiplying/dividing by powers of 10."
+        }
+      },
+      {
+        id: "conserv",
+        title: "3. Measures remain constant when appearance changes",
+        desc: "Spatial measures are conserved under rigid transformations (bending, rotating, coiling, translating).",
+        stages: {
+          es1: "A piece of string remains the exact same length whether straight, curved, or coiled.",
+          s1: "A length divided and recombined remains the same total length.",
+          s2: "Extending the ray arms does not alter angle size; right angles remain 90° in any tilted orientation.",
+          s3: "Rectangles with identical perimeters can enclose different areas; translations/reflections preserve coordinates."
+        }
+      },
+      {
+        id: "bench",
+        title: "4. Estimate with personal benchmarks",
+        desc: "Accurate estimation is anchored in visualising known, bodily, or contextual benchmarks.",
+        stages: {
+          es1: "Relative benchmarks: 'about halfway', 'more than halfway', 'less than halfway'.",
+          s1: "Personal bodily units: finger-width (~1 cm), handspan (~10 cm), pace (~1 m).",
+          s2: "Environmental benchmarks: 1 cm, 10 cm, 1 m; quarter-turn (90°) right angle as angle benchmark.",
+          s3: "Large-scale benchmarks: 50 m swimming pool, 20 km regional trip; 90°, 180°, and 360° angle anchors."
+        }
+      },
+      {
+        id: "frame",
+        title: "5. Position requires a coordinated frame of reference",
+        desc: "Locating oneself and objects depends upon an agreed reference system and orientation.",
+        stages: {
+          es1: "Self-centred reference: in, on, under, next to; left and right referenced to one's own dominant side.",
+          s1: "De-centred reference: left and right from another person's perspective; simple aerial maps and paths.",
+          s2: "Row and column grid references: horizontal before vertical (B3); cardinal compass points (N, S, E, W).",
+          s3: "Cartesian number plane: lines numbered from origin (0, 0); first quadrant, then all four; coordinates (x, y)."
+        }
+      },
+      {
+        id: "number",
+        title: "6. Measurement connects directly to number systems",
+        desc: "Continuous measurement provides the cognitive foundation for fractions, decimals, and place value.",
+        stages: {
+          es1: "Halving a continuous length provides early foundations for fractions as division.",
+          s1: "Halves, quarters, eighths of lengths; halving a 10-cube train bridges length to fractions.",
+          s2: "Decimal notation for length (1.25 m); relating fractions of turns to clock faces.",
+          s3: "Place value structure in metric conversions; degree sums: 180° on a line, 360° in a revolution."
+        }
+      }
+    ];
+
+    const MODELS_DATA = [
+      { name: "Body, String & Paper Strips", strand: "Length / Position", stages: "ES1 – S1", desc: "Back-to-back standing, aligning endpoints, and copying distances with paper strips to compare unmovable fixtures." },
+      { name: "Positional Games & Storytelling", strand: "Position", stages: "ES1 – S1", desc: "Following directions on-Country and classroom obstacle courses; anchoring left/right to dominant hand/foot." },
+      { name: "Uniform Informal Units", strand: "Length", stages: "Stage 1", desc: "Paper clips, pop sticks, and footprints placed end-to-end without gaps or overlaps; exploring unit size vs count." },
+      { name: "Calibrated Paper Strips & 10-Cubes", strand: "Length / Fractions", stages: "Stage 1", desc: "Marking unit intervals before commercial rulers so students see that units are spaces, not hash marks." },
+      { name: "Commercial Scaled Rulers & Tapes", strand: "Length", stages: "S1 – S3", desc: "10 cm strips, metre rulers, trundle wheels, and 15/30 cm rulers; learning zero-origin alignment." },
+      { name: "Community & Aboriginal Maps of Country", strand: "Position", stages: "S1 – S2", desc: "Songlines, trading routes, landmarks, aerial perspectives, and interpreting spatial paths without grids." },
+      { name: "Grid-Map Array Reference Systems", strand: "Position", stages: "Stage 2", desc: "Locating square regions using horizontal then vertical letters/numbers (e.g. Taronga Zoo map B3)." },
+      { name: "Magnetic Compass in Playground", strand: "Position / Turns", stages: "Stage 2", desc: "Finding true north in the school grounds before transferring N, S, E, W quarter-turns to paper maps." },
+      { name: "Bent Straw & Cardboard Angle Testers", strand: "Angles", stages: "Stage 2", desc: "Pipe-cleaners in bent straws, split-pin cardboard strips, and dual-colour paper plates to model turn." },
+      { name: "Paper Circle Folding", strand: "Angles", stages: "S2 – S3", desc: "Folding circular paper into quarters (90°) and eighths (45°) to construct protractor logic." },
+      { name: "Cartesian Number Plane", strand: "Position", stages: "Stage 3", desc: "Grid lines intersecting at origin (0, 0); plotting (x, y) coordinates across 1 and 4 quadrants." },
+      { name: "Numberless & 360° Protractors", strand: "Angles", stages: "Stage 3", desc: "Numberless protractors focus exclusively on vertex alignment and rotational sweep before dual scales." }
+    ];
+
+    const SCENARIOS_DATA = [
+      { id: 1, stage: "ES1", name: "Ava", text: "Ava says her pencil is longer because its eraser sticks out past Leo’s, but the other ends are not lined up.", root: 0, explanation: "Ava is comparing lengths without aligning the endpoints (violating measuring rules). Action: Physically align the ends back-to-back." },
+      { id: 2, stage: "ES1", name: "Sam", text: "Sam says the skipping rope is shorter when coiled into a spiral on the floor than when stretched out straight.", root: 1, explanation: "Sam has not conserved length; he is judging magnitude by visual footprint. Action: Straighten and re-coil side-by-side with a comparison strip." },
+      { id: 3, stage: "S1", name: "Mia", text: "Mia measures the desk with paper clips, leaving 1 cm gaps between some and overlapping others, then counts 11 clips.", root: 0, explanation: "Mia is using units without the fundamental rules of measuring (end-to-end, no gaps, no overlaps). Action: Revisit 'make, mark and move'." },
+      { id: 4, stage: "S1", name: "Josh", text: "Josh insists the classroom is longer when measured in paper clips (60) than in pop sticks (20) because 60 is bigger than 20.", root: 3, explanation: "Josh has not coordinated unit size with the count required. Action: Model that smaller units naturally require more iterations for the same length." },
+      { id: 5, stage: "S1", name: "Ella", text: "Facing her classmate Noah directly, Ella points to Noah's left hand and tells him it is his right hand.", root: 2, explanation: "Ella is using her own egocentric frame of reference rather than coordinating her partner's perspective. Action: Stand side-by-side, then turn to face." },
+      { id: 6, stage: "S2", name: "Ben", text: "Ben looks at two 40° angles and states Angle A is much larger because its drawn line arms are twice as long as Angle B’s.", root: 1, explanation: "Ben judges angle size by linear appearance of the rays rather than rotational sweep. Action: Superimpose Angle B over Angle A with a common vertex." },
+      { id: 7, stage: "S2", name: "Zoe", text: "Zoe successfully identifies right angles on table corners, but denies that a tilted 90° window frame bracket is a right angle.", root: 1, explanation: "Zoe is restricted to prototype orientation bias. Action: Rotate right-angle testers into diagonal and inverted positions." },
+      { id: 8, stage: "S3", name: "Kai", text: "Kai numbers the spaces between lines 1, 2, 3 on a Cartesian plane, exactly like a letter-number grid map.", root: 2, explanation: "Kai confuses the frame of reference: grid maps designate square areas, whereas Cartesian planes number intersecting lines for point coordinates." },
+      { id: 9, stage: "S3", name: "Ruby", text: "Ruby measures an acute angle with a protractor and records 140° instead of 40°.", root: 3, explanation: "Ruby has not related the scale to benchmark estimates. Action: Benchmark against 90° first; try a numberless protractor to notice the sweep." },
+      { id: 10, stage: "S3", name: "Jai", text: "Jai divides 3 km by 1000 to convert to metres, stating the answer is 0.003 m.", root: 3, explanation: "Jai fails to relate unit scale to quantity. A metre is smaller, so more metres are needed to cover 3 km (multiply by 1000 = 3000 m)." },
+      { id: 11, stage: "S3", name: "Lily", text: "Lily plots the coordinates (2, 3) and (3, 2) at the exact same location on the coordinate plane.", root: 2, explanation: "Lily fails to coordinate the horizontal (x) and vertical (y) reference system. Action: Walk 2 steps across, 3 up vs 3 across, 2 up to see distinct points." }
+    ];
+
+    const ROOTS_LIST = [
+      "Root 1: Units used without the rules of measuring",
+      "Root 2: Measures judged by appearance / visual bias",
+      "Root 3: Frame of reference not coordinated",
+      "Root 4: Units and scales not related"
+    ];
+
+    const MAKEOVERS = {
+      es1: {
+        stage: "Early Stage 1",
+        title: "Length Comparison & Reasoning",
+        before: {
+          task: "Circle the longer pencil in the worksheet picture.",
+          visual: "━━━━━━━ (Top Pencil)<br>━━━━ (Bottom Pencil)<br>*(Ends are already perfectly aligned on paper)*",
+          limitations: [
+            "Passive worksheet matching with zero physical agency.",
+            "Baseline endpoints are pre-aligned by the printer, masking the essential measuring rule.",
+            "Binary closed answer; demands no justification or communication."
+          ]
+        },
+        after: {
+          task: "“Is our classroom door wider than the bookshelf? We cannot move either of them. How could we find out?”",
+          prompt: "“Show me how you know. Can we use string or a paper strip to be certain?”",
+          enabling: "Compare two pencils on the desk. How do you line them up to be completely sure which is longer?",
+          extending: "Find something in the classroom that is longer than the door width but shorter than the teacher's whiteboard.",
+          listenFor: "Watch if the student uses indirect comparison (copying a distance with string/strip), aligns starting endpoints precisely, and uses comparative vocabulary ('longer than', 'the same as').",
+          wmElements: ["Exploring and connecting", "Choosing and applying techniques", "Reasoning", "Communicating"]
+        }
+      },
+      s1: {
+        stage: "Stage 1",
+        title: "Uniform Informal Units & Discrepancy",
+        before: {
+          task: "The teacher's desk is ____ paper clips long. Fill in the blank.",
+          visual: "Desk diagram with 10 identical clips pre-drawn along the edge.",
+          limitations: [
+            "Unit is pre-selected and pre-iterated for the child.",
+            "Does not explore gaps, overlaps, or iterative movement.",
+            "No cognitive tension regarding why different units yield different counts."
+          ]
+        },
+        after: {
+          task: "“Ari measured the teacher's desk and got 12. Bella measured the exact same desk and got 30. Both children worked very carefully. How can that be?”",
+          prompt: "“Test with paper clips and pop sticks. What rule can we make about unit size and the total count?”",
+          enabling: "Measure your math workbook with small paper clips, then with large craft pop sticks. Compare the two counts.",
+          extending: "Our classroom rug is 60 paper clips long. Predict how many pop sticks long it will be before measuring. Test your theory.",
+          listenFor: "Listen for recognition of unit size (smaller unit requires more units), checking for gaps and overlaps, and recording the unit name alongside the numeral.",
+          wmElements: ["Understanding and fluency", "Exploring and connecting", "Reasoning", "Communicating"]
+        }
+      },
+      s2: {
+        stage: "Stage 2",
+        title: "Angle Size & Orientation",
+        before: {
+          task: "Circle all the right angles below: └   ∠   ┘",
+          visual: "Drawings of angles in standard upright horizontal-vertical orientations.",
+          limitations: [
+            "Encourages static shape matching rather than rotational turn.",
+            "Restricts angles to upright orientations, reinforcing prototype bias.",
+            "Ignores the common trap of arm length."
+          ]
+        },
+        after: {
+          task: "“Ben says Angle A is bigger because its arms are longer. Is he right? Build both angles with your angle tester to prove your answer.”",
+          prompt: "“Then hunt around our classroom to find 3 right angles that are tilted or not ‘upright’.”",
+          enabling: "Lay one cardboard angle strip directly on top of the other with a common vertex. Which one opened or turned further?",
+          extending: "Create an angle that is greater than a right angle but less than a straight angle, using very short arms. What is its mathematical name?",
+          listenFor: "Listen for students aligning one arm, describing angle as 'the amount of turn', finding tilted right angles, and actively avoiding 'sharp' or 'blunt'.",
+          wmElements: ["Understanding and fluency", "Exploring and connecting", "Reasoning", "Communicating"]
+        }
+      },
+      s3: {
+        stage: "Stage 3",
+        title: "Isoperimetric Boundary vs Area",
+        before: {
+          task: "Find the perimeter of a rectangle 6 m long and 4 m wide. Formula: P = 2(l + w).",
+          visual: "P = 2 &times; (6 + 4) = 20 m.",
+          limitations: [
+            "Pure procedural substitution into a rote formula.",
+            "Fosters the illusion that a fixed perimeter dictates a single area.",
+            "Completely fails to stimulate spatial structure reasoning."
+          ]
+        },
+        after: {
+          task: "“A school vegetable garden needs exactly 20 m of timber edging. What could the garden bed look like? Which whole-number design gives students the maximum planting area?”",
+          prompt: "“Organise your rectangles in a table. What do you notice about the relationship between length, width, perimeter, and area?”",
+          enabling: "Start with 12 m of string on centimetre grid paper. Draw all rectangles with perimeter 12 cm and count their squares.",
+          extending: "Now keep the garden area fixed at 24 m². Which whole-number shape requires the least timber edging?",
+          listenFor: "Listen for length + width = 10 m, systematic tabular exploration (9&times;1=9, 8&times;2=16, 7&times;3=21, 6&times;4=24, 5&times;5=25), and noticing that the square configuration encloses the maximum area.",
+          wmElements: ["Exploring and connecting", "Choosing and applying techniques", "Reasoning", "Communicating"]
+        }
+      }
+    };
+
+    const CLOSED_MOVES_DATA = [
+      {
+        stageKey: "s1",
+        stageName: "Stage 1 Task Makeover",
+        closedTask: "Closed Task: “Measure your workbook using paper clips.”",
+        moves: [
+          { move: "Who is correct?", text: "“Ari says the book is 8 paper clips long. Bella says it is 3 pop sticks long. Can they both be correct? Explain your reasoning.”", elements: ["Reasoning", "Communicating"] },
+          { move: "Same and different", text: "“What is the same and what is different about measuring with paper clips, footprint cut-outs, and a centimetre strip?”", elements: ["Exploring and connecting", "Communicating"] },
+          { move: "Always, sometimes, never", text: "“‘If you use a bigger unit to measure a table, you need more of them.’ Is this statement always, sometimes, or never true?”", elements: ["Reasoning", "Exploring and connecting"] },
+          { move: "Open it up", text: "“Find three objects in our classroom that have a length of about 10 paper clips.”", elements: ["Choosing and applying techniques", "Understanding"] },
+          { move: "Convince me", text: "“Convince me that your measurement is accurate. What exact rules did you follow with your units?”", elements: ["Communicating", "Understanding and fluency"] }
+        ]
+      },
+      {
+        stageKey: "s2",
+        stageName: "Stage 2 Task Makeover",
+        closedTask: "Closed Task: “Is this angle acute, right, or obtuse?”",
+        moves: [
+          { move: "Who is correct?", text: "“Tom says this tilted angle is greater than a right angle. Mei says it is smaller. Use a paper right-angle tester to prove who is correct.”", elements: ["Reasoning", "Communicating"] },
+          { move: "Same and different", text: "“What is the same and what is different about a right angle on a textbook, on a tilted roof truss, and between clock hands at 3 o’clock?”", elements: ["Exploring and connecting", "Reasoning"] },
+          { move: "Always, sometimes, never", text: "“‘An angle drawn with longer line arms is larger than an angle with short arms.’ Always, sometimes, or never true?”", elements: ["Reasoning", "Exploring and connecting"] },
+          { move: "Open it up", text: "“Go into the playground and photograph one acute, one right, and one obtuse angle in the built environment. Annotate the vertex and arms.”", elements: ["Choosing and applying techniques", "Reasoning"] },
+          { move: "Convince me", text: "“Convince me that a quarter-turn is always a right angle, no matter which way you face in the playground.”", elements: ["Communicating", "Understanding and fluency"] }
+        ]
+      },
+      {
+        stageKey: "s3",
+        stageName: "Stage 3 Task Makeover",
+        closedTask: "Closed Task: “Plot (3, 2) on the Cartesian plane.”",
+        moves: [
+          { move: "Who is correct?", text: "“Kai plotted (3, 2) and (2, 3) at the exact same point on the number plane. Jess says they are completely different locations. Who is correct and why?”", elements: ["Reasoning", "Communicating"] },
+          { move: "Same and different", text: "“What is the same and what is different about the grid map reference C2 and the Cartesian coordinates (3, 2)?”", elements: ["Exploring and connecting", "Communicating"] },
+          { move: "Always, sometimes, never", text: "“‘Reflecting a point across the x-axis changes the signs of both the x and y coordinates.’ Always, sometimes, or never true?”", elements: ["Reasoning", "Exploring and connecting"] },
+          { move: "Open it up", text: "“Plot four coordinate points that form a square with (3, 2) as one of its vertices. How many different squares can you construct?”", elements: ["Choosing and applying techniques", "Reasoning"] },
+          { move: "Convince me", text: "“Convince me that on a number plane the lines, rather than the spaces between them, must be numbered.”", elements: ["Communicating", "Understanding and fluency"] }
+        ]
+      }
+    ];
+
+    const CHECKPOINT_QUESTIONS = [
+      {
+        id: 1,
+        scenario: "In Early Stage 1, a teacher notices that Jacob always identifies a 30 cm ribbon as 'shorter' whenever it is wound into a loose coil, but 'longer' when stretched out straight alongside a ruler.",
+        question: "According to NESA Teaching Advice, what key mathematical concept is Jacob developing, and what is the most appropriate pedagogical next step?",
+        options: [
+          "Jacob lacks counting fluency; he should immediately practice measuring the coiled ribbon with a 15 cm ruler.",
+          "Jacob has not yet consolidated conservation of length; the teacher should compare the straight and coiled string side by side with an un-cut comparison strip, asking 'Did we cut any off?'",
+          "Jacob is confusing area with volume; he should weigh the ribbon on an equal-arm balance.",
+          "Jacob needs to be introduced to millimetres to provide greater measurement precision."
+        ],
+        correct: 1,
+        rationale: "Conservation of length develops over time when students realise that length does not alter when position or appearance changes. Directly comparing the straight and coiled versions alongside an identical comparison strip confirms conservation without relying on premature ruler counting."
+      },
+      {
+        id: 2,
+        scenario: "During a Stage 1 measurement investigation, students are using paper strips to measure desks. One student begins counting the printed tick marks on their calibrated strip, starting with '1' at the very first mark, resulting in an answer 1 unit greater than the rest of the class.",
+        question: "What does NESA recommend to remediate this 'counting marks, not spaces' misconception?",
+        options: [
+          "Instruct the student to use a digital laser measure to avoid manual counting errors.",
+          "Tell the student to always subtract 1 from whatever number they reach at the end of the object.",
+          "Engage the student in the 'make, mark and move' process using a single informal unit so they see that the unit of measure is the continuous space between marks, not the mark itself.",
+          "Switch immediately to standard metres and skip centimetres until Stage 2."
+        ],
+        correct: 2,
+        rationale: "NESA specifically advises the 'make, mark and move' routine: placing a single unit, marking its end, and moving it along proves that a unit of length is the spatial interval between marks, rather than the tick marks."
+      },
+      {
+        id: 3,
+        scenario: "A Year 4 teacher is introducing angles and hears a student describe a 30° angle as 'sharp' and a 120° angle as 'blunt'.",
+        question: "Why does the NESA Mathematics K–10 Syllabus Teaching Advice caution against using the words 'sharp' and 'blunt'?",
+        options: [
+          "Because 'sharp' and 'blunt' are colloquial Australian slang terms not recognised internationally.",
+          "Because they focus student attention on the static shape/point of the vertex rather than on the dynamic amount of turning between the arms.",
+          "Because 'sharp' and 'blunt' can only be used when measuring triangles, not standalone angles.",
+          "Because students should only use degree numbers and avoid descriptive geometric vocabulary."
+        ],
+        correct: 1,
+        rationale: "NESA explicitly notes that terms like 'sharp' and 'blunt' are counterproductive because they draw attention to the static physical sharpness of the vertex rather than the fundamental mathematical concept: the amount of rotational turn between two rays."
+      },
+      {
+        id: 4,
+        scenario: "A Stage 3 class is transitioning from Stage 2 grid maps (Taronga Zoo maps) to the Cartesian coordinate plane. Several students plot (4, 2) by shading the entire square region in column 4, row 2.",
+        question: "What is the critical conceptual shift between grid references and Cartesian coordinates that must be explicitly taught?",
+        options: [
+          "Grid references use letters, whereas Cartesian planes must only use Roman numerals.",
+          "A grid reference identifies a square area/region, whereas a coordinate pair identifies an exact point at the intersection of two numbered lines.",
+          "Cartesian coordinates always record the vertical y-axis first, whereas grid maps record the horizontal first.",
+          "Cartesian planes can only represent three-dimensional objects, whereas grid maps represent two dimensions."
+        ],
+        correct: 1,
+        rationale: "NESA Teaching Advice highlights that a grid-map reference system designates an entire square region/area, whereas the Cartesian coordinate system identifies a unique point where the grid lines intersect, with lines&mdash;not spaces&mdash;numbered."
+      },
+      {
+        id: 5,
+        scenario: "In Year 6, a student is asked to convert 2.6 kilometres into metres. The student writes: '2.6 km &divide; 1000 = 0.0026 m'.",
+        question: "What is the conceptual root of this error, and how should it be addressed using syllabus-aligned reasoning?",
+        options: [
+          "The student forgot the algorithm; they should write 'King Henry Died By Drinking Chocolate Milk'.",
+          "The student does not understand that smaller units require a larger number: because metres are smaller than kilometres, more metres are needed to represent the identical distance, requiring multiplication by 1000.",
+          "The student should have converted kilometres to centimetres first before finding metres.",
+          "The student should use imperial miles to avoid decimal place value confusion."
+        ],
+        correct: 1,
+        rationale: "Stage 3 Geometric Measure B explicitly requires students to 'explain and use the relationship between the size of a unit and the number of units needed: more metres than kilometres will be needed for the same distance, so multiply by 1000'."
+      }
+    ];
+
+    /* -------------------------------------------------------------
+       INITIALISATION & UI LOGIC
+       ------------------------------------------------------------- */
+    document.addEventListener("DOMContentLoaded", () => {
+      // Init Lucide Icons
+      lucide.createIcons();
+
+      // Mobile Menu Toggle
+      const mobileNavToggle = document.getElementById("mobileNavToggle");
+      const sidebarNav = document.getElementById("sidebarNav");
+      if (mobileNavToggle && sidebarNav) {
+        mobileNavToggle.addEventListener("click", () => {
+          sidebarNav.classList.toggle("hidden");
+        });
+      }
+
+      // Smooth scroll for nav links & close mobile menu
+      document.querySelectorAll('#moduleNavLinks a').forEach(link => {
+        link.addEventListener('click', () => {
+          if (window.innerWidth < 1024) {
+            sidebarNav.classList.add("hidden");
+          }
+        });
+      });
+
+      // Render Section 1: Stage Explorer
+      renderStageExplorer("es1");
+      setupStageTabListeners();
+
+      // Render Section 1: Big Ideas Matrix
+      renderBigIdeasPills();
+      selectBigIdea("attr");
+
+      // Render Section 1: Models Table
+      renderModelsTable();
+
+      // Render Section 3: Manipulatives Lab
+      setupToolSwitcher();
+      loadTool("compare");
+
+      // Render Section 4: Misconception Sorter
+      renderMisconceptionSorter();
+
+      // Render Section 5: Task Makeovers
+      renderTaskMakeover("es1");
+      setupMakeoverTabs();
+      renderClosedMoves("s1");
+
+      // Render Section 6: Checkpoint
+      renderCheckpointQuestions();
+      setupCheckpointLogic();
+    });
+
+    /* -------------------------------------------------------------
+       SECTION 1: STAGE EXPLORER & BIG IDEAS MATRIX
+       ------------------------------------------------------------- */
+    function setupStageTabListeners() {
+      const container = document.getElementById("stageTabsContainer");
+      container.addEventListener("click", (e) => {
+        const btn = e.target.closest(".stage-tab");
+        if (!btn) return;
+        document.querySelectorAll(".stage-tab").forEach(b => {
+          b.classList.remove("tab-active");
+          b.classList.add("text-cedow-blue");
+        });
+        btn.classList.add("tab-active");
+        btn.classList.remove("text-cedow-blue");
+        renderStageExplorer(btn.dataset.stage);
+      });
+    }
+
+    function renderStageExplorer(stageKey) {
+      const data = STAGE_DATA[stageKey];
+      const box = document.getElementById("stageDetailsBox");
+      if (!data || !box) return;
+
+      box.innerHTML = `
+        <div class="space-y-4 animate-fadeIn">
+          <div class="bg-cedow-light p-4 rounded-xl border border-cedow-silver flex flex-col md:flex-row md:items-center justify-between gap-3">
+            <div>
+              <div class="flex items-center gap-2">
+                <span class="text-xs font-black uppercase tracking-wider bg-cedow-blue text-white px-2.5 py-0.5 rounded">${data.short}</span>
+                <h4 class="text-lg font-bold text-cedow-blue">${data.name} &bull; ${data.years}</h4>
+              </div>
+              <p class="text-xs text-cedow-charcoal mt-1 leading-relaxed">${data.lead}</p>
+            </div>
+            <div class="text-xs font-semibold text-cedow-aqua bg-white px-3 py-1.5 rounded-lg border border-cedow-silver whitespace-nowrap self-start md:self-center">
+              Focus Area: Geometric Measure
+            </div>
+          </div>
+
+          <!-- Formal Outcomes Grid -->
+          <div>
+            <h5 class="text-xs font-bold uppercase tracking-wider text-cedow-charcoal mb-2 flex items-center gap-1.5">
+              <i data-lucide="award" class="w-3.5 h-3.5 text-cedow-gold"></i>
+              <span>Formal Syllabus Outcomes</span>
+            </h5>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2.5">
+              ${data.outcomes.map(o => `
+                <div class="bg-white p-3 rounded-lg border border-cedow-silver shadow-2xs flex items-start gap-2.5">
+                  <span class="math-badge whitespace-nowrap">${o.code}</span>
+                  <span class="text-xs text-cedow-black leading-snug">${o.desc}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Working Mathematically & Milestones -->
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div class="bg-white p-4 rounded-xl border border-cedow-silver space-y-2">
+              <h5 class="text-xs font-bold uppercase tracking-wider text-cedow-blue flex items-center gap-1.5">
+                <i data-lucide="cpu" class="w-3.5 h-3.5 text-cedow-aqua"></i>
+                <span>Working Mathematically Focus (MAO-WM-01)</span>
+              </h5>
+              <p class="text-xs text-cedow-charcoal leading-relaxed">${data.wmFocus}</p>
+              <div class="pt-2">
+                <span class="text-[11px] font-bold text-cedow-blue block mb-1">Key Developmental Milestones:</span>
+                <ul class="text-xs text-cedow-charcoal space-y-1 list-disc pl-4">
+                  ${data.milestones.map(m => `<li>${m}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+
+            <div class="bg-amber-50/70 p-4 rounded-xl border border-cedow-gold/60 space-y-2">
+              <h5 class="text-xs font-bold uppercase tracking-wider text-amber-900 flex items-center gap-1.5">
+                <i data-lucide="shield-alert" class="w-3.5 h-3.5 text-cedow-gold"></i>
+                <span>NESA Teaching Advice Alerts</span>
+              </h5>
+              <ul class="text-xs text-amber-950 space-y-1.5 list-disc pl-4">
+                ${data.adviceAlerts.map(a => `<li>${a}</li>`).join('')}
+              </ul>
+              <div class="pt-2">
+                <span class="text-[11px] font-bold text-amber-900 block mb-1">Key Focus Vocabulary:</span>
+                <div class="flex flex-wrap gap-1">
+                  ${data.vocab.map(v => `<span class="bg-white/80 border border-amber-300 text-[10px] font-mono px-1.5 py-0.5 rounded text-amber-900">${v}</span>`).join('')}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function renderBigIdeasPills() {
+      const container = document.getElementById("bigIdeaButtons");
+      if (!container) return;
+      container.innerHTML = BIG_IDEAS.map((idea, idx) => `
+        <button class="big-idea-btn text-left p-2.5 rounded-lg border border-cedow-silver text-xs font-bold transition hover:bg-cedow-light text-cedow-blue ${idx === 0 ? 'border-cedow-aqua bg-cedow-light' : 'bg-white'}" data-id="${idea.id}">
+          <span class="block text-[11px] font-normal text-cedow-charcoal">Big Idea ${idx + 1}</span>
+          <span class="block truncate">${idea.title.split('. ')[1]}</span>
+        </button>
+      `).join('');
+
+      container.addEventListener("click", (e) => {
+        const btn = e.target.closest(".big-idea-btn");
+        if (!btn) return;
+        document.querySelectorAll(".big-idea-btn").forEach(b => {
+          b.classList.remove("border-cedow-aqua", "bg-cedow-light");
+          b.classList.add("bg-white");
+        });
+        btn.classList.add("border-cedow-aqua", "bg-cedow-light");
+        btn.classList.remove("bg-white");
+        selectBigIdea(btn.dataset.id);
+      });
+    }
+
+    function selectBigIdea(ideaId) {
+      const idea = BIG_IDEAS.find(i => i.id === ideaId) || BIG_IDEAS[0];
+      const card = document.getElementById("bigIdeaDetailCard");
+      if (!card) return;
+
+      card.innerHTML = `
+        <div class="space-y-3">
+          <div class="flex items-start justify-between gap-2 border-b border-cedow-silver/60 pb-2">
+            <div>
+              <h4 class="text-sm font-bold text-cedow-blue">${idea.title}</h4>
+              <p class="text-xs text-cedow-charcoal mt-0.5 leading-relaxed">${idea.desc}</p>
+            </div>
+          </div>
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+            <div class="bg-white p-3 rounded-lg border border-cedow-silver">
+              <span class="text-[10px] font-black uppercase text-cedow-blue tracking-wider block mb-1">Early Stage 1</span>
+              <p class="text-xs text-cedow-black leading-snug">${idea.stages.es1}</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-cedow-silver">
+              <span class="text-[10px] font-black uppercase text-cedow-aqua tracking-wider block mb-1">Stage 1</span>
+              <p class="text-xs text-cedow-black leading-snug">${idea.stages.s1}</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-cedow-silver">
+              <span class="text-[10px] font-black uppercase text-amber-600 tracking-wider block mb-1">Stage 2</span>
+              <p class="text-xs text-cedow-black leading-snug">${idea.stages.s2}</p>
+            </div>
+            <div class="bg-white p-3 rounded-lg border border-cedow-silver">
+              <span class="text-[10px] font-black uppercase text-cedow-charcoal tracking-wider block mb-1">Stage 3</span>
+              <p class="text-xs text-cedow-black leading-snug">${idea.stages.s3}</p>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderModelsTable() {
+      const tbody = document.getElementById("modelsTableBody");
+      if (!tbody) return;
+      tbody.innerHTML = MODELS_DATA.map(m => `
+        <tr class="hover:bg-cedow-light/80 transition">
+          <td class="p-3 font-bold text-cedow-blue">${m.name}</td>
+          <td class="p-3 text-cedow-charcoal font-medium">${m.strand}</td>
+          <td class="p-3 whitespace-nowrap"><span class="math-badge text-[10px]">${m.stages}</span></td>
+          <td class="p-3 text-cedow-black leading-relaxed">${m.desc}</td>
+        </tr>
+      `).join('');
+    }
+
+    /* -------------------------------------------------------------
+       SECTION 3: INTERACTIVE TOOL LAB
+       ------------------------------------------------------------- */
+    function setupToolSwitcher() {
+      const switcher = document.getElementById("toolSwitcher");
+      if (!switcher) return;
+      switcher.addEventListener("click", (e) => {
+        const btn = e.target.closest(".tool-btn");
+        if (!btn) return;
+        document.querySelectorAll(".tool-btn").forEach(b => {
+          b.classList.remove("subtab-active");
+          b.classList.add("text-cedow-blue", "bg-white");
+        });
+        btn.classList.add("subtab-active");
+        btn.classList.remove("text-cedow-blue", "bg-white");
+        loadTool(btn.dataset.tool);
+      });
+    }
+
+    function loadTool(toolKey) {
+      const container = document.getElementById("activeToolContainer");
+      if (!container) return;
+
+      if (toolKey === "compare") {
+        container.innerHTML = `
+          <div class="space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-2 pb-2 border-b border-cedow-silver">
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-cedow-aqua">Diagnostic Manipulative &bull; Early Stage 1</span>
+                <h4 class="text-base font-bold text-cedow-blue">Direct Length Baseline Alignment Lab</h4>
+              </div>
+              <div id="cmScoreText" class="text-xs font-bold text-cedow-charcoal">Rounds: 0 | Score: 0</div>
+            </div>
+            <p class="text-xs text-cedow-charcoal">
+              Young students routinely judge which ribbon is longer by seeing which end protrudes further on the right, ignoring the unaligned starting baseline on the left. Make your prediction, then click <strong>Align Left Endpoints</strong> to test.
+            </p>
+
+            <div class="bg-cedow-light p-4 rounded-xl border border-cedow-silver space-y-4">
+              <!-- Visual Box for Ribbons -->
+              <div class="relative h-32 bg-white rounded-lg border border-cedow-silver p-4 flex flex-col justify-around overflow-hidden" id="cmVisualBox">
+                <!-- Ribbon A -->
+                <div class="relative w-full flex items-center">
+                  <div id="ribbonA" class="h-8 rounded transition-all duration-500 flex items-center px-3 text-xs font-bold text-white shadow-xs" style="background-color: #0D2C6B; width: 50%; margin-left: 20%;">
+                    Ribbon A
+                  </div>
+                </div>
+                <!-- Ribbon B -->
+                <div class="relative w-full flex items-center">
+                  <div id="ribbonB" class="h-8 rounded transition-all duration-500 flex items-center px-3 text-xs font-bold text-white shadow-xs" style="background-color: #188296; width: 55%; margin-left: 10%;">
+                    Ribbon B
+                  </div>
+                </div>
+                <!-- Baseline guide line -->
+                <div id="alignLine" class="hidden absolute top-0 bottom-0 left-4 w-0.5 border-l-2 border-dashed border-red-500 z-10"></div>
+              </div>
+
+              <!-- Prediction Controls -->
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-bold text-cedow-blue mr-1">Which is longer?</span>
+                <button id="btnPredictA" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-cedow-blue text-white hover:bg-opacity-90 transition">Ribbon A is longer</button>
+                <button id="btnPredictB" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-cedow-aqua text-white hover:bg-opacity-90 transition">Ribbon B is longer</button>
+                <button id="btnPredictSame" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-cedow-charcoal text-white hover:bg-opacity-90 transition">Both are the same</button>
+                <button id="btnAlignToggle" class="px-3 py-1.5 rounded-lg text-xs font-bold border-2 border-cedow-blue text-cedow-blue hover:bg-cedow-light transition ml-auto">
+                  Align Left Endpoints
+                </button>
+                <button id="btnNewRibbons" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-cedow-gold text-cedow-blue hover:bg-opacity-90 transition">
+                  Next Pair
+                </button>
+              </div>
+
+              <!-- Feedback Banner -->
+              <div id="cmFeedback" class="hidden p-3 rounded-lg text-xs font-medium border"></div>
+            </div>
+          </div>
+        `;
+        wireCompareLogic();
+      } else if (toolKey === "units") {
+        container.innerHTML = `
+          <div class="space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-2 pb-2 border-b border-cedow-silver">
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-cedow-aqua">Instructional Model &bull; Stage 1</span>
+                <h4 class="text-base font-bold text-cedow-blue">Informal Unit Iteration &amp; 'Make, Mark &amp; Move' Lab</h4>
+              </div>
+            </div>
+            <p class="text-xs text-cedow-charcoal">
+              Test how unit size governs the total count and examine what happens when students violate the rules of measuring by leaving gaps or overlaps.
+            </p>
+
+            <div class="bg-cedow-light p-4 rounded-xl border border-cedow-silver space-y-4">
+              <!-- Controls -->
+              <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <div>
+                  <label class="block text-xs font-bold text-cedow-blue mb-1" for="unObjSelect">Select Object to Measure:</label>
+                  <select id="unObjSelect" class="w-full text-xs p-2 rounded border border-cedow-silver bg-white font-medium">
+                    <option value="6.5" selected>Student Math Workbook (approx. 26 cm)</option>
+                    <option value="15">Classroom Student Desk (approx. 60 cm)</option>
+                    <option value="4.2">School Pencil (approx. 17 cm)</option>
+                    <option value="25">Reading Bookshelf (approx. 100 cm)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-cedow-blue mb-1" for="unUnitSelect">Select Informal Unit:</label>
+                  <select id="unUnitSelect" class="w-full text-xs p-2 rounded border border-cedow-silver bg-white font-medium">
+                    <option value="1" selected>Small Paper Clips (1 unit)</option>
+                    <option value="3.2">Craft Pop Sticks (3.2 units)</option>
+                    <option value="2.2">Footprint Cut-outs (2.2 units)</option>
+                  </select>
+                </div>
+                <div>
+                  <label class="block text-xs font-bold text-cedow-blue mb-1">Iterative Placement Rule:</label>
+                  <div class="flex gap-1" id="unModeButtons">
+                    <button class="flex-1 py-1.5 px-2 rounded text-xs font-bold border border-cedow-silver subtab-active" data-m="ok">End-to-End</button>
+                    <button class="flex-1 py-1.5 px-2 rounded text-xs font-bold border border-cedow-silver bg-white text-cedow-blue" data-m="gap">With Gaps</button>
+                    <button class="flex-1 py-1.5 px-2 rounded text-xs font-bold border border-cedow-silver bg-white text-cedow-blue" data-m="over">With Overlaps</button>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Graphic Display -->
+              <div class="bg-white p-4 rounded-xl border border-cedow-silver space-y-2 overflow-x-auto">
+                <div class="text-xs font-bold text-cedow-charcoal mb-1 flex items-center justify-between">
+                  <span id="unObjectLabel">Student Math Workbook</span>
+                  <span class="text-[11px] font-mono text-cedow-aqua font-semibold">Continuous Length</span>
+                </div>
+                <div class="relative w-full h-12 bg-cedow-blue/15 rounded flex items-center border border-cedow-blue/40 px-1" id="unDisplayTrack">
+                  <!-- Injected Units -->
+                </div>
+              </div>
+
+              <!-- Explanatory Readout -->
+              <div id="unReadout" class="p-3 bg-white rounded-lg border border-cedow-silver text-xs space-y-1">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+        `;
+        wireUnitsLogic();
+      } else if (toolKey === "angles") {
+        container.innerHTML = `
+          <div class="space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-2 pb-2 border-b border-cedow-silver">
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-cedow-aqua">Diagnostic Manipulative &bull; Stage 2</span>
+                <h4 class="text-base font-bold text-cedow-blue">Dynamic Turn &amp; Arm Length Disprover</h4>
+              </div>
+              <div id="agScoreText" class="text-xs font-bold text-cedow-charcoal">Rounds: 0 | Score: 0</div>
+            </div>
+            <p class="text-xs text-cedow-charcoal">
+              Students persistently believe an angle drawn with long arms is larger than an angle with short arms. Judge the two angles below based strictly on the <strong>amount of rotational turn</strong>, then superimpose them to check.
+            </p>
+
+            <div class="bg-cedow-light p-4 rounded-xl border border-cedow-silver space-y-4">
+              <!-- Dual SVG Display -->
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-4 bg-white p-4 rounded-xl border border-cedow-silver min-h-[220px] items-center justify-center" id="agPicArea">
+                <!-- SVG Canvas injected -->
+              </div>
+
+              <!-- Controls -->
+              <div class="flex flex-wrap items-center gap-2">
+                <span class="text-xs font-bold text-cedow-blue mr-1">Which angle is larger?</span>
+                <button id="agBtnA" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-cedow-blue text-white hover:bg-opacity-90 transition">Angle A is larger</button>
+                <button id="agBtnB" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-cedow-aqua text-white hover:bg-opacity-90 transition">Angle B is larger</button>
+                <button id="agBtnSame" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-cedow-charcoal text-white hover:bg-opacity-90 transition">They are identical</button>
+                <button id="agBtnOverlay" class="px-3 py-1.5 rounded-lg text-xs font-bold border-2 border-cedow-blue text-cedow-blue hover:bg-cedow-light transition ml-auto">
+                  Superimpose (Lay B on A)
+                </button>
+                <button id="agBtnNew" class="px-3 py-1.5 rounded-lg text-xs font-bold bg-cedow-gold text-cedow-blue hover:bg-opacity-90 transition">
+                  Next Pair
+                </button>
+              </div>
+
+              <!-- Feedback -->
+              <div id="agFeedback" class="hidden p-3 rounded-lg text-xs font-medium border"></div>
+            </div>
+          </div>
+        `;
+        wireAnglesLogic();
+      } else if (toolKey === "rects") {
+        container.innerHTML = `
+          <div class="space-y-4">
+            <div class="flex items-center justify-between flex-wrap gap-2 pb-2 border-b border-cedow-silver">
+              <div>
+                <span class="text-[11px] font-bold uppercase tracking-wider text-cedow-aqua">Inquiry Model &bull; Stage 3</span>
+                <h4 class="text-base font-bold text-cedow-blue">Isoperimetric Rectangle Explorer (Perimeter vs Area)</h4>
+              </div>
+            </div>
+            <p class="text-xs text-cedow-charcoal">
+              Investigate the decoupling of 1D boundary (perimeter) from 2D surface (area). Observe every whole-number rectangle possible when perimeter or area is held constant.
+            </p>
+
+            <div class="bg-cedow-light p-4 rounded-xl border border-cedow-silver space-y-4">
+              <div class="flex flex-wrap items-center gap-3">
+                <div class="flex gap-1" id="rcModeBtns">
+                  <button class="py-1.5 px-3 rounded-lg text-xs font-bold border border-cedow-silver subtab-active" data-m="p">Fix Perimeter</button>
+                  <button class="py-1.5 px-3 rounded-lg text-xs font-bold border border-cedow-silver bg-white text-cedow-blue" data-m="a">Fix Area</button>
+                </div>
+                <div class="flex items-center gap-2">
+                  <label for="rcValInput" class="text-xs font-bold text-cedow-blue" id="rcValLabel">Perimeter (units):</label>
+                  <input type="number" id="rcValInput" value="20" min="4" max="60" class="w-20 p-1.5 rounded text-xs border border-cedow-silver bg-white font-mono font-bold">
+                  <button id="rcBtnDraw" class="px-3 py-1.5 rounded text-xs font-bold bg-cedow-blue text-white hover:bg-opacity-90">Calculate</button>
+                </div>
+              </div>
+
+              <!-- Grid of Shapes -->
+              <div class="bg-white p-4 rounded-xl border border-cedow-silver min-h-[220px] overflow-x-auto">
+                <div class="flex flex-wrap items-end gap-5" id="rcShapesGrid">
+                  <!-- Injected Rectangles -->
+                </div>
+              </div>
+
+              <!-- Dynamic Mathematical Deduction -->
+              <div id="rcExplanation" class="p-3 bg-white rounded-lg border border-cedow-silver text-xs space-y-1">
+                <!-- Injected via JS -->
+              </div>
+            </div>
+          </div>
+        `;
+        wireRectsLogic();
+      }
+    }
+
+    /* Tool 1 Logic */
+    function wireCompareLogic() {
+      let a = 50, b = 45, offA = 15, offB = 5, score = 0, rounds = 0, isAligned = false;
+
+      function generateRound() {
+        rounds++;
+        isAligned = false;
+        const same = Math.random() < 0.25;
+        a = 35 + Math.round(Math.random() * 25);
+        b = same ? a : a + (Math.random() < 0.5 ? -1 : 1) * (4 + Math.round(Math.random() * 8));
+        offA = Math.round(Math.random() * 15);
+        offB = Math.round(Math.random() * 15);
+
+        // Intentionally create optical illusion: shorter ribbon starts further right so its end sticks out further
+        if (b > a && offA < offB + (b - a)) offA = offB + (b - a) + 4;
+        if (a > b && offB < offA + (a - b)) offB = offA + (a - b) + 4;
+        if (same) { offA = 12; offB = 2; }
+
+        renderRibbons();
+        const fb = document.getElementById("cmFeedback");
+        fb.className = "hidden p-3 rounded-lg text-xs font-medium border";
+        enablePrediction(true);
+      }
+
+      function renderRibbons() {
+        const rA = document.getElementById("ribbonA");
+        const rB = document.getElementById("ribbonB");
+        const alignLine = document.getElementById("alignLine");
+        if (!rA || !rB) return;
+
+        const leftA = isAligned ? 4 : offA;
+        const leftB = isAligned ? 4 : offB;
+
+        rA.style.marginLeft = `${leftA}%`;
+        rA.style.width = `${a}%`;
+        rB.style.marginLeft = `${leftB}%`;
+        rB.style.width = `${b}%`;
+
+        if (isAligned) {
+          alignLine.classList.remove("hidden");
+          alignLine.style.left = `calc(4% + 16px)`;
+        } else {
+          alignLine.classList.add("hidden");
+        }
+      }
+
+      function enablePrediction(state) {
+        document.getElementById("btnPredictA").disabled = !state;
+        document.getElementById("btnPredictB").disabled = !state;
+        document.getElementById("btnPredictSame").disabled = !state;
+      }
+
+      function handlePrediction(choice) {
+        enablePrediction(false);
+        isAligned = true;
+        renderRibbons();
+
+        const correctChoice = a === b ? "same" : (a > b ? "a" : "b");
+        const isCorrect = choice === correctChoice;
+        if (isCorrect) score++;
+
+        document.getElementById("cmScoreText").textContent = `Rounds: ${rounds} | Score: ${score}`;
+        const fb = document.getElementById("cmFeedback");
+        fb.classList.remove("hidden");
+
+        if (isCorrect) {
+          fb.className = "p-3 rounded-lg text-xs font-medium border bg-emerald-50 border-emerald-400 text-emerald-950";
+          fb.innerHTML = `<strong>Accurate!</strong> With endpoints physically aligned to the left baseline, ${a === b ? 'both ribbons are exactly the same length' : (a > b ? 'Ribbon A is visibly longer' : 'Ribbon B is visibly longer')}. The unaligned right protrusion was an optical illusion.`;
+        } else {
+          fb.className = "p-3 rounded-lg text-xs font-medium border bg-red-50 border-red-400 text-red-950";
+          fb.innerHTML = `<strong>Perceptual Trap Triggered:</strong> You judged by the end that stuck out further! With starting ends aligned, ${a === b ? 'both ribbons are identical in length' : (a > b ? 'Ribbon A is actually longer' : 'Ribbon B is actually longer')}. This demonstrates why NESA insists on physical baseline alignment before indirect comparison.`;
+        }
+      }
+
+      document.getElementById("btnPredictA").addEventListener("click", () => handlePrediction("a"));
+      document.getElementById("btnPredictB").addEventListener("click", () => handlePrediction("b"));
+      document.getElementById("btnPredictSame").addEventListener("click", () => handlePrediction("same"));
+      document.getElementById("btnAlignToggle").addEventListener("click", () => {
+        isAligned = !isAligned;
+        renderRibbons();
+      });
+      document.getElementById("btnNewRibbons").addEventListener("click", generateRound);
+
+      generateRound();
+    }
+
+    /* Tool 2 Logic */
+    function wireUnitsLogic() {
+      let mode = "ok";
+      const UNIT_NAMES = {
+        "1": ["paper clip", "paper clips"],
+        "3.2": ["pop stick", "pop sticks"],
+        "2.2": ["footprint", "footprints"]
+      };
+
+      function update() {
+        const objVal = parseFloat(document.getElementById("unObjSelect").value);
+        const unitVal = parseFloat(document.getElementById("unUnitSelect").value);
+        const unitKey = document.getElementById("unUnitSelect").value;
+        const objText = document.getElementById("unObjSelect").selectedOptions[0].text.split(' (')[0];
+        document.getElementById("unObjectLabel").textContent = objText;
+
+        const track = document.getElementById("unDisplayTrack");
+        track.innerHTML = "";
+
+        // Determine spacing step
+        const stepFactor = mode === "ok" ? 1.0 : (mode === "gap" ? 1.35 : 0.72);
+        const unitWidthPct = (unitVal / objVal) * 100;
+        const stepPct = unitWidthPct * stepFactor;
+
+        let curLeft = 0;
+        let count = 0;
+
+        while (curLeft < 100 && count < 35) {
+          const uDiv = document.createElement("div");
+          uDiv.className = "absolute top-1 bottom-1 rounded border border-cedow-blue font-mono font-bold text-[10px] flex items-center justify-center text-white transition-all shadow-2xs";
+          uDiv.style.backgroundColor = count % 2 === 0 ? "#0D2C6B" : "#188296";
+          uDiv.style.left = `${curLeft}%`;
+          uDiv.style.width = `${Math.min(unitWidthPct, 100 - curLeft)}%`;
+          uDiv.textContent = `${count + 1}`;
+          track.appendChild(uDiv);
+
+          curLeft += stepPct;
+          count++;
+        }
+
+        const exactCount = (objVal / unitVal).toFixed(1);
+        const nameSingle = UNIT_NAMES[unitKey][0];
+        const namePlural = UNIT_NAMES[unitKey][1];
+        const unitName = count === 1 ? nameSingle : namePlural;
+
+        const readout = document.getElementById("unReadout");
+        if (mode === "ok") {
+          readout.innerHTML = `
+            <div class="text-cedow-blue font-bold">Standard Iteration (End-to-End without Gaps or Overlaps):</div>
+            <p class="text-cedow-black">Counted: <span class="math-badge">${count} ${unitName}</span> (Exact theoretical measure: ${exactCount} ${namePlural}).</p>
+            <p class="text-cedow-charcoal text-[11px] mt-1">
+              <strong>Key Pedagogical Insight:</strong> Always record both the count AND the unit name. Notice that choosing a smaller unit (paper clips) requires many more iterations, whereas a larger unit (pop sticks) requires fewer iterations.
+            </p>
+          `;
+        } else if (mode === "gap") {
+          readout.innerHTML = `
+            <div class="text-red-700 font-bold">Measuring Error: Gaps Between Units</div>
+            <p class="text-cedow-black">Counted: <span class="math-badge">${count} ${unitName}</span> &mdash; True measure requires ${exactCount} ${namePlural}.</p>
+            <p class="text-cedow-charcoal text-[11px] mt-1">
+              <strong>Diagnostic Alert:</strong> Gaps between units result in an <em>undercount</em> of the true length because unmeasured intervals are skipped along the baseline.
+            </p>
+          `;
+        } else {
+          readout.innerHTML = `
+            <div class="text-amber-800 font-bold">Measuring Error: Overlapping Units</div>
+            <p class="text-cedow-black">Counted: <span class="math-badge">${count} ${unitName}</span> &mdash; True measure requires ${exactCount} ${namePlural}.</p>
+            <p class="text-cedow-charcoal text-[11px] mt-1">
+              <strong>Diagnostic Alert:</strong> Overlapping units result in an <em>overcount</em> because segments of the distance are counted twice.
+            </p>
+          `;
+        }
+      }
+
+      document.getElementById("unObjSelect").addEventListener("change", update);
+      document.getElementById("unUnitSelect").addEventListener("change", update);
+      document.getElementById("unModeButtons").addEventListener("click", (e) => {
+        const b = e.target.closest("button");
+        if (!b) return;
+        document.querySelectorAll("#unModeButtons button").forEach(btn => {
+          btn.classList.remove("subtab-active");
+          btn.classList.add("bg-white", "text-cedow-blue");
+        });
+        b.classList.add("subtab-active");
+        b.classList.remove("bg-white", "text-cedow-blue");
+        mode = b.dataset.m;
+        update();
+      });
+
+      update();
+    }
+
+    /* Tool 3 Logic */
+    function wireAnglesLogic() {
+      let angleA = 40, angleB = 60, lenA = 110, lenB = 55, rotA = 15, rotB = 45;
+      let score = 0, rounds = 0;
+
+      function getAngleClassification(deg) {
+        if (deg < 88) return "Acute (less than a quarter-turn)";
+        if (deg <= 92) return "Right Angle (quarter-turn benchmark)";
+        if (deg < 178) return "Obtuse (between quarter and half-turn)";
+        if (deg <= 182) return "Straight Angle (half-turn)";
+        return "Reflex Angle (greater than half-turn)";
+      }
+
+      function generateRound() {
+        rounds++;
+        const same = Math.random() < 0.3;
+        angleA = 25 + Math.round(Math.random() * 105);
+        angleB = same ? angleA : angleA + (Math.random() < 0.5 ? -1 : 1) * (15 + Math.round(Math.random() * 20));
+        angleB = Math.max(20, Math.min(160, angleB));
+
+        // Deliberately trigger trap: smaller angle gets noticeably longer arms!
+        if (angleA < angleB) {
+          lenA = 115; lenB = 55;
+        } else if (angleB < angleA) {
+          lenA = 55; lenB = 115;
+        } else {
+          lenA = 120; lenB = 50;
+        }
+
+        rotA = Math.round(Math.random() * 45);
+        rotB = Math.round(Math.random() * 75);
+
+        renderSVGs(false);
+        const fb = document.getElementById("agFeedback");
+        fb.className = "hidden p-3 rounded-lg text-xs font-medium border";
+        enableButtons(true);
+      }
+
+      function createAngleSVG(deg, len, rot, col, label) {
+        const cx = 130, cy = 130;
+        const rad1 = rot * Math.PI / 180;
+        const rad2 = (rot + deg) * Math.PI / 180;
+
+        const x1 = cx + len * Math.cos(rad1);
+        const y1 = cy - len * Math.sin(rad1);
+        const x2 = cx + len * Math.cos(rad2);
+        const y2 = cy - len * Math.sin(rad2);
+
+        const arcRadius = 26;
+        const ax1 = cx + arcRadius * Math.cos(rad1);
+        const ay1 = cy - arcRadius * Math.sin(rad1);
+        const ax2 = cx + arcRadius * Math.cos(rad2);
+        const ay2 = cy - arcRadius * Math.sin(rad2);
+        const largeArc = deg > 180 ? 1 : 0;
+
+        return `
+          <g>
+            <path d="M ${ax1} ${ay1} A ${arcRadius} ${arcRadius} 0 ${largeArc} 0 ${ax2} ${ay2}" fill="none" stroke="${col}" stroke-width="2.5" />
+            <line x1="${cx}" y1="${cy}" x2="${x1}" y2="${y1}" stroke="${col}" stroke-width="3.5" stroke-linecap="round" />
+            <line x1="${cx}" y1="${cy}" x2="${x2}" y2="${y2}" stroke="${col}" stroke-width="3.5" stroke-linecap="round" />
+            <circle cx="${cx}" cy="${cy}" r="4.5" fill="#0D2C6B" />
+            <text x="16" y="24" font-size="14" font-weight="900" fill="${col}">${label}</text>
+          </g>
+        `;
+      }
+
+      function renderSVGs(overlay) {
+        const area = document.getElementById("agPicArea");
+        if (!area) return;
+
+        if (!overlay) {
+          area.innerHTML = `
+            <div class="flex flex-col items-center">
+              <svg viewBox="0 0 260 220" class="w-full max-w-[240px] h-48 bg-cedow-light/40 rounded-lg border border-cedow-silver">
+                ${createAngleSVG(angleA, lenA, rotA, "#0D2C6B", "Angle A")}
+              </svg>
+              <span class="text-[11px] font-bold text-cedow-blue mt-1">Arm Length: ${lenA} px</span>
+            </div>
+            <div class="flex flex-col items-center">
+              <svg viewBox="0 0 260 220" class="w-full max-w-[240px] h-48 bg-cedow-light/40 rounded-lg border border-cedow-silver">
+                ${createAngleSVG(angleB, lenB, rotB, "#188296", "Angle B")}
+              </svg>
+              <span class="text-[11px] font-bold text-cedow-aqua mt-1">Arm Length: ${lenB} px</span>
+            </div>
+          `;
+        } else {
+          // Both aligned at rot = 0 with common vertex
+          area.innerHTML = `
+            <div class="col-span-1 md:col-span-2 flex flex-col items-center">
+              <svg viewBox="0 0 280 240" class="w-full max-w-[280px] h-56 bg-cedow-light/50 rounded-lg border-2 border-cedow-blue">
+                ${createAngleSVG(angleA, lenA, 0, "#0D2C6B", "A (Dark Blue)")}
+                ${createAngleSVG(angleB, lenB, 0, "#FBAF3F", "B (Gold)")}
+              </svg>
+              <div class="text-xs font-semibold text-cedow-charcoal mt-2 text-center">
+                Superimposed with Common Vertex &amp; Baseline Ray.<br>
+                Angle A = ${angleA}° [${getAngleClassification(angleA)}]<br>
+                Angle B = ${angleB}° [${getAngleClassification(angleB)}]
+              </div>
+            </div>
+          `;
+        }
+      }
+
+      function enableButtons(state) {
+        document.getElementById("agBtnA").disabled = !state;
+        document.getElementById("agBtnB").disabled = !state;
+        document.getElementById("agBtnSame").disabled = !state;
+      }
+
+      function evaluateAnswer(choice) {
+        enableButtons(false);
+        renderSVGs(true);
+
+        const correctChoice = angleA === angleB ? "same" : (angleA > angleB ? "a" : "b");
+        const isCorrect = choice === correctChoice;
+        if (isCorrect) score++;
+
+        document.getElementById("agScoreText").textContent = `Rounds: ${rounds} | Score: ${score}`;
+        const fb = document.getElementById("agFeedback");
+        fb.classList.remove("hidden");
+
+        if (isCorrect) {
+          fb.className = "p-3 rounded-lg text-xs font-medium border bg-emerald-50 border-emerald-400 text-emerald-950";
+          fb.innerHTML = `<strong>Correct Mathematical Deduction!</strong> You attended to the rotational opening between the rays rather than their drawn arm length. ${angleA === angleB ? 'Both turn identically.' : (angleA > angleB ? 'Angle A turns further.' : 'Angle B turns further.')}`;
+        } else {
+          fb.className = "p-3 rounded-lg text-xs font-medium border bg-red-50 border-red-400 text-red-950";
+          fb.innerHTML = `<strong>Arm-Length Bias Triggered:</strong> Did you choose the angle with longer line segments? Superimposing the two angles proves that ray arm extension does NOT alter angle size. Angle size is exclusively the amount of rotational turn!`;
+        }
+      }
+
+      document.getElementById("agBtnA").addEventListener("click", () => evaluateAnswer("a"));
+      document.getElementById("agBtnB").addEventListener("click", () => evaluateAnswer("b"));
+      document.getElementById("agBtnSame").addEventListener("click", () => evaluateAnswer("same"));
+      document.getElementById("agBtnOverlay").addEventListener("click", () => renderSVGs(true));
+      document.getElementById("agBtnNew").addEventListener("click", generateRound);
+
+      generateRound();
+    }
+
+    /* Tool 4 Logic */
+    function wireRectsLogic() {
+      let mode = "p";
+
+      function calculate() {
+        const val = parseInt(document.getElementById("rcValInput").value, 10);
+        const grid = document.getElementById("rcShapesGrid");
+        const exp = document.getElementById("rcExplanation");
+        grid.innerHTML = "";
+
+        const rectangles = [];
+
+        if (mode === "p") {
+          if (isNaN(val) || val < 4 || val > 60 || val % 2 !== 0) {
+            exp.innerHTML = `<span class="text-red-700 font-bold">Please enter an even integer perimeter between 4 and 60 (to allow whole-number side lengths).</span>`;
+            return;
+          }
+          // Perimeter = 2(w + h) => w + h = val / 2
+          const semi = val / 2;
+          for (let w = 1; w <= semi / 2; w++) {
+            const h = semi - w;
+            rectangles.push({ w: h, h: w, area: h * w, peri: val });
+          }
+
+          // Sort descending by area
+          rectangles.sort((a, b) => b.area - a.area);
+          const maxArea = rectangles[0].area;
+          const minArea = rectangles[rectangles.length - 1].area;
+
+          grid.innerHTML = rectangles.map(r => {
+            const isBest = r.area === maxArea;
+            const pxW = r.w * 14;
+            const pxH = r.h * 14;
+            return `
+              <div class="flex flex-col items-center p-2 rounded-lg border ${isBest ? 'border-2 border-cedow-gold bg-amber-50/50' : 'border-cedow-silver bg-white'} shadow-2xs">
+                <div style="width: ${pxW}px; height: ${pxH}px; min-width: 14px; min-height: 14px;" class="bg-cedow-blue/20 border-2 border-cedow-blue rounded-xs flex items-center justify-center font-mono text-[10px] text-cedow-blue font-bold">
+                  ${r.w}&times;${r.h}
+                </div>
+                <div class="text-[11px] text-center mt-2 font-mono">
+                  <span class="font-bold text-cedow-black">${r.w} &times; ${r.h}</span><br>
+                  <span class="text-cedow-charcoal">Area: <strong>${r.area}</strong> units&sup2;</span><br>
+                  <span class="text-cedow-aqua font-semibold">P: ${r.peri} units</span>
+                  ${isBest ? '<span class="block text-[10px] font-bold text-amber-700 mt-0.5">&star; Max Area (Square)</span>' : ''}
+                </div>
+              </div>
+            `;
+          }).join('');
+
+          exp.innerHTML = `
+            <div class="text-cedow-blue font-bold">Isoperimetric Findings for Perimeter = ${val} units:</div>
+            <p class="text-cedow-black">
+              There are <span class="math-badge">${rectangles.length}</span> unique whole-number rectangles. While the boundary distance around each is strictly ${val} units, the internal area ranges from <span class="math-badge">${minArea} units&sup2;</span> up to <span class="math-badge">${maxArea} units&sup2;</span>.
+            </p>
+            <p class="text-cedow-charcoal text-[11px] mt-1">
+              <strong>Syllabus Takeaway (MA3-GM-02 &bull; Spatial Reasoning):</strong> As dimensions become closer together (culminating in a square), the enclosed area increases. Rectangles with the same perimeter do NOT possess the same area!
+            </p>
+          `;
+        } else {
+          // Fix Area
+          if (isNaN(val) || val < 1 || val > 100) {
+            exp.innerHTML = `<span class="text-red-700 font-bold">Please enter an area between 1 and 100 units&sup2;.</span>`;
+            return;
+          }
+          for (let w = 1; w * w <= val; w++) {
+            if (val % w === 0) {
+              const h = val / w;
+              rectangles.push({ w: h, h: w, area: val, peri: 2 * (h + w) });
+            }
+          }
+
+          rectangles.sort((a, b) => a.peri - b.peri);
+          const minPeri = rectangles[0].peri;
+          const maxPeri = rectangles[rectangles.length - 1].peri;
+
+          grid.innerHTML = rectangles.map(r => {
+            const isBest = r.peri === minPeri;
+            const pxW = r.w * 8;
+            const pxH = r.h * 8;
+            return `
+              <div class="flex flex-col items-center p-2 rounded-lg border ${isBest ? 'border-2 border-cedow-gold bg-amber-50/50' : 'border-cedow-silver bg-white'} shadow-2xs">
+                <div style="width: ${pxW}px; height: ${pxH}px; min-width: 8px; min-height: 8px;" class="bg-cedow-aqua/20 border-2 border-cedow-aqua rounded-xs flex items-center justify-center font-mono text-[9px] text-cedow-aqua font-bold">
+                  ${r.w}&times;${r.h}
+                </div>
+                <div class="text-[11px] text-center mt-2 font-mono">
+                  <span class="font-bold text-cedow-black">${r.w} &times; ${r.h}</span><br>
+                  <span class="text-cedow-charcoal">Area: ${r.area} units&sup2;</span><br>
+                  <span class="text-cedow-blue font-bold">P: <strong>${r.peri}</strong> units</span>
+                  ${isBest ? '<span class="block text-[10px] font-bold text-amber-700 mt-0.5">&star; Min Boundary</span>' : ''}
+                </div>
+              </div>
+            `;
+          }).join('');
+
+          exp.innerHTML = `
+            <div class="text-cedow-blue font-bold">Fixed Area Findings for Area = ${val} units&sup2;:</div>
+            <p class="text-cedow-black">
+              Each rectangle represents a factor pair of ${val}. While all shapes cover exactly ${val} square units of surface, their boundary perimeters range from <span class="math-badge">${minPeri} units</span> up to <span class="math-badge">${maxPeri} units</span>.
+            </p>
+            <p class="text-cedow-charcoal text-[11px] mt-1">
+              <strong>Syllabus Takeaway (MA3-2DS-02):</strong> The closer the rectangle is to a square, the more compact its boundary and the smaller its perimeter.
+            </p>
+          `;
+        }
+      }
+
+      document.getElementById("rcBtnDraw").addEventListener("click", calculate);
+      document.getElementById("rcValInput").addEventListener("keydown", (e) => {
+        if (e.key === "Enter") calculate();
+      });
+
+      document.getElementById("rcModeBtns").addEventListener("click", (e) => {
+        const b = e.target.closest("button");
+        if (!b) return;
+        document.querySelectorAll("#rcModeBtns button").forEach(btn => {
+          btn.classList.remove("subtab-active");
+          btn.classList.add("bg-white", "text-cedow-blue");
+        });
+        b.classList.add("subtab-active");
+        b.classList.remove("bg-white", "text-cedow-blue");
+        mode = b.dataset.m;
+        const lbl = document.getElementById("rcValLabel");
+        const inp = document.getElementById("rcValInput");
+        if (mode === "p") {
+          lbl.textContent = "Perimeter (units):";
+          inp.value = 20;
+        } else {
+          lbl.textContent = "Area (square units):";
+          inp.value = 24;
+        }
+        calculate();
+      });
+
+      calculate();
+    }
+
+    /* -------------------------------------------------------------
+       SECTION 4: STUDENT MISCONCEPTION SORTER
+       ------------------------------------------------------------- */
+    function renderMisconceptionSorter() {
+      const container = document.getElementById("sorterCardContainer");
+      if (!container) return;
+
+      container.innerHTML = SCENARIOS_DATA.map(sc => `
+        <div class="bg-cedow-light p-4 rounded-xl border border-cedow-silver space-y-3" id="scCard-${sc.id}">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div class="flex items-center gap-2">
+              <span class="math-badge text-[10px]">${sc.stage}</span>
+              <span class="text-xs font-bold text-cedow-blue">Student: ${sc.name}</span>
+            </div>
+            <span class="text-[11px] font-semibold text-cedow-charcoal" id="scStatus-${sc.id}">Awaiting Diagnosis</span>
+          </div>
+
+          <p class="text-xs text-cedow-black bg-white p-3 rounded-lg border border-cedow-silver leading-relaxed font-medium">
+            &ldquo;${sc.text}&rdquo;
+          </p>
+
+          <div class="space-y-1.5">
+            <span class="text-[11px] font-bold text-cedow-blue block">Diagnose Conceptual Root:</span>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-1.5">
+              ${ROOTS_LIST.map((rName, rIdx) => `
+                <button class="sorter-opt-btn text-left p-2 rounded text-[11px] border border-cedow-silver bg-white hover:bg-cedow-light transition font-medium text-cedow-black" data-scid="${sc.id}" data-root="${rIdx}">
+                  ${rName}
+                </button>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Dynamic Feedback for Card -->
+          <div id="scFeedback-${sc.id}" class="hidden p-3 rounded-lg text-xs leading-relaxed border"></div>
+        </div>
+      `).join('');
+
+      let answeredCount = 0;
+      container.addEventListener("click", (e) => {
+        const btn = e.target.closest(".sorter-opt-btn");
+        if (!btn) return;
+
+        const scId = parseInt(btn.dataset.scid, 10);
+        const selectedRoot = parseInt(btn.dataset.root, 10);
+        const sc = SCENARIOS_DATA.find(s => s.id === scId);
+        if (!sc) return;
+
+        const card = document.getElementById(`scCard-${scId}`);
+        const status = document.getElementById(`scStatus-${scId}`);
+        const fb = document.getElementById(`scFeedback-${scId}`);
+
+        // Disable other buttons on this card
+        card.querySelectorAll(".sorter-opt-btn").forEach(b => {
+          b.disabled = true;
+          b.classList.remove("bg-white", "hover:bg-cedow-light");
+          if (parseInt(b.dataset.root, 10) === sc.root) {
+            b.classList.add("bg-emerald-100", "border-emerald-500", "text-emerald-950", "font-bold");
+          } else if (b === btn) {
+            b.classList.add("bg-red-100", "border-red-400", "text-red-900");
+          } else {
+            b.classList.add("opacity-50");
+          }
+        });
+
+        fb.classList.remove("hidden");
+        if (selectedRoot === sc.root) {
+          status.innerHTML = `<span class="text-emerald-700 font-bold flex items-center gap-1"><i data-lucide="check" class="w-3.5 h-3.5"></i> Correct Root</span>`;
+          fb.className = "p-3 rounded-lg text-xs leading-relaxed border bg-emerald-50 border-emerald-400 text-emerald-950";
+          fb.innerHTML = `<strong>Accurate Diagnosis:</strong> ${sc.explanation}`;
+        } else {
+          status.innerHTML = `<span class="text-red-600 font-bold flex items-center gap-1"><i data-lucide="x" class="w-3.5 h-3.5"></i> Reclassified</span>`;
+          fb.className = "p-3 rounded-lg text-xs leading-relaxed border bg-amber-50 border-cedow-gold text-amber-950";
+          fb.innerHTML = `<strong>Correct Root: ${ROOTS_LIST[sc.root]}</strong><br>${sc.explanation}`;
+        }
+        lucide.createIcons();
+
+        answeredCount++;
+        document.getElementById("sorterScore").textContent = `Progress: ${answeredCount} / 11 Analysed`;
+      });
+    }
+
+    /* -------------------------------------------------------------
+       SECTION 5: TASK MAKEOVER STUDIO & 5 PEDAGOGICAL MOVES
+       ------------------------------------------------------------- */
+    function setupMakeoverTabs() {
+      const container = document.getElementById("makeoverStageTabs");
+      if (!container) return;
+      container.addEventListener("click", (e) => {
+        const btn = e.target.closest(".mo-tab");
+        if (!btn) return;
+        document.querySelectorAll(".mo-tab").forEach(b => {
+          b.classList.remove("tab-active");
+          b.classList.add("text-cedow-blue");
+        });
+        btn.classList.add("tab-active");
+        btn.classList.remove("text-cedow-blue");
+        renderTaskMakeover(btn.dataset.mostage);
+      });
+    }
+
+    function renderTaskMakeover(stageKey) {
+      const data = MAKEOVERS[stageKey];
+      const container = document.getElementById("makeoverContainer");
+      if (!data || !container) return;
+
+      container.innerHTML = `
+        <div class="space-y-4 animate-fadeIn">
+          <div class="flex items-center justify-between pb-2 border-b border-cedow-silver">
+            <h4 class="text-sm font-bold text-cedow-blue">${data.stage}: ${data.title}</h4>
+            <div class="flex flex-wrap gap-1">
+              ${data.after.wmElements.map(el => `<span class="bg-cedow-light border border-cedow-silver text-[10px] font-bold px-2 py-0.5 rounded text-cedow-blue">${el}</span>`).join('')}
+            </div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- BEFORE CARD -->
+            <div class="bg-red-50/40 rounded-xl border border-red-300 p-4 space-y-3 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-wider bg-red-600 text-white px-2 py-0.5 rounded">Before: Closed Drill</span>
+                <div class="bg-white p-3 rounded-lg border border-red-200 mt-2 font-mono text-xs text-cedow-black">
+                  <div class="font-bold text-red-950 mb-1">${data.before.task}</div>
+                  <div class="text-cedow-charcoal">${data.before.visual}</div>
+                </div>
+              </div>
+              <div>
+                <span class="text-[11px] font-bold text-red-900 block mb-1">Pedagogical Limitations:</span>
+                <ul class="text-xs text-red-900 space-y-1 list-disc pl-4">
+                  ${data.before.limitations.map(lim => `<li>${lim}</li>`).join('')}
+                </ul>
+              </div>
+            </div>
+
+            <!-- AFTER CARD -->
+            <div class="bg-emerald-50/50 rounded-xl border border-emerald-300 p-4 space-y-3 flex flex-col justify-between">
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-wider bg-emerald-700 text-white px-2 py-0.5 rounded">After: Inquiry &amp; Reasoning</span>
+                <div class="bg-white p-3 rounded-lg border border-emerald-300 mt-2 text-xs text-cedow-black space-y-1.5">
+                  <div class="font-bold text-cedow-blue text-sm">${data.after.task}</div>
+                  <div class="text-cedow-charcoal italic">${data.after.prompt}</div>
+                </div>
+              </div>
+
+              <div class="space-y-2 pt-1 border-t border-emerald-200">
+                <div class="text-[11px]"><strong class="text-emerald-950 font-bold">Enabling Prompt:</strong> <span class="text-cedow-black">${data.after.enabling}</span></div>
+                <div class="text-[11px]"><strong class="text-emerald-950 font-bold">Extending Prompt:</strong> <span class="text-cedow-black">${data.after.extending}</span></div>
+                <div class="text-[11px] bg-white/80 p-2 rounded border border-emerald-300"><strong class="text-cedow-blue font-bold">What to Listen For:</strong> <span class="text-cedow-charcoal">${data.after.listenFor}</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    function renderClosedMoves(stageKey) {
+      const nav = document.getElementById("closedTasksNav");
+      const display = document.getElementById("closedMovesDisplay");
+      if (!nav || !display) return;
+
+      nav.innerHTML = CLOSED_MOVES_DATA.map((item, idx) => `
+        <button class="closed-tab px-3 py-1.5 rounded-lg text-xs font-bold transition border border-cedow-silver ${item.stageKey === stageKey ? 'tab-active' : 'bg-white text-cedow-blue hover:bg-cedow-light'}" data-ckey="${item.stageKey}">
+          ${item.stageName}
+        </button>
+      `).join('');
+
+      nav.addEventListener("click", (e) => {
+        const b = e.target.closest(".closed-tab");
+        if (!b) return;
+        renderClosedMoves(b.dataset.ckey);
+      });
+
+      const selected = CLOSED_MOVES_DATA.find(i => i.stageKey === stageKey) || CLOSED_MOVES_DATA[0];
+
+      display.innerHTML = `
+        <div class="col-span-full bg-cedow-light p-3 rounded-lg border border-cedow-silver text-xs font-mono font-bold text-cedow-blue">
+          ${selected.closedTask}
+        </div>
+        ${selected.moves.map(m => `
+          <div class="bg-white p-4 rounded-xl border border-cedow-silver shadow-2xs flex flex-col justify-between space-y-3">
+            <div>
+              <div class="flex items-center justify-between pb-1.5 border-b border-cedow-silver">
+                <span class="text-xs font-black text-cedow-aqua uppercase tracking-wider">${m.move}</span>
+                <i data-lucide="sparkle" class="w-3.5 h-3.5 text-cedow-gold"></i>
+              </div>
+              <p class="text-xs text-cedow-black font-medium leading-relaxed mt-2">${m.text}</p>
+            </div>
+            <div class="flex flex-wrap gap-1 pt-2 border-t border-cedow-silver/60">
+              ${m.elements.map(el => `<span class="bg-cedow-light text-cedow-blue text-[9px] font-bold px-1.5 py-0.5 rounded border border-cedow-silver">${el}</span>`).join('')}
+            </div>
+          </div>
+        `).join('')}
+      `;
+      lucide.createIcons();
+    }
+
+    /* -------------------------------------------------------------
+       SECTION 6: MODULE MASTERY CHECKPOINT
+       ------------------------------------------------------------- */
+    function renderCheckpointQuestions() {
+      const qList = document.getElementById("questionsList");
+      if (!qList) return;
+
+      qList.innerHTML = CHECKPOINT_QUESTIONS.map((q, qIdx) => `
+        <div class="bg-cedow-light p-5 rounded-xl border border-cedow-silver space-y-3" id="qBlock-${q.id}">
+          <div class="flex items-start justify-between gap-2">
+            <span class="text-xs font-black uppercase tracking-wider bg-cedow-blue text-white px-2 py-0.5 rounded">Question ${qIdx + 1} of 5</span>
+          </div>
+          <div class="text-xs text-cedow-charcoal leading-relaxed bg-white p-3 rounded border border-cedow-silver font-medium">
+            ${q.scenario}
+          </div>
+          <p class="text-xs font-bold text-cedow-blue">${q.question}</p>
+
+          <div class="space-y-2 pt-1">
+            ${q.options.map((opt, oIdx) => `
+              <label class="flex items-start gap-2.5 p-2.5 rounded-lg border border-cedow-silver bg-white hover:bg-cedow-light cursor-pointer transition text-xs text-cedow-black">
+                <input type="radio" name="chk-q-${q.id}" value="${oIdx}" class="mt-0.5 text-cedow-blue focus:ring-cedow-aqua">
+                <span class="leading-snug">${opt}</span>
+              </label>
+            `).join('')}
+          </div>
+          <div id="qFeedback-${q.id}" class="hidden p-3 rounded-lg text-xs leading-relaxed border"></div>
+        </div>
+      `).join('');
+    }
+
+    function setupCheckpointLogic() {
+      const submitBtn = document.getElementById("submitCheckpointBtn");
+      const resetBtn = document.getElementById("resetCheckpointBtn");
+      const resultBanner = document.getElementById("checkpointResultBanner");
+      const continuumSummary = document.getElementById("unlockedContinuumSummary");
+
+      submitBtn.addEventListener("click", () => {
+        let correctCount = 0;
+        let answeredAll = true;
+
+        CHECKPOINT_QUESTIONS.forEach(q => {
+          const selected = document.querySelector(`input[name="chk-q-${q.id}"]:checked`);
+          const fb = document.getElementById(`qFeedback-${q.id}`);
+          fb.classList.remove("hidden");
+
+          if (!selected) {
+            answeredAll = false;
+            fb.className = "p-2.5 rounded bg-amber-50 border border-amber-300 text-amber-900 text-xs";
+            fb.textContent = "Please select an answer for this question.";
+            return;
+          }
+
+          const ans = parseInt(selected.value, 10);
+          if (ans === q.correct) {
+            correctCount++;
+            fb.className = "p-3 rounded-lg bg-emerald-50 border border-emerald-400 text-emerald-950 text-xs";
+            fb.innerHTML = `<strong>Correct:</strong> ${q.rationale}`;
+          } else {
+            fb.className = "p-3 rounded-lg bg-red-50 border border-red-400 text-red-950 text-xs";
+            fb.innerHTML = `<strong>Incorrect.</strong> ${q.rationale}`;
+          }
+        });
+
+        if (!answeredAll) {
+          resultBanner.classList.remove("hidden");
+          resultBanner.className = "p-4 rounded-xl border bg-amber-50 border-cedow-gold text-amber-950 text-xs font-bold";
+          resultBanner.textContent = "Please answer all 5 questions before submitting.";
+          return;
+        }
+
+        const percentage = Math.round((correctCount / CHECKPOINT_QUESTIONS.length) * 100);
+        resultBanner.classList.remove("hidden");
+
+        if (percentage >= 80) {
+          resultBanner.className = "p-4 rounded-xl border bg-emerald-50 border-emerald-400 text-emerald-950 text-xs space-y-1";
+          resultBanner.innerHTML = `
+            <div class="text-sm font-bold text-emerald-900 flex items-center gap-1.5">
+              <i data-lucide="check-circle" class="w-4 h-4 text-emerald-600"></i>
+              <span>Mastery Checkpoint Passed (${percentage}% &bull; ${correctCount} of 5 correct)</span>
+            </div>
+            <p>Congratulations. You have met the 80% benchmark. Review your feedback below and explore the unlocked <strong>Key Pedagogical Takeaways Continuum</strong>.</p>
+          `;
+          continuumSummary.classList.remove("hidden");
+          continuumSummary.scrollIntoView({ behavior: 'smooth' });
+        } else {
+          resultBanner.className = "p-4 rounded-xl border bg-red-50 border-red-400 text-red-950 text-xs space-y-1";
+          resultBanner.innerHTML = `
+            <div class="text-sm font-bold text-red-900 flex items-center gap-1.5">
+              <i data-lucide="alert-circle" class="w-4 h-4 text-red-600"></i>
+              <span>Checkpoint Not Yet Passed (${percentage}% &bull; ${correctCount} of 5 correct)</span>
+            </div>
+            <p>Review the specific NESA Teaching Advice feedback provided above, adjust your responses, and re-submit to attain the 80% benchmark.</p>
+          `;
+          continuumSummary.classList.add("hidden");
+        }
+        lucide.createIcons();
+      });
+
+      resetBtn.addEventListener("click", () => {
+        document.querySelectorAll('input[type="radio"]').forEach(r => r.checked = false);
+        CHECKPOINT_QUESTIONS.forEach(q => {
+          const fb = document.getElementById(`qFeedback-${q.id}`);
+          fb.classList.add("hidden");
+        });
+        resultBanner.classList.add("hidden");
+        continuumSummary.classList.add("hidden");
+      });
+    }
+  </script>
+</body>
+</html>
