@@ -1,0 +1,2136 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Area 7: Three-dimensional Spatial Structure (K–6) | CEDoW Professional Learning</title>
+  
+  <!-- Google Fonts: Lato & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Configuration for CEDoW Brand Identity -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cedow: {
+              blue: '#0D2C6B',      // Dark Blue (Headers, primary accents, primary buttons)
+              aqua: '#188296',      // Aqua (Active navigation, highlights, interactive states)
+              gold: '#FBAF3F',      // Gold (Accents, badges, key callouts)
+              charcoal: '#4C4C4E',  // Charcoal (Secondary text, subtitles, borders)
+              silver: '#D1D2D4',    // Silver (Card borders, dividers)
+              black: '#231F20',     // Black (Primary body text)
+              bg: '#F4F6F9',        // Light Background
+              card: '#FFFFFF'       // Card White
+            }
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+            mono: ['"Fira Code"', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      color: #231F20;
+      background-color: #F4F6F9;
+      scroll-behavior: smooth;
+    }
+    code, .math-badge {
+      font-family: 'Fira Code', monospace;
+    }
+    .nav-active {
+      background-color: #188296;
+      color: #FFFFFF !important;
+      border-left: 4px solid #FBAF3F;
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 6px;
+      height: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: #F4F6F9;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #D1D2D4;
+      border-radius: 3px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #188296;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen">
+
+  <!-- TOP HEADER / BANNER -->
+  <header class="bg-[#0D2C6B] text-white sticky top-0 z-50 shadow-md border-b-4 border-[#FBAF3F]">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-20">
+        <!-- Logo & Title -->
+        <div class="flex items-center space-x-4">
+          <div class="bg-white p-2 rounded-lg shadow">
+            <div class="w-9 h-9 bg-[#0D2C6B] rounded flex items-center justify-center font-black text-white text-xl tracking-tighter">
+              CD
+            </div>
+          </div>
+          <div>
+            <div class="flex items-center space-x-2">
+              <span class="text-xs uppercase font-bold tracking-wider text-[#FBAF3F]">Catholic Education Diocese of Wollongong</span>
+              <span class="text-xs bg-[#188296] text-white px-2 py-0.5 rounded font-mono">NSW Maths K–10</span>
+            </div>
+            <h1 class="text-xl sm:text-2xl font-black text-white tracking-tight">Focus Area 7: Three-dimensional Spatial Structure (K–6)</h1>
+          </div>
+        </div>
+
+        <!-- Action / Metadata -->
+        <div class="hidden md:flex items-center space-x-3">
+          <span class="text-xs text-slate-200 font-medium">Self-Paced Professional Learning</span>
+          <div class="h-6 w-px bg-slate-400"></div>
+          <a href="#checkpoint" class="bg-[#FBAF3F] text-[#0D2C6B] hover:bg-amber-400 font-bold px-3 py-1.5 rounded-lg text-xs transition flex items-center space-x-1 shadow">
+            <i data-lucide="check-circle" class="w-4 h-4"></i>
+            <span>Mastery Check</span>
+          </a>
+        </div>
+
+        <!-- Mobile Menu Toggle -->
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded text-slate-200 hover:text-white hover:bg-[#188296] focus:outline-none">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <div id="mobileMenu" class="hidden md:hidden bg-[#0D2C6B] border-t border-slate-700 px-4 pt-2 pb-4 space-y-1">
+      <a href="#section1" class="mobile-nav-link block px-3 py-2 rounded text-sm text-slate-200 hover:bg-[#188296] hover:text-white">1. Trajectory & Big Ideas</a>
+      <a href="#section2" class="mobile-nav-link block px-3 py-2 rounded text-sm text-slate-200 hover:bg-[#188296] hover:text-white">2. Conceptual Shifts & Traps</a>
+      <a href="#section3" class="mobile-nav-link block px-3 py-2 rounded text-sm text-slate-200 hover:bg-[#188296] hover:text-white">3. Interactive Tool Lab</a>
+      <a href="#section4" class="mobile-nav-link block px-3 py-2 rounded text-sm text-slate-200 hover:bg-[#188296] hover:text-white">4. Student Diagnostic Clinic</a>
+      <a href="#section5" class="mobile-nav-link block px-3 py-2 rounded text-sm text-slate-200 hover:bg-[#188296] hover:text-white">5. Task Makeover Studio (WM)</a>
+      <a href="#checkpoint" class="mobile-nav-link block px-3 py-2 rounded text-sm text-slate-200 hover:bg-[#188296] hover:text-white">6. Module Mastery Checkpoint</a>
+      <a href="#section7" class="mobile-nav-link block px-3 py-2 rounded text-sm text-slate-200 hover:bg-[#188296] hover:text-white">7. Canvas LMS Guide</a>
+    </div>
+  </header>
+
+  <!-- MAIN CONTENT CONTAINER WITH SIDEBAR -->
+  <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-8 flex gap-8">
+    
+    <!-- DESKTOP STICKY SIDEBAR -->
+    <aside class="hidden lg:block w-72 flex-shrink-0">
+      <div class="sticky top-28 bg-white rounded-xl shadow-sm border border-[#D1D2D4] overflow-hidden">
+        <div class="bg-[#0D2C6B] p-4 text-white">
+          <p class="text-xs uppercase font-bold text-[#FBAF3F] tracking-wider">Module Navigation</p>
+          <h2 class="text-sm font-bold mt-1">3D Spatial Structure K–6</h2>
+        </div>
+        <nav class="p-2 space-y-1 text-sm font-medium" id="sidebarNav">
+          <a href="#section1" class="sidebar-item flex items-center space-x-3 px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition">
+            <i data-lucide="git-merge" class="w-4 h-4 text-[#188296]"></i>
+            <span>1. Trajectory & Big Ideas</span>
+          </a>
+          <a href="#section2" class="sidebar-item flex items-center space-x-3 px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-[#188296]"></i>
+            <span>2. Conceptual Shifts & Traps</span>
+          </a>
+          <a href="#section3" class="sidebar-item flex items-center space-x-3 px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition">
+            <i data-lucide="box" class="w-4 h-4 text-[#188296]"></i>
+            <span>3. Interactive Tool Lab</span>
+          </a>
+          <a href="#section4" class="sidebar-item flex items-center space-x-3 px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition">
+            <i data-lucide="stethoscope" class="w-4 h-4 text-[#188296]"></i>
+            <span>4. Diagnostic Clinic</span>
+          </a>
+          <a href="#section5" class="sidebar-item flex items-center space-x-3 px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition">
+            <i data-lucide="wand-2" class="w-4 h-4 text-[#188296]"></i>
+            <span>5. Task Makeover (WM)</span>
+          </a>
+          <a href="#checkpoint" class="sidebar-item flex items-center space-x-3 px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition">
+            <i data-lucide="check-square" class="w-4 h-4 text-[#188296]"></i>
+            <span>6. Mastery Checkpoint</span>
+          </a>
+          <a href="#section7" class="sidebar-item flex items-center space-x-3 px-3 py-2.5 rounded-lg text-[#4C4C4E] hover:bg-[#F4F6F9] hover:text-[#0D2C6B] transition">
+            <i data-lucide="layout-template" class="w-4 h-4 text-[#188296]"></i>
+            <span>7. Canvas LMS Guide</span>
+          </a>
+        </nav>
+        <div class="p-4 border-t border-[#D1D2D4] bg-[#F4F6F9]">
+          <div class="flex items-center justify-between text-xs text-[#4C4C4E] font-medium mb-1.5">
+            <span>Progress Tracker</span>
+            <span id="overallProgressText" class="font-bold text-[#0D2C6B]">0%</span>
+          </div>
+          <div class="w-full bg-[#D1D2D4] h-2 rounded-full overflow-hidden">
+            <div id="overallProgressBar" class="bg-[#188296] h-full transition-all duration-300" style="width: 0%"></div>
+          </div>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN BODY CONTENT AREA -->
+    <main class="flex-1 min-w-0 space-y-12">
+
+      <!-- WELCOME / OVERVIEW BANNER -->
+      <section class="bg-white rounded-2xl p-6 sm:p-8 shadow-sm border border-[#D1D2D4] relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-blue-100 to-transparent -mr-12 -mt-12 rounded-full pointer-events-none"></div>
+        <div class="max-w-3xl">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 bg-[#188296]/10 text-[#188296] rounded-full text-xs font-bold uppercase tracking-wider mb-3">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span>CEDoW Mathematics PL Initiative</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-[#0D2C6B] tracking-tight leading-tight">
+            How Students Learn About Objects, Volume and Capacity (K to 6)
+          </h2>
+          <p class="mt-4 text-[#4C4C4E] leading-relaxed text-base sm:text-lg">
+            Three-dimensional spatial structure develops across four stages in two interwoven strands: 
+            <strong>3D objects</strong> (progressing from familiar tactile descriptions like ‘flat’, ‘round’ or ‘curved’ to classifying prisms and pyramids, interpreting views, and folding nets) and 
+            <strong>volume</strong> (moving from direct filling, packing and pouring, through informal and formal metric units, to the multiplicative layer structure of cubic units).
+          </p>
+          <div class="mt-6 flex flex-wrap gap-4 pt-4 border-t border-slate-100 text-xs text-[#4C4C4E]">
+            <span class="flex items-center"><i data-lucide="book-open" class="w-4 h-4 mr-1 text-[#188296]"></i> NSW Syllabus K–10 (2022)</span>
+            <span class="flex items-center"><i data-lucide="layers" class="w-4 h-4 mr-1 text-[#FBAF3F]"></i> Two Strands: 3D Objects & Volume</span>
+            <span class="flex items-center"><i data-lucide="cpu" class="w-4 h-4 mr-1 text-[#0D2C6B]"></i> MAO-WM-01 Integrated Throughout</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- SECTION 1: THE VERTICAL TRAJECTORY & BIG IDEAS                 -->
+      <!-- ============================================================== -->
+      <section id="section1" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-[#0D2C6B] pl-4">
+          <span class="text-xs font-bold text-[#188296] uppercase tracking-wider">Section 1</span>
+          <h2 class="text-2xl font-black text-[#0D2C6B]">The Vertical Trajectory & Big Ideas</h2>
+          <p class="text-sm text-[#4C4C4E] mt-1">Explore formal syllabus outcomes, Working Mathematically connections, and the cross-stage progression.</p>
+        </div>
+
+        <!-- STAGE SELECTOR CARDS -->
+        <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6">
+          <h3 class="text-base font-bold text-[#0D2C6B] mb-4 flex items-center">
+            <i data-lucide="layers" class="w-5 h-5 mr-2 text-[#188296]"></i>
+            Select Stage to Inspect Curriculum Architecture
+          </h3>
+          
+          <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6" id="stageTabs">
+            <button onclick="setStage('es1')" data-stage="es1" class="stage-tab-btn py-3 px-4 rounded-lg font-bold text-sm border-2 border-[#188296] bg-[#188296] text-white flex flex-col items-center justify-center transition shadow-sm">
+              <span class="text-xs uppercase tracking-wider opacity-90">Kindergarten</span>
+              <span class="text-base">Early Stage 1</span>
+            </button>
+            <button onclick="setStage('s1')" data-stage="s1" class="stage-tab-btn py-3 px-4 rounded-lg font-bold text-sm border-2 border-slate-200 bg-white text-[#4C4C4E] hover:border-[#188296] flex flex-col items-center justify-center transition shadow-sm">
+              <span class="text-xs uppercase tracking-wider opacity-90">Years 1–2</span>
+              <span class="text-base">Stage 1</span>
+            </button>
+            <button onclick="setStage('s2')" data-stage="s2" class="stage-tab-btn py-3 px-4 rounded-lg font-bold text-sm border-2 border-slate-200 bg-white text-[#4C4C4E] hover:border-[#188296] flex flex-col items-center justify-center transition shadow-sm">
+              <span class="text-xs uppercase tracking-wider opacity-90">Years 3–4</span>
+              <span class="text-base">Stage 2</span>
+            </button>
+            <button onclick="setStage('s3')" data-stage="s3" class="stage-tab-btn py-3 px-4 rounded-lg font-bold text-sm border-2 border-slate-200 bg-white text-[#4C4C4E] hover:border-[#188296] flex flex-col items-center justify-center transition shadow-sm">
+              <span class="text-xs uppercase tracking-wider opacity-90">Years 5–6</span>
+              <span class="text-base">Stage 3</span>
+            </button>
+          </div>
+
+          <!-- DYNAMIC STAGE CONTAINER -->
+          <div id="stageDetailsContainer" class="space-y-6">
+            <!-- Injected via JavaScript -->
+          </div>
+        </div>
+
+        <!-- CROSS-STAGE "BIG IDEAS MATRIX" -->
+        <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-4 border-b border-slate-200 gap-2">
+            <div>
+              <h3 class="text-lg font-bold text-[#0D2C6B] flex items-center">
+                <i data-lucide="grid" class="w-5 h-5 mr-2 text-[#FBAF3F]"></i>
+                Cross-Stage "Big Ideas Matrix"
+              </h3>
+              <p class="text-xs text-[#4C4C4E] mt-0.5">Click a core conceptual thread to trace how understanding builds across the K–6 continuum.</p>
+            </div>
+            <span class="text-xs font-mono bg-slate-100 text-[#0D2C6B] px-2.5 py-1 rounded-full font-bold">6 Continuum Principles</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mt-4" id="bigIdeasButtons">
+            <!-- Rendered by JS -->
+          </div>
+
+          <div id="bigIdeaDisplayCard" class="mt-6 p-5 bg-[#F4F6F9] rounded-xl border border-[#D1D2D4] transition-all">
+            <!-- Rendered by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- SECTION 2: KEY CONCEPTUAL SHIFTS & PEDAGOGICAL TRAPS           -->
+      <!-- ============================================================== -->
+      <section id="section2" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-[#0D2C6B] pl-4">
+          <span class="text-xs font-bold text-[#188296] uppercase tracking-wider">Section 2</span>
+          <h2 class="text-2xl font-black text-[#0D2C6B]">Key Conceptual Shifts & Pedagogical Traps</h2>
+          <p class="text-sm text-[#4C4C4E] mt-1">Research-informed insights grounded in the NESA Teaching Advice and mathematics education literature.</p>
+        </div>
+
+        <!-- STAGE-TO-STAGE SHIFTS SUMMARY -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="bg-white rounded-xl p-5 border-t-4 border-[#188296] shadow-sm border-x border-b border-[#D1D2D4]">
+            <span class="text-xs font-bold text-[#188296] uppercase font-mono">Shift 1 • ES1 &rarr; S1</span>
+            <h3 class="font-bold text-[#0D2C6B] mt-1 text-base">Qualitative to Uniform Units</h3>
+            <p class="text-xs text-[#4C4C4E] mt-2 leading-relaxed">
+              Moves from describing objects informally as ‘flat’, ‘round’ or ‘curved’ to naming cubes, cylinders, spheres and rectangular prisms by their surfaces and faces. Volume shifts from direct pouring to counting uniform informal units, including stacking cubes in layers.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border-t-4 border-[#FBAF3F] shadow-sm border-x border-b border-[#D1D2D4]">
+            <span class="text-xs font-bold text-[#FBAF3F] uppercase font-mono">Shift 2 • S1 &rarr; S2</span>
+            <h3 class="font-bold text-[#0D2C6B] mt-1 text-base">Classes of Objects to Formal Metric</h3>
+            <p class="text-xs text-[#4C4C4E] mt-2 leading-relaxed">
+              Moves from simple models to deconstructing packaging nets, classes of prisms and pyramids, and sketching isometric representations. Capacity shifts to formal litres and millilitres (1000 mL = 1 L), and volume to cubic centimetres in layers.
+            </p>
+          </div>
+          <div class="bg-white rounded-xl p-5 border-t-4 border-[#0D2C6B] shadow-sm border-x border-b border-[#D1D2D4]">
+            <span class="text-xs font-bold text-[#0D2C6B] uppercase font-mono">Shift 3 • S2 &rarr; S3</span>
+            <h3 class="font-bold text-[#0D2C6B] mt-1 text-base">Multiplicative Structure & Properties</h3>
+            <p class="text-xs text-[#4C4C4E] mt-2 leading-relaxed">
+              Prisms and pyramids are formally named by their base and uniform cross-section. Volume shifts from additive counting to multiplicative reasoning: <em>cubes in one layer &times; number of layers</em>, introducing cubic metres, displacement, and decimal litres.
+            </p>
+          </div>
+        </div>
+
+        <!-- 4 CRITICAL PEDAGOGICAL TRAPS ACCORDION / CARDS -->
+        <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 space-y-6">
+          <h3 class="text-lg font-bold text-[#0D2C6B] flex items-center">
+            <i data-lucide="shield-alert" class="w-5 h-5 mr-2 text-rose-600"></i>
+            Four Deep Research-Informed Traps
+          </h3>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Trap 1 -->
+            <div class="p-5 bg-rose-50/50 rounded-xl border border-rose-200">
+              <div class="flex items-center space-x-2 text-rose-800 font-bold text-sm">
+                <span class="w-6 h-6 rounded-full bg-rose-200 flex items-center justify-center text-xs">1</span>
+                <h4>The "Taller Holds More" Height Bias</h4>
+              </div>
+              <p class="text-xs text-[#231F20] mt-3 leading-relaxed">
+                Early experiences with drinking cups lead students to conclude that taller containers automatically hold more. Students attend to a single salient linear dimension (height) while ignoring width and depth.
+              </p>
+              <div class="mt-3 p-3 bg-white rounded-lg border border-rose-100 text-xs text-[#4C4C4E]">
+                <strong class="text-[#0D2C6B]">NESA Teaching Advice Remedy:</strong> Provide direct comparisons across all five container pairs: shorter and holds more; taller and holds less; shorter and holds less; taller and holds more; and short but holds the same as a tall container.
+              </div>
+            </div>
+
+            <!-- Trap 2 -->
+            <div class="p-5 bg-amber-50/50 rounded-xl border border-amber-200">
+              <div class="flex items-center space-x-2 text-amber-900 font-bold text-sm">
+                <span class="w-6 h-6 rounded-full bg-amber-200 flex items-center justify-center text-xs">2</span>
+                <h4>The "Counting Visible Faces" Fallacy</h4>
+              </div>
+              <p class="text-xs text-[#231F20] mt-3 leading-relaxed">
+                When shown a drawing or model of a 3D rectangular prism, students frequently count the 2D square faces visible on the exterior (or multiply the numbers on the visible sides), rather than seeing the solid cube units inside.
+              </p>
+              <div class="mt-3 p-3 bg-white rounded-lg border border-amber-100 text-xs text-[#4C4C4E]">
+                <strong class="text-[#0D2C6B]">Battista (1999) Research Remedy:</strong> Students must physically build prisms from cubes, deconstruct them layer by layer, and draw schematic representations to develop mental models of hidden units.
+              </div>
+            </div>
+
+            <!-- Trap 3 -->
+            <div class="p-5 bg-sky-50/50 rounded-xl border border-sky-200">
+              <div class="flex items-center space-x-2 text-sky-900 font-bold text-sm">
+                <span class="w-6 h-6 rounded-full bg-sky-200 flex items-center justify-center text-xs">3</span>
+                <h4>The "Base is the Bottom Face" Misconception</h4>
+              </div>
+              <p class="text-xs text-[#231F20] mt-3 leading-relaxed">
+                In Stage 3, students frequently believe the base of a 3D object is whatever face it happens to be resting on on the desk. When a triangular prism rests on a rectangular face, they claim the base is a rectangle.
+              </p>
+              <div class="mt-3 p-3 bg-white rounded-lg border border-sky-100 text-xs text-[#4C4C4E]">
+                <strong class="text-[#0D2C6B]">Geometric Property Remedy:</strong> The base of a prism is defined by its <em>uniform cross-section</em>. Teach students to visualise parallel slicing: the shape that repeats through the cut is the true base.
+              </div>
+            </div>
+
+            <!-- Trap 4 -->
+            <div class="p-5 bg-emerald-50/50 rounded-xl border border-emerald-200">
+              <div class="flex items-center space-x-2 text-emerald-900 font-bold text-sm">
+                <span class="w-6 h-6 rounded-full bg-emerald-200 flex items-center justify-center text-xs">4</span>
+                <h4>Linguistic Confusion: Shapes vs Objects & Faces</h4>
+              </div>
+              <p class="text-xs text-[#231F20] mt-3 leading-relaxed">
+                Calling 3D objects 2D names (e.g. calling a sphere a ‘circle’ or a rectangular box a ‘square’) or claiming a cylinder has ‘3 faces’.
+              </p>
+              <div class="mt-3 p-3 bg-white rounded-lg border border-emerald-100 text-xs text-[#4C4C4E]">
+                <strong class="text-[#0D2C6B]">NESA Definition Rule:</strong> In geometry, a <em>face</em> is defined strictly as a flat surface with straight edges (as in polyhedra). Curved surfaces and circular ends are surfaces, not faces. Trace faces onto paper to reveal the 2D shape.
+              </div>
+            </div>
+          </div>
+
+          <!-- Academic Literature Spotlight Box -->
+          <div class="bg-[#F4F6F9] p-4 rounded-xl border border-[#D1D2D4] flex items-start space-x-3">
+            <i data-lucide="graduation-cap" class="w-6 h-6 text-[#188296] flex-shrink-0 mt-0.5"></i>
+            <div class="text-xs text-[#4C4C4E] leading-relaxed">
+              <strong class="text-[#0D2C6B]">Literature Anchor (Hegarty & Kozhevnikov 1999; Healy & Fernandes 2014):</strong>
+              Research demonstrates that success in spatial problem solving is strongly linked with <em>schematic spatial representations</em> (which encode structural relationships, coordinates, and layer structures) rather than pictorial imagery (which dwells on surface appearance, colour, or texture). Visualising is multimodal: tactile exploration of hidden objects behind screens builds robust structural mental models.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- SECTION 3: INTERACTIVE TOOL LAB (4 RUNNABLE MANIPULATIVES)     -->
+      <!-- ============================================================== -->
+      <section id="section3" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-[#0D2C6B] pl-4">
+          <span class="text-xs font-bold text-[#188296] uppercase tracking-wider">Section 3</span>
+          <h2 class="text-2xl font-black text-[#0D2C6B]">Interactive Tool Lab</h2>
+          <p class="text-sm text-[#4C4C4E] mt-1">Four runnable manipulatives directly aligned to Early Stage 1 through Stage 3 syllabus investigations.</p>
+        </div>
+
+        <!-- TOOL LAB NAVIGATION TABS -->
+        <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6">
+          <div class="flex flex-wrap gap-2 pb-4 border-b border-slate-200">
+            <button onclick="switchToolTab('tool1')" id="tab-tool1" class="tool-tab-btn px-4 py-2 rounded-lg text-xs font-bold bg-[#0D2C6B] text-white flex items-center space-x-2">
+              <i data-lucide="beaker" class="w-4 h-4 text-[#FBAF3F]"></i>
+              <span>ES1: Container Capacity</span>
+            </button>
+            <button onclick="switchToolTab('tool2')" id="tab-tool2" class="tool-tab-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 flex items-center space-x-2">
+              <i data-lucide="box" class="w-4 h-4 text-[#188296]"></i>
+              <span>S1: Cube Stacking & Hidden Units</span>
+            </button>
+            <button onclick="switchToolTab('tool3')" id="tab-tool3" class="tool-tab-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 flex items-center space-x-2">
+              <i data-lucide="fold-horizontal" class="w-4 h-4 text-[#188296]"></i>
+              <span>S2: Cube Net Unfolder</span>
+            </button>
+            <button onclick="switchToolTab('tool4')" id="tab-tool4" class="tool-tab-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 flex items-center space-x-2">
+              <i data-lucide="layers" class="w-4 h-4 text-[#188296]"></i>
+              <span>S3: Multiplicative Prism Explorer</span>
+            </button>
+          </div>
+
+          <!-- TOOL 1: ES1 Containers -->
+          <div id="panel-tool1" class="tool-panel mt-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296]">Early Stage 1 Simulator</span>
+                <h3 class="text-lg font-bold text-[#0D2C6B]">Which Container Holds More?</h3>
+                <p class="text-xs text-[#4C4C4E] mt-0.5">Both containers share identical depth front-to-back. Decide which holds more, then pour left into right to test.</p>
+              </div>
+              <div id="ctScore" class="text-xs font-mono font-bold bg-slate-100 text-[#0D2C6B] px-3 py-1.5 rounded-lg border border-slate-200">
+                0 of 0 correct
+              </div>
+            </div>
+
+            <!-- SVG Container Rendering -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex items-center justify-center min-h-[240px]" id="ctPic">
+              <!-- SVG dynamically injected -->
+            </div>
+
+            <!-- Controls -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button class="ct-action-btn bg-[#0D2C6B] text-white hover:bg-blue-900 px-4 py-2 rounded-lg text-xs font-bold transition shadow-sm" data-c="a">
+                Left Holds More
+              </button>
+              <button class="ct-action-btn bg-[#0D2C6B] text-white hover:bg-blue-900 px-4 py-2 rounded-lg text-xs font-bold transition shadow-sm" data-c="b">
+                Right Holds More
+              </button>
+              <button class="ct-action-btn bg-[#0D2C6B] text-white hover:bg-blue-900 px-4 py-2 rounded-lg text-xs font-bold transition shadow-sm" data-c="s">
+                They Hold The Same
+              </button>
+              <button id="ctNew" class="ml-auto bg-[#FBAF3F] text-[#0D2C6B] hover:bg-amber-400 font-bold px-4 py-2 rounded-lg text-xs transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                Next Pair &rarr;
+              </button>
+            </div>
+
+            <!-- Real-Time Feedback -->
+            <div id="ctFb" class="hidden p-4 rounded-xl text-xs leading-relaxed border transition-all"></div>
+          </div>
+
+          <!-- TOOL 2: S1 Cubes -->
+          <div id="panel-tool2" class="tool-panel hidden mt-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296]">Stage 1 Simulator</span>
+                <h3 class="text-lg font-bold text-[#0D2C6B]">How Many Cubes? (Hidden Units Diagnostic)</h3>
+                <p class="text-xs text-[#4C4C4E] mt-0.5">Assume this rectangular prism is solid with no internal voids. Visualise the layer structure.</p>
+              </div>
+              <div id="cbScore" class="text-xs font-mono font-bold bg-slate-100 text-[#0D2C6B] px-3 py-1.5 rounded-lg border border-slate-200">
+                0 of 0 correct
+              </div>
+            </div>
+
+            <!-- 3D Isometric View -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex items-center justify-center min-h-[260px]" id="cbPic">
+              <!-- Isometric SVG injected -->
+            </div>
+
+            <!-- Controls -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <label for="cbIn" class="text-xs font-bold text-[#4C4C4E]">Number of Cubes:</label>
+              <input type="number" id="cbIn" min="1" max="150" placeholder="?" class="w-24 px-3 py-1.5 border border-[#D1D2D4] rounded-lg text-sm font-mono focus:border-[#188296] focus:outline-none">
+              <button id="cbGo" class="bg-[#0D2C6B] text-white hover:bg-blue-900 px-4 py-2 rounded-lg text-xs font-bold transition shadow-sm">
+                Check Answer
+              </button>
+              <button id="cbNew" class="bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 font-bold px-4 py-2 rounded-lg text-xs transition">
+                New Model
+              </button>
+            </div>
+
+            <!-- Real-Time Feedback -->
+            <div id="cbFb" class="hidden p-4 rounded-xl text-xs leading-relaxed border transition-all"></div>
+          </div>
+
+          <!-- TOOL 3: S2 Nets -->
+          <div id="panel-tool3" class="tool-panel hidden mt-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296]">Stage 2 Simulator</span>
+                <h3 class="text-lg font-bold text-[#0D2C6B]">Will It Fold into a Cube?</h3>
+                <p class="text-xs text-[#4C4C4E] mt-0.5">A cube has exactly 11 distinct nets. Visualise folding this arrangement of six squares relative to the shaded base.</p>
+              </div>
+              <div id="ntScore" class="text-xs font-mono font-bold bg-slate-100 text-[#0D2C6B] px-3 py-1.5 rounded-lg border border-slate-200">
+                0 of 0 correct
+              </div>
+            </div>
+
+            <!-- 2D Net SVG Container -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex items-center justify-center min-h-[250px]" id="ntPic">
+              <!-- Net SVG injected -->
+            </div>
+
+            <!-- Controls -->
+            <div class="flex flex-wrap items-center gap-3 pt-2">
+              <button class="nt-action-btn bg-[#0D2C6B] text-white hover:bg-blue-900 px-4 py-2 rounded-lg text-xs font-bold transition shadow-sm" data-c="y">
+                Yes, it makes a cube
+              </button>
+              <button class="nt-action-btn bg-[#0D2C6B] text-white hover:bg-blue-900 px-4 py-2 rounded-lg text-xs font-bold transition shadow-sm" data-c="n">
+                No, it does not
+              </button>
+              <button id="ntNew" class="ml-auto bg-[#FBAF3F] text-[#0D2C6B] hover:bg-amber-400 font-bold px-4 py-2 rounded-lg text-xs transition disabled:opacity-50 disabled:cursor-not-allowed" disabled>
+                Next Arrangement &rarr;
+              </button>
+            </div>
+
+            <!-- Real-Time Feedback -->
+            <div id="ntFb" class="hidden p-4 rounded-xl text-xs leading-relaxed border transition-all"></div>
+          </div>
+
+          <!-- TOOL 4: S3 Prisms & Multiplicative Volume -->
+          <div id="panel-tool4" class="tool-panel hidden mt-6 space-y-4">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <div>
+                <span class="text-xs font-bold uppercase tracking-wider text-[#188296]">Stage 3 Simulator</span>
+                <h3 class="text-lg font-bold text-[#0D2C6B]">Same Volume, Different Prisms</h3>
+                <p class="text-xs text-[#4C4C4E] mt-0.5">Enter a target volume in cubic centimetres to generate every rectangular prism configuration in layers.</p>
+              </div>
+            </div>
+
+            <!-- Input & Layer Explosion Checkbox -->
+            <div class="flex flex-wrap items-center gap-4 p-4 bg-slate-50 rounded-xl border border-slate-200">
+              <div class="flex items-center space-x-2">
+                <label for="pmV" class="text-xs font-bold text-[#4C4C4E]">Target Volume:</label>
+                <input type="number" id="pmV" value="24" min="1" max="72" class="w-20 px-3 py-1.5 border border-[#D1D2D4] rounded-lg text-sm font-mono focus:border-[#188296] focus:outline-none">
+                <span class="text-xs font-mono text-slate-500">cm<sup>3</sup></span>
+                <button id="pmGo" class="bg-[#0D2C6B] text-white hover:bg-blue-900 px-3 py-1.5 rounded-lg text-xs font-bold transition shadow-sm">
+                  Generate Prisms
+                </button>
+              </div>
+              <label class="flex items-center space-x-2 text-xs font-bold text-[#0D2C6B] cursor-pointer">
+                <input type="checkbox" id="pmX" class="w-4 h-4 text-[#188296] rounded border-slate-300 focus:ring-[#188296]">
+                <span>Explode / Separate Layers</span>
+              </label>
+            </div>
+
+            <!-- Prisms Dimension Selector Buttons -->
+            <div>
+              <p class="text-xs font-bold text-slate-500 uppercase tracking-wider mb-2">Available Dimension Triplets (L &times; W &times; H):</p>
+              <div id="pmList" class="flex flex-wrap gap-2"></div>
+            </div>
+
+            <!-- Isometric Drawing View -->
+            <div class="bg-slate-50 border border-slate-200 rounded-xl p-4 flex items-center justify-center min-h-[260px]" id="pmPic">
+              <!-- SVG Isometric prism injected -->
+            </div>
+
+            <!-- Mathematical Readout -->
+            <div id="pmRead" class="p-4 bg-blue-50 border border-blue-200 rounded-xl text-xs text-[#0D2C6B]">
+              <!-- Dynamic layer & times formula breakdown -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- SECTION 4: STUDENT DIAGNOSTIC CLINIC & ROOT MISCONCEPTIONS     -->
+      <!-- ============================================================== -->
+      <section id="section4" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-[#0D2C6B] pl-4">
+          <span class="text-xs font-bold text-[#188296] uppercase tracking-wider">Section 4</span>
+          <h2 class="text-2xl font-black text-[#0D2C6B]">Student Diagnostic Clinic & Root Misconceptions</h2>
+          <p class="text-sm text-[#4C4C4E] mt-1">Analyse authentic student dialogue protocols and classify errors into their conceptual roots.</p>
+        </div>
+
+        <!-- AUTHENTIC RESEARCH TRANSCRIPTS SPOTLIGHT -->
+        <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 space-y-4">
+          <h3 class="text-base font-bold text-[#0D2C6B] flex items-center">
+            <i data-lucide="message-square" class="w-5 h-5 mr-2 text-[#188296]"></i>
+            Clinical Interview Transcript: Ross's Digit-Correspondence Applied to Spatial Units
+          </h3>
+          <div class="bg-slate-50 rounded-xl p-4 border border-slate-200 font-mono text-xs text-[#4C4C4E] space-y-2">
+            <p><strong>Teacher:</strong> Here is a solid rectangular prism made of centimeter cubes. How many cubes are in this prism?</p>
+            <p><strong>Tom (Year 2):</strong> <em>[Counts fingers along the outside visible faces]</em> One, two, three, four, five, six... twelve!</p>
+            <p><strong>Teacher:</strong> How did you count them, Tom?</p>
+            <p><strong>Tom:</strong> I counted all the squares on the front, and the squares on the top. There are twelve.</p>
+            <p class="text-[#0D2C6B] font-bold"><em>Diagnostic Analysis: Tom exhibits Root 2 (Counting only visible faces). He treats a 3D unit volume as a collection of 2D surface patches. To remediate, Tom must physically take apart a real model layer by layer, seeing that inner cubes exist without any visible exterior faces.</em></p>
+          </div>
+        </div>
+
+        <!-- 4-ROOT MISCONCEPTION INTERACTIVE SORTER -->
+        <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 space-y-6">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2 pb-4 border-b border-slate-200">
+            <div>
+              <h3 class="text-lg font-bold text-[#0D2C6B] flex items-center">
+                <i data-lucide="crosshair" class="w-5 h-5 mr-2 text-[#FBAF3F]"></i>
+                Interactive 4-Root Misconception Sorter
+              </h3>
+              <p class="text-xs text-[#4C4C4E] mt-0.5">Read each student response, identify the conceptual root error, and receive immediate coaching feedback.</p>
+            </div>
+            <div id="sorterProgress" class="text-xs font-mono font-bold bg-[#188296]/10 text-[#188296] px-3 py-1.5 rounded-lg border border-[#188296]/20">
+              Diagnosed: 0 / 12
+            </div>
+          </div>
+
+          <!-- Misconception Reference Cards -->
+          <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+              <span class="font-bold text-[#0D2C6B] block">Root 1: One-Dimension/Appearance</span>
+              <span class="text-[#4C4C4E] text-[11px] mt-1 block">Taller always holds more; shape changes volume.</span>
+            </div>
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+              <span class="font-bold text-[#0D2C6B] block">Root 2: Only Visible Elements</span>
+              <span class="text-[#4C4C4E] text-[11px] mt-1 block">Counts surface faces; ignores hidden/interior cubes.</span>
+            </div>
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+              <span class="font-bold text-[#0D2C6B] block">Root 3: 2D Shapes vs 3D Objects</span>
+              <span class="text-[#4C4C4E] text-[11px] mt-1 block">Ball is a ‘circle’; cylinder ends are ‘faces’; base is bottom.</span>
+            </div>
+            <div class="p-3 bg-slate-50 border border-slate-200 rounded-lg">
+              <span class="font-bold text-[#0D2C6B] block">Root 4: Ignoring Unit Size</span>
+              <span class="text-[#4C4C4E] text-[11px] mt-1 block">Number beats unit; 1250 mL &gt; 2 L; unequal blocks.</span>
+            </div>
+          </div>
+
+          <!-- Sorter Scenarios Stream -->
+          <div class="space-y-4" id="sorterContainer">
+            <!-- Injected by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- SECTION 5: TASK MAKEOVER STUDIO (WORKING MATHEMATICALLY)       -->
+      <!-- ============================================================== -->
+      <section id="section5" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-[#0D2C6B] pl-4">
+          <span class="text-xs font-bold text-[#188296] uppercase tracking-wider">Section 5</span>
+          <h2 class="text-2xl font-black text-[#0D2C6B]">Task Makeover Studio (MAO-WM-01)</h2>
+          <p class="text-sm text-[#4C4C4E] mt-1">Transform closed procedural worksheet tasks into rich, open Working Mathematically inquiries.</p>
+        </div>
+
+        <!-- STAGE COMPARISON SELECTOR -->
+        <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 space-y-6">
+          <div class="flex flex-wrap items-center justify-between pb-4 border-b border-slate-200 gap-3">
+            <h3 class="text-lg font-bold text-[#0D2C6B] flex items-center">
+              <i data-lucide="refresh-cw" class="w-5 h-5 mr-2 text-[#188296]"></i>
+              Side-by-Side Task Makeovers Across Stages
+            </h3>
+            <div class="flex gap-2">
+              <button onclick="setMakeoverStage('es1')" class="mo-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0D2C6B] text-white">ES1</button>
+              <button onclick="setMakeoverStage('s1')" class="mo-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200">Stage 1</button>
+              <button onclick="setMakeoverStage('s2')" class="mo-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200">Stage 2</button>
+              <button onclick="setMakeoverStage('s3')" class="mo-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200">Stage 3</button>
+            </div>
+          </div>
+
+          <div id="makeoverDisplay">
+            <!-- Dynamic Side-by-side card injected via JS -->
+          </div>
+        </div>
+
+        <!-- 5 HIGH-YIELD PEDAGOGICAL MOVES STUDIO -->
+        <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 space-y-6">
+          <div class="pb-4 border-b border-slate-200">
+            <span class="text-xs font-bold text-[#188296] uppercase font-mono">Pedagogical Repertoire</span>
+            <h3 class="text-lg font-bold text-[#0D2C6B] mt-0.5">The 5 High-Yield Mathematical Moves Studio</h3>
+            <p class="text-xs text-[#4C4C4E] mt-1">Click a stage to observe how the exact same closed procedural task is opened using the 5 core pedagogical moves.</p>
+          </div>
+
+          <div class="flex gap-2 mb-4">
+            <button onclick="setMovesStage('s1')" class="moves-stage-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-[#188296] text-white">Stage 1 (Faces of a Cube)</button>
+            <button onclick="setMovesStage('s2')" class="moves-stage-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200">Stage 2 (Capacity & Litres)</button>
+            <button onclick="setMovesStage('s3')" class="moves-stage-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200">Stage 3 (Prism Volume Layers)</button>
+          </div>
+
+          <div id="movesContent" class="space-y-3">
+            <!-- Injected by JavaScript -->
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- SECTION 6: MODULE MASTERY CHECKPOINT                           -->
+      <!-- ============================================================== -->
+      <section id="checkpoint" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-[#0D2C6B] pl-4">
+          <span class="text-xs font-bold text-[#188296] uppercase tracking-wider">Section 6</span>
+          <h2 class="text-2xl font-black text-[#0D2C6B]">Module Mastery Checkpoint</h2>
+          <p class="text-sm text-[#4C4C4E] mt-1">Five scenario-based questions mapping directly to NESA Teaching Advice. Achieve 80% to unlock executive takeaways.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 space-y-6">
+          <div id="quizContainer" class="space-y-6">
+            <!-- Quiz questions injected by JS -->
+          </div>
+
+          <div class="pt-4 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+            <div id="quizScoreText" class="text-sm font-bold text-[#0D2C6B]">
+              Answer all 5 questions to verify mastery.
+            </div>
+            <button onclick="submitQuiz()" id="quizSubmitBtn" class="bg-[#0D2C6B] hover:bg-blue-900 text-white font-bold px-6 py-2.5 rounded-lg text-sm transition shadow-sm flex items-center space-x-2">
+              <i data-lucide="check-circle" class="w-4 h-4 text-[#FBAF3F]"></i>
+              <span>Submit Assessment</span>
+            </button>
+          </div>
+
+          <!-- KEY PEDAGOGICAL TAKEAWAYS (K–6 CONTINUUM) UNLOCKED ON 80%+ PASS -->
+          <div id="takeawaysContainer" class="hidden mt-8 p-6 bg-gradient-to-br from-blue-50 to-emerald-50 rounded-2xl border-2 border-[#188296] space-y-6">
+            <div class="flex items-center space-x-3 text-[#0D2C6B]">
+              <div class="w-10 h-10 rounded-xl bg-[#188296] text-white flex items-center justify-center shadow">
+                <i data-lucide="award" class="w-6 h-6 text-[#FBAF3F]"></i>
+              </div>
+              <div>
+                <span class="text-xs font-mono font-bold uppercase text-[#188296]">Curriculum Synthesis</span>
+                <h3 class="text-xl font-black text-[#0D2C6B]">Key Pedagogical Takeaways (K–6 Continuum)</h3>
+              </div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs text-[#231F20] leading-relaxed">
+              <div class="p-4 bg-white rounded-xl border border-blue-200 space-y-2">
+                <strong class="text-[#0D2C6B] block text-sm font-bold">1. Concrete Manipulation Precedes Formulas</strong>
+                <p>Never rush to procedural rules like <em>V = l &times; w &times; h</em>. Students must construct prisms from unit cubes, sketch them on isometric grids, and express volume in words as <em>cubes in one layer &times; number of layers</em>. The row-by-column area structure of 2D directly powers the 3D layer structure.</p>
+              </div>
+
+              <div class="p-4 bg-white rounded-xl border border-blue-200 space-y-2">
+                <strong class="text-[#0D2C6B] block text-sm font-bold">2. Address the Five Comparison Pairs Early</strong>
+                <p>Break the ‘taller holds more’ perceptual illusion in Kindergarten and Stage 1 by systematically providing containers that are shorter but hold more, taller but hold less, and short wide containers that hold the exact same volume as tall narrow ones.</p>
+              </div>
+
+              <div class="p-4 bg-white rounded-xl border border-blue-200 space-y-2">
+                <strong class="text-[#0D2C6B] block text-sm font-bold">3. Rigorous Geometric Vocabulary</strong>
+                <p>Reserve <em>face</em> exclusively for flat surfaces with straight edges (polyhedra). A cylinder possesses two flat circular surfaces and one curved surface—zero faces. Spheres and cylinders have no nets because they lack polygonal faces and straight edges.</p>
+              </div>
+
+              <div class="p-4 bg-white rounded-xl border border-blue-200 space-y-2">
+                <strong class="text-[#0D2C6B] block text-sm font-bold">4. The Uniform Cross-Section is the Base</strong>
+                <p>The base of a prism is not defined by table orientation. Teach students to visualise parallel slicing: the shape that remains identical throughout the slice is the base that names the prism. A triangular prism resting on its side is still named by its triangular cross-section.</p>
+              </div>
+            </div>
+
+            <div class="p-4 bg-[#0D2C6B] text-white rounded-xl text-xs flex items-center justify-between">
+              <span>CEDoW Mathematics Professional Learning • Optional Self-Paced Growth</span>
+              <span class="font-mono text-[#FBAF3F]">Ref: MAO-WM-01 & Focus Area 7</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ============================================================== -->
+      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE                         -->
+      <!-- ============================================================== -->
+      <section id="section7" class="scroll-mt-24 space-y-6">
+        <div class="border-l-4 border-[#0D2C6B] pl-4">
+          <span class="text-xs font-bold text-[#188296] uppercase tracking-wider">Section 7</span>
+          <h2 class="text-2xl font-black text-[#0D2C6B]">Canvas LMS Deployment Guide</h2>
+          <p class="text-sm text-[#4C4C4E] mt-1">Instructions for embedding this self-contained PL module directly into Catholic Education Diocese of Wollongong Canvas courses.</p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <!-- Method A: GitHub Pages / Cloud Hosting -->
+            <div class="space-y-3">
+              <div class="flex items-center space-x-2 text-[#0D2C6B] font-bold text-sm">
+                <i data-lucide="globe" class="w-4 h-4 text-[#188296]"></i>
+                <h4>Method 1: Host on GitHub Pages & Embed via iframe (Recommended)</h4>
+              </div>
+              <ol class="list-decimal list-inside text-xs text-[#4C4C4E] space-y-2 leading-relaxed">
+                <li>Create a public GitHub repository named <code class="bg-slate-100 px-1 py-0.5 rounded text-[#0D2C6B]">cedow-maths-pl</code>.</li>
+                <li>Upload this single file as <code class="bg-slate-100 px-1 py-0.5 rounded text-[#0D2C6B]">index.html</code> into the repository or branch.</li>
+                <li>In repository <strong>Settings &rarr; Pages</strong>, set branch to <code class="bg-slate-100 px-1 py-0.5 rounded">main</code> and root folder to <code class="bg-slate-100 px-1 py-0.5 rounded">/ (root)</code>.</li>
+                <li>Copy your live HTTPS URL (e.g. <code class="bg-slate-100 px-1 py-0.5 rounded">https://[org].github.io/cedow-maths-pl/</code>).</li>
+                <li>In Canvas LMS, create a new <strong>Page</strong>, switch to the <strong>HTML View (&lt;/&gt;)</strong>, and paste the responsive embed code below.</li>
+              </ol>
+            </div>
+
+            <!-- Method B: Direct RCE / HTML Upload -->
+            <div class="space-y-3">
+              <div class="flex items-center space-x-2 text-[#0D2C6B] font-bold text-sm">
+                <i data-lucide="file-code" class="w-4 h-4 text-[#FBAF3F]"></i>
+                <h4>Method 2: Canvas Files Direct Upload & Linking</h4>
+              </div>
+              <ol class="list-decimal list-inside text-xs text-[#4C4C4E] space-y-2 leading-relaxed">
+                <li>In your Canvas Course, navigate to <strong>Files</strong> and upload this complete <code class="bg-slate-100 px-1 py-0.5 rounded text-[#0D2C6B]">.html</code> file.</li>
+                <li>Create a new Canvas <strong>Module Item</strong> &rarr; Select <strong>File</strong> &rarr; Choose the uploaded HTML file.</li>
+                <li>Alternatively, link it from any Canvas Page. When opened by teachers, it will render within the Canvas content window with full interactivity.</li>
+                <li>Because all styles, scripts, and fonts reference secure CDN endpoints, the module requires zero server dependencies.</li>
+              </ol>
+            </div>
+          </div>
+
+          <!-- EMBED SNIPPET CODE BOX -->
+          <div class="space-y-2 pt-4 border-t border-slate-200">
+            <div class="flex items-center justify-between">
+              <label class="text-xs font-bold text-[#0D2C6B]">Responsive Canvas LMS iframe Code Snippet:</label>
+              <button onclick="copyEmbedCode()" id="copyEmbedBtn" class="text-xs font-bold text-[#188296] hover:text-[#0D2C6B] flex items-center space-x-1">
+                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+                <span>Copy Code</span>
+              </button>
+            </div>
+            <pre class="bg-slate-900 text-slate-100 p-4 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="embedCodeText">&lt;div style="position: relative; width: 100%; height: 0; padding-bottom: 85%; min-height: 800px; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);"&gt;
+  &lt;iframe 
+    src="https://YOUR-ORG.github.io/YOUR-REPO-NAME/" 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+    allow="fullscreen" 
+    title="CEDoW Focus Area 7: Three-dimensional Spatial Structure PL"&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- CEDoW FOOTER -->
+  <footer class="bg-[#0D2C6B] text-white py-8 border-t-4 border-[#FBAF3F] mt-16">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs">
+      <div class="flex items-center space-x-3">
+        <div class="w-7 h-7 bg-white text-[#0D2C6B] font-black rounded flex items-center justify-center text-sm">
+          CD
+        </div>
+        <div>
+          <p class="font-bold">Catholic Education Diocese of Wollongong</p>
+          <p class="text-slate-300">Primary Mathematics Curriculum & Pedagogical Learning Continuum</p>
+        </div>
+      </div>
+      <div class="text-center sm:text-right text-slate-300">
+        <p>Built from NESA <em>Mathematics K–10 (2022)</em> Outcomes & Teaching Advice</p>
+        <p class="mt-0.5 text-slate-400">Pure Australian English Orthography & Standards</p>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================== -->
+  <!-- JAVASCRIPT: DATA & INTERACTIVE LOGIC                           -->
+  <!-- ============================================================== -->
+  <script>
+    /* ------------------------------------------------------------- */
+    /* 1. CURRICULUM DATA MODEL                                      */
+    /* ------------------------------------------------------------- */
+    const STAGE_DATA = {
+      es1: {
+        short: "ES1",
+        name: "Early Stage 1",
+        years: "Kindergarten",
+        lead: "In Kindergarten, students manipulate, describe and sort familiar objects, predict which objects will stack, and compare volumes and capacities directly by filling, pouring, packing and building. NESA stresses comparing containers that challenge the idea that taller always holds more.",
+        outcomes: [
+          { code: "MAE-3DS-01", desc: "manipulates, describes and sorts three-dimensional objects" },
+          { code: "MAE-3DS-02", desc: "describes and compares volumes" }
+        ],
+        wm: "MAO-WM-01: Predicts the stacking capabilities of various 3D objects (Reasons about spatial relations). Establishes that containers of different shapes may hold the same amount.",
+        contentGroups: [
+          {
+            title: "3D objects: Explore familiar three-dimensional objects",
+            items: [
+              "Describe features of familiar objects using everyday terms: ‘flat’, ‘round’, ‘curved’",
+              "Sort objects and identify attribute used: ‘size’, ‘shape’, ‘function’",
+              "Make and describe 3D models (e.g. building a robot from a ball and blocks)",
+              "Predict stacking capabilities of various objects before testing"
+            ]
+          },
+          {
+            title: "Volume: Compare internal volume by filling and packing",
+            items: [
+              "Fill and empty containers using continuous materials (water, sand)",
+              "Use comparative terms: ‘full’, ‘empty’, ‘about half full’",
+              "Compare capacities directly by filling one container and pouring into the other",
+              "Compare indirectly by pouring into two identical containers and comparing levels",
+              "Establish that containers of different shapes can hold the same amount"
+            ]
+          },
+          {
+            title: "Volume: Compare volume by building",
+            items: [
+              "Identify volume as the amount of space an object or substance occupies",
+              "Compare volumes of block constructions directly by deconstructing and rebuilding",
+              "Use comparative language: ‘takes up more space’, ‘has more volume’"
+            ]
+          }
+        ],
+        adviceAlerts: [
+          "Early experiences often lead students to conclude that taller containers hold more. Provide direct comparisons across all 5 container pairs.",
+          "Use objects of different sizes; some students need larger objects to manipulate.",
+          "Meaningful practice is needed using the general word ‘container’ for bottles, jars, and tubs."
+        ],
+        vocab: ["object", "shape", "curved", "flat", "round", "roll", "slide", "stack", "container", "volume", "space", "takes up more space"]
+      },
+      s1: {
+        short: "S1",
+        name: "Stage 1",
+        years: "Years 1–2",
+        lead: "In Years 1 and 2, students name and describe cubes, cylinders, spheres and rectangular prisms using surface, face, edge and vertex, and measure capacity and volume with uniform informal units, including stacking cubes in layers.",
+        outcomes: [
+          { code: "MA1-3DS-01", desc: "recognises, describes and represents familiar three-dimensional objects" },
+          { code: "MA1-3DS-02", desc: "measures, records, compares and estimates internal volumes (capacities) and volumes using uniform informal units" }
+        ],
+        wm: "MAO-WM-01: Recognises that cubes pack without gaps (Reasons about spatial structure). Devises strategies for stacking and counting units to form rectangular prisms in layers.",
+        contentGroups: [
+          {
+            title: "3D objects: Recognise, sort and describe familiar objects",
+            items: [
+              "Use the term ‘three-dimensional’ for objects in the classroom, landforms and outdoor spaces",
+              "Distinguish 3D objects (sculpture) from 2D shapes (photograph)",
+              "Name familiar objects: cubes, cylinders, spheres, rectangular prisms",
+              "Use ‘surface’ for curved/flat exteriors; use ‘face’ strictly for flat surfaces with straight edges"
+            ]
+          },
+          {
+            title: "Volume: Measure internal volume (capacity) by filling and packing",
+            items: [
+              "Count how many times a smaller unit container fills a larger container",
+              "Select appropriate units: cups rather than teaspoons to fill a bucket",
+              "Pack cubic units into rectangular containers with no gaps",
+              "Explain that gaps between units affect measurement accuracy"
+            ]
+          },
+          {
+            title: "Volume: Construct volumes using cubes in layers",
+            items: [
+              "Explore different rectangular prisms made from a given number of cubes",
+              "Devise strategies for stacking and counting units: make layers with no gaps",
+              "Record volumes by number and type of unit (e.g. a prism 2 cubes high, 2 wide, 4 long)",
+              "Make and calibrate a measuring device: mark a bottle as each cup is added"
+            ]
+          }
+        ],
+        adviceAlerts: [
+          "A face is a flat surface with only straight edges. Cylinders have two flat surfaces and one curved surface—zero faces.",
+          "Volume is harder to visualise than length or area because units are hidden by the layer structure.",
+          "The row and column structure of area directly assists students in understanding 3D packing."
+        ],
+        vocab: ["three-dimensional", "cube", "cylinder", "sphere", "rectangular prism", "surface", "face", "edge", "vertex", "layer", "capacity"]
+      },
+      s2: {
+        short: "S2",
+        name: "Stage 2",
+        years: "Years 3–4",
+        lead: "In Years 3 and 4, students make models and nets of prisms, pyramids and cylinders, sketch objects showing depth, and use isometric grids. Capacity is measured in litres and millilitres, and volume in cubic centimetres described in layers.",
+        outcomes: [
+          { code: "MA2-3DS-01", desc: "makes and sketches models and nets of three-dimensional objects including prisms and pyramids" },
+          { code: "MA2-3DS-02", desc: "estimates, measures and compares capacities using litres, millilitres and volumes using cubic centimetres" }
+        ],
+        wm: "MAO-WM-01: Creates sketches from top, front and side views (Reasons about spatial relations). Interprets drawings to make models from connecting cubes.",
+        contentGroups: [
+          {
+            title: "3D objects: Models, nets and 2D representations",
+            items: [
+              "Identify differences between prisms, pyramids and cylinders as general classes",
+              "Deconstruct packaging to create nets; investigate the 11 nets of a cube",
+              "Sketch rectangular prisms and pyramids showing depth",
+              "Sketch top, front and side views; draw connecting cube models on isometric dot grids"
+            ]
+          },
+          {
+            title: "Volume: Measure and order containers using litres & millilitres",
+            items: [
+              "Recognise the need for formal standard units of capacity",
+              "Relate 1000 millilitres to one litre; calibrate containers in 100 mL intervals",
+              "Relate benchmarks to everyday items: one cup is about 250 mL; one teaspoon is about 5 mL",
+              "Recognise that 1-litre containers can come in a variety of shapes (milk cartons, tubs)"
+            ]
+          },
+          {
+            title: "Volume: Cubic centimetres in layers",
+            items: [
+              "Construct rectangular prisms from cubic-centimetre blocks and describe in layers (e.g. 2 layers of 10)",
+              "Record in numerals and words: 6 cubic centimetres (cm³ abbreviation is formalised in Stage 3)"
+            ]
+          }
+        ],
+        adviceAlerts: [
+          "Treat prisms and pyramids as classes in Stage 2; specific names (e.g. pentagonal prism) come in Stage 3.",
+          "Isometric drawings represent faces as they appear to the eye (rhombuses), not as we know them to be (squares). Have students photograph cubes and trace.",
+          "A cube has exactly 11 distinct nets; regular tetrahedron has 2. Spheres and cylinders do not have nets."
+        ],
+        vocab: ["prism", "pyramid", "net", "isometric drawing", "top view", "front view", "side view", "litre (L)", "millilitre (mL)", "cubic centimetre"]
+      },
+      s3: {
+        short: "S3",
+        name: "Stage 3",
+        years: "Years 5–6",
+        lead: "In Years 5 and 6, students name prisms and pyramids by their base, recognise uniform cross-sections, visualise views and nets, and construct skeletal models. Volume is calculated as cubes in one layer &times; number of layers, in cm³ and m³, with displacement and decimal capacities.",
+        outcomes: [
+          { code: "MA3-3DS-01", desc: "visualises, sketches and constructs three-dimensional objects, including prisms and pyramids, making connections to two-dimensional representations" },
+          { code: "MA3-3DS-02", desc: "selects and uses the appropriate unit to estimate, measure and calculate volumes and capacities" }
+        ],
+        wm: "MAO-WM-01: Visualises and names prisms/pyramids from representations of nets (Reasons about spatial visualisation). Establishes multiplicative layer structure.",
+        contentGroups: [
+          {
+            title: "3D objects: Base properties, uniform cross-section & skeletal models",
+            items: [
+              "Compare properties: prisms have a uniform cross-section parallel to the base; pyramids do not",
+              "Prisms have 2 identical bases; pyramids have one base and an apex",
+              "Name prisms and pyramids strictly by the shape of their base (e.g. hexagonal prism)",
+              "Create skeletal models using toothpicks and modelling clay to focus on edges and vertices"
+            ]
+          },
+          {
+            title: "Volume: Multiplicative layer structure & calculations",
+            items: [
+              "Describe length, width, height as the dimensions of a rectangular prism",
+              "Record in words: volume = number of cubes in one layer &times; number of layers",
+              "Calculate volumes in cubic centimetres (cm³) and cubic metres (m³)",
+              "Recognise that rectangular prisms with the same volume can have different dimensions (e.g. factoring 24)"
+            ]
+          },
+          {
+            title: "Volume: Displacement, decimal capacities & cubic metres",
+            items: [
+              "Use displacement of water to measure and compare volumes of irregular solids",
+              "Record capacities to 3 decimal places: 375 mL = 0.375 L; 1.275 L",
+              "Construct a 1-cubic-metre frame; estimate and measure classroom volume in m³"
+            ]
+          }
+        ],
+        adviceAlerts: [
+          "The base is the shape of the uniform cross-section, NOT necessarily the face it rests on.",
+          "Record methods in words: ‘cubes in one layer &times; number of layers’. Avoid premature algebraic formulas (V = l &times; w &times; h).",
+          "Read m³ as ‘cubic metres’ and cm³ as ‘cubic centimetres’, NEVER ‘metres cubed’."
+        ],
+        vocab: ["base", "apex", "uniform cross-section", "dimensions", "skeletal model", "displacement", "cubic centimetre (cm³)", "cubic metre (m³)"]
+      }
+    };
+
+    const BIG_IDEAS = [
+      {
+        id: "surfaces",
+        name: "1. Surfaces & Features",
+        desc: "Objects are described, sorted and classified by their surfaces, faces, edges and cross-sections.",
+        stages: {
+          es1: "Describes familiar objects as ‘flat’, ‘round’ or ‘curved’; tests which roll or stack.",
+          s1: "Distinguishes curved surfaces from flat faces with straight edges; introduces vertices and edges.",
+          s2: "Compares prisms, pyramids and cylinders as general classes of objects.",
+          s3: "Names prisms and pyramids by their base; identifies uniform cross-sections and apexes."
+        }
+      },
+      {
+        id: "rep2d",
+        name: "2. 2D Representations",
+        desc: "Three-dimensional space is represented through models, drawings, views, and nets.",
+        stages: {
+          es1: "Builds simple models from collections of everyday objects.",
+          s1: "Recognises flat faces as 2D shapes (e.g. the faces of a cube are squares).",
+          s2: "Deconstructs packages into nets; draws depth and top/front/side views on isometric dot grids.",
+          s3: "Visualises nets mentally before folding; interprets multi-view engineering plans and skeletal models."
+        }
+      },
+      {
+        id: "volume",
+        name: "3. Volume Concept",
+        desc: "Volume is the 3D space an object occupies; capacity is internal volume.",
+        stages: {
+          es1: "‘Takes up more space’; compares internal capacity directly by filling, pouring and packing.",
+          s1: "Measures volume and capacity using uniform informal units (blocks, cups) without gaps.",
+          s2: "Introduces standard metric units: litres (L), millilitres (mL) and cubic centimetres.",
+          s3: "Measures large spaces in cubic metres (m³); uses liquid displacement for irregular solids."
+        }
+      },
+      {
+        id: "shape-indep",
+        name: "4. Shape Independence",
+        desc: "Containers and objects of completely different shapes can share identical volumes.",
+        stages: {
+          es1: "Discovers that a short wide container can hold the exact same liquid as a tall narrow bottle.",
+          s1: "Builds different shaped models from the same count of blocks; proves equal volume.",
+          s2: "Investigates how 1-litre containers come in diverse shapes (milk carton vs ice-cream tub).",
+          s3: "Constructs all possible rectangular prisms with a volume of 24 cubes (e.g. 6&times;4&times;1 vs 4&times;3&times;2)."
+        }
+      },
+      {
+        id: "layers",
+        name: "5. Layer Structure",
+        desc: "Rows and columns form a 2D layer; identical layers stack to generate 3D volume.",
+        stages: {
+          es1: "Stacks and packs blocks into boxes systematically.",
+          s1: "Arranges cubes in rows and layers with no voids; deduces count of hidden cubes.",
+          s2: "Describes volume explicitly in layers (e.g. 2 layers of 10 cubic-centimetre blocks).",
+          s3: "Calculates volume multiplicatively in words: number of cubes in one layer &times; number of layers."
+        }
+      },
+      {
+        id: "unit-size",
+        name: "6. Unit Size Matters",
+        desc: "Inverse relationship: larger measuring units mean fewer are required.",
+        stages: {
+          es1: "Uses qualitative anchors: empty, full, about half full.",
+          s1: "Reasons that more small cups than large tubs are needed to fill a bucket; unit size dictates total.",
+          s2: "Standardises with metric prefixes: 1000 millilitres = 1 litre; calibrates scales.",
+          s3: "Applies place value to metric decimal capacities to 3 decimal places (e.g. 375 mL = 0.375 L)."
+        }
+      }
+    ];
+
+    /* ------------------------------------------------------------- */
+    /* 2. SECTION 1 UI RENDERING                                     */
+    /* ------------------------------------------------------------- */
+    let currentStage = 'es1';
+    let currentBigIdea = 'surfaces';
+
+    function setStage(stKey) {
+      currentStage = stKey;
+      document.querySelectorAll('.stage-tab-btn').forEach(btn => {
+        const active = btn.dataset.stage === stKey;
+        btn.className = active 
+          ? 'stage-tab-btn py-3 px-4 rounded-lg font-bold text-sm border-2 border-[#188296] bg-[#188296] text-white flex flex-col items-center justify-center transition shadow-sm'
+          : 'stage-tab-btn py-3 px-4 rounded-lg font-bold text-sm border-2 border-slate-200 bg-white text-[#4C4C4E] hover:border-[#188296] flex flex-col items-center justify-center transition shadow-sm';
+      });
+
+      const data = STAGE_DATA[stKey];
+      const container = document.getElementById('stageDetailsContainer');
+      container.innerHTML = `
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+          <div class="flex items-center justify-between mb-2">
+            <span class="text-xs font-mono font-bold uppercase text-[#188296]">${data.years}</span>
+            <span class="text-xs bg-[#0D2C6B] text-white px-2 py-0.5 rounded font-mono font-bold">${data.short}</span>
+          </div>
+          <p class="text-xs text-[#231F20] leading-relaxed">${data.lead}</p>
+        </div>
+
+        <!-- Outcomes & WM -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div class="p-4 bg-white rounded-xl border border-[#D1D2D4] shadow-sm">
+            <h4 class="text-xs font-bold uppercase text-[#0D2C6B] mb-2 flex items-center">
+              <i data-lucide="check-square" class="w-4 h-4 mr-1.5 text-[#188296]"></i> Formal Syllabus Outcomes
+            </h4>
+            <div class="space-y-2 text-xs">
+              ${data.outcomes.map(o => `
+                <div class="p-2 bg-slate-50 rounded border border-slate-100">
+                  <span class="font-mono font-bold text-[#0D2C6B]">${o.code}</span>
+                  <p class="text-[#4C4C4E] mt-0.5">${o.desc}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <div class="p-4 bg-white rounded-xl border border-[#D1D2D4] shadow-sm">
+            <h4 class="text-xs font-bold uppercase text-[#0D2C6B] mb-2 flex items-center">
+              <i data-lucide="compass" class="w-4 h-4 mr-1.5 text-[#FBAF3F]"></i> Working Mathematically (MAO-WM-01)
+            </h4>
+            <div class="p-3 bg-amber-50/60 rounded-lg border border-amber-200 text-xs text-amber-950 leading-relaxed">
+              ${data.wm}
+            </div>
+            <div class="mt-3">
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block mb-1">Key Stage Vocabulary:</span>
+              <div class="flex flex-wrap gap-1.5">
+                ${data.vocab.map(v => `<span class="bg-slate-100 text-[#4C4C4E] px-2 py-0.5 rounded text-[11px] font-mono">${v}</span>`).join('')}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Substrands -->
+        <div class="p-5 bg-white rounded-xl border border-[#D1D2D4] shadow-sm space-y-4">
+          <h4 class="text-xs font-bold uppercase text-[#0D2C6B] tracking-wider">Focus Area Content & Milestone Descriptors</h4>
+          <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            ${data.contentGroups.map(cg => `
+              <div class="p-3 bg-[#F4F6F9] rounded-lg border border-slate-200 flex flex-col justify-between">
+                <div>
+                  <h5 class="text-xs font-bold text-[#0D2C6B] pb-1.5 border-b border-slate-200 mb-2">${cg.title}</h5>
+                  <ul class="space-y-1.5 text-[11px] text-[#4C4C4E]">
+                    ${cg.items.map(it => `<li class="flex items-start"><span class="text-[#188296] mr-1.5 font-bold">•</span><span>${it}</span></li>`).join('')}
+                  </ul>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+
+        <!-- NESA Teaching Advice Alerts -->
+        <div class="p-4 bg-blue-50/70 rounded-xl border border-blue-200">
+          <h4 class="text-xs font-bold uppercase text-[#0D2C6B] mb-2 flex items-center">
+            <i data-lucide="info" class="w-4 h-4 mr-1.5 text-[#188296]"></i> NESA Teaching Advice Alerts
+          </h4>
+          <ul class="space-y-1.5 text-xs text-[#0D2C6B]">
+            ${data.adviceAlerts.map(a => `<li class="flex items-start"><span class="text-[#FBAF3F] mr-1.5 font-black">&bull;</span><span>${a}</span></li>`).join('')}
+          </ul>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function renderBigIdeas() {
+      const btnContainer = document.getElementById('bigIdeasButtons');
+      btnContainer.innerHTML = BIG_IDEAS.map(bi => `
+        <button onclick="setBigIdea('${bi.id}')" id="bi-btn-${bi.id}" class="bi-btn p-2 rounded-lg text-xs font-bold text-left border transition ${bi.id === currentBigIdea ? 'bg-[#0D2C6B] text-white border-[#0D2C6B]' : 'bg-white text-[#4C4C4E] border-[#D1D2D4] hover:bg-slate-50'}">
+          ${bi.name}
+        </button>
+      `).join('');
+
+      const idea = BIG_IDEAS.find(b => b.id === currentBigIdea);
+      const card = document.getElementById('bigIdeaDisplayCard');
+      card.innerHTML = `
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between pb-3 border-b border-[#D1D2D4] gap-2">
+          <div>
+            <h4 class="text-sm font-bold text-[#0D2C6B]">${idea.name}</h4>
+            <p class="text-xs text-[#4C4C4E] mt-0.5">${idea.desc}</p>
+          </div>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 mt-4">
+          <div class="p-3 bg-white rounded-lg border border-slate-200">
+            <span class="text-[10px] font-mono font-bold uppercase text-[#188296] block mb-1">Early Stage 1</span>
+            <p class="text-xs text-[#231F20]">${idea.stages.es1}</p>
+          </div>
+          <div class="p-3 bg-white rounded-lg border border-slate-200">
+            <span class="text-[10px] font-mono font-bold uppercase text-[#188296] block mb-1">Stage 1</span>
+            <p class="text-xs text-[#231F20]">${idea.stages.s1}</p>
+          </div>
+          <div class="p-3 bg-white rounded-lg border border-slate-200">
+            <span class="text-[10px] font-mono font-bold uppercase text-[#188296] block mb-1">Stage 2</span>
+            <p class="text-xs text-[#231F20]">${idea.stages.s2}</p>
+          </div>
+          <div class="p-3 bg-white rounded-lg border border-slate-200">
+            <span class="text-[10px] font-mono font-bold uppercase text-[#188296] block mb-1">Stage 3</span>
+            <p class="text-xs text-[#231F20]">${idea.stages.s3}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    function setBigIdea(id) {
+      currentBigIdea = id;
+      renderBigIdeas();
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 3. SECTION 3: INTERACTIVE TOOL LAB LOGIC                      */
+    /* ------------------------------------------------------------- */
+    function switchToolTab(tabId) {
+      document.querySelectorAll('.tool-tab-btn').forEach(btn => {
+        btn.className = 'tool-tab-btn px-4 py-2 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200 flex items-center space-x-2';
+      });
+      document.querySelectorAll('.tool-panel').forEach(p => p.classList.add('hidden'));
+
+      const activeBtn = document.getElementById(`tab-${tabId}`);
+      if (activeBtn) {
+        activeBtn.className = 'tool-tab-btn px-4 py-2 rounded-lg text-xs font-bold bg-[#0D2C6B] text-white flex items-center space-x-2';
+      }
+      const activePanel = document.getElementById(`panel-${tabId}`);
+      if (activePanel) {
+        activePanel.classList.remove('hidden');
+      }
+      lucide.createIcons();
+    }
+
+    /* SHARED ISOMETRIC PRISM GENERATOR */
+    function isoPrism(L, W, H, opt) {
+      opt = opt || {};
+      const s = opt.s || 22;
+      const c = Math.cos(Math.PI / 6);
+      const gap = opt.explode ? 1.25 : 0;
+      
+      function shade(hex, k) {
+        const n = parseInt(hex.slice(1), 16);
+        const r = n >> 16, g = (n >> 8) & 255, b = n & 255;
+        return 'rgb(' + [r, g, b].map(v => Math.min(255, Math.round(k > 1 ? v + (255 - v) * (k - 1) * 1.5 : v * k))).join(',') + ')';
+      }
+      const cols = ["#0D2C6B", "#188296", "#FBAF3F", "#4C4C4E", "#2563EB", "#059669"];
+      function P(x, y, z) {
+        return [(x - y) * c * s, (x + y) * 0.5 * s - z * s];
+      }
+      const cubes = [];
+      for (let z = 0; z < H; z++) {
+        for (let y = 0; y < W; y++) {
+          for (let x = 0; x < L; x++) {
+            cubes.push([x, y, z]);
+          }
+        }
+      }
+      cubes.sort((a, b) => ((a[0] + a[1] + a[2]) - (b[0] + b[1] + b[2])) || (a[2] - b[2]));
+      
+      let minX = 1e9, maxX = -1e9, minY = 1e9, maxY = -1e9;
+      const polys = [];
+      cubes.forEach(q => {
+        const x = q[0], y = q[1], z = q[2] + q[2] * gap;
+        const col = opt.layers ? cols[q[2] % cols.length] : (opt.col || "#188296");
+        const faces = [
+          [[x, y, z + 1], [x + 1, y, z + 1], [x + 1, y + 1, z + 1], [x, y + 1, z + 1], 1.15],
+          [[x + 1, y, z], [x + 1, y + 1, z], [x + 1, y + 1, z + 1], [x + 1, y, z + 1], 0.85],
+          [[x, y + 1, z], [x + 1, y + 1, z], [x + 1, y + 1, z + 1], [x, y + 1, z + 1], 0.65]
+        ];
+        faces.forEach(f => {
+          const pts = f.slice(0, 4).map(v => {
+            const p = P(v[0], v[1], v[2]);
+            minX = Math.min(minX, p[0]); maxX = Math.max(maxX, p[0]);
+            minY = Math.min(minY, p[1]); maxY = Math.max(maxY, p[1]);
+            return p;
+          });
+          polys.push(`<polygon points="${pts.map(p => p[0].toFixed(1) + ',' + p[1].toFixed(1)).join(' ')}" fill="${shade(col, f[4])}" stroke="#ffffff" stroke-width="1.2" stroke-linejoin="round"/>`);
+        });
+      });
+      const pad = 12;
+      const w = maxX - minX + pad * 2;
+      const h = maxY - minY + pad * 2;
+      return `<svg viewBox="${(minX - pad).toFixed(1)} ${(minY - pad).toFixed(1)} ${w.toFixed(1)} ${h.toFixed(1)}" style="max-height:260px; width:auto;" role="img" aria-label="${L} by ${W} by ${H} prism of cubes">${polys.join('')}</svg>`;
+    }
+
+    /* TOOL 1: CONTAINERS LAB */
+    const CT_PAIRS = [
+      { a: [110, 80], b: [52, 150], k: "The left container is shorter but holds more." },
+      { a: [42, 150], b: [96, 90], k: "The left container is taller but holds less." },
+      { a: [62, 80], b: [70, 135], k: "The left container is shorter and holds less." },
+      { a: [72, 150], b: [84, 92], k: "The left container is taller and holds more." },
+      { a: [100, 72], b: [45, 160], k: "The short wide container holds the same as the tall narrow one." }
+    ];
+    let ctOrder = [], ctIdx = -1, ctScore = 0, ctRounds = 0, currA, currB;
+
+    function initContainers() {
+      function cont(x, w, h, level, over, lab, col) {
+        const base = 190, top = base - h;
+        let s = '';
+        if (level > 0) s += `<rect x="${x}" y="${base - level}" width="${w}" height="${level}" fill="${col}" fill-opacity="0.8"/>`;
+        if (over) {
+          s += `<path d="M${x + w} ${top} q 14 4 18 30 q 4 40 14 ${h - 30} l -18 0 q -8 -50 -10 -${h - 40}Z" fill="${col}" fill-opacity="0.6"/>
+                <ellipse cx="${x + w + 18}" cy="${base + 4}" rx="26" ry="5" fill="${col}" fill-opacity="0.5"/>`;
+        }
+        s += `<path d="M${x} ${top} V${base} H${x + w} V${top}" fill="none" stroke="#0D2C6B" stroke-width="3" stroke-linejoin="round"/>`;
+        s += `<text x="${x + w / 2}" y="212" text-anchor="middle" font-size="13" font-weight="700" fill="#4C4C4E">${lab}</text>`;
+        return s;
+      }
+
+      function draw(poured) {
+        const col = "#188296";
+        let la = currA[1], lb = 0, over = false;
+        const capA = currA[0] * currA[1], capB = currB[0] * currB[1];
+        if (poured) {
+          la = 0;
+          lb = Math.min(currB[1], capA / currB[0]);
+          over = capA > capB + 1;
+        }
+        const xB = 80 + currA[0] + 70;
+        const totalW = xB + currB[0] + 60;
+        document.getElementById("ctPic").innerHTML = `
+          <svg viewBox="0 0 ${totalW} 226" style="max-width:100%; height:200px;">
+            ${cont(50, currA[0], currA[1], la, false, "Container A (Left)", col)}
+            ${cont(xB, currB[0], currB[1], lb, over, "Container B (Right)", col)}
+          </svg>
+        `;
+      }
+
+      function newPair() {
+        if (ctIdx < 0 || ctIdx >= ctOrder.length - 1) {
+          ctOrder = CT_PAIRS.slice().sort(() => Math.random() - 0.5);
+          ctIdx = 0;
+        } else {
+          ctIdx++;
+        }
+        ctRounds++;
+        const p = ctOrder[ctIdx];
+        currA = p.a;
+        currB = p.b;
+        draw(false);
+        const fb = document.getElementById("ctFb");
+        fb.className = "hidden p-4 rounded-xl text-xs leading-relaxed border transition-all";
+        document.querySelectorAll(".ct-action-btn").forEach(b => b.disabled = false);
+        document.getElementById("ctNew").disabled = true;
+      }
+
+      document.querySelectorAll(".ct-action-btn").forEach(btn => {
+        btn.onclick = () => {
+          const capA = currA[0] * currA[1];
+          const capB = currB[0] * currB[1];
+          const correctKey = Math.abs(capA - capB) <= 1 ? "s" : (capA > capB ? "a" : "b");
+          const ok = btn.dataset.c === correctKey;
+          if (ok) ctScore++;
+
+          draw(true);
+          const what = correctKey === "s"
+            ? "The liquid from the left exactly fills the right container to the brim: they hold the identical amount."
+            : correctKey === "a"
+            ? "The liquid from the left overflows the right container: the left holds more."
+            : "The liquid from the left does not fill the right container: the right holds more.";
+
+          const fb = document.getElementById("ctFb");
+          fb.className = `p-4 rounded-xl text-xs leading-relaxed border block ${ok ? 'bg-emerald-50 border-emerald-300 text-emerald-900' : 'bg-rose-50 border-rose-300 text-rose-900'}`;
+          fb.innerHTML = `<strong>${ok ? 'Correct!' : 'Not quite.'}</strong> ${what} <span class="block mt-1 text-[#0D2C6B] font-bold">${ctOrder[ctIdx].k}</span> Height alone does not determine internal volume or capacity.`;
+
+          document.querySelectorAll(".ct-action-btn").forEach(b => b.disabled = true);
+          document.getElementById("ctNew").disabled = false;
+          document.getElementById("ctScore").textContent = `${ctScore} of ${ctRounds} correct`;
+          updateOverallProgress();
+        };
+      });
+
+      document.getElementById("ctNew").onclick = newPair;
+      newPair();
+    }
+
+    /* TOOL 2: CUBES DIAGNOSTIC */
+    let cbDims = [3, 2, 3], cbScore = 0, cbRounds = 0;
+
+    function initCubes() {
+      function newModel() {
+        cbDims = [
+          2 + Math.floor(Math.random() * 3),
+          2 + Math.floor(Math.random() * 3),
+          2 + Math.floor(Math.random() * 3)
+        ];
+        document.getElementById("cbPic").innerHTML = isoPrism(cbDims[0], cbDims[1], cbDims[2], { s: 24, layers: false, col: "#188296" });
+        document.getElementById("cbIn").value = "";
+        document.getElementById("cbFb").className = "hidden";
+        document.getElementById("cbGo").disabled = false;
+      }
+
+      function check() {
+        const val = parseInt(document.getElementById("cbIn").value);
+        if (isNaN(val)) return;
+
+        const L = cbDims[0], W = cbDims[1], H = cbDims[2];
+        const V = L * W * H;
+        const faces = L * W + L * H + W * H;
+        const visible = V - (L - 1) * (W - 1) * (H - 1);
+        const ok = val === V;
+
+        cbRounds++;
+        if (ok) cbScore++;
+
+        let why = "";
+        if (ok) {
+          why = `Each layer contains ${W} rows of ${L} cubes (${L * W} cubes). With ${H} layers: ${H} &times; ${L * W} = ${V} cubes altogether.`;
+        } else if (val === faces) {
+          why = `Diagnostic insight: You counted the 2D squares visible on the exterior surface (${faces}). That counts exterior faces rather than 3D unit cubes.`;
+        } else if (val === visible) {
+          why = `Diagnostic insight: You counted only the cubes visible from this angle (${visible}). Exactly ${V - visible} cube(s) are completely concealed inside or behind.`;
+        } else {
+          why = `There are ${V} cubes in total. Notice the layer structure: ${H} layers of ${L * W} cubes (${W} rows of ${L}).`;
+        }
+
+        // Explode view in layers with color coding
+        document.getElementById("cbPic").innerHTML = isoPrism(L, W, H, { s: 22, explode: true, layers: true });
+        const fb = document.getElementById("cbFb");
+        fb.className = `p-4 rounded-xl text-xs leading-relaxed border block ${ok ? 'bg-emerald-50 border-emerald-300 text-emerald-900' : 'bg-rose-50 border-rose-300 text-rose-900'}`;
+        fb.innerHTML = `<strong>${ok ? 'Excellent Spatial Reasoning!' : 'Pedagogical Diagnosis:'}</strong> ${why}`;
+        document.getElementById("cbGo").disabled = true;
+        document.getElementById("cbScore").textContent = `${cbScore} of ${cbRounds} correct`;
+        updateOverallProgress();
+      }
+
+      document.getElementById("cbGo").onclick = check;
+      document.getElementById("cbIn").onkeydown = e => { if (e.key === "Enter") check(); };
+      document.getElementById("cbNew").onclick = newModel;
+      newModel();
+    }
+
+    /* TOOL 3: NETS SIMULATOR */
+    const NETS = [
+      [[1,0],[1,1],[1,2],[1,3],[0,0],[2,0]],
+      [[1,0],[1,1],[1,2],[1,3],[0,0],[2,1]],
+      [[1,0],[1,1],[1,2],[1,3],[0,0],[2,2]],
+      [[1,0],[1,1],[1,2],[1,3],[0,0],[2,3]],
+      [[1,0],[1,1],[1,2],[1,3],[0,1],[2,1]],
+      [[1,0],[1,1],[1,2],[1,3],[0,1],[2,2]],
+      [[0,0],[0,1],[1,1],[1,2],[1,3],[2,1]],
+      [[0,0],[0,1],[1,1],[1,2],[1,3],[2,2]],
+      [[0,0],[0,1],[1,1],[1,2],[1,3],[2,3]],
+      [[0,0],[0,1],[1,1],[1,2],[2,2],[2,3]],
+      [[0,0],[0,1],[0,2],[1,2],[1,3],[1,4]],
+      [[0,0],[0,1],[0,2],[0,3],[0,4],[0,5]], // Invalid line of 6
+      [[0,0],[0,1],[0,2],[1,0],[1,1],[1,2]], // Invalid 2x3
+      [[1,0],[1,1],[1,2],[1,3],[1,4],[0,0]], // Invalid
+      [[0,0],[0,1],[1,0],[1,1],[1,2],[1,3]], // Invalid
+      [[1,0],[1,1],[1,2],[1,3],[0,1],[0,2]], // Invalid
+      [[0,0],[0,1],[0,2],[0,3],[1,1],[1,2]], // Invalid
+      [[0,1],[1,0],[1,1],[1,2],[2,1],[2,2]], // Invalid
+      [[0,0],[0,1],[0,2],[1,2],[1,3],[2,3]]  // Invalid
+    ];
+
+    function foldNet(cells) {
+      const key = (r, c) => `${r},${c}`;
+      const set = {};
+      cells.forEach(p => set[key(p[0], p[1])] = 1);
+      const start = cells[0];
+      const st = {}, res = {};
+      st[key(start[0], start[1])] = { D: "Base", U: "Top", N: "Back", S: "Front", E: "Right", W: "Left" };
+      const q = [start];
+
+      while (q.length) {
+        const p = q.shift();
+        const o = st[key(p[0], p[1])];
+        res[key(p[0], p[1])] = o.D;
+
+        [[-1,0,"N"],[1,0,"S"],[0,1,"E"],[0,-1,"W"]].forEach(d => {
+          const r = p[0] + d[0], c = p[1] + d[1], k = key(r, c);
+          if (!set[k] || st[k]) return;
+          let n = {};
+          if (d[2] === "E") n = { D: o.E, E: o.U, U: o.W, W: o.D, N: o.N, S: o.S };
+          if (d[2] === "W") n = { D: o.W, W: o.U, U: o.E, E: o.D, N: o.N, S: o.S };
+          if (d[2] === "S") n = { D: o.S, S: o.U, U: o.N, N: o.D, E: o.E, W: o.W };
+          if (d[2] === "N") n = { D: o.N, N: o.U, U: o.S, S: o.D, E: o.E, W: o.W };
+          st[k] = n;
+          q.push([r, c]);
+        });
+      }
+      return res;
+    }
+
+    function transformCells(cells, rot, flip) {
+      let out = cells.map(p => {
+        let r = p[0], c = p[1];
+        if (flip) c = -c;
+        for (let i = 0; i < rot; i++) {
+          const t = r; r = c; c = -t;
+        }
+        return [r, c];
+      });
+      const mr = Math.min(...out.map(p => p[0]));
+      const mc = Math.min(...out.map(p => p[1]));
+      return out.map(p => [p[0] - mr, p[1] - mc]);
+    }
+
+    let netOrder = [], netIdx = -1, netScore = 0, netRounds = 0, currentCells;
+
+    function initNets() {
+      function draw(labels) {
+        const u = 46;
+        const R = 1 + Math.max(...currentCells.map(p => p[0]));
+        const C = 1 + Math.max(...currentCells.map(p => p[1]));
+        const w = C * u + 12, h = R * u + 12;
+        let s = `<svg viewBox="0 0 ${w} ${h}" style="max-height:220px; width:auto;">`;
+        const cnt = {};
+        if (labels) {
+          currentCells.forEach(p => {
+            const f = labels[`${p[0]},${p[1]}`];
+            cnt[f] = (cnt[f] || 0) + 1;
+          });
+        }
+        currentCells.forEach((p, j) => {
+          const f = labels ? labels[`${p[0]},${p[1]}`] : "";
+          const dup = labels && cnt[f] > 1;
+          const fill = dup ? (j === 0 ? "#FCA5A5" : "#FEE2E2") : (j === 0 ? "#BAE6FD" : "#F0F9FF");
+          const stroke = dup ? "#DC2626" : "#0284C7";
+          s += `<rect x="${6 + p[1] * u}" y="${6 + p[0] * u}" width="${u}" height="${u}" fill="${fill}" stroke="${stroke}" stroke-width="2.5" rx="4"/>`;
+          if (labels) {
+            s += `<text x="${6 + p[1] * u + u / 2}" y="${6 + p[0] * u + u / 2 + 4}" text-anchor="middle" font-size="11" font-weight="700" fill="${dup ? '#991B1B' : '#0369A1'}">${f}</text>`;
+          }
+        });
+        s += `</svg>`;
+        document.getElementById("ntPic").innerHTML = s;
+        return cnt;
+      }
+
+      function show() {
+        currentCells = transformCells(netOrder[netIdx], Math.floor(Math.random() * 4), Math.random() < 0.5);
+        draw(null);
+        document.getElementById("ntFb").className = "hidden";
+        document.querySelectorAll(".nt-action-btn").forEach(b => b.disabled = false);
+        document.getElementById("ntNew").disabled = true;
+      }
+
+      function start() {
+        netOrder = NETS.slice().sort(() => Math.random() - 0.5);
+        netIdx = 0;
+        show();
+      }
+
+      document.querySelectorAll(".nt-action-btn").forEach(btn => {
+        btn.onclick = () => {
+          const labels = foldNet(currentCells);
+          const cnt = draw(labels);
+          const dups = Object.keys(cnt).filter(k => cnt[k] > 1);
+          const isNet = dups.length === 0;
+          const ok = (btn.dataset.c === "y") === isNet;
+
+          netRounds++;
+          if (ok) netScore++;
+
+          const fb = document.getElementById("ntFb");
+          fb.className = `p-4 rounded-xl text-xs leading-relaxed border block ${ok ? 'bg-emerald-50 border-emerald-300 text-emerald-900' : 'bg-rose-50 border-rose-300 text-rose-900'}`;
+          fb.innerHTML = `<strong>${ok ? 'Correct!' : 'Notice the folding collision:'}</strong> ` +
+            (isNet 
+              ? "Every square folds onto a distinct face (Base, Top, Front, Back, Left, Right). This is one of the 11 valid nets of a cube!" 
+              : `When folded, squares overlap on the same face (<span class="font-bold underline">${dups.join(", ")}</span>), leaving another face open. This arrangement cannot close into a cube.`);
+
+          document.querySelectorAll(".nt-action-btn").forEach(b => b.disabled = true);
+          document.getElementById("ntNew").disabled = false;
+          document.getElementById("ntScore").textContent = `${netScore} of ${netRounds} correct`;
+          updateOverallProgress();
+        };
+      });
+
+      document.getElementById("ntNew").onclick = () => {
+        if (netIdx >= netOrder.length - 1) {
+          start();
+        } else {
+          netIdx++;
+          show();
+        }
+      };
+      start();
+    }
+
+    /* TOOL 4: PRISMS EXPLORER */
+    let prismList = [], selectedPrism = 0;
+
+    function initPrisms() {
+      function build() {
+        const V = parseInt(document.getElementById("pmV").value);
+        prismList = [];
+        if (isNaN(V) || V < 1 || V > 72) {
+          document.getElementById("pmList").innerHTML = `<span class="text-xs text-rose-600 font-bold">Please enter a whole number between 1 and 72.</span>`;
+          document.getElementById("pmPic").innerHTML = "";
+          document.getElementById("pmRead").innerHTML = "";
+          return;
+        }
+
+        for (let h = 1; h <= V; h++) {
+          if (V % h === 0) {
+            for (let w = 1; w <= V / h; w++) {
+              if ((V / h) % w === 0) {
+                const l = V / h / w;
+                if (l >= w && w >= h) {
+                  prismList.push([l, w, h]);
+                }
+              }
+            }
+          }
+        }
+
+        selectedPrism = 0;
+        const listContainer = document.getElementById("pmList");
+        listContainer.innerHTML = prismList.map((d, j) => `
+          <button data-j="${j}" class="pm-btn px-3 py-1.5 rounded-lg text-xs font-mono font-bold border transition ${j === selectedPrism ? 'bg-[#0D2C6B] text-white border-[#0D2C6B]' : 'bg-white text-[#4C4C4E] border-[#D1D2D4] hover:bg-slate-100'}">
+            ${d[0]} &times; ${d[1]} &times; ${d[2]}
+          </button>
+        `).join('');
+
+        document.querySelectorAll(".pm-btn").forEach(b => {
+          b.onclick = () => {
+            selectedPrism = parseInt(b.dataset.j);
+            document.querySelectorAll(".pm-btn").forEach(x => {
+              x.className = x === b
+                ? 'pm-btn px-3 py-1.5 rounded-lg text-xs font-mono font-bold border transition bg-[#0D2C6B] text-white border-[#0D2C6B]'
+                : 'pm-btn px-3 py-1.5 rounded-lg text-xs font-mono font-bold border transition bg-white text-[#4C4C4E] border-[#D1D2D4] hover:bg-slate-100';
+            });
+            draw();
+          };
+        });
+        draw();
+      }
+
+      function draw() {
+        if (!prismList.length) return;
+        const d = prismList[selectedPrism];
+        const L = d[0], W = d[1], H = d[2];
+        const V = L * W * H;
+        const big = Math.max(L, W, H);
+        const s = big > 12 ? 12 : (big > 8 ? 16 : 22);
+
+        document.getElementById("pmPic").innerHTML = isoPrism(L, W, H, {
+          s: s,
+          explode: document.getElementById("pmX").checked,
+          layers: true
+        });
+
+        document.getElementById("pmRead").innerHTML = `
+          <div class="font-bold text-sm text-[#0D2C6B] mb-1">
+            (${L * W} cubes in one layer) &times; ${H} layer${H > 1 ? 's' : ''} = ${V} cubic centimetres (cm³)
+          </div>
+          <p class="text-slate-600">
+            Each individual layer consists of ${W} row${W > 1 ? 's' : ''} of ${L} cubes. Exactly <strong>${prismList.length}</strong> unique rectangular prism configuration${prismList.length > 1 ? 's' : ''} can be formed from ${V} cubes—illustrating that prisms with identical volume can have vastly different shapes and surface boundaries.
+          </p>
+        `;
+      }
+
+      document.getElementById("pmGo").onclick = build;
+      document.getElementById("pmV").onkeydown = e => { if (e.key === "Enter") build(); };
+      document.getElementById("pmX").onchange = draw;
+      build();
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 4. SECTION 4: DIAGNOSTIC CLINIC SORTER                        */
+    /* ------------------------------------------------------------- */
+    const ROOTS = [
+      "Judging volume or capacity by one dimension or appearance",
+      "Counting only what can be seen (ignoring hidden units)",
+      "Confusing 3D objects with 2D shapes and representations",
+      "Ignoring the size of the unit"
+    ];
+
+    const SCENARIOS = [
+      { st: "ES1", q: "Noah says the tall thin bottle holds more water than the wide bowl because it is taller.", a: 0, why: "Noah is misled by height alone. Pouring directly from one into the other proves that width and depth compensate for height." },
+      { st: "ES1", q: "Isla calls a soccer ball a ‘circle’ and points to a building block calling it a ‘square’.", a: 2, why: "Isla substitutes 2D shape terms for 3D objects. Model ‘object’ for holdable solids and trace a face to reveal the 2D shape." },
+      { st: "S1", q: "Tom counts 12 cubes in a solid 3 &times; 2 &times; 3 prism by counting only the outer cubes he can see.", a: 1, why: "Tom neglects hidden units. Taking the model apart in tiers reveals 18 cubes organized as 3 layers of 6." },
+      { st: "S1", q: "Grace says her 20-block tower is bigger than Sam’s 12-block tower, but Sam used large wooden blocks.", a: 3, why: "Grace compares counts while ignoring unit size. Comparing the volumes directly demonstrates that fewer larger units can occupy more space." },
+      { st: "S1", q: "Leo says a solid cylinder has three faces because it has two flat circles and a curved side.", a: 2, why: "In NESA syllabus geometry, a face is strictly a flat surface with straight edges. A cylinder has zero faces." },
+      { st: "S2", q: "Maya claims that every arrangement of six connected squares will fold up into a closed cube.", a: 2, why: "Maya confuses 2D hexomino connectivity with 3D folding nets. Only 11 distinct arrangements fold without face collisions." },
+      { st: "S2", q: "Ari says a 1 L tall milk carton holds more than a 1 L flat ice-cream tub because the milk carton is taller.", a: 0, why: "Ari relies on linear height over standard metric calibration. 1-litre containers come in a diverse variety of spatial shapes." },
+      { st: "S2", q: "Zara says that 1250 mL of water is more than 2 L of water because 1250 is a bigger number than 2.", a: 3, why: "Zara compares whole numbers without coordinating units. Converting to a common unit reveals 2 L = 2000 mL, which exceeds 1250 mL." },
+      { st: "S3", q: "Eli multiplies the visible length by height on the front face and counts surface squares to calculate volume.", a: 1, why: "Eli confuses surface area with volume. Volume requires coordinating the row-by-column layer across the third dimension of depth." },
+      { st: "S3", q: "Ruby says a long 24 &times; 1 &times; 1 centimetre rod has less volume than a 4 &times; 3 &times; 2 box.", a: 0, why: "Ruby judges volume by compactness or height. Both prisms are built from exactly 24 unit cubes." },
+      { st: "S3", q: "Jai says the base of a triangular prism resting on a desk is a rectangle because it is sitting on that face.", a: 2, why: "Jai confuses desk orientation with geometric base. A prism’s base is defined by its uniform parallel cross-section." },
+      { st: "S3", q: "Sophie writes 375 mL as 3.75 L on her measurement recording sheet.", a: 3, why: "Sophie lacks metric decimal place value understanding. Since 1 L = 1000 mL, 375 mL represents 375 thousandths: 0.375 L." }
+    ];
+
+    const sorterState = {};
+
+    function renderSorter() {
+      const container = document.getElementById("sorterContainer");
+      container.innerHTML = SCENARIOS.map((sc, idx) => {
+        const solved = sorterState[idx] !== undefined;
+        const isCorrect = solved && sorterState[idx].userChoice === sc.a;
+        return `
+          <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm space-y-3">
+            <div class="flex items-start justify-between gap-2">
+              <div class="flex items-center space-x-2">
+                <span class="px-2 py-0.5 rounded font-mono font-bold text-xs bg-slate-100 text-[#0D2C6B]">${sc.st}</span>
+                <span class="text-xs font-bold text-slate-400">Scenario ${idx + 1}</span>
+              </div>
+              ${solved ? (isCorrect ? '<span class="text-xs text-emerald-600 font-bold flex items-center"><i data-lucide="check" class="w-4 h-4 mr-1"></i> Diagnosed</span>' : '<span class="text-xs text-rose-600 font-bold flex items-center"><i data-lucide="x" class="w-4 h-4 mr-1"></i> Try Again</span>') : ''}
+            </div>
+            <p class="text-xs font-semibold text-[#231F20]">"${sc.q}"</p>
+
+            <!-- Root Selection Dropdown / Buttons -->
+            <div class="flex flex-wrap gap-2 pt-1">
+              ${ROOTS.map((r, rIdx) => {
+                let btnClass = "px-2.5 py-1.5 rounded-lg text-xs font-medium border text-left transition ";
+                if (!solved) {
+                  btnClass += "bg-slate-50 border-slate-200 text-[#4C4C4E] hover:border-[#188296] hover:bg-slate-100";
+                } else if (sorterState[idx].userChoice === rIdx) {
+                  btnClass += rIdx === sc.a ? "bg-emerald-100 border-emerald-400 text-emerald-950 font-bold" : "bg-rose-100 border-rose-400 text-rose-950";
+                } else if (rIdx === sc.a) {
+                  btnClass += "bg-emerald-50 border-emerald-300 text-emerald-900 font-bold";
+                } else {
+                  btnClass += "bg-slate-50 border-slate-200 text-slate-400 opacity-60";
+                }
+                return `
+                  <button onclick="handleDiagnose(${idx}, ${rIdx})" class="${btnClass}">
+                    Root ${rIdx + 1}: ${r}
+                  </button>
+                `;
+              }).join('')}
+            </div>
+
+            <!-- Feedback -->
+            ${solved ? `
+              <div class="p-3 rounded-lg text-xs leading-relaxed border ${isCorrect ? 'bg-emerald-50 border-emerald-200 text-emerald-950' : 'bg-rose-50 border-rose-200 text-rose-950'}">
+                <strong>${isCorrect ? 'Correct Diagnosis:' : 'Diagnostic Coaching:'}</strong> ${sc.why}
+              </div>
+            ` : ''}
+          </div>
+        `;
+      }).join('');
+      lucide.createIcons();
+      updateSorterProgress();
+    }
+
+    function handleDiagnose(scIdx, rootIdx) {
+      sorterState[scIdx] = { userChoice: rootIdx };
+      renderSorter();
+    }
+
+    function updateSorterProgress() {
+      const keys = Object.keys(sorterState);
+      const total = SCENARIOS.length;
+      const count = keys.length;
+      document.getElementById("sorterProgress").textContent = `Diagnosed: ${count} / ${total}`;
+      updateOverallProgress();
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 5. SECTION 5: TASK MAKEOVER STUDIO & 5 MOVES                  */
+    /* ------------------------------------------------------------- */
+    const MAKEOVERS = {
+      es1: {
+        stage: "Early Stage 1",
+        before: {
+          title: "Closed Procedural Worksheet Drill",
+          task: "Colour in the container that holds more. (A flat line-drawing of a small coffee mug and a 10-litre bucket).",
+          critique: "The answer is visually trivial and relies solely on bulk size. No liquid is poured, no spatial compensation is reasoned, and zero prediction is tested."
+        },
+        after: {
+          title: "Open Working Mathematically Inquiry",
+          task: "“Here are a tall thin bottle and a short wide jug. Which container do you predict will hold more water? How could we prove it to the class?”",
+          moves: [
+            "Students predict and verbally justify using comparative language.",
+            "Test directly by pouring from one container to the other, observing spillover or underfill.",
+            "Extension: “Find another container in the room that is shorter than the bottle but holds more liquid.”"
+          ],
+          wmTags: ["Communicating", "Reasoning about relations", "Exploring and connecting"]
+        }
+      },
+      s1: {
+        stage: "Stage 1",
+        before: {
+          title: "Closed Procedural Worksheet Drill",
+          task: "Look at the 2 &times; 2 &times; 2 cube drawing on the page. How many cubes? Answer: _____.",
+          critique: "Promotes counting only the visible exterior squares. Hidden interior cubes are missed, and students do not experience the 3D layer structure."
+        },
+        after: {
+          title: "Open Working Mathematically Inquiry",
+          task: "“Build as many different rectangular prisms as you can using exactly 12 connecting cubes. Record each prism and describe how you counted its layers.”",
+          moves: [
+            "Students construct 12 &times; 1 &times; 1, 6 &times; 2 &times; 1, 4 &times; 3 &times; 1, and 3 &times; 2 &times; 2.",
+            "Deconstruct models tier by tier, recording: ‘2 layers of 6’ or ‘3 layers of 4’.",
+            "Extension: “Which of these prisms could also be built with 24 cubes? What doubles?”"
+          ],
+          wmTags: ["Reasoning about spatial structure", "Choosing techniques", "Communicating"]
+        }
+      },
+      s2: {
+        stage: "Stage 2",
+        before: {
+          title: "Closed Procedural Worksheet Drill",
+          task: "Is this drawing a net of a cube? Circle YES or NO. (One standard cross net).",
+          critique: "A binary guess that reinforces the false belief that only the classic cross shape is a cube net. Zero spatial visualisation or testing."
+        },
+        after: {
+          title: "Open Working Mathematically Inquiry",
+          task: "“How many different arrangements of six squares can you discover that will fold into a closed cube? How will you prove you have found them all without repeats?”",
+          moves: [
+            "Investigate hexominos systematically using paper folding and digital tools.",
+            "Identify why non-nets fail (overlapping faces, leaves an open top).",
+            "Extension: Group the 11 valid nets into structural families (e.g. 1-4-1 pattern)."
+          ],
+          wmTags: ["Reasoning about spatial visualisation", "Exploring and connecting", "Reasoning"]
+        }
+      },
+      s3: {
+        stage: "Stage 3",
+        before: {
+          title: "Closed Procedural Worksheet Drill",
+          task: "Find the volume: Length = 4 cm, Width = 3 cm, Height = 2 cm. Use V = l &times; w &times; h. Answer: _____ cm³.",
+          critique: "Formulaic plug-and-chug. Students calculate 24 without any conceptual awareness of what 24 represents or why the units are cubic."
+        },
+        after: {
+          title: "Open Working Mathematically Inquiry",
+          task: "“A manufacturer needs a box that holds exactly 24 centimetre cubes. What could its dimensions be? Find all possibilities and explain which design requires the least cardboard.”",
+          moves: [
+            "Factor 24 into integer triplets (L &times; W &times; H).",
+            "Express volume in words: ‘12 cubes in one layer &times; 2 layers = 24 cubic centimetres’.",
+            "Calculate surface areas to determine the most cost-efficient packaging."
+          ],
+          wmTags: ["Reasoning about spatial structure", "Choosing and applying techniques", "Problem solving"]
+        }
+      }
+    };
+
+    let currentMakeoverStage = 'es1';
+
+    function setMakeoverStage(stKey) {
+      currentMakeoverStage = stKey;
+      document.querySelectorAll('.mo-btn').forEach(b => {
+        b.className = b.textContent.toLowerCase().includes(stKey) 
+          ? 'mo-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-[#0D2C6B] text-white'
+          : 'mo-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200';
+      });
+
+      const mo = MAKEOVERS[stKey];
+      const container = document.getElementById('makeoverDisplay');
+      container.innerHTML = `
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- BEFORE CARD -->
+          <div class="p-5 bg-rose-50/50 rounded-xl border border-rose-200 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase font-mono text-rose-800">Procedural "Before"</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-rose-500"></span>
+            </div>
+            <h4 class="text-sm font-bold text-rose-950">${mo.before.title}</h4>
+            <div class="p-3 bg-white rounded-lg border border-rose-100 text-xs font-mono text-slate-700">
+              ${mo.before.task}
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-rose-900 uppercase block mb-1">Pedagogical Limitations:</span>
+              <p class="text-xs text-rose-900/80 leading-relaxed">${mo.before.critique}</p>
+            </div>
+          </div>
+
+          <!-- AFTER CARD -->
+          <div class="p-5 bg-emerald-50/50 rounded-xl border border-emerald-200 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold uppercase font-mono text-emerald-800">Inquiry "After" (MAO-WM-01)</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500"></span>
+            </div>
+            <h4 class="text-sm font-bold text-emerald-950">${mo.after.title}</h4>
+            <div class="p-3 bg-white rounded-lg border border-emerald-100 text-xs text-[#0D2C6B] font-semibold">
+              ${mo.after.task}
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-emerald-900 uppercase block mb-1">High-Yield Teacher Moves:</span>
+              <ul class="space-y-1 text-xs text-emerald-900/90">
+                ${mo.after.moves.map(m => `<li class="flex items-start"><span class="text-emerald-600 mr-1.5 font-bold">&check;</span><span>${m}</span></li>`).join('')}
+              </ul>
+            </div>
+            <div class="pt-2 border-t border-emerald-200/60 flex flex-wrap gap-1.5">
+              ${mo.after.wmTags.map(t => `<span class="bg-emerald-100 text-emerald-800 text-[10px] font-mono font-bold px-2 py-0.5 rounded">${t}</span>`).join('')}
+            </div>
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    const MOVES_DATA = {
+      s1: {
+        task: "Closed Task: How many faces does a cube have?",
+        moves: [
+          { name: "1. Who is Correct?", prompt: "“Ali says a cylinder has three faces. Bea says a cylinder has zero faces. Who is correct? Why?”", wm: "Reasoning & Communicating" },
+          { name: "2. Same and Different", prompt: "“What is the same and what is different about a cube and a rectangular prism?”", wm: "Exploring and connecting" },
+          { name: "3. Always, Sometimes, Never", prompt: "“The faces of a rectangular prism are all squares. Always, sometimes, or never true?”", wm: "Reasoning about spatial structure" },
+          { name: "4. Open It Up", prompt: "“Find three objects in our classroom that have 6 faces. Are they all the same kind of 3D object?”", wm: "Choosing and applying techniques" },
+          { name: "5. Convince Me", prompt: "“Convince me using words and drawings that a cube must have 6 faces, 12 edges, and 8 vertices.”", wm: "Communicating & Fluency" }
+        ]
+      },
+      s2: {
+        task: "Closed Task: How many millilitres in 1 litre?",
+        moves: [
+          { name: "1. Who is Correct?", prompt: "“Kai says 1250 mL of water is more than 2 L. Mia says 2 L is more. Who is correct? Show how you know.”", wm: "Reasoning & Mathematical notation" },
+          { name: "2. Same and Different", prompt: "“What is the same and what is different about a 1 L milk carton, a 1 L jug, and a 1 L ice-cream container?”", wm: "Exploring and connecting" },
+          { name: "3. Always, Sometimes, Never", prompt: "“A taller container holds more liquid than a shorter container. Always, sometimes, or never true?”", wm: "Reasoning about relations" },
+          { name: "4. Open It Up", prompt: "“Find a combination of smaller containers in the room that together hold exactly 1 litre. Check by pouring.”", wm: "Problem solving" },
+          { name: "5. Convince Me", prompt: "“Convince me that exactly 4 cups of 250 mL are needed to fill a 1-litre bottle.”", wm: "Communicating" }
+        ]
+      },
+      s3: {
+        task: "Closed Task: Find the volume of a 5 cm &times; 4 cm &times; 3 cm prism.",
+        moves: [
+          { name: "1. Who is Correct?", prompt: "“Jo calculates volume as 5 + 4 + 3 = 12 cm³. Sam calculates it as (5 &times; 4) &times; 3 = 60 cm³. Who is correct? Explain using layers.”", wm: "Reasoning about structure" },
+          { name: "2. Same and Different", prompt: "“What is the same and what is different about prisms measuring 5 &times; 4 &times; 3, 10 &times; 2 &times; 3, and 6 &times; 10 &times; 1?”", wm: "Exploring and connecting" },
+          { name: "3. Always, Sometimes, Never", prompt: "“If you double the length of one side of a rectangular prism, you double its volume. Always, sometimes, or never true?”", wm: "Reasoning" },
+          { name: "4. Open It Up", prompt: "“Design at least four different rectangular prisms that all possess a volume of exactly 60 cubic centimetres.”", wm: "Choosing techniques" },
+          { name: "5. Convince Me", prompt: "“Convince me that this prism has 3 layers of 20 cubes, rather than 5 layers of 12 cubes.”", wm: "Communicating & Spatial structure" }
+        ]
+      }
+    };
+
+    let currentMovesStage = 's1';
+
+    function setMovesStage(stKey) {
+      currentMovesStage = stKey;
+      document.querySelectorAll('.moves-stage-btn').forEach(b => {
+        b.className = b.textContent.toLowerCase().includes(stKey)
+          ? 'moves-stage-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-[#188296] text-white'
+          : 'moves-stage-btn px-3 py-1.5 rounded-lg text-xs font-bold bg-slate-100 text-[#4C4C4E] hover:bg-slate-200';
+      });
+
+      const data = MOVES_DATA[stKey];
+      const container = document.getElementById('movesContent');
+      container.innerHTML = `
+        <div class="p-3 bg-slate-100 rounded-lg text-xs font-mono font-bold text-[#0D2C6B] mb-3">
+          ${data.task}
+        </div>
+        <div class="space-y-3">
+          ${data.moves.map(m => `
+            <div class="p-4 bg-white rounded-xl border border-slate-200 hover:border-[#188296] transition shadow-sm space-y-1.5">
+              <div class="flex items-center justify-between">
+                <span class="text-xs font-bold text-[#0D2C6B]">${m.name}</span>
+                <span class="text-[10px] font-mono bg-blue-50 text-[#188296] px-2 py-0.5 rounded font-bold">${m.wm}</span>
+              </div>
+              <p class="text-xs text-[#231F20] font-semibold">${m.prompt}</p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 6. SECTION 6: MODULE MASTERY CHECKPOINT                       */
+    /* ------------------------------------------------------------- */
+    const QUIZ_QUESTIONS = [
+      {
+        q: "1. How does the NESA Mathematics K–10 (2022) syllabus strictly define a 'face' of a three-dimensional object?",
+        options: [
+          "Any boundary surface of an object, whether flat or curved.",
+          "A flat surface with only straight edges, as found in polyhedra (prisms and pyramids).",
+          "The top and bottom surfaces of any solid, including cylinders and cones.",
+          "Any flat surface, regardless of whether its boundary is straight or curved."
+        ],
+        answer: 1,
+        why: "In NESA syllabus geometry, a 'face' refers strictly to a flat surface with only straight edges. Curved surfaces (cones, spheres) and circular flat surfaces (ends of cylinders) are surfaces, not faces."
+      },
+      {
+        q: "2. According to NESA Teaching Advice, why is volume significantly more difficult for primary students to visualise than length or area?",
+        options: [
+          "Units of volume involve much larger numbers than length.",
+          "Volume cannot be measured with physical metric units.",
+          "Some units are completely hidden from sight by the internal layer structure.",
+          "Students struggle to read metric abbreviations like mL and L."
+        ],
+        answer: 2,
+        why: "In a 3D model or 2D drawing of a prism, interior and back cubes are obscured. Students cannot merely count what they see; they must reconstruct the hidden layer structure mentally."
+      },
+      {
+        q: "3. How many distinct, unique nets can be folded to form a closed cube?",
+        options: [
+          "6 distinct nets",
+          "8 distinct nets",
+          "11 distinct nets",
+          "24 distinct nets"
+        ],
+        answer: 2,
+        why: "There are exactly 11 distinct nets of a cube (and 2 nets of a regular tetrahedron). Exploring these in Stage 2 prevents the misconception that any 6-square hexomino folds into a cube."
+      },
+      {
+        q: "4. A student observes a triangular prism resting on its rectangular side and insists its base is a rectangle. How should a teacher respond according to Stage 3 advice?",
+        options: [
+          "Agree, because the base of an object is always whichever face is resting on the table.",
+          "Explain that prisms have no base; only pyramids possess bases.",
+          "Explain that the base of a prism is defined by its uniform cross-section, not its resting orientation.",
+          "Tell the student that all prisms must have square bases."
+        ],
+        answer: 2,
+        why: "In geometry, the base of a prism is the shape of its uniform cross-section (which repeats parallel throughout), not whichever surface happens to touch the table."
+      },
+      {
+        q: "5. What is the NESA Stage 3 syllabus recommendation for recording the method to find the volume of a rectangular prism?",
+        options: [
+          "Formula notation: V = l &times; w &times; h.",
+          "In words: number of cubes in one layer &times; number of layers.",
+          "Counting every single centimetre block by ones.",
+          "Adding length + width + height."
+        ],
+        answer: 1,
+        why: "NESA Stage 3 Teaching Advice explicitly recommends recording methods in words ('number of cubes in one layer &times; number of layers') to anchor the multiplicative layer structure before formal algebraic variables in Stage 4."
+      }
+    ];
+
+    const quizSelections = {};
+
+    function renderQuiz() {
+      const container = document.getElementById("quizContainer");
+      container.innerHTML = QUIZ_QUESTIONS.map((q, qIdx) => `
+        <div class="p-4 bg-slate-50 rounded-xl border border-slate-200 space-y-3">
+          <p class="text-xs font-bold text-[#0D2C6B]">${q.q}</p>
+          <div class="space-y-2">
+            ${q.options.map((opt, optIdx) => `
+              <label class="flex items-start space-x-2 text-xs text-[#4C4C4E] p-2 bg-white rounded-lg border border-slate-200 hover:border-[#188296] cursor-pointer transition">
+                <input type="radio" name="quiz_q_${qIdx}" value="${optIdx}" onchange="selectQuizOption(${qIdx}, ${optIdx})" class="mt-0.5 text-[#188296] focus:ring-[#188296]">
+                <span>${opt}</span>
+              </label>
+            `).join('')}
+          </div>
+          <div id="quiz-fb-${qIdx}" class="hidden p-3 rounded-lg text-xs leading-relaxed"></div>
+        </div>
+      `).join('');
+    }
+
+    function selectQuizOption(qIdx, optIdx) {
+      quizSelections[qIdx] = optIdx;
+    }
+
+    function submitQuiz() {
+      if (Object.keys(quizSelections).length < QUIZ_QUESTIONS.length) {
+        alert("Please answer all 5 questions before submitting.");
+        return;
+      }
+
+      let correctCount = 0;
+      QUIZ_QUESTIONS.forEach((q, qIdx) => {
+        const userOpt = quizSelections[qIdx];
+        const isCorrect = userOpt === q.answer;
+        if (isCorrect) correctCount++;
+
+        const fb = document.getElementById(`quiz-fb-${qIdx}`);
+        fb.className = `p-3 rounded-lg text-xs leading-relaxed block ${isCorrect ? 'bg-emerald-50 text-emerald-950 border border-emerald-300' : 'bg-rose-50 text-rose-950 border border-rose-300'}`;
+        fb.innerHTML = `<strong>${isCorrect ? 'Correct!' : 'Incorrect.'}</strong> ${q.why}`;
+      });
+
+      const pct = Math.round((correctCount / QUIZ_QUESTIONS.length) * 100);
+      const scoreText = document.getElementById("quizScoreText");
+      scoreText.innerHTML = `Your Score: <span class="font-mono text-base ${pct >= 80 ? 'text-emerald-600' : 'text-rose-600'}">${pct}% (${correctCount}/5)</span>`;
+
+      const takeaways = document.getElementById("takeawaysContainer");
+      if (pct >= 80) {
+        takeaways.classList.remove("hidden");
+        scoreText.innerHTML += ` &mdash; <span class="text-emerald-700 font-bold">Mastery Verified! Key Pedagogical Takeaways unlocked below.</span>`;
+        takeaways.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        takeaways.classList.add("hidden");
+        scoreText.innerHTML += ` &mdash; <span class="text-rose-600 font-medium">80% required to unlock executive takeaways. Review feedback and retry.</span>`;
+      }
+      updateOverallProgress();
+    }
+
+    /* ------------------------------------------------------------- */
+    /* 7. PROGRESS TRACKER & UTILITIES                              */
+    /* ------------------------------------------------------------- */
+    function updateOverallProgress() {
+      let score = 0;
+      // Containers tool attempted
+      if (ctRounds > 0) score += 20;
+      // Cubes tool attempted
+      if (cbRounds > 0) score += 20;
+      // Nets tool attempted
+      if (netRounds > 0) score += 20;
+      // Sorter completed at least 6 scenarios
+      if (Object.keys(sorterState).length >= 6) score += 20;
+      // Quiz attempted
+      if (Object.keys(quizSelections).length === 5) score += 20;
+
+      const bar = document.getElementById("overallProgressBar");
+      const txt = document.getElementById("overallProgressText");
+      if (bar && txt) {
+        bar.style.width = `${score}%`;
+        txt.textContent = `${score}%`;
+      }
+    }
+
+    function copyEmbedCode() {
+      const code = document.getElementById("embedCodeText").innerText;
+      navigator.clipboard.writeText(code).then(() => {
+        const btn = document.getElementById("copyEmbedBtn");
+        btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i><span class="text-emerald-600">Copied!</span>`;
+        lucide.createIcons();
+        setTimeout(() => {
+          btn.innerHTML = `<i data-lucide="copy" class="w-3.5 h-3.5"></i><span>Copy Code</span>`;
+          lucide.createIcons();
+        }, 2500);
+      });
+    }
+
+    /* MOBILE MENU TOGGLE */
+    document.getElementById("mobileMenuBtn").onclick = () => {
+      const m = document.getElementById("mobileMenu");
+      m.classList.toggle("hidden");
+    };
+    document.querySelectorAll(".mobile-nav-link").forEach(l => {
+      l.onclick = () => document.getElementById("mobileMenu").classList.add("hidden");
+    });
+
+    /* INITIALIZATION ON DOM READY */
+    window.addEventListener("DOMContentLoaded", () => {
+      setStage('es1');
+      renderBigIdeas();
+      initContainers();
+      initCubes();
+      initNets();
+      initPrisms();
+      renderSorter();
+      setMakeoverStage('es1');
+      setMovesStage('s1');
+      renderQuiz();
+      lucide.createIcons();
+    });
+  </script>
+</body>
+</html>
