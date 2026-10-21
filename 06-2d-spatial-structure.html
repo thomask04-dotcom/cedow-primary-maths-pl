@@ -1,0 +1,2037 @@
+<!DOCTYPE html>
+<html lang="en-AU" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Area 6: Two-dimensional Spatial Structure (K–6) | CEDoW Mathematics PL</title>
+  
+  <!-- Google Fonts: Lato & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600;700&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,300;1,400;1,700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <!-- Tailwind Configuration for CEDoW Design System -->
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cedow: {
+              blue: '#0D2C6B',       /* Headers, primary accents, borders */
+              aqua: '#188296',       /* Active navigation, secondary highlights */
+              gold: '#FBAF3F',       /* Ones column, accent trims, callout badges */
+              charcoal: '#4C4C4E',   /* Secondary text, subtitles, borders */
+              silver: '#D1D2D4',     /* Card borders, dividers */
+              black: '#231F20',      /* Primary body text */
+              light: '#F4F6F9',      /* Page background, subtle cards */
+              white: '#FFFFFF'       /* Card surfaces */
+            }
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    body {
+      color: #231F20;
+      background-color: #F4F6F9;
+      font-family: 'Lato', sans-serif;
+    }
+    .math-font {
+      font-family: 'Fira Code', monospace;
+    }
+    /* Custom Scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F4F6F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #188296;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #0D2C6B;
+    }
+    .nav-active {
+      background-color: #188296 !important;
+      color: #FFFFFF !important;
+      font-weight: 700;
+    }
+    /* Tab / Accordion transitions */
+    .tab-content {
+      display: none;
+    }
+    .tab-content.active {
+      display: block;
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-cedow-gold selection:text-cedow-blue">
+
+  <!-- Top Diocesan Banner Header -->
+  <header class="bg-cedow-blue text-white sticky top-0 z-50 shadow-md border-b-4 border-cedow-gold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-lg bg-white flex items-center justify-center p-1.5 shadow">
+          <!-- Mitre / Cross / Geometric Insignia -->
+          <svg class="w-full h-full text-cedow-blue" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M12 2L4 7v10l8 5 8-5V7L12 2z"/>
+            <path d="M12 7v10M8 12h8"/>
+          </svg>
+        </div>
+        <div>
+          <span class="block text-xs uppercase tracking-widest text-cedow-gold font-bold">Catholic Education Diocese of Wollongong</span>
+          <h1 class="text-lg sm:text-xl font-black tracking-tight leading-tight">Focus Area 6: Two-dimensional Spatial Structure (K–6)</h1>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3">
+        <span class="hidden md:inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-cedow-aqua text-white border border-white/20">
+          <i data-lucide="compass" class="w-3.5 h-3.5 mr-1.5"></i> NSW Syllabus K–10 (2022)
+        </span>
+        <button id="mobileMenuBtn" class="md:hidden p-2 rounded-lg bg-cedow-blue border border-cedow-silver text-white hover:bg-cedow-aqua transition">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main Container with Responsive Sidebar -->
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 w-full flex-1 flex flex-col md:flex-row gap-8">
+    
+    <!-- Sidebar Navigation -->
+    <aside id="sidebar" class="hidden md:block w-full md:w-64 lg:w-72 flex-shrink-0">
+      <div class="sticky top-20 space-y-4">
+        
+        <!-- Module Index Card -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-4">
+          <div class="text-xs font-black uppercase text-cedow-charcoal tracking-wider mb-3 px-2 flex items-center justify-between">
+            <span>Module Navigation</span>
+            <span class="text-cedow-aqua font-mono text-[11px]">7 Sections</span>
+          </div>
+          <nav class="space-y-1.5 text-sm font-medium" id="moduleNav">
+            <a href="#section-1" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
+              <i data-lucide="git-commit" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
+              <span>1. Trajectory &amp; Big Ideas</span>
+            </a>
+            <a href="#section-2" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
+              <i data-lucide="brain-circuit" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
+              <span>2. Conceptual Shifts &amp; Traps</span>
+            </a>
+            <a href="#section-3" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
+              <i data-lucide="layout-grid" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
+              <span>3. Interactive Tool Lab</span>
+            </a>
+            <a href="#section-4" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
+              <i data-lucide="stethoscope" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
+              <span>4. Diagnostic Clinic</span>
+            </a>
+            <a href="#section-5" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
+              <i data-lucide="sparkles" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
+              <span>5. Task Makeover Studio</span>
+            </a>
+            <a href="#section-6" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
+              <i data-lucide="check-circle" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
+              <span>6. Mastery Checkpoint</span>
+            </a>
+            <a href="#section-7" class="nav-item flex items-center px-3 py-2.5 rounded-lg text-cedow-charcoal hover:bg-cedow-light hover:text-cedow-blue transition group">
+              <i data-lucide="cloud-download" class="w-4 h-4 mr-2.5 text-cedow-aqua group-hover:text-cedow-blue"></i>
+              <span>7. Canvas LMS Guide</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- Diocesan Pedagogical Callout Card -->
+        <div class="bg-gradient-to-br from-cedow-blue to-[#133d8f] rounded-xl text-white p-4.5 shadow-sm border border-cedow-blue">
+          <div class="flex items-center space-x-2 text-cedow-gold mb-2 font-bold text-xs uppercase tracking-wider">
+            <i data-lucide="award" class="w-4 h-4"></i>
+            <span>Spatial Reasoning Superpower</span>
+          </div>
+          <p class="text-xs text-white/90 leading-relaxed">
+            NESA and diocesan research confirm spatial reasoning is malleable: explicit training in decomposing, rotating, and visualizing 2D structures directly transfers to multi-digit arithmetic, fractions, and STEM reasoning.
+          </p>
+        </div>
+
+      </div>
+    </aside>
+
+    <!-- Main Learning Content Area -->
+    <main class="flex-1 space-y-12 min-w-0">
+
+      <!-- Hero Welcome Unit -->
+      <section class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8">
+        <div class="inline-flex items-center px-3 py-1 rounded-full text-xs font-bold bg-cedow-gold/20 text-cedow-blue border border-cedow-gold/40 mb-3">
+          <i data-lucide="book-open" class="w-3.5 h-3.5 mr-1.5 text-cedow-blue"></i> CEDoW Primary Mathematics Curriculum Specialist Series
+        </div>
+        <h2 class="text-2xl sm:text-3xl font-black text-cedow-blue tracking-tight mb-3">
+          Two-dimensional Spatial Structure (K–6 Continuum)
+        </h2>
+        <p class="text-cedow-charcoal text-base sm:text-lg leading-relaxed mb-6">
+          This self-paced professional learning module traces the mathematical architecture of <strong>Two-dimensional spatial structure</strong> across Kindergarten to Year 6. Follow the two interconnected syllabus strands: <strong>2D shapes</strong> (from visual prototype recognition to property-based classification and dissection) and <strong>area</strong> (from intuitive direct superposition to uniform informal tiling, array composite units, and transformational formulas).
+        </p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-center">
+          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
+            <span class="block text-xs uppercase font-bold text-cedow-charcoal">Focus Area</span>
+            <span class="text-sm font-black text-cedow-blue">2D Spatial Structure</span>
+          </div>
+          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
+            <span class="block text-xs uppercase font-bold text-cedow-charcoal">Syllabus</span>
+            <span class="text-sm font-black text-cedow-blue">NSW K–10 (2022)</span>
+          </div>
+          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
+            <span class="block text-xs uppercase font-bold text-cedow-charcoal">Strands</span>
+            <span class="text-sm font-black text-cedow-aqua">2D Shapes &amp; Area</span>
+          </div>
+          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
+            <span class="block text-xs uppercase font-bold text-cedow-charcoal">WM Outcome</span>
+            <span class="text-sm font-black text-cedow-gold">MAO-WM-01</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 1: THE VERTICAL TRAJECTORY & BIG IDEAS                      -->
+      <!-- =================================================================== -->
+      <section id="section-1" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 1</div>
+          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">The Vertical Trajectory &amp; Big Ideas</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">Syllabus outcomes, Working Mathematically connections, and developmental progressions from Early Stage 1 to Stage 3.</p>
+        </div>
+
+        <!-- Stage Filter Tabs -->
+        <div>
+          <label class="block text-xs font-bold uppercase tracking-wider text-cedow-charcoal mb-2">Select Stage Trajectory:</label>
+          <div class="flex flex-wrap gap-2" id="stageFilterBtns">
+            <button class="stage-btn active px-4 py-2 rounded-lg text-xs font-bold bg-cedow-blue text-white shadow-sm transition" data-stage="all">All Stages (K–6)</button>
+            <button class="stage-btn px-4 py-2 rounded-lg text-xs font-bold bg-cedow-light text-cedow-charcoal hover:bg-cedow-silver transition border border-cedow-silver" data-stage="es1">Early Stage 1</button>
+            <button class="stage-btn px-4 py-2 rounded-lg text-xs font-bold bg-cedow-light text-cedow-charcoal hover:bg-cedow-silver transition border border-cedow-silver" data-stage="s1">Stage 1 (Years 1–2)</button>
+            <button class="stage-btn px-4 py-2 rounded-lg text-xs font-bold bg-cedow-light text-cedow-charcoal hover:bg-cedow-silver transition border border-cedow-silver" data-stage="s2">Stage 2 (Years 3–4)</button>
+            <button class="stage-btn px-4 py-2 rounded-lg text-xs font-bold bg-cedow-light text-cedow-charcoal hover:bg-cedow-silver transition border border-cedow-silver" data-stage="s3">Stage 3 (Years 5–6)</button>
+          </div>
+        </div>
+
+        <!-- Trajectory Stage Cards Container -->
+        <div class="space-y-6" id="stageCardsContainer">
+          
+          <!-- ES1 Card -->
+          <div class="stage-card bg-cedow-light border-l-4 border-l-cedow-aqua border border-cedow-silver rounded-xl p-5 space-y-4" data-stage="es1">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-cedow-silver/60 pb-3">
+              <div>
+                <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-cedow-aqua text-white uppercase mr-2">ES1 &bull; Kindergarten</span>
+                <span class="font-bold text-cedow-blue text-base">Perceptual Foundations &amp; Direct Comparison</span>
+              </div>
+              <div class="flex items-center gap-1.5 font-mono text-xs text-cedow-charcoal">
+                <span class="bg-white px-2 py-0.5 rounded border border-cedow-silver">MAE-2DS-01</span>
+                <span class="bg-white px-2 py-0.5 rounded border border-cedow-silver">MAE-2DS-02</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+              <div class="bg-white p-4 rounded-lg border border-cedow-silver space-y-2">
+                <h4 class="font-bold text-cedow-blue flex items-center">
+                  <i data-lucide="shapes" class="w-4 h-4 mr-1.5 text-cedow-aqua"></i> 2D Shapes Focus
+                </h4>
+                <p class="text-cedow-charcoal">
+                  Sort, describe, name, and make familiar shapes (triangles, circles, squares, rectangles). Explore lines and curves. Manipulate and turn shapes to fit into a space (Reasons about spatial relations).
+                </p>
+                <div class="bg-amber-50 p-2.5 rounded border border-amber-200 text-amber-900 text-xs">
+                  <strong>NESA Teaching Advice Alert:</strong> Contrast prototypical equilateral triangles with non-examples (chevrons, kites, open or curved figures) so students do not misidentify right-angled triangles as &ldquo;half a triangle&rdquo;.
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-cedow-silver space-y-2">
+                <h4 class="font-bold text-cedow-blue flex items-center">
+                  <i data-lucide="maximize-2" class="w-4 h-4 mr-1.5 text-cedow-gold"></i> Area Focus
+                </h4>
+                <p class="text-cedow-charcoal">
+                  Identify area as the amount of surface inside a closed shape (&ldquo;the inside part&rdquo;). Compare areas directly using drawing, tracing, superimposing (placing one on top), or superposing (aligning corners and edges).
+                </p>
+                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-cedow-blue text-xs">
+                  <strong>Working Mathematically (MAO-WM-01):</strong> Predict which of two surfaces will have the larger area and justify reasoning before direct physical verification.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- S1 Card -->
+          <div class="stage-card bg-cedow-light border-l-4 border-l-cedow-blue border border-cedow-silver rounded-xl p-5 space-y-4" data-stage="s1">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-cedow-silver/60 pb-3">
+              <div>
+                <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-cedow-blue text-white uppercase mr-2">Stage 1 &bull; Years 1–2</span>
+                <span class="font-bold text-cedow-blue text-base">Features, Turns &amp; Informal Array Tiling</span>
+              </div>
+              <div class="flex items-center gap-1.5 font-mono text-xs text-cedow-charcoal">
+                <span class="bg-white px-2 py-0.5 rounded border border-cedow-silver">MA1-2DS-01</span>
+                <span class="bg-white px-2 py-0.5 rounded border border-cedow-silver">MA1-2DS-02</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+              <div class="bg-white p-4 rounded-lg border border-cedow-silver space-y-2">
+                <h4 class="font-bold text-cedow-blue flex items-center">
+                  <i data-lucide="refresh-cw" class="w-4 h-4 mr-1.5 text-cedow-aqua"></i> 2D Shapes Focus
+                </h4>
+                <p class="text-cedow-charcoal">
+                  Describe polygons by sides and vertices. Recognize shapes in any orientation. Combine and split shapes (e.g. 3 triangles form a square, rectangle, or larger triangle). Quarter/half turns linked to clockface hands. Introduce slides (translations) and reflections without change in size.
+                </p>
+                <div class="bg-amber-50 p-2.5 rounded border border-amber-200 text-amber-900 text-xs">
+                  <strong>Orientation Alert:</strong> A square turned onto its vertex is still a square, not a separate geometric species called a &ldquo;diamond&rdquo;.
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-cedow-silver space-y-2">
+                <h4 class="font-bold text-cedow-blue flex items-center">
+                  <i data-lucide="grid" class="w-4 h-4 mr-1.5 text-cedow-gold"></i> Area Focus
+                </h4>
+                <p class="text-cedow-charcoal">
+                  Measure area using uniform informal units in rows and columns without gaps or overlaps. Progress from multiple tiles to a single square tile to construct the array structure. Explain why area remains constant when units are rearranged (e.g. <span class="math-font">2 &times; 8</span> rectangle rearranged to <span class="math-font">4 &times; 4</span> square).
+                </p>
+                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-cedow-blue text-xs">
+                  <strong>NESA Advice (From Many Squares to One):</strong> Restricting students to a single square forces them to draw or visualise composite units (rows/columns), creating the cognitive bridge to multiplication.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- S2 Card -->
+          <div class="stage-card bg-cedow-light border-l-4 border-l-cedow-gold border border-cedow-silver rounded-xl p-5 space-y-4" data-stage="s2">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-cedow-silver/60 pb-3">
+              <div>
+                <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-cedow-gold text-cedow-black uppercase mr-2">Stage 2 &bull; Years 3–4</span>
+                <span class="font-bold text-cedow-blue text-base">Properties, Tessellation &amp; Standard Metric Units</span>
+              </div>
+              <div class="flex items-center gap-1.5 font-mono text-xs text-cedow-charcoal">
+                <span class="bg-white px-2 py-0.5 rounded border border-cedow-silver">MA2-2DS-01</span>
+                <span class="bg-white px-2 py-0.5 rounded border border-cedow-silver">MA2-2DS-02</span>
+                <span class="bg-white px-2 py-0.5 rounded border border-cedow-silver">MA2-2DS-03</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+              <div class="bg-white p-4 rounded-lg border border-cedow-silver space-y-2">
+                <h4 class="font-bold text-cedow-blue flex items-center">
+                  <i data-lucide="layers" class="w-4 h-4 mr-1.5 text-cedow-aqua"></i> 2D Shapes Focus
+                </h4>
+                <p class="text-cedow-charcoal">
+                  Compare quadrilaterals: parallelograms, rhombuses, rectangles, squares, trapeziums, kites. Identify parallel sides and right angles. Investigate symmetry in Aboriginal artworks and Islamic designs. Tessellate scalene triangles to form parallelograms (showing any triangle tessellates).
+                </p>
+                <div class="bg-amber-50 p-2.5 rounded border border-amber-200 text-amber-900 text-xs">
+                  <strong>Terminology Shift:</strong> Strictly transition from &ldquo;slide, flip, turn&rdquo; to &ldquo;translate, reflect, rotate&rdquo;. Use &ldquo;rhombus&rdquo; instead of &ldquo;diamond&rdquo;.
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-cedow-silver space-y-2">
+                <h4 class="font-bold text-cedow-blue flex items-center">
+                  <i data-lucide="table" class="w-4 h-4 mr-1.5 text-cedow-gold"></i> Area Focus
+                </h4>
+                <p class="text-cedow-charcoal">
+                  Measure area in square centimetres (<span class="math-font">cm<sup>2</sup></span>) and square metres (<span class="math-font">m<sup>2</sup></span>) using grid overlays. Measure right-angled triangles by halving bounding rectangles. Establish that one square metre need not be a square (e.g. <span class="math-font">2 m &times; 0.5 m</span>).
+                </p>
+                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-cedow-blue text-xs">
+                  <strong>Language Note:</strong> Record units in words (&ldquo;square centimetres&rdquo; / &ldquo;sq m&rdquo;). Formal exponential notation (<span class="math-font">cm<sup>2</sup></span>) is consolidated in Stage 3.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- S3 Card -->
+          <div class="stage-card bg-cedow-light border-l-4 border-l-cedow-charcoal border border-cedow-silver rounded-xl p-5 space-y-4" data-stage="s3">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-cedow-silver/60 pb-3">
+              <div>
+                <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-mono font-bold bg-cedow-charcoal text-white uppercase mr-2">Stage 3 &bull; Years 5–6</span>
+                <span class="font-bold text-cedow-blue text-base">Overlapping Hierarchies, Large Units &amp; Transformational Area</span>
+              </div>
+              <div class="flex items-center gap-1.5 font-mono text-xs text-cedow-charcoal">
+                <span class="bg-white px-2 py-0.5 rounded border border-cedow-silver">MA3-2DS-01</span>
+                <span class="bg-white px-2 py-0.5 rounded border border-cedow-silver">MA3-2DS-02</span>
+                <span class="bg-white px-2 py-0.5 rounded border border-cedow-silver">MA3-2DS-03</span>
+              </div>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm">
+              <div class="bg-white p-4 rounded-lg border border-cedow-silver space-y-2">
+                <h4 class="font-bold text-cedow-blue flex items-center">
+                  <i data-lucide="network" class="w-4 h-4 mr-1.5 text-cedow-aqua"></i> 2D Shapes Focus
+                </h4>
+                <p class="text-cedow-charcoal">
+                  Classify triangles (equilateral, isosceles, scalene) and quadrilaterals based on side and angle properties. Recognize overlapping classes (e.g. a triangle can be both right-angled and isosceles; a square is a regular rhombus and rectangle). Investigate line and rotational symmetry.
+                </p>
+                <div class="bg-amber-50 p-2.5 rounded border border-amber-200 text-amber-900 text-xs">
+                  <strong>Features vs Properties:</strong> A feature is directly observable (e.g. 3 sides); a property requires mathematical reasoning/deduction (e.g. angle sum is 180&deg;).
+                </div>
+              </div>
+              <div class="bg-white p-4 rounded-lg border border-cedow-silver space-y-2">
+                <h4 class="font-bold text-cedow-blue flex items-center">
+                  <i data-lucide="calculator" class="w-4 h-4 mr-1.5 text-cedow-gold"></i> Area Focus
+                </h4>
+                <p class="text-cedow-charcoal">
+                  Calculate areas of rectangles in words: <span class="math-font">length &times; width</span>. Introduce hectares (<span class="math-font">ha</span>) and square kilometres (<span class="math-font">km<sup>2</sup></span>). Dissect and transform composite L-shapes, parallelograms (<span class="math-font">base &times; height</span>), and triangles (<span class="math-font">half base &times; height</span>) into equivalent rectangles.
+                </p>
+                <div class="bg-blue-50 p-2.5 rounded border border-blue-200 text-cedow-blue text-xs">
+                  <strong>NESA Advice (Grid Behind the Shape):</strong> Place grids behind shapes rather than on top to deliberately compel multiplicative thinking over count-by-one strategies.
+                </div>
+              </div>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Cross-Stage Big Ideas Matrix -->
+        <div class="mt-8 pt-6 border-t border-cedow-silver">
+          <div class="flex items-center justify-between mb-4">
+            <div>
+              <h4 class="text-lg font-black text-cedow-blue">Cross-Stage &ldquo;Big Ideas Matrix&rdquo;</h4>
+              <p class="text-xs text-cedow-charcoal">Click any of the 6 foundational spatial ideas to trace its cumulative development from Kindergarten to Year 6.</p>
+            </div>
+          </div>
+
+          <!-- Big Idea Pills -->
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-4" id="bigIdeaButtons">
+            <button class="big-idea-btn active p-2.5 rounded-lg text-xs font-bold bg-cedow-blue text-white text-center transition shadow-sm" data-idea="0">1. Property vs Look</button>
+            <button class="big-idea-btn p-2.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver text-center hover:bg-cedow-light transition" data-idea="1">2. Preserving Area</button>
+            <button class="big-idea-btn p-2.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver text-center hover:bg-cedow-light transition" data-idea="2">3. Combine &amp; Split</button>
+            <button class="big-idea-btn p-2.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver text-center hover:bg-cedow-light transition" data-idea="3">4. Surface Attribute</button>
+            <button class="big-idea-btn p-2.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver text-center hover:bg-cedow-light transition" data-idea="4">5. Array Structure</button>
+            <button class="big-idea-btn p-2.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver text-center hover:bg-cedow-light transition" data-idea="5">6. Transform to Rectangles</button>
+          </div>
+
+          <!-- Big Idea Display Card -->
+          <div id="bigIdeaCard" class="bg-white rounded-xl border border-cedow-silver p-5 shadow-sm space-y-3">
+            <div class="flex items-center justify-between border-b border-cedow-silver/60 pb-2">
+              <h5 id="ideaTitle" class="text-base font-black text-cedow-blue">Idea 1: Shapes are defined by properties, not appearance</h5>
+              <span id="ideaTag" class="text-xs font-mono font-bold bg-cedow-gold/30 text-cedow-black px-2 py-0.5 rounded">Geometric Classification</span>
+            </div>
+            <p id="ideaDesc" class="text-xs sm:text-sm text-cedow-charcoal italic">Prototypes and orientation must never dictate what a polygon is named.</p>
+            <div class="grid grid-cols-1 sm:grid-cols-4 gap-3 pt-2 text-xs">
+              <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
+                <span class="block font-bold text-cedow-aqua uppercase text-[10px] mb-1">Early Stage 1</span>
+                <span id="ideaES1" class="text-cedow-black font-medium">Examples and non-examples of triangles in varied orientations; identify straight sides and corners.</span>
+              </div>
+              <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
+                <span class="block font-bold text-cedow-blue uppercase text-[10px] mb-1">Stage 1</span>
+                <span id="ideaS1" class="text-cedow-black font-medium">Shapes with the same name can have sides of equal or different lengths; squares stay squares when tilted.</span>
+              </div>
+              <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
+                <span class="block font-bold text-cedow-gold uppercase text-[10px] mb-1">Stage 2</span>
+                <span id="ideaS2" class="text-cedow-black font-medium">Classify by parallel sides, right angles, and equal sides (rhombuses); grouping quadrilaterals by attributes.</span>
+              </div>
+              <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
+                <span class="block font-bold text-cedow-charcoal uppercase text-[10px] mb-1">Stage 3</span>
+                <span id="ideaS3" class="text-cedow-black font-medium">Classify by hierarchical properties; recognize overlapping classes (e.g. right-angled isosceles); regular vs irregular.</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 2: KEY CONCEPTUAL SHIFTS & PEDAGOGICAL TRAPS                -->
+      <!-- =================================================================== -->
+      <section id="section-2" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 2</div>
+          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Key Conceptual Shifts &amp; Pedagogical Traps</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">Research-informed insights grounded in the NESA Teaching Advice, Clements &amp; Sarama, Lowrie et al. (2021), and Hourigan &amp; Leavy (2015).</p>
+        </div>
+
+        <!-- 3 Major Trajectories in Detail -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+          
+          <div class="bg-cedow-light border border-cedow-silver rounded-xl p-5 space-y-3">
+            <div class="w-8 h-8 rounded-full bg-cedow-blue text-white flex items-center justify-center font-bold text-sm">1</div>
+            <h4 class="font-bold text-cedow-blue text-base">Visual to Structural Reasoning</h4>
+            <p class="text-xs text-cedow-charcoal leading-relaxed">
+              Students initially judge shapes holistically (&ldquo;It looks like a roof, so it&rsquo;s a triangle&rdquo;). Progressing through van Hiele levels requires deconstructing shapes into components (sides, vertices, angles) and eventually deducing relationships (e.g. why opposite sides of a parallelogram must be equal).
+            </p>
+          </div>
+
+          <div class="bg-cedow-light border border-cedow-silver rounded-xl p-5 space-y-3">
+            <div class="w-8 h-8 rounded-full bg-cedow-aqua text-white flex items-center justify-center font-bold text-sm">2</div>
+            <h4 class="font-bold text-cedow-blue text-base">Units Without Gaps to Composite Arrays</h4>
+            <p class="text-xs text-cedow-charcoal leading-relaxed">
+              Covering area begins with discovering that round counters leave gaps, whereas square tiles tessellate. The critical cognitive milestone is coordinating rows and columns as composite units rather than counting square units one by one like buttons on a table.
+            </p>
+          </div>
+
+          <div class="bg-cedow-light border border-cedow-silver rounded-xl p-5 space-y-3">
+            <div class="w-8 h-8 rounded-full bg-cedow-gold text-cedow-black flex items-center justify-center font-bold text-sm">3</div>
+            <h4 class="font-bold text-cedow-blue text-base">The Conservation of Area under Dissection</h4>
+            <p class="text-xs text-cedow-charcoal leading-relaxed">
+              Transformations (translations, rotations, reflections) change orientation and position but <em>never</em> alter surface area. Stage 3 area calculations for triangles, parallelograms, and L-shapes rely entirely on dissecting shapes and rearranging them into equivalent rectangles.
+            </p>
+          </div>
+
+        </div>
+
+        <!-- Pedagogical Traps Interactive Accordion -->
+        <div class="mt-6 pt-4 border-t border-cedow-silver space-y-3">
+          <h4 class="text-base font-black text-cedow-blue mb-3">Critical Classroom Traps &amp; Research-Backed Interventions</h4>
+
+          <!-- Trap 1 -->
+          <div class="border border-cedow-silver rounded-xl overflow-hidden bg-white">
+            <button class="trap-accordion-btn w-full px-5 py-3.5 text-left font-bold text-cedow-blue flex justify-between items-center hover:bg-cedow-light transition">
+              <span class="flex items-center">
+                <i data-lucide="alert-triangle" class="w-4 h-4 mr-2.5 text-red-600"></i>
+                Trap 1: The Equilateral Prototype Trap (&ldquo;Half a Triangle&rdquo;)
+              </span>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-cedow-charcoal transition-transform"></i>
+            </button>
+            <div class="trap-content px-5 pb-4 pt-1 text-xs sm:text-sm text-cedow-charcoal space-y-2 hidden">
+              <p><strong>The Research (Hourigan &amp; Leavy 2015):</strong> Early exposure restricted to upright equilateral triangles creates rigid prototype schemas. When presented with a right-angled triangle or long scalene triangle, young students frequently state &ldquo;It is half a triangle&rdquo; because it lacks symmetry.</p>
+              <p><strong>The Fix:</strong> Provide non-examples (chevrons, kites, shapes with curved edges) alongside scalene, acute, obtuse, and right-angled triangles in varied orientations. Direct attention to the defining features: <em>three straight sides, three vertices, completely closed</em>.</p>
+            </div>
+          </div>
+
+          <!-- Trap 2 -->
+          <div class="border border-cedow-silver rounded-xl overflow-hidden bg-white">
+            <button class="trap-accordion-btn w-full px-5 py-3.5 text-left font-bold text-cedow-blue flex justify-between items-center hover:bg-cedow-light transition">
+              <span class="flex items-center">
+                <i data-lucide="alert-triangle" class="w-4 h-4 mr-2.5 text-red-600"></i>
+                Trap 2: The Orientation Trap (&ldquo;Tilted Square = Diamond&rdquo;)
+              </span>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-cedow-charcoal transition-transform"></i>
+            </button>
+            <div class="trap-content px-5 pb-4 pt-1 text-xs sm:text-sm text-cedow-charcoal space-y-2 hidden">
+              <p><strong>The Problem:</strong> When a cardboard square is balanced on a vertex, students often declare it is &ldquo;no longer a square; it turned into a diamond&rdquo;.</p>
+              <p><strong>The Fix:</strong> Rotate the physical shape while students observe. Ask: <em>Did the lengths of the sides change? Did the 4 right angles change?</em> Explain that &ldquo;diamond&rdquo; is a colloquial gem term, not a geometric name. A square in any orientation remains a square, and all squares are also special rhombuses.</p>
+            </div>
+          </div>
+
+          <!-- Trap 3 -->
+          <div class="border border-cedow-silver rounded-xl overflow-hidden bg-white">
+            <button class="trap-accordion-btn w-full px-5 py-3.5 text-left font-bold text-cedow-blue flex justify-between items-center hover:bg-cedow-light transition">
+              <span class="flex items-center">
+                <i data-lucide="alert-triangle" class="w-4 h-4 mr-2.5 text-red-600"></i>
+                Trap 3: The Linearity Problem &amp; Perimeter Confusion
+              </span>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-cedow-charcoal transition-transform"></i>
+            </button>
+            <div class="trap-content px-5 pb-4 pt-1 text-xs sm:text-sm text-cedow-charcoal space-y-2 hidden">
+              <p><strong>The Research (De Bock et al.):</strong> Students intuitively apply linear 1D proportionality to 2D space, assuming that doubling the side lengths of a rectangle doubles its area. Furthermore, students frequently assume rectangles with the same perimeter must have the same area.</p>
+              <p><strong>The Fix:</strong> Model on grid paper: compare a <span class="math-font">2 &times; 3</span> rectangle (area 6) with a <span class="math-font">4 &times; 6</span> rectangle (area 24 = 4 times as large). Conduct the classic NESA perimeter investigation: construct all whole-number rectangles with a fixed perimeter of <span class="math-font">20 cm</span> to reveal areas ranging from <span class="math-font">9 cm<sup>2</sup></span> (<span class="math-font">1 &times; 9</span>) up to <span class="math-font">25 cm<sup>2</sup></span> (<span class="math-font">5 &times; 5</span> square).</p>
+            </div>
+          </div>
+
+          <!-- Trap 4 -->
+          <div class="border border-cedow-silver rounded-xl overflow-hidden bg-white">
+            <button class="trap-accordion-btn w-full px-5 py-3.5 text-left font-bold text-cedow-blue flex justify-between items-center hover:bg-cedow-light transition">
+              <span class="flex items-center">
+                <i data-lucide="alert-triangle" class="w-4 h-4 mr-2.5 text-red-600"></i>
+                Trap 4: Reading Units as &ldquo;Centimetres Squared&rdquo; vs &ldquo;Square Centimetres&rdquo;
+              </span>
+              <i data-lucide="chevron-down" class="w-4 h-4 text-cedow-charcoal transition-transform"></i>
+            </button>
+            <div class="trap-content px-5 pb-4 pt-1 text-xs sm:text-sm text-cedow-charcoal space-y-2 hidden">
+              <p><strong>Diocesan PL Insight:</strong> When students read <span class="math-font">4 cm<sup>2</sup></span> aloud as &ldquo;four centimetres squared&rdquo;, they visualize a <span class="math-font">4 cm &times; 4 cm</span> square (which actually has an area of <span class="math-font">16 cm<sup>2</sup></span>).</p>
+              <p><strong>The Fix:</strong> Strictly model reading <span class="math-font">cm<sup>2</sup></span> and <span class="math-font">m<sup>2</sup></span> as &ldquo;square centimetres&rdquo; and &ldquo;square metres&rdquo;. <span class="math-font">4 cm<sup>2</sup></span> means four 1-cm square units, whereas &ldquo;4 cm squared&rdquo; is an operation: <span class="math-font">(4 cm)<sup>2</sup> = 16 cm<sup>2</sup></span>.</p>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 3: INTERACTIVE TOOL LAB (4 RUNNABLE MANIPULATIVES)          -->
+      <!-- =================================================================== -->
+      <section id="section-3" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 3</div>
+          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Interactive Tool Lab (4 Runnable Manipulatives)</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">Live, dynamic simulators tailored to Two-dimensional spatial structure. Test, manipulate variables, and observe real-time feedback.</p>
+        </div>
+
+        <!-- Tool Switcher Tabs -->
+        <div class="flex flex-wrap gap-2 border-b border-cedow-silver pb-3">
+          <button class="tool-tab-btn active px-4 py-2 rounded-lg text-xs font-bold bg-cedow-blue text-white transition flex items-center" data-tool="triangles">
+            <i data-lucide="check-square" class="w-3.5 h-3.5 mr-1.5"></i> Tool 1: Triangle or Not? (ES1/S1)
+          </button>
+          <button class="tool-tab-btn px-4 py-2 rounded-lg text-xs font-bold bg-cedow-light text-cedow-charcoal hover:bg-cedow-silver border border-cedow-silver transition flex items-center" data-tool="turns">
+            <i data-lucide="rotate-cw" class="w-3.5 h-3.5 mr-1.5"></i> Tool 2: Turn Predictor (S1/S2)
+          </button>
+          <button class="tool-tab-btn px-4 py-2 rounded-lg text-xs font-bold bg-cedow-light text-cedow-charcoal hover:bg-cedow-silver border border-cedow-silver transition flex items-center" data-tool="grid">
+            <i data-lucide="grid" class="w-3.5 h-3.5 mr-1.5"></i> Tool 3: Grid Structure &amp; Halving (S2)
+          </button>
+          <button class="tool-tab-btn px-4 py-2 rounded-lg text-xs font-bold bg-cedow-light text-cedow-charcoal hover:bg-cedow-silver border border-cedow-silver transition flex items-center" data-tool="lshape">
+            <i data-lucide="scissors" class="w-3.5 h-3.5 mr-1.5"></i> Tool 4: L-Shape Dissection (S3)
+          </button>
+        </div>
+
+        <!-- TOOL 1: TRIANGLE OR NOT -->
+        <div id="tool-triangles" class="tool-panel space-y-4">
+          <div class="bg-cedow-light p-4 rounded-xl border border-cedow-silver">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-cedow-aqua text-white mb-1">Diagnostic Sorter</span>
+            <h4 class="font-bold text-cedow-blue text-base">Triangle or Not? (NESA Syllabus Diagnostic)</h4>
+            <p class="text-xs text-cedow-charcoal">
+              Examine the shape in its current orientation and size. Decide if it is an authentic triangle or a non-example. Read the diagnostic justification.
+            </p>
+          </div>
+          
+          <div class="flex flex-col sm:flex-row items-center gap-6 bg-white p-6 rounded-xl border border-cedow-silver justify-center">
+            <div class="w-48 h-48 bg-cedow-light rounded-xl border border-cedow-silver flex items-center justify-center p-2 shadow-inner">
+              <svg viewBox="0 -15 200 195" id="trPic" class="w-full h-full" role="img" aria-label="A test geometric shape"></svg>
+            </div>
+            <div class="space-y-4 w-full max-w-xs text-center sm:text-left">
+              <div class="flex gap-2 justify-center sm:justify-start">
+                <button id="btnTriYes" class="px-4 py-2 rounded-lg text-xs font-bold bg-cedow-blue text-white hover:bg-cedow-aqua transition">Triangle</button>
+                <button id="btnTriNo" class="px-4 py-2 rounded-lg text-xs font-bold bg-cedow-charcoal text-white hover:bg-cedow-black transition">Not a Triangle</button>
+              </div>
+              <div id="trFb" class="hidden p-3 rounded-lg text-xs font-medium border leading-relaxed"></div>
+              <div class="flex items-center justify-between pt-2 border-t border-cedow-silver">
+                <button id="trNext" disabled class="px-3 py-1.5 rounded text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver disabled:opacity-50">Next Shape</button>
+                <span id="trScore" class="font-mono text-xs font-bold text-cedow-aqua">Shape 1 of 10</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL 2: TURN PREDICTOR -->
+        <div id="tool-turns" class="tool-panel space-y-4 hidden">
+          <div class="bg-cedow-light p-4 rounded-xl border border-cedow-silver">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-cedow-aqua text-white mb-1">Spatial Orientation</span>
+            <h4 class="font-bold text-cedow-blue text-base">Predict the Turn (Diocesan PL Slides Protocol)</h4>
+            <p class="text-xs text-cedow-charcoal">
+              From Diocesan PL: The arrow turns a set amount in each box. Deduce what a later box looks like without drawing every intervening step. Connect quarter turns to the 15-minute minute hand of a clock.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2 items-center">
+            <span class="text-xs font-bold text-cedow-charcoal">Turn Increment:</span>
+            <button class="turn-dir-btn active px-3 py-1.5 rounded text-xs font-bold bg-cedow-blue text-white" data-d="1">Quarter turn clockwise</button>
+            <button class="turn-dir-btn px-3 py-1.5 rounded text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-d="-1">Quarter turn anti-clockwise</button>
+            <button class="turn-dir-btn px-3 py-1.5 rounded text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-d="2">Half turn</button>
+          </div>
+
+          <!-- The Sequence Row -->
+          <div class="bg-white p-4 rounded-xl border border-cedow-silver overflow-x-auto">
+            <div class="flex items-center gap-3 min-w-[360px]" id="tnRow"></div>
+          </div>
+
+          <div class="space-y-3">
+            <p class="text-xs sm:text-sm font-bold text-cedow-blue" id="tnAsk">What will box N look like?</p>
+            <div class="flex gap-3" id="tnOpts"></div>
+            <div id="tnFb" class="hidden p-3 rounded-lg text-xs font-medium border leading-relaxed"></div>
+            <div class="flex items-center justify-between pt-2">
+              <button id="tnNew" disabled class="px-3 py-1.5 rounded text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver disabled:opacity-50">New Question</button>
+              <span id="tnScore" class="font-mono text-xs font-bold text-cedow-aqua">Score: 0</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- TOOL 3: GRID STRUCTURE & HALVING -->
+        <div id="tool-grid" class="tool-panel space-y-4 hidden">
+          <div class="bg-cedow-light p-4 rounded-xl border border-cedow-silver">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-cedow-aqua text-white mb-1">Array Model</span>
+            <h4 class="font-bold text-cedow-blue text-base">Use the Grid Structure &amp; Halving</h4>
+            <p class="text-xs text-cedow-charcoal">
+              Adjust rectangle dimensions. Contrast &ldquo;Count by ones&rdquo; with &ldquo;Rows and columns&rdquo; (composite units). Toggle to a right-angled triangle to see why counting fractional squares is replaced by halving the bounding rectangle.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-4 items-center bg-white p-4 rounded-xl border border-cedow-silver">
+            <div class="flex gap-2">
+              <button class="gd-shape-btn active px-3 py-1.5 rounded text-xs font-bold bg-cedow-blue text-white" data-s="r">Rectangle</button>
+              <button class="gd-shape-btn px-3 py-1.5 rounded text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-s="t">Right-angled Triangle</button>
+            </div>
+            <div class="flex gap-2" id="gdViewToggle">
+              <button class="gd-view-btn active px-3 py-1.5 rounded text-xs font-bold bg-cedow-aqua text-white" data-v="1">Count by ones</button>
+              <button class="gd-view-btn px-3 py-1.5 rounded text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-v="r">Rows &amp; Columns (Skip count)</button>
+            </div>
+            <div class="flex items-center space-x-2 text-xs">
+              <label for="gdL" class="font-bold text-cedow-charcoal">Length:</label>
+              <input type="range" id="gdL" min="2" max="10" value="6" class="accent-cedow-aqua w-24">
+              <span id="gdLv" class="font-mono font-bold text-cedow-blue w-12">6 cm</span>
+            </div>
+            <div class="flex items-center space-x-2 text-xs">
+              <label for="gdW" class="font-bold text-cedow-charcoal">Width:</label>
+              <input type="range" id="gdW" min="2" max="8" value="4" class="accent-cedow-aqua w-24">
+              <span id="gdWv" class="font-mono font-bold text-cedow-blue w-12">4 cm</span>
+            </div>
+          </div>
+
+          <div class="bg-white p-4 rounded-xl border border-cedow-silver flex flex-col items-center">
+            <div id="gdPic" class="overflow-x-auto w-full flex justify-center py-2"></div>
+            <div id="gdRead" class="mt-3 p-3 bg-cedow-light rounded-lg border border-cedow-silver text-xs sm:text-sm text-center w-full max-w-xl font-medium"></div>
+          </div>
+        </div>
+
+        <!-- TOOL 4: L-SHAPE DISSECTION -->
+        <div id="tool-lshape" class="tool-panel space-y-4 hidden">
+          <div class="bg-cedow-light p-4 rounded-xl border border-cedow-silver">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-cedow-aqua text-white mb-1">Stage 3 Dissection</span>
+            <h4 class="font-bold text-cedow-blue text-base">Many Ways to Find the Area of an L-Shape</h4>
+            <p class="text-xs text-cedow-charcoal">
+              NESA Stage 3 benchmark: a <span class="math-font">6 &times; 4</span> rectangle missing a <span class="math-font">3 &times; 2</span> corner. Explore the 6 distinct dissection and transformational methods. Every method yields 18 square units and relies on rectangle area.
+            </p>
+          </div>
+
+          <div class="flex flex-wrap gap-2 items-center">
+            <button class="ls-btn active px-3 py-1.5 rounded text-xs font-bold bg-cedow-blue text-white" data-m="0">1. Split across</button>
+            <button class="ls-btn px-3 py-1.5 rounded text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-m="1">2. Split down</button>
+            <button class="ls-btn px-3 py-1.5 rounded text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-m="2">3. Cut &amp; move (long)</button>
+            <button class="ls-btn px-3 py-1.5 rounded text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-m="3">4. Cut &amp; move (tall)</button>
+            <button class="ls-btn px-3 py-1.5 rounded text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-m="4">5. Complete &amp; subtract</button>
+            <button class="ls-btn px-3 py-1.5 rounded text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-m="5">6. Double &amp; halve</button>
+            <label class="ml-auto text-xs font-bold text-cedow-charcoal flex items-center cursor-pointer">
+              <input type="checkbox" id="lsG" checked class="mr-1.5 accent-cedow-aqua"> Show grid
+            </label>
+          </div>
+
+          <div class="bg-white p-5 rounded-xl border border-cedow-silver flex flex-col items-center">
+            <div id="lsPic" class="flex flex-wrap items-center justify-center gap-6 py-2"></div>
+            <div id="lsRead" class="mt-4 p-3 bg-cedow-light rounded-lg border border-cedow-silver text-xs sm:text-sm text-center w-full max-w-xl font-medium"></div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 4: STUDENT DIAGNOSTIC CLINIC & ROOT MISCONCEPTIONS          -->
+      <!-- =================================================================== -->
+      <section id="section-4" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 4</div>
+          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Student Diagnostic Clinic &amp; Root Misconceptions</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">Diagnose student thinking across the K–6 continuum using the 4 core conceptual roots identified in research and diocesan data.</p>
+        </div>
+
+        <!-- 4 Roots Overview Cards -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3 text-xs">
+          <div class="bg-amber-50/70 border border-amber-200 p-3 rounded-lg">
+            <span class="font-bold text-amber-900 block mb-1">Root 1: Prototype Bias</span>
+            <p class="text-amber-800">Shapes judged by rigid mental prototypes or non-standard orientation rather than geometric attributes.</p>
+          </div>
+          <div class="bg-blue-50/70 border border-blue-200 p-3 rounded-lg">
+            <span class="font-bold text-cedow-blue block mb-1">Root 2: Unstructured Units</span>
+            <p class="text-blue-900">Area measured with non-tessellating units (circles), leaving gaps/overlaps, or counting grid squares one by one.</p>
+          </div>
+          <div class="bg-emerald-50/70 border border-emerald-200 p-3 rounded-lg">
+            <span class="font-bold text-emerald-900 block mb-1">Root 3: Area vs Length/Perimeter</span>
+            <p class="text-emerald-800">Tracing boundaries instead of surface; assuming equal perimeter = equal area; the 1D linearity problem.</p>
+          </div>
+          <div class="bg-purple-50/70 border border-purple-200 p-3 rounded-lg">
+            <span class="font-bold text-purple-900 block mb-1">Root 4: Non-Conservation</span>
+            <p class="text-purple-800">Belief that rotating, sliding, reflecting, or dissecting a shape alters its intrinsic surface area.</p>
+          </div>
+        </div>
+
+        <!-- Interactive Misconception Sorter -->
+        <div class="bg-cedow-light p-5 rounded-xl border border-cedow-silver space-y-4">
+          <div class="flex items-center justify-between border-b border-cedow-silver/60 pb-3">
+            <div>
+              <span class="text-xs font-bold uppercase text-cedow-aqua">Diagnostic Scenario Sorter</span>
+              <h4 class="font-bold text-cedow-blue text-sm sm:text-base">Match the Student Response to its Underlying Conceptual Root</h4>
+            </div>
+            <span id="sorterProgress" class="text-xs font-mono font-bold bg-white px-2.5 py-1 rounded border border-cedow-silver">Case 1 of 11</span>
+          </div>
+
+          <!-- Scenario Card -->
+          <div class="bg-white p-5 rounded-xl border border-cedow-silver shadow-sm space-y-3">
+            <div class="flex items-center justify-between">
+              <span id="caseStage" class="text-[11px] font-mono font-bold px-2 py-0.5 rounded bg-cedow-blue text-white uppercase">Early Stage 1</span>
+              <span class="text-xs text-cedow-charcoal italic">Authentic Student Dialogue</span>
+            </div>
+            <blockquote id="caseQuote" class="text-sm sm:text-base font-bold text-cedow-blue pl-3 border-l-4 border-cedow-gold">
+              &ldquo;Ava points to a right-angled scalene triangle and says: &lsquo;That is only half a triangle!&rsquo;&rdquo;
+            </blockquote>
+            
+            <p class="text-xs font-bold text-cedow-charcoal pt-2">Identify the root cause of this error:</p>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-2" id="sorterButtons">
+              <button class="root-opt-btn p-3 rounded-lg text-xs font-bold text-left border border-cedow-silver hover:bg-cedow-light transition" data-root="0">
+                1. Shapes judged by prototype or orientation
+              </button>
+              <button class="root-opt-btn p-3 rounded-lg text-xs font-bold text-left border border-cedow-silver hover:bg-cedow-light transition" data-root="1">
+                2. Area units used without structure (count-by-one / gaps)
+              </button>
+              <button class="root-opt-btn p-3 rounded-lg text-xs font-bold text-left border border-cedow-silver hover:bg-cedow-light transition" data-root="2">
+                3. Area confused with length or perimeter
+              </button>
+              <button class="root-opt-btn p-3 rounded-lg text-xs font-bold text-left border border-cedow-silver hover:bg-cedow-light transition" data-root="3">
+                4. Transformations thought to change size/identity
+              </button>
+            </div>
+
+            <!-- Feedback Area -->
+            <div id="sorterFeedback" class="hidden p-4 rounded-lg text-xs sm:text-sm border leading-relaxed space-y-1"></div>
+            
+            <div class="flex items-center justify-between pt-2">
+              <button id="sorterNextBtn" disabled class="px-4 py-2 rounded-lg text-xs font-bold bg-cedow-blue text-white hover:bg-cedow-aqua transition disabled:opacity-50">
+                Next Student Case
+              </button>
+              <span id="sorterScore" class="font-mono text-xs font-bold text-cedow-aqua">Score: 0 / 0</span>
+            </div>
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 5: TASK MAKEOVER STUDIO (WORKING MATHEMATICALLY)           -->
+      <!-- =================================================================== -->
+      <section id="section-5" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 5</div>
+          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Task Makeover Studio (Working Mathematically - MAO-WM-01)</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">Transform closed procedural worksheet drills into rich, inquiry-based spatial challenges embedding reasoning and communication.</p>
+        </div>
+
+        <!-- Stage Task Makeovers -->
+        <div class="space-y-4">
+          <div class="flex flex-wrap gap-2" id="makeoverStageBtns">
+            <button class="mo-btn active px-3.5 py-1.5 rounded-lg text-xs font-bold bg-cedow-blue text-white" data-st="es1">Early Stage 1</button>
+            <button class="mo-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-st="s1">Stage 1</button>
+            <button class="mo-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-st="s2">Stage 2</button>
+            <button class="mo-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-cedow-light text-cedow-charcoal border border-cedow-silver" data-st="s3">Stage 3</button>
+          </div>
+
+          <!-- Makeover Card Container -->
+          <div id="makeoverCard" class="bg-cedow-light rounded-xl border border-cedow-silver p-5 space-y-4">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+        <!-- The 5 High-Yield Pedagogical Moves Studio -->
+        <div class="mt-8 pt-6 border-t border-cedow-silver space-y-4">
+          <div class="flex items-center justify-between">
+            <div>
+              <h4 class="text-lg font-black text-cedow-blue">The 5 High-Yield Pedagogical Moves Studio</h4>
+              <p class="text-xs text-cedow-charcoal">Practical questioning prompts that instantly elevate any closed spatial problem into deep mathematical reasoning.</p>
+            </div>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-5 gap-2" id="movesBtns">
+            <button class="move-btn active p-2.5 rounded-lg text-xs font-bold bg-cedow-blue text-white text-center transition" data-m="0">1. Who is correct?</button>
+            <button class="move-btn p-2.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver text-center hover:bg-cedow-light transition" data-m="1">2. Same &amp; different</button>
+            <button class="move-btn p-2.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver text-center hover:bg-cedow-light transition" data-m="2">3. Always, sometimes, never</button>
+            <button class="move-btn p-2.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver text-center hover:bg-cedow-light transition" data-m="3">4. Open it up</button>
+            <button class="move-btn p-2.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver text-center hover:bg-cedow-light transition" data-m="4">5. Convince me</button>
+          </div>
+
+          <div id="moveDisplayCard" class="bg-white p-5 rounded-xl border border-cedow-silver shadow-sm space-y-3">
+            <!-- Injected via JS -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 6: MODULE MASTERY CHECKPOINT                                -->
+      <!-- =================================================================== -->
+      <section id="section-6" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 6</div>
+          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Module Mastery Checkpoint</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">Demonstrate your understanding across the NESA Teaching Advice and diocesan spatial continuum. An 80% result unlocks the Executive Pedagogical Summary.</p>
+        </div>
+
+        <div id="quizContainer" class="space-y-6">
+          <!-- 5 Questions Injected via JS -->
+        </div>
+
+        <div class="pt-4 border-t border-cedow-silver flex flex-wrap items-center justify-between gap-4">
+          <button id="btnSubmitQuiz" class="px-6 py-2.5 rounded-lg text-sm font-bold bg-cedow-blue text-white hover:bg-cedow-aqua transition shadow-sm">
+            Submit Checkpoint
+          </button>
+          <div id="quizStatus" class="font-mono text-xs font-bold text-cedow-charcoal">Answer all 5 questions to receive feedback</div>
+        </div>
+
+        <!-- Unlocked Executive Summary Container -->
+        <div id="takeawaysContainer" class="hidden bg-gradient-to-br from-cedow-light to-white p-6 sm:p-8 rounded-2xl border-2 border-cedow-gold shadow-md space-y-5 animate-fadeIn">
+          <div class="flex items-center space-x-3 text-cedow-blue border-b border-cedow-silver pb-3">
+            <div class="p-2 bg-cedow-gold rounded-lg text-cedow-blue">
+              <i data-lucide="check-check" class="w-6 h-6"></i>
+            </div>
+            <div>
+              <span class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Checkpoint Passed (80%+)</span>
+              <h4 class="text-xl font-black text-cedow-blue">Key Pedagogical Takeaways (K–6 Continuum)</h4>
+            </div>
+          </div>
+          
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs sm:text-sm text-cedow-charcoal">
+            <div class="bg-white p-4 rounded-xl border border-cedow-silver space-y-2">
+              <h5 class="font-bold text-cedow-blue flex items-center">
+                <i data-lucide="compass" class="w-4 h-4 mr-1.5 text-cedow-aqua"></i> 2D Shapes &amp; Geometric Reasoning
+              </h5>
+              <ul class="list-disc list-inside space-y-1.5 text-xs">
+                <li><strong>Prototypes to Attributes:</strong> Systematically use non-examples to prevent the equilateral triangle and upright square traps.</li>
+                <li><strong>Precise Terminology:</strong> Eliminate &ldquo;diamond&rdquo; in favor of &ldquo;rhombus&rdquo;; transition from &ldquo;slide/flip/turn&rdquo; to &ldquo;translate/reflect/rotate&rdquo;.</li>
+                <li><strong>Overlapping Classes:</strong> Guide Stage 3 students to see that geometric families overlap (a square is both a rectangle and a rhombus).</li>
+              </ul>
+            </div>
+
+            <div class="bg-white p-4 rounded-xl border border-cedow-silver space-y-2">
+              <h5 class="font-bold text-cedow-blue flex items-center">
+                <i data-lucide="maximize" class="w-4 h-4 mr-1.5 text-cedow-gold"></i> Area &amp; Spatial Measurement
+              </h5>
+              <ul class="list-disc list-inside space-y-1.5 text-xs">
+                <li><strong>From Many to One:</strong> Move from multi-tile coverings to a single square tile to force visualization of composite rows and columns.</li>
+                <li><strong>Grid Positioning:</strong> Place grid overlays behind rectangles in Stage 3 to compel multiplicative dimension strategies over counting ones.</li>
+                <li><strong>Transformational Area:</strong> Base all triangle, parallelogram, and composite area on dissecting and rearranging into equivalent rectangles.</li>
+              </ul>
+            </div>
+          </div>
+
+          <div class="p-3.5 bg-blue-50 rounded-lg border border-blue-200 text-xs text-cedow-blue">
+            <strong>School Team Action:</strong> Share the Stage 2/3 paper-folding and tangram dissection activities at your next stage meeting to establish common Diocesan mathematical vocabulary.
+          </div>
+        </div>
+
+      </section>
+
+      <!-- =================================================================== -->
+      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE                              -->
+      <!-- =================================================================== -->
+      <section id="section-7" class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="text-xs font-bold uppercase tracking-widest text-cedow-aqua">Section 7</div>
+          <h3 class="text-xl sm:text-2xl font-black text-cedow-blue">Canvas LMS Deployment Guide</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">Seamlessly deploy this single-file module into your school or diocesan Canvas LMS environment.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 text-xs sm:text-sm">
+          
+          <!-- Method A: GitHub Pages / Cloud Hosting -->
+          <div class="bg-cedow-light p-5 rounded-xl border border-cedow-silver space-y-3">
+            <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold uppercase bg-cedow-blue text-white">Recommended</span>
+            <h4 class="font-bold text-cedow-blue text-base">Method 1: GitHub Pages &amp; Canvas iFrame</h4>
+            <ol class="list-decimal list-inside space-y-2 text-cedow-charcoal">
+              <li>Save this file as <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-cedow-silver">index.html</code> in a GitHub repository.</li>
+              <li>Enable <strong>GitHub Pages</strong> in repository settings (deploy from root branch).</li>
+              <li>Copy your live URL (e.g. <code class="font-mono bg-white px-1 py-0.5 rounded border border-cedow-silver">https://org.github.io/2ds-pl/</code>).</li>
+              <li>In Canvas, create a Page, switch to HTML View (<code class="font-mono">&lt;/&gt;</code>), and paste:</li>
+            </ol>
+            <div class="bg-cedow-black text-white p-3 rounded-lg font-mono text-xs overflow-x-auto">
+              &lt;iframe src="YOUR_GITHUB_PAGES_URL" width="100%" height="900" style="border:none; border-radius:12px;" allowfullscreen&gt;&lt;/iframe&gt;
+            </div>
+          </div>
+
+          <!-- Method B: Canvas Files Direct Upload -->
+          <div class="bg-cedow-light p-5 rounded-xl border border-cedow-silver space-y-3">
+            <span class="inline-block px-2.5 py-0.5 rounded text-[11px] font-bold uppercase bg-cedow-aqua text-white">Direct LMS Upload</span>
+            <h4 class="font-bold text-cedow-blue text-base">Method 2: Canvas Course Files Direct Link</h4>
+            <ol class="list-decimal list-inside space-y-2 text-cedow-charcoal">
+              <li>Navigate to your Canvas course and select <strong>Files</strong>.</li>
+              <li>Upload this <code class="font-mono bg-white px-1.5 py-0.5 rounded border border-cedow-silver">.html</code> file directly into a module folder.</li>
+              <li>Add the uploaded file directly as an item in your Canvas Course Module.</li>
+              <li>Select &ldquo;Open in new tab&rdquo; or &ldquo;Embed in Canvas Page&rdquo; in item settings.</li>
+            </ol>
+            <div class="bg-amber-50 p-3 rounded-lg border border-amber-200 text-amber-900 text-xs">
+              <strong>Technical Note:</strong> Because all CSS, vanilla JavaScript, and SVGs are self-contained in this single file, there are zero broken relative paths or cross-origin stylesheet errors.
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+    </main>
+
+  </div>
+
+  <!-- Diocesan Footer -->
+  <footer class="bg-cedow-blue text-white mt-12 border-t-4 border-cedow-gold py-6">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center sm:text-left flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div class="text-xs text-white/80 space-y-1">
+        <p class="font-bold text-white">Catholic Education Diocese of Wollongong &bull; Primary Mathematics Professional Learning</p>
+        <p>Built from the NESA <em>Mathematics K–10 Syllabus (2022)</em>, Syllabus Support Teaching Advice, and CEDoW Diocesan PL Modules.</p>
+      </div>
+      <div class="text-xs font-mono text-cedow-gold font-bold">
+        Pure Australian English &bull; Single-File Architecture
+      </div>
+    </div>
+  </footer>
+
+  <!-- ===================================================================== -->
+  <!-- JAVASCRIPT LOGIC & SIMULATOR SCRIPTS                                  -->
+  <!-- ===================================================================== -->
+  <script>
+    // Initialize Lucide Icons
+    lucide.createIcons();
+
+    // Mobile Menu Toggle
+    const mobileMenuBtn = document.getElementById('mobileMenuBtn');
+    const sidebar = document.getElementById('sidebar');
+    mobileMenuBtn.addEventListener('click', () => {
+      sidebar.classList.toggle('hidden');
+    });
+
+    // -------------------------------------------------------------
+    // DATA STRUCTURES (Grounding in NESA Syllabus & CEDoW PL)
+    // -------------------------------------------------------------
+    const BIG_IDEAS = [
+      {
+        t: "1. Shapes are defined by properties, not appearance",
+        tag: "Geometric Classification",
+        d: "Prototypes and orientation must never dictate what a polygon is named.",
+        es1: "Examples and non-examples of triangles in varied orientations; identify straight sides and corners.",
+        s1: "Shapes with the same name can have sides of equal or different lengths; squares stay squares when tilted.",
+        s2: "Classify by parallel sides, right angles, and equal sides (rhombuses); grouping quadrilaterals by attributes.",
+        s3: "Classify by hierarchical properties; recognize overlapping classes (e.g. right-angled isosceles); regular vs irregular."
+      },
+      {
+        t: "2. Transformations move shapes but do not change their size",
+        tag: "Area Conservation",
+        d: "Translating, reflecting, and rotating change position and orientation only, preserving area.",
+        es1: "Turning shapes to fit into a matching space or puzzle board.",
+        s1: "Slides (translations), reflections, and quarter/half turns; folding along symmetry lines.",
+        s2: "Symmetry and tessellation by reflecting, translating, and rotating (two triangles form a parallelogram).",
+        s3: "Dissecting and rearranging shapes; proving transformational equivalence across complex figures."
+      },
+      {
+        t: "3. Shapes combine and split (Triangles as building blocks)",
+        tag: "Decomposition",
+        d: "Polygons are composed of smaller shapes; triangles form the structural building blocks.",
+        es1: "Making pictures from shapes (e.g. Aboriginal flag from 2 rectangles and a circle; house from square & triangle).",
+        s1: "Three triangles combine to form a square, a larger triangle, or a rectangle.",
+        s2: "A rhombus and triangle form a trapezium; splitting a parallelogram into a rectangle and 2 triangles.",
+        s3: "Dissecting a rectangle on its diagonal; decomposing composite L-shapes into rectangular parts."
+      },
+      {
+        t: "4. Area is the amount of surface",
+        tag: "Spatial Measurement",
+        d: "Area is compared directly, then measured using units that tessellate without gaps or overlaps.",
+        es1: "The inside surface of a closed shape, compared directly via superimposition.",
+        s1: "Indirect comparison using paper; uniform informal units that fit together without gaps.",
+        s2: "Square centimetres (cm²) and square metres (m²) using grid overlays; non-square square metres.",
+        s3: "Hectares (ha) and square kilometres (km²); establishing relationships between large land units."
+      },
+      {
+        t: "5. Area has an array structure",
+        tag: "Multiplicative Link",
+        d: "Coordinating rows and columns of square units directly links area to multiplication.",
+        es1: "Covering activities exploring continuous surface.",
+        s1: "Repeated rows and columns; using a single square tile iteratively to build the array structure.",
+        s2: "Grid structure overlays; using strips of 10 and skip counting composite units.",
+        s3: "Area of rectangle = length &times; width, fully explained in words as unit squares."
+      },
+      {
+        t: "6. Find areas by transforming to rectangles",
+        tag: "Transformational Formulas",
+        d: "Cutting, moving, and duplicating shapes converts unfamiliar areas into solvable rectangles.",
+        es1: "Cutting and pasting shapes to verify equality of surface.",
+        s1: "Rearranging tiled rectangles (e.g. 2 &times; 8 rearranged to 4 &times; 4) preserves total units.",
+        s2: "Right-angled triangle as exactly half of its bounding rectangle on a grid.",
+        s3: "Parallelogram transformed to rectangle (base &times; height); triangle as half a parallelogram; L-shapes."
+      }
+    ];
+
+    // Section 1: Big Ideas Matrix Interactions
+    const bigIdeaButtons = document.querySelectorAll('.big-idea-btn');
+    const ideaTitle = document.getElementById('ideaTitle');
+    const ideaTag = document.getElementById('ideaTag');
+    const ideaDesc = document.getElementById('ideaDesc');
+    const ideaES1 = document.getElementById('ideaES1');
+    const ideaS1 = document.getElementById('ideaS1');
+    const ideaS2 = document.getElementById('ideaS2');
+    const ideaS3 = document.getElementById('ideaS3');
+
+    bigIdeaButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        bigIdeaButtons.forEach(b => {
+          b.classList.remove('active', 'bg-cedow-blue', 'text-white');
+          b.classList.add('bg-white', 'text-cedow-charcoal');
+        });
+        btn.classList.add('active', 'bg-cedow-blue', 'text-white');
+        btn.classList.remove('bg-white', 'text-cedow-charcoal');
+
+        const idea = BIG_IDEAS[parseInt(btn.dataset.idea)];
+        ideaTitle.textContent = idea.t;
+        ideaTag.textContent = idea.tag;
+        ideaDesc.textContent = idea.d;
+        ideaES1.textContent = idea.es1;
+        ideaS1.textContent = idea.s1;
+        ideaS2.textContent = idea.s2;
+        ideaS3.textContent = idea.s3;
+      });
+    });
+
+    // Section 1: Stage Cards Filter
+    const stageFilterBtns = document.querySelectorAll('.stage-btn');
+    const stageCards = document.querySelectorAll('.stage-card');
+
+    stageFilterBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        stageFilterBtns.forEach(b => {
+          b.classList.remove('active', 'bg-cedow-blue', 'text-white');
+          b.classList.add('bg-cedow-light', 'text-cedow-charcoal');
+        });
+        btn.classList.add('active', 'bg-cedow-blue', 'text-white');
+        btn.classList.remove('bg-cedow-light', 'text-cedow-charcoal');
+
+        const stage = btn.dataset.stage;
+        stageCards.forEach(card => {
+          if (stage === 'all' || card.dataset.stage === stage) {
+            card.classList.remove('hidden');
+          } else {
+            card.classList.add('hidden');
+          }
+        });
+      });
+    });
+
+    // Section 2: Pedagogical Traps Accordions
+    const trapBtns = document.querySelectorAll('.trap-accordion-btn');
+    trapBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const content = btn.nextElementSibling;
+        const icon = btn.querySelector('svg:last-child');
+        const isHidden = content.classList.contains('hidden');
+        
+        // Close others
+        document.querySelectorAll('.trap-content').forEach(c => c.classList.add('hidden'));
+        document.querySelectorAll('.trap-accordion-btn svg:last-child').forEach(i => i.style.transform = 'rotate(0deg)');
+
+        if (isHidden) {
+          content.classList.remove('hidden');
+          if (icon) icon.style.transform = 'rotate(180deg)';
+        }
+      });
+    });
+
+    // -------------------------------------------------------------
+    // SECTION 3: INTERACTIVE TOOL LAB IMPLEMENTATION
+    // -------------------------------------------------------------
+    // Tool Switching
+    const toolTabBtns = document.querySelectorAll('.tool-tab-btn');
+    const toolPanels = document.querySelectorAll('.tool-panel');
+
+    toolTabBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        toolTabBtns.forEach(b => {
+          b.classList.remove('active', 'bg-cedow-blue', 'text-white');
+          b.classList.add('bg-cedow-light', 'text-cedow-charcoal');
+        });
+        btn.classList.add('active', 'bg-cedow-blue', 'text-white');
+        btn.classList.remove('bg-cedow-light', 'text-cedow-charcoal');
+
+        toolPanels.forEach(p => p.classList.add('hidden'));
+        document.getElementById(`tool-${btn.dataset.tool}`).classList.remove('hidden');
+      });
+    });
+
+    // TOOL 1: TRIANGLES & NON-EXAMPLES (Diagnostic)
+    const TRI_SHAPES = [
+      { y: 1, d: '<polygon points="100,20 170,140 30,140"/>', why: "Three straight sides, three vertices, completely closed (Equilateral)." },
+      { y: 1, d: '<polygon points="40,25 40,140 170,140"/>', why: "Right-angled triangle: a complete triangle, not 'half a triangle'. Three straight sides, three vertices." },
+      { y: 1, d: '<polygon points="30,30 170,30 100,140"/>', why: "Inverted orientation: turning a shape does not alter its geometric identity." },
+      { y: 1, d: '<polygon points="15,125 190,55 70,110"/>', why: "Obtuse scalene triangle: all sides different lengths, but satisfies all defining properties." },
+      { y: 1, d: '<polygon points="20,120 185,120 55,50"/>', why: "Acute scalene triangle: three straight sides and three vertices." },
+      { y: 1, d: '<polygon points="88,68 128,68 96,108"/>', why: "Small triangle: physical size does not alter geometric classification." },
+      { y: 0, d: '<polygon points="30,140 100,20 170,140 100,95"/>', why: "Chevron non-example: looks 'pointy', but has 4 straight sides and 4 vertices (non-convex quadrilateral)." },
+      { y: 0, d: '<polygon points="100,12 152,68 100,150 48,68"/>', why: "Kite non-example: has 4 straight sides and 4 vertices." },
+      { y: 0, d: '<path d="M30 140 L170 140 L100 20 Q40 60 30 140Z"/>', why: "Curved side non-example: triangles must have exclusively straight sides." },
+      { y: 0, d: '<path d="M88 40 L30 140 L170 140 L108 34" fill="none" stroke-width="6"/>', why: "Open shape non-example: a triangle must be a closed plane figure." }
+    ];
+
+    let triOrder = [], triIndex = 0, triScore = 0;
+    const triColors = ["#0D2C6B", "#188296", "#4C4C4E", "#2b6cb0", "#2c7a7b"];
+
+    function initTriangles() {
+      triOrder = TRI_SHAPES.slice().sort(() => Math.random() - 0.5);
+      triIndex = 0;
+      triScore = 0;
+      renderCurrentTriangle();
+    }
+
+    function renderCurrentTriangle() {
+      const s = triOrder[triIndex];
+      const col = triColors[triIndex % triColors.length];
+      const rot = [0, 15, -20, 35, 90, -45][Math.floor(Math.random() * 6)];
+      document.getElementById('trPic').innerHTML = `<g transform="rotate(${rot} 100 80)" fill="${col}" stroke="${col}" stroke-linejoin="round">${s.d}</g>`;
+      
+      const fb = document.getElementById('trFb');
+      fb.className = "hidden p-3 rounded-lg text-xs font-medium border leading-relaxed";
+      document.getElementById('btnTriYes').disabled = false;
+      document.getElementById('btnTriNo').disabled = false;
+      document.getElementById('trNext').disabled = true;
+      document.getElementById('trScore').textContent = `Shape ${triIndex + 1} of ${triOrder.length}`;
+    }
+
+    function handleTriAnswer(userSaidYes) {
+      const s = triOrder[triIndex];
+      const correct = (userSaidYes === (s.y === 1));
+      if (correct) triScore++;
+
+      const fb = document.getElementById('trFb');
+      fb.classList.remove('hidden');
+      if (correct) {
+        fb.className = "p-3 rounded-lg text-xs font-medium border border-emerald-300 bg-emerald-50 text-emerald-900 leading-relaxed";
+        fb.innerHTML = `<strong>Correct!</strong> ${s.y ? "This is an authentic triangle." : "This is NOT a triangle."} ${s.why}`;
+      } else {
+        fb.className = "p-3 rounded-lg text-xs font-medium border border-red-300 bg-red-50 text-red-900 leading-relaxed";
+        fb.innerHTML = `<strong>Incorrect.</strong> ${s.y ? "This is actually a triangle." : "This is NOT a triangle."} ${s.why}`;
+      }
+
+      document.getElementById('btnTriYes').disabled = true;
+      document.getElementById('btnTriNo').disabled = true;
+      document.getElementById('trNext').disabled = false;
+      document.getElementById('trScore').textContent = `Score: ${triScore} / ${triIndex + 1}`;
+    }
+
+    document.getElementById('btnTriYes').addEventListener('click', () => handleTriAnswer(true));
+    document.getElementById('btnTriNo').addEventListener('click', () => handleTriAnswer(false));
+    document.getElementById('trNext').addEventListener('click', () => {
+      triIndex++;
+      if (triIndex >= triOrder.length) {
+        initTriangles();
+      } else {
+        renderCurrentTriangle();
+      }
+    });
+
+    initTriangles();
+
+    // TOOL 2: TURN PREDICTOR (Spatial Orientation)
+    let turnDir = 1, targetBoxN = 10, turnScore = 0, turnRound = 0;
+
+    function arrowSVG(deg, cls = "") {
+      return `
+        <svg viewBox="0 0 100 100" class="w-12 h-12 ${cls}">
+          <g transform="rotate(${deg} 50 50)">
+            <path d="M50 12 L74 42 L58 42 L58 84 L42 84 L42 42 L26 42Z" fill="#0D2C6B"/>
+            <circle cx="66" cy="74" r="7" fill="#FBAF3F"/>
+          </g>
+        </svg>
+      `;
+    }
+
+    function stepDeg(n) {
+      const step = (turnDir === 2 ? 2 : turnDir);
+      return (step * (n - 1) * 90);
+    }
+
+    function targetOrientationIndex(n) {
+      const step = (turnDir === 2 ? 2 : turnDir);
+      return (((step * (n - 1)) % 4) + 4) % 4;
+    }
+
+    function generateTurnQuestion() {
+      turnRound++;
+      targetBoxN = 7 + Math.floor(Math.random() * 15);
+      
+      let rowHtml = "";
+      for (let n = 1; n <= 4; n++) {
+        rowHtml += `
+          <div class="flex-shrink-0 flex flex-col items-center bg-cedow-light p-2.5 rounded-lg border border-cedow-silver">
+            <span class="text-[10px] font-mono font-bold text-cedow-charcoal mb-1">Box ${n}</span>
+            ${arrowSVG(stepDeg(n))}
+          </div>
+        `;
+      }
+      rowHtml += `
+        <div class="text-cedow-charcoal font-bold text-lg px-1">&hellip;</div>
+        <div class="flex-shrink-0 flex flex-col items-center bg-amber-50 p-2.5 rounded-lg border-2 border-dashed border-cedow-gold">
+          <span class="text-[10px] font-mono font-bold text-cedow-blue mb-1">Box ${targetBoxN}</span>
+          <div id="tnQ" class="w-12 h-12 flex items-center justify-center font-mono font-black text-cedow-blue text-2xl">?</div>
+        </div>
+      `;
+      document.getElementById('tnRow').innerHTML = rowHtml;
+      document.getElementById('tnAsk').innerHTML = `What will the arrow in <strong>Box ${targetBoxN}</strong> look like?`;
+
+      // 4 Options
+      const optsHtml = [0, 1, 2, 3].map(o => `
+        <button class="turn-opt-btn p-2 rounded-lg bg-white border border-cedow-silver hover:bg-cedow-light transition" data-o="${o}">
+          ${arrowSVG(o * 90)}
+        </button>
+      `).join("");
+      document.getElementById('tnOpts').innerHTML = optsHtml;
+
+      document.querySelectorAll('.turn-opt-btn').forEach(btn => {
+        btn.addEventListener('click', () => handleTurnAnswer(parseInt(btn.dataset.o), btn));
+      });
+
+      const fb = document.getElementById('tnFb');
+      fb.className = "hidden p-3 rounded-lg text-xs font-medium border leading-relaxed";
+      document.getElementById('tnNew').disabled = true;
+    }
+
+    function handleTurnAnswer(chosenOpt, clickedBtn) {
+      const correctOpt = targetOrientationIndex(targetBoxN);
+      const isCorrect = (chosenOpt === correctOpt);
+      if (isCorrect) turnScore++;
+
+      document.querySelectorAll('.turn-opt-btn').forEach(b => {
+        b.disabled = true;
+        if (parseInt(b.dataset.o) === correctOpt) {
+          b.classList.add('border-emerald-500', 'bg-emerald-50');
+        }
+      });
+      if (!isCorrect) {
+        clickedBtn.classList.add('border-red-500', 'bg-red-50');
+      }
+
+      document.getElementById('tnQ').outerHTML = arrowSVG(stepDeg(targetBoxN));
+
+      const totalTurns = targetBoxN - 1;
+      let explanation = "";
+      if (turnDir === 2) {
+        explanation = `Box ${targetBoxN} occurs after ${totalTurns} half-turns. Two half-turns make a full revolution (360&deg;). Since ${totalTurns} is ${totalTurns % 2 === 0 ? "even, it matches Box 1." : "odd, it matches Box 2."}`;
+      } else {
+        const fullTurns = Math.floor(totalTurns / 4);
+        const rem = totalTurns % 4;
+        explanation = `Box ${targetBoxN} occurs after ${totalTurns} quarter-turns ${turnDir === 1 ? "clockwise" : "anti-clockwise"}. This equals ${fullTurns} full turn(s) and ${rem} additional quarter-turn(s). It matches Box ${rem + 1}. The pattern repeats every 4 quarter-turns!`;
+      }
+
+      const fb = document.getElementById('tnFb');
+      fb.classList.remove('hidden');
+      if (isCorrect) {
+        fb.className = "p-3 rounded-lg text-xs font-medium border border-emerald-300 bg-emerald-50 text-emerald-900 leading-relaxed";
+        fb.innerHTML = `<strong>Correct!</strong> ${explanation}`;
+      } else {
+        fb.className = "p-3 rounded-lg text-xs font-medium border border-red-300 bg-red-50 text-red-900 leading-relaxed";
+        fb.innerHTML = `<strong>Incorrect.</strong> ${explanation}`;
+      }
+
+      document.getElementById('tnNew').disabled = false;
+      document.getElementById('tnScore').textContent = `Score: ${turnScore} / ${turnRound}`;
+    }
+
+    document.querySelectorAll('.turn-dir-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.turn-dir-btn').forEach(b => {
+          b.classList.remove('active', 'bg-cedow-blue', 'text-white');
+          b.classList.add('bg-cedow-light', 'text-cedow-charcoal');
+        });
+        btn.classList.add('active', 'bg-cedow-blue', 'text-white');
+        btn.classList.remove('bg-cedow-light', 'text-cedow-charcoal');
+        turnDir = parseInt(btn.dataset.d);
+        generateTurnQuestion();
+      });
+    });
+
+    document.getElementById('tnNew').addEventListener('click', generateTurnQuestion);
+    generateTurnQuestion();
+
+    // TOOL 3: GRID STRUCTURE & HALVING (S2)
+    let gdShape = "r", gdView = "1";
+
+    function drawGridTool() {
+      const L = parseInt(document.getElementById('gdL').value);
+      const W = parseInt(document.getElementById('gdW').value);
+      document.getElementById('gdLv').textContent = `${L} cm`;
+      document.getElementById('gdWv').textContent = `${W} cm`;
+
+      const cellSize = 28, pad = 6;
+      const extraLabelWidth = (gdView === "r" && gdShape === "r") ? 70 : 10;
+      const svgWidth = (10 * cellSize) + (pad * 2) + extraLabelWidth;
+      const svgHeight = (W * cellSize) + (pad * 2);
+
+      let h = `<svg viewBox="0 0 ${svgWidth} ${svgHeight}" class="max-w-full" style="height: auto;">`;
+      
+      // Defs grid pattern
+      h += `
+        <defs>
+          <pattern id="gdGridPat" width="${cellSize}" height="${cellSize}" patternUnits="userSpaceOnUse" x="${pad}" y="${pad}">
+            <path d="M ${cellSize} 0 L 0 0 0 ${cellSize}" fill="none" stroke="#D1D2D4" stroke-width="1"/>
+          </pattern>
+        </defs>
+      `;
+
+      // Background grid
+      h += `<rect x="${pad}" y="${pad}" width="${10 * cellSize}" height="${W * cellSize}" fill="url(#gdGridPat)"/>`;
+
+      if (gdShape === "r") {
+        for (let r = 0; r < W; r++) {
+          const rowColor = (gdView === "r") ? (r % 2 === 0 ? "rgba(24, 130, 150, 0.45)" : "rgba(13, 44, 107, 0.35)") : "rgba(24, 130, 150, 0.35)";
+          h += `<rect x="${pad}" y="${pad + r * cellSize}" width="${L * cellSize}" height="${cellSize}" fill="${rowColor}"/>`;
+          
+          if (gdView === "1") {
+            for (let c = 0; c < L; c++) {
+              h += `<text x="${pad + c * cellSize + cellSize / 2}" y="${pad + r * cellSize + cellSize / 2 + 4}" text-anchor="middle" font-size="10" font-family="'Fira Code', monospace" fill="#0D2C6B" font-weight="600">${r * L + c + 1}</text>`;
+            }
+          } else {
+            // Row cumulative label
+            h += `<text x="${pad + L * cellSize + 10}" y="${pad + r * cellSize + cellSize / 2 + 4}" font-size="12" font-family="'Fira Code', monospace" font-weight="700" fill="#0D2C6B">+${L} (${L * (r + 1)})</text>`;
+          }
+        }
+
+        // Inner grid lines
+        for (let gx = 0; gx <= L; gx++) {
+          h += `<line x1="${pad + gx * cellSize}" y1="${pad}" x2="${pad + gx * cellSize}" y2="${pad + W * cellSize}" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8"/>`;
+        }
+        for (let gy = 0; gy <= W; gy++) {
+          h += `<line x1="${pad}" y1="${pad + gy * cellSize}" x2="${pad + L * cellSize}" y2="${pad + gy * cellSize}" stroke="#ffffff" stroke-width="1.5" stroke-opacity="0.8"/>`;
+        }
+        h += `<rect x="${pad}" y="${pad}" width="${L * cellSize}" height="${W * cellSize}" fill="none" stroke="#0D2C6B" stroke-width="2.5"/>`;
+
+      } else {
+        // Right-angled triangle
+        h += `<rect x="${pad}" y="${pad}" width="${L * cellSize}" height="${W * cellSize}" fill="none" stroke="#0D2C6B" stroke-width="1.5" stroke-dasharray="5 4"/>`;
+        h += `<polygon points="${pad},${pad} ${pad},${pad + W * cellSize} ${pad + L * cellSize},${pad + W * cellSize}" fill="rgba(24, 130, 150, 0.45)" stroke="#0D2C6B" stroke-width="2.5"/>`;
+      }
+
+      h += `</svg>`;
+      document.getElementById('gdPic').innerHTML = h;
+
+      const totalArea = L * W;
+      let readout = "";
+      if (gdShape === "t") {
+        readout = `
+          <div class="text-cedow-blue font-bold text-base">Triangle Area: ${totalArea / 2} square centimetres</div>
+          <div class="text-cedow-charcoal text-xs mt-1">
+            Calculated as: <strong>half of (${L} &times; ${W}) = half of ${totalArea} = ${totalArea / 2} cm<sup>2</sup></strong>.<br>
+            Notice how counting grid squares one-by-one is frustrating and imprecise due to part-squares, whereas the bounding rectangle makes halving exact and conceptual.
+          </div>
+        `;
+      } else if (gdView === "1") {
+        readout = `
+          <div class="text-cedow-blue font-bold text-base">Total Area: ${totalArea} square centimetres</div>
+          <div class="text-cedow-charcoal text-xs mt-1">
+            Counting by ones works, but it is slow and prone to double-counting or omissions. Try switching to <strong>Rows &amp; Columns</strong> to see rows as composite units.
+          </div>
+        `;
+      } else {
+        readout = `
+          <div class="text-cedow-blue font-bold text-base">${L} in each row &times; ${W} rows = ${totalArea} square centimetres</div>
+          <div class="text-cedow-charcoal text-xs mt-1">
+            Each row functions as a composite unit of ${L} square centimetres. Skip-counting by rows: ${Array.from({length: W}, (_, i) => L * (i + 1)).join(', ')}.
+          </div>
+        `;
+      }
+      document.getElementById('gdRead').innerHTML = readout;
+      document.getElementById('gdViewToggle').style.display = (gdShape === "r") ? "flex" : "none";
+    }
+
+    document.querySelectorAll('.gd-shape-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.gd-shape-btn').forEach(b => {
+          b.classList.remove('active', 'bg-cedow-blue', 'text-white');
+          b.classList.add('bg-cedow-light', 'text-cedow-charcoal');
+        });
+        btn.classList.add('active', 'bg-cedow-blue', 'text-white');
+        btn.classList.remove('bg-cedow-light', 'text-cedow-charcoal');
+        gdShape = btn.dataset.s;
+        drawGridTool();
+      });
+    });
+
+    document.querySelectorAll('.gd-view-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.gd-view-btn').forEach(b => {
+          b.classList.remove('active', 'bg-cedow-aqua', 'text-white');
+          b.classList.add('bg-cedow-light', 'text-cedow-charcoal');
+        });
+        btn.classList.add('active', 'bg-cedow-aqua', 'text-white');
+        btn.classList.remove('bg-cedow-light', 'text-cedow-charcoal');
+        gdView = btn.dataset.v;
+        drawGridTool();
+      });
+    });
+
+    document.getElementById('gdL').addEventListener('input', drawGridTool);
+    document.getElementById('gdW').addEventListener('input', drawGridTool);
+    drawGridTool();
+
+    // TOOL 4: L-SHAPE DISSECTION (Stage 3)
+    const LS_A = "#0D2C6B", LS_B = "#188296", LS_C = "#FBAF3F";
+    const LS_METHODS = [
+      {
+        cut: [[0, 0, 3, 2, LS_A, "3 &times; 2"], [0, 2, 6, 2, LS_B, "6 &times; 2"]],
+        calc: "3 &times; 2 + 6 &times; 2 = 6 + 12 = 18",
+        why: "Split horizontally across into two distinct rectangles and sum their areas."
+      },
+      {
+        cut: [[0, 0, 3, 4, LS_A, "3 &times; 4"], [3, 2, 3, 2, LS_B, "3 &times; 2"]],
+        calc: "3 &times; 4 + 3 &times; 2 = 12 + 6 = 18",
+        why: "Split vertically down into two rectangles and sum their areas."
+      },
+      {
+        cut: [[0, 0, 3, 2, LS_A, "move"], [0, 2, 6, 2, LS_B, ""]],
+        after: [[0, 0, 6, 2, LS_B, ""], [6, 0, 3, 2, LS_A, ""]],
+        alab: "9 &times; 2",
+        calc: "9 &times; 2 = 18",
+        why: "Cut off top 3&times;2 piece and translate to the right, forming one long 9&times;2 rectangle."
+      },
+      {
+        cut: [[0, 0, 3, 4, LS_A, ""], [3, 2, 3, 2, LS_B, "move"]],
+        after: [[0, 2, 3, 4, LS_A, ""], [0, 0, 3, 2, LS_B, ""]],
+        alab: "3 &times; 6",
+        calc: "3 &times; 6 = 18",
+        why: "Cut bottom-right 3&times;2 block and translate to top, creating a single tall 3&times;6 rectangle."
+      },
+      {
+        cut: [[0, 0, 3, 4, LS_A, ""], [3, 2, 3, 2, LS_A, ""]],
+        one: 1,
+        lab0: "Complete Rectangle",
+        missing: [3, 0, 3, 2],
+        calc: "6 &times; 4 &minus; 3 &times; 2 = 24 &minus; 6 = 18",
+        why: "Enclose into a 6&times;4 bounding rectangle (24 units), then subtract the 3&times;2 missing corner."
+      },
+      {
+        cut: [[0, 0, 3, 4, LS_A, ""], [3, 2, 3, 2, LS_A, ""]],
+        after: [[0, 0, 3, 4, LS_A, ""], [3, 2, 3, 2, LS_A, ""], [3, 0, 3, 2, LS_C, ""], [6, 0, 3, 4, LS_C, ""]],
+        one: 1,
+        lab0: "Original L-Shape",
+        alab: "9 &times; 4 Rectangle",
+        calc: "9 &times; 4 = 36; then 36 &divide; 2 = 18",
+        why: "Duplicate the L-shape and rotate 180&deg;. Interlock them to form a 9&times;4 rectangle, then halve the product."
+      }
+    ];
+
+    let currentLsMethod = 0;
+
+    function renderLsSVG(rects, u, grid, missing, one, outlineL) {
+      const p = 8;
+      let maxX = 0, maxY = 0;
+      rects.concat(missing ? [missing] : []).forEach(r => {
+        maxX = Math.max(maxX, r[0] + r[2]);
+        maxY = Math.max(maxY, r[1] + r[3]);
+      });
+      const w = maxX * u + p * 2;
+      const h = maxY * u + p * 2;
+      let s = `<svg viewBox="0 0 ${w} ${h}" class="max-w-[240px] h-auto">`;
+
+      if (missing) {
+        s += `<rect x="${p + missing[0] * u}" y="${p + missing[1] * u}" width="${missing[2] * u}" height="${missing[3] * u}" fill="#fee2e2" stroke="#dc2626" stroke-width="2" stroke-dasharray="6 4"/>`;
+        s += `<text x="${p + (missing[0] + missing[2] / 2) * u}" y="${p + (missing[1] + missing[3] / 2) * u + 5}" text-anchor="middle" font-size="12" font-family="'Fira Code', monospace" font-weight="700" fill="#dc2626">&minus; 3&times;2</text>`;
+      }
+
+      rects.forEach(r => {
+        s += `<rect x="${p + r[0] * u}" y="${p + r[1] * u}" width="${r[2] * u}" height="${r[3] * u}" fill="${r[4]}" fill-opacity="0.85" stroke="#ffffff" stroke-width="2"/>`;
+      });
+
+      if (grid) {
+        rects.forEach(r => {
+          for (let i = 0; i < r[2]; i++) {
+            for (let j = 0; j < r[3]; j++) {
+              s += `<rect x="${p + (r[0] + i) * u}" y="${p + (r[1] + j) * u}" width="${u}" height="${u}" fill="none" stroke="#ffffff" stroke-opacity="0.5" stroke-width="1"/>`;
+            }
+          }
+        });
+      }
+
+      rects.forEach(r => {
+        if (r[5]) {
+          s += `<text x="${p + (r[0] + r[2] / 2) * u}" y="${p + (r[1] + r[3] / 2) * u + 5}" text-anchor="middle" font-size="13" font-family="'Fira Code', monospace" font-weight="700" fill="#ffffff">${r[5]}</text>`;
+        }
+      });
+
+      if (outlineL) {
+        s += `<path d="M${p} ${p} h${3 * u} v${2 * u} h${3 * u} v${2 * u} h-${6 * u} Z" fill="none" stroke="#231F20" stroke-width="3"/>`;
+      }
+
+      s += `</svg>`;
+      return s;
+    }
+
+    function drawLshapeTool() {
+      const M = LS_METHODS[currentLsMethod];
+      const grid = document.getElementById('lsG').checked;
+      const u = 28;
+
+      let html = `
+        <div class="flex flex-col items-center bg-cedow-light p-3 rounded-xl border border-cedow-silver">
+          <span class="text-xs font-bold text-cedow-charcoal mb-2">${M.lab0 || "Initial Dissection"}</span>
+          ${renderLsSVG(M.cut, u, grid, M.missing, M.one, true)}
+        </div>
+      `;
+
+      if (M.after) {
+        html += `
+          <div class="text-cedow-aqua font-black text-2xl flex items-center">&rarr;</div>
+          <div class="flex flex-col items-center bg-cedow-light p-3 rounded-xl border border-cedow-silver">
+            <span class="text-xs font-bold text-cedow-charcoal mb-2">${currentLsMethod === 5 ? "Interlocked Copy" : "Rearranged Rectangle"}: ${M.alab}</span>
+            ${renderLsSVG(M.after, u, grid, null, M.one, currentLsMethod === 5)}
+          </div>
+        `;
+      }
+
+      document.getElementById('lsPic').innerHTML = html;
+      document.getElementById('lsRead').innerHTML = `
+        <div class="text-cedow-blue font-bold text-base">${M.calc} square units</div>
+        <div class="text-cedow-charcoal text-xs mt-1 font-medium">${M.why}</div>
+      `;
+    }
+
+    document.querySelectorAll('.ls-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.ls-btn').forEach(b => {
+          b.classList.remove('active', 'bg-cedow-blue', 'text-white');
+          b.classList.add('bg-cedow-light', 'text-cedow-charcoal');
+        });
+        btn.classList.add('active', 'bg-cedow-blue', 'text-white');
+        btn.classList.remove('bg-cedow-light', 'text-cedow-charcoal');
+        currentLsMethod = parseInt(btn.dataset.m);
+        drawLshapeTool();
+      });
+    });
+
+    document.getElementById('lsG').addEventListener('change', drawLshapeTool);
+    drawLshapeTool();
+
+    // -------------------------------------------------------------
+    // SECTION 4: STUDENT DIAGNOSTIC CLINIC & ROOT SORTER
+    // -------------------------------------------------------------
+    const SCENARIOS = [
+      {
+        st: "Early Stage 1",
+        q: "Ava points to a right-angled scalene triangle and says: 'That is only half a triangle!'",
+        a: 0,
+        why: "Ava is governed by an equilateral prototype. In Kindergarten, teachers must introduce all types of triangles in varied orientations so students attend to defining features (3 straight sides, closed) rather than symmetry."
+      },
+      {
+        st: "Stage 1",
+        q: "Leo looks at a square turned 45 degrees onto its vertex and insists: 'It isn't a square anymore, it's a diamond!'",
+        a: 0,
+        why: "Leo evaluates the shape by orientation. Rotating a shape does not change its name or properties. The geometric term is rhombus, and a square is a special rhombus with 4 right angles."
+      },
+      {
+        st: "Stage 1",
+        q: "Mia covers her workbook with round counters and states: 'The area is 14 counters.'",
+        a: 1,
+        why: "Mia uses units without structure. Round counters do not tessellate and leave gaps. Area requires uniform units that tile the plane without gaps or overlaps."
+      },
+      {
+        st: "Stage 1",
+        q: "Josh says the tiles have more area after he rearranges a 2 &times; 8 tiled rectangle into a 4 &times; 4 square.",
+        a: 3,
+        why: "Josh believes rearrangement alters area. Rearranging units preserves area (both are 16 square units). This is a vital Stage 1 reasoning point."
+      },
+      {
+        st: "Stage 2",
+        q: "Ella argues: 'One square metre must always be in the exact shape of a square.'",
+        a: 2,
+        why: "Ella confuses the name of the unit with the physical boundary shape. A rectangle 2 metres long and half a metre wide has an area of exactly one square metre (2 &times; 0.5 = 1 m²)."
+      },
+      {
+        st: "Stage 2",
+        q: "Ben finds the area of a 6 by 8 rectangle by pointing and counting every single square centimetre from 1 to 48.",
+        a: 1,
+        why: "Ben is not utilizing the grid structure. He fails to see each row as a composite unit of 8 square centimetres (6 rows of 8)."
+      },
+      {
+        st: "Stage 2",
+        q: "Zoe believes her paper shape grew bigger after she rotated it through a quarter turn.",
+        a: 3,
+        why: "Zoe thinks rigid transformations alter size. Tracing the shape and rotating it visually verifies that transformations preserve surface area."
+      },
+      {
+        st: "Stage 3",
+        q: "Kai claims: 'If I double both the length and width of my garden bed, the area will double.'",
+        a: 2,
+        why: "This is the classic 1D-to-2D Linearity Problem. Doubling both dimensions quadruples the area (2 &times; 2 = 4 times as large)."
+      },
+      {
+        st: "Stage 3",
+        q: "Ruby insists: 'A triangle can never be both right-angled and isosceles!'",
+        a: 0,
+        why: "Ruby treats geometric classes as mutually exclusive. Folding a square along its diagonal immediately produces a right-angled isosceles triangle."
+      },
+      {
+        st: "Stage 3",
+        q: "Jai calculates a parallelogram's area by multiplying the base by the slanted side length.",
+        a: 3,
+        why: "Jai fails to see the parallelogram as a dissected rectangle. Cutting off the end triangle and translating it to the other side proves that area equals base &times; perpendicular height."
+      },
+      {
+        st: "Stage 3",
+        q: "Lily reads 4 cm² aloud as 'four centimetres squared' and sketches a 4 cm by 4 cm square.",
+        a: 2,
+        why: "Lily reads the unit as a squaring operation. 4 cm² is '4 square centimetres' (4 unit squares), whereas '4 centimetres squared' equals (4 cm)² = 16 cm²."
+      }
+    ];
+
+    let currentCaseIdx = 0, sorterScoreCount = 0;
+
+    function renderScenario() {
+      const sc = SCENARIOS[currentCaseIdx];
+      document.getElementById('caseStage').textContent = sc.st;
+      document.getElementById('caseQuote').innerHTML = `&ldquo;${sc.q}&rdquo;`;
+      document.getElementById('sorterProgress').textContent = `Case ${currentCaseIdx + 1} of ${SCENARIOS.length}`;
+      
+      const fb = document.getElementById('sorterFeedback');
+      fb.className = "hidden p-4 rounded-lg text-xs sm:text-sm border leading-relaxed space-y-1";
+      document.getElementById('sorterNextBtn').disabled = true;
+
+      document.querySelectorAll('.root-opt-btn').forEach(btn => {
+        btn.disabled = false;
+        btn.className = "root-opt-btn p-3 rounded-lg text-xs font-bold text-left border border-cedow-silver hover:bg-cedow-light transition";
+      });
+    }
+
+    function handleRootSelect(selectedRoot, clickedBtn) {
+      const sc = SCENARIOS[currentCaseIdx];
+      const isCorrect = (selectedRoot === sc.a);
+      if (isCorrect) sorterScoreCount++;
+
+      document.querySelectorAll('.root-opt-btn').forEach(b => {
+        b.disabled = true;
+        if (parseInt(b.dataset.root) === sc.a) {
+          b.classList.add('border-emerald-500', 'bg-emerald-50', 'text-emerald-900');
+        }
+      });
+      if (!isCorrect) {
+        clickedBtn.classList.add('border-red-500', 'bg-red-50', 'text-red-900');
+      }
+
+      const fb = document.getElementById('sorterFeedback');
+      fb.classList.remove('hidden');
+      if (isCorrect) {
+        fb.className = "p-4 rounded-lg text-xs sm:text-sm border border-emerald-300 bg-emerald-50 text-emerald-900 leading-relaxed";
+        fb.innerHTML = `<strong>Accurate Diagnosis!</strong> ${sc.why}`;
+      } else {
+        fb.className = "p-4 rounded-lg text-xs sm:text-sm border border-red-300 bg-red-50 text-red-900 leading-relaxed";
+        fb.innerHTML = `<strong>Misdiagnosis.</strong> This error stems from Root ${sc.a + 1}. ${sc.why}`;
+      }
+
+      document.getElementById('sorterNextBtn').disabled = false;
+      document.getElementById('sorterScore').textContent = `Score: ${sorterScoreCount} / ${currentCaseIdx + 1}`;
+    }
+
+    document.querySelectorAll('.root-opt-btn').forEach(btn => {
+      btn.addEventListener('click', () => handleRootSelect(parseInt(btn.dataset.root), btn));
+    });
+
+    document.getElementById('sorterNextBtn').addEventListener('click', () => {
+      currentCaseIdx++;
+      if (currentCaseIdx >= SCENARIOS.length) {
+        currentCaseIdx = 0;
+        sorterScoreCount = 0;
+      }
+      renderScenario();
+    });
+
+    renderScenario();
+
+    // -------------------------------------------------------------
+    // SECTION 5: TASK MAKEOVER STUDIO & 5 PEDAGOGICAL MOVES
+    // -------------------------------------------------------------
+    const MAKEOVERS = {
+      es1: {
+        stage: "Early Stage 1 &bull; 2D Shapes &bull; MAE-2DS-01",
+        before: {
+          task: "Worksheet: 'Colour the triangles.' (Page displays 4 identical upright equilateral triangles).",
+          flaws: ["Only reinforces prototypical image", "Zero non-examples to prompt discernment", "No mathematical reasoning or verbal explanation"]
+        },
+        after: {
+          task: "&ldquo;Sort this collection of shapes into &lsquo;triangles&rsquo; and &lsquo;not triangles&rsquo;. Convince your partner how you decided.&rdquo; (Collection includes right-angled triangles on side, needle-thin scalene triangles, chevrons, kites, and shapes with curved sides).",
+          enable: "Begin with non-examples that are distinctly contrasting (e.g. circle, square).",
+          extend: "&ldquo;Draw a triangle that you think nobody else in our classroom will draw.&rdquo;",
+          listen: "Listen for features: 'Three straight sides', 'It has three corners', 'It is closed', 'It is still a triangle even when I rotate it upside down'."
+        }
+      },
+      s1: {
+        stage: "Stage 1 &bull; Area Structure &bull; MA1-2DS-02",
+        before: {
+          task: "Worksheet: 'How many squares cover the rectangle?' (A 4 &times; 3 grid is already fully printed across the shape).",
+          flaws: ["The array structure is pre-given; reduces task to counting by ones", "Does not develop rows as composite units", "Single closed answer with no reasoning"]
+        },
+        after: {
+          task: "&ldquo;Here is ONE single cardboard square tile. Without using any more tiles, work out how many tiles would completely cover this book. Record how you know.&rdquo;",
+          enable: "Provide enough tiles for exactly one row and one column.",
+          extend: "&ldquo;Find another rectangular book that requires the exact same number of tiles but has different dimensions.&rdquo;",
+          listen: "Look for 'make, mark and move' strategy; drawing rows and columns; skip-counting by row totals; treating a row as a single composite unit."
+        }
+      },
+      s2: {
+        stage: "Stage 2 &bull; Transformations &amp; Symmetry &bull; MA2-2DS-02",
+        before: {
+          task: "Worksheet: 'Draw the line of symmetry on the square.' (Single square outline).",
+          flaws: ["Predictable closed drill (and ignores the square has 4 lines of symmetry)", "No dynamic transformation or spatial reasoning", "No academic vocabulary in active use"]
+        },
+        after: {
+          task: "&ldquo;Take a 3-piece tangram (2 small triangles, 1 medium triangle). How many different quadrilaterals can you make? Draw each shape, classify it, and describe your moves using translate, reflect, and rotate.&rdquo; (Diocesan PL)",
+          enable: "Begin by constructing a rectangle, then a larger triangle.",
+          extend: "&ldquo;Which of your created quadrilaterals possess lines of symmetry? Which have pairs of parallel sides?&rdquo;",
+          listen: "Use of formal vocabulary: 'translate', 'reflect', 'rotate'; recognizing that surface area remains constant across all combinations."
+        }
+      },
+      s3: {
+        stage: "Stage 3 &bull; Dissection &amp; Composite Area &bull; MA3-2DS-03",
+        before: {
+          task: "Worksheet: 'Find the area of the L-shape: 6 by 4 missing a 3 by 2 corner.' (Formula drill with one expected calculation).",
+          flaws: ["Encourages rote application of one formula", "No comparison of efficiency across methods", "Fails to connect transformational reasoning to rectangular area"]
+        },
+        after: {
+          task: "&ldquo;Find the area of this composite L-shape in as many different ways as you can. Which method is most efficient? Would your method work for any L-shape?&rdquo;",
+          enable: "Provide grid overlay paper and colored pencils to visualize the cut lines.",
+          extend: "&ldquo;Design an L-shape that CANNOT be doubled and rotated into a single rectangle. Explain why geometrically.&rdquo;",
+          listen: "Decomposing into horizontal vs vertical rectangles; completing the bounding box and subtracting; duplicating and rotating; 'They all rely on the area of a rectangle'."
+        }
+      }
+    };
+
+    function renderMakeover(stageKey) {
+      const m = MAKEOVERS[stageKey];
+      document.getElementById('makeoverCard').innerHTML = `
+        <div class="border-b border-cedow-silver/60 pb-3 flex justify-between items-center">
+          <span class="text-xs font-mono font-bold text-cedow-aqua uppercase">${m.stage}</span>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Before Card -->
+          <div class="bg-white p-4 rounded-xl border border-red-200 space-y-2">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-red-100 text-red-800">Before (Closed Drill)</span>
+            <div class="text-xs sm:text-sm font-semibold text-cedow-charcoal">${m.before.task}</div>
+            <div class="text-[11px] text-red-700 space-y-1 pt-1 border-t border-red-100">
+              ${m.before.flaws.map(f => `<div>&bull; ${f}</div>`).join('')}
+            </div>
+          </div>
+          <!-- After Card -->
+          <div class="bg-white p-4 rounded-xl border border-emerald-300 space-y-2">
+            <span class="inline-block px-2 py-0.5 rounded text-[10px] font-bold uppercase bg-emerald-100 text-emerald-800">After (Working Mathematically)</span>
+            <div class="text-xs sm:text-sm font-semibold text-cedow-blue">${m.after.task}</div>
+            <div class="text-[11px] text-cedow-charcoal space-y-1 pt-1 border-t border-emerald-100">
+              <div><strong>Enabling:</strong> ${m.after.enable}</div>
+              <div><strong>Extending:</strong> ${m.after.extend}</div>
+              <div class="text-cedow-aqua font-medium"><strong>Listen for:</strong> ${m.after.listen}</div>
+            </div>
+          </div>
+        </div>
+      `;
+    }
+
+    document.querySelectorAll('.mo-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.mo-btn').forEach(b => {
+          b.classList.remove('active', 'bg-cedow-blue', 'text-white');
+          b.classList.add('bg-cedow-light', 'text-cedow-charcoal');
+        });
+        btn.classList.add('active', 'bg-cedow-blue', 'text-white');
+        btn.classList.remove('bg-cedow-light', 'text-cedow-charcoal');
+        renderMakeover(btn.dataset.st);
+      });
+    });
+
+    renderMakeover('es1');
+
+    // The 5 High-Yield Pedagogical Moves
+    const MOVES_DATA = [
+      {
+        name: "1. Who is correct?",
+        desc: "Presents two competing student statements representing common conceptual dilemmas.",
+        exS1: "Ari says a square turned on its corner is a diamond. Bella says it is still a square. Who is correct? How do you know?",
+        exS2: "Tom counted 24 squares one at a time on a 6 &times; 4 grid. Mei multiplied 6 &times; 4. Whose method would work best for a soccer field?",
+        exS3: "Kai says the area of a parallelogram is 8 &times; the slanted side. Jess says it is 8 &times; the perpendicular height. Who is correct? Prove it by cutting and moving.",
+        wm: "Reasoning &amp; Communicating"
+      },
+      {
+        name: "2. Same and different",
+        desc: "Prompts comparative analysis of geometric attributes across different figures.",
+        exS1: "What is the same and what is different about a square, a rectangle, and a rhombus?",
+        exS2: "What is the same and what is different about a 6 &times; 4, a 3 &times; 8, and a 12 &times; 2 rectangle?",
+        exS3: "What is the same and what is different about a rectangle (8 by 5), a parallelogram (base 8, height 5), and a triangle (base 8, height 5)?",
+        wm: "Exploring &amp; Connecting"
+      },
+      {
+        name: "3. Always, sometimes, never",
+        desc: "Deepens relational reasoning and challenges over-generalised rules.",
+        exS1: "'A square is a rectangle.' Always, sometimes, or never true?",
+        exS2: "'A shape with a larger perimeter has a larger area.' Always, sometimes, or never true?",
+        exS3: "'Two shapes with the same base and height have the same area.' Always, sometimes, or never true?",
+        wm: "Reasoning &amp; Fluency"
+      },
+      {
+        name: "4. Open it up",
+        desc: "Removes fixed answers to create low-floor, high-ceiling spatial exploration.",
+        exS1: "Draw as many different four-sided shapes as you can. What do they all have in common?",
+        exS2: "Draw three shapes with an area of exactly 12 square centimetres that are NOT rectangles.",
+        exS3: "Draw three different non-congruent parallelograms that each have an area of 24 cm².",
+        wm: "Choosing &amp; Applying Techniques"
+      },
+      {
+        name: "5. Convince me",
+        desc: "Demands mathematical justification and rigorous communication.",
+        exS1: "Convince me that an upside-down triangle is still a triangle.",
+        exS2: "Convince me that a right-angled triangle with sides 4 cm and 6 cm has an area of 12 square centimetres.",
+        exS3: "Convince me that doubling both dimensions of a rectangle makes the area 4 times as large.",
+        wm: "Communicating &amp; Reasoning"
+      }
+    ];
+
+    function renderMove(moveIdx) {
+      const mv = MOVES_DATA[moveIdx];
+      document.getElementById('moveDisplayCard').innerHTML = `
+        <div class="flex flex-wrap items-center justify-between border-b border-cedow-silver pb-2">
+          <h5 class="text-base font-black text-cedow-blue">${mv.name}</h5>
+          <span class="text-xs font-mono font-bold bg-cedow-aqua text-white px-2.5 py-0.5 rounded">${mv.wm}</span>
+        </div>
+        <p class="text-xs text-cedow-charcoal italic">${mv.desc}</p>
+        <div class="grid grid-cols-1 sm:grid-cols-3 gap-3 pt-2 text-xs">
+          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
+            <span class="block font-bold text-cedow-aqua uppercase text-[10px] mb-1">Stage 1 Prompt</span>
+            <span class="text-cedow-black font-medium">${mv.exS1}</span>
+          </div>
+          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
+            <span class="block font-bold text-cedow-blue uppercase text-[10px] mb-1">Stage 2 Prompt</span>
+            <span class="text-cedow-black font-medium">${mv.exS2}</span>
+          </div>
+          <div class="bg-cedow-light p-3 rounded-lg border border-cedow-silver">
+            <span class="block font-bold text-cedow-charcoal uppercase text-[10px] mb-1">Stage 3 Prompt</span>
+            <span class="text-cedow-black font-medium">${mv.exS3}</span>
+          </div>
+        </div>
+      `;
+    }
+
+    document.querySelectorAll('.move-btn').forEach(btn => {
+      btn.addEventListener('click', () => {
+        document.querySelectorAll('.move-btn').forEach(b => {
+          b.classList.remove('active', 'bg-cedow-blue', 'text-white');
+          b.classList.add('bg-white', 'text-cedow-charcoal');
+        });
+        btn.classList.add('active', 'bg-cedow-blue', 'text-white');
+        btn.classList.remove('bg-white', 'text-cedow-charcoal');
+        renderMove(parseInt(btn.dataset.m));
+      });
+    });
+
+    renderMove(0);
+
+    // -------------------------------------------------------------
+    // SECTION 6: MODULE MASTERY CHECKPOINT
+    // -------------------------------------------------------------
+    const CHECKPOINT_QUESTIONS = [
+      {
+        q: "Why does NESA Teaching Advice recommend introducing all varieties of triangles (scalene, acute, obtuse, right-angled) in Early Stage 1 rather than only equilateral triangles?",
+        options: [
+          "Because equilateral triangles are rarely encountered in secondary school mathematics.",
+          "Because initial examples form the prototype image students hold; an equilateral prototype leads students to misidentify right-angled triangles as 'half a triangle'.",
+          "So students can memorise the formal Latin terms 'scalene' and 'isosceles' during Kindergarten.",
+          "To align directly with Stage 4 geometric proofs."
+        ],
+        correct: 1,
+        why: "Hourigan & Leavy (2015) proved that restricting early exposure to upright equilateral triangles produces a rigid prototype, causing students to reject non-symmetric triangles."
+      },
+      {
+        q: "In Stage 1 Area, why does the teaching advice advise progressing from providing multiple square tiles to providing just a single square tile to measure a surface?",
+        options: [
+          "To minimise classroom resource costs and storage requirements.",
+          "Because a single square tile is significantly easier to count than multiple tiles.",
+          "It forces students to mentally construct the array structure (rows and columns) and view rows as composite units.",
+          "To prepare students for using centimetre rulers."
+        ],
+        correct: 2,
+        why: "Using one tile iteratively ('make, mark and move') requires students to draw and coordinate the rows and columns, creating the mental framework for multiplication."
+      },
+      {
+        q: "A Stage 2 teacher asks: 'Can an area of one square metre be rectangular instead of square?' What does the NESA Teaching Advice state?",
+        options: [
+          "No, by definition one square metre must have four equal sides of 1 metre.",
+          "Yes, a rectangle 2 metres long and half a metre wide has an area of exactly one square metre.",
+          "Only when using grid paper indoors.",
+          "Only in Stage 4 coordinate geometry."
+        ],
+        correct: 1,
+        why: "NESA explicitly notes that an area of one square metre need not be a square. Dissecting a 2 m &times; 2 m square into 2 m² rectangles decouples the unit name from the physical perimeter shape."
+      },
+      {
+        q: "A student in Year 6 claims: 'Doubling the length and width of a rectangle doubles its area.' What is the mathematical reality?",
+        options: [
+          "The student is correct because length and width are directly proportional to area.",
+          "The area becomes 4 times as large, illustrating the classic 1D-to-2D linearity problem.",
+          "The area increases by 2 square units.",
+          "The area stays the same because the ratio remains constant."
+        ],
+        correct: 1,
+        why: "If a rectangle is 2 &times; 3 (area 6), doubling the dimensions to 4 &times; 6 yields an area of 24, which is 4 times as large (2 &times; 2 = 4)."
+      },
+      {
+        q: "Why does NESA recommend placing a square-centimetre grid BEHIND a rectangle in Stage 3 rather than on top of it?",
+        options: [
+          "It creates better aesthetic contrast for printing.",
+          "It discourages students from counting squares one-by-one and prompts multiplicative strategies using dimensions (number in a row &times; number of rows).",
+          "It is required by the NESA testing guidelines.",
+          "It prevents students from seeing partial squares."
+        ],
+        correct: 1,
+        why: "With the grid positioned behind, students can see the side dimensions but cannot easily tap and count individual squares, compelling them to use the formula length &times; width in words."
+      }
+    ];
+
+    function renderQuiz() {
+      const container = document.getElementById('quizContainer');
+      container.innerHTML = CHECKPOINT_QUESTIONS.map((item, idx) => `
+        <div class="bg-cedow-light p-5 rounded-xl border border-cedow-silver space-y-3">
+          <div class="flex items-center space-x-2">
+            <span class="w-6 h-6 rounded-full bg-cedow-blue text-white font-mono font-bold text-xs flex items-center justify-center">${idx + 1}</span>
+            <h4 class="font-bold text-cedow-blue text-sm sm:text-base">${item.q}</h4>
+          </div>
+          <div class="space-y-2 pt-1">
+            ${item.options.map((opt, oIdx) => `
+              <label class="flex items-start space-x-3 p-3 rounded-lg bg-white border border-cedow-silver cursor-pointer hover:bg-slate-50 transition text-xs sm:text-sm">
+                <input type="radio" name="q_${idx}" value="${oIdx}" class="mt-0.5 accent-cedow-aqua">
+                <span class="text-cedow-charcoal">${opt}</span>
+              </label>
+            `).join('')}
+          </div>
+          <div id="qFb_${idx}" class="hidden p-3 rounded-lg text-xs font-medium border leading-relaxed"></div>
+        </div>
+      `).join('');
+    }
+
+    document.getElementById('btnSubmitQuiz').addEventListener('click', () => {
+      let score = 0;
+      let allAnswered = true;
+
+      CHECKPOINT_QUESTIONS.forEach((item, idx) => {
+        const selected = document.querySelector(`input[name="q_${idx}"]:checked`);
+        const fb = document.getElementById(`qFb_${idx}`);
+        
+        if (!selected) {
+          allAnswered = false;
+          fb.classList.remove('hidden');
+          fb.className = "p-3 rounded-lg text-xs font-medium border border-amber-300 bg-amber-50 text-amber-900";
+          fb.textContent = "Please select an answer for this question.";
+          return;
+        }
+
+        const userVal = parseInt(selected.value);
+        fb.classList.remove('hidden');
+        if (userVal === item.correct) {
+          score++;
+          fb.className = "p-3 rounded-lg text-xs font-medium border border-emerald-300 bg-emerald-50 text-emerald-900";
+          fb.innerHTML = `<strong>Correct!</strong> ${item.why}`;
+        } else {
+          fb.className = "p-3 rounded-lg text-xs font-medium border border-red-300 bg-red-50 text-red-900";
+          fb.innerHTML = `<strong>Incorrect.</strong> ${item.why}`;
+        }
+      });
+
+      if (!allAnswered) {
+        document.getElementById('quizStatus').textContent = "Please complete all 5 questions before submitting.";
+        return;
+      }
+
+      const percent = Math.round((score / CHECKPOINT_QUESTIONS.length) * 100);
+      const passed = (percent >= 80);
+      const statusEl = document.getElementById('quizStatus');
+
+      if (passed) {
+        statusEl.innerHTML = `<span class="text-emerald-700 font-bold">Result: ${score} / 5 (${percent}%) &bull; Mastery Achieved!</span>`;
+        document.getElementById('takeawaysContainer').classList.remove('hidden');
+        document.getElementById('takeawaysContainer').scrollIntoView({ behavior: 'smooth' });
+      } else {
+        statusEl.innerHTML = `<span class="text-red-700 font-bold">Result: ${score} / 5 (${percent}%) &bull; 80% required to pass. Please review the feedback and retry.</span>`;
+        document.getElementById('takeawaysContainer').classList.add('hidden');
+      }
+    });
+
+    renderQuiz();
+
+    // Active Navigation Highlighting on Scroll
+    window.addEventListener('scroll', () => {
+      const sections = document.querySelectorAll('section[id]');
+      const scrollY = window.pageYOffset;
+
+      sections.forEach(current => {
+        const sectionHeight = current.offsetHeight;
+        const sectionTop = current.offsetTop - 120;
+        const sectionId = current.getAttribute('id');
+        const navLink = document.querySelector(`#moduleNav a[href*=${sectionId}]`);
+
+        if (scrollY > sectionTop && scrollY <= sectionTop + sectionHeight) {
+          if (navLink) navLink.classList.add('nav-active');
+        } else {
+          if (navLink) navLink.classList.remove('nav-active');
+        }
+      });
+    });
+  </script>
+</body>
+</html>
