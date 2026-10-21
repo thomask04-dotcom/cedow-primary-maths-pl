@@ -1,0 +1,2388 @@
+<!DOCTYPE html>
+<html lang="en-AU">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Focus Area 3: Forming Groups / Multiplicative Relations (K–6) | CEDoW Professional Learning</title>
+  <!-- Google Fonts: Lato & Fira Code -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Lato:ital,wght@0,300;0,400;0,700;0,900;1,400&display=swap" rel="stylesheet">
+  <!-- Tailwind CSS via CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <!-- Lucide Icons via CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            cedow: {
+              navy: '#0D2C6B',
+              aqua: '#188296',
+              gold: '#FBAF3F',
+              charcoal: '#4C4C4E',
+              silver: '#D1D2D4',
+              black: '#231F20',
+              bg: '#F4F6F9',
+              lightBlue: '#EEF4FA',
+              lightAqua: '#E8F6F8',
+              lightGold: '#FEF6E9'
+            }
+          },
+          fontFamily: {
+            sans: ['Lato', 'sans-serif'],
+            mono: ['Fira Code', 'monospace']
+          }
+        }
+      }
+    }
+  </script>
+  <style>
+    body {
+      font-family: 'Lato', sans-serif;
+      color: #231F20;
+      background-color: #F4F6F9;
+      -webkit-font-smoothing: antialiased;
+    }
+    .font-mono-math {
+      font-family: 'Fira Code', monospace;
+    }
+    /* Custom scrollbar */
+    ::-webkit-scrollbar {
+      width: 8px;
+      height: 8px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #F4F6F9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #D1D2D4;
+      border-radius: 4px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #188296;
+    }
+    .math-badge {
+      font-family: 'Fira Code', monospace;
+      background-color: #EEF4FA;
+      color: #0D2C6B;
+      border: 1px solid #D1D2D4;
+      padding: 0.15rem 0.45rem;
+      border-radius: 0.25rem;
+      font-weight: 600;
+      display: inline-block;
+    }
+    .dot-ctr {
+      display: inline-block;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: #188296;
+      margin: 2px;
+      transition: all 0.2s ease;
+    }
+    .dot-ctr-gold {
+      background-color: #FBAF3F;
+    }
+    .plate-card {
+      min-height: 100px;
+      border: 2px dashed #188296;
+      border-radius: 12px;
+      background: #FFFFFF;
+      transition: all 0.3s ease;
+    }
+    .plate-card:hover {
+      border-color: #0D2C6B;
+      box-shadow: 0 4px 12px rgba(13, 44, 107, 0.08);
+    }
+  </style>
+</head>
+<body class="min-h-screen flex flex-col antialiased selection:bg-cedow-aqua selection:text-white">
+
+  <!-- TOP HEADER / APP BAR -->
+  <header class="bg-cedow-navy text-white sticky top-0 z-50 shadow-md border-b-4 border-cedow-gold">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3.5 flex items-center justify-between">
+      <div class="flex items-center space-x-3.5">
+        <div class="w-10 h-10 rounded-lg bg-cedow-aqua flex items-center justify-center font-black text-xl text-white tracking-wider shadow">
+          <span>MR</span>
+        </div>
+        <div>
+          <span class="text-xs uppercase tracking-widest text-cedow-gold font-bold block">Catholic Education Diocese of Wollongong</span>
+          <h1 class="text-lg sm:text-xl font-bold tracking-tight text-white leading-tight">Focus Area 3: Forming Groups / Multiplicative Relations (K–6)</h1>
+        </div>
+      </div>
+      <div class="flex items-center space-x-3">
+        <span class="hidden md:inline-flex items-center text-xs font-semibold px-2.5 py-1 rounded bg-cedow-navy/60 border border-cedow-silver text-slate-100">
+          <i data-lucide="book-open" class="w-3.5 h-3.5 mr-1.5 text-cedow-aqua"></i> NSW Maths K–10 (2022)
+        </span>
+        <button id="mobileMenuBtn" class="lg:hidden p-2 rounded-md hover:bg-white/10 text-white focus:outline-none focus:ring-2 focus:ring-cedow-gold" aria-label="Toggle navigation menu">
+          <i data-lucide="menu" class="w-6 h-6"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- MAIN CONTAINER WITH RESPONSIVE LAYOUT -->
+  <div class="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col lg:flex-row gap-8">
+    
+    <!-- SIDEBAR NAVIGATION -->
+    <aside id="sidebarNav" class="w-full lg:w-72 flex-shrink-0 hidden lg:block">
+      <div class="sticky top-24 space-y-4">
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver overflow-hidden">
+          <div class="p-4 bg-cedow-lightBlue border-b border-cedow-silver">
+            <span class="text-xs font-bold uppercase tracking-wider text-cedow-navy flex items-center">
+              <i data-lucide="compass" class="w-4 h-4 mr-1.5 text-cedow-aqua"></i> Module Navigation
+            </span>
+            <p class="text-xs text-cedow-charcoal mt-1">Self-paced professional learning journey</p>
+          </div>
+          <nav class="p-2 space-y-1">
+            <a href="#section1" class="nav-link flex items-center px-3 py-2.5 text-sm font-semibold rounded-lg text-cedow-navy hover:bg-cedow-lightAqua hover:text-cedow-aqua transition">
+              <span class="w-6 h-6 rounded-full bg-cedow-lightBlue text-cedow-navy text-xs flex items-center justify-center font-bold mr-2.5">1</span>
+              <span>Vertical Trajectory</span>
+            </a>
+            <a href="#section2" class="nav-link flex items-center px-3 py-2.5 text-sm font-semibold rounded-lg text-cedow-charcoal hover:bg-cedow-lightAqua hover:text-cedow-aqua transition">
+              <span class="w-6 h-6 rounded-full bg-slate-100 text-cedow-charcoal text-xs flex items-center justify-center font-bold mr-2.5">2</span>
+              <span>Conceptual Shifts & Traps</span>
+            </a>
+            <a href="#section3" class="nav-link flex items-center px-3 py-2.5 text-sm font-semibold rounded-lg text-cedow-charcoal hover:bg-cedow-lightAqua hover:text-cedow-aqua transition">
+              <span class="w-6 h-6 rounded-full bg-slate-100 text-cedow-charcoal text-xs flex items-center justify-center font-bold mr-2.5">3</span>
+              <span>Interactive Tool Lab</span>
+            </a>
+            <a href="#section4" class="nav-link flex items-center px-3 py-2.5 text-sm font-semibold rounded-lg text-cedow-charcoal hover:bg-cedow-lightAqua hover:text-cedow-aqua transition">
+              <span class="w-6 h-6 rounded-full bg-slate-100 text-cedow-charcoal text-xs flex items-center justify-center font-bold mr-2.5">4</span>
+              <span>Diagnostic Clinic</span>
+            </a>
+            <a href="#section5" class="nav-link flex items-center px-3 py-2.5 text-sm font-semibold rounded-lg text-cedow-charcoal hover:bg-cedow-lightAqua hover:text-cedow-aqua transition">
+              <span class="w-6 h-6 rounded-full bg-slate-100 text-cedow-charcoal text-xs flex items-center justify-center font-bold mr-2.5">5</span>
+              <span>Task Makeover Studio</span>
+            </a>
+            <a href="#section6" class="nav-link flex items-center px-3 py-2.5 text-sm font-semibold rounded-lg text-cedow-charcoal hover:bg-cedow-lightAqua hover:text-cedow-aqua transition">
+              <span class="w-6 h-6 rounded-full bg-slate-100 text-cedow-charcoal text-xs flex items-center justify-center font-bold mr-2.5">6</span>
+              <span>Mastery Checkpoint</span>
+            </a>
+            <a href="#section7" class="nav-link flex items-center px-3 py-2.5 text-sm font-semibold rounded-lg text-cedow-charcoal hover:bg-cedow-lightAqua hover:text-cedow-aqua transition">
+              <span class="w-6 h-6 rounded-full bg-slate-100 text-cedow-charcoal text-xs flex items-center justify-center font-bold mr-2.5">7</span>
+              <span>Canvas LMS Deployment</span>
+            </a>
+          </nav>
+        </div>
+
+        <!-- DIOCESAN PEDAGOGICAL HIGHLIGHT BADGE -->
+        <div class="bg-gradient-to-br from-cedow-navy to-slate-900 rounded-xl p-4 text-white shadow-sm border border-cedow-navy/40">
+          <div class="flex items-center space-x-2 text-cedow-gold mb-2">
+            <i data-lucide="sparkles" class="w-4 h-4"></i>
+            <span class="text-xs font-bold uppercase tracking-wider">Diocesan PL Principle</span>
+          </div>
+          <p class="text-xs text-slate-200 leading-relaxed">
+            Move students from <span class="text-cedow-gold font-bold">perceptual sharing</span> to <span class="text-cedow-aqua font-bold">coordinating composite units</span>, and finally to <span class="text-white font-bold">applying mathematical properties</span> (&times; and &divide;).
+          </p>
+        </div>
+      </div>
+    </aside>
+
+    <!-- MAIN LEARNING CONTENT AREA -->
+    <main class="flex-1 min-w-0 space-y-12">
+
+      <!-- HERO BANNER -->
+      <section class="bg-white rounded-2xl shadow-sm border border-cedow-silver p-6 sm:p-8 relative overflow-hidden">
+        <div class="absolute top-0 right-0 w-48 h-48 bg-gradient-to-bl from-cedow-lightAqua to-transparent rounded-bl-full pointer-events-none -mr-10 -mt-10"></div>
+        <div class="relative z-10 max-w-3xl">
+          <div class="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-cedow-lightGold border border-cedow-gold/40 text-cedow-charcoal text-xs font-bold mb-4">
+            <span class="w-2 h-2 rounded-full bg-cedow-gold animate-pulse"></span>
+            <span>K–6 Continuum Architecture</span>
+          </div>
+          <h2 class="text-2xl sm:text-3xl font-black text-cedow-navy tracking-tight leading-tight">
+            From Forming Groups to Multiplicative Relations
+          </h2>
+          <p class="mt-3 text-base sm:text-lg text-cedow-charcoal leading-relaxed font-normal">
+            This module traces the progression of multiplication and division across Early Stage 1 to Stage 3 in the NSW Mathematics K–10 (2022) syllabus. It connects syllabus outcomes, research-informed NESA Teaching Advice, and diocesan professional learning guidance to help teachers build robust conceptual understanding and flexible reasoning.
+          </p>
+          <div class="mt-6 flex flex-wrap gap-3">
+            <div class="flex items-center text-xs font-semibold px-3 py-1.5 rounded-md bg-cedow-bg text-cedow-charcoal border border-cedow-silver">
+              <i data-lucide="layers" class="w-4 h-4 mr-1.5 text-cedow-aqua"></i> 4 Curriculum Stages
+            </div>
+            <div class="flex items-center text-xs font-semibold px-3 py-1.5 rounded-md bg-cedow-bg text-cedow-charcoal border border-cedow-silver">
+              <i data-lucide="cpu" class="w-4 h-4 mr-1.5 text-cedow-gold"></i> 4 Interactive Simulators
+            </div>
+            <div class="flex items-center text-xs font-semibold px-3 py-1.5 rounded-md bg-cedow-bg text-cedow-charcoal border border-cedow-silver">
+              <i data-lucide="stethoscope" class="w-4 h-4 mr-1.5 text-cedow-navy"></i> 10 Student Diagnostics
+            </div>
+            <div class="flex items-center text-xs font-semibold px-3 py-1.5 rounded-md bg-cedow-bg text-cedow-charcoal border border-cedow-silver">
+              <i data-lucide="check-circle" class="w-4 h-4 mr-1.5 text-emerald-600"></i> Working Mathematically MAO-WM-01
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 1: THE VERTICAL TRAJECTORY & BIG IDEAS -->
+      <section id="section1" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="flex items-center space-x-2 text-cedow-aqua font-bold text-xs uppercase tracking-wider">
+            <i data-lucide="git-branch" class="w-4 h-4"></i>
+            <span>Curriculum Continuum</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-cedow-navy mt-1">Section 1: The Vertical Trajectory & Big Ideas</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">Explore how multiplicative reasoning develops from Kindergarten to Year 6 across the NSW Syllabus (2022).</p>
+        </div>
+
+        <!-- STAGE SELECTOR TABS -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-5">
+          <div class="flex flex-wrap gap-2 mb-6" id="stageTabsContainer">
+            <button data-stage="es1" class="stage-tab-btn px-4 py-2.5 rounded-lg text-sm font-bold border transition flex items-center bg-cedow-navy text-white border-cedow-navy shadow-sm">
+              <span class="w-2.5 h-2.5 rounded-full bg-cedow-gold mr-2"></span> Early Stage 1 (Kindy)
+            </button>
+            <button data-stage="s1" class="stage-tab-btn px-4 py-2.5 rounded-lg text-sm font-bold border transition flex items-center bg-white text-cedow-charcoal border-cedow-silver hover:bg-slate-50">
+              <span class="w-2.5 h-2.5 rounded-full bg-cedow-aqua mr-2"></span> Stage 1 (Years 1–2)
+            </button>
+            <button data-stage="s2" class="stage-tab-btn px-4 py-2.5 rounded-lg text-sm font-bold border transition flex items-center bg-white text-cedow-charcoal border-cedow-silver hover:bg-slate-50">
+              <span class="w-2.5 h-2.5 rounded-full bg-cedow-navy mr-2"></span> Stage 2 (Years 3–4)
+            </button>
+            <button data-stage="s3" class="stage-tab-btn px-4 py-2.5 rounded-lg text-sm font-bold border transition flex items-center bg-white text-cedow-charcoal border-cedow-silver hover:bg-slate-50">
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-600 mr-2"></span> Stage 3 (Years 5–6)
+            </button>
+          </div>
+
+          <!-- DYNAMIC STAGE CONTENT CONTAINER -->
+          <div id="stageContentDisplay" class="space-y-6">
+            <!-- Dynamically populated by JS based on stage selection -->
+          </div>
+        </div>
+
+        <!-- CROSS-STAGE BIG IDEAS MATRIX -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6">
+          <div class="flex items-center justify-between mb-4 flex-wrap gap-2">
+            <div>
+              <h4 class="text-lg font-bold text-cedow-navy flex items-center">
+                <i data-lucide="grid" class="w-5 h-5 mr-2 text-cedow-aqua"></i> The 6 Core "Big Ideas" Matrix
+              </h4>
+              <p class="text-xs text-cedow-charcoal mt-0.5">Select a mathematical principle to view its vertical progression from Kindergarten to Year 6.</p>
+            </div>
+            <span class="text-xs font-semibold px-2.5 py-1 rounded bg-cedow-lightAqua text-cedow-aqua border border-cedow-aqua/30">Interactive Matrix</span>
+          </div>
+
+          <div class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 mb-6" id="bigIdeasButtons">
+            <!-- Buttons dynamically populated -->
+          </div>
+
+          <div id="bigIdeaDetailDisplay" class="bg-cedow-bg rounded-xl p-5 border border-cedow-silver transition-all">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: KEY CONCEPTUAL SHIFTS & PEDAGOGICAL TRAPS -->
+      <section id="section2" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="flex items-center space-x-2 text-cedow-aqua font-bold text-xs uppercase tracking-wider">
+            <i data-lucide="alert-triangle" class="w-4 h-4 text-amber-500"></i>
+            <span>Research & Pedagogy</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-cedow-navy mt-1">Section 2: Key Conceptual Shifts & Pedagogical Traps</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">Grounding classroom instructional practice in NESA Teaching Advice and research literature.</p>
+        </div>
+
+        <!-- 3 MAJOR CONCEPTUAL SHIFTS -->
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-white rounded-xl p-5 shadow-sm border-t-4 border-cedow-aqua border-x border-b border-cedow-silver flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-black uppercase tracking-wider px-2 py-0.5 rounded bg-cedow-lightAqua text-cedow-aqua">Shift 1</span>
+                <span class="text-xs font-bold text-cedow-charcoal">ES1 &rarr; Stage 1</span>
+              </div>
+              <h4 class="text-base font-bold text-cedow-navy mb-2">From Perceptual Sharing to Coordinating Units</h4>
+              <p class="text-xs text-cedow-charcoal leading-relaxed">
+                Students progress from distributing physical objects one-by-one until supply runs out to establishing equal groups and coordinating the <em>number of groups</em> with the <em>number in each group</em>. Counting by ones gives way to rhythmic counting, skip counting, and repeated addition.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 bg-cedow-bg p-2.5 rounded text-xs text-cedow-charcoal">
+              <strong class="text-cedow-navy block mb-1">Key Research Alert:</strong>
+              NESA notes that an array requires coordinating groups in <em>two directions</em> (rows and columns), which is substantially harder than linear "groups of".
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 shadow-sm border-t-4 border-cedow-gold border-x border-b border-cedow-silver flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-black uppercase tracking-wider px-2 py-0.5 rounded bg-cedow-lightGold text-cedow-navy">Shift 2</span>
+                <span class="text-xs font-bold text-cedow-charcoal">Stage 1 &rarr; Stage 2</span>
+              </div>
+              <h4 class="text-base font-bold text-cedow-navy mb-2">From Repeated Addition to Multiplicative Relations</h4>
+              <p class="text-xs text-cedow-charcoal leading-relaxed">
+                Transitioning from additive aggregation (skip counting) to thinking multiplicatively via one-to-many correspondence. Rectangular arrays introduce commutativity (<span class="font-mono-math">a &times; b = b &times; a</span>), fact families up to <span class="font-mono-math">10 &times; 10</span>, and formal symbols (<span class="font-mono-math">&times;</span>, <span class="font-mono-math">&divide;</span>).
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 bg-cedow-bg p-2.5 rounded text-xs text-cedow-charcoal">
+              <strong class="text-cedow-navy block mb-1">Key Research Alert:</strong>
+              Between two-thirds and four-fifths of adult recall errors stem from neighbouring facts in blocked tables (Domahs et al. 2006). Fact families with mixed practice provide structural meaning.
+            </div>
+          </div>
+
+          <div class="bg-white rounded-xl p-5 shadow-sm border-t-4 border-cedow-navy border-x border-b border-cedow-silver flex flex-col justify-between">
+            <div>
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs font-black uppercase tracking-wider px-2 py-0.5 rounded bg-cedow-lightBlue text-cedow-navy">Shift 3</span>
+                <span class="text-xs font-bold text-cedow-charcoal">Stage 2 &rarr; Stage 3</span>
+              </div>
+              <h4 class="text-base font-bold text-cedow-navy mb-2">From Facts to Properties & Scaling Strategies</h4>
+              <p class="text-xs text-cedow-charcoal leading-relaxed">
+                Applying structural properties to operate on larger numbers: distributive property via the area model, associative factorisation (<span class="font-mono-math">12 &times; 25 = 3 &times; 4 &times; 25 = 300</span>), Euclidean division with contextual remainders (<span class="font-mono-math">a = bq + r</span>), rates, and order of operations.
+              </p>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100 bg-cedow-bg p-2.5 rounded text-xs text-cedow-charcoal">
+              <strong class="text-cedow-navy block mb-1">Key Research Alert:</strong>
+              The area model and partial products bridge mental strategies to formal algorithms, serving as the direct precursor to expanding algebraic binomials in Stage 5.
+            </div>
+          </div>
+        </div>
+
+        <!-- 6 PEDAGOGICAL TRAPS CARD GRID -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6">
+          <h4 class="text-lg font-bold text-cedow-navy mb-4 flex items-center">
+            <i data-lucide="shield-alert" class="w-5 h-5 mr-2 text-rose-600"></i> Six Common Pedagogical Traps & Classroom Countermeasures
+          </h4>
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            
+            <div class="p-4 rounded-lg bg-cedow-bg border border-cedow-silver">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-rose-600 uppercase">Trap 1: Additive View</span>
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-500"></i>
+              </div>
+              <h5 class="text-sm font-bold text-cedow-navy">"Multiplication Always Makes Numbers Bigger"</h5>
+              <p class="text-xs text-cedow-charcoal mt-1 leading-relaxed">
+                When multiplication is taught solely as "repeated addition", students believe products must always be larger than factors. This shatters in Stage 2 with <span class="font-mono-math">&times; 1</span> and <span class="font-mono-math">&times; 0</span>, and creates massive roadblocks with fractions and decimals in Stage 3 and Stage 4.
+              </p>
+              <div class="mt-3 text-xs bg-white p-2 rounded border border-cedow-silver text-cedow-aqua font-medium">
+                <strong>Countermove:</strong> Define multiplication as <em>groups of groups</em> and scaling (one-to-many correspondence).
+              </div>
+            </div>
+
+            <div class="p-4 rounded-lg bg-cedow-bg border border-cedow-silver">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-rose-600 uppercase">Trap 2: Colloquial Language</span>
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-500"></i>
+              </div>
+              <h5 class="text-sm font-bold text-cedow-navy">Using the Everyday Phrase "Lots Of"</h5>
+              <p class="text-xs text-cedow-charcoal mt-1 leading-relaxed">
+                NESA Teaching Advice explicitly warns against using "lots of" for multiplication. In everyday English, "lots of fish in the sea" means an indefinite large quantity, confusing young learners when distinguishing discrete equal groups.
+              </p>
+              <div class="mt-3 text-xs bg-white p-2 rounded border border-cedow-silver text-cedow-aqua font-medium">
+                <strong>Countermove:</strong> Consistently use precise mathematical phrasing: "groups of", "rows of", and "columns of".
+              </div>
+            </div>
+
+            <div class="p-4 rounded-lg bg-cedow-bg border border-cedow-silver">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-rose-600 uppercase">Trap 3: Rote Rhythms</span>
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-500"></i>
+              </div>
+              <h5 class="text-sm font-bold text-cedow-navy">Blocked Tables Without Meaning</h5>
+              <p class="text-xs text-cedow-charcoal mt-1 leading-relaxed">
+                Rote recitation of tables in sequential blocks stores facts as fragile verbal memory chains (Rohrer 2009). If a student loses the sequence, they recount on fingers or retrieve neighbouring answers (recalling <span class="font-mono-math">4 &times; 8 = 24</span>).
+              </p>
+              <div class="mt-3 text-xs bg-white p-2 rounded border border-cedow-silver text-cedow-aqua font-medium">
+                <strong>Countermove:</strong> Teach triangle fact families with mixed practice, linking <span class="font-mono-math">&times;</span> and <span class="font-mono-math">&divide;</span> concurrently.
+              </div>
+            </div>
+
+            <div class="p-4 rounded-lg bg-cedow-bg border border-cedow-silver">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-rose-600 uppercase">Trap 4: Operator Symbol</span>
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-500"></i>
+              </div>
+              <h5 class="text-sm font-bold text-cedow-navy">Equals Sign as "Here Comes the Answer"</h5>
+              <p class="text-xs text-cedow-charcoal mt-1 leading-relaxed">
+                Over-reliance on calculator operations leads students to view <span class="font-mono-math">=</span> as a command to calculate rather than an equivalence relation. When presented with <span class="font-mono-math">4 &times; 3 = 6 &times; 2</span>, students reject it as false.
+              </p>
+              <div class="mt-3 text-xs bg-white p-2 rounded border border-cedow-silver text-cedow-aqua font-medium">
+                <strong>Countermove:</strong> Consistently read the equals sign as "is the same as", balancing expressions on both sides.
+              </div>
+            </div>
+
+            <div class="p-4 rounded-lg bg-cedow-bg border border-cedow-silver">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-rose-600 uppercase">Trap 5: Mnemonic Distortion</span>
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-500"></i>
+              </div>
+              <h5 class="text-sm font-bold text-cedow-navy">BODMAS / PEMDAS as Strict Hierarchies</h5>
+              <p class="text-xs text-cedow-charcoal mt-1 leading-relaxed">
+                Mnemonics falsely imply addition precedes subtraction and multiplication precedes division. In <span class="font-mono-math">10 &minus; 3 + 2</span>, students incorrectly calculate <span class="font-mono-math">3 + 2 = 5</span> then <span class="font-mono-math">10 &minus; 5 = 5</span> instead of operating left-to-right.
+              </p>
+              <div class="mt-3 text-xs bg-white p-2 rounded border border-cedow-silver text-cedow-aqua font-medium">
+                <strong>Countermove:</strong> Treat <span class="font-mono-math">&times;</span> as "unfinished addition business" and build visual anchor charts.
+              </div>
+            </div>
+
+            <div class="p-4 rounded-lg bg-cedow-bg border border-cedow-silver">
+              <div class="flex items-center justify-between mb-2">
+                <span class="text-xs font-bold text-rose-600 uppercase">Trap 6: Naked Remainders</span>
+                <i data-lucide="x-circle" class="w-4 h-4 text-rose-500"></i>
+              </div>
+              <h5 class="text-sm font-bold text-cedow-navy">Ignoring Contextual Meaning of Remainders</h5>
+              <p class="text-xs text-cedow-charcoal mt-1 leading-relaxed">
+                Treating remainders as abstract symbols ("9 R 2") prevents students from interpreting what leftover amounts mean in real life (e.g. 47 people requiring 5-seater cars need 10 cars, not 9).
+              </p>
+              <div class="mt-3 text-xs bg-white p-2 rounded border border-cedow-silver text-cedow-aqua font-medium">
+                <strong>Countermove:</strong> Have students write division stories where the answer rounds up, rounds down, or converts to decimals.
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: INTERACTIVE TOOL LAB (4 RUNNABLE MANIPULATIVES) -->
+      <section id="section3" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="flex items-center space-x-2 text-cedow-aqua font-bold text-xs uppercase tracking-wider">
+            <i data-lucide="sliders" class="w-4 h-4"></i>
+            <span>Interactive Tool Lab</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-cedow-navy mt-1">Section 3: Runnable Manipulatives Lab (K–6)</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">Four interactive mathematical simulators designed to make multiplicative structure visible across every stage.</p>
+        </div>
+
+        <!-- SIMULATOR SELECTOR TABS -->
+        <div class="flex flex-wrap gap-2 border-b border-cedow-silver pb-2">
+          <button id="toolBtn1" onclick="switchTool(1)" class="tool-tab-btn px-4 py-2 text-sm font-bold rounded-t-lg bg-cedow-navy text-white flex items-center">
+            <span class="w-2 h-2 rounded-full bg-cedow-gold mr-2"></span> Tool 1: Fair Share (ES1)
+          </button>
+          <button id="toolBtn2" onclick="switchTool(2)" class="tool-tab-btn px-4 py-2 text-sm font-bold rounded-t-lg bg-white text-cedow-charcoal hover:bg-slate-100 flex items-center">
+            <span class="w-2 h-2 rounded-full bg-cedow-aqua mr-2"></span> Tool 2: Groups to Arrays (S1)
+          </button>
+          <button id="toolBtn3" onclick="switchTool(3)" class="tool-tab-btn px-4 py-2 text-sm font-bold rounded-t-lg bg-white text-cedow-charcoal hover:bg-slate-100 flex items-center">
+            <span class="w-2 h-2 rounded-full bg-cedow-navy mr-2"></span> Tool 3: Array Splitter (S2)
+          </button>
+          <button id="toolBtn4" onclick="switchTool(4)" class="tool-tab-btn px-4 py-2 text-sm font-bold rounded-t-lg bg-white text-cedow-charcoal hover:bg-slate-100 flex items-center">
+            <span class="w-2 h-2 rounded-full bg-emerald-600 mr-2"></span> Tool 4: Area Model (S3)
+          </button>
+        </div>
+
+        <!-- TOOL 1: FAIR SHARE SIMULATOR (ES1) -->
+        <div id="toolPanel1" class="tool-panel bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-6">
+          <div class="flex items-start justify-between flex-wrap gap-4">
+            <div>
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider block">Early Stage 1 Model &bull; MAE-FG-02</span>
+              <h4 class="text-lg font-bold text-cedow-navy">Fair Sharing & Reversibility Simulator</h4>
+              <p class="text-xs text-cedow-charcoal mt-1 max-w-2xl">
+                Distribute counters one-at-a-time into equal groups (partitive division). Then recombine the groups to demonstrate to young learners that sharing and recombining undo each other, so the whole collection remains conserved.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <div>
+                <label for="shTotalSelect" class="block text-xs font-bold text-cedow-navy mb-1">Total Counters:</label>
+                <select id="shTotalSelect" class="border border-cedow-silver rounded px-2.5 py-1 text-sm bg-white font-semibold">
+                  <option value="6">6 counters</option>
+                  <option value="8">8 counters</option>
+                  <option value="10">10 counters</option>
+                  <option value="12" selected>12 counters</option>
+                  <option value="13">13 counters (with leftover)</option>
+                  <option value="15">15 counters</option>
+                  <option value="20">20 counters</option>
+                </select>
+              </div>
+              <div>
+                <label for="shPeopleSelect" class="block text-xs font-bold text-cedow-navy mb-1">Share Between:</label>
+                <select id="shPeopleSelect" class="border border-cedow-silver rounded px-2.5 py-1 text-sm bg-white font-semibold">
+                  <option value="2">2 people</option>
+                  <option value="3" selected>3 people</option>
+                  <option value="4">4 people</option>
+                  <option value="5">5 people</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- CONTROLS & ACTION BUTTONS -->
+          <div class="flex flex-wrap items-center gap-2.5 pt-2">
+            <button id="shDealOneBtn" class="px-3.5 py-1.5 rounded-lg bg-cedow-aqua hover:bg-cedow-aqua/90 text-white font-bold text-xs flex items-center shadow-sm">
+              <i data-lucide="user-plus" class="w-3.5 h-3.5 mr-1.5"></i> Deal One
+            </button>
+            <button id="shDealAllBtn" class="px-3.5 py-1.5 rounded-lg bg-cedow-navy hover:bg-cedow-navy/90 text-white font-bold text-xs flex items-center shadow-sm">
+              <i data-lucide="check-check" class="w-3.5 h-3.5 mr-1.5"></i> Deal Fairly
+            </button>
+            <button id="shPutBackBtn" class="px-3.5 py-1.5 rounded-lg bg-white border border-cedow-silver text-cedow-charcoal hover:bg-slate-50 font-bold text-xs flex items-center">
+              <i data-lucide="rotate-ccw" class="w-3.5 h-3.5 mr-1.5 text-cedow-aqua"></i> Put Back Together (Recombine)
+            </button>
+          </div>
+
+          <!-- PILE DISPLAY -->
+          <div class="bg-cedow-bg p-4 rounded-xl border border-cedow-silver">
+            <div class="flex items-center justify-between mb-2">
+              <span class="text-xs font-bold text-cedow-navy uppercase tracking-wider flex items-center">
+                <i data-lucide="circle-dot" class="w-3.5 h-3.5 mr-1.5 text-cedow-aqua"></i> Supply Pile
+              </span>
+              <span id="shPileCountBadge" class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-white border border-cedow-silver">12 counters remaining</span>
+            </div>
+            <div id="shPileDots" class="min-h-[38px] flex flex-wrap items-center gap-1.5 p-2 bg-white rounded-lg border border-slate-200">
+              <!-- Dots rendered by JS -->
+            </div>
+          </div>
+
+          <!-- PLATES CONTAINER -->
+          <div class="space-y-2">
+            <span class="text-xs font-bold text-cedow-navy uppercase tracking-wider block">Shared Groups (Persons):</span>
+            <div id="shPlatesGrid" class="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3">
+              <!-- Plates rendered dynamically -->
+            </div>
+          </div>
+
+          <!-- FEEDBACK BANNER -->
+          <div id="shFeedbackAlert" class="p-3.5 rounded-lg bg-cedow-lightAqua border border-cedow-aqua/40 text-xs font-semibold text-cedow-navy flex items-start">
+            <i data-lucide="info" class="w-4 h-4 text-cedow-aqua mr-2 flex-shrink-0 mt-0.5"></i>
+            <span id="shFeedbackText">Choose how many counters and people, then deal one at a time.</span>
+          </div>
+        </div>
+
+        <!-- TOOL 2: GROUPS TO ARRAYS & COMMUTATIVITY (S1) -->
+        <div id="toolPanel2" class="tool-panel bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-6 hidden">
+          <div class="flex items-start justify-between flex-wrap gap-4">
+            <div>
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider block">Stage 1 Model &bull; MA1-FG-01</span>
+              <h4 class="text-lg font-bold text-cedow-navy">From Equal Groups to Rectangular Arrays & Commutativity</h4>
+              <p class="text-xs text-cedow-charcoal mt-1 max-w-2xl">
+                Observe how discrete "groups of" transition into structured rows and columns. Rotating the array demonstrates the commutative property of multiplication (<span class="font-mono-math">3 &times; 4 = 4 &times; 3 = 12</span>) while the total quantity is preserved.
+              </p>
+            </div>
+            <div class="flex flex-wrap items-center gap-3">
+              <div>
+                <label for="grGroupsSelect" class="block text-xs font-bold text-cedow-navy mb-1">Number of Groups:</label>
+                <select id="grGroupsSelect" class="border border-cedow-silver rounded px-2.5 py-1 text-sm bg-white font-semibold">
+                  <option value="2">2</option>
+                  <option value="3" selected>3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                </select>
+              </div>
+              <div>
+                <label for="grInEachSelect" class="block text-xs font-bold text-cedow-navy mb-1">Number in Each Group:</label>
+                <select id="grInEachSelect" class="border border-cedow-silver rounded px-2.5 py-1 text-sm bg-white font-semibold">
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4" selected>4</option>
+                  <option value="5">5</option>
+                  <option value="6">6</option>
+                  <option value="7">7</option>
+                  <option value="8">8</option>
+                </select>
+              </div>
+            </div>
+          </div>
+
+          <!-- VIEW MODE TOGGLES -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button id="grModeGroupsBtn" onclick="setGroupsMode('g')" class="gr-mode-btn px-3 py-1.5 rounded-lg bg-cedow-navy text-white text-xs font-bold flex items-center shadow-sm">
+              <i data-lucide="layout-grid" class="w-3.5 h-3.5 mr-1.5"></i> 1. Equal Groups
+            </button>
+            <button id="grModeArrayBtn" onclick="setGroupsMode('a')" class="gr-mode-btn px-3 py-1.5 rounded-lg bg-white border border-cedow-silver text-cedow-charcoal hover:bg-slate-50 text-xs font-bold flex items-center">
+              <i data-lucide="grid" class="w-3.5 h-3.5 mr-1.5 text-cedow-aqua"></i> 2. Rectangular Array
+            </button>
+            <button id="grModeRotateBtn" onclick="setGroupsMode('r')" class="gr-mode-btn px-3 py-1.5 rounded-lg bg-white border border-cedow-silver text-cedow-charcoal hover:bg-slate-50 text-xs font-bold flex items-center">
+              <i data-lucide="rotate-cw" class="w-3.5 h-3.5 mr-1.5 text-cedow-gold"></i> 3. Rotate Array (Commutative)
+            </button>
+          </div>
+
+          <!-- DISPLAY CANVAS / VISUAL AREA -->
+          <div class="bg-cedow-bg p-6 rounded-xl border border-cedow-silver min-h-[180px] flex items-center justify-center">
+            <div id="grCanvas" class="w-full flex items-center justify-center">
+              <!-- Rendered by JS -->
+            </div>
+          </div>
+
+          <!-- READOUT & WORKING MATHEMATICALLY EXPLANATION -->
+          <div id="grReadoutBox" class="p-4 rounded-xl bg-white border border-cedow-silver space-y-1">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- TOOL 3: ARRAY SPLITTER & DISTRIBUTIVE PROPERTY (S2) -->
+        <div id="toolPanel3" class="tool-panel bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-6 hidden">
+          <div class="flex items-start justify-between flex-wrap gap-4">
+            <div>
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider block">Stage 2 Model &bull; MA2-MR-01</span>
+              <h4 class="text-lg font-bold text-cedow-navy">Split the Array & The Distributive Property Visualiser</h4>
+              <p class="text-xs text-cedow-charcoal mt-1 max-w-2xl">
+                Forgotten a multiplication fact like <span class="font-mono-math">7 &times; 6</span>? Partition the array into two friendly, known facts (e.g. <span class="font-mono-math">7 &times; 5</span> and <span class="font-mono-math">7 &times; 1</span>). This demonstrates how the distributive property makes facts manageable.
+              </p>
+            </div>
+            <div>
+              <label for="spFactSelect" class="block text-xs font-bold text-cedow-navy mb-1">Target Multiplication Fact:</label>
+              <select id="spFactSelect" class="border border-cedow-silver rounded px-2.5 py-1 text-sm bg-white font-semibold">
+                <option value="7x6" selected>7 &times; 6</option>
+                <option value="6x8">6 &times; 8</option>
+                <option value="7x8">7 &times; 8</option>
+                <option value="4x9">4 &times; 9</option>
+                <option value="8x7">8 &times; 7</option>
+                <option value="3x7">3 &times; 7</option>
+              </select>
+            </div>
+          </div>
+
+          <!-- INTERACTIVE SPLIT CONTROLS -->
+          <div class="flex flex-wrap items-center gap-2">
+            <button id="spMoveLeftBtn" class="px-3 py-1.5 rounded-lg bg-white border border-cedow-silver text-xs font-bold hover:bg-slate-50 flex items-center">
+              <i data-lucide="chevron-left" class="w-3.5 h-3.5 mr-1"></i> Shift Split Left
+            </button>
+            <button id="spMoveRightBtn" class="px-3 py-1.5 rounded-lg bg-white border border-cedow-silver text-xs font-bold hover:bg-slate-50 flex items-center">
+              Shift Split Right <i data-lucide="chevron-right" class="w-3.5 h-3.5 ml-1"></i>
+            </button>
+            <button id="spSplitAt5Btn" class="px-3 py-1.5 rounded-lg bg-cedow-lightGold border border-cedow-gold text-cedow-navy text-xs font-bold hover:bg-cedow-gold/30">
+              Split at 5 (&times; 5 Anchor)
+            </button>
+            <button id="spSplitHalfBtn" class="px-3 py-1.5 rounded-lg bg-cedow-lightAqua border border-cedow-aqua text-cedow-aqua text-xs font-bold hover:bg-cedow-aqua/20">
+              Split in Half (Doubling)
+            </button>
+            <button id="spCoverMiddleBtn" class="px-3 py-1.5 rounded-lg bg-cedow-navy text-white text-xs font-bold hover:bg-cedow-navy/90 flex items-center">
+              <i data-lucide="eye-off" class="w-3.5 h-3.5 mr-1"></i> <span id="spCoverLabel">Cover Middle (Partially Covered Array)</span>
+            </button>
+          </div>
+
+          <!-- SVG ARRAY DISPLAY -->
+          <div class="bg-cedow-bg p-6 rounded-xl border border-cedow-silver flex items-center justify-center overflow-x-auto">
+            <div id="spSvgContainer" class="flex justify-center">
+              <!-- Dynamic SVG Array injected by JS -->
+            </div>
+          </div>
+
+          <!-- READOUT & DECOMPOSITION FORMULA -->
+          <div id="spReadout" class="p-4 rounded-xl bg-white border border-cedow-silver space-y-1">
+            <!-- Dynamically populated -->
+          </div>
+        </div>
+
+        <!-- TOOL 4: AREA MODEL & PARTIAL PRODUCTS (S3) -->
+        <div id="toolPanel4" class="tool-panel bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-6 hidden">
+          <div class="flex items-start justify-between flex-wrap gap-4">
+            <div>
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider block">Stage 3 Model &bull; MA3-MR-01</span>
+              <h4 class="text-lg font-bold text-cedow-navy">The Multi-Digit Area Model & Partial Products Multiplier</h4>
+              <p class="text-xs text-cedow-charcoal mt-1 max-w-2xl">
+                Partition multi-digit numbers by quantity value. Each smaller cell in the area grid represents a partial product, directly mirroring the intermediate rows of the written algorithm.
+              </p>
+            </div>
+            <div class="flex items-center gap-2">
+              <div>
+                <label for="arInputA" class="block text-xs font-bold text-cedow-navy mb-1">Multiply:</label>
+                <input type="number" id="arInputA" value="684" min="2" max="9999" class="w-24 border border-cedow-silver rounded px-2.5 py-1 text-sm font-mono font-semibold">
+              </div>
+              <span class="text-cedow-charcoal font-bold mt-5">&times;</span>
+              <div>
+                <label for="arInputB" class="block text-xs font-bold text-cedow-navy mb-1">By:</label>
+                <input type="number" id="arInputB" value="7" min="2" max="99" class="w-20 border border-cedow-silver rounded px-2.5 py-1 text-sm font-mono font-semibold">
+              </div>
+              <button id="arCalcBtn" class="mt-5 px-4 py-1.5 rounded-lg bg-cedow-aqua hover:bg-cedow-aqua/90 text-white font-bold text-xs shadow-sm">
+                Calculate & Model
+              </button>
+            </div>
+          </div>
+
+          <!-- QUICK TRY PRESETS -->
+          <div class="flex items-center space-x-2 text-xs text-cedow-charcoal">
+            <span class="font-bold text-cedow-navy">Syllabus Presets:</span>
+            <button onclick="setAreaPreset(8, 27)" class="px-2 py-0.5 rounded bg-cedow-bg border border-cedow-silver hover:bg-slate-200">8 &times; 27</button>
+            <button onclick="setAreaPreset(684, 5)" class="px-2 py-0.5 rounded bg-cedow-bg border border-cedow-silver hover:bg-slate-200">684 &times; 5</button>
+            <button onclick="setAreaPreset(23, 56)" class="px-2 py-0.5 rounded bg-cedow-bg border border-cedow-silver hover:bg-slate-200">23 &times; 56 (2D)</button>
+            <button onclick="setAreaPreset(684, 7)" class="px-2 py-0.5 rounded bg-cedow-bg border border-cedow-silver hover:bg-slate-200">684 &times; 7</button>
+          </div>
+
+          <!-- ESTIMATION FIRST BANNER -->
+          <div id="arEstimateBanner" class="p-3.5 rounded-lg bg-cedow-lightGold border border-cedow-gold/60 text-xs font-semibold text-cedow-navy flex items-center">
+            <!-- Populated dynamically -->
+          </div>
+
+          <!-- AREA GRID DISPLAY -->
+          <div id="arGridContainer" class="p-4 rounded-xl bg-cedow-bg border border-cedow-silver overflow-x-auto">
+            <!-- Grid rendered by JS -->
+          </div>
+
+          <!-- READOUT & ALGORITHM CONNECTION -->
+          <div id="arReadout" class="p-4 rounded-xl bg-white border border-cedow-silver space-y-1">
+            <!-- Populated dynamically -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: STUDENT DIAGNOSTIC CLINIC & ROOT MISCONCEPTIONS -->
+      <section id="section4" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="flex items-center space-x-2 text-cedow-aqua font-bold text-xs uppercase tracking-wider">
+            <i data-lucide="stethoscope" class="w-4 h-4 text-rose-600"></i>
+            <span>Diagnostic Clinic</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-cedow-navy mt-1">Section 4: Student Diagnostic Clinic & Root Misconceptions</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">
+            Research demonstrates that most misconceptions in multiplicative relations stem from four conceptual roots. Read each authentic classroom scenario and diagnose its underlying root.
+          </p>
+        </div>
+
+        <!-- 4-ROOT REFERENCE BANNER -->
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="p-3 rounded-lg bg-white border-l-4 border-amber-500 border-y border-r border-cedow-silver text-xs">
+            <span class="font-black text-amber-700 block mb-0.5">Root A</span>
+            <strong class="text-cedow-navy">Multiplication as Counting / Adding On</strong>
+            <p class="text-cedow-charcoal mt-1 text-[11px]">Cannot coordinate units; stuck counting by ones or repeated addition.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-white border-l-4 border-blue-500 border-y border-r border-cedow-silver text-xs">
+            <span class="font-black text-blue-700 block mb-0.5">Root B</span>
+            <strong class="text-cedow-navy">Group Size vs Group Count Confused</strong>
+            <p class="text-cedow-charcoal mt-1 text-[11px]">Fails to distinguish number of groups from items in each group.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-white border-l-4 border-purple-500 border-y border-r border-cedow-silver text-xs">
+            <span class="font-black text-purple-700 block mb-0.5">Root C</span>
+            <strong class="text-cedow-navy">Division Unlinked to Multiplication</strong>
+            <p class="text-cedow-charcoal mt-1 text-[11px]">Treats &divide; as isolated dealing; doesn't use the inverse relation.</p>
+          </div>
+          <div class="p-3 rounded-lg bg-white border-l-4 border-rose-500 border-y border-r border-cedow-silver text-xs">
+            <span class="font-black text-rose-700 block mb-0.5">Root D</span>
+            <strong class="text-cedow-navy">Facts & Rules Without Meaning</strong>
+            <p class="text-cedow-charcoal mt-1 text-[11px]">Rigid procedures, misleading mnemonics, or syntax errors without sense-making.</p>
+          </div>
+        </div>
+
+        <!-- CLINIC INTERACTIVE WORK BENCH -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-6">
+          <div class="flex items-center justify-between border-b border-cedow-silver pb-3">
+            <div class="flex items-center space-x-2">
+              <span class="px-2.5 py-1 rounded bg-cedow-lightBlue text-cedow-navy font-bold text-xs" id="clinicCaseBadge">Scenario 1 of 10</span>
+              <span class="text-xs font-semibold px-2 py-0.5 rounded bg-slate-100 text-cedow-charcoal" id="clinicStageBadge">Stage 1</span>
+            </div>
+            <div class="text-xs text-cedow-charcoal font-semibold">
+              Score: <span id="clinicScore" class="font-mono text-cedow-aqua font-bold text-sm">0</span> / 10
+            </div>
+          </div>
+
+          <!-- SCENARIO CARD -->
+          <div class="bg-cedow-bg p-5 rounded-xl border border-cedow-silver">
+            <span class="text-xs uppercase tracking-wider text-cedow-charcoal font-bold block mb-1">Student Dialogue / Work Sample:</span>
+            <blockquote id="clinicQuote" class="text-base sm:text-lg font-bold text-cedow-navy italic leading-snug">
+              "Asked how many in 3 groups of 4, Leo answers 7."
+            </blockquote>
+          </div>
+
+          <!-- DIAGNOSTIC CHOICES -->
+          <div>
+            <label class="block text-xs font-bold uppercase tracking-wider text-cedow-charcoal mb-3">Diagnose the Root Cause:</label>
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3" id="clinicOptionsGrid">
+              <button onclick="diagnoseRoot(0)" class="diag-opt-btn p-3.5 rounded-lg border border-cedow-silver text-left hover:border-cedow-aqua hover:bg-cedow-lightAqua/40 transition">
+                <span class="font-black text-xs text-amber-600 block">Root A</span>
+                <span class="text-xs font-bold text-cedow-navy">Multiplication seen only as counting or adding on</span>
+              </button>
+              <button onclick="diagnoseRoot(1)" class="diag-opt-btn p-3.5 rounded-lg border border-cedow-silver text-left hover:border-cedow-aqua hover:bg-cedow-lightAqua/40 transition">
+                <span class="font-black text-xs text-blue-600 block">Root B</span>
+                <span class="text-xs font-bold text-cedow-navy">Number of groups and number in each group confused</span>
+              </button>
+              <button onclick="diagnoseRoot(2)" class="diag-opt-btn p-3.5 rounded-lg border border-cedow-silver text-left hover:border-cedow-aqua hover:bg-cedow-lightAqua/40 transition">
+                <span class="font-black text-xs text-purple-600 block">Root C</span>
+                <span class="text-xs font-bold text-cedow-navy">Division not linked to multiplication (inverse relation)</span>
+              </button>
+              <button onclick="diagnoseRoot(3)" class="diag-opt-btn p-3.5 rounded-lg border border-cedow-silver text-left hover:border-cedow-aqua hover:bg-cedow-lightAqua/40 transition">
+                <span class="font-black text-xs text-rose-600 block">Root D</span>
+                <span class="text-xs font-bold text-cedow-navy">Facts and rules without conceptual meaning</span>
+              </button>
+            </div>
+          </div>
+
+          <!-- FEEDBACK & COACHING BOX -->
+          <div id="clinicFeedback" class="hidden p-4 rounded-xl border space-y-2">
+            <!-- Rendered by JS -->
+          </div>
+
+          <!-- NAVIGATION CONTROLS -->
+          <div class="flex items-center justify-between pt-2">
+            <button id="clinicPrevBtn" onclick="prevScenario()" class="px-3.5 py-1.5 rounded-lg border border-cedow-silver text-xs font-bold text-cedow-charcoal hover:bg-slate-50 flex items-center">
+              <i data-lucide="arrow-left" class="w-3.5 h-3.5 mr-1"></i> Previous Case
+            </button>
+            <button id="clinicNextBtn" onclick="nextScenario()" class="px-4 py-1.5 rounded-lg bg-cedow-navy text-white text-xs font-bold hover:bg-cedow-navy/90 flex items-center">
+              Next Case <i data-lucide="arrow-right" class="w-3.5 h-3.5 ml-1"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 5: TASK MAKEOVER STUDIO (WORKING MATHEMATICALLY - MAO-WM-01) -->
+      <section id="section5" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="flex items-center space-x-2 text-cedow-aqua font-bold text-xs uppercase tracking-wider">
+            <i data-lucide="refresh-cw" class="w-4 h-4"></i>
+            <span>Task Makeover Studio</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-cedow-navy mt-1">Section 5: Task Makeover Studio (Working Mathematically)</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">
+            Transform closed, procedural worksheets into rich, inquiry-driven reasoning tasks addressing outcome <span class="font-mono-math">MAO-WM-01</span>.
+          </p>
+        </div>
+
+        <!-- STAGE MAKEOVER EXPLORER -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-6">
+          <div class="flex flex-wrap gap-2 border-b border-cedow-silver pb-3">
+            <button onclick="setMakeoverStage('es1')" id="moTab_es1" class="mo-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-cedow-navy text-white">Early Stage 1</button>
+            <button onclick="setMakeoverStage('s1')" id="moTab_s1" class="mo-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver hover:bg-slate-50">Stage 1</button>
+            <button onclick="setMakeoverStage('s2')" id="moTab_s2" class="mo-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver hover:bg-slate-50">Stage 2</button>
+            <button onclick="setMakeoverStage('s3')" id="moTab_s3" class="mo-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver hover:bg-slate-50">Stage 3</button>
+          </div>
+
+          <!-- SIDE BY SIDE BEFORE & AFTER -->
+          <div id="makeoverDisplay" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+            <!-- Injected by JS -->
+          </div>
+        </div>
+
+        <!-- 5 HIGH-YIELD PEDAGOGICAL MOVES STUDIO -->
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-5">
+          <div class="border-b border-cedow-silver pb-3">
+            <h4 class="text-lg font-bold text-cedow-navy flex items-center">
+              <i data-lucide="zap" class="w-5 h-5 mr-2 text-cedow-gold"></i> The 5 High-Yield Pedagogical Moves Studio
+            </h4>
+            <p class="text-xs text-cedow-charcoal mt-0.5">Adapt any closed mathematical drill into a high-reasoning prompt using these structured question stems.</p>
+          </div>
+
+          <!-- MOVES SELECTOR -->
+          <div class="flex flex-wrap gap-2" id="movesTabsContainer">
+            <!-- Buttons injected by JS -->
+          </div>
+
+          <div id="moveDetailDisplay" class="bg-cedow-bg p-5 rounded-xl border border-cedow-silver space-y-3">
+            <!-- Move details injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: MODULE MASTERY CHECKPOINT -->
+      <section id="section6" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="flex items-center space-x-2 text-cedow-aqua font-bold text-xs uppercase tracking-wider">
+            <i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>
+            <span>Mastery Checkpoint</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-cedow-navy mt-1">Section 6: Module Mastery Checkpoint</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">
+            Test your understanding against 5 scenario-based questions mapped to the NESA Teaching Advice. Achieve 80% (4/5) to unlock the executive K–6 Continuum Takeaways.
+          </p>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-6 space-y-8">
+          <form id="masteryForm" onsubmit="event.preventDefault(); submitMasteryQuiz();" class="space-y-6">
+            
+            <!-- Question 1 -->
+            <div class="space-y-3 p-4 rounded-lg bg-cedow-bg border border-cedow-silver">
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Question 1 &bull; Stage 1 Trajectory</span>
+              <p class="text-sm font-bold text-cedow-navy">
+                A student has 12 pop sticks and places them down in groups of 4 to determine how many groups can be formed. Which division process is this, and why is it crucial for Stage 4?
+              </p>
+              <div class="space-y-2 text-xs">
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq1" value="0" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>Equal sharing (partitive division); it prepares students for dividing whole numbers by large divisors.</span>
+                </label>
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq1" value="1" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>Equal grouping (quotitive division); it is essential for later conceptualising division by a quantity less than one (such as 8 &divide; 0.5 in Stage 4).</span>
+                </label>
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq1" value="2" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>Repeated addition; it eliminates the need for learning the inverse relation.</span>
+                </label>
+              </div>
+              <div id="mqFeedback1" class="hidden text-xs p-2 rounded font-semibold mt-2"></div>
+            </div>
+
+            <!-- Question 2 -->
+            <div class="space-y-3 p-4 rounded-lg bg-cedow-bg border border-cedow-silver">
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Question 2 &bull; Stage 2 Cognitive Architecture</span>
+              <p class="text-sm font-bold text-cedow-navy">
+                When recalling facts, an adult or student states <span class="font-mono-math">4 &times; 8 = 24</span>. According to cognitive research in the NESA Teaching Advice (Domahs et al. 2006, Rohrer 2009), what causes this error?
+              </p>
+              <div class="space-y-2 text-xs">
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq2" value="0" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>Random guessing caused by math anxiety during timed multiplication drills.</span>
+                </label>
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq2" value="1" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>Retrieving a neighbouring answer from verbal table chains (e.g. 4 &times; 6 or 3 &times; 8) because blocked tables lack mixed practice and structural meaning.</span>
+                </label>
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq2" value="2" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>A total lack of understanding of place value and the ones column.</span>
+                </label>
+              </div>
+              <div id="mqFeedback2" class="hidden text-xs p-2 rounded font-semibold mt-2"></div>
+            </div>
+
+            <!-- Question 3 -->
+            <div class="space-y-3 p-4 rounded-lg bg-cedow-bg border border-cedow-silver">
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Question 3 &bull; Properties of Multiplication</span>
+              <p class="text-sm font-bold text-cedow-navy">
+                A Year 4 student uses the number sentence <span class="font-mono-math">6 &times; 7 = (6 &times; 5) + (6 &times; 2)</span> to work out an unknown fact. Which mathematical property is being applied?
+              </p>
+              <div class="space-y-2 text-xs">
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq3" value="0" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>Commutative property of multiplication.</span>
+                </label>
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq3" value="1" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>Associative property of multiplication.</span>
+                </label>
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq3" value="2" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>Distributive property of multiplication over addition.</span>
+                </label>
+              </div>
+              <div id="mqFeedback3" class="hidden text-xs p-2 rounded font-semibold mt-2"></div>
+            </div>
+
+            <!-- Question 4 -->
+            <div class="space-y-3 p-4 rounded-lg bg-cedow-bg border border-cedow-silver">
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Question 4 &bull; Stage 3 Operations & Remainders</span>
+              <p class="text-sm font-bold text-cedow-navy">
+                In Euclidean whole-number division, <span class="font-mono-math">53 &divide; 3 = 17 remainder 2</span>. How should this relationship be expressed to highlight the inverse connection to multiplication?
+              </p>
+              <div class="space-y-2 text-xs">
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq4" value="0" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>53 = (3 &times; 17) + 2 (dividend = divisor &times; quotient + remainder).</span>
+                </label>
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq4" value="1" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>53 = (17 &times; 2) + 3.</span>
+                </label>
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq4" value="2" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>53 &divide; 17 = 3 remainder 2.</span>
+                </label>
+              </div>
+              <div id="mqFeedback4" class="hidden text-xs p-2 rounded font-semibold mt-2"></div>
+            </div>
+
+            <!-- Question 5 -->
+            <div class="space-y-3 p-4 rounded-lg bg-cedow-bg border border-cedow-silver">
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Question 5 &bull; Order of Operations</span>
+              <p class="text-sm font-bold text-cedow-navy">
+                Why does NESA Teaching Advice caution against relying on mnemonics such as BODMAS, BIDMAS, or PEMDAS?
+              </p>
+              <div class="space-y-2 text-xs">
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq5" value="0" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>They are too difficult for primary school teachers to remember.</span>
+                </label>
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq5" value="1" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>They incorrectly imply an absolute hierarchical order between addition and subtraction, and between multiplication and division (which must each be calculated left-to-right).</span>
+                </label>
+                <label class="flex items-start p-2 rounded bg-white border border-cedow-silver hover:bg-slate-50 cursor-pointer">
+                  <input type="radio" name="mq5" value="2" class="mt-0.5 mr-2.5 text-cedow-navy">
+                  <span>They fail to include grouping symbols or brackets.</span>
+                </label>
+              </div>
+              <div id="mqFeedback5" class="hidden text-xs p-2 rounded font-semibold mt-2"></div>
+            </div>
+
+            <div class="flex items-center justify-between pt-2">
+              <button type="submit" class="px-5 py-2.5 rounded-lg bg-cedow-navy hover:bg-cedow-navy/90 text-white font-bold text-sm shadow flex items-center">
+                <i data-lucide="award" class="w-4 h-4 mr-2 text-cedow-gold"></i> Submit Checkpoint
+              </button>
+              <div id="masteryScoreResult" class="text-sm font-bold text-cedow-navy"></div>
+            </div>
+          </form>
+
+          <!-- UNLOCKED KEY PEDAGOGICAL TAKEAWAYS CONTINUUM -->
+          <div id="unlockedTakeaways" class="hidden pt-6 border-t-2 border-cedow-aqua space-y-6">
+            <div class="p-4 rounded-xl bg-emerald-50 border border-emerald-300 flex items-start space-x-3">
+              <i data-lucide="check-check" class="w-6 h-6 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+              <div>
+                <h4 class="text-base font-bold text-emerald-900">Checkpoint Passed! Executive Summary Unlocked</h4>
+                <p class="text-xs text-emerald-800 mt-0.5">You demonstrated rigorous pedagogical and syllabus mastery across the K–6 multiplicative continuum.</p>
+              </div>
+            </div>
+
+            <div class="bg-white rounded-xl border border-cedow-silver p-6 space-y-4 shadow-sm">
+              <div class="border-b border-cedow-silver pb-3">
+                <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Executive Teacher Reference</span>
+                <h4 class="text-xl font-bold text-cedow-navy">Key Pedagogical Takeaways (K–6 Multiplicative Continuum)</h4>
+              </div>
+
+              <div class="space-y-4 text-xs text-cedow-charcoal leading-relaxed">
+                <div class="p-3.5 rounded-lg bg-cedow-bg border-l-4 border-cedow-gold">
+                  <strong class="text-cedow-navy text-sm block mb-1">1. Early Stage 1: Equality & Reversibility</strong>
+                  Prioritise purposeful, fair sharing using real materials. Always reverse the action: recombine the piles to show that sharing and recombining undo each other. Do not introduce the symbols &times; or &divide; at this stage.
+                </div>
+
+                <div class="p-3.5 rounded-lg bg-cedow-bg border-l-4 border-cedow-aqua">
+                  <strong class="text-cedow-navy text-sm block mb-1">2. Stage 1: Composite Units & Array Structure</strong>
+                  Help students coordinate the <em>number of groups</em> with the <em>number in each group</em> before introducing arrays. Progress through: visible objects &rarr; markers with skip counting &rarr; repeated addition. Strictly avoid the colloquial term "lots of".
+                </div>
+
+                <div class="p-3.5 rounded-lg bg-cedow-bg border-l-4 border-cedow-navy">
+                  <strong class="text-cedow-navy text-sm block mb-1">3. Stage 2: Fact Families & The Distributive Property</strong>
+                  Never teach blocked, rote tables in isolation. Use triangle fact families with mixed practice to leverage commutativity and the inverse relationship. Use the array splitter to derive unknown facts via the distributive property (e.g. splitting at 5).
+                </div>
+
+                <div class="p-3.5 rounded-lg bg-cedow-bg border-l-4 border-emerald-600">
+                  <strong class="text-cedow-navy text-sm block mb-1">4. Stage 3: The Area Model, Euclidean Division & Operation Rules</strong>
+                  Transition from arrays to partially covered area models, using quantity-value partitioning for multi-digit multiplication. Explicitly link partial products to the vertical algorithm. Frame the order of operations as "unfinished addition business" rather than misleading mnemonics like BODMAS.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE -->
+      <section id="section7" class="scroll-mt-24 space-y-6">
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="flex items-center space-x-2 text-cedow-aqua font-bold text-xs uppercase tracking-wider">
+            <i data-lucide="share-2" class="w-4 h-4"></i>
+            <span>System Deployment</span>
+          </div>
+          <h3 class="text-xl sm:text-2xl font-bold text-cedow-navy mt-1">Section 7: Canvas LMS Deployment Guide</h3>
+          <p class="text-sm text-cedow-charcoal mt-1">
+            Standard Operating Procedures (SOP) for deploying this single-file interactive module into Canvas LMS courses across the Diocese.
+          </p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <!-- GITHUB PAGES & IFRAME METHOD -->
+          <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center space-x-2 text-cedow-navy mb-3">
+                <i data-lucide="globe" class="w-5 h-5 text-cedow-aqua"></i>
+                <h4 class="text-base font-bold">Method A: GitHub Pages + Canvas Iframe (Recommended)</h4>
+              </div>
+              <p class="text-xs text-cedow-charcoal leading-relaxed mb-4">
+                This method preserves complete CSS styles, JavaScript interactivity, and prevents LMS sanitisation or cross-frame script stripping.
+              </p>
+              <ol class="list-decimal list-inside space-y-2 text-xs text-cedow-charcoal">
+                <li>Create a diocesan GitHub repository (e.g. <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">cedow-maths-pl</code>).</li>
+                <li>Upload this file as <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">multiplicative-relations.html</code>.</li>
+                <li>In repository <strong>Settings &rarr; Pages</strong>, enable deployment from the <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">main</code> branch.</li>
+                <li>Copy the live URL (e.g. <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">https://[org].github.io/cedow-maths-pl/multiplicative-relations.html</code>).</li>
+                <li>In Canvas LMS, create a new Page, switch to the <strong>HTML View (&lt;/&gt;)</strong>, and paste the responsive embed code below.</li>
+              </ol>
+            </div>
+            <div class="mt-4 pt-3 border-t border-slate-100">
+              <label class="block text-[11px] font-bold text-cedow-navy mb-1 uppercase">Canvas Iframe Embed Code:</label>
+              <div class="relative">
+                <pre class="bg-cedow-navy text-slate-100 p-2.5 rounded text-[11px] font-mono overflow-x-auto"><code id="iframeCodeSnippet">&lt;div style="position: relative; width: 100%; height: 850px; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);"&gt;
+  &lt;iframe 
+    src="https://YOUR-ORG.github.io/multiplicative-relations.html" 
+    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
+    allow="clipboard-write" 
+    loading="lazy"&gt;
+  &lt;/iframe&gt;
+&lt;/div&gt;</code></pre>
+                <button onclick="copyIframeCode()" class="absolute top-2 right-2 px-2 py-1 rounded bg-cedow-aqua text-white text-[10px] font-bold hover:bg-cedow-aqua/90 flex items-center">
+                  <i data-lucide="copy" class="w-3 h-3 mr-1"></i> Copy
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <!-- DIRECT CANVAS RCE METHOD -->
+          <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-5 flex flex-col justify-between">
+            <div>
+              <div class="flex items-center space-x-2 text-cedow-navy mb-3">
+                <i data-lucide="code-2" class="w-5 h-5 text-cedow-gold"></i>
+                <h4 class="text-base font-bold">Method B: Direct Canvas Page RCE</h4>
+              </div>
+              <p class="text-xs text-cedow-charcoal leading-relaxed mb-4">
+                If GitHub Pages is not accessible, you can embed the raw HTML directly into a Canvas Page, provided the institution allows inline script execution.
+              </p>
+              <ul class="list-disc list-inside space-y-2 text-xs text-cedow-charcoal">
+                <li>Open the targeted Canvas Course and create a new <strong>Page</strong>.</li>
+                <li>Title the page: <code class="font-mono bg-slate-100 px-1 py-0.5 rounded text-cedow-navy">Focus Area 3: Multiplicative Relations (K–6)</code>.</li>
+                <li>Click the <strong>HTML Editor icon (&lt;/&gt;)</strong> below the Rich Content Editor text area.</li>
+                <li>Paste the entire content of this single HTML file.</li>
+                <li>Ensure <strong>Can edit this page</strong> is set to <em>Only Teachers</em>.</li>
+                <li>Click <strong>Save & Publish</strong>.</li>
+              </ul>
+            </div>
+            <div class="mt-4 p-3 rounded-lg bg-cedow-lightGold border border-cedow-gold/60 text-xs text-cedow-navy">
+              <strong>Technical Notice:</strong> Some Canvas installations strip <code class="font-mono text-[11px]">&lt;script&gt;</code> tags when saved via RCE. If the interactive simulators in Section 3 do not run, use <strong>Method A (GitHub Pages + Iframe)</strong>.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- FOOTER -->
+      <footer class="bg-white rounded-xl border border-cedow-silver p-6 text-center space-y-2 shadow-sm">
+        <p class="text-xs text-cedow-charcoal">
+          Built for the <strong class="text-cedow-navy">Catholic Education Diocese of Wollongong (CEDoW)</strong> based on the NESA <em>Mathematics K–10 Syllabus (2022)</em> and NESA Teaching Advice.
+        </p>
+        <p class="text-[11px] text-cedow-charcoal">
+          Strictly Australian English orthography &bull; Designed for single-file deployment &bull; Optional, self-paced teacher professional learning.
+        </p>
+      </footer>
+
+    </main>
+  </div>
+
+  <!-- JAVASCRIPT LOGIC & MODULE ENGINE -->
+  <script>
+    /* ---------------- MODULE DATA STRUCTURE ---------------- */
+    const STAGE_DATA = {
+      es1: {
+        short: "ES1",
+        title: "Early Stage 1 (Kindergarten)",
+        focusArea: "Forming groups",
+        lead: "In Kindergarten, students form equal groups by sharing and recognise, copy and create repeating patterns. NESA explains that sharing objects equally and putting them back together lays the foundation for understanding multiplication and division as inverse operations.",
+        outcomes: [
+          { code: "MAE-FG-01", desc: "recognises, describes and continues repeating patterns" },
+          { code: "MAE-FG-02", desc: "forms equal groups by sharing and counting collections of objects" },
+          { code: "MAO-WM-01", desc: "Working mathematically: develops understanding and fluency through exploring, connecting, communicating and reasoning" }
+        ],
+        milestones: [
+          "Distribute concrete objects one by one until supply is exhausted.",
+          "Distinguish whether groups have an equal or unequal number of items.",
+          "Label the number in each group and reverse the sharing process (recombine).",
+          "Copy, continue and create repeating AB patterns using objects and sounds."
+        ],
+        adviceAlerts: [
+          "Two processes, two questions: Sharing (partitive - you know number of groups and find how many in each) vs Grouping (quotitive - you know how many in each group and find number of groups).",
+          "Recombine groups every time you share: putting objects back together proves the total hasn't changed and forms the basis of the inverse relationship.",
+          "Avoid unfamiliar objects: select concrete materials with students' diverse cultural backgrounds in mind."
+        ]
+      },
+      s1: {
+        short: "S1",
+        title: "Stage 1 (Years 1–2)",
+        focusArea: "Forming groups A & B",
+        lead: "In Years 1 and 2, students move from counting by ones to rhythmic counting, skip counting and repeated addition. They model multiplication with equal groups and rectangular arrays, and solve sharing and grouping division problems, including remainders.",
+        outcomes: [
+          { code: "MA1-FG-01", desc: "uses the structure of equal groups to solve multiplication problems, and shares or groups to solve division problems" },
+          { code: "MAO-WM-01", desc: "Working mathematically: reasons about relations when modelling commutativity and distinguishing groups" }
+        ],
+        milestones: [
+          "Rhythmic and skip counting by 2s, 3s, 5s and 10s forwards and backwards.",
+          "Distinguish between the number of groups and the number in each group (composite units).",
+          "Form rectangular arrays with equal rows and columns; model commutativity by rotating an array.",
+          "Model doubling and halving discrete collections and relate to early fraction models (halves, quarters, eighths)."
+        ],
+        adviceAlerts: [
+          "Groups before arrays: an array requires coordinating groups in two directions simultaneously, which is significantly harder than linear 'groups of'.",
+          "Language barrier: avoid 'lots of' because of its everyday colloquial meaning ('lots of fish in the sea'). Use 'groups of' and 'rows of'.",
+          "Symbols warning: the operational symbols &times; and &divide; are not introduced until Stage 2."
+        ]
+      },
+      s2: {
+        short: "S2",
+        title: "Stage 2 (Years 3–4)",
+        focusArea: "Multiplicative relations A & B",
+        lead: "In Years 3 and 4, students use arrays to build multiplication fact families up to 10 &times; 10, connect multiplication and division as inverse operations, and apply commutative, associative and distributive properties to derive unknown facts.",
+        outcomes: [
+          { code: "MA2-MR-01", desc: "represents and uses the structure of multiplicative relations to 10 &times; 10 to solve problems" },
+          { code: "MA2-MR-02", desc: "completes number sentences involving multiplication and division by finding missing values" },
+          { code: "MAO-WM-01", desc: "Working mathematically: explores and connects properties of number and structure" }
+        ],
+        milestones: [
+          "Formally use symbols &times;, &divide;, and = in number sentences.",
+          "Generate and recall fact families up to 10 &times; 10 using triangle models and mixed practice.",
+          "Solve partially covered arrays and transition to partially covered area models.",
+          "Apply the distributive property: e.g. 7 &times; 6 = (7 &times; 5) + (7 &times; 1) and associative grouping: 5 &times; 8 = 10 &times; 4.",
+          "Operate with multiples of 10 (e.g. 50 &times; 3 is 15 tens = 150)."
+        ],
+        adviceAlerts: [
+          "Multiplication is not merely repeated addition: repeated addition describes an informal additive action, whereas multiplication coordinates groups of groups via one-to-many correspondence.",
+          "Blocked tables fallacy: rote verbal tables cause neighbouring retrieval errors (4 &times; 8 recalled as 24). Fact families provide mixed practice.",
+          "Odd and even proof: any whole number is a multiple of 10 plus a digit. Since every multiple of 10 is even (2 rows of 5), the last digit always determines odd or even."
+        ]
+      },
+      s3: {
+        short: "S3",
+        title: "Stage 3 (Years 5–6)",
+        focusArea: "Multiplicative relations A & B",
+        lead: "In Years 5 and 6, students select and apply efficient mental and written strategies to multiply and divide larger numbers, work with factors, primes, composite numbers and remainders, solve rate and ratio problems, and agree on the order of operations.",
+        outcomes: [
+          { code: "MA3-MR-01", desc: "selects and applies appropriate strategies to solve multiplication and division problems" },
+          { code: "MA3-MR-02", desc: "constructs and completes number sentences involving multiplicative relations, applying the order of operations" },
+          { code: "MAO-WM-01", desc: "Working mathematically: justifies reasonableness and communicates algebraic reasoning" }
+        ],
+        milestones: [
+          "Determine prime and composite numbers; define 1 as neither prime nor composite (exactly 1 factor).",
+          "Multiply 2-, 3-, and 4-digit numbers using the area model, partial products and formal written algorithms.",
+          "Solve Euclidean division with remainders (e.g. 53 = 3 &times; 17 + 2) and interpret remainders in real-life contexts.",
+          "Solve rate problems using bar models and ratio tables.",
+          "Apply the agreed order of operations and use grouping symbols (brackets) without relying on distorted mnemonics."
+        ],
+        adviceAlerts: [
+          "The distributive property drives multi-digit multiplication: 8 &times; 24 is (8 &times; 20) + (8 &times; 4). The area model is a direct precursor to expanding binomials in Stage 5 algebra.",
+          "BODMAS distortions: mnemonics mislead students by implying addition always precedes subtraction, or multiplication precedes division.",
+          "Euclidean division: connect division and multiplication directly: dividend = divisor &times; quotient + remainder."
+        ]
+      }
+    };
+
+    const BIG_IDEAS = [
+      {
+        id: "idea1",
+        title: "1. Equal Groups Foundation",
+        principle: "Multiplication and division both rest on the fundamental property of equal group size.",
+        progression: {
+          es1: "Partitive sharing so every person receives a 'fair share' (identical quantity).",
+          s1: "'Groups of', skip counting, and repeated addition of equal sets.",
+          s2: "Arrays of equal rows and columns; square numbers and multiples.",
+          s3: "Factors and prime factorisation: all rectangular arrays that make 24."
+        }
+      },
+      {
+        id: "idea2",
+        title: "2. Composite Units (Groups & Items)",
+        principle: "Coordinating two numbers simultaneously: the count of groups and the count of items in each group.",
+        progression: {
+          es1: "Labelling the count of items in each group with concrete objects.",
+          s1: "Distinguishing number of groups from items in each group; coordinating rows and columns.",
+          s2: "Contracting language to 'five threes'; solving 'for each' and 'times as many' problems.",
+          s3: "Proportional rates (3 cups of flour for 10 people) and ratio tables."
+        }
+      },
+      {
+        id: "idea3",
+        title: "3. Two Kinds of Division",
+        principle: "Sharing (partitive: how many each?) versus Grouping (quotitive: how many groups?).",
+        progression: {
+          es1: "Dealing one-by-one until supply runs out (sharing division).",
+          s1: "Solving sharing division and grouping division; recognising the leftover part.",
+          s2: "Representing both sharing and grouping division as open number sentences (24 &divide; 6 = &square;).",
+          s3: "Interpreting remainders in context; recognising fractions as division (3 &divide; 4 = 3/4)."
+        }
+      },
+      {
+        id: "idea4",
+        title: "4. The Inverse Relationship",
+        principle: "Multiplication and division undo each other across all number systems.",
+        progression: {
+          es1: "Recombining shared groups: putting objects back together shows total is unchanged.",
+          s1: "Doubling and halving collections: double 4 is 8, so half of 8 is 4.",
+          s2: "Fact family triangles: 12 &divide; 3 = 4 because 4 &times; 3 = 12.",
+          s3: "Euclidean division equations (25 = 4 &times; 6 + 1) and checking division by multiplying."
+        }
+      },
+      {
+        id: "idea5",
+        title: "5. Mathematical Properties",
+        principle: "Commutative, associative, and distributive properties drive efficient mental and written strategies.",
+        progression: {
+          es1: "Repeating pattern unit identification (foundational for algebraic structure).",
+          s1: "Commutative property: rotating an array by 90 degrees.",
+          s2: "Associative (5 &times; 8 = 10 &times; 4) and distributive (7 &times; 6 = 7 &times; 5 + 7 &times; 1).",
+          s3: "Area model partial products, factorising (12 &times; 25 = 3 &times; 100), and order of operations."
+        }
+      },
+      {
+        id: "idea6",
+        title: "6. Moving to Scaling",
+        principle: "Transitioning from additive counting to multiplicative scaling and rates.",
+        progression: {
+          es1: "Counting collections by ones to determine quantity.",
+          s1: "Rhythmic skip counting and repeated addition jumps on empty number lines.",
+          s2: "Known facts replace repeated addition; multiplicative comparison ('four times as many').",
+          s3: "Describing geometric patterns multiplicatively ('3 times as many sides as triangles') and ratio tables."
+        }
+      }
+    ];
+
+    const SCENARIOS = [
+      {
+        id: 1,
+        stage: "Stage 1",
+        quote: "Asked how many in 3 groups of 4, Leo answers 7.",
+        correctRoot: 1, // Root B
+        explanation: "Leo confuses the number of groups (3) with the number in each group (4) and simply adds them together (3 + 4 = 7).",
+        coaching: "Trace around each group with a finger while counting the groups, then label the number in each group. Ask: 'How many groups? How many in each? How many altogether?'"
+      },
+      {
+        id: 2,
+        stage: "Stage 2",
+        quote: "Mia works out 6 &times; 7 by counting on in sevens on her fingers every single time.",
+        correctRoot: 0, // Root A
+        explanation: "Mia treats multiplication merely as repeated addition / counting on, failing to apply known number facts or structural properties.",
+        coaching: "Encourage deriving from known facts: 6 &times; 7 is double (3 &times; 7), or start from (5 &times; 7) and add one more 7 using the distributive property."
+      },
+      {
+        id: 3,
+        stage: "Stage 2",
+        quote: "Ben says 4 &times; 3 = 6 &times; 2 is false 'because the answer has to come after the equals sign'.",
+        correctRoot: 3, // Root D
+        explanation: "Ben interprets the equals sign as an operational command ('calculate now') rather than an indicator of equivalence between two quantities.",
+        coaching: "Use balance scales and true/false number sentences. Consistently read the equals sign aloud as 'is the same amount as'."
+      },
+      {
+        id: 4,
+        stage: "Stage 3",
+        quote: "Asked 'How many 2s in 6?', Zoe writes 2 &divide; 6.",
+        correctRoot: 2, // Root C
+        explanation: "Zoe blindly follows the English word order rather than understanding the divisor and dividend in division.",
+        coaching: "Model division phrasing explicitly: draw attention to expressions where the divisor precedes the dividend, and point to the divisor after the division symbol (6 &divide; 2)."
+      },
+      {
+        id: 5,
+        stage: "Stage 3",
+        quote: "For 47 people traveling in 5-seater cars, Sam calculates and writes '9 remainder 2 cars'.",
+        correctRoot: 3, // Root D
+        explanation: "Sam executes the division algorithm mechanically without interpreting the remainder in the context of the story.",
+        coaching: "Ask: 'What happens to those 2 extra people? Can they walk?' Emphasise that in this real-world context, 10 cars must be ordered."
+      },
+      {
+        id: 6,
+        stage: "Stage 2",
+        quote: "Ruby recalls 4 &times; 8 as 24.",
+        correctRoot: 3, // Root D
+        explanation: "Ruby retrieves a neighbouring fact from memory (4 &times; 6 or 3 &times; 8) because blocked tables encourage fragile verbal memorisation without relational structure.",
+        coaching: "Use fact family triangles with mixed practice, and prompt Ruby to derive: 'If 4 &times; 4 = 16, then 4 &times; 8 is double 16 = 32'."
+      },
+      {
+        id: 7,
+        stage: "Stage 1",
+        quote: "Ella builds an 'array' of 12 with rows of 5, 4 and 3 dots.",
+        correctRoot: 1, // Root B
+        explanation: "Ella fails to coordinate equal rows and columns; an array must have equal items in every row and equal items in every column.",
+        coaching: "Revisit the strict definition of an array using grid paper: transform equal groups into aligned rows, verifying that every single column matches."
+      },
+      {
+        id: 8,
+        stage: "Stage 3",
+        quote: "Kai calculates 2 + 3 &times; 4 = 20.",
+        correctRoot: 3, // Root D
+        explanation: "Kai works strictly left-to-right without understanding that multiplication takes precedence as unfinished business.",
+        coaching: "Rewrite 3 &times; 4 as (4 + 4 + 4) to show that 2 + 3 &times; 4 is 2 + 4 + 4 + 4 = 14. Establish the convention of agreed order."
+      },
+      {
+        id: 9,
+        stage: "Stage 2",
+        quote: "Noah shares 12 lollies between 3 friends by dealing, but does not see that 3 &times; 4 = 12 gives him the answer.",
+        correctRoot: 2, // Root C
+        explanation: "Noah views division as an isolated mechanical dealing action completely detached from his known multiplication facts.",
+        coaching: "Immediately reverse the share: have Noah push the 3 groups of 4 back together and connect the fact family: 12 &divide; 3 = 4 because 4 &times; 3 = 12."
+      },
+      {
+        id: 10,
+        stage: "Early Stage 1",
+        quote: "After sharing 10 counters into 2 piles of 5 and pushing them back together, Ava counts from one again to see if there are still 10.",
+        correctRoot: 2, // Root C
+        explanation: "Ava has not yet developed conservation of quantity through reversibility; she does not realise that combining directly reverses sharing.",
+        coaching: "Prompt before recounting: 'Did any counters fall on the floor? Did we add any new counters? So how many must be here without counting?'"
+      }
+    ];
+
+    const MAKEOVERS = {
+      es1: {
+        stage: "Early Stage 1",
+        before: {
+          title: "Closed Worksheet Drill",
+          task: "Share 12 counters between 3 bears.<br><br>Each bear gets ________.",
+          limitations: [
+            "Fixed procedural execution with only one right answer.",
+            "No justification required to verify if the share is fair.",
+            "Does not require reasoning or communicating mathematical thoughts."
+          ]
+        },
+        after: {
+          title: "Inquiry Reasoning Task (MAO-WM-01)",
+          task: "“Three bears want to share 12 honey biscuits so that it is fair. Show me how they could share them. How do you know it is fair?”<br><br>“Uh oh, a fourth bear has just arrived! What will you do now?”",
+          enabling: "Start with 6 honey biscuits shared between 2 bears.",
+          extending: "“Can 12 biscuits be shared fairly between 5 bears? What would you do with the ones left over?”",
+          listenFor: "Students defining 'fair' as having the exact same number; dealing in groups of 2; recombining to check that the total remains 12 without recounting.",
+          processes: ["Exploring & Connecting", "Reasoning", "Communicating"]
+        }
+      },
+      s1: {
+        stage: "Stage 1",
+        before: {
+          title: "Closed Worksheet Drill",
+          task: "3 groups of 5 = ________",
+          limitations: [
+            "Can be answered by counting by ones from a printed picture.",
+            "Considers only a single fixed arrangement.",
+            "Does not assess whether the student distinguishes groups from items."
+          ]
+        },
+        after: {
+          title: "Inquiry Reasoning Task (MAO-WM-01)",
+          task: "“I have 15 counters arranged in equal groups. How might they be arranged? Find as many different ways as you can, and record each with a diagram and words.”",
+          enabling: "Start with 6 or 12 counters.",
+          extending: "“Which numbers can only be arranged in one single equal-group way? Why do you think that happens?”",
+          listenFor: "Distinguishing '3 groups of 5' from '5 groups of 3'; skip counting to verify totals; rotating arrangements as arrays.",
+          processes: ["Choosing & Applying", "Communicating", "Reasoning"]
+        }
+      },
+      s2: {
+        stage: "Stage 2",
+        before: {
+          title: "Closed Worksheet Drill",
+          task: "7 &times; 6 = ________",
+          limitations: [
+            "Tests recall only: a student either knows it or guesses.",
+            "Provides zero strategic pathways for a student who has forgotten.",
+            "Lacks representation, structural decomposition, or explanation."
+          ]
+        },
+        after: {
+          title: "Inquiry Reasoning Task (MAO-WM-01)",
+          task: "“You have forgotten 7 &times; 6. Use a fact that you know to work it out, and show your mathematical thinking with an array. Then find a completely different way.”",
+          enabling: "Start with 4 &times; 6 using double (2 &times; 6).",
+          extending: "“Which facts in the 10 &times; 10 grid can be derived using only &times; 2, &times; 5, and &times; 10 facts? Which facts remain?”",
+          listenFor: "Distributive property (7 &times; 5 + 7 &times; 1), doubling (double 7 &times; 3), splitting arrays and labelling sub-products.",
+          processes: ["Understanding & Fluency", "Exploring & Connecting", "Reasoning"]
+        }
+      },
+      s3: {
+        stage: "Stage 3",
+        before: {
+          title: "Closed Worksheet Drill",
+          task: "47 &divide; 5 = ________ remainder ________",
+          limitations: [
+            "A detached vertical procedure devoid of context.",
+            "The remainder is never interpreted or given practical meaning.",
+            "Requires no justification or decision-making."
+          ]
+        },
+        after: {
+          title: "Inquiry Reasoning Task (MAO-WM-01)",
+          task: "“47 students are travelling to a diocesan gala day in 5-seater cars. How many cars are needed?”<br><br>“Now, write a division story for 47 &divide; 5 where the answer is 9, one where it is 9 remainder 2, and one where the answer is 9.4.”",
+          enabling: "Start with 17 &divide; 5 using an array with a partially filled row.",
+          extending: "“Write a division scenario where the remainder is the ONLY part of the answer that matters.”",
+          listenFor: "Rounding up to 10 cars; expressing remainder as Euclidean form (47 = 5 &times; 9 + 2); converting leftover money to 40 cents.",
+          processes: ["Choosing & Applying", "Reasoning", "Communicating"]
+        }
+      }
+    };
+
+    const PED_MOVES = [
+      {
+        id: "move1",
+        name: "1. Who is Correct?",
+        prompt: "Present two fictitious students with contrasting reasoning (one common error, one valid strategy). Ask students to justify who is correct.",
+        examples: [
+          { stage: "Stage 1", text: "“Ari says 4 groups of 3 and 3 groups of 4 are the same. Bella says they are different. Who is correct? Show your proof with counters.”" },
+          { stage: "Stage 2", text: "“Tom says 8 &times; 4 is 24. Mei says it is 32. Who is correct? Use doubling to prove it.”" },
+          { stage: "Stage 3", text: "“Kai says 32 + 2 &times; 4 = 136. Jess says it is 40. Who is correct, and why might Kai have thought that?”" }
+        ]
+      },
+      {
+        id: "move2",
+        name: "2. Same and Different",
+        prompt: "Display two or three mathematical expressions, diagrams, or representations. Ask students to compare their structural similarities and differences.",
+        examples: [
+          { stage: "Stage 1", text: "“What is the same and what is different about 4 groups of 3, 3 rows of 4, and 3 + 3 + 3 + 3?”" },
+          { stage: "Stage 2", text: "“What is the same and what is different about 8 &times; 4, 4 &times; 8, and 32 &divide; 4?”" },
+          { stage: "Stage 3", text: "“What is the same and what is different about 32 + 2 &times; 4, (32 + 2) &times; 4, and 32 + (2 &times; 4)?”" }
+        ]
+      },
+      {
+        id: "move3",
+        name: "3. Always, Sometimes, Never",
+        prompt: "Make a generalised mathematical claim. Challenge students to prove whether the statement is always, sometimes, or never true with counter-examples.",
+        examples: [
+          { stage: "Stage 1", text: "“If you have more groups, you always have more altogether. Always, sometimes, or never true?”" },
+          { stage: "Stage 2", text: "“Multiplying makes a number bigger. Always, sometimes, or never true?” (Prompt: What about &times; 1 and &times; 0?)" },
+          { stage: "Stage 3", text: "“Adding brackets to a number sentence changes the answer. Always, sometimes, or never true?”" }
+        ]
+      },
+      {
+        id: "move4",
+        name: "4. Open It Up",
+        prompt: "Reverse a traditional question by giving the solution and asking students to determine all possible starting questions or factors.",
+        examples: [
+          { stage: "Stage 1", text: "“There are 12 counters altogether in equal groups. How many groups could there be, and how many in each group?”" },
+          { stage: "Stage 2", text: "“The answer is 32. What could the multiplication question be? What could the division questions be?”" },
+          { stage: "Stage 3", text: "“Use the digits 2, 3, 4, and 5 once each, with any operations and brackets, to make 20. How many ways can you find?”" }
+        ]
+      },
+      {
+        id: "move5",
+        name: "5. Convince Me",
+        prompt: "Demand conceptual justification without relying on rote counting or mechanical procedures.",
+        examples: [
+          { stage: "Stage 1", text: "“Convince me that 4 groups of 3 is 12 without counting by ones.”" },
+          { stage: "Stage 2", text: "“Convince me that 8 &times; 4 is double 4 &times; 4. Use an array to prove it.”" },
+          { stage: "Stage 3", text: "“I buy 6 bull roarers at $10 each and 2 sets of clapsticks at $4 each. Convince me that 6 &times; 10 + 2 &times; 4 gives the total cost.”" }
+        ]
+      }
+    ];
+
+    /* ---------------- INITIALISATION ---------------- */
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      initStageTabs();
+      initBigIdeas();
+      initClinic();
+      initMakeovers();
+      initPedMoves();
+      
+      // Init Interactive Tools
+      wireShare();
+      wireGroups();
+      wireSplit();
+      wireArea();
+
+      // Mobile Menu Toggle
+      const mobileBtn = document.getElementById("mobileMenuBtn");
+      const sidebarNav = document.getElementById("sidebarNav");
+      if (mobileBtn && sidebarNav) {
+        mobileBtn.addEventListener("click", () => {
+          sidebarNav.classList.toggle("hidden");
+        });
+      }
+    });
+
+    /* ---------------- SECTION 1 LOGIC ---------------- */
+    function initStageTabs() {
+      const container = document.getElementById("stageTabsContainer");
+      const buttons = container.querySelectorAll(".stage-tab-btn");
+      buttons.forEach(btn => {
+        btn.addEventListener("click", () => {
+          buttons.forEach(b => {
+            b.className = "stage-tab-btn px-4 py-2.5 rounded-lg text-sm font-bold border transition flex items-center bg-white text-cedow-charcoal border-cedow-silver hover:bg-slate-50";
+          });
+          btn.className = "stage-tab-btn px-4 py-2.5 rounded-lg text-sm font-bold border transition flex items-center bg-cedow-navy text-white border-cedow-navy shadow-sm";
+          renderStageContent(btn.dataset.stage);
+        });
+      });
+      renderStageContent("es1");
+    }
+
+    function renderStageContent(stageKey) {
+      const data = STAGE_DATA[stageKey];
+      const display = document.getElementById("stageContentDisplay");
+      if (!data || !display) return;
+
+      display.innerHTML = `
+        <div class="border-b border-cedow-silver pb-4">
+          <div class="flex items-center justify-between flex-wrap gap-2">
+            <div>
+              <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">${data.focusArea}</span>
+              <h4 class="text-xl font-bold text-cedow-navy">${data.title}</h4>
+            </div>
+            <span class="px-2.5 py-1 rounded-full text-xs font-bold bg-cedow-lightBlue text-cedow-navy border border-cedow-silver">${data.short} Focus</span>
+          </div>
+          <p class="text-xs sm:text-sm text-cedow-charcoal mt-2 leading-relaxed">${data.lead}</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <!-- Outcomes & WM -->
+          <div class="bg-cedow-bg p-4 rounded-xl border border-cedow-silver space-y-3">
+            <h5 class="text-xs font-bold uppercase tracking-wider text-cedow-navy flex items-center">
+              <i data-lucide="award" class="w-4 h-4 mr-1.5 text-cedow-aqua"></i> Formal Syllabus Outcomes
+            </h5>
+            <div class="space-y-2">
+              ${data.outcomes.map(o => `
+                <div class="p-2.5 rounded bg-white border border-cedow-silver text-xs">
+                  <span class="math-badge mb-1">${o.code}</span>
+                  <p class="text-cedow-charcoal font-medium">${o.desc}</p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- Milestones & Models -->
+          <div class="bg-cedow-bg p-4 rounded-xl border border-cedow-silver space-y-3">
+            <h5 class="text-xs font-bold uppercase tracking-wider text-cedow-navy flex items-center">
+              <i data-lucide="check-square" class="w-4 h-4 mr-1.5 text-cedow-gold"></i> Key Conceptual Milestones
+            </h5>
+            <ul class="space-y-1.5 text-xs text-cedow-charcoal">
+              ${data.milestones.map(m => `
+                <li class="flex items-start">
+                  <i data-lucide="check" class="w-3.5 h-3.5 mr-2 text-emerald-600 flex-shrink-0 mt-0.5"></i>
+                  <span>${m}</span>
+                </li>
+              `).join('')}
+            </ul>
+          </div>
+        </div>
+
+        <!-- NESA Teaching Advice Alerts -->
+        <div class="bg-cedow-lightGold/60 border border-cedow-gold/60 p-4 rounded-xl">
+          <h5 class="text-xs font-bold uppercase tracking-wider text-amber-900 flex items-center mb-2">
+            <i data-lucide="alert-circle" class="w-4 h-4 mr-1.5 text-amber-700"></i> NESA Teaching Advice & Diocesan PL Alerts
+          </h5>
+          <ul class="space-y-1.5 text-xs text-amber-950">
+            ${data.adviceAlerts.map(a => `
+              <li class="flex items-start">
+                <span class="w-1.5 h-1.5 rounded-full bg-amber-600 mr-2 flex-shrink-0 mt-1.5"></span>
+                <span>${a}</span>
+              </li>
+            `).join('')}
+          </ul>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function initBigIdeas() {
+      const btnContainer = document.getElementById("bigIdeasButtons");
+      if (!btnContainer) return;
+
+      btnContainer.innerHTML = BIG_IDEAS.map((idea, idx) => `
+        <button onclick="renderBigIdea(${idx})" id="biBtn_${idx}" class="bi-btn text-left p-2.5 rounded-lg border border-cedow-silver text-xs font-bold transition ${idx === 0 ? 'bg-cedow-navy text-white border-cedow-navy shadow-sm' : 'bg-white text-cedow-charcoal hover:bg-slate-50'}">
+          Idea ${idx + 1}
+        </button>
+      `).join('');
+
+      renderBigIdea(0);
+    }
+
+    function renderBigIdea(idx) {
+      const idea = BIG_IDEAS[idx];
+      const display = document.getElementById("bigIdeaDetailDisplay");
+      if (!idea || !display) return;
+
+      document.querySelectorAll(".bi-btn").forEach((b, i) => {
+        b.className = `bi-btn text-left p-2.5 rounded-lg border border-cedow-silver text-xs font-bold transition ${i === idx ? 'bg-cedow-navy text-white border-cedow-navy shadow-sm' : 'bg-white text-cedow-charcoal hover:bg-slate-50'}`;
+      });
+
+      display.innerHTML = `
+        <div class="border-b border-cedow-silver pb-3 mb-4">
+          <span class="text-xs font-bold text-cedow-aqua uppercase tracking-wider">Big Idea Focus</span>
+          <h5 class="text-base font-bold text-cedow-navy">${idea.title}</h5>
+          <p class="text-xs text-cedow-charcoal italic mt-0.5">${idea.principle}</p>
+        </div>
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
+          <div class="p-3 bg-white rounded-lg border border-cedow-silver">
+            <span class="text-[11px] font-black uppercase text-cedow-navy block mb-1">Early Stage 1</span>
+            <p class="text-xs text-cedow-charcoal">${idea.progression.es1}</p>
+          </div>
+          <div class="p-3 bg-white rounded-lg border border-cedow-silver">
+            <span class="text-[11px] font-black uppercase text-cedow-aqua block mb-1">Stage 1</span>
+            <p class="text-xs text-cedow-charcoal">${idea.progression.s1}</p>
+          </div>
+          <div class="p-3 bg-white rounded-lg border border-cedow-silver">
+            <span class="text-[11px] font-black uppercase text-cedow-navy block mb-1">Stage 2</span>
+            <p class="text-xs text-cedow-charcoal">${idea.progression.s2}</p>
+          </div>
+          <div class="p-3 bg-white rounded-lg border border-cedow-silver">
+            <span class="text-[11px] font-black uppercase text-emerald-700 block mb-1">Stage 3</span>
+            <p class="text-xs text-cedow-charcoal">${idea.progression.s3}</p>
+          </div>
+        </div>
+      `;
+    }
+
+    /* ---------------- SECTION 3: TOOL SWITCHER ---------------- */
+    function switchTool(toolNum) {
+      for (let i = 1; i <= 4; i++) {
+        const panel = document.getElementById(`toolPanel${i}`);
+        const btn = document.getElementById(`toolBtn${i}`);
+        if (panel && btn) {
+          if (i === toolNum) {
+            panel.classList.remove("hidden");
+            btn.className = "tool-tab-btn px-4 py-2 text-sm font-bold rounded-t-lg bg-cedow-navy text-white flex items-center";
+          } else {
+            panel.classList.add("hidden");
+            btn.className = "tool-tab-btn px-4 py-2 text-sm font-bold rounded-t-lg bg-white text-cedow-charcoal hover:bg-slate-100 flex items-center";
+          }
+        }
+      }
+      lucide.createIcons();
+    }
+
+    /* TOOL 1: FAIR SHARE JS */
+    let shTotal = 12;
+    let shPeople = 3;
+    let shDealt = 0;
+    let shPlates = [0, 0, 0];
+
+    function wireShare() {
+      const tSel = document.getElementById("shTotalSelect");
+      const pSel = document.getElementById("shPeopleSelect");
+      const dOne = document.getElementById("shDealOneBtn");
+      const dAll = document.getElementById("shDealAllBtn");
+      const pBack = document.getElementById("shPutBackBtn");
+
+      if (!tSel || !pSel) return;
+
+      const reset = () => {
+        shTotal = parseInt(tSel.value, 10);
+        shPeople = parseInt(pSel.value, 10);
+        shDealt = 0;
+        shPlates = new Array(shPeople).fill(0);
+        renderShareUI("Choose how many counters and people, then deal one at a time.");
+      };
+
+      tSel.addEventListener("change", reset);
+      pSel.addEventListener("change", reset);
+
+      dOne.addEventListener("click", () => {
+        if (shDealt < shTotal) {
+          shPlates[shDealt % shPeople]++;
+          shDealt++;
+          renderShareUI(getShareStatus());
+        }
+      });
+
+      dAll.addEventListener("click", () => {
+        while (shDealt < shTotal) {
+          const remaining = shTotal - shDealt;
+          if (remaining < shPeople && shDealt % shPeople === 0) break;
+          shPlates[shDealt % shPeople]++;
+          shDealt++;
+        }
+        renderShareUI(getShareStatus());
+      });
+
+      pBack.addEventListener("click", () => {
+        shPlates = new Array(shPeople).fill(0);
+        shDealt = 0;
+        renderShareUI("<strong>Back together: still " + shTotal + " counters!</strong> Sharing and recombining undo each other, proving that the total is conserved.");
+      });
+
+      reset();
+    }
+
+    function getShareStatus() {
+      const remaining = shTotal - shDealt;
+      const min = Math.min(...shPlates);
+      const max = Math.max(...shPlates);
+
+      if (remaining === 0) {
+        if (min === max) {
+          return `<strong>Fair share!</strong> ${shTotal} shared equally between ${shPeople} people is ${min} each. Now click 'Put Back Together' to demonstrate reversibility.`;
+        }
+        return `<strong>Is it fair?</strong> Groups currently have [${shPlates.join(', ')}]. Not everyone has the same count.`;
+      }
+      if (remaining < shPeople && min === max) {
+        return `<strong>${remaining} left over!</strong> Everyone has ${min} counters, but there are not enough remaining for everyone to receive another one. What could we do with the leftover part?`;
+      }
+      return `Dealt ${shDealt} of ${shTotal}. Current groups: [${shPlates.join(', ')}].`;
+    }
+
+    function renderShareUI(msg) {
+      const remaining = shTotal - shDealt;
+      const pileContainer = document.getElementById("shPileDots");
+      const countBadge = document.getElementById("shPileCountBadge");
+      const platesGrid = document.getElementById("shPlatesGrid");
+      const fbText = document.getElementById("shFeedbackText");
+      const dOne = document.getElementById("shDealOneBtn");
+      const dAll = document.getElementById("shDealAllBtn");
+
+      if (countBadge) countBadge.textContent = `${remaining} counters in pile`;
+
+      if (pileContainer) {
+        pileContainer.innerHTML = '';
+        for (let i = 0; i < remaining; i++) {
+          const d = document.createElement("span");
+          d.className = "dot-ctr";
+          pileContainer.appendChild(d);
+        }
+      }
+
+      if (platesGrid) {
+        platesGrid.innerHTML = shPlates.map((c, i) => {
+          let dotsHtml = '';
+          for (let j = 0; j < c; j++) dotsHtml += '<span class="dot-ctr dot-ctr-gold"></span>';
+          return `
+            <div class="plate-card p-3 flex flex-col justify-between">
+              <div class="flex items-center justify-between border-b border-slate-100 pb-1 mb-1">
+                <span class="text-[11px] font-bold text-cedow-navy">Person ${i + 1}</span>
+                <span class="font-mono text-xs font-bold text-cedow-aqua">${c}</span>
+              </div>
+              <div class="flex flex-wrap items-center gap-1 min-h-[40px] my-1">${dotsHtml}</div>
+              <div class="text-[10px] text-right text-cedow-charcoal font-semibold">${c} counters</div>
+            </div>
+          `;
+        }).join('');
+      }
+
+      if (fbText) fbText.innerHTML = msg;
+      if (dOne) dOne.disabled = (remaining === 0);
+      if (dAll) dAll.disabled = (remaining === 0);
+    }
+
+    /* TOOL 2: GROUPS TO ARRAYS JS */
+    let grG = 3;
+    let grN = 4;
+    let grView = 'g'; // 'g', 'a', 'r'
+
+    function wireGroups() {
+      const gSel = document.getElementById("grGroupsSelect");
+      const nSel = document.getElementById("grInEachSelect");
+      if (!gSel || !nSel) return;
+
+      gSel.addEventListener("change", () => {
+        grG = parseInt(gSel.value, 10);
+        renderGroupsUI();
+      });
+      nSel.addEventListener("change", () => {
+        grN = parseInt(nSel.value, 10);
+        renderGroupsUI();
+      });
+
+      renderGroupsUI();
+    }
+
+    function setGroupsMode(m) {
+      grView = m;
+      document.getElementById("grModeGroupsBtn").className = (m === 'g') ? "gr-mode-btn px-3 py-1.5 rounded-lg bg-cedow-navy text-white text-xs font-bold flex items-center shadow-sm" : "gr-mode-btn px-3 py-1.5 rounded-lg bg-white border border-cedow-silver text-cedow-charcoal hover:bg-slate-50 text-xs font-bold flex items-center";
+      document.getElementById("grModeArrayBtn").className = (m === 'a') ? "gr-mode-btn px-3 py-1.5 rounded-lg bg-cedow-navy text-white text-xs font-bold flex items-center shadow-sm" : "gr-mode-btn px-3 py-1.5 rounded-lg bg-white border border-cedow-silver text-cedow-charcoal hover:bg-slate-50 text-xs font-bold flex items-center";
+      document.getElementById("grModeRotateBtn").className = (m === 'r') ? "gr-mode-btn px-3 py-1.5 rounded-lg bg-cedow-navy text-white text-xs font-bold flex items-center shadow-sm" : "gr-mode-btn px-3 py-1.5 rounded-lg bg-white border border-cedow-silver text-cedow-charcoal hover:bg-slate-50 text-xs font-bold flex items-center";
+      renderGroupsUI();
+    }
+
+    function renderGroupsUI() {
+      const canvas = document.getElementById("grCanvas");
+      const readout = document.getElementById("grReadoutBox");
+      if (!canvas || !readout) return;
+
+      const total = grG * grN;
+
+      if (grView === 'g') {
+        let groupsHtml = '';
+        for (let i = 0; i < grG; i++) {
+          let dots = '';
+          for (let j = 0; j < grN; j++) dots += '<span class="dot-ctr"></span>';
+          groupsHtml += `
+            <div class="p-3 bg-white rounded-xl border-2 border-cedow-aqua flex flex-col items-center justify-center min-w-[75px] shadow-sm">
+              <div class="flex flex-wrap justify-center gap-1 max-w-[90px] mb-2">${dots}</div>
+              <span class="text-xs font-mono font-bold px-2 py-0.5 rounded bg-cedow-lightAqua text-cedow-aqua">${grN}</span>
+            </div>
+          `;
+        }
+        canvas.innerHTML = `<div class="flex flex-wrap items-center justify-center gap-3">${groupsHtml}</div>`;
+
+        const adds = new Array(grG).fill(grN).join(" + ");
+        const skips = Array.from({ length: grG }, (_, i) => grN * (i + 1)).join(", ");
+
+        readout.innerHTML = `
+          <div class="text-sm font-bold text-cedow-navy">${grG} groups of ${grN} is ${total}</div>
+          <div class="text-xs text-cedow-charcoal">
+            <strong>Repeated Addition:</strong> <span class="font-mono">${adds} = ${total}</span> &bull;
+            <strong>Skip Count:</strong> <span class="font-mono">${skips}</span>
+          </div>
+          <p class="text-[11px] text-slate-500 mt-1">Teaching Advice: Circle each group to emphasize the composite unit before shifting to rows and columns.</p>
+        `;
+      } else {
+        const rows = (grView === 'a') ? grG : grN;
+        const cols = (grView === 'a') ? grN : grG;
+        const dotColorClass = (grView === 'a') ? "dot-ctr" : "dot-ctr dot-ctr-gold";
+
+        let gridRowsHtml = '';
+        for (let r = 0; r < rows; r++) {
+          let colsDots = '';
+          for (let c = 0; c < cols; c++) colsDots += `<span class="${dotColorClass}"></span>`;
+          gridRowsHtml += `<div class="flex items-center gap-1.5">${colsDots}</div>`;
+        }
+
+        canvas.innerHTML = `
+          <div class="p-4 bg-white rounded-xl border border-cedow-silver shadow-sm flex flex-col items-center space-y-1.5">
+            ${gridRowsHtml}
+          </div>
+        `;
+
+        if (grView === 'a') {
+          readout.innerHTML = `
+            <div class="text-sm font-bold text-cedow-navy">Array: ${rows} rows of ${cols} is ${total}</div>
+            <div class="text-xs text-cedow-charcoal">
+              Coordinating rows and columns produces two repeated addition sentences:
+              <span class="font-mono">${new Array(rows).fill(cols).join(" + ")} = ${total}</span> and
+              <span class="font-mono">${new Array(cols).fill(rows).join(" + ")} = ${total}</span>.
+            </div>
+          `;
+        } else {
+          readout.innerHTML = `
+            <div class="text-sm font-bold text-cedow-navy">Rotated 90&deg; Array: ${rows} rows of ${cols} is ${total}</div>
+            <div class="text-xs text-cedow-charcoal">
+              <strong>Commutative Property:</strong> ${grG} rows of ${grN} and ${grN} rows of ${grG} result in the identical product (${total}). Rotating an array visually proves <span class="font-mono">${grG} &times; ${grN} = ${grN} &times; ${grG}</span>.
+            </div>
+          `;
+        }
+      }
+    }
+
+    /* TOOL 3: ARRAY SPLITTER JS */
+    let spA = 7;
+    let spB = 6;
+    let spS = 5;
+    let spCover = false;
+
+    function wireSplit() {
+      const fSel = document.getElementById("spFactSelect");
+      const lBtn = document.getElementById("spMoveLeftBtn");
+      const rBtn = document.getElementById("spMoveRightBtn");
+      const at5Btn = document.getElementById("spSplitAt5Btn");
+      const halfBtn = document.getElementById("spSplitHalfBtn");
+      const covBtn = document.getElementById("spCoverMiddleBtn");
+
+      if (!fSel) return;
+
+      fSel.addEventListener("change", () => {
+        const parts = fSel.value.split("x");
+        spA = parseInt(parts[0], 10);
+        spB = parseInt(parts[1], 10);
+        spS = spB > 5 ? 5 : Math.floor(spB / 2);
+        spCover = false;
+        renderSplitUI();
+      });
+
+      lBtn.addEventListener("click", () => {
+        if (spS > 1) { spS--; renderSplitUI(); }
+      });
+      rBtn.addEventListener("click", () => {
+        if (spS < spB - 1) { spS++; renderSplitUI(); }
+      });
+      at5Btn.addEventListener("click", () => {
+        spS = 5; renderSplitUI();
+      });
+      halfBtn.addEventListener("click", () => {
+        spS = Math.floor(spB / 2); renderSplitUI();
+      });
+      covBtn.addEventListener("click", () => {
+        spCover = !spCover; renderSplitUI();
+      });
+
+      renderSplitUI();
+    }
+
+    function renderSplitUI() {
+      const container = document.getElementById("spSvgContainer");
+      const readout = document.getElementById("spReadout");
+      const covLabel = document.getElementById("spCoverLabel");
+      const lBtn = document.getElementById("spMoveLeftBtn");
+      const rBtn = document.getElementById("spMoveRightBtn");
+      const at5Btn = document.getElementById("spSplitAt5Btn");
+      const halfBtn = document.getElementById("spSplitHalfBtn");
+
+      if (!container || !readout) return;
+
+      if (covLabel) covLabel.textContent = spCover ? "Uncover Middle Array" : "Cover Middle (Partially Covered)";
+      if (lBtn) lBtn.disabled = (spS <= 1);
+      if (rBtn) rBtn.disabled = (spS >= spB - 1);
+      if (at5Btn) at5Btn.disabled = (spB <= 5);
+      if (halfBtn) halfBtn.disabled = (spB % 2 !== 0);
+
+      const W = Math.min(32, Math.floor(520 / Math.max(spB, 1)));
+      const r = W * 0.35;
+      const pad = 16;
+      const gap = (spS > 0 && spS < spB) ? 14 : 0;
+      const svgW = pad * 2 + spB * W + gap;
+      const svgH = pad * 2 + spA * W;
+
+      let circles = '';
+      for (let i = 0; i < spA; i++) {
+        for (let j = 0; j < spB; j++) {
+          const cx = pad + j * W + W / 2 + (j >= spS ? gap : 0);
+          const cy = pad + i * W + W / 2;
+          const isLeft = j < spS;
+          const fill = isLeft ? "#188296" : "#FBAF3F";
+          circles += `<circle cx="${cx}" cy="${cy}" r="${r}" fill="${fill}" />`;
+        }
+      }
+
+      let lineSvg = '';
+      if (spS > 0 && spS < spB) {
+        const lx = pad + spS * W + gap / 2;
+        lineSvg = `<line x1="${lx}" y1="4" x2="${lx}" y2="${svgH - 4}" stroke="#0D2C6B" stroke-width="2.5" stroke-dasharray="4 3" />`;
+      }
+
+      let coverSvg = '';
+      if (spCover) {
+        const coverX = pad + W - 2;
+        const coverY = pad + W - 2;
+        const coverW = spB * W + gap - W + 2;
+        const coverH = spA * W - W + 2;
+        coverSvg = `
+          <rect x="${coverX}" y="${coverY}" width="${coverW}" height="${coverH}" rx="8" fill="#0D2C6B" opacity="0.95" />
+          <text x="${coverX + coverW / 2}" y="${coverY + coverH / 2 + 5}" text-anchor="middle" fill="#FFFFFF" font-size="14" font-weight="bold" font-family="Lato">How many dots?</text>
+        `;
+      }
+
+      container.innerHTML = `
+        <svg viewBox="0 0 ${svgW} ${svgH}" class="w-full max-w-[500px]" style="min-height: 160px;" role="img" aria-label="Array of ${spA} by ${spB}">
+          ${circles}
+          ${lineSvg}
+          ${coverSvg}
+        </svg>
+      `;
+
+      const p1 = spA * spS;
+      const p2 = spA * (spB - spS);
+      const total = spA * spB;
+
+      if (spCover) {
+        readout.innerHTML = `
+          <div class="text-sm font-bold text-cedow-navy">Partially Covered Array: ${spA} rows, ${spB} columns</div>
+          <div class="text-xs text-cedow-charcoal">
+            Look at the visible top row (${spB}) and left column (${spA}). Students reason: <span class="font-mono">${spA} &times; ${spB} = ${total}</span> without needing to count every single hidden dot.
+          </div>
+        `;
+      } else {
+        readout.innerHTML = `
+          <div class="text-sm font-bold text-cedow-navy font-mono">
+            ${spA} &times; ${spB} = (${spA} &times; ${spS}) + (${spA} &times; ${spB - spS}) = ${p1} + ${p2} = ${total}
+          </div>
+          <div class="text-xs text-cedow-charcoal mt-1">
+            <strong>Distributive Property:</strong> Multiplied by ${spA} is distributed across ${spS} and ${spB - spS}. 
+            ${spS === 5 ? "<em>(Anchor at 5: use the automatic &times; 5 fact, then add the remainder).</em>" : (spS * 2 === spB ? "<em>(Doubling strategy: double the half-fact).</em>" : "")}
+          </div>
+        `;
+      }
+    }
+
+    /* TOOL 4: AREA MODEL JS */
+    function setAreaPreset(a, b) {
+      document.getElementById("arInputA").value = a;
+      document.getElementById("arInputB").value = b;
+      renderAreaUI();
+    }
+
+    function wireArea() {
+      const btn = document.getElementById("arCalcBtn");
+      const inA = document.getElementById("arInputA");
+      const inB = document.getElementById("arInputB");
+
+      if (!btn) return;
+      btn.addEventListener("click", renderAreaUI);
+      inA.addEventListener("keydown", e => { if (e.key === "Enter") renderAreaUI(); });
+      inB.addEventListener("keydown", e => { if (e.key === "Enter") renderAreaUI(); });
+
+      renderAreaUI();
+    }
+
+    function getParts(num) {
+      const s = String(num);
+      const out = [];
+      for (let i = 0; i < s.length; i++) {
+        const d = parseInt(s.charAt(i), 10);
+        if (d > 0) out.push(d * Math.pow(10, s.length - 1 - i));
+      }
+      return out;
+    }
+
+    function renderAreaUI() {
+      const inA = document.getElementById("arInputA");
+      const inB = document.getElementById("arInputB");
+      const banner = document.getElementById("arEstimateBanner");
+      const grid = document.getElementById("arGridContainer");
+      const readout = document.getElementById("arReadout");
+
+      if (!inA || !inB || !grid || !readout) return;
+
+      const A = Math.round(parseFloat(inA.value));
+      const B = Math.round(parseFloat(inB.value));
+
+      if (isNaN(A) || isNaN(B) || A < 2 || B < 2) {
+        banner.innerHTML = "<span>Please enter valid positive whole numbers.</span>";
+        grid.innerHTML = "";
+        readout.innerHTML = "";
+        return;
+      }
+
+      const pA = getParts(A);
+      const pB = getParts(B);
+
+      // Estimate calculation
+      const leadA = Math.pow(10, String(A).length - 1) * Math.round(A / Math.pow(10, String(A).length - 1));
+      const leadB = B < 10 ? B : Math.pow(10, String(B).length - 1) * Math.round(B / Math.pow(10, String(B).length - 1));
+      const est = leadA * leadB;
+
+      banner.innerHTML = `
+        <i data-lucide="compass" class="w-4 h-4 text-amber-700 mr-2 flex-shrink-0"></i>
+        <span><strong>Estimate First:</strong> ${A} &times; ${B} is approximately ${leadA} &times; ${leadB} = <strong>${est.toLocaleString('en-AU')}</strong>.</span>
+      `;
+
+      // Build Area Grid Table
+      const cols = pA.length;
+      let tableHtml = `<table class="w-full border-collapse text-xs"><thead><tr><th class="p-2 border border-cedow-silver bg-slate-100"></th>`;
+      pA.forEach(p => {
+        tableHtml += `<th class="p-2 border border-cedow-silver bg-cedow-lightAqua text-cedow-navy font-bold font-mono">${p.toLocaleString('en-AU')}</th>`;
+      });
+      tableHtml += `</tr></thead><tbody>`;
+
+      const partials = [];
+      pB.forEach((q, ri) => {
+        tableHtml += `<tr><th class="p-2 border border-cedow-silver bg-cedow-lightGold text-cedow-navy font-bold font-mono text-left">${q.toLocaleString('en-AU')}</th>`;
+        pA.forEach(p => {
+          const val = p * q;
+          partials.push(val);
+          tableHtml += `
+            <td class="p-3 border border-cedow-silver bg-white hover:bg-slate-50 transition text-center">
+              <span class="text-[11px] text-slate-500 font-mono block">${p} &times; ${q}</span>
+              <strong class="font-mono text-sm text-cedow-navy">${val.toLocaleString('en-AU')}</strong>
+            </td>
+          `;
+        });
+        tableHtml += `</tr>`;
+      });
+      tableHtml += `</tbody></table>`;
+      grid.innerHTML = tableHtml;
+
+      const sum = partials.reduce((acc, v) => acc + v, 0);
+
+      readout.innerHTML = `
+        <div class="text-sm font-bold text-cedow-navy font-mono">
+          ${A} &times; ${B} = ${partials.map(v => v.toLocaleString('en-AU')).join(' + ')} = ${sum.toLocaleString('en-AU')}
+        </div>
+        <p class="text-xs text-cedow-charcoal mt-1 leading-relaxed">
+          <strong>Algorithm Connection:</strong> Each box in the area grid represents an exact line of partial products in the extended vertical algorithm. Because our calculation (${sum.toLocaleString('en-AU')}) is close to our estimate (${est.toLocaleString('en-AU')}), the solution is mathematically reasonable.
+        </p>
+      `;
+      lucide.createIcons();
+    }
+
+    /* ---------------- SECTION 4: DIAGNOSTIC CLINIC ---------------- */
+    let currentScenarioIdx = 0;
+    let clinicAnswers = new Array(SCENARIOS.length).fill(null);
+
+    function initClinic() {
+      renderScenario(0);
+    }
+
+    function renderScenario(idx) {
+      currentScenarioIdx = idx;
+      const sc = SCENARIOS[idx];
+      const caseBadge = document.getElementById("clinicCaseBadge");
+      const stageBadge = document.getElementById("clinicStageBadge");
+      const quote = document.getElementById("clinicQuote");
+      const fb = document.getElementById("clinicFeedback");
+      const prevBtn = document.getElementById("clinicPrevBtn");
+      const nextBtn = document.getElementById("clinicNextBtn");
+
+      if (!sc) return;
+
+      if (caseBadge) caseBadge.textContent = `Scenario ${idx + 1} of ${SCENARIOS.length}`;
+      if (stageBadge) stageBadge.textContent = sc.stage;
+      if (quote) quote.innerHTML = `“${sc.quote}”`;
+
+      if (prevBtn) prevBtn.disabled = (idx === 0);
+      if (nextBtn) nextBtn.disabled = (idx === SCENARIOS.length - 1);
+
+      // Reset option styles
+      document.querySelectorAll(".diag-opt-btn").forEach((btn, rIdx) => {
+        btn.className = "diag-opt-btn p-3.5 rounded-lg border border-cedow-silver text-left hover:border-cedow-aqua hover:bg-cedow-lightAqua/40 transition";
+      });
+
+      if (clinicAnswers[idx] !== null) {
+        showFeedback(clinicAnswers[idx]);
+      } else {
+        if (fb) fb.className = "hidden";
+      }
+    }
+
+    function diagnoseRoot(chosenRoot) {
+      clinicAnswers[currentScenarioIdx] = chosenRoot;
+      showFeedback(chosenRoot);
+      updateClinicScore();
+    }
+
+    function showFeedback(chosenRoot) {
+      const sc = SCENARIOS[currentScenarioIdx];
+      const fb = document.getElementById("clinicFeedback");
+      if (!fb || !sc) return;
+
+      const isCorrect = (chosenRoot === sc.correctRoot);
+
+      // Highlight options
+      document.querySelectorAll(".diag-opt-btn").forEach((btn, rIdx) => {
+        if (rIdx === sc.correctRoot) {
+          btn.className = "diag-opt-btn p-3.5 rounded-lg border-2 border-emerald-500 bg-emerald-50 text-left";
+        } else if (rIdx === chosenRoot && !isCorrect) {
+          btn.className = "diag-opt-btn p-3.5 rounded-lg border-2 border-rose-500 bg-rose-50 text-left";
+        } else {
+          btn.className = "diag-opt-btn p-3.5 rounded-lg border border-cedow-silver opacity-50 text-left";
+        }
+      });
+
+      fb.className = `p-4 rounded-xl border space-y-2 ${isCorrect ? 'bg-emerald-50 border-emerald-300' : 'bg-rose-50 border-rose-300'}`;
+      fb.innerHTML = `
+        <div class="flex items-center space-x-2">
+          <i data-lucide="${isCorrect ? 'check-circle' : 'alert-octagon'}" class="w-4 h-4 ${isCorrect ? 'text-emerald-700' : 'text-rose-700'}"></i>
+          <span class="text-xs font-bold uppercase tracking-wider ${isCorrect ? 'text-emerald-900' : 'text-rose-900'}">
+            ${isCorrect ? 'Accurate Diagnosis' : 'Misconception Misdiagnosed'}
+          </span>
+        </div>
+        <p class="text-xs text-cedow-charcoal leading-relaxed"><strong>Clinical Analysis:</strong> ${sc.explanation}</p>
+        <div class="p-2.5 rounded bg-white border border-cedow-silver text-xs text-cedow-navy">
+          <strong>Instructional Coaching Move:</strong> ${sc.coaching}
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function updateClinicScore() {
+      const totalCorrect = clinicAnswers.reduce((acc, ans, i) => {
+        return acc + (ans === SCENARIOS[i].correctRoot ? 1 : 0);
+      }, 0);
+      const scoreEl = document.getElementById("clinicScore");
+      if (scoreEl) scoreEl.textContent = totalCorrect;
+    }
+
+    function prevScenario() {
+      if (currentScenarioIdx > 0) renderScenario(currentScenarioIdx - 1);
+    }
+
+    function nextScenario() {
+      if (currentScenarioIdx < SCENARIOS.length - 1) renderScenario(currentScenarioIdx + 1);
+    }
+
+    /* ---------------- SECTION 5: MAKEOVER & PEDAGOGICAL MOVES ---------------- */
+    function initMakeovers() {
+      setMakeoverStage("es1");
+    }
+
+    function setMakeoverStage(stKey) {
+      document.querySelectorAll(".mo-tab-btn").forEach(btn => {
+        btn.className = "mo-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-white text-cedow-charcoal border border-cedow-silver hover:bg-slate-50";
+      });
+      const activeBtn = document.getElementById(`moTab_${stKey}`);
+      if (activeBtn) activeBtn.className = "mo-tab-btn px-3.5 py-1.5 rounded-lg text-xs font-bold bg-cedow-navy text-white";
+
+      const mo = MAKEOVERS[stKey];
+      const display = document.getElementById("makeoverDisplay");
+      if (!mo || !display) return;
+
+      display.innerHTML = `
+        <!-- BEFORE -->
+        <div class="p-5 rounded-xl bg-cedow-bg border border-cedow-silver flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-black uppercase tracking-wider text-rose-600 px-2 py-0.5 rounded bg-rose-50 border border-rose-200">Before &bull; Procedural Drill</span>
+              <span class="text-xs text-cedow-charcoal font-semibold">${mo.stage}</span>
+            </div>
+            <div class="p-4 bg-white rounded-lg border border-cedow-silver text-center my-4 font-mono text-base font-bold text-cedow-navy">
+              ${mo.before.task}
+            </div>
+            <span class="text-xs font-bold text-cedow-charcoal uppercase block mb-1.5">Syllabus Limitations:</span>
+            <ul class="space-y-1 text-xs text-cedow-charcoal">
+              ${mo.before.limitations.map(l => `<li class="flex items-start"><i data-lucide="x" class="w-3.5 h-3.5 mr-1.5 text-rose-500 flex-shrink-0 mt-0.5"></i><span>${l}</span></li>`).join('')}
+            </ul>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-200 text-[11px] text-slate-500 italic">
+            Focus: Low cognitive demand; reinforces mechanical execution.
+          </div>
+        </div>
+
+        <!-- AFTER -->
+        <div class="p-5 rounded-xl bg-white border-2 border-cedow-aqua shadow-sm flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-3">
+              <span class="text-xs font-black uppercase tracking-wider text-cedow-aqua px-2 py-0.5 rounded bg-cedow-lightAqua border border-cedow-aqua/30">After &bull; Working Mathematically</span>
+              <div class="flex gap-1">
+                ${mo.after.processes.map(p => `<span class="text-[10px] font-bold px-1.5 py-0.5 rounded bg-cedow-lightBlue text-cedow-navy">${p}</span>`).join('')}
+              </div>
+            </div>
+            <div class="p-4 bg-cedow-lightAqua/40 rounded-lg border border-cedow-aqua/30 my-3 text-xs sm:text-sm text-cedow-navy font-semibold leading-relaxed">
+              ${mo.after.task}
+            </div>
+            <div class="space-y-2 mt-3 text-xs">
+              <div class="p-2 rounded bg-slate-50 border border-slate-200">
+                <strong class="text-cedow-navy">Enabling Prompt:</strong> ${mo.after.enabling}
+              </div>
+              <div class="p-2 rounded bg-slate-50 border border-slate-200">
+                <strong class="text-cedow-navy">Extending Prompt:</strong> ${mo.after.extending}
+              </div>
+              <div class="p-2 rounded bg-cedow-lightGold/50 border border-cedow-gold/40 text-amber-950">
+                <strong>What to Listen For:</strong> ${mo.after.listenFor}
+              </div>
+            </div>
+          </div>
+          <div class="mt-4 pt-3 border-t border-slate-100 text-[11px] text-cedow-aqua font-bold">
+            Target Outcome: MAO-WM-01 (Communicating & Reasoning)
+          </div>
+        </div>
+      `;
+      lucide.createIcons();
+    }
+
+    function initPedMoves() {
+      const container = document.getElementById("movesTabsContainer");
+      if (!container) return;
+
+      container.innerHTML = PED_MOVES.map((m, idx) => `
+        <button onclick="renderMoveDetail(${idx})" id="moveTab_${idx}" class="move-tab-btn px-3 py-1.5 rounded-lg border text-xs font-bold transition ${idx === 0 ? 'bg-cedow-navy text-white border-cedow-navy shadow-sm' : 'bg-white text-cedow-charcoal border-cedow-silver hover:bg-slate-50'}">
+          ${m.name}
+        </button>
+      `).join('');
+
+      renderMoveDetail(0);
+    }
+
+    function renderMoveDetail(idx) {
+      document.querySelectorAll(".move-tab-btn").forEach((b, i) => {
+        b.className = `move-tab-btn px-3 py-1.5 rounded-lg border text-xs font-bold transition ${i === idx ? 'bg-cedow-navy text-white border-cedow-navy shadow-sm' : 'bg-white text-cedow-charcoal border-cedow-silver hover:bg-slate-50'}`;
+      });
+
+      const move = PED_MOVES[idx];
+      const display = document.getElementById("moveDetailDisplay");
+      if (!move || !display) return;
+
+      display.innerHTML = `
+        <div class="border-b border-cedow-silver pb-2">
+          <h5 class="text-sm font-bold text-cedow-navy">${move.name}</h5>
+          <p class="text-xs text-cedow-charcoal mt-0.5 leading-relaxed">${move.prompt}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3 pt-1">
+          ${move.examples.map(ex => `
+            <div class="p-3 bg-white rounded-lg border border-cedow-silver">
+              <span class="text-[10px] font-black uppercase tracking-wider text-cedow-aqua block mb-1">${ex.stage} Exemplar</span>
+              <p class="text-xs text-cedow-navy font-medium italic">${ex.text}</p>
+            </div>
+          `).join('')}
+        </div>
+      `;
+    }
+
+    /* ---------------- SECTION 6: MASTERY QUIZ ---------------- */
+    const QUIZ_ANSWERS = [1, 1, 2, 0, 1];
+    const QUIZ_EXPLANATIONS = [
+      "Equal grouping (quotitive) division determines how many groups of a known size can be made. It is crucial for Stage 4 when dividing by quantities less than one (8 &divide; 0.5 = 16 groups of a half).",
+      "Cognitive research confirms that table facts are stored as verbal memories. Blocked practice leads to retrieval interference from neighbouring answers in the tables (Domahs et al. 2006). Fact families with mixed practice build relational networks.",
+      "The distributive property distributes multiplication over addition: 6 &times; 7 = 6 &times; (5 + 2) = (6 &times; 5) + (6 &times; 2).",
+      "Euclidean division links division and multiplication directly: dividend = (divisor &times; quotient) + remainder.",
+      "Mnemonics like BODMAS falsely suggest addition must always precede subtraction, leading to errors like 10 - 3 + 2 = 5 instead of 9."
+    ];
+
+    function submitMasteryQuiz() {
+      const form = document.getElementById("masteryForm");
+      if (!form) return;
+
+      let score = 0;
+      let allAnswered = true;
+
+      for (let i = 1; i <= 5; i++) {
+        const val = form[`mq${i}`]?.value;
+        const fbEl = document.getElementById(`mqFeedback${i}`);
+        if (!val) {
+          allAnswered = false;
+          if (fbEl) {
+            fbEl.className = "text-xs p-2 rounded bg-amber-50 text-amber-900 border border-amber-300 block";
+            fbEl.textContent = "Please select an answer for this question.";
+          }
+        } else {
+          const userAns = parseInt(val, 10);
+          const isCorrect = (userAns === QUIZ_ANSWERS[i - 1]);
+          if (isCorrect) score++;
+          if (fbEl) {
+            fbEl.className = `text-xs p-2 rounded block mt-2 border ${isCorrect ? 'bg-emerald-50 text-emerald-900 border-emerald-300' : 'bg-rose-50 text-rose-900 border-rose-300'}`;
+            fbEl.innerHTML = `<strong>${isCorrect ? 'Correct!' : 'Incorrect.'}</strong> ${QUIZ_EXPLANATIONS[i - 1]}`;
+          }
+        }
+      }
+
+      if (!allAnswered) return;
+
+      const resultEl = document.getElementById("masteryScoreResult");
+      const unlockedEl = document.getElementById("unlockedTakeaways");
+
+      if (resultEl) {
+        resultEl.innerHTML = `Result: <span class="font-mono text-base ${score >= 4 ? 'text-emerald-700' : 'text-rose-700'}">${score} / 5 (${(score / 5) * 100}%)</span>`;
+      }
+
+      if (score >= 4) {
+        if (unlockedEl) unlockedEl.classList.remove("hidden");
+        unlockedEl.scrollIntoView({ behavior: 'smooth' });
+      } else {
+        if (unlockedEl) unlockedEl.classList.add("hidden");
+      }
+      lucide.createIcons();
+    }
+
+    /* ---------------- SECTION 7: IFRAME COPY ---------------- */
+    function copyIframeCode() {
+      const snippet = document.getElementById("iframeCodeSnippet");
+      if (!snippet) return;
+      navigator.clipboard.writeText(snippet.textContent).then(() => {
+        alert("Canvas iframe embed code copied to clipboard!");
+      });
+    }
+  </script>
+</body>
+</html>
