@@ -204,7 +204,6 @@
           <button type="button" class="cd-nav-link" id="btn-tab-diagnostics" onclick="switchTab('tab-diagnostics')"><span class="cd-nav-num">4</span><span>Diagnostic Clinic</span></button>
           <button type="button" class="cd-nav-link" id="btn-tab-makeover" onclick="switchTab('tab-makeover')"><span class="cd-nav-num">5</span><span>Task Makeover Studio</span></button>
           <button type="button" class="cd-nav-link" id="btn-tab-quiz" onclick="switchTab('tab-quiz')"><span class="cd-nav-num">6</span><span>Mastery Checkpoint</span></button>
-          <button type="button" class="cd-nav-link" id="btn-tab-export" onclick="switchTab('tab-export')"><span class="cd-nav-num">7</span><span>Canvas LMS Guide</span></button>
         </nav>
         <div class="cd-progress">
           <div class="cd-progress-row"><span>Your progress</span><span id="moduleProgressPercent">15%</span></div>
@@ -698,43 +697,6 @@
         <div id="quizResultBox" class="hidden p-6 rounded-xl border space-y-4"></div>
       </section>
 
-      <!-- ================= SECTION 7: CANVAS EXPORT GUIDE ================= -->
-      <section id="content-tab-export" class="cd-section space-y-6 hidden">
-        <div class="border-b border-gray-200 pb-4">
-          <h2 class="cd-section-title">Section 7: Canvas LMS Deployment Guide</h2>
-          <p class="text-gray-600 mt-1 text-sm">Three easy options for CEDoW school leaders and instructional coaches to deploy this into your Canvas environment.</p>
-        </div>
-
-        <div class="space-y-4 text-xs text-gray-700 leading-relaxed">
-          <div class="bg-blue-50/60 border border-[#188296]/40 p-4 rounded-lg">
-            <h3 class="font-bold text-sm text-[#0D2C6B] mb-2">Option 1: Embed as an Interactive Canvas Page (Recommended)</h3>
-            <ol class="list-decimal list-inside space-y-1.5 text-gray-800">
-              <li>Upload this single <code class="bg-blue-100 px-1 py-0.5 rounded text-[#0D2C6B]">representing_number_canvas_module.html</code> file to your Canvas course's <strong>Files</strong> area or host it on your CEDoW GitHub Pages repository.</li>
-              <li>Create a new Canvas Page named <em>"Focus Area 1: Representing Number (Interactive Module)"</em>.</li>
-              <li>Click the <strong>HTML View (&lt;/&gt;)</strong> button on the Canvas Rich Content Editor (RCE).</li>
-              <li>Paste an iframe pointing to the uploaded file:
-                <pre class="bg-[#231F20] text-cyan-300 p-3 rounded mt-2 overflow-x-auto code-font">&lt;iframe src="/courses/[COURSE_ID]/files/[FILE_ID]/preview" width="100%" height="900px" style="border:none;" allowfullscreen&gt;&lt;/iframe&gt;</pre>
-              </li>
-              <li>Save and publish the page, then add it to your Canvas Module.</li>
-            </ol>
-          </div>
-
-          <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
-            <h3 class="font-bold text-sm text-[#0D2C6B] mb-2">Option 2: Copy-Paste Directly into Canvas Rich Content Editor (RCE)</h3>
-            <p class="mb-2">Because this module utilises semantic HTML and Tailwind CSS utility classes, you can copy the <code class="bg-gray-200 px-1 py-0.5 rounded">&lt;main&gt;</code> content directly into the Canvas HTML editor for native rendering.</p>
-          </div>
-
-          <div class="bg-gray-50 border border-gray-200 p-4 rounded-lg">
-            <h3 class="font-bold text-sm text-[#0D2C6B] mb-2">Option 3: Canvas New Quizzes / Classic Quizzes</h3>
-            <p>The 5 diagnostic questions in Section 6 are mapped directly to NSW Syllabus Teaching Advice criteria and can be pasted straight into Canvas Quizzes to automate professional development tracking.</p>
-          </div>
-        </div>
-
-        <div class="flex justify-between pt-4">
-          <button onclick="switchTab('tab-quiz')" class="border border-gray-300 text-gray-700 font-bold text-sm px-4 py-2.5 rounded hover:bg-gray-50 transition">Back to Checkpoint</button>
-          <button onclick="switchTab('tab-continuum')" class="bg-[#0D2C6B] hover:bg-[#188296] text-white font-bold text-sm px-5 py-2.5 rounded transition shadow">Return to Module Start</button>
-        </div>
-      </section>
 
     </main>
   </div>
@@ -857,7 +819,7 @@
 
     // Tab Switching Navigation
     function switchTab(tabId) {
-      const tabs = ['tab-continuum', 'tab-foundations', 'tab-numberslide', 'tab-diagnostics', 'tab-makeover', 'tab-quiz', 'tab-export'];
+      const tabs = ['tab-continuum', 'tab-foundations', 'tab-numberslide', 'tab-diagnostics', 'tab-makeover', 'tab-quiz'];
       tabs.forEach(t => {
         document.getElementById('content-' + t).classList.add('hidden');
         const navBtn = document.getElementById('btn-' + t);
@@ -866,16 +828,14 @@
       document.getElementById('content-' + tabId).classList.remove('hidden');
       const activeBtn = document.getElementById('btn-' + tabId);
       if (activeBtn) activeBtn.classList.add('is-active');
-
-      // Update Canvas Progress Bar
+      // Update progress bar
       const progressMap = {
         'tab-continuum': 15,
         'tab-foundations': 30,
         'tab-numberslide': 50,
         'tab-diagnostics': 70,
         'tab-makeover': 85,
-        'tab-quiz': 95,
-        'tab-export': 100
+        'tab-quiz': 100
       };
       const p = progressMap[tabId] || 15;
       document.getElementById('moduleProgressBar').style.width = p + '%';
@@ -1032,9 +992,6 @@
               <li><strong>Stage 3:</strong> Anchor decimal multiplication to digit shifts across a static decimal marker (using the Number Slide). Guard against reciprocal fraction and negative integer analogies.</li>
             </ul>
           </div>
-          <button onclick="switchTab('tab-export')" class="w-full bg-[#0D2C6B] hover:bg-[#188296] text-white text-xs font-bold py-2.5 rounded transition shadow">
-            Proceed to Section 7: Canvas Deployment Guide
-          </button>
         `;
       } else {
         resultBox.className = "p-6 rounded-xl border border-rose-300 bg-rose-50 text-rose-950 space-y-3";

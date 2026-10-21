@@ -271,7 +271,6 @@
           <a class="cd-nav-link" href="#section-4"><span class="cd-nav-num">4</span><span>Diagnostic Clinic</span></a>
           <a class="cd-nav-link" href="#section-5"><span class="cd-nav-num">5</span><span>Task Makeover Studio</span></a>
           <a class="cd-nav-link" href="#section-6"><span class="cd-nav-num">6</span><span>Mastery Checkpoint</span></a>
-          <a class="cd-nav-link" href="#section-7"><span class="cd-nav-num">7</span><span>Canvas LMS Guide</span></a>
         </nav>
       </div>
     </aside>
@@ -1024,54 +1023,6 @@
 
       </section>
 
-      <!-- ========================================================================= -->
-      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE -->
-      <!-- ========================================================================= -->
-      <section id="section-7" class="cd-section">
-        <div class="border-b border-cedow-silver pb-4 mb-6">
-          <h2 class="cd-section-title">Section 7: Canvas LMS Deployment Guide</h2>
-          <p class="text-cedow-charcoal text-sm mt-1">
-            Instructions for School Curriculum Leaders and Teachers to host this standalone module on GitHub Pages and deploy directly into Canvas LMS courses via iframe or HTML editor.
-          </p>
-        </div>
-
-        <div class="space-y-6 text-xs sm:text-sm text-cedow-charcoal leading-relaxed">
-          
-          <!-- Method 1 -->
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
-            <h3 class="font-bold text-cedow-navy text-base mb-2 flex items-center gap-2">
-              <span class="px-2 py-0.5 rounded bg-cedow-aqua text-white text-xs">Method 1</span>
-              Host via GitHub Pages & Embed via Canvas iFrame (Recommended)
-            </h3>
-            <p class="mb-3">
-              Because this module is completely self-contained in a single <code class="font-mono-math bg-slate-200 px-1 py-0.5 rounded text-cedow-navy">.html</code> file, it requires zero external build steps, NodeJS dependencies, or asset folders:
-            </p>
-            <ol class="list-decimal pl-5 space-y-1.5 mb-4 text-xs">
-              <li>Save this code as <code class="font-mono-math font-bold">index.html</code> inside a GitHub repository (e.g. <code class="font-mono-math text-cedow-navy">cedow-maths-additive-relations</code>).</li>
-              <li>Under repository <strong>Settings &rarr; Pages</strong>, set the branch to <strong>main / root</strong> and click Save.</li>
-              <li>Copy your live GitHub Pages URL (e.g. <code class="font-mono-math text-cedow-navy">https://[org].github.io/cedow-maths-additive-relations/</code>).</li>
-              <li>In Canvas LMS, create a new <strong>Page</strong>, switch to the <strong>HTML View (&lt;/&gt;)</strong> in the Rich Content Editor, and paste the responsive embed code:</li>
-            </ol>
-            <div class="relative bg-slate-900 text-slate-100 p-3.5 rounded-lg font-mono-math text-xs overflow-x-auto">
-              <code>&lt;div style="position: relative; width: 100%; height: 0; padding-bottom: 75%; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.1);"&gt;<br>
-&nbsp;&nbsp;&lt;iframe src="https://YOUR-ORG.github.io/YOUR-REPO/" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none;" allowfullscreen&gt;&lt;/iframe&gt;<br>
-&lt;/div&gt;</code>
-            </div>
-          </div>
-
-          <!-- Method 2 -->
-          <div class="p-5 rounded-xl bg-slate-50 border border-slate-200">
-            <h3 class="font-bold text-cedow-navy text-base mb-2 flex items-center gap-2">
-              <span class="px-2 py-0.5 rounded bg-cedow-navy text-white text-xs">Method 2</span>
-              Direct Canvas Page Rich Content Editor (RCE) / Local File
-            </h3>
-            <p class="text-xs mb-2">
-              You can also upload this HTML file directly into <strong>Canvas Course Files</strong> and link it as an assignment or module resource, or distribute it to teachers on staff USB drives for completely offline access in any modern web browser (Edge, Chrome, Safari).
-            </p>
-          </div>
-
-        </div>
-      </section>
 
     </main>
   </div>

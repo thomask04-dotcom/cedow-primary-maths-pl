@@ -234,7 +234,6 @@
           <a class="cd-nav-link" href="#section4"><span class="cd-nav-num">4</span><span>Diagnostic Clinic</span></a>
           <a class="cd-nav-link" href="#section5"><span class="cd-nav-num">5</span><span>Task Makeover Studio</span></a>
           <a class="cd-nav-link" href="#checkpoint"><span class="cd-nav-num">6</span><span>Mastery Checkpoint</span></a>
-          <a class="cd-nav-link" href="#section7"><span class="cd-nav-num">7</span><span>Canvas LMS Guide</span></a>
         </nav>
         <div class="cd-progress">
           <div class="cd-progress-row"><span>Your progress</span><span id="overallProgressText">0%</span></div>
@@ -791,67 +790,6 @@
         </div>
       </section>
 
-      <!-- ============================================================== -->
-      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE                         -->
-      <!-- ============================================================== -->
-      <section id="section7" class="cd-section space-y-6">
-        <div class="border-l-4 border-[#0D2C6B] pl-4">
-          <h2 class="cd-section-title">Section 7: Canvas LMS Deployment Guide</h2>
-          <p class="text-sm text-[#4C4C4E] mt-1">Instructions for embedding this self-contained PL module directly into Catholic Education Diocese of Wollongong Canvas courses.</p>
-        </div>
-
-        <div class="bg-white rounded-xl shadow-sm border border-[#D1D2D4] p-6 space-y-6">
-          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <!-- Method A: GitHub Pages / Cloud Hosting -->
-            <div class="space-y-3">
-              <div class="flex items-center space-x-2 text-[#0D2C6B] font-bold text-sm">
-                <i data-lucide="globe" class="w-4 h-4 text-[#188296]"></i>
-                <h4>Method 1: Host on GitHub Pages & Embed via iframe (Recommended)</h4>
-              </div>
-              <ol class="list-decimal list-inside text-xs text-[#4C4C4E] space-y-2 leading-relaxed">
-                <li>Create a public GitHub repository named <code class="bg-slate-100 px-1 py-0.5 rounded text-[#0D2C6B]">cedow-maths-pl</code>.</li>
-                <li>Upload this single file as <code class="bg-slate-100 px-1 py-0.5 rounded text-[#0D2C6B]">index.html</code> into the repository or branch.</li>
-                <li>In repository <strong>Settings &rarr; Pages</strong>, set branch to <code class="bg-slate-100 px-1 py-0.5 rounded">main</code> and root folder to <code class="bg-slate-100 px-1 py-0.5 rounded">/ (root)</code>.</li>
-                <li>Copy your live HTTPS URL (e.g. <code class="bg-slate-100 px-1 py-0.5 rounded">https://[org].github.io/cedow-maths-pl/</code>).</li>
-                <li>In Canvas LMS, create a new <strong>Page</strong>, switch to the <strong>HTML View (&lt;/&gt;)</strong>, and paste the responsive embed code below.</li>
-              </ol>
-            </div>
-
-            <!-- Method B: Direct RCE / HTML Upload -->
-            <div class="space-y-3">
-              <div class="flex items-center space-x-2 text-[#0D2C6B] font-bold text-sm">
-                <i data-lucide="file-code" class="w-4 h-4 text-[#FBAF3F]"></i>
-                <h4>Method 2: Canvas Files Direct Upload & Linking</h4>
-              </div>
-              <ol class="list-decimal list-inside text-xs text-[#4C4C4E] space-y-2 leading-relaxed">
-                <li>In your Canvas Course, navigate to <strong>Files</strong> and upload this complete <code class="bg-slate-100 px-1 py-0.5 rounded text-[#0D2C6B]">.html</code> file.</li>
-                <li>Create a new Canvas <strong>Module Item</strong> &rarr; Select <strong>File</strong> &rarr; Choose the uploaded HTML file.</li>
-                <li>Alternatively, link it from any Canvas Page. When opened by teachers, it will render within the Canvas content window with full interactivity.</li>
-                <li>Because all styles, scripts, and fonts reference secure CDN endpoints, the module requires zero server dependencies.</li>
-              </ol>
-            </div>
-          </div>
-
-          <!-- EMBED SNIPPET CODE BOX -->
-          <div class="space-y-2 pt-4 border-t border-slate-200">
-            <div class="flex items-center justify-between">
-              <label class="text-xs font-bold text-[#0D2C6B]">Responsive Canvas LMS iframe Code Snippet:</label>
-              <button onclick="copyEmbedCode()" id="copyEmbedBtn" class="text-xs font-bold text-[#188296] hover:text-[#0D2C6B] flex items-center space-x-1">
-                <i data-lucide="copy" class="w-3.5 h-3.5"></i>
-                <span>Copy Code</span>
-              </button>
-            </div>
-            <pre class="bg-slate-900 text-slate-100 p-4 rounded-xl text-xs font-mono overflow-x-auto leading-relaxed custom-scrollbar"><code id="embedCodeText">&lt;div style="position: relative; width: 100%; height: 0; padding-bottom: 85%; min-height: 800px; overflow: hidden; border-radius: 12px; box-shadow: 0 4px 12px rgba(0,0,0,0.08);"&gt;
-  &lt;iframe 
-    src="https://YOUR-ORG.github.io/YOUR-REPO-NAME/" 
-    style="position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: 0;" 
-    allow="fullscreen" 
-    title="CEDoW Focus Area 7: Three-dimensional Spatial Structure PL"&gt;
-  &lt;/iframe&gt;
-&lt;/div&gt;</code></pre>
-          </div>
-        </div>
-      </section>
 
     </main>
   </div>
@@ -2126,18 +2064,6 @@
       }
     }
 
-    function copyEmbedCode() {
-      const code = document.getElementById("embedCodeText").innerText;
-      navigator.clipboard.writeText(code).then(() => {
-        const btn = document.getElementById("copyEmbedBtn");
-        btn.innerHTML = `<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-600"></i><span class="text-emerald-600">Copied!</span>`;
-        lucide.createIcons();
-        setTimeout(() => {
-          btn.innerHTML = `<i data-lucide="copy" class="w-3.5 h-3.5"></i><span>Copy Code</span>`;
-          lucide.createIcons();
-        }, 2500);
-      });
-    }
 
     /* INITIALIZATION ON DOM READY */
     window.addEventListener("DOMContentLoaded", () => {

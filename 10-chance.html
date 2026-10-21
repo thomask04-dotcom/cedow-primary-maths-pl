@@ -248,7 +248,6 @@
           <a class="cd-nav-link" href="#section-4"><span class="cd-nav-num">4</span><span>Diagnostic Clinic</span></a>
           <a class="cd-nav-link" href="#section-5"><span class="cd-nav-num">5</span><span>Task Makeover Studio</span></a>
           <a class="cd-nav-link" href="#section-6"><span class="cd-nav-num">6</span><span>Mastery Checkpoint</span></a>
-          <a class="cd-nav-link" href="#section-7"><span class="cd-nav-num">7</span><span>Canvas LMS Guide</span></a>
         </nav>
       </div>
     </aside>
@@ -840,43 +839,6 @@
         </div>
       </section>
 
-      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE -->
-      <section id="section-7" class="cd-section">
-        <div class="flex items-center space-x-3 mb-6">
-          <div>
-            <h3 class="cd-section-title">Section 7: Canvas LMS Deployment Guide</h3>
-            <p class="text-xs text-[#4C4C4E]">Step-by-step diocesan instructions for embedding this self-contained PL file into Canvas LMS</p>
-          </div>
-        </div>
-
-        <div class="space-y-4">
-          <div class="bg-slate-50 border border-[#D1D2D4] rounded-xl p-4">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-[#0D2C6B] mb-2 flex items-center">
-              <i data-lucide="globe" class="w-4 h-4 text-[#188296] mr-1.5"></i>
-              Option A: Hosting on GitHub Pages &amp; Embedding via Canvas iframe (Recommended)
-            </h4>
-            <p class="text-xs text-[#4C4C4E] mb-3">
-              This single file contains all HTML, styles, and vanilla scripts with zero external file dependencies. You can host it in your school's or diocese's GitHub Pages repository and embed it cleanly inside any Canvas LMS page.
-            </p>
-            <div class="bg-[#231F20] text-slate-200 p-3 rounded-lg font-mono-math text-xs overflow-x-auto relative">
-              <code>&lt;iframe src="https://your-diocese-repo.github.io/chance-k6.html" width="100%" height="900" style="border: none; border-radius: 12px; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);" allow="fullscreen"&gt;&lt;/iframe&gt;</code>
-            </div>
-          </div>
-
-          <div class="bg-slate-50 border border-[#D1D2D4] rounded-xl p-4">
-            <h4 class="text-xs font-bold uppercase tracking-wider text-[#0D2C6B] mb-2 flex items-center">
-              <i data-lucide="file-code" class="w-4 h-4 text-[#188296] mr-1.5"></i>
-              Option B: Canvas Rich Content Editor (RCE) Direct Upload
-            </h4>
-            <ol class="list-decimal list-inside text-xs text-[#4C4C4E] space-y-1.5 leading-relaxed">
-              <li>Navigate to your Canvas Course &rarr; <strong>Files</strong> &rarr; Upload this <code class="font-mono-math text-slate-800">chance-k6-module.html</code> file.</li>
-              <li>Go to <strong>Modules</strong> or <strong>Pages</strong> and create a new item.</li>
-              <li>Select <em>Add File</em> and link directly to the uploaded HTML file, or use the HTML View in the RCE to embed the file via an iframe referencing Canvas course files.</li>
-              <li>Because all JavaScript, Tailwind CDN styles, and SVG generation are completely inline, the module runs seamlessly with zero asset breakage.</li>
-            </ol>
-          </div>
-        </div>
-      </section>
 
     </main>
   </div>

@@ -295,7 +295,6 @@
           <a class="cd-nav-link" href="#section4"><span class="cd-nav-num">4</span><span>Diagnostic Clinic</span></a>
           <a class="cd-nav-link" href="#section5"><span class="cd-nav-num">5</span><span>Task Makeover Studio</span></a>
           <a class="cd-nav-link" href="#section6"><span class="cd-nav-num">6</span><span>Mastery Checkpoint</span></a>
-          <a class="cd-nav-link" href="#section7"><span class="cd-nav-num">7</span><span>Canvas LMS Guide</span></a>
         </nav>
       </div>
     </aside>
@@ -990,55 +989,6 @@
         </div>
       </section>
 
-      <!-- ========================================================================= -->
-      <!-- SECTION 7: CANVAS LMS DEPLOYMENT GUIDE                                    -->
-      <!-- ========================================================================= -->
-      <section id="section7" class="cd-section space-y-6">
-        <div class="border-b border-cedow-silver/60 pb-3 flex items-center justify-between">
-          <div>
-            <h3 class="cd-section-title">Section 7: Canvas LMS Deployment Guide</h3>
-          </div>
-          <span class="text-xs bg-slate-200 text-cedow-charcoal font-semibold px-3 py-1 rounded-full">School Leaders &amp; Coaches</span>
-        </div>
-
-        <p class="text-sm text-cedow-charcoal leading-relaxed">
-          This module is compiled into a single, fully self-contained HTML file. It has zero external dependencies other than standard CDNs, making it effortlessly deployable into Canvas LMS or any web hosting environment.
-        </p>
-
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <!-- Method 1: GitHub Pages & Iframe -->
-          <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-5 space-y-3">
-            <div class="flex items-center gap-2 text-cedow-darkblue font-bold text-sm">
-              <i data-lucide="globe" class="w-4 h-4 text-cedow-aqua"></i>
-              Method A: GitHub Pages / Cloud Embed (Recommended)
-            </div>
-            <ol class="list-decimal list-inside text-xs text-cedow-charcoal space-y-2 leading-relaxed">
-              <li>Upload this single <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">index.html</code> file to a GitHub repository or diocesan web server.</li>
-              <li>Enable <strong>GitHub Pages</strong> in repository settings to get your public HTTPS URL.</li>
-              <li>In Canvas LMS, create a new <strong>Page</strong> or <strong>Assignment</strong> and switch to the HTML Editor (<code class="font-mono bg-slate-100 px-1 py-0.5 rounded">&lt;/&gt;</code>).</li>
-              <li>Paste the responsive embed snippet below:</li>
-            </ol>
-            <div class="bg-slate-900 text-slate-100 p-3 rounded-lg font-mono text-[11px] overflow-x-auto relative">
-              <code>&lt;iframe src="https://your-domain.github.io/fractions-module/" width="100%" height="900" style="border:none; border-radius:12px; box-shadow:0 4px 6px -1px rgba(0,0,0,0.1);" allowfullscreen&gt;&lt;/iframe&gt;</code>
-            </div>
-          </div>
-
-          <!-- Method 2: Direct Canvas Files -->
-          <div class="bg-white rounded-xl shadow-sm border border-cedow-silver p-5 space-y-3">
-            <div class="flex items-center gap-2 text-cedow-darkblue font-bold text-sm">
-              <i data-lucide="file-code" class="w-4 h-4 text-cedow-gold"></i>
-              Method B: Direct Canvas Files Upload
-            </div>
-            <ol class="list-decimal list-inside text-xs text-cedow-charcoal space-y-2 leading-relaxed">
-              <li>Navigate to your Canvas course and click <strong>Files</strong>.</li>
-              <li>Upload this <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">fractions-k6-module.html</code> file directly.</li>
-              <li>In your course <strong>Modules</strong>, click <code class="font-mono bg-slate-100 px-1 py-0.5 rounded">+</code> to add an item.</li>
-              <li>Select <strong>File</strong> from the dropdown and choose the uploaded HTML file.</li>
-              <li>Canvas will serve the interactive module directly within the LMS course frame with zero path errors.</li>
-            </ol>
-          </div>
-        </div>
-      </section>
 
     </main>
   </div>
