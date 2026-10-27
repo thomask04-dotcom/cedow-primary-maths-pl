@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Balance Scales</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:#1f2937;background:#fff}
+.bar{display:flex;flex-wrap:wrap;gap:8px;align-items:center;padding:8px 10px;border-bottom:1px solid #e5e7eb;background:#f8fafc;font-size:15px}
+.title{font-weight:700;margin-right:6px;font-size:17px}
+button,input{font:inherit;font-size:15px;padding:6px 10px;border:1px solid #cbd5e1;border-radius:10px;background:#fff;color:#1f2937}
+button{cursor:pointer}
+button:hover{border-color:#94a3b8}
+button.on{background:#2563eb;border-color:#2563eb;color:#fff}
+input.ex{width:150px;font-size:20px;font-weight:700;text-align:center}
+#say{font-size:21px;padding:8px 14px;min-height:44px}
+#tf{display:none;gap:10px;padding:0 14px 8px}
+#tf button{font-size:20px;font-weight:700;padding:8px 24px}
+svg{display:block;width:100%;height:auto;touch-action:none;user-select:none;-webkit-user-select:none}
+.hint{font-size:13px;color:#6b7280;padding:6px 10px}
+</style></head><body>
+<div class="bar"><span class="title">Balance Scales</span>
+<button data-m="mass" class="on">Mass (heavier / lighter)</button><button data-m="eq">Equal sign (=)</button><button data-m="nb">⚖️ Number balance &amp; flip it</button>
+</div>
+<div id="oldWrap">
+<div class="bar" id="massBar">
+<button id="clearBtn">Empty the pans</button><button id="qBtn">❓ How many cubes?</button>
+</div>
+<div class="bar" id="eqBar" style="display:none">
+<input class="ex" id="left" value="7 + 4"><span style="font-size:26px;font-weight:800" id="sign">=</span><input class="ex" id="right" value="6 + 5">
+<button id="tryBtn">Balance it</button><button id="tfBtn">🎲 True or false?</button><button id="missBtn">🎲 Missing number</button>
+</div>
+<div id="say"></div>
+<div id="tf"><button id="tBtn">✔ True</button><button id="fBtn">✘ False</button></div>
+<svg id="svg" viewBox="0 0 1000 550"></svg>
+<div class="hint">Mass: drag things into the pans. The heavier side goes down. Measure an object by adding cubes to the other side until the scales balance. Big things aren't always heavier! Equal sign: "=" means "is the same amount as". If both sides are the same amount, the scales balance.</div>
+</div>
+<div id="nbWrap" style="display:none">
+<div class="bar">
+<button id="flipBtn" style="font-weight:800;background:#0e7490;border-color:#0e7490;color:#fff">⇄ Flip it</button><button id="nbMake">🎲 Make it balance</button><button id="nbTF">🎲 True or false?</button><button id="nbReset">Reset</button>
+<span style="margin-left:10px;font-weight:700;color:#334155">Settings:</span><button data-nb="hideEq">Hide equation</button><button data-nb="lt">&lt; &gt; symbols</button><button data-nb="multi">Stack up to 3</button><button data-nb="mul" id="mulBtn">Show stacks as ×</button><button data-nb="dots">Show dots</button><button data-nb="tot">Show totals</button>
+</div>
+<div id="nbEq" style="display:flex;gap:14px;align-items:stretch;padding:10px 14px">
+<div id="nbL" style="flex:1;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;font-size:38px;font-weight:600;text-align:center;padding:10px;min-height:66px"></div>
+<div id="nbS" style="width:80px;background:#f1f5f9;border-radius:14px;font-size:44px;font-weight:800;text-align:center;padding:4px"></div>
+<div id="nbR" style="flex:1;background:#f8fafc;border:1px solid #e5e7eb;border-radius:14px;font-size:38px;font-weight:600;text-align:center;padding:10px;min-height:66px"></div>
+</div>
+<div id="nbSay" style="font-size:20px;padding:4px 14px;min-height:40px"></div>
+<div id="tfBox" style="display:none;gap:10px;padding:4px 14px"><button id="nbT" style="font-size:20px;font-weight:700;padding:8px 24px">✔ True</button><button id="nbF" style="font-size:20px;font-weight:700;padding:8px 24px">✘ False</button></div>
+<svg id="nsvg" viewBox="0 0 1000 560"></svg>
+<div class="hint">Number balance: each weight is worth the number of its peg. Tap a number (or drag a weight from the box) to hang a weight; drag a weight off to remove it. When both sides are worth the same, the balance is level and the equals sign is true. "⇄ Flip it" swaps the two sides: 2 + 5 + 1 = 5 + 3 becomes 5 + 3 = 2 + 5 + 1, and it still balances.</div>
+</div>
+<script>
+const NS='http://www.w3.org/2000/svg';
+function el(tag,a,p){const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);if(p)p.appendChild(e);return e;}
+function txt(p,x,y,s,fs,fill,wt,anchor){const t=el('text',{x,y,'font-size':fs,fill:fill||'#1f2937','text-anchor':anchor||'middle','font-weight':wt||'normal','pointer-events':'none'},p);t.textContent=s;return t;}
+function pt(svg,e){return new DOMPoint(e.clientX,e.clientY).matrixTransform(svg.getScreenCTM().inverse());}
+const $=id=>document.getElementById(id);
+const svg=$('svg');
+const OBJ=[
+ {k:'teddy',e:'🧸',m:8,s:62,name:'teddy'},{k:'apple',e:'🍎',m:5,s:44,name:'apple'},{k:'book',e:'📘',m:12,s:54,name:'book'},{k:'balloon',e:'🎈',m:1,s:70,name:'balloon'},
+ {k:'shoe',e:'👟',m:10,s:56,name:'shoe'},{k:'pencil',e:'✏️',m:2,s:44,name:'pencil'},{k:'rock',e:'🪨',m:14,s:40,name:'small rock'},{k:'cube',e:'',m:1,s:30,name:'cube'}];
+let mode='mass',pans=[[],[]],drag=null,tilt=0,target=0,anim=null,q=null,eq={l:'7 + 4',r:'6 + 5'},tf=null;
+const PIV={x:500,y:170},ARM=300;
+function mass(side){return pans[side].reduce((s,o)=>s+o.m,0);}
+function evalEx(s){const c=String(s).replace(/[×xX*]/g,'*').replace(/[−–]/g,'-').replace(/\s/g,'');if(!/^[\d+\-*]+$/.test(c)||/[+\-*]{2}|^[+*]|[+\-*]$/.test(c))return null;
+  const terms=c.split(/(?=[+-])/);let tot=0;for(const t of terms){const sign=t[0]==='-'?-1:1,body=t.replace(/^[+-]/,'');tot+=sign*body.split('*').reduce((a,b)=>a*+b,1);}return tot;}
+function panPos(side,ang){const dx=(side?1:-1)*ARM,a=ang*Math.PI/180;return {x:PIV.x+dx*Math.cos(a),y:PIV.y+dx*Math.sin(a)};}
+function render(){
+  svg.innerHTML='';
+  el('rect',{x:0,y:0,width:1000,height:550,fill:'#fff'},svg);
+  // stand
+  el('polygon',{points:`${PIV.x-70},420 ${PIV.x+70},420 ${PIV.x+12},${PIV.y} ${PIV.x-12},${PIV.y}`,fill:'#94a3b8'},svg);
+  el('rect',{x:PIV.x-120,y:420,width:240,height:18,rx:6,fill:'#64748b'},svg);
+  const a=tilt*Math.PI/180,bx=ARM*Math.cos(a),by=ARM*Math.sin(a);
+  el('line',{x1:PIV.x-bx,y1:PIV.y-by,x2:PIV.x+bx,y2:PIV.y+by,stroke:'#475569','stroke-width':12,'stroke-linecap':'round'},svg);
+  el('circle',{cx:PIV.x,cy:PIV.y,r:12,fill:'#1f2937'},svg);
+  // pointer
+  el('line',{x1:PIV.x,y1:PIV.y,x2:PIV.x+60*Math.sin(-a),y2:PIV.y-60*Math.cos(a),stroke:'#dc2626','stroke-width':4},svg);
+  for(const side of [0,1]){
+    const p=panPos(side,tilt),py=p.y+110;
+    el('line',{x1:p.x,y1:p.y,x2:p.x-110,y2:py,stroke:'#64748b','stroke-width':2},svg);el('line',{x1:p.x,y1:p.y,x2:p.x+110,y2:py,stroke:'#64748b','stroke-width':2},svg);
+    el('path',{d:`M${p.x-130} ${py} Q${p.x} ${py+50} ${p.x+130} ${py}Z`,fill:'#cbd5e1',stroke:'#475569','stroke-width':3},svg);
+    if(mode==='mass'){
+      let cx=p.x-110,row=0,rowH=0,items=pans[side];
+      const placed=[];items.forEach(o=>{const w=o.k==='cube'?32:o.s;if(cx+w>p.x+110){row++;cx=p.x-110;}placed.push([o,cx+w/2,py-6-row*44]);cx+=w+4;});
+      placed.forEach(([o,x,y],i)=>{const gg=el('g',{style:'cursor:pointer'},svg);drawObj(gg,o,x,y-(o.k==='cube'?14:o.s/2-6));gg.addEventListener('pointerdown',ev=>{ev.stopPropagation();pans[side].splice(pans[side].indexOf(o),1);settle();});});
+    } else {
+      const v=evalEx(side?eq.r:eq.l);
+      el('rect',{x:p.x-85,y:py-66,width:170,height:60,rx:10,fill:side?'#fed7aa':'#bfdbfe',stroke:'#1f2937','stroke-width':2.5},svg);
+      txt(svg,p.x,py-26,side?eq.r:eq.l,26,'#111827','800');
+      if(!tf||tf.done)txt(svg,p.x,py+52,v===null?'?':'= '+v,20,'#475569','700');
+    }
+  }
+  if(mode==='mass'){
+    el('rect',{x:0,y:465,width:1000,height:85,fill:'#f1f5f9'},svg);
+    // shelf of objects
+    OBJ.forEach((o,i)=>{const x=60+i*120,y=508,gg=el('g',{style:'cursor:grab'},svg);el('rect',{x:x-55,y:468,width:110,height:80,fill:'transparent'},gg);drawObj(gg,o,x,y-(o.k==='cube'?14:o.s*0.35),0.7);txt(svg,x,540,o.k==='cube'?'cube':o.name,13,'#475569');gg.addEventListener('pointerdown',e=>{drag={o,x:0,y:0};svg.setPointerCapture(e.pointerId);e.preventDefault();});});
+    if(drag&&drag.x)drawObj(svg,drag.o,drag.x,drag.y);
+  }
+}
+function drawObj(p,o,x,y,sc){sc=sc||1;
+  if(o.k==='cube'){el('rect',{x:x-14*sc,y:y-14*sc+14,width:28*sc,height:28*sc,rx:3,fill:'#22c55e',stroke:'#14532d','stroke-width':2},p);return;}
+  const r=o.s*sc*0.62;el('rect',{x:x-r,y:y-r,width:2*r,height:2*r,fill:'transparent'},p);
+  txt(p,x,y+o.s*0.35*sc,o.e,o.s*sc);
+}
+function settle(){
+  const L=mode==='mass'?mass(0):(evalEx(eq.l)??0),R=mode==='mass'?mass(1):(evalEx(eq.r)??0);
+  target=Math.max(-16,Math.min(16,(L-R)*-(mode==='mass'?2:1.5)));
+  cancelAnimationFrame(anim);const t0=performance.now(),from=tilt;
+  const step=now=>{const k=Math.min(1,(now-t0)/600),e=1-Math.pow(1-k,3);tilt=from+(target-from)*e;render();if(k<1)anim=requestAnimationFrame(step);};anim=requestAnimationFrame(step);
+  if(mode==='mass')describe(L,R);
+}
+function describe(L,R){
+  let s='';const nm=side=>{const it=pans[side].filter(o=>o.k!=='cube');const cubes=pans[side].length-it.length;return [...it.map(o=>'the '+o.name),cubes?cubes+' cube'+(cubes>1?'s':''):''].filter(Boolean).join(' and ')||'nothing';};
+  if(!pans[0].length&&!pans[1].length)s='Drag things into the pans.';
+  else if(L===R)s=`⚖ Balanced! ${cap(nm(0))} ${pans[0].length>1?'have':'has'} the same mass as ${nm(1)}.`;
+  else s=`${cap(nm(L>R?0:1))} ${pans[L>R?0:1].length>1?'are':'is'} <b>heavier</b> than ${nm(L>R?1:0)}.`;
+  if(q){const obj=pans.findIndex(p=>p.length===1&&p[0].k===q.k),other=obj>=0?pans[1-obj]:null;
+    if(other&&other.length&&other.every(o=>o.k==='cube')&&L===R)s=`✓ The ${q.name} balances <b>${other.length} cubes</b>. Its mass is ${other.length} cubes.`;
+    else s=`How many cubes balance the ${q.name}? `+s;}
+  $('say').innerHTML=s;
+}
+const cap=s=>s.charAt(0).toUpperCase()+s.slice(1);
+svg.addEventListener('pointermove',e=>{if(!drag)return;const p=pt(svg,e);drag.x=p.x;drag.y=p.y;render();});
+svg.addEventListener('pointerup',e=>{if(!drag)return;const p=pt(svg,e);if(drag.x){const side=p.x<PIV.x?0:1,pp=panPos(side,tilt);if(Math.abs(p.x-pp.x)<170&&p.y>pp.y-60&&p.y<pp.y+180&&pans[side].length<18)pans[side].push(drag.o);}drag=null;settle();});
+$('clearBtn').onclick=()=>{pans=[[],[]];q=null;settle();};
+$('qBtn').onclick=()=>{const opts=OBJ.filter(o=>o.k!=='cube');q=opts[Math.floor(Math.random()*opts.length)];pans=[[q],[]];settle();};
+// equality mode
+function showEq(){eq.l=$('left').value;eq.r=$('right').value;const L=evalEx(eq.l),R=evalEx(eq.r);$('sign').textContent=L!==null&&R!==null&&L!==R?'≠':'=';
+  $('say').innerHTML=L===null||R===null?'Type a number sentence using numbers, + and −.':L===R?`✓ <b>${eq.l} = ${eq.r}</b> is TRUE. Both sides are the same amount (${L}).`:`<b>${eq.l} = ${eq.r}</b> is FALSE. ${L} is not the same amount as ${R}.`;settle();}
+$('tryBtn').onclick=()=>{tf=null;$('tf').style.display='none';showEq();};
+['left','right'].forEach(id=>$(id).addEventListener('keydown',e=>{if(e.key==='Enter')$('tryBtn').click();}));
+const R_=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+$('tfBtn').onclick=()=>{
+  const a=R_(2,12),b=R_(2,12),kind=R_(0,5);let l,r;
+  if(kind===0){l=`${a} + ${b}`;r=`${a+b}`;}else if(kind===1){l=`${a+b}`;r=`${a} + ${b}`;}else if(kind===2){l=`${a} + ${b}`;r=`${b} + ${a}`;}
+  else if(kind===3){const c=R_(1,a+b-1);l=`${a} + ${b}`;r=`${c} + ${a+b-c}`;}else if(kind===4){l=`${a} + ${b}`;r=`${a+b+R_(1,3)}`;}else{l=`${a+b} − ${a}`;r=`${b+(Math.random()<.5?0:1)}`;}
+  if(Math.random()<.3&&kind!==4){const c=R_(1,a+b-1);r=`${c} + ${a+b-c+R_(1,2)}`;}
+  $('left').value=l;$('right').value=r;eq.l=l;eq.r=r;tf={done:false};$('tf').style.display='flex';$('sign').textContent='=';
+  $('say').innerHTML=`Is this TRUE or FALSE? <b>${l} = ${r}</b>`;tilt=0;target=0;render();
+};
+function answerTF(yes){if(!tf||tf.done)return;const T=evalEx(eq.l)===evalEx(eq.r);tf.done=true;
+  $('say').innerHTML=(yes===T?'✓ Correct! ':'✗ Not quite. ')+`<b>${eq.l} = ${eq.r}</b> is ${T?'TRUE':'FALSE'}: ${evalEx(eq.l)} ${T?'is':'is not'} the same amount as ${evalEx(eq.r)}.`;settle();}
+$('tBtn').onclick=()=>answerTF(true);$('fBtn').onclick=()=>answerTF(false);
+$('missBtn').onclick=()=>{const a=R_(3,12),b=R_(2,9),c=R_(2,9);const tot=a+b;const l=`${a} + ${b}`;$('left').value=l;$('right').value=`□ + ${c}`;tf=null;$('tf').style.display='none';
+  eq.l=l;eq.r=`□ + ${c}`;$('say').innerHTML=`What number goes in the box to make the scales balance? Type it in place of □ and press "Balance it". (Hint: what is ${l}?)`;tilt=0;render();
+  if(tot-c<0)$('missBtn').click();};
+document.querySelectorAll('[data-m]').forEach(b=>b.onclick=()=>{mode=b.dataset.m;document.querySelectorAll('[data-m]').forEach(x=>x.classList.toggle('on',x===b));
+  $('oldWrap').style.display=mode==='nb'?'none':'';$('nbWrap').style.display=mode==='nb'?'':'none';if(mode==='nb'){nbRender();return;}
+  $('massBar').style.display=mode==='mass'?'flex':'none';$('eqBar').style.display=mode==='eq'?'flex':'none';$('tf').style.display='none';tf=null;
+  if(mode==='eq')showEq();else settle();});
+settle();
+/* ================= NUMBER BALANCE (equal-arm, pegs 1-10) ================= */
+const nsvg=$('nsvg'),NP={x:500,y:250},GAP=44;
+let nb={w:[],multi:false,mul:false,dots:true,hideEq:false,lt:true,tot:false,ang:0,target:0,raf:null,drag:null,flip:null,lock:false,ch:null};
+const sideSum=s=>nb.w.filter(w=>w.s===s).reduce((a,w)=>a+w.p,0);
+const onPeg=(s,p)=>nb.w.filter(w=>w.s===s&&w.p===p).length;
+function expr(s){const W=nb.w.filter(w=>w.s===s);if(!W.length)return '';
+  if(nb.multi&&nb.mul){const ord=[];W.forEach(w=>{if(!ord.includes(w.p))ord.push(w.p);});return ord.map(p=>{const c=onPeg(s,p);return c>1?`${c} × ${p}`:String(p);}).join(' + ');}
+  return W.map(w=>w.p).join(' + ');}
+function hole(s,p,ang){const dx=(s?1:-1)*p*GAP,a=ang*Math.PI/180;return [NP.x+dx*Math.cos(a),NP.y+dx*Math.sin(a)];}
+function tileH(v){return nb.dots?20+Math.ceil(v/2)*11:46;}
+function drawWeight(g,x,y,v,opt){opt=opt||{};const h=tileH(v),w=34;
+  const t=el('g',{style:'cursor:grab',opacity:opt.op||1},g);
+  el('rect',{x:x-w/2,y,width:w,height:h,rx:9,fill:'#ea7a1a',stroke:'#c2410c','stroke-width':2},t);
+  el('circle',{cx:x,cy:y+11,r:8,fill:'#fff',stroke:'#c2410c','stroke-width':1.5},t);
+  if(nb.dots){for(let i=0;i<v;i++){const c=i%2,r=Math.floor(i/2),solo=v%2===1&&i===v-1;el('circle',{cx:solo?x:x-6+c*12,cy:y+26+r*11,r:4.3,fill:'#fde68a'},t);}}
+  else txt(t,x,y+38,String(v),17,'#fff','800');
+  return t;}
+function nbRender(){
+  const s=nsvg;s.innerHTML='';const a=nb.ang,L=sideSum(0),R=sideSum(1);
+  // stand
+  el('path',{d:`M${NP.x-26} ${NP.y} L${NP.x+26} ${NP.y} L${NP.x+52} 548 L${NP.x-52} 548 Z`,fill:'#7dd3fc',stroke:'#0284c7','stroke-width':2},s);
+  el('rect',{x:NP.x-150,y:540,width:300,height:14,rx:7,fill:'#0284c7'},s);
+  // beam (rotates)
+  const g=el('g',{transform:`rotate(${a} ${NP.x} ${NP.y})`},s);
+  el('rect',{x:NP.x-480,y:NP.y-16,width:960,height:32,rx:10,fill:'#e7c76a',stroke:'#a16207','stroke-width':2},g);
+  for(const sd of [0,1])for(let p=1;p<=10;p++){const x=NP.x+(sd?1:-1)*p*GAP;
+    const tab=el('g',{style:'cursor:pointer'},g);el('rect',{x:x-17,y:NP.y-62,width:34,height:42,rx:14,fill:'#fff',stroke:'#e7c76a','stroke-width':3},tab);txt(tab,x,NP.y-32,String(p),22,'#1f2937','700');
+    tab.addEventListener('pointerdown',e=>{e.stopPropagation();addW(sd,p);});
+    el('circle',{cx:x,cy:NP.y,r:7,fill:'#fff',stroke:'#a16207','stroke-width':1},g);}
+  const bal=L===R;el('circle',{cx:NP.x,cy:NP.y,r:13,fill:nb.lock?'#cbd5e1':bal?'#4ade80':'#f87171',stroke:'#1f2937','stroke-width':2},s);
+  // weights hanging (vertical, below each hole)
+  const flipT=nb.flip?nb.flip.t:0;
+  for(const sd of [0,1])for(let p=1;p<=10;p++){const n=onPeg(sd,p);if(!n)continue;
+    let [hx,hy]=hole(sd,p,a);
+    if(nb.flip){const [ox,oy]=hole(1-sd,p,a),e=flipT<.5?2*flipT*flipT:1-Math.pow(-2*flipT+2,2)/2;hx=hx+(ox-hx)*e;hy=hy+(oy-hy)*e-Math.sin(e*Math.PI)*120;}
+    let y=hy+4;for(let k=0;k<n;k++){const t=drawWeight(s,hx,y,p);
+      t.addEventListener('pointerdown',e=>{if(nb.lock||nb.flip)return;const i=nb.w.findIndex(w=>w.s===sd&&w.p===p);nb.w.splice(i,1);nb.ch&&(nb.ch.done=false);startDrag(e,p);});y+=tileH(p)+4;}}
+  // totals
+  if(nb.tot){txt(s,NP.x-250,NP.y+250,`Total: ${L}`,24,'#1f2937','800');txt(s,NP.x+250,NP.y+250,`Total: ${R}`,24,'#1f2937','800');}
+  // weight box
+  const bx=40,by=430;el('rect',{x:bx,y:by,width:150,height:110,rx:14,fill:'#fff7ed',stroke:'#fdba74','stroke-width':2,'stroke-dasharray':'6 4'},s);txt(s,bx+75,by+22,'Weights',16,'#9a3412','700');
+  for(let i=0;i<3;i++){const t=drawWeight(s,bx+40+i*35,by+34,3,{op:1});t.addEventListener('pointerdown',e=>{if(nb.lock||nb.flip)return;startDrag(e,null);});}
+  // dragged weight
+  if(nb.drag&&nb.drag.x!=null)drawWeight(s,nb.drag.x,nb.drag.y-10,nb.drag.v||3,{op:.85});
+  // equation
+  const el2=$('nbEq');el2.style.display=nb.hideEq?'none':'flex';
+  const sides=[expr(0)||'&nbsp;',expr(1)||'&nbsp;'],sign=nb.lock?'?':L===R?'=':nb.lt?(L<R?'<':'>'):'≠';
+  $('nbL').innerHTML=sides[0];$('nbR').innerHTML=sides[1];$('nbS').textContent=sign;$('nbS').style.color=sign==='='?'#15803d':sign==='?'?'#475569':'#b91c1c';
+  // message
+  let m='';
+  if(nb.ch&&nb.ch.type==='tf'&&nb.lock)m='Is this number sentence <b>true</b> or <b>false</b>? Will the balance stay level?';
+  else if(nb.note)m=nb.note;
+  else if(nb.ch&&nb.ch.msg)m=nb.ch.msg;
+  else if(!nb.w.length)m='Tap a number, or drag a weight from the box onto a peg. Each weight is worth the number of its peg.';
+  else if(L===R)m=`✓ <b>Balanced!</b> ${expr(0)||0} = ${expr(1)||0}. Both sides are worth ${L}.`+(nb.ch&&nb.ch.type==='make'?' 🎉 You made it balance!':'')+' Press <b>⇄ Flip it</b> to swap the sides.';
+  else m=`Not balanced: ${L} and ${R}. The ${L>R?'left':'right'} side is heavier`+(nb.lt?`, so ${L} ${L>R?'>':'<'} ${R}.`:'.');
+  $('nbSay').innerHTML=m;
+  $('tfBox').style.display=nb.ch&&nb.ch.type==='tf'&&nb.lock?'flex':'none';
+}
+function setTarget(){const d=sideSum(1)-sideSum(0);nb.target=nb.lock?0:Math.max(-16,Math.min(16,d*1.4));if(!nb.raf)tick();}
+function tick(){nb.raf=requestAnimationFrame(()=>{nb.raf=null;const d=nb.target-nb.ang;nb.ang+=d*.15;if(Math.abs(d)<.05)nb.ang=nb.target;nbRender();if(nb.ang!==nb.target)tick();});}
+function addW(s,p){if(nb.lock||nb.flip)return;nb.note='';const max=nb.multi?3:1;if(onPeg(s,p)>=max){$('nbSay').innerHTML=nb.multi?`That peg already has 3 weights.`:`That peg already has a weight. Turn on "Stack up to 3" to add more.`;return;}
+  nb.w.push({s,p});if(nb.ch&&nb.ch.type==='make')nb.ch.msg='';setTarget();nbRender();}
+function startDrag(e,v){nb.note='';const q=pt(nsvg,e);nb.drag={x:q.x,y:q.y,v};nsvg.setPointerCapture(e.pointerId);e.preventDefault();e.stopPropagation();setTarget();nbRender();}
+nsvg.addEventListener('pointermove',e=>{if(!nb.drag)return;const q=pt(nsvg,e);nb.drag.x=q.x;nb.drag.y=q.y;
+  // show the value of the nearest peg while dragging
+  let best=null,bd=60;for(const s of [0,1])for(let p=1;p<=10;p++){const [hx,hy]=hole(s,p,nb.ang),d=Math.hypot(q.x-hx,q.y-hy-20);if(d<bd){bd=d;best=p;}}nb.drag.v=best||nb.drag.v||3;nbRender();});
+nsvg.addEventListener('pointerup',e=>{if(!nb.drag)return;const q=pt(nsvg,e);let best=null,bd=60;for(const s of [0,1])for(let p=1;p<=10;p++){const [hx,hy]=hole(s,p,nb.ang),d=Math.hypot(q.x-hx,q.y-hy-20);if(d<bd){bd=d;best=[s,p];}}
+  nb.drag=null;if(best)addW(best[0],best[1]);else{setTarget();nbRender();}});
+function flipIt(){if(nb.flip||!nb.w.length)return;const before=[expr(0),expr(1)];nb.flip={t:0};const t0=performance.now();
+  const step=now=>{nb.flip.t=Math.min(1,(now-t0)/800);if(nb.flip.t<1){nbRender();requestAnimationFrame(step);}else{nb.w.forEach(w=>w.s=1-w.s);nb.flip=null;setTarget();nbRender();
+    const L=sideSum(0),R=sideSum(1);nb.note=`⇄ <b>Flipped!</b> ${before[0]||0} ${L===R?'=':''} ${before[1]||0} became <b>${expr(0)||0} ${L===R?'=':nb.lt?(L<R?'<':'>'):'≠'} ${expr(1)||0}</b>. `+(L===R?'It still balances: the equals sign means "is the same amount as", so we can read it either way.':'The heavier side swapped too, so the symbol turns around.');nbRender();}};requestAnimationFrame(step);}
+function nbChallenge(type){nb.note='';nb.w=[];nb.lock=false;nb.ch={type,msg:''};const r=(a,b)=>a+Math.floor(Math.random()*(b-a+1));
+  if(type==='make'){const n=r(1,3);const used=new Set();for(let i=0;i<n;i++){let p;do{p=r(1,9);}while(used.has(p));used.add(p);nb.w.push({s:0,p});}
+    const t=sideSum(0);if(t>10){const p=r(1,Math.min(9,t-1));nb.w.push({s:1,p});}nb.ch.msg=`Make it balance! Hang weights on the right so both sides are worth the same. (The left side is worth ${t}.)`;}
+  if(type==='tf'){let A,B,C,Dd,truth=Math.random()<.5;
+    for(let k=0;k<200;k++){A=r(1,8);B=r(1,8);C=r(1,9);const tot=A+B;Dd=tot-C+(truth?0:(Math.random()<.5?1:-1));
+      if(A!==B&&C!==Dd&&Dd>=1&&Dd<=10&&![A,B].includes(C)&&![A,B].includes(Dd))break;}
+    nb.w.push({s:0,p:A},{s:0,p:B},{s:1,p:C},{s:1,p:Dd});
+    nb.lock=true;nb.ang=0;}
+  setTarget();nbRender();}
+function nbAnswer(yes){const L=sideSum(0),R=sideSum(1),truth=L===R;nb.lock=false;nb.ch.msg=(yes===truth?'✓ <b>Correct!</b> ':'✗ <b>Not quite.</b> ')+`${expr(0)} = ${L} and ${expr(1)} = ${R}, so it is <b>${truth?'true':'false'}</b>.`+(truth?' The balance stays level.':` Watch the balance tip: ${L} ${L<R?'<':'>'} ${R}.`);setTarget();nbRender();}
+function nbBar(){document.querySelectorAll('[data-nb]').forEach(b=>{const k=b.dataset.nb;b.classList.toggle('on',!!nb[k]);});$('mulBtn').style.display=nb.multi?'':'none';}
+document.querySelectorAll('[data-nb]').forEach(b=>b.onclick=()=>{const k=b.dataset.nb;nb[k]=!nb[k];if(k==='multi'&&!nb.multi){const seen={};nb.w=nb.w.filter(w=>{const kk=w.s+','+w.p;if(seen[kk])return false;seen[kk]=1;return true;});setTarget();}nbBar();nbRender();});
+$('flipBtn').onclick=flipIt;$('nbReset').onclick=()=>{nb.note='';nb.w=[];nb.ch=null;nb.lock=false;setTarget();nbRender();};
+$('nbMake').onclick=()=>nbChallenge('make');$('nbTF').onclick=()=>nbChallenge('tf');$('nbT').onclick=()=>nbAnswer(true);$('nbF').onclick=()=>nbAnswer(false);
+nbBar();
+</script><div class="cedow" style="font-size:11px;color:#94a3b8;padding:6px 10px;text-align:center">© Catholic Education Diocese of Wollongong 2026. For use by CEDoW staff.</div>
+</body></html>
